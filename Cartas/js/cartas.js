@@ -12,8 +12,8 @@
  */
 
 function hola() {
-    var cartas = document.getElementsByClassName('carta');
-    for (var cartaSeleccionada = 0; cartaSeleccionada < cartas.length; cartaSeleccionada++) {
+    let  cartas = document.getElementsByClassName('carta');
+    for (let cartaSeleccionada = 0; cartaSeleccionada < cartas.length; cartaSeleccionada++) {
         cartas[cartaSeleccionada].onclick = voltearCarta;
     }
 }
@@ -22,3 +22,4 @@ function voltearCarta() {
 }
 document.addEventListener('DOMContentLoaded', hola);
 
+        
