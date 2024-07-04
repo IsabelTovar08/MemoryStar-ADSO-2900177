@@ -22,4 +22,3 @@ function voltearCarta() {
 }
 document.addEventListener('DOMContentLoaded', hola);
 
-

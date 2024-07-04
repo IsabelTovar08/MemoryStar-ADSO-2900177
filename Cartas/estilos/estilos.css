@@ -1,0 +1,43 @@
+.carta{
+    height: 33.3%;
+    width: 33.3%;
+    cursor: pointer; 
+    transition: transform 0.6s;
+    transform-style: preserve-3d;
+}
+.carta.volteada {
+    transform: rotateY(180deg);
+}
+
+.central{
+    height: 33.3%;
+    width: 33.3%;   
+}
+
+.contenedor{
+    display: flex;
+    width: 300px;
+    flex-wrap: wrap;
+    margin: auto;
+    margin-top: 90px; 
+}
+
+.imagen{
+    height: 90px;   
+    width: 100px;
+    border: 1px solid #000;
+    border-radius: 6px;
+}
+
+.Titulo{
+    text-align: center;
+    color: blue;
+    font-size: 36px;
+}
+
+.fondo {
+    background-image: url('/Cartas/imagenes/fondo.png');
+    background-position: center; 
+    background-repeat: no-repeat;
+    
+}
