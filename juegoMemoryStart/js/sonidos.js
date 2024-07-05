@@ -11,11 +11,11 @@ const iconoMusica = document.getElementById('controlMusica');
 iconoMusica.addEventListener('click', () => {
     if (musicaFondo.paused) {
         musicaFondo.play();
-        iconoMusica.src = 'img/sonido-encendido.png';
+        iconoMusica.src = 'img/iconos/sonido-encendido.png';
         iconoMusica.alt = 'Pausar';
     } else {
         musicaFondo.pause();
-        iconoMusica.src = 'img/sonido-apagadoo.png';
+        iconoMusica.src = 'img/iconos/sonido-apagadoo.png';
         iconoMusica.alt = 'Reproducir';
     }
 });

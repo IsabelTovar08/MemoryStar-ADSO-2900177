@@ -5,18 +5,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>juego</title>
     <script src="js/cartas.js"></script>
-    <script src="js/juego.js"></script>
-    <link rel="stylesheet" href="estilos/estilos.css">
-    <link rel="stylesheet" href="estilos/estilos2.css">
-    <link rel="stylesheet" href="bootstrap-5.0.2-dist/css/bootstrap.css">
-    <script src="bootstrap-5.0.2-dist/js/bootstrap.js"></script>
+    <script src="js/sonidos.js"></script>
+    <link rel="stylesheet" href="css/estilosInicio.css">
+    <link rel="stylesheet" href="css/estilosCartas.css">
+    <link rel="stylesheet" href="bootstrap/css/bootstrap.css">
+    <script src="bootstrap/js/bootstrap.js"></script>
 </head>
 <body class="fondo">
     <div class="apartado-iconos">
-        <img src="img/usuario.png" alt="user" class="iconos efectosIconos">
-        <img id="controlMusica" src="img/sonido-apagadoo.png" alt="Reproducir" class="iconos efectosIconos">
+        <img src="img/iconos/usuario.png" alt="user" class="iconos efectosIconos">
+        <img id="controlMusica" src="img/iconos/sonido-apagadoo.png" alt="Reproducir" class="iconos efectosIconos">
         <div class="ajustes">
-            <img src="img/ajustes.png" alt="Reproducir" class="iconos efectosIconos" data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+            <img src="img/iconos/ajustes.png" alt="Ajustes" class="iconos efectosIconos" data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
             <div class="collapse" id="collapseExample">
                 <div class="card card-body col-5 color">
                     <div class="col-12 row">
@@ -31,75 +31,75 @@
                 </div>
               </div>
         </div>
-        <img src="img/ayuda.png" alt="Reproducir" class="iconos efectosIconos" data-bs-toggle="modal" data-bs-target="#exampleModal">
+        <img src="img/iconos/ayuda.png" alt="Ayuda" class="iconos efectosIconos" data-bs-toggle="modal" data-bs-target="#exampleModal">
     </div>
     <div class="Titulo col-12"> Cartas</div>
     <div class="contenedor">
         <div class="carta">
             <div class="cara reverso">
-                <img src="imagenes/aguacate.png" class="imagen">
+                <img src="img/cartasFrutas/aguacate.png" class="imagen">
             </div>
             <div class="cara frente">
-                <img src="imagenes/logo.png" class="imagen" alt="Reverso">
+                <img src="img/cartasFrutas/logo.png" class="imagen" alt="Reverso">
             </div>
         </div>
         <div class="carta">
             <div class="cara reverso">
-                <img src="imagenes/bananos.png" class="imagen">
+                <img src="img/cartasFrutas/bananos.png" class="imagen">
             </div>
             <div class="cara frente">
-                <img src="imagenes/logo.png" class="imagen" alt="Reverso">
+                <img src="img/cartasFrutas/logo.png" class="imagen" alt="Reverso">
             </div>
         </div>
         <div class="carta">
             <div class="cara reverso">
-                <img src="imagenes/cereza.png" class="imagen">
+                <img src="img/cartasFrutas/cereza.png" class="imagen">
             </div>
             <div class="cara frente">
-                <img src="imagenes/logo.png" class="imagen" alt="Reverso">
+                <img src="img/cartasFrutas/logo.png" class="imagen" alt="Reverso">
             </div>
         </div>
         <div class="carta">
             <div class="cara reverso">
-                <img src="imagenes/manzana.png" class="imagen">
+                <img src="img/cartasFrutas/manzana.png" class="imagen">
             </div>
             <div class="cara frente">
-                <img src="imagenes/logo.png" class="imagen" alt="Reverso">
+                <img src="img/cartasFrutas/logo.png" class="imagen" alt="Reverso">
             </div>
         </div>
         <div class="central">
-            <img src="imagenes/logoMemory.png" class="imagen2">
+            <img src="img/cartasFrutas/logoMemory.png" class="imagen2">
         </div>
         <div class="carta">
             <div class="cara reverso">
-                <img src="imagenes/aguacate.png" class="imagen">
+                <img src="img/cartasFrutas/aguacate.png" class="imagen">
             </div>
             <div class="cara frente">
-                <img src="imagenes/logo.png" class="imagen" alt="Reverso">
+                <img src="img/cartasFrutas/logo.png" class="imagen" alt="Reverso">
             </div>
         </div>   
         <div class="carta">
             <div class="cara reverso">
-                <img src="imagenes/bananos.png" class="imagen">
+                <img src="img/cartasFrutas/bananos.png" class="imagen">
             </div>
             <div class="cara frente">
-                <img src="imagenes/logo.png" class="imagen" alt="Reverso">
+                <img src="img/cartasFrutas/logo.png" class="imagen" alt="Reverso">
             </div>
         </div>
         <div class="carta">
             <div class="cara reverso">
-                <img src="imagenes/cereza.png" class="imagen">
+                <img src="img/cartasFrutas/cereza.png" class="imagen">
             </div>
             <div class="cara frente">
-                <img src="imagenes/logo.png" class="imagen" alt="Reverso">
+                <img src="img/cartasFrutas/logo.png" class="imagen" alt="Reverso">
             </div>
         </div>
         <div class="carta">
             <div class="cara reverso">
-                <img src="imagenes/manzana.png" class="imagen">
+                <img src="img/cartasFrutas/manzana.png" class="imagen">
             </div>
             <div class="cara frente">
-                <img src="imagenes/logo.png" class="imagen" alt="Reverso">
+                <img src="img/cartasFrutas/logo.png" class="imagen" alt="Reverso">
             </div>
         </div>
     </div>
@@ -116,7 +116,7 @@
             Tu navegador no soporta la etiqueta de audio.
     </audio>
     <a href="index.html"><button>Salir</button></a>
-    <script src="js/juego.js"></script>
-    <script src="bootstrap-5.0.2-dist/js/bootstrap.js"></script>
+    <script src="js/sonidos.js"></script>
+    <script src="bootstrap/js/bootstrap.js"></script>
 </body>
 </html>

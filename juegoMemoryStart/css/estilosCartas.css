@@ -55,7 +55,7 @@
     font-size: 36px;
 }
 .fondo {
-    background-image: url('/Cartas/imagenes/fondo.png');
+    background-image: url('/juegoMemoryStart/img/cartasFrutas/fondo.png');
     background-position: center; 
     background-repeat: no-repeat;
 }
