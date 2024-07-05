@@ -3,83 +3,68 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>juego</title>
-    <script src="/Cartas/js/cartas.js"></script>
-    <link rel="stylesheet" href="/Cartas/estilos/estilos.css">
-    <link rel="stylesheet" href="/Cartas/bootstrap-5.0.2-dist/css/bootstrap.css">
+    <link rel="stylesheet" href="bootstrap-5.0.2-dist/css/bootstrap.css">
+    <link rel="stylesheet" href="estilos/estilos2.css">
+    <title>MemoryStart ¡Pon a prueba tu memoria!</title>
 </head>
-<body class="fondo">
-    <div class="Titulo col-12"> Cartas</div>
-    <div class="contenedor">
-        <div class="carta">
-            <div class="cara reverso">
-                <img src="imagenes/aguacate.png" class="imagen">
+<body>
+    <div class="container-xxl">
+        <div class="apartado-iconos">
+            <img src="img/usuario.png" alt="user" class="iconos efectosIconos">
+            <img id="controlMusica" src="img/sonido-apagadoo.png" alt="Reproducir" class="iconos efectosIconos">
+            <div class="ajustes">
+                <img src="img/ajustes.png" alt="Reproducir" class="iconos efectosIconos" data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+                <div class="collapse" id="collapseExample">
+                    <div class="card card-body col-5 color">
+                        <div class="col-12 row">
+                            <div class="col-6">Música</div>
+                            <div class="col-6"><input type="range" id="volumenMusica" min="0" max="1" step="0.1" value="1"></div>
+                        </div>
+                        <div class="col-12 row">
+                            <div class="col-6">Sonido</div>
+                            <div class="col-6"><input type="range" id="volumenSonido" min="0" max="1" step="0.1" value="1"></div>
+                        </div>
+                        <button id="botonSilencio" class="btn btn-primary">Silenciar</button>
+                    </div>
+                  </div>
             </div>
-            <div class="cara frente">
-                <img src="imagenes/logo.png" class="imagen" alt="Reverso">
-            </div>
+            <img src="img/ayuda.png" alt="Reproducir" class="iconos efectosIconos" data-bs-toggle="modal" data-bs-target="#exampleModal">
         </div>
-        <div class="carta">
-            <div class="cara reverso">
-                <img src="imagenes/bananos.png" class="imagen">
-            </div>
-            <div class="cara frente">
-                <img src="imagenes/logo.png" class="imagen" alt="Reverso">
-            </div>
-        </div>
-        <div class="carta">
-            <div class="cara reverso">
-                <img src="imagenes/cereza.png" class="imagen">
-            </div>
-            <div class="cara frente">
-                <img src="imagenes/logo.png" class="imagen" alt="Reverso">
-            </div>
-        </div>
-        <div class="carta">
-            <div class="cara reverso">
-                <img src="imagenes/manzana.png" class="imagen">
-            </div>
-            <div class="cara frente">
-                <img src="imagenes/logo.png" class="imagen" alt="Reverso">
-            </div>
-        </div>
-        <div class="central">
-            <img src="imagenes/logoMemory.png" class="imagen2">
-        </div>
-        <div class="carta">
-            <div class="cara reverso">
-                <img src="imagenes/aguacate.png" class="imagen">
-            </div>
-            <div class="cara frente">
-                <img src="imagenes/logo.png" class="imagen" alt="Reverso">
-            </div>
-        </div>   
-        <div class="carta">
-            <div class="cara reverso">
-                <img src="imagenes/bananos.png" class="imagen">
-            </div>
-            <div class="cara frente">
-                <img src="imagenes/logo.png" class="imagen" alt="Reverso">
-            </div>
-        </div>
-        <div class="carta">
-            <div class="cara reverso">
-                <img src="imagenes/cereza.png" class="imagen">
-            </div>
-            <div class="cara frente">
-                <img src="imagenes/logo.png" class="imagen" alt="Reverso">
-            </div>
-        </div>
-        <div class="carta">
-            <div class="cara reverso">
-                <img src="imagenes/manzana.png" class="imagen">
-            </div>
-            <div class="cara frente">
-                <img src="imagenes/logo.png" class="imagen" alt="Reverso">
+    
+        <img src="img/logoMemory.png" alt="logoMemory" width="500" height="400" class="imagenInicio">
+        <a href="juego.html"><button class="btn boton-jugar efectosIconos zoom">Jugar</button></a>
+      
+        <!-- Modal -->
+        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-lg ">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="exampleModalLabel">Ayuda</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        ...
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn color" data-bs-dismiss="modal">Cerrar</button>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
-
-    <a href="inicio.html"><button>Salir</button></a>
+    <audio id="musicaFondo" loop>
+        <source src="audio/inicio.mp3" type="audio/mpeg">
+            Tu navegador no soporta la etiqueta de audio.
+    </audio>
+    <audio id="click">
+        <source src="audio/click.mp3" type="audio/mpeg">
+            Tu navegador no soporta la etiqueta de audio.
+    </audio>
+    <audio id="sonidoCursor">
+        <source src="audio/pasar-mouse .mp3" type="audio/mpeg">
+            Tu navegador no soporta la etiqueta de audio.
+    </audio>
+    <script src="bootstrap-5.0.2-dist/js/bootstrap.js"></script>
+    <script src="js/juego.js"></script>
 </body>
 </html>

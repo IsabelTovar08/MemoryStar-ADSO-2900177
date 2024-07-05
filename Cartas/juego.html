@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>juego</title>
+    <script src="js/cartas.js"></script>
+    <script src="js/juego.js"></script>
+    <link rel="stylesheet" href="estilos/estilos.css">
+    <link rel="stylesheet" href="estilos/estilos2.css">
+    <link rel="stylesheet" href="bootstrap-5.0.2-dist/css/bootstrap.css">
+    <script src="bootstrap-5.0.2-dist/js/bootstrap.js"></script>
+</head>
+<body class="fondo">
+    <div class="apartado-iconos">
+        <img src="img/usuario.png" alt="user" class="iconos efectosIconos">
+        <img id="controlMusica" src="img/sonido-apagadoo.png" alt="Reproducir" class="iconos efectosIconos">
+        <div class="ajustes">
+            <img src="img/ajustes.png" alt="Reproducir" class="iconos efectosIconos" data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+            <div class="collapse" id="collapseExample">
+                <div class="card card-body col-5 color">
+                    <div class="col-12 row">
+                        <div class="col-6">Música</div>
+                        <div class="col-6"><input type="range" id="volumenMusica" min="0" max="1" step="0.1" value="1"></div>
+                    </div>
+                    <div class="col-12 row">
+                        <div class="col-6">Sonido</div>
+                        <div class="col-6"><input type="range" id="volumenSonido" min="0" max="1" step="0.1" value="1"></div>
+                    </div>
+                    <button id="botonSilencio" class="btn btn-primary">Silenciar</button>
+                </div>
+              </div>
+        </div>
+        <img src="img/ayuda.png" alt="Reproducir" class="iconos efectosIconos" data-bs-toggle="modal" data-bs-target="#exampleModal">
+    </div>
+    <div class="Titulo col-12"> Cartas</div>
+    <div class="contenedor">
+        <div class="carta">
+            <div class="cara reverso">
+                <img src="imagenes/aguacate.png" class="imagen">
+            </div>
+            <div class="cara frente">
+                <img src="imagenes/logo.png" class="imagen" alt="Reverso">
+            </div>
+        </div>
+        <div class="carta">
+            <div class="cara reverso">
+                <img src="imagenes/bananos.png" class="imagen">
+            </div>
+            <div class="cara frente">
+                <img src="imagenes/logo.png" class="imagen" alt="Reverso">
+            </div>
+        </div>
+        <div class="carta">
+            <div class="cara reverso">
+                <img src="imagenes/cereza.png" class="imagen">
+            </div>
+            <div class="cara frente">
+                <img src="imagenes/logo.png" class="imagen" alt="Reverso">
+            </div>
+        </div>
+        <div class="carta">
+            <div class="cara reverso">
+                <img src="imagenes/manzana.png" class="imagen">
+            </div>
+            <div class="cara frente">
+                <img src="imagenes/logo.png" class="imagen" alt="Reverso">
+            </div>
+        </div>
+        <div class="central">
+            <img src="imagenes/logoMemory.png" class="imagen2">
+        </div>
+        <div class="carta">
+            <div class="cara reverso">
+                <img src="imagenes/aguacate.png" class="imagen">
+            </div>
+            <div class="cara frente">
+                <img src="imagenes/logo.png" class="imagen" alt="Reverso">
+            </div>
+        </div>   
+        <div class="carta">
+            <div class="cara reverso">
+                <img src="imagenes/bananos.png" class="imagen">
+            </div>
+            <div class="cara frente">
+                <img src="imagenes/logo.png" class="imagen" alt="Reverso">
+            </div>
+        </div>
+        <div class="carta">
+            <div class="cara reverso">
+                <img src="imagenes/cereza.png" class="imagen">
+            </div>
+            <div class="cara frente">
+                <img src="imagenes/logo.png" class="imagen" alt="Reverso">
+            </div>
+        </div>
+        <div class="carta">
+            <div class="cara reverso">
+                <img src="imagenes/manzana.png" class="imagen">
+            </div>
+            <div class="cara frente">
+                <img src="imagenes/logo.png" class="imagen" alt="Reverso">
+            </div>
+        </div>
+    </div>
+    <audio id="musicaFondo" loop>
+        <source src="audio/inicio.mp3" type="audio/mpeg">
+            Tu navegador no soporta la etiqueta de audio.
+    </audio>
+    <audio id="click">
+        <source src="audio/click.mp3" type="audio/mpeg">
+            Tu navegador no soporta la etiqueta de audio.
+    </audio>
+    <audio id="sonidoCursor">
+        <source src="audio/pasar-mouse .mp3" type="audio/mpeg">
+            Tu navegador no soporta la etiqueta de audio.
+    </audio>
+    <a href="index.html"><button>Salir</button></a>
+    <script src="js/juego.js"></script>
+    <script src="bootstrap-5.0.2-dist/js/bootstrap.js"></script>
+</body>
+</html>
