@@ -1,11 +1,11 @@
 body{
     background: radial-gradient(#7472e9, #502481); 
     height: 100vh;
+    font-family: cursive;
 }
 .imagenInicio {
     display: block;
     margin: 0 auto;
-    margin-top: 10px;
 }
 .boton-jugar{
     background-color: #502481;
@@ -14,7 +14,7 @@ body{
     height: 60px;
     width: 110px;
     font-size: 30px;
-    font-family: blond;
+    font-family: cursive;
     justify-content: center;
 }
 .apartado-iconos{
@@ -30,6 +30,12 @@ body{
     cursor: pointer;
     transition: transform 0.3s;
 }
+.nombre{
+    font-family: cursive;
+    font-size: 25px;
+    margin-top: 8px;
+    color: aliceblue;
+}
 .iconos:hover{
     transform: scale(1.2);
 }
@@ -44,5 +50,26 @@ body{
 }
 .ajustes{
     width: 800px;
+    font-family: cursive;
+    color: aliceblue;
 }
-  
+
+/* Ordenar */
+.contenedor-inicial{
+    border-radius: 20px;
+    background-color: beige;
+    height: 120px;
+    width: 500px;
+    display: block;
+    margin: 0 auto;
+    margin-top: 100px;
+}
+.contenedor-final{
+    border-radius: 20px;
+    background-color: beige;
+    height: 120px;
+    width: 500px;
+    display: block;
+    margin: 0 auto;
+    margin-top: 20px;
+}
