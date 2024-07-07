@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="bootstrap/css/bootstrap.css">
     <link rel="stylesheet" href="css/estilosInicio.css">
+    <link rel="stylesheet" href="css/estilosPerfil.css">
     <title>MemoryStart ¡Pon a prueba tu memoria!</title>
 </head>
 <body>
@@ -35,7 +36,7 @@
                 <div class="nombre">Usuario</div>
             </li>
             <li class="nav-item">
-                <img src="img/iconos/usuario.png" alt="user" class="iconos efectosIconos">
+                <img src="img/iconos/usuario.png" alt="user" class="iconos efectosIconos"   data-bs-toggle="modal" data-bs-target="#staticBackdrop">
             </li>
         </ul>
         <!-- Modal -->
@@ -55,6 +56,98 @@
                 </div>
             </div>
         </div>
+        
+        <!-- Modal -->
+ <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-body">
+                <div class="container">
+                    <div class="col-12 row">
+                        <div class="col-4">
+                            <button type="button" class="btn btn-primary col-4" data-bs-dismiss="modal">Cerrar</button>
+                        </div>
+                        <div class="col-4">
+                            <div class="col-4 comentario">Perfil</div>
+                        </div>
+                        <div class="col-4">
+                            <div class="col-4 izquierdaLogo">
+                                <img src="img/iconos/logoMemory.png" class="izquierdaLogo">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="containerFoto">
+                        <div class="fotoPerfil">
+                            <!-- Foto de perfil -->
+                            <img id="profileImage" src="#" alt="Foto de perfil">
+                            <input type="file" id="fileInput" accept="image/*" style="display: none;">
+                        </div>
+                        <button type="button" class="btn btn-secondary" onclick="document.getElementById('fileInput').click();">Añadir foto</button>
+                        <button type="button" class="btn btn-danger" id="removePhotoButton" style="display: none;">Quitar foto</button>
+                    </div>
+                    <div class="container2">
+                        <div class="col-9 row ancho">
+                            <div class="contenidoPerfil col-5">
+                                <input type="text" class="form-control perfil-input" placeholder="Nombre usuario">
+                            </div>
+                            <div class="contenidoPerfil col-4">
+                                <input type="text" class="form-control perfil-input" placeholder="Apodo">
+                            </div>
+                        </div>
+                        <div class="col-5 row ancho">
+                            <div class="contenidoPerfil col-5">
+                                <input type="email" class="form-control perfil-input" placeholder="Correo">
+                            </div>
+                        </div>
+                        <div class="col-12 row ancho">
+                            <div class="vacio col-12"></div>
+                        </div>
+                        <div class="col-11 row ancho">
+                            <div class="tituloTabla col-11"></div>
+                        </div>
+                        <div class="tabla">
+                            <div class="col-10 row espacioInicioTabla">
+                                <div class="col-6">
+                                    <span>Últimas partidas</span>
+                                </div>
+                                <div class="col-3">
+                                    <span>Tiempo</span>
+                                </div>
+                                <div class="col-3">
+                                    <span>Puntos</span>
+                                </div>
+                            </div>
+                            <div class="col-10 row espaciosTabla">
+                                <div class="col-6">
+                                    <span>Partida 009</span>
+                                </div>
+                                <div class="col-3">
+                                    <span>00:00</span>
+                                </div>
+                                <div class="col-3 puntos">
+                                    <span>000</span>
+                                </div>
+                            </div>
+                            <div class="col-10 row espaciosTabla">
+                                <div class="col-6">
+                                    <span>Partida 008</span>
+                                </div>
+                                <div class="col-3">
+                                    <span>00:00</span>
+                                </div>
+                                <div class="col-3 puntos">
+                                    <span>000</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+        
+
         <img src="img/iconos/logoMemory.png" alt="logoMemory" width="500" height="400" class="imagenInicio">
         <a href="juego.html" class="btn boton-jugar efectosIconos zoom" onclick="return fase">Jugar</a>
     </div>
@@ -72,5 +165,6 @@
     </audio>
     <script src="bootstrap/js/bootstrap.js"></script>
     <script src="js/sonidos.js"></script>
+    <script src="js/perfil.js"></script>
 </body>
 </html>
