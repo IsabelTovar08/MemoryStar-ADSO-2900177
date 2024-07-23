@@ -22,74 +22,58 @@
  * Mdoficado por: Mauricio noscue 
  * Fecha: 05/07/2024
  */
+document.addEventListener('DOMContentLoaded', function() {
+    const cartas = document.querySelectorAll('.carta');
+    let cartasVolteadas = [];
+    let aciertos = [];
+    let fallos = [];
+ 
+    let iteracion1;
+    let iteracion2;
+    let imprimir = '';
 
-
-
-function hola() {
-    // Obtiene todas las cartas con la clase 'carta'
-    let cartas = document.getElementsByClassName('carta');
-    
-    // Agrega un evento 'onclick' a cada carta para que se voltee al hacer clic
-    for (let cartaSeleccionada = 0; cartaSeleccionada < cartas.length; cartaSeleccionada++) {
-        cartas[cartaSeleccionada].onclick = voltearCarta;
-    }
-}
-
-// Variables para almacenar la primera y segunda carta seleccionadas
-let primeraCarta = null;
-let segundaCarta = null;
-// Variable para evitar que se puedan voltear más cartas mientras se comparan dos cartas
-let bloqueo = false;
-
-function voltearCarta() {
-    // Si el bloqueo está activo, no permite voltear otra carta
-    if (bloqueo) return;
-    // Si la carta seleccionada es la misma que la primera carta, no hace nada
-    if (this === primeraCarta) return;
-
-    // Añade la clase 'volteada' a la carta seleccionada para voltear la carta
-    this.classList.add('volteada');
-
-    // Si no hay una primera carta seleccionada, esta será la primera carta
-    if (!primeraCarta) {
-        primeraCarta = this;
-        return;
+    for ( let iteracion = 0; iteracion < cartas.length; iteracion++) {
+        cartas[iteracion].addEventListener('click', () => voltearCarta(cartas[iteracion]));
     }
 
-    // Si ya hay una primera carta, esta será la segunda carta
-    segundaCarta = this;
-    // Activa el bloqueo para evitar que se puedan voltear más cartas
-    bloqueo = true;
+    function voltearCarta(carta) {
+        if (cartasVolteadas.length === 2) return;
 
-    // Obtiene los atributos 'data-id' de ambas cartas para compararlas
-    const idPrimeraCarta = primeraCarta.getAttribute('data-id');
-    const idSegundaCarta = segundaCarta.getAttribute('data-id');
+        carta.classList.add('volteada');
+        cartasVolteadas.push(carta);
 
-    // Si los IDs son iguales, las cartas son iguales y se quedan volteadas
-    if (idPrimeraCarta === idSegundaCarta) {
-        resetearCartas(true);
-    } else {
-        // Si los IDs son diferentes, espera 2 segundos y las revierte a su estado inicial
-        setTimeout(() => {
-            primeraCarta.classList.remove('volteada');
-            segundaCarta.classList.remove('volteada');
-            resetearCartas(false);
-        }, 1000); // 1000 ms = 1 segundos
+        if (cartasVolteadas.length === 2) {
+            const [primeraCarta, segundaCarta] = cartasVolteadas;
+            const idPrimeraCarta = primeraCarta.getAttribute('data-id');
+            const idSegundaCarta = segundaCarta.getAttribute('data-id');
+
+            if (idPrimeraCarta === idSegundaCarta) {
+                aciertos.push(20);
+                cartasVolteadas = [];
+            } else {
+                fallos.push(10);
+                setTimeout(() => {
+                    primeraCarta.classList.remove('volteada');
+                    segundaCarta.classList.remove('volteada');
+                    cartasVolteadas = [];
+                }, 1000); 
+            }
+        }
     }
-}
 
-function resetearCartas(conservarVolteadas) {
-    // Si las cartas no son iguales y no deben conservarse volteadas, las revierte a su estado inicial
-    if (!conservarVolteadas) {
-        primeraCarta.classList.remove('volteada');
-        segundaCarta.classList.remove('volteada');
+    window.mostrarResultados = function() {
+        imprimir = '<table class="table">';
+        imprimir += '<tr>';
+        for (iteracion1 = 0; iteracion1 < aciertos.length; iteracion1++) {
+            imprimir += '<td>' + aciertos[iteracion1] + '</td>';
+        }
+        imprimir += '</tr>';
+        imprimir += '<tr>';
+        for (iteracion2 = 0; iteracion2 < fallos.length; iteracion2++) {
+            imprimir += '<td>' + fallos[iteracion2] + '</td>';
+        }
+        imprimir += '</tr>';
+        imprimir += '</table>';
+        document.getElementById("resultados").innerHTML = imprimir;
     }
-    // Reinicia las variables de las cartas seleccionadas
-    primeraCarta = null;
-    segundaCarta = null;
-    // Desactiva el bloqueo para permitir voltear otras cartas
-    bloqueo = false;
-}
-
-// Agrega un evento 'DOMContentLoaded' para asegurarse de que el código se ejecute cuando el DOM esté completamente cargado
-document.addEventListener('DOMContentLoaded', hola);
+});

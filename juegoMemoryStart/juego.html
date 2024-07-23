@@ -11,7 +11,7 @@
 <body class="fondo">
     <nav class="nav flex-column apartado-iconos">
         <img id="controlMusica" src="img/iconos/sonido-apagadoo.png" alt="Reproducir" class="iconos efectosIconos">
-        <img src="img/iconos/trofeo.png" alt="Histórico" class="iconos efectosIconos" data-bs-toggle="modal" data-bs-target="#exampleModal">
+        <img src="img/iconos/trofeo.png" alt="Histórico" class="iconos efectosIconos"  data-bs-toggle="modal" data-bs-target="#exampleModal" onclick="mostrarResultados()">
         <div class="ajustes">
             <img src="img/iconos/ajustes.png" alt="Ajustes" class="iconos efectosIconos" data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
             <div class="collapse" id="collapseExample">
@@ -43,11 +43,13 @@
         <div class="modal-dialog modal-lg ">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h1 class="modal-title fs-5" id="exampleModalLabel">Ayuda</h1>
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">resultados</h1>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    ...
+                    <div id="resultados">
+
+                    </div>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Cerrar</button>

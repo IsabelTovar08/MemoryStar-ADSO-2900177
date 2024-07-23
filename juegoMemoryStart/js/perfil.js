@@ -5,8 +5,8 @@
  * Autor: Mauricio noscue 
  * Fecha: 07/07/2024
  * 
- * Estado: Sin completar 
- * 
+ * EstadoM: Sin completar 
+ * autor 
  */
 
 
