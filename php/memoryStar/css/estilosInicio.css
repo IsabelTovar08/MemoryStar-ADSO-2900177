@@ -1,0 +1,91 @@
+body{
+    background-image: url('../img/fondos/fondoInicio.jpeg');
+    background-size: 100% 100%;
+    height: 100vh;
+    background-position: center;
+    font-family: cursive;
+    background-repeat: no-repeat;
+}
+.imagenInicio {
+    display: block;
+    margin: 0 auto;
+}
+.boton-jugar{
+    background-color: #502481;
+    display: block;
+    margin: 0 auto;
+    height: 60px;
+    width: 110px;
+    font-size: 30px;
+    font-family: cursive;
+    justify-content: center;
+}
+.apartado-iconos{
+    width: 60px;
+    height: auto;
+    margin: 5px;
+    position: absolute;
+}
+.iconos{
+    width: 60px;
+    height: 60px;
+    margin: 5px;
+    cursor: pointer;
+    transition: transform 0.3s;
+}
+.nombre{
+    font-family: cursive;
+    font-size: 25px;
+    margin-top: 8px;
+    color: aliceblue;
+}
+.iconos:hover{
+    transform: scale(1.2);
+}
+.zoom{
+    transition: transform 0.3s;
+}
+.zoom:hover{
+    transform: scale(1.2);
+}
+.color{
+    background-color: #5f43ab;
+    color: #fff;
+}
+.ajustes{
+    width: 800px;
+    font-family: cursive;
+    color: aliceblue;
+}
+.opcionesJuego{
+    height: 180px;
+    width: 180px;
+    cursor: pointer;
+    margin: -7px;
+}
+.titulo-ayuda{
+    justify-content: center;
+    text-align: center;
+}
+/* Ordenar */
+.contenedor-inicial{
+    border-radius: 20px;
+    background-color: beige;
+    height: 120px;
+    width: 500px;
+    display: block;
+    margin: 0 auto;
+    margin-top: 100px;
+}
+.contenedor-final{
+    border-radius: 20px;
+    background-color: beige;
+    height: 120px;
+    width: 500px;
+    display: block;
+    margin: 0 auto;
+    margin-top: 20px;
+}
+/* Inicio estilos Perfil */
+
+/* Fin perfil */
