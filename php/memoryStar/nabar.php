@@ -34,11 +34,11 @@
     <div class="modal-dialog modal-lg ">
         <div class="modal-content">
             <div class="modal-header">
-                <h1 class="fs-5 titulo-ayuda" id="exampleModalLabel">¿Cómo Jugar?</h1>
+                <h1 class="fs-5 titulo-ayuda" id="exampleModalLabel">¿Cómooooo  Jugar?</h1>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                
+            <div  id="resultados"></div>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn color" data-bs-dismiss="modal">Cerrar</button>
