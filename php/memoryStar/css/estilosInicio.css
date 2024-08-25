@@ -1,14 +1,120 @@
 body{
-    background-image: url('../img/fondos/fondoInicio.jpeg');
+    background-image: url('../img/fondos/fondonuevo.jpg');
     background-size: 100% 100%;
     height: 100vh;
     background-position: center;
     font-family: cursive;
     background-repeat: no-repeat;
 }
-.imagenInicio {
+/* slider Inicio */
+.slider {
+    width: 450px;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+    display: block;
+}
+
+.slides {
+    padding: 0px;
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+    cursor: pointer;
+    width: 400;
+}
+
+.slide {
+    width: 150; /* Cada slide ocupa un tercio del contenedor del slider */
+    box-sizing: border-box;
+    border-color: linear-gradient(blue, red);
+    border-radius: 20px;
+}
+
+.slide img {
+    width: 150px;
+    display: block;
+}
+
+.prev, .next {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    border: none;
+    color: #442656;
+    padding: 10px;
+    cursor: pointer;
+    font-size: 40px;
+    background: none;
+    margin-top: 6%;
+}
+
+.prev {
+    left: 30%;
+}
+
+.next {
+    right: 30%;
+}
+.slide:hover{
+    background: #e1dcff;
+}
+.prev:hover, .next:hover {
+    color: #000000;
+}
+.dots {
+    text-align: center;
+}
+
+.dot {
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    margin: 0 2px;
+    background-color: #bbb;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.dot.active {
+    background-color: #442656;
+}
+/* fin slider */
+.logoInicio {
     display: block;
     margin: 0 auto;
+    width: 30%;
+    margin-top: -50px;
+    height: 40%;
+}
+.segundoInicio {
+    margin: 0 auto;
+    display: block;
+    width: 12%;
+    margin-top: 50px;
+}
+
+.oJuegos{
+    width: 150px;
+    cursor: pointer;
+}
+h1{
+    display: flex;
+    justify-content: center;
+}
+.contenedorOpciones{
+    display: flex;
+    justify-content: center;
+}
+.textoEleccion{
+    text-align: left; 
+    font-family: Comic Sans MS; 
+    font-weight:bold; 
+    font-size: 35px; 
+    color: #e3d8ed; 
+    text-shadow: -1px 0 #414D68, 0 1px #414D68, 1px 0 #414D68, 0 -1px #414D68, -2px 2px 0 #414D68, 2px 2px 0 #414D68, 1px 1px #414D68, 2px 2px #414D68, 3px 3px #414D68, 4px 4px #414D68, 5px 5px #414D68, 6px 6px #414D68, 7px 7px #414D68;
 }
 .boton-jugar{
     background-color: #502481;
@@ -27,11 +133,37 @@ body{
     position: absolute;
 }
 .iconos{
-    width: 60px;
-    height: 60px;
+    width: 100%;
+    height: 100%;
     margin: 5px;
     cursor: pointer;
     transition: transform 0.3s;
+}
+.ajustes .iconos{
+    width: 8%;
+    height: 8%;
+}
+.usuario .iconos{
+    width: 10%;
+    height: 10%;
+}
+#centrar2{
+    margin-left: 58%
+}
+#centrar1{
+    width: 70px;
+    margin-top: 10px;
+}
+.centrar{
+    margin: 0 auto;
+    display: none;
+    margin-left: 55%;
+    margin-bottom: -2%;
+    position: absolute;
+}
+.usuario{
+    width: 60px;
+    height: 60px;
 }
 .nombre{
     font-family: cursive;
@@ -46,7 +178,7 @@ body{
     transition: transform 0.3s;
 }
 .zoom:hover{
-    transform: scale(1.2);
+    transform: scale(1.05);
 }
 .color{
     background-color: #5f43ab;
@@ -66,6 +198,13 @@ body{
 .titulo-ayuda{
     justify-content: center;
     text-align: center;
+}
+.play{
+    display: block;
+    margin: 0 auto;
+    width: 20%;
+    cursor: pointer;
+    margin-top: 15px;
 }
 /* Ordenar */
 .contenedor-inicial{

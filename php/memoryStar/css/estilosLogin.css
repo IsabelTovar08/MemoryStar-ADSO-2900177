@@ -1,75 +1,209 @@
-body {   
-    background-image: url('../img/fondos/fondoLogin.jpeg');
+body {
+    background-image: url('../img/fondos/loginDos.jpg');
     background-size: 100% 100%;
     background-attachment: fixed;
     background-position: center;
     height: 100vh;
     margin: 0;
-       }
-       .container {
+}
 
-           margin: 80px 200px;
-           float: right;
-           background: rgba(255, 255, 255, 0.1); 
-           padding: 20px;
-           border-radius: 10px;
-           box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-           width: 300px;
-           height: 380px;
-       }
-       
-       .formularioLogin {
-           display: flex;
-           flex-direction: column;
-       }
-       
-       .label{
-           margin-top: 25px;
-           margin-bottom: 20px;
-           color: #fff;
-           font-size: 25px;
-       }
-       .formularioLogin input {
-           margin-bottom: 30px;
-           padding: 10px;
-           border: 1px solid #ccc;
-           border-radius: 4px;
-       }
-      
+#imagen {
+    position: relative;
+    transition: transform 1s;
+}
 
-       .noTienesCuenta {
-           display: block;
-           margin-top: 30px;
-           font-size: 0.9em;
-           color: #fff;
-           cursor: pointer;
-           text-align: center;
-       }
-       .olvidarContraseña{
-           margin-left: 100px;
-           margin-top: -20px;
-           font-size: 0.9em;
-           color: #fff;
-           cursor: pointer;
-           text-align: center;
-           
-       }
-       
-       .olvidarContraseña:hover, .noTienesCuenta:hover {
-           text-decoration: underline;
-       }
-       
-       button {
-           padding: 10px;
-           border: none;
-           border-radius: 4px;
-           background-color: #502481;
-           color: #fff;
-           font-size: 1em;
-           cursor: pointer;
-           margin-top: 30px;
-       }
-       
-       button:hover {
-           background-color: #0056b3;
-       }
+.logo {
+    margin-top: 8%;
+    margin-left: 15%;
+}
+
+.formularioLogin {
+    display: flex;
+    flex-direction: column;
+    z-index: 2;
+    background-color: transparent;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    text-align: center;
+}
+
+.label {
+    font-size: 36px;
+    margin-top: -90px;
+    position: fixed;
+    margin-left: 23.5px;
+    border-radius: 8px;
+    background-color: #a7bce1;
+    box-shadow: 4px 5px 4px #0000008c;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 250px;
+}
+
+.label::before {
+    content: "";
+    position: absolute;
+    height: 400px;
+    width: 400px;
+    background-image: conic-gradient(#3672ae 20deg, transparent 120deg);
+    animation: rotar 2s linear infinite;
+}
+
+@keyframes rotar {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(-360deg);
+    }
+}
+
+.iniciarS .label {
+    margin-top: -60px;
+    margin-left: 17px;
+}
+
+.noTienesCuenta {
+    display: block;
+    margin-top: 30px;
+    font-size: 1.1em;
+    color: #fff;
+    cursor: pointer;
+    text-align: center;
+}
+
+.olvidarContraseña {
+    margin-left: 100px;
+    font-size: 1.1em;
+    color: #fff;
+    cursor: pointer;
+    text-align: center;
+}
+
+.olvidarContraseña:hover,
+.noTienesCuenta:hover {
+    text-decoration: underline;
+}
+
+.iniciarS button {
+    margin-top: 12px;
+}
+
+button {
+    padding: 10px;
+    border: none;
+    border-radius: 4px;
+    background-color: #3672ae;
+    color: #fff;
+    font-size: 1em;
+    cursor: pointer;
+    margin-top: 30px;
+}
+
+button:hover {
+    transition: 0.9s ease;
+    background-color: #502481;
+}
+
+
+.tarjeta {
+    float: right;
+    margin: 8% 15%;
+    border-radius: 10px;
+    width: 350px;
+    height: 400px;
+    box-shadow: 16px 14px 20px #0000008c;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.iniciarS {
+    height: 500px;
+    margin: 5% 15%;
+}
+
+.iniciarS.tarjeta::after {
+    height: 495px;
+}
+
+.tarjeta::after {
+    content: "";
+    position: absolute;
+    height: 395px;
+    width: 345px;
+    background-color: #c9b0ff4f;
+    border-radius: 8px;
+}
+
+.label::after {
+    content: "";
+    position: absolute;
+    height: 36px;
+    width: 240px;
+    background-color: #c9b0ff;
+    border-radius: 8px;
+}
+
+.iniciarS .label::after {
+    height: 42px;
+}
+
+h2 {
+    color: rgb(255, 255, 255);
+    z-index: 2;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    text-align: center;
+    text-shadow: 1px 1px 1px black;
+}
+
+
+/* From Uiverse.io by bedirhan-arslan */
+.formField {
+    margin: 11px;
+    position: relative;
+}
+
+.formField input {
+    padding: 10px 15px;
+    outline: none;
+    border: 1px solid #3672ae;
+    border-radius: 10px;
+    background-color: #f1f1f1;
+    color: #333;
+    font-size: 16px;
+    font-weight: 550;
+    transition: 0.4s ease-in-out;
+    box-shadow: 0 0 0 5px transparent;
+    width: 100%;
+}
+
+.formField input:hover,
+.formField input:focus {
+    box-shadow: 0 0 0 2px #502481;
+}
+
+.formField span {
+    position: absolute;
+    left: 0;
+    top: 0;
+    padding: 8px 15px;
+    color: #3672ae;
+    font-size: 16px;
+    font-weight: 600;
+    transition: 0.3s ease-in-out;
+    pointer-events: none;
+}
+
+.formField input:focus+span,
+.formField input:valid+span {
+    transform: translateY(-34px) translateX(-5px) scale(0.95);
+    transition: 0.3s ease-in-out;
+    color: #fff;
+    font-size: 20px;
+    text-shadow: 1px 1px 1px black;
+}

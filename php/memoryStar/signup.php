@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Iniciar Sesión - MemoryStart ¡Pon a prueba tu memoria!</title>
+    <title>Registrarse - MemoryStart ¡Pon a prueba tu memoria!r</title>
     <link rel="shortcut icon" href="img/iconos/segundoMemory.png">
     <link rel="stylesheet" href="bootstrap/css/bootstrap.css">
     <link rel="stylesheet" href="css/estilosLogin.css">
@@ -11,16 +11,18 @@
 <body>
     <div class="container-xxl">
         <img id="imagen" src="img/iconos/nuevoMemory.png" alt="Ejemplo de Imagen" width="370" class="logo">
-        <div class="tarjeta">
+        <div class="tarjeta iniciarS">
             <form class="formularioLogin">
                 <div class="label">
-                    <h2>Iniciar Sesión</h2>
+                    <h2>Registrarse</h2>
                 </div>
-                <div class="formField"><input id="username" required="" type="text" /><span>Usuario</span></div>
+                <div class="formField"><input id="username" required="" type="text" /><span>Nombre</span></div>
+                <div class="formField"><input id="username" required="" type="text" /><span>Apellido</span></div>
+                <div class="formField"><input id="username" required="" type="text" /><span>Teléfono</span></div>
+                <div class="formField"><input id="username" required="" type="text" /><span>Email</span></div>
                 <div class="formField"><input id="password" required="" type="password" /><span>Contraseña</span></div>
-                <span class="olvidarContraseña">¿Olvidaste tu contraseña?</span>
                 <button type="submit">Iniciar</button>
-                <span class="noTienesCuenta">¿No tienes cuenta? <a href="signup.php">Regístrate</a></span>
+                <span class="noTienesCuenta">¿Ya tienes una cuenta? <a href="login.php">Iniciar Sesión</a></span>
             </form>
         </div>
     </div>
