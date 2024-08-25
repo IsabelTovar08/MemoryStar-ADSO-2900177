@@ -1,0 +1,119 @@
+.contenedorCabeza {
+    width: 500px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 50px;
+    margin-top: -73px;
+    margin-left: 420px;
+}
+
+.tituloCabeza {
+    font-size: 50px;
+    font-style: inter;
+    margin-bottom: 20px;
+    color: white;
+    text-shadow:
+        -1px -1px 0 #000,  
+         1px -1px 0 #000,
+        -1px  1px 0 #000,
+         1px  1px 0 #000,
+         0px   0px 5px rgba(0, 0, 0, 0.5); 
+}
+
+.figuras {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.figuras-arriba {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.rectangulo {
+    width: 125px;
+    height: 30px;
+    border-radius: 10px;
+    border: 3px solid #3E87FF;
+    margin: 0 20px;
+    display: flex;
+    align-items: center;
+    padding-left: 5px;
+}
+
+.rombo {
+    width: 120px;
+    height: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+    
+}
+
+
+.estrella {
+    width: 30px;
+    height: 25px;
+}
+
+.numero1 {
+    margin-left: 10px;
+    text-align: left;  
+   color: white;
+    text-shadow:
+        -1px -1px 0 #000,  
+         1px -1px 0 #000,
+        -1px  1px 0 #000,
+         1px  1px 0 #000,
+         0px   0px 5px rgba(0, 0, 0, 0.5); 
+}
+.numero2 {
+    margin-left: 68px;
+    text-align: right;  
+   color: white;
+    text-shadow:
+        -1px -1px 0 #000,  
+         1px -1px 0 #000,
+        -1px  1px 0 #000,
+         1px  1px 0 #000,
+         0px   0px 5px rgba(0, 0, 0, 0.5); 
+}
+
+.numeroRombo {
+    font-size: 24px;
+    color: white;
+    text-shadow:
+        -1px -1px 0 #000,  
+         1px -1px 0 #000,
+        -1px  1px 0 #000,
+         1px  1px 0 #000,
+         0px   0px 5px rgba(0, 0, 0, 0.5); 
+    position: absolute;
+}
+
+.figuras-abajo {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.figura-abajo {
+    width: 125px;
+    height: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 90px;
+    margin-top: -50px;
+}
+
+.figura-abajo img {
+    width: 50px;
+    height: 50px;
+}

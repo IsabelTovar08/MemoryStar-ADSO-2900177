@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>juego Animales Facil </title>
+    <title>juego Comida Facil </title>
     <link rel="stylesheet" href="../../css/estilosEncabezado.css">
     <link rel="stylesheet" href="../../css/estilosInicio.css">
     <link rel="stylesheet" href="../../css/estilosCartas.css">
@@ -13,7 +13,7 @@
 
 <style>
     body {
-    background-image: url('../../img/fondoTematicas/f8e210a7-7519-4734-9a5a-797baf30869e.jpeg');
+    background-image: url('../../img/fondoTematicas/fondoComida1.jpg');
     background-position: center; 
     background-repeat: no-repeat;
 }
@@ -21,37 +21,35 @@
 </style>
 <body class="fondo">
     <?php include('../nabar2.php') ?>
-
+   
     <div class="contenedor">
-        <div class="carta"  data-id="ave">
+        <div class="carta"  data-id="dona">
             <div class="cara reverso">
-                <img src="../../img/cartasAnimales/ave.jpg
-                " class="imagen">
+                <img src="../../img/cartasComida/dona.jpg" class="imagen">
             </div>
             <div class="cara frente">
                 <img src="../../img/Cartalogorehecha.png" class="imagen" alt="Reverso">
             </div>
         </div>
-        <div class="carta" data-id="vaca">
+        <div class="carta" data-id="hamburguesa">
             <div class="cara reverso">
-                <img src="../../img/cartasAnimales/vaca.jpg
-                " class="imagen">
+                <img src="../../img/cartasComida/hamburguesa.jpg" class="imagen">
             </div>
             <div class="cara frente">
                 <img src="../../img/Cartalogorehecha.png" class="imagen" alt="Reverso">
             </div>
         </div>
-        <div class="carta"  data-id="koala">
+        <div class="carta"  data-id="helado">
             <div class="cara reverso">
-                <img src="../../img/cartasAnimales/koala.jpg" class="imagen">
+                <img src="../../img/cartasComida/helado.jpg" class="imagen">
             </div>
             <div class="cara frente">
                 <img src="../../img/Cartalogorehecha.png" class="imagen" alt="Reverso">
             </div>
         </div>
-        <div class="carta"  data-id="leon">
+        <div class="carta"  data-id="leche">
             <div class="cara reverso">
-                <img src="../../img/cartasAnimales/leon.jpg" class="imagen">
+                <img src="../../img/cartasComida/leche.jpg" class="imagen">
             </div>
             <div class="cara frente">
                 <img src="../../img/Cartalogorehecha.png" class="imagen" alt="Reverso">
@@ -60,35 +58,33 @@
         <div class="central">
             <img src="../../img/logoNuevo1.png" class="imagen2">
         </div>
-        <div class="carta" data-id="ave">
+        <div class="carta" data-id="dona">
             <div class="cara reverso">
-                <img src="../../img/cartasAnimales/ave.jpg
-                " class="imagen">
+                <img src="../../img/cartasComida/dona.jpg" class="imagen">
             </div>
             <div class="cara frente">
                 <img src="../../img/Cartalogorehecha.png" class="imagen" alt="Reverso">
             </div>
         </div>   
-        <div class="carta" data-id="vaca">
+        <div class="carta" data-id="hamburguesa">
             <div class="cara reverso">
-                <img src="../../img/cartasAnimales/vaca.jpg
-                " class="imagen">
+                <img src="../../img/cartasComida/hamburguesa.jpg" class="imagen">
             </div>
             <div class="cara frente">
                 <img src="../../img/Cartalogorehecha.png" class="imagen" alt="Reverso">
             </div>
         </div>
-        <div class="carta" data-id="koala">
+        <div class="carta" data-id="helado">
             <div class="cara reverso">
-                <img src="../../img/cartasAnimales/koala.jpg" class="imagen">
+                <img src="../../img/cartasComida/helado.jpg" class="imagen">
             </div>
             <div class="cara frente">
                 <img src="../../img/Cartalogorehecha.png" class="imagen" alt="Reverso">
             </div>
         </div>
-        <div class="carta" data-id="leon">
+        <div class="carta" data-id="leche">
             <div class="cara reverso">
-                <img src="../../img/cartasAnimales/leon.jpg" class="imagen">
+                <img src="../../img/cartasComida/leche.jpg" class="imagen">
             </div>
             <div class="cara frente">
                 <img src="../../img/Cartalogorehecha.png" class="imagen" alt="Reverso">
