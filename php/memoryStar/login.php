@@ -24,6 +24,6 @@
             </form>
         </div>
     </div>
-    <script src="js/play.js"></script>
+    <script src="js/login.js"></script>
 </body>
 </html>
