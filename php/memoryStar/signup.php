@@ -16,16 +16,16 @@
                 <div class="label">
                     <h2>Registrarse</h2>
                 </div>
-                <div class="formField"><input id="username" required="" type="text" /><span>Nombre</span></div>
-                <div class="formField"><input id="username" required="" type="text" /><span>Apellido</span></div>
-                <div class="formField"><input id="username" required="" type="text" /><span>Teléfono</span></div>
-                <div class="formField"><input id="username" required="" type="text" /><span>Email</span></div>
+                <div class="formField"><input id="name" required="" type="text" /><span>Nombre</span></div>
+                <div class="formField"><input id="lastname" required="" type="text" /><span>Apellido</span></div>
+                <div class="formField"><input id="phone" required="" type="text" /><span>Teléfono</span></div>
+                <div class="formField"><input id="email" required="" type="text" /><span>Email</span></div>
                 <div class="formField"><input id="password" required="" type="password" /><span>Contraseña</span></div>
                 <button type="submit">Iniciar</button>
                 <span class="noTienesCuenta">¿Ya tienes una cuenta? <a href="login.php">Iniciar Sesión</a></span>
             </form>
         </div>
     </div>
-    <script src="js/play.js"></script>
+    <script src="js/login.js"></script>
 </body>
 </html>
