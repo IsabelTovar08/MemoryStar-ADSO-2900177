@@ -176,7 +176,7 @@
     <div class="modal-content">
             <div class="modal-header">
                 <h1 class="fs-5 titulo-ayuda" id="exampleModalLabel">Perfil</h1>
-                <img src="img/iconos/logoMemoryS.png" alt="logo" width="50">
+                <img src="img/iconos/segundoMemory.png" alt="logo" width="50">
             </div>
             <div class="modal-body">
                 <a href="login.php">Login</a>
