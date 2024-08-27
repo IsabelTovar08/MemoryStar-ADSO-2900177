@@ -18,7 +18,7 @@
             </div>
         </div>
     </div>
-    <img src="img/iconos/ayuda.png" alt="Ayuda" class="iconos efectosIconos" data-bs-toggle="modal" data-bs-target="#exampleModal">
+    <img src="img/iconos/ayuda.png" alt="Ayuda" class="iconos efectosIconos" data-bs-toggle="modal" data-bs-target="#exampleModal-ayuda">
 </nav>
 <ul class="nav justify-content-end">
     <li class="nav-item">
@@ -81,20 +81,92 @@
     </div>
 </div>
 
-<!-- Modal Cómo Jugar-->
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-lg ">
-        <div class="modal-content">
+<!-- Modal ayuda -->
+ 
+<div class="modal fade" id="exampleModal-ayuda" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content radio">
             <div class="modal-header">
                 <h1 class="fs-5 titulo-ayuda" id="exampleModalLabel">¿Cómo Jugar?</h1>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                <img src="img/iconos/botonSalir.png" alt="salir" class="btn" data-bs-dismiss="modal" aria-label="Close">
             </div>
-            <div class="modal-body">
+            <div class="modal-body texto">
+
+                Aquí puedes encontrar ayuda sobre cómo jugar nuestros modos de juego. <br>
+                 Selecciona el modo en el cual necesitas ayuda.
+                
+                <div class="col-12 row">
+                    <div class="col-4">
+                    <img src="img/ayuda/ayudaCarta.png" id="goToModal2" class="imgAyuda">
+                    </div>
+                    <div class="col-4">
+                        <img src="img/ayuda/ayudaSecuencia.png" id="goToModal3" class="imgAyuda">
+                    </div>
+                    <div class="col-4">
+                        <img src="img/ayuda/botonSecuencia.png" id="goToModal4" class="imgAyuda">
+                    </div>
+
+                        
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<!-- Modal ayuda CARTAS 2 -->
+<div class="modal fade" id="exampleModal-ayuda2" tabindex="-1" aria-labelledby="exampleModalLabel2" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="fs-5 titulo-ayuda" id="exampleModalLabel2">¿Cómo Jugar?</h1>
+                <img src="img/iconos/botonSalir.png" alt="salir" class="btn" data-bs-dismiss="modal" aria-label="Close">
+            </div>
+            <div class="modal-body texto">
+                
+                CARTAS
+
+                <img src="img/ayuda/ayudaCarta.png" class="imgAyuda">
+            </div>
+            
+        </div>
+    </div>
+</div>
+
+<!-- Modal ayuda SECUENCIA 3 -->
+<div class="modal fade" id="exampleModal-ayuda3" tabindex="-1" aria-labelledby="exampleModalLabel3" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="fs-5 titulo-ayuda" id="exampleModalLabel3">¿Cómo Jugar?</h1>
+                <img src="img/iconos/botonSalir.png" alt="salir" class="btn" data-bs-dismiss="modal" aria-label="Close">
+            </div>
+            <div class="modal-body texto">
+                
+                SECUENCIA
                 
             </div>
-            <div class="modal-footer">
-                <button type="button" class="btn color" data-bs-dismiss="modal">Cerrar</button>
+            
+        </div>
+    </div>
+</div>
+
+<!-- Modal ayuda ASOCIACION 3 -->
+
+<div class="modal fade" id="exampleModal-ayuda4" tabindex="-1" aria-labelledby="exampleModalLabel4" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="fs-5 titulo-ayuda" id="exampleModalLabel4">¿Cómo Jugar?</h1>
+                <img src="img/iconos/botonSalir.png" alt="salir" class="btn" data-bs-dismiss="modal" aria-label="Close">
             </div>
+            <div class="modal-body texto">
+                
+                ASOCIACION
+                
+            </div>
+            
         </div>
     </div>
 </div>

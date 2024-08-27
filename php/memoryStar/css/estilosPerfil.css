@@ -76,9 +76,7 @@
     display: block;
     border-radius: 50%;
 }
-.modal-content {
-    background: radial-gradient(#7472e9, #502481);
-}
+
 .comentario {
     margin-top: 25px;
     margin-left: 20px;
