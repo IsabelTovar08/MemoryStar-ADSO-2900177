@@ -15,9 +15,12 @@
             <img src="img/iconos/nuevoMemory.png" alt="logoMemory" height="400" class="logoInicio">
         </div>
         <div id="jugar">
+
             <img src="img/iconos/clic.png" alt="" width="50" class="centrar" id="centrar1">
             <img src="img/iconos/clic2.png" alt="" width="50" class="centrar" id="centrar2">
             <img src="img/iconos/play.png" alt="" class="play zoom" id="play">
+            <img src="img/iconos/muñequito.png" alt="" class="play zoom" id="">
+
         </div>
         <p id="message"></p>
     </div>
