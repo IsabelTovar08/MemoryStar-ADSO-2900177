@@ -1,0 +1,32 @@
+.titulo-ayuda{
+    font-size: 40px !important; /* Tamaño de la fuente */
+    font-weight: bold; /* Texto en negrita */
+    color: black; /* Color del texto */
+    background-color: white; /* Fondo  */
+    border: 2px solid #2E4372; /* Borde azul oscuro */
+    border-radius: 20px; /* Esquinas redondeadas */
+    padding: 10px 20px; /* Espaciado interno */
+    text-align: center; /* Centra el texto*/
+    margin: 0 auto;
+    margin-right: 145px;
+}
+.imgAyuda{
+    margin-top: 10px !important;
+    width: 200px;
+    height: 300px;
+    display: block;
+    margin: auto;
+    border-radius: 10px;
+}
+.fondo-Modal{
+    background-color: #f2e6f7;
+}
+.texto{
+    font-size: 20px !important;
+    
+}
+.radio{
+    border-radius: 40px !important;
+}
+
+

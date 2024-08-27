@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="bootstrap/css/bootstrap.css">
     <link rel="stylesheet" href="css/estilosInicio.css">
+    <link rel="stylesheet" href="css/estilosAyuda.css">
     <title>MemoryStart ¡Pon a prueba tu memoria!</title>
     <link rel="shortcut icon" href="img/iconos/segundoMemory.png">
 </head>
@@ -25,6 +26,7 @@
         <p id="message"></p>
     </div>
     <?php include('audios.php') ?>
+    <script src="js/overlayModal.js"></script>
     <script src="bootstrap/js/bootstrap.js"></script>
     <script src="js/sonidos.js"></script>
     <script src="js/perfil.js"></script>
