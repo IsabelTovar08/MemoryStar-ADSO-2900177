@@ -13,7 +13,7 @@
 
 <style>
     body {
-    background-image: url('../../img/fondoTematicas/');
+    background-image: url('../../img/fondoTematicas/fondoAnimal.jpg');
     background-position: center; 
     background-repeat: no-repeat;
 }
