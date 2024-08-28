@@ -23,6 +23,7 @@
     <?php include('../nabar2.php') ?>
    
     <div class="contenedor">
+  
         <div class="carta"  data-id="dona">
             <div class="cara reverso">
                 <img src="../../img/cartasComida/dona.jpg" class="imagen">
@@ -39,6 +40,7 @@
                 <img src="../../img/Cartalogorehecha.png" class="imagen" alt="Reverso">
             </div>
         </div>
+        
         <div class="carta"  data-id="helado">
             <div class="cara reverso">
                 <img src="../../img/cartasComida/helado.jpg" class="imagen">
@@ -55,7 +57,7 @@
                 <img src="../../img/Cartalogorehecha.png" class="imagen" alt="Reverso">
             </div>
         </div>
-        <div class="central">
+       <div class="central">
             <img src="../../img/logoNuevo1.png" class="imagen2">
         </div>
         <div class="carta" data-id="dona">
@@ -65,7 +67,9 @@
             <div class="cara frente">
                 <img src="../../img/Cartalogorehecha.png" class="imagen" alt="Reverso">
             </div>
-        </div>   
+        </div> 
+        
+        
         <div class="carta" data-id="hamburguesa">
             <div class="cara reverso">
                 <img src="../../img/cartasComida/hamburguesa.jpg" class="imagen">

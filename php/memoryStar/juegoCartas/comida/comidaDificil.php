@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>juego Matematicas Dificil </title>
+    <title>juego Comida Dificil </title>
     <link rel="stylesheet" href="../../css/estilosEncabezado.css">
     <link rel="stylesheet" href="../../css/estilosInicio.css">
     <link rel="stylesheet" href="../../css/estilosCartasDificil.css">
@@ -13,7 +13,7 @@
 
 <style>
     body {
-    background-image: url('../../img/fondoTematicas/fondoMate.jpg');
+    background-image: url('../../img/fondoTematicas/fondoComida1.jpg');
     background-position: center; 
     background-repeat: no-repeat;
 }
@@ -23,98 +23,98 @@
     <?php include('../nabar2.php') ?>
    
     <div class="contenedor">
-        <div class="carta"  data-id="signos">
+        <div class="carta"  data-id="dona">
             <div class="cara reverso">
-                <img src="../../img/cartasMatematicas/signos.jpg" class="imagen">
+                <img src="../../img/cartasComida/dona.jpg" class="imagen">
             </div>
             <div class="cara frente">
                 <img src="../../img/Cartalogorehecha.png" class="imagen" alt="Reverso">
             </div>
         </div>
-        <div class="carta"  data-id="7">
+        <div class="carta"  data-id="pizza">
             <div class="cara reverso">
-                <img src="../../img/cartasMatematicas/7.jpg" class="imagen">
+                <img src="../../img/cartasComida/pizza.jpg" class="imagen">
             </div>
             <div class="cara frente">
                 <img src="../../img/Cartalogorehecha.png" class="imagen" alt="Reverso">
             </div>
         </div>
-        <div class="carta"  data-id="7">
+        <div class="carta"  data-id="pizza">
             <div class="cara reverso">
-                <img src="../../img/cartasMatematicas/7.jpg" class="imagen">
+                <img src="../../img/cartasComida/pizza.jpg" class="imagen">
             </div>
             <div class="cara frente">
                 <img src="../../img/Cartalogorehecha.png" class="imagen" alt="Reverso">
             </div>
         </div>
-        <div class="carta"  data-id="formula">
+        <div class="carta" data-id="hamburguesa">
             <div class="cara reverso">
-                <img src="../../img/cartasMatematicas/formula.jpg" class="imagen">
+                <img src="../../img/cartasComida/hamburguesa.jpg" class="imagen">
             </div>
             <div class="cara frente">
                 <img src="../../img/Cartalogorehecha.png" class="imagen" alt="Reverso">
             </div>
         </div>
-        <div class="carta"  data-id="formula">
+        <div class="carta"  data-id="helado">
             <div class="cara reverso">
-                <img src="../../img/cartasMatematicas/formula.jpg" class="imagen">
+                <img src="../../img/cartasComida/helado.jpg" class="imagen">
             </div>
             <div class="cara frente">
                 <img src="../../img/Cartalogorehecha.png" class="imagen" alt="Reverso">
             </div>
         </div>
-        <div class="carta" data-id="cerebro">
+        <div class="carta"  data-id="leche">
             <div class="cara reverso">
-                <img src="../../img/cartasMatematicas/cerebro.jpg" class="imagen">
+                <img src="../../img/cartasComida/leche.jpg" class="imagen">
             </div>
             <div class="cara frente">
                 <img src="../../img/Cartalogorehecha.png" class="imagen" alt="Reverso">
             </div>
         </div>
-        <div class="carta"  data-id="reglas">
+        <div class="carta"  data-id="sandwich">
             <div class="cara reverso">
-                <img src="../../img/cartasMatematicas/reglas.jpg" class="imagen">
+                <img src="../../img/cartasComida/sandwich.jpg" class="imagen">
             </div>
             <div class="cara frente">
                 <img src="../../img/Cartalogorehecha.png" class="imagen" alt="Reverso">
             </div>
         </div>
-        <div class="carta"  data-id="calcu">
+        <div class="carta"  data-id="sandwich">
             <div class="cara reverso">
-                <img src="../../img/cartasMatematicas/calcu.jpg" class="imagen">
+                <img src="../../img/cartasComida/sandwich.jpg" class="imagen">
             </div>
             <div class="cara frente">
                 <img src="../../img/Cartalogorehecha.png" class="imagen" alt="Reverso">
             </div>
         </div>
-        
-        <div class="carta" data-id="signos">
+       
+        <div class="carta" data-id="dona">
             <div class="cara reverso">
-                <img src="../../img/cartasMatematicas/signos.jpg" class="imagen">
+                <img src="../../img/cartasComida/dona.jpg" class="imagen">
             </div>
             <div class="cara frente">
                 <img src="../../img/Cartalogorehecha.png" class="imagen" alt="Reverso">
             </div>
         </div>   
-        <div class="carta" data-id="cerebro">
+        <div class="carta" data-id="hamburguesa">
             <div class="cara reverso">
-                <img src="../../img/cartasMatematicas/cerebro.jpg" class="imagen">
+                <img src="../../img/cartasComida/hamburguesa.jpg" class="imagen">
             </div>
             <div class="cara frente">
                 <img src="../../img/Cartalogorehecha.png" class="imagen" alt="Reverso">
             </div>
         </div>
-        <div class="carta" data-id="reglas">
+        <div class="carta" data-id="helado">
             <div class="cara reverso">
-                <img src="../../img/cartasMatematicas/reglas.jpg" class="imagen">
+                <img src="../../img/cartasComida/helado.jpg" class="imagen">
             </div>
             <div class="cara frente">
                 <img src="../../img/Cartalogorehecha.png" class="imagen" alt="Reverso">
             </div>
         </div>
-        <div class="carta" data-id="calcu">
+        <div class="carta" data-id="leche">
             <div class="cara reverso">
-                <img src="../../img/cartasMatematicas/calcu.jpg" class="imagen">
+                <img src="../../img/cartasComida/leche.jpg" class="imagen">
             </div>
             <div class="cara frente">
                 <img src="../../img/Cartalogorehecha.png" class="imagen" alt="Reverso">

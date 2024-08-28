@@ -23,19 +23,27 @@
  * Fecha: 05/07/2024
  */
 document.addEventListener('DOMContentLoaded', function() {
-    const cartas = document.querySelectorAll('.carta');
+    const contenedor = document.querySelector('.contenedor');
+    const central = document.querySelectorAll('.central');
+    const cartas = Array.from(document.querySelectorAll('.carta')); // Convertir NodeList a Array
     let cartasVolteadas = [];
     let aciertos = [];
     let fallos = [];
- 
-    let iteracion1;
-    let iteracion2;
-    let imprimir = '';
 
-    for ( let iteracion = 0; iteracion < cartas.length; iteracion++) {
-        cartas[iteracion].addEventListener('click', () => voltearCarta(cartas[iteracion]));
+    
+
+    // Mezclar las cartas
+function mezclarCartas() {
+    // Filtrar las cartas que no tienen la clase 'central'
+    const cartasParaMezclar = cartas.filter(carta => !carta.classList.contains('central'));
+
+    for (let iteracionMezclar = cartasParaMezclar.length - 1; iteracionMezclar > 0; iteracionMezclar--) {
+        const j = Math.floor(Math.random() * (iteracionMezclar + 1));
+        contenedor.appendChild(cartasParaMezclar[j]);
     }
+}
 
+    // Función para voltear las cartas
     function voltearCarta(carta) {
         if (cartasVolteadas.length === 2) return;
 
@@ -56,24 +64,39 @@ document.addEventListener('DOMContentLoaded', function() {
                     primeraCarta.classList.remove('volteada');
                     segundaCarta.classList.remove('volteada');
                     cartasVolteadas = [];
-                }, 1000); 
+                }, 1000);
             }
         }
     }
 
-    window.mostrarResultados = function() {
-        imprimir = '<table class="table">';
-        imprimir += '<tr>';
-        for (iteracion1 = 0; iteracion1 < aciertos.length; iteracion1++) {
-            imprimir += '<td>' + aciertos[iteracion1] + '</td>';
+    // Vincular eventos de clic a las cartas después de mezclar
+    function inicializarJuego() {
+        for (let iteracion = 0; iteracion < cartas.length; iteracion++) {
+            cartas[iteracion].addEventListener('click', function() {
+                voltearCarta(cartas[iteracion]);
+            });
         }
+    }
+    
+
+    // Iniciar el juego
+    mezclarCartas();
+    inicializarJuego();
+
+    // Mostrar resultados (opcional)
+    window.mostrarResultados = function() {
+        let imprimir = '<table class="table">';
+        imprimir += '<tr>';
+        aciertos.forEach(punto => {
+            imprimir += '<td>' + punto + '</td>';
+        });
         imprimir += '</tr>';
         imprimir += '<tr>';
-        for (iteracion2 = 0; iteracion2 < fallos.length; iteracion2++) {
-            imprimir += '<td>' + fallos[iteracion2] + '</td>';
-        }
+        fallos.forEach(error => {
+            imprimir += '<td>' + error + '</td>';
+        });
         imprimir += '</tr>';
         imprimir += '</table>';
         document.getElementById("resultados").innerHTML = imprimir;
-    }
+    };
 });
