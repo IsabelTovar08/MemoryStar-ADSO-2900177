@@ -5,6 +5,12 @@ body{
     background-position: center;
     font-family: cursive;
     background-repeat: no-repeat;
+    overflow: hidden;
+}
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 /* slider Inicio */
 .slider {
@@ -86,18 +92,18 @@ body{
     display: block;
     margin: 0 auto;
     width: 30%;
-    margin-top: -50px;
+    margin-top: -10%;
     height: 40%;
 }
 .segundoInicio {
     margin: 0 auto;
     display: block;
     width: 12%;
-    margin-top: 50px;
+    margin-top: -10%;
 }
 
 .oJuegos{
-    width: 150px;
+    width: 130px;
     cursor: pointer;
 }
 h1{
@@ -232,5 +238,88 @@ h1{
     margin-top: 20px;
 }
 /* Inicio estilos Perfil */
-
+.perfil{
+        font-size: 20px !important; /* Tamaño de la fuente */
+        font-weight: bold; /* Texto en negrita */
+        color: black; /* Color del texto */
+        background-color: white; /* Fondo  */
+        border: 2px solid #2E4372; /* Borde azul oscuro */
+        border-radius: 20px; /* Esquinas redondeadas */
+        padding: 10px 20px; /* Espaciado interno */
+        text-align: center; /* Centra el texto*/
+        /* margin-right: 145px; */
+    
+}
+.fotoPerfil {
+    border: 1px solid #000;
+    width: 40%;
+    height: 30%;
+    border-radius: 50%;
+    overflow: hidden; /* Oculta cualquier parte de la imagen que se salga del círculo */
+    margin: 0 auto;
+}
+.cosita{
+    width: 40px;
+    height: 40px;
+    margin-left: 60%;
+    margin-top: -5%;
+    font-size: 22px;
+    padding: 0%;
+}
+.cosita img{
+    margin-left: -30%;
+    margin-top: -30%;
+}
 /* Fin perfil */
+.robot{
+    position: absolute;
+    right: 3%;
+    bottom: 0;
+    width: 28%;
+}
+.robot img{
+    display: block;
+    width: 50%;
+    cursor: pointer;
+    margin-left: 50%;
+}
+
+.speech-bubble {
+    position: relative;
+    background-color: #f0f0f0;
+    border-radius: 15px;
+    padding: 2%;
+    max-width: 50%;
+    font-size: 14px;
+    color: #333;
+    text-align: center;
+    margin: 10px;
+    border: 1px solid;
+    box-shadow: 12px 12px 15px #10111d;
+    margin-left: 15%;
+  }
+  
+  .speech-bubble::after {
+    content: '';
+    position: absolute;
+    left: 78%;
+    bottom: -25px;
+    transform: translateX(80px);
+    transform: rotate(-38deg);
+    border-width: 40px 18px 0;
+    border-style: solid;
+    border-color: #f0f0f0 transparent transparent transparent; /* Triángulo apuntando hacia abajo */
+  }
+  .cerrarMensaje{
+    text-align: right;
+    margin-top: 0;
+    margin-right: -90%;
+  }
+.unirse{
+    width: 40%;
+    border-radius: 8px;
+    margin: 0 auto;
+}
+.unirse .play{
+    width: 40%;
+}

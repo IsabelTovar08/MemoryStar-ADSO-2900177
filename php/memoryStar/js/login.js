@@ -3,7 +3,7 @@
     let subir = true;
     setInterval(() => {
         if (subir) {
-            imagen.style.transform = 'translateY(-20px)';
+            imagen.style.transform = 'translateY(-8px)';
         } else {
             imagen.style.transform = 'translateY(0)';
         }
