@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="../../css/estilosInicio.css">
     <link rel="stylesheet" href="../../css/estilosCartas.css">
     <link rel="stylesheet" href="../../bootstrap/css/bootstrap.css">
+    <link rel="stylesheet" href="../../css/estilosAyuda.css">
 
 </head>
 
@@ -98,6 +99,7 @@
    <?php include('../audios2.php') ?>
     <a href="index.php"><button class="btn btn-success">Salir</button></a>
     <a href="ordenar.php"><button class="btn btn-primary">Siguiente</button></a>
+    <script src="../../js/overlayModal.js"></script>
     <script src="../../js/cartas.js"></script>
     <script src="../../js/sonidos.js"></script>
     <script src="../../bootstrap/js/bootstrap.js"></script>

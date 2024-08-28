@@ -1,32 +1,76 @@
 .titulo-ayuda{
-    font-size: 40px !important; /* Tamaño de la fuente */
+    font-size: 20px !important; /* Tamaño de la fuente */
     font-weight: bold; /* Texto en negrita */
     color: black; /* Color del texto */
     background-color: white; /* Fondo  */
-    border: 2px solid #2E4372; /* Borde azul oscuro */
+    border: 3px solid #000000; /* Borde azul oscuro */
     border-radius: 20px; /* Esquinas redondeadas */
     padding: 10px 20px; /* Espaciado interno */
     text-align: center; /* Centra el texto*/
     margin: 0 auto;
-    margin-right: 145px;
+    margin-left: 100px;
 }
+
+.salir-ayuda{
+    height: 50px;
+    position: absolute;
+    margin-left: 60px;
+    margin-top: -40px;
+    
+
+}
+
+.atras-ayuda{
+    font-size: 18px;
+    font-weight: bold;
+    color: #ffff;
+    background-color: red;
+    border: 2px solid #000000;
+    border-radius: 10px;
+    padding: 5px 10px;
+    text-align: center;
+    width: 100px;
+    margin-left: 10px;
+    margin-bottom: 10px;
+    height: 40px;
+
+}
+
 .imgAyuda{
+    margin-top: 10px !important;
+    width: 175px;
+    height: 175px;
+    display: block;
+    margin: auto;
+    
+    cursor: pointer;
+    transition: transform 0.3s;
+}
+
+.imgAyuda2{
     margin-top: 10px !important;
     width: 200px;
     height: 300px;
     display: block;
     margin: auto;
-    border-radius: 10px;
+    border-radius: 30px;
 }
-.fondo-Modal{
-    background-color: #f2e6f7;
+
+.imgAyuda:hover{
+    transform: scale(1.05);
+}
+
+.fondo-ayuda{
+    background-color: #704fa0;
+    border: 10px solid #d1d1d1;
+    border-radius: 40px !important;
+    position: relative;
 }
 .texto{
-    font-size: 20px !important;
+    font-size: 15px !important;
     
 }
-.radio{
-    border-radius: 40px !important;
-}
+
+
 
 
