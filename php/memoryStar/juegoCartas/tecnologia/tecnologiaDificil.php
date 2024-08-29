@@ -3,10 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>juego Tecnologia Facil </title>
+    <title>juego Tecnologia Dificil </title>
     <link rel="stylesheet" href="../../css/estilosEncabezado.css">
     <link rel="stylesheet" href="../../css/estilosInicio.css">
-    <link rel="stylesheet" href="../../css/estilosCartas.css">
+    <link rel="stylesheet" href="../../css/estilosCartasDificil.css">
     <link rel="stylesheet" href="../../bootstrap/css/bootstrap.css">
 
 </head>
@@ -26,6 +26,38 @@
         <div class="carta"  data-id="mause">
             <div class="cara reverso">
                 <img src="../../img/cartasTecnologia/mause.jpg" class="imagen">
+            </div>
+            <div class="cara frente">
+                <img src="../../img/Cartalogorehecha.png" class="imagen" alt="Reverso">
+            </div>
+        </div>
+        <div class="carta"  data-id="auri">
+            <div class="cara reverso">
+                <img src="../../img/cartasTecnologia/auri.jpg" class="imagen">
+            </div>
+            <div class="cara frente">
+                <img src="../../img/Cartalogorehecha.png" class="imagen" alt="Reverso">
+            </div>
+        </div>
+        <div class="carta"  data-id="auri">
+            <div class="cara reverso">
+                <img src="../../img/cartasTecnologia/auri.jpg" class="imagen">
+            </div>
+            <div class="cara frente">
+                <img src="../../img/Cartalogorehecha.png" class="imagen" alt="Reverso">
+            </div>
+        </div>
+        <div class="carta"  data-id="compu">
+            <div class="cara reverso">
+                <img src="../../img/cartasTecnologia/compu.jpg" class="imagen">
+            </div>
+            <div class="cara frente">
+                <img src="../../img/Cartalogorehecha.png" class="imagen" alt="Reverso">
+            </div>
+        </div>
+        <div class="carta"  data-id="compu">
+            <div class="cara reverso">
+                <img src="../../img/cartasTecnologia/compu.jpg" class="imagen">
             </div>
             <div class="cara frente">
                 <img src="../../img/Cartalogorehecha.png" class="imagen" alt="Reverso">
@@ -56,9 +88,7 @@
                 <img src="../../img/Cartalogorehecha.png" class="imagen" alt="Reverso">
             </div>
         </div>
-        <div class="central">
-            <img src="../../img/logoNuevo1.png" class="imagen2">
-        </div>
+       
         <div class="carta" data-id="mause">
             <div class="cara reverso">
                 <img src="../../img/cartasTecnologia/mause.jpg

@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Camino de Recompensas</title>
+    <style>
+        .containerMapa {
+            position: relative;
+            width: 500px;
+            height: 300px;
+            border: 1px solid #000;
+            margin-bottom: 20px;
+        }
+
+        .recompensa {
+            width: 60px;
+            height: 60px;
+            border-radius: 15px;
+            border: 1px solid #000;
+            position: absolute;
+            
+        }
+
+        .primera {
+            top: 120px;
+            left: 30px;
+        }
+
+        .segunda {
+            top: 20px;
+            left: 200px;
+        }
+
+        .tercera {
+            top: 90px;
+            left: 390px;
+        }
+
+        .cuarta {
+            top: 193px;
+            left: 220px;
+        }
+
+        .quinta {
+            top: 213px;
+            left: 380px;
+        }
+
+        .barra-containerMapa {
+            position: relative;
+            height: 10px;
+            background-color: #bdc3c7;
+            border-radius: 5px;
+            margin: 20px auto;
+            
+            
+        }
+        
+        .barra1{
+            transform: rotate(-36deg);
+            top:59px;
+            right: 110px;
+            width: 80%;
+            max-width: 140px;
+        }
+
+        .barra2{
+          transform: rotate(15deg);
+            top:40px;
+            left: 75px;
+            width: 80%;
+            max-width: 140px;
+        
+        }
+        .barra3{
+            transform: rotate(-27deg);
+              top:90px;
+              left: 89px;
+              width: 80%;
+              max-width: 130px;
+          
+          }
+          .barra4{
+            transform: rotate(10deg);
+              top:144px;
+              left: 81px;
+              width: 80%;
+              max-width: 110px;
+          
+          }
+
+        .barra-progreso {
+            height: 100%;
+            width: 0;
+            background-color: #27ae60;
+            border-radius: 5px;
+            transition: width 0.4s ease;
+        }
+        
+      .imagenMapa{
+       position: relative;
+        width: 60px;
+            height: 60px;
+      }
+        
+    </style>
+</head>
+<body>
+    <div class="containerMapa">
+        <div class="recompensa primera">
+            <img src="rangos/rango11.png" alt=""  class="imagenMapa"  class="rango">
+        </div>
+        <div class="recompensa segunda">
+            <img src="rangos/rango22.png" alt=""  class="imagenMapa" class="rango">
+        </div>
+        <div class="recompensa tercera">
+            <img src="rangos/rango33.png" alt=""  class="imagenMapa" class="rango">
+        </div>
+        <div class="recompensa cuarta">
+            <img src="rangos/rango44.png" alt=""  class="imagenMapa" class="rango">
+        </div>
+        <div class="recompensa quinta">
+            <img src="rangos/rango55.png" alt=""  class="imagenMapa" class="rango">
+        </div>
+
+
+        <div class="barra-containerMapa  barra1">
+            <div class="barra-progreso" id="barra-progreso"></div>
+        </div>
+
+        <div class="barra-containerMapa  barra2">
+            <div class="barra-progreso" id="barra-progreso"></div>
+        </div>
+
+        <div class="barra-containerMapa  barra3">
+            <div class="barra-progreso" id="barra-progreso"></div>
+        </div>
+
+        <div class="barra-containerMapa  barra4">
+            <div class="barra-progreso" id="barra-progreso"></div>
+        </div>
+        
+    </div>
+
+   
+
+    <form onsubmit="return operaciones()">
+        <label for="txtnumero1">Ingresa tu puntuacion:</label>
+        <input type="number" id="txtnumero1">
+        <button type="submit">Enviar</button>
+    </form>
+
+    <script src="hola.js"></script>
+</body>
+</html>

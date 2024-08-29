@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>juego Animales Medio  </title>
+    <title>juego Animales Medio </title>
     <link rel="stylesheet" href="../../css/estilosEncabezado.css">
     <link rel="stylesheet" href="../../css/estilosInicio.css">
     <link rel="stylesheet" href="../../css/estilosCartas.css">
@@ -13,7 +13,7 @@
 
 <style>
     body {
-    
+    background-image: url('../../img/fondoTematicas/f8e210a7-7519-4734-9a5a-797baf30869e.jpeg');
     background-position: center; 
     background-repeat: no-repeat;
 }

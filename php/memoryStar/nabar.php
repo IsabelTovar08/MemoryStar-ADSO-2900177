@@ -81,32 +81,37 @@
     </div>
 </div>
 
+
 <!-- Modal ayuda -->
- 
 <div class="modal fade" id="exampleModal-ayuda" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-lg">
-        <div class="modal-content radio">
+    <div class="modal-dialog">
+        <div class="modal-content fondo-ayuda">
             <div class="modal-header">
-                <h1 class="fs-5 titulo-ayuda" id="exampleModalLabel">¿Cómo Jugar?</h1>
-                <img src="img/iconos/botonSalir.png" alt="salir" class="btn" data-bs-dismiss="modal" aria-label="Close">
+                <div class="col-12 row">
+                    <div class="col-10">
+                        <h1 class="fs-5 titulo-ayuda">¿Cómo Jugar?</h1>
+                    </div>
+                    <div class="col-2">
+                        <img src="img/iconos/botonSalir.png" alt="salir" class="btn salir-ayuda" data-bs-dismiss="modal" aria-label="Close">
+                    </div>
+                    
+                </div>
             </div>
             <div class="modal-body texto">
 
                 Aquí puedes encontrar ayuda sobre cómo jugar nuestros modos de juego. <br>
-                 Selecciona el modo en el cual necesitas ayuda.
+                Selecciona el modo en el cual necesitas ayuda.
                 
                 <div class="col-12 row">
                     <div class="col-4">
-                    <img src="img/ayuda/ayudaCarta.png" id="goToModal2" class="imgAyuda">
+                        <img src="img/iconos/botonCarta.png" alt="cartas" id="goToModal2" class="imgAyuda btn">
                     </div>
                     <div class="col-4">
-                        <img src="img/ayuda/ayudaSecuencia.png" id="goToModal3" class="imgAyuda">
+                        <img src="img/iconos/botonSecuencia.png" alt="secuencia" id="goToModal3" class="imgAyuda btn">
                     </div>
                     <div class="col-4">
-                        <img src="img/ayuda/botonSecuencia.png" id="goToModal4" class="imgAyuda">
+                        <img src="img/iconos/botonAsociacion.png" alt="asociacion" id="goToModal4" class="imgAyuda btn">
                     </div>
-
-                        
                 </div>
 
             </div>
@@ -117,18 +122,25 @@
 
 <!-- Modal ayuda CARTAS 2 -->
 <div class="modal fade" id="exampleModal-ayuda2" tabindex="-1" aria-labelledby="exampleModalLabel2" aria-hidden="true">
-    <div class="modal-dialog modal-lg">
-        <div class="modal-content">
+    <div class="modal-dialog">
+        <div class="modal-content fondo-ayuda">
             <div class="modal-header">
-                <h1 class="fs-5 titulo-ayuda" id="exampleModalLabel2">¿Cómo Jugar?</h1>
-                <img src="img/iconos/botonSalir.png" alt="salir" class="btn" data-bs-dismiss="modal" aria-label="Close">
+               
+                <div class="col-12 row">
+                    <div class="col-10">
+                        <h1 class="fs-5 titulo-ayuda">¿Cómo Jugar?</h1>
+                    </div>
+                    <div class="col-2">
+                    </div>    
+                </div>
             </div>
             <div class="modal-body texto">
                 
-                CARTAS
+                En el modo de juego de cartas tu objetivo es encontrar las parejas de cartas iguales
 
-                <img src="img/ayuda/ayudaCarta.png" class="imgAyuda">
+                <img src="img/ayuda/ayudaCarta.png" class="imgAyuda2">
             </div>
+            <div alt="salir" class="btn atras-ayuda" id="salir1">Atras</div>
             
         </div>
     </div>
@@ -136,40 +148,50 @@
 
 <!-- Modal ayuda SECUENCIA 3 -->
 <div class="modal fade" id="exampleModal-ayuda3" tabindex="-1" aria-labelledby="exampleModalLabel3" aria-hidden="true">
-    <div class="modal-dialog modal-lg">
-        <div class="modal-content">
+    <div class="modal-dialog">
+        <div class="modal-content fondo-ayuda">
             <div class="modal-header">
-                <h1 class="fs-5 titulo-ayuda" id="exampleModalLabel3">¿Cómo Jugar?</h1>
-                <img src="img/iconos/botonSalir.png" alt="salir" class="btn" data-bs-dismiss="modal" aria-label="Close">
+                <div class="col-12 row">
+                    <div class="col-10">
+                        <h1 class="fs-5 titulo-ayuda">¿Cómo Jugar?</h1>
+                    </div>
+                    <div class="col-2">
+                        <!-- Botón de cerrar (si lo necesitas) -->
+                    </div>    
+                </div>
             </div>
             <div class="modal-body texto">
-                
                 SECUENCIA
-                
             </div>
-            
+            <div alt="salir" class="btn atras-ayuda" id="salir2">Atras</div>
         </div>
     </div>
 </div>
 
-<!-- Modal ayuda ASOCIACION 3 -->
-
+<!-- Modal ayuda ASOCIACION 4 -->
 <div class="modal fade" id="exampleModal-ayuda4" tabindex="-1" aria-labelledby="exampleModalLabel4" aria-hidden="true">
-    <div class="modal-dialog modal-lg">
-        <div class="modal-content">
+    <div class="modal-dialog">
+        <div class="modal-content fondo-ayuda">
             <div class="modal-header">
-                <h1 class="fs-5 titulo-ayuda" id="exampleModalLabel4">¿Cómo Jugar?</h1>
-                <img src="img/iconos/botonSalir.png" alt="salir" class="btn" data-bs-dismiss="modal" aria-label="Close">
+                <div class="col-12 row">
+                    <div class="col-10">
+                        <h1 class="fs-5 titulo-ayuda">¿Cómo Jugar?</h1>
+                    </div>
+                    <div class="col-2">
+                        <!-- Botón de cerrar (si lo necesitas) -->
+                    </div>    
+                </div>
             </div>
             <div class="modal-body texto">
-                
                 ASOCIACION
-                
             </div>
-            
+            <div alt="salir" class="btn atras-ayuda" id="salir3">Atras</div>
         </div>
     </div>
 </div>
+
+
+
 <!-- Modal Perfil-->
 <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg">

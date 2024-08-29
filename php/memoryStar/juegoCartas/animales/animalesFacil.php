@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="../../css/estilosInicio.css">
     <link rel="stylesheet" href="../../css/estilosCartas.css">
     <link rel="stylesheet" href="../../bootstrap/css/bootstrap.css">
+    <link rel="stylesheet" href="../../css/estilosAyuda.css">
 
 </head>
 
@@ -21,83 +22,86 @@
 </style>
 <body class="fondo">
     <?php include('../nabar2.php') ?>
-
     <div class="contenedor">
-        <div class="carta"  data-id="ave">
-            <div class="cara reverso">
-                <img src="../../img/cartasAnimales/ave.jpg
-                " class="imagen">
-            </div>
-            <div class="cara frente">
-                <img src="../../img/Cartalogorehecha.png" class="imagen" alt="Reverso">
-            </div>
+  
+    <div class="carta" data-id="ave">
+        <div class="cara reverso">
+            <img src="../../img/cartasAnimales/ave.jpg" class="imagen">
         </div>
-        <div class="carta" data-id="vaca">
-            <div class="cara reverso">
-                <img src="../../img/cartasAnimales/vaca.jpg
-                " class="imagen">
-            </div>
-            <div class="cara frente">
-                <img src="../../img/Cartalogorehecha.png" class="imagen" alt="Reverso">
-            </div>
-        </div>
-        <div class="carta"  data-id="koala">
-            <div class="cara reverso">
-                <img src="../../img/cartasAnimales/koala.jpg" class="imagen">
-            </div>
-            <div class="cara frente">
-                <img src="../../img/Cartalogorehecha.png" class="imagen" alt="Reverso">
-            </div>
-        </div>
-        <div class="carta"  data-id="leon">
-            <div class="cara reverso">
-                <img src="../../img/cartasAnimales/leon.jpg" class="imagen">
-            </div>
-            <div class="cara frente">
-                <img src="../../img/Cartalogorehecha.png" class="imagen" alt="Reverso">
-            </div>
-        </div>
-        <div class="central">
-            <img src="../../img/logoNuevo1.png" class="imagen2">
-        </div>
-        <div class="carta" data-id="ave">
-            <div class="cara reverso">
-                <img src="../../img/cartasAnimales/ave.jpg
-                " class="imagen">
-            </div>
-            <div class="cara frente">
-                <img src="../../img/Cartalogorehecha.png" class="imagen" alt="Reverso">
-            </div>
-        </div>   
-        <div class="carta" data-id="vaca">
-            <div class="cara reverso">
-                <img src="../../img/cartasAnimales/vaca.jpg
-                " class="imagen">
-            </div>
-            <div class="cara frente">
-                <img src="../../img/Cartalogorehecha.png" class="imagen" alt="Reverso">
-            </div>
-        </div>
-        <div class="carta" data-id="koala">
-            <div class="cara reverso">
-                <img src="../../img/cartasAnimales/koala.jpg" class="imagen">
-            </div>
-            <div class="cara frente">
-                <img src="../../img/Cartalogorehecha.png" class="imagen" alt="Reverso">
-            </div>
-        </div>
-        <div class="carta" data-id="leon">
-            <div class="cara reverso">
-                <img src="../../img/cartasAnimales/leon.jpg" class="imagen">
-            </div>
-            <div class="cara frente">
-                <img src="../../img/Cartalogorehecha.png" class="imagen" alt="Reverso">
-            </div>
+        <div class="cara frente">
+            <img src="../../img/Cartalogorehecha.png" class="imagen" alt="Reverso">
         </div>
     </div>
+    <div class="carta" data-id="vaca">
+        <div class="cara reverso">
+            <img src="../../img/cartasAnimales/vaca.jpg" class="imagen">
+        </div>
+        <div class="cara frente">
+            <img src="../../img/Cartalogorehecha.png" class="imagen" alt="Reverso">
+        </div>
+    </div>
+    <div class="carta" data-id="koala">
+        <div class="cara reverso">
+            <img src="../../img/cartasAnimales/koala.jpg" class="imagen">
+        </div>
+        <div class="cara frente">
+            <img src="../../img/Cartalogorehecha.png" class="imagen" alt="Reverso">
+        </div>
+    </div>
+
+    <!-- Segunda fila (1 carta - imagen central - 1 carta) -->
+    <div class="carta" data-id="leon">
+        <div class="cara reverso">
+            <img src="../../img/cartasAnimales/leon.jpg" class="imagen">
+        </div>
+        <div class="cara frente">
+            <img src="../../img/Cartalogorehecha.png" class="imagen" alt="Reverso">
+        </div>
+    </div>
+    <div class="central">
+        <img src="../../img/logoNuevo1.png" class="imagen2">
+    </div>
+   
+    <div class="carta" data-id="vaca">
+        <div class="cara reverso">
+            <img src="../../img/cartasAnimales/vaca.jpg" class="imagen">
+        </div>
+        <div class="cara frente">
+            <img src="../../img/Cartalogorehecha.png" class="imagen" alt="Reverso">
+        </div>
+    </div>
+
+    <!-- Tercera fila (3 cartas) -->
+    <div class="carta" data-id="koala">
+        <div class="cara reverso">
+            <img src="../../img/cartasAnimales/koala.jpg" class="imagen">
+        </div>
+        <div class="cara frente">
+            <img src="../../img/Cartalogorehecha.png" class="imagen" alt="Reverso">
+        </div>
+    </div>
+    <div class="carta" data-id="leon">
+        <div class="cara reverso">
+            <img src="../../img/cartasAnimales/leon.jpg" class="imagen">
+        </div>
+        <div class="cara frente">
+            <img src="../../img/Cartalogorehecha.png" class="imagen" alt="Reverso">
+        </div>
+    </div>
+    <div class="carta" data-id="ave">
+        <div class="cara reverso">
+            <img src="../../img/cartasAnimales/ave.jpg" class="imagen">
+        </div>
+        <div class="cara frente">
+            <img src="../../img/Cartalogorehecha.png" class="imagen" alt="Reverso">
+        </div>
+    </div>
+</div>
+
    <?php include('../audios2.php') ?>
     <a href="index.php"><button class="btn btn-success">Salir</button></a>
     <a href="ordenar.php"><button class="btn btn-primary">Siguiente</button></a>
+    <script src="../../js/overlayModal.js"></script>
     <script src="../../js/cartas.js"></script>
     <script src="../../js/sonidos.js"></script>
     <script src="../../bootstrap/js/bootstrap.js"></script>
