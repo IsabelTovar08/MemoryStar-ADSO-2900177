@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="../../css/estilosInicio.css">
     <link rel="stylesheet" href="../../css/estilosCartasDificil.css">
     <link rel="stylesheet" href="../../bootstrap/css/bootstrap.css">
+    <link rel="stylesheet" href="../../css/estilosAyuda.css">
 
 </head>
 
@@ -134,5 +135,6 @@
     <script src="../../js/cartas.js"></script>
     <script src="../../js/sonidos.js"></script>
     <script src="../../bootstrap/js/bootstrap.js"></script>
+    <script src="../../js/overlayModal.js"></script>
 </body>
 </html>
