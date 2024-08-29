@@ -56,7 +56,7 @@ document.addEventListener('DOMContentLoaded', function () {
         document.getElementById('contenido').innerHTML = resultadoMostrar;
         const logo = document.querySelector('.segundoInicio');
         logo.style.width = "20%";
-        logo.style.marginTop = "1px";
+        logo.style.marginTop = "-10%";
         // Seleccionar todas las imágenes recién añadidas y agregarles el evento de clic
         const images = document.querySelectorAll('.contenedorOpciones img');
         images.forEach(image => {

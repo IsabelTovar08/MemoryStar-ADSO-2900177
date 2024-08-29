@@ -15,6 +15,34 @@
 <body>
     <div class="container-xxl">
         <?php include('nabar.php'); ?>
+                <!-- <div class="col-12 row">
+                    <div class="col-3"></div>
+                    <div class="col-5">
+                    <img src="img/iconos/segundoMemory.png" alt="logoMemory" class="segundoInicio">
+                        <h1 class="textoEleccion">¿Qué quieres jugar?</h1>
+                        <div class="contenedorOpciones">
+                            <img src="img/iconos/botonSecuencia.png" class="oJuegos zoom" alt="Imagen 1" id="juegoSecuencia">
+                            <img src="img/iconos/botonCarta.png" class="oJuegos zoom" alt="Imagen 2" id="juegoCartas">
+                            <img src="img/iconos/botonAsociacion.png" class="oJuegos zoom" alt="Imagen 3" id="juegoAsociacion">
+                        </div>
+                        <h1 class="textoEleccion">Elige la temática</h1>
+                        <div id="juegos" class="contenedorOpciones">
+                            <img src="img/iconos/matematicas.png" alt="Imagen 1" class="oJuegos zoom" id="juegoMatematicas">
+                            <img src="img/iconos/animales.png" alt="Imagen 2" class="oJuegos zoom" id="juegoAnimales">
+                            <img src="img/iconos/comida.png" alt="Imagen 3" class="oJuegos zoom" id="juegoComida">
+                            <img src="img/iconos/paises.png" alt="Imagen 4" class="oJuegos zoom" id="juegoPaises">
+                            <img src="img/iconos/tecnologia.png" alt="Imagen 5" class="oJuegos zoom" id="juegoTecnologia">
+                        </div>
+                    </div>
+                    <div class="col-3">
+                        <h1 class="textoEleccion">Elige el nivel</h1>
+                        <div class=" nivel">
+                            <div><img src="img/iconos/facil.png" class="oJuegos zoom" alt="Imagen 1" id="nivelFacil"></div>
+                            <div><img src="img/iconos/intermedio.png" class="oJuegos zoom" alt="Imagen 2" id="nivelMedio"></div>
+                            <div><img src="img/iconos/dificil.png" class="oJuegos zoom" alt="Imagen 3" id="nivelDificil"></div>
+                        </div>
+                    </div>
+                </div> -->
         <div id="contenido">
             <img src="img/iconos/nuevoMemory.png" alt="logoMemory" height="400" class="logoInicio">
         </div>
@@ -46,9 +74,9 @@
         <div class="robot">
             <div class="speech-bubble mensaje">
                 <button type="button" class="btn-close cerrarMensaje"></button>
-                <p>¡Hola! ¿En qué te puedo ayudar?.</p>
+                <p>¡Hola! ¿En qué te puedo ayudar?</p>
                 <a href="">Jugar con amigos</a><br>
-                <a href="">¿Cómo jugar?</a><br>
+                <a href=""  data-bs-toggle="modal" data-bs-target="#exampleModal-ayuda">¿Cómo jugar?</a><br>
                 <a href="login.php">Iniciar Sesión</a>
             </div>
             <img src="img/iconos/robotM.png" alt="" class="mostrarMensaje" id="imagen">
