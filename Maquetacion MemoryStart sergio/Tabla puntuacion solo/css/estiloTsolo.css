@@ -1,0 +1,121 @@
+.contenedorTsolo{
+    margin-top: 50px;
+    position: relative !important;
+    width: 381px !important;
+    height: 304px !important;
+    border: 7px solid #aa00df !important;
+    border-radius: 20px !important;
+    background: linear-gradient(#1c266a 70%, #6600fa);
+    
+}
+
+.contenedorTsoloInterior{
+    position: relative !important;
+    width: 330px !important;
+    height: 250px !important;
+    margin: 5.5% !important;
+    border-radius: 20px !important;
+}
+
+.tituloTsolo{
+    
+    font-size: 25px;
+    font-weight: bold;
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: #132556;
+    position: absolute;
+    color: #ffff;
+    border: 5px solid #aa00df;
+    border-radius: 10px;
+    padding: 5px 10px;
+    margin-top: -37px;
+    margin-left: 100px;
+}
+.contenedor-estrellas{
+    display: flex;
+    justify-content: center;
+    
+}
+
+.contenedor-estrellas:nth-child(1){
+    transform: translateY(50px);
+}
+
+.star{
+    margin: 5px;
+}
+
+.contenedor-estrellas .star:nth-child(2) {
+    transform: translateY(-30px); 
+}
+
+.contenedor-puntaje{
+    margin-top: 110px;
+    display: flex;
+    justify-content: center;
+    font-size: 25px;
+    font-weight: bold;
+    color: #ffff;
+    font-family: Arial, Helvetica, sans-serif;
+}
+.estrella-puntaje{
+    margin-top: -3px; 
+    margin-left: 5px; 
+    width: 40px;
+    height: 35px;
+}
+.rubi-puntaje{
+    margin-top: 3px; 
+    margin-left: 5px; 
+    width: 30px;
+    height: 30px;
+    
+}
+.puntaje-total{
+    position: absolute;
+    margin-top: 25px;
+    display: flex;
+    justify-content: center;
+    font-size: 35px;
+    font-weight: bold;
+    color: #ffff;
+    font-family: Arial, Helvetica, sans-serif;
+    left: 133px;
+}
+
+.contenedor-info{
+    position: relative;
+    margin-top: 20px;
+    font-size: 15px;
+    color: #ffff;
+    font-family: Arial, Helvetica, sans-serif;
+    border-radius: 10px;
+    padding: 3px 8px;
+    left: 39px;
+    background-color: rgba(59, 73, 159, 0.8);
+}
+
+.contenedor-botonTsolo{
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    left: 55px;
+    margin-top: 273px;
+    
+}
+
+.botonTsolo {
+    font-family: 'Comic Sans MS', 'Arial', sans-serif; /* Fuente con estilo similar */
+    font-size: 20px;
+    color: #ffffff;
+    background: linear-gradient(#1c266a, #6003ef); 
+    border-radius: 30px; 
+    padding: 5px 10px; 
+    text-align: center;
+    width: 120px;
+    line-height: 18px;
+    border: none;
+}
+
+
+
