@@ -117,5 +117,115 @@
     border: none;
 }
 
+/*ESTILOS MULTIJUGADOR
 
 
+
+
+
+
+
+*/
+.contenedorTmulti{
+    margin-top: 50px;
+    position: relative !important;
+    width: 573px !important;
+    height: 495px !important;
+    border: 7px solid #aa00df !important;
+    border-radius: 20px !important;
+    background: linear-gradient(#1c266a 70%, #6600fa);
+    
+}
+
+.contenedorTmultiInterior{
+    position: relative !important;
+    width: 519px !important;
+    height: 440px !important;
+    margin: 3.7% !important;
+    border-radius: 20px !important;
+}
+
+.tituloTmulti{
+    
+    font-size: 25px;
+    font-weight: bold;
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: #132556;
+    position: absolute;
+    color: #ffff;
+    border: 5px solid #aa00df;
+    border-radius: 10px;
+    padding: 5px 10px;
+    margin-top: -40px;
+    margin-left: 155px;
+}
+
+.contenedorTsoloInterior{
+    position: relative !important;
+    width: 330px !important;
+    height: 250px !important;
+    margin: 5.5% !important;
+    border-radius: 20px !important;
+}
+
+.contenedor-medallas{
+    margin-top: 20px;
+    justify-content: center;
+    margin-left: 60px;
+}
+.medalla{
+    margin: 30px;
+    
+}
+.contenedor-medallas .medalla:nth-child(2) {
+    transform: translateY(-60px); 
+}
+
+.contenedor-user{
+    margin-top: -68px;
+    justify-content: center;
+    margin-left: 60px;
+}
+.foto-user{
+    margin: 19px;
+}
+.contenedor-user .foto-user:nth-child(2) {
+    transform: translateY(-38px); 
+}
+
+.contenedor-userPunto{
+    margin-top: -65px;
+    display: flex;
+    color: #ffff;
+    justify-content: center;
+    text-align: center;
+    line-height: 15px;
+}
+.userPunto{
+    margin: 45px;
+}
+.contenedor-userPunto .userPunto:nth-child(2) {
+    transform: translateY(-38px); 
+}
+
+.contenedor-infoMulti{
+    position: relative;
+    top: -45px;
+    font-size: 15px;
+    color: #ffff;
+    font-family: Arial, Helvetica, sans-serif;
+    border-radius: 10px;
+    padding: 3px 8px;
+    left: 40px;
+    background-color: rgba(59, 73, 159, 0.8);
+    margin: 5px;
+}
+
+.contenedor-botonTmulti{
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    left: 150px;
+    margin-top: 462px;
+    
+}
