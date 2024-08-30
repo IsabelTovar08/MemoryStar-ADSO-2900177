@@ -35,7 +35,7 @@
 </ul>
 <ul class="nav justify-content-end">
     <li class="nav-item">
-        <img src="img/iconos/carrito.png" alt="user" class="usuario iconos efectosIconos" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+        <img src="img/iconos/carrito.png" alt="user" class="usuario iconos efectosIconos" data-bs-toggle="modal" data-bs-target="#exampleModal-tienda">
     </li>
 </ul>
 
@@ -339,4 +339,50 @@
       </div>
     </div>
   </div>
+</div>
+
+<!-- Modal tienda -->
+<div class="modal fade" id="exampleModal-tienda" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content fondo-ayuda">
+            <div class="modal-header">
+                <div class="col-12 row">
+                    <div class="col-10">
+                        <h1 class="fs-5 titulo-ayuda">Tienda</h1>
+                    </div>
+                    <div class="col-2">
+                        <img src="img/iconos/carrito.png" alt="salir" class="btn salir-ayuda" data-bs-dismiss="modal" aria-label="Close">
+                    </div>
+                    
+                </div>
+            </div>
+            <div class="modal-body texto">
+
+                Aquí puedes usar tus poins para hacer tus compras. <br>
+                
+                <div class="col-12 row">
+                    <div class="col-4"> 
+                        <img src="img/iconos/perfil1-removebg-preview.png" alt="cartas" id="goToModal2" class="imgAyuda btn">
+                        <div class="modal-body texto">
+                            115 POINS
+                        </div>
+                    </div>
+                    <div class="col-4">
+                        <img src="img/iconos/perfil2-removebg-preview.png" alt="secuencia" id="goToModal3" class="imgAyuda btn">
+                        <div class="modal-body texto">
+                            190 POINS
+                        </div>
+                    </div>
+                    <div class="col-4">
+                        <img src="img/iconos/perfil4-removebg-preview.png" alt="asociacion" id="goToModal4" class="imgAyuda btn">
+                        <div class="modal-body texto">
+                            221 POINS
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
 </div>
