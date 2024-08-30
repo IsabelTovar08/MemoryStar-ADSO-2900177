@@ -1,3 +1,7 @@
+/*ESTILOS TABLA PUNTUAION SOLO
+
+*/
+
 .contenedorTsolo{
     margin-top: 50px;
     position: relative !important;
@@ -117,7 +121,7 @@
     border: none;
 }
 
-/*ESTILOS MULTIJUGADOR
+/*ESTILOS TABLA MULTIJUGADOR
 
 
 
@@ -158,14 +162,6 @@
     padding: 5px 10px;
     margin-top: -40px;
     margin-left: 155px;
-}
-
-.contenedorTsoloInterior{
-    position: relative !important;
-    width: 330px !important;
-    height: 250px !important;
-    margin: 5.5% !important;
-    border-radius: 20px !important;
 }
 
 .contenedor-medallas{
