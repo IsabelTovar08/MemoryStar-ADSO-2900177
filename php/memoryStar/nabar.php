@@ -31,6 +31,11 @@
     </ul>
     <ul class="nav justify-content-end">
         <li class="nav-item usuario">
+            <img src="img/iconos/mapa.png" alt="user" class="iconos efectosIconos" data-bs-toggle="modal" data-bs-target="#Mapa">
+        </li>
+    </ul>
+    <ul class="nav justify-content-end">
+        <li class="nav-item usuario">
             <img src="img/iconos/qr.png" alt="user" class="iconos efectosIconos" data-bs-toggle="modal" data-bs-target="#escanerRapido">
         </li>
     </ul>
