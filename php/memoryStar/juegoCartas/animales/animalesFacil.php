@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="../../css/estilosCartas.css">
     <link rel="stylesheet" href="../../bootstrap/css/bootstrap.css">
     <link rel="stylesheet" href="../../css/estilosAyuda.css">
+    <link rel="shortcut icon" href="../../img/iconos/segundoMemory.png">
 
 </head>
 

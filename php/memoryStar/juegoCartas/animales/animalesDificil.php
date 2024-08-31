@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="../../css/estilosInicio.css">
     <link rel="stylesheet" href="../../css/estilosCartasDificil.css">
     <link rel="stylesheet" href="../../bootstrap/css/bootstrap.css">
+    <link rel="shortcut icon" href="img/iconos/segundoMemory.png">
 
 </head>
 

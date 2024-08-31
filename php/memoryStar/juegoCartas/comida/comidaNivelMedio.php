@@ -21,7 +21,7 @@
             </div>
         </div>
         <div class="carta" data-id="bananos">
-            <div class="cara reverso">
+            <div class="cara reverso  ">
                 <img src="../../img/cartasFrutas/bananos.png" class="imagen">
             </div>
             <div class="cara frente">

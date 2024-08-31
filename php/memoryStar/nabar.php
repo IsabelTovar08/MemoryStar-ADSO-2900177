@@ -30,6 +30,11 @@
 </ul>
 <ul class="nav justify-content-end">
     <li class="nav-item">
+        <img src="img/iconos/mapa.png" alt="user" class="usuario iconos efectosIconos" data-bs-toggle="modal" data-bs-target="#Mapa">
+    </li>
+</ul>
+<ul class="nav justify-content-end">
+    <li class="nav-item">
         <img src="img/iconos/qr.png" alt="user" class="usuario iconos efectosIconos" data-bs-toggle="modal" data-bs-target="#escanerRapido">
     </li>
 </ul>
@@ -337,6 +342,52 @@
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
         <button type="button" class="btn btn-primary">Understood</button>
       </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+<!-- Modal -->
+<div class="modal fade" id="Mapa" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog ">
+    <div class="modal-content cuerpoMapa ">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5  tituloMapa" id="staticBackdropLabel" >MAPA DE RECOMPENSAS</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body ">
+      <div class="containerMapa">
+                <div class="barra-containerMapa">
+                    <div class="barra-progreso" id="barra-progreso"></div>
+                </div>
+                <div class="recompensa primera">
+                    <img src="img/rangos/rangoBloqueadoo.png" alt="" class="imagenMapa rango">
+                </div>
+                <div class="recompensa segunda">
+                    <img src="img/rangos/rangoBloqueadoo.png" alt="" class="imagenMapa rango">
+                </div>
+                <div class="recompensa tercera">
+                    <img src="img/rangos/rangoBloqueadoo.png" alt="" class="imagenMapa rango">
+                </div>
+                <div class="recompensa cuarta">
+                    <img src="img/rangos/rangoBloqueadoo.png" alt="" class="imagenMapa rango">
+                </div>
+                <div class="recompensa quinta">
+                    <img src="img/rangos/rangoBloqueadoo.png" alt="" class="imagenMapa rango">
+                </div>
+
+            </div>
+
+            <form onsubmit="return operaciones()">
+                <label for="txtnumero1">Ingresa tu puntuación:</label>
+                <input type="number" id="txtnumero1">
+                <button type="submit">Enviar</button>
+            </form>
+      </div>
+      
     </div>
   </div>
 </div>
