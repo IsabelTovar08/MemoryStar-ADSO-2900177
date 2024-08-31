@@ -48,7 +48,7 @@
 }
 
 .imgAyuda2{
-    margin-top: 10px !important;
+    margin-top: 10px;
     width: 200px;
     height: 300px;
     display: block;
@@ -63,16 +63,13 @@
 .fondo-ayuda{
     background-color: #704fa0;
     border: 10px solid #d1d1d1;
-    border-radius: 40px !important;
+    border-radius: 40px ;
     position: relative;
 }
 .texto{
-    font-size: 16px !important;
-    font-family: Arial, Helvetica, sans-serif !important;
+    font-size: 16px ;
+    font-family: Arial, Helvetica, sans-serif ;
     color: #ffff;
-    
-   
-    
 }
 
 

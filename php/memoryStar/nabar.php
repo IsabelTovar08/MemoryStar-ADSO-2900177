@@ -107,10 +107,12 @@
                     
                 </div>
             </div>
-            <div class="modal-body texto">
-
-                Aquí puedes encontrar ayuda sobre cómo jugar nuestros modos de juego. <br>
-                Selecciona el modo en el cual necesitas ayuda.
+            <div class="modal-body">
+                <div class="texto">
+                    Aquí puedes encontrar ayuda sobre cómo jugar nuestros modos de juego. <br>
+                    Selecciona el modo en el cual necesitas ayuda.
+                </div>
+                
                 
                 <div class="col-12 row">
                     <div class="col-4">
@@ -144,9 +146,11 @@
                     </div>    
                 </div>
             </div>
-            <div class="modal-body texto">
+            <div class="modal-body">
                 
-                En el modo de juego de cartas tu objetivo es encontrar las parejas de cartas iguales
+                <div class="texto">
+                    En el modo de juego de cartas tu objetivo es encontrar las parejas de cartas iguales
+                </div>
 
                 <img src="img/ayuda/ayudaCarta.png" class="imgAyuda2">
             </div>
@@ -170,8 +174,10 @@
                     </div>    
                 </div>
             </div>
-            <div class="modal-body texto">
-                SECUENCIA
+            <div class="modal-body">
+                <div class="texto">
+                    SECUENCIA
+                </div>
             </div>
             <div alt="salir" class="btn atras-ayuda" id="salir2">Atras</div>
         </div>
@@ -192,9 +198,11 @@
                     </div>    
                 </div>
             </div>
-            <div class="modal-body texto">
-                ASOCIACION
-            </div>
+            <div class="modal-body">
+                <div class="texto">
+                        ASOCIACIÓN
+                    </div>
+                </div>
             <div alt="salir" class="btn atras-ayuda" id="salir3">Atras</div>
         </div>
     </div>
