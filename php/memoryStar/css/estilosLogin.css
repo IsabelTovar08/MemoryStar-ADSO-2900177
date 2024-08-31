@@ -24,8 +24,8 @@ body {
 }
 
 .logo {
-    margin-top: 8%;
-    margin-left: 15%;
+    margin-top: 24%;
+    margin-left: 10%;
 }
 
 .formularioLogin {
@@ -120,7 +120,8 @@ button:hover {
 
 .tarjeta {
     float: right;
-    margin: 8% 15%;
+    margin-top: 25%;
+    margin: 25% 15%;
     border-radius: 10px;
     width: 350px;
     height: 400px;
@@ -134,7 +135,7 @@ button:hover {
 
 .iniciarS {
     height: 500px;
-    margin: 5% 15%;
+    margin: 20% 15%;
 }
 
 .iniciarS.tarjeta::after {

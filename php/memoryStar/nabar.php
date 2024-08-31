@@ -246,6 +246,8 @@
                 <label for="exampleInputEmail1" class="form-label">Teléfono</label>
                 <div type="email" class="form-control" id="exampleInputEmail1">1234567890</div>
             </div>
+            
+            <div><img src="img/iconos/editar.png" alt="" width="25"></div>
             <div class="col-6 editar">Editar Perfil</div>
         </div>
         <button class="btn btn-primary">
