@@ -2,42 +2,44 @@
 <nav class="nav flex-column apartado-iconos">
     <img id="controlMusica" src="img/iconos/sonido-apagadoo.png" alt="Reproducir" class="iconos efectosIconos">
     <img src="img/iconos/trofeo.png" alt="Histórico" class="iconos efectosIconos" data-bs-toggle="modal" data-bs-target="#hisorico">
-    <div class="ajustes">
-        <img src="img/iconos/ajustes.png" alt="Ajustes" class="iconos efectosIconos" data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
-        <div class="collapse" id="collapseExample">
-            <div class="card card-body col-5 color">
+    <img src="img/iconos/ajustes.png" alt="Ajustes" class="iconos efectosIconos" data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+    <!-- <div class=""> -->
+        <div class="collapse" id="collapseExample" style="width: 500%;">
+            <div class="card card-body color">
                 <div class="col-12 row">
-                    <div class="col-6">Música</div>
-                    <div class="col-6"><input type="range" id="volumenMusica" min="0" max="1" step="0.1" value="1"></div>
+                    <div class="col-5">Música</div>
+                    <div class="col-6"><input type="range" class="secondary" id="volumenMusica" min="0" max="1" step="0.1" value="1"></div>
                 </div>
                 <div class="col-12 row">
-                    <div class="col-6">Sonido</div>
+                    <div class="col-5">Sonido</div>
                     <div class="col-6"><input type="range" id="volumenSonido" min="0" max="1" step="0.1" value="1"></div>
                 </div>
                 <button id="botonSilencio" class="btn btn-primary">Silenciar</button>
             </div>
         </div>
-    </div>
+    <!-- </div> -->
     <img src="img/iconos/ayuda.png" alt="Ayuda" class="iconos efectosIconos" data-bs-toggle="modal" data-bs-target="#exampleModal-ayuda">
 </nav>
-<ul class="nav justify-content-end">
-    <li class="nav-item">
-        <div class="nombre">Usuario</div>
-    </li>
-    <li class="nav-item">
-        <img src="img/iconos/usuario.png" alt="user" class="usuario iconos efectosIconos" data-bs-toggle="offcanvas" data-bs-target="#perfil" aria-controls="offcanvasRight">
-    </li>
-</ul>
-<ul class="nav justify-content-end">
-    <li class="nav-item">
-        <img src="img/iconos/qr.png" alt="user" class="usuario iconos efectosIconos" data-bs-toggle="modal" data-bs-target="#escanerRapido">
-    </li>
-</ul>
-<ul class="nav justify-content-end">
-    <li class="nav-item">
-        <img src="img/iconos/carrito.png" alt="user" class="usuario iconos efectosIconos" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
-    </li>
-</ul>
+<div class="apartado-derecho">
+    <ul class="nav justify-content-end">
+        <li class="nav-item" >
+            <span class="nombre">Usuario</span>
+        </li>
+        <li class="nav-item usuario">
+            <img src="img/iconos/usuario.png" alt="user" class="iconos efectosIconos" data-bs-toggle="offcanvas" data-bs-target="#perfil" aria-controls="offcanvasRight">
+        </li>
+    </ul>
+    <ul class="nav justify-content-end">
+        <li class="nav-item usuario">
+            <img src="img/iconos/qr.png" alt="user" class="iconos efectosIconos" data-bs-toggle="modal" data-bs-target="#escanerRapido">
+        </li>
+    </ul>
+    <ul class="nav justify-content-end">
+        <li class="nav-item usuario">
+            <img src="img/iconos/carrito.png" alt="user" class="iconos efectosIconos" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+        </li>
+    </ul>
+</div>
 
 <!-- Modal Histórico-->
 <div class="modal fade" id="hisorico" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -244,6 +246,8 @@
                 <label for="exampleInputEmail1" class="form-label">Teléfono</label>
                 <div type="email" class="form-control" id="exampleInputEmail1">1234567890</div>
             </div>
+            
+            <div><img src="img/iconos/editar.png" alt="" width="25"></div>
             <div class="col-6 editar">Editar Perfil</div>
         </div>
         <button class="btn btn-primary">

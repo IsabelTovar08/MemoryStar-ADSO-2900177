@@ -85,7 +85,7 @@
                 
                 En el modo de juego de cartas tu objetivo es encontrar las parejas de cartas iguales
 
-                <img src="img/ayuda/ayudaCarta.png" class="imgAyuda2">
+                <img src="../../img/ayuda/ayudaCarta.png" class="imgAyuda2">
             </div>
             <div alt="salir" class="btn atras-ayuda" id="salir1">Atras</div>
             

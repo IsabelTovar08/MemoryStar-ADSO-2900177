@@ -1,11 +1,15 @@
 body{
     background-image: url('../img/fondos/fondonuevo.jpg');
-    background-size: 100% 100%;
+    margin: 0;
+    padding: 0;
+    width: 100vw;
     height: 100vh;
+    background-size: cover;
     background-position: center;
-    font-family: cursive;
     background-repeat: no-repeat;
+    font-family: cursive;
     overflow: hidden;
+    padding: 1%;
 }
 * {
     margin: 0;
@@ -88,29 +92,44 @@ body{
     background-color: #442656;
 }
 /* fin slider */
+#contenedor{
+    display: flex;
+    margin: 0 auto;
+    height: 100vh;
+    right: 0;
+    justify-content: center;
+    align-items: center;
+}
+/* .logo{
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    width: 40%;
+    height: 100%;
+} */
+ #contenido{
+    width: 100vh;
+    height: auto;
+ }
 .logoInicio {
-    display: block;
+    display: flex;
     margin: 0 auto;
-    width: 30%;
-    margin-top: -15%;
-    height: 40%;
+    width: 50%;
+    height: auto;
 }
-.segundoInicio {
+.bienvenido {
     margin: 0 auto;
-    display: block;
-    width: 12%;
-    margin-top: -16%;
+    display: flex;
+    justify-content: center;
 }
-
+.logoBienvenido{
+    width: 100%;
+    height: auto;
+}
 .oJuegos{
-    width: 130px;
+    width: 10%;
+    height: auto;
     cursor: pointer;
-}
-.nivel{
-    /* margin: 200px; */
-    display: block;
-    /* margin: 0 auto; */
-    margin-left: 27%;
 }
 h1{
     display: flex;
@@ -124,47 +143,39 @@ h1{
     text-align: left; 
     font-family: Comic Sans MS; 
     font-weight:bold; 
-    font-size: 35px; 
+    font-size: 140%; 
     color: #e3d8ed; 
     text-shadow: -1px 0 #414D68, 0 1px #414D68, 1px 0 #414D68, 0 -1px #414D68, -2px 2px 0 #414D68, 2px 2px 0 #414D68, 1px 1px #414D68, 2px 2px #414D68, 3px 3px #414D68, 4px 4px #414D68, 5px 5px #414D68, 6px 6px #414D68, 7px 7px #414D68;
 }
-.boton-jugar{
-    background-color: #502481;
-    display: block;
-    margin: 0 auto;
-    height: 60px;
-    width: 110px;
-    font-size: 30px;
-    font-family: cursive;
-    justify-content: center;
-}
 .apartado-iconos{
-    width: 60px;
+    display: block;
+    width: 4.6%;
     height: auto;
-    margin: 5px;
+    margin: 0.5%;
     position: absolute;
 }
 .iconos{
     width: 100%;
     height: 100%;
-    margin: 5px;
+    margin: 3%;
     cursor: pointer;
     transition: transform 0.3s;
 }
-.ajustes .iconos{
-    width: 8%;
-    height: 8%;
+
+.ajustes{
+    font-family: cursive;
+    color: aliceblue;
 }
-.usuario .iconos{
-    width: 10%;
-    height: 10%;
+.card{
+    text-align: center;
 }
 #centrar2{
-    margin-left: 58%
+    width: 3.5%;
+    margin-left: 58%;
 }
 #centrar1{
-    width: 70px;
-    margin-top: 10px;
+    width: 5%;
+    margin-top: 0.2%;
 }
 .centrar{
     margin: 0 auto;
@@ -173,14 +184,22 @@ h1{
     margin-bottom: -2%;
     position: absolute;
 }
+.apartado-derecho{
+    width: 15%;
+    height: auto;
+    right: 0%;
+    position: absolute;
+    margin: 1%;
+}
 .usuario{
-    width: 60px;
-    height: 60px;
+    width: 30.67%;
+    height: 100%;
+    position: relative;
 }
 .nombre{
     font-family: cursive;
-    font-size: 25px;
-    margin-top: 8px;
+    font-size: 160%;
+    margin-bottom: 0;
     color: white;
     text-shadow:
         -1px -1px 0 #000,  
@@ -199,19 +218,8 @@ h1{
     transform: scale(1.05);
 }
 .color{
-    background-color: #5f43ab;
+    background-color: #704fa0;
     color: #fff;
-}
-.ajustes{
-    width: 800px;
-    font-family: cursive;
-    color: aliceblue;
-}
-.opcionesJuego{
-    height: 180px;
-    width: 180px;
-    cursor: pointer;
-    margin: -7px;
 }
 .titulo-ayuda{
     justify-content: center;
@@ -220,9 +228,9 @@ h1{
 .play{
     display: block;
     margin: 0 auto;
-    width: 20%;
+    width: 30%;
     cursor: pointer;
-    margin-top: 15px;
+    margin-top: 1%;
 }
 /* Ordenar */
 .contenedor-inicial{
@@ -259,7 +267,7 @@ h1{
 .fotoPerfil {
     border: 1px solid #000;
     width: 40%;
-    height: 30%;
+    height: 35%;
     border-radius: 50%;
     overflow: hidden; /* Oculta cualquier parte de la imagen que se salga del círculo */
     margin: 0 auto;
@@ -277,32 +285,36 @@ h1{
     margin-top: -30%;
 }
 /* Fin perfil */
-.robot{
+/* Estilos generales para todos los dispositivos */
+.robot {
     position: absolute;
-    right: 3%;
+    margin-right: -70%;
     bottom: 0;
     width: 28%;
-}
-.robot img{
+  }
+  
+  .robot img {
     display: block;
     width: 50%;
     cursor: pointer;
     margin-left: 50%;
-}
-
-.speech-bubble {
+  }
+  
+  .speech-bubble {
     position: relative;
     background-color: #f0f0f0;
     border-radius: 15px;
     padding: 2%;
-    max-width: 50%;
-    font-size: 14px;
+    width: 48%;
+    height: auto;
+    font-size: 78%;
     color: #333;
     text-align: center;
     margin: 10px;
     border: 1px solid;
     box-shadow: 12px 12px 15px #10111d;
     margin-left: 15%;
+    padding-bottom: 5%;
   }
   
   .speech-bubble::after {
@@ -316,6 +328,107 @@ h1{
     border-style: solid;
     border-color: #f0f0f0 transparent transparent transparent; /* Triángulo apuntando hacia abajo */
   }
+  
+  /* Media Queries para dispositivos móviles */
+  @media (max-width: 800px) {
+    .robot {
+      /* right: -3%; Ajusta el margen derecho para pantallas pequeñas */
+      bottom: 0;
+      width: 25%; /* Aumenta el ancho del robot para mejor visibilidad */
+    }
+  
+    .robot img {
+      width: 80%; /* Ajusta el tamaño de la imagen dentro del contenedor del robot */
+      margin-left: 10%; /* Reduce el margen izquierdo para centrar mejor la imagen */
+    }
+  
+    .speech-bubble {
+      width: 70%; /* Aumenta el ancho de la burbuja de diálogo para dispositivos móviles */
+      font-size: 60%; /* Aumenta el tamaño de la fuente para mejor legibilidad */
+      margin-left: -20%; /* Ajusta el margen izquierdo para centrado en pantallas más pequeñas */
+      padding-bottom: 8%;
+    }
+  
+    .speech-bubble::after {
+      left: 80%; /* Ajusta la posición de la cola de la burbuja de diálogo */
+      bottom: -20px;
+      transform: translateX(50px);
+      transform: rotate(-38deg);
+      border-width: 40px 15px 0; /* Ajusta el tamaño de la cola para que se vea mejor en pantallas pequeñas */
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .robot {
+      margin-right: -50%; /* Ajusta aún más el margen derecho para pantallas muy pequeñas */
+      width: 30%; /* Reduce el ancho del robot para dispositivos muy pequeños */
+      /* bottom: 0; */
+    }
+  
+    .robot img {
+      width: 120%; /* Haz que la imagen del robot ocupe todo el ancho del contenedor en pantallas muy pequeñas */
+     /* Elimina el margen izquierdo para centrar la imagen */
+    }
+  
+    .speech-bubble {
+      width: 90%; /* Aumenta el ancho de la burbuja de diálogo para ocupar más espacio en la pantalla */
+      font-size: 55%; /* Incrementa el tamaño de la fuente para una mejor legibilidad en pantallas pequeñas */
+      margin-left: -20%; /* Centra la burbuja de diálogo */
+      padding: 5%;
+    }
+  
+    .speech-bubble::after {
+      left: 20%; /* Ajusta la posición de la cola de la burbuja de diálogo */
+      bottom: -15px;
+      transform: translateX(50px);
+      border-width: 20px 10px 0; /* Ajusta el tamaño de la cola */
+    }
+    .apartado-iconos{
+        margin-top: 3%;
+        /* margin-right: -10%; */
+        width: 16%;
+        height: auto;
+    }
+    .iconos{
+        margin: 5%;
+    }
+    .iconos:hover{
+        transform: none;
+    }
+    .apartado-derecho{
+        /* margin-top: 5%; */
+        width: 52.18%;
+        height: auto;
+        margin: 3%;
+    }
+    .logoInicio {
+        width: 60%;
+        height: auto;
+    }
+    .logoBienvenido{
+        width: 300%;
+        height: auto;
+    }
+    .oJuegos{
+        width: 20%;
+        height: auto;
+    }
+    .textoEleccion{
+        font-family: Comic Sans MS; 
+        font-weight:bold; 
+        font-size: 140%; 
+        color: #e3d8ed; 
+        text-shadow: -1px 0 #414D68, 0 1px #414D68, 1px 0 #414D68, 0 -1px #414D68, -2px 2px 0 #414D68, 2px 2px 0 #414D68, 1px 1px #414D68, 2px 2px #414D68, 3px 3px #414D68, 4px 4px #414D68, 5px 5px #414D68, 6px 6px #414D68, 7px 7px #414D68;
+    }
+    .play{
+        width: 50%;
+    }
+    .oJuegos.nivel{
+        width: 25%;
+        height: auto;
+    }
+  }
+  
   .cerrarMensaje{
     text-align: right;
     margin-top: 0;
