@@ -442,3 +442,97 @@ h1{
 .unirse .play{
     width: 40%;
 }
+
+.tituloMapa{
+    margin: auto;
+}
+
+
+.containerMapa {
+    position: relative;
+    width: 100%; /* Ocupa el ancho completo del contenedor padre */
+    max-width: 450px; /* Ancho máximo para pantallas grandes */
+    height: 300px;
+    border: 1px solid #000;
+    margin-bottom: 20px;
+    border-radius: 20px;
+    background-image: url('../img/fondos/loginDos.jpg');
+    background-position: center;
+    background-size: cover; /* Asegura que la imagen de fondo cubra el área */
+}
+
+.cuerpoMapa{
+    background-color: #27ae60;  
+    border-radius: 25px;
+}
+
+.recompensa {
+    width: 50px;
+    height: 50px;
+    border-radius: 15px;
+    position: absolute;
+}
+
+
+.imagenMapa {
+    width: 100%;
+    height: auto; 
+}
+
+
+.primera { top: 120px; left: 10px; }
+.segunda { top: 20px; left: 160px; }
+.tercera { top: 90px; left: 310px; }
+.cuarta { top: 193px; left: 180px; }
+.quinta { top: 213px; left: 320px; }
+
+
+.barra-containerMapa {
+    position: absolute;
+    top: 15px; 
+    left: 0;
+    width: 80%; /* Ajuste responsivo del ancho */
+    max-width: 100px; /* Ancho máximo para pantallas grandes */
+    height: 10px;
+    background-color: #bdc3c7;
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+.barra-progreso {
+    height: 100%;
+    width: 0; /* Inicialmente sin progreso */
+    background-color: #27ae60;
+    transition: width 0.4s ease;
+}
+
+
+@media (max-width: 767px) {
+    .containerMapa {
+        height: 250px; 
+    }
+
+    .recompensa {
+        width: 40px;
+        height: 40px;
+    }
+
+
+    .imagenMapa {
+        width: 100%;
+        height: auto;
+    }
+
+    .barra-containerMapa {
+        width: 70%; 
+        max-width: 80px; 
+    }
+
+    
+    .primera { top: 100px; left: 5px; }
+    .segunda { top: 15px; left: 140px; }
+    .tercera { top: 70px; left: 270px; }
+    .cuarta { top: 160px; left: 160px; }
+    .quinta { top: 180px; left: 280px; }
+}
+
