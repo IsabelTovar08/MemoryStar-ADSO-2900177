@@ -42,7 +42,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
         // Generación dinámica del slider
         resultadoMostrar += `
-                <img src="img/iconos/logoBienvenido.png" alt="logoMemory" class="segundoInicio">
+                <div class="bienvenido"><img src="img/iconos/logoBienvenido.png" alt="logoMemory" class="logoBienvenido"></div>
                 <h1 class="textoEleccion">Selecciona el modo de Juego</h1>
                 <div class="contenedorOpciones">
                     <img src="img/iconos/jugarSolo.png" class="oJuegos zoom" alt="Imagen 1" id="jugarSolo">
@@ -54,9 +54,8 @@ document.addEventListener('DOMContentLoaded', function () {
 
         // Insertar el HTML dinámico en el DOM
         document.getElementById('contenido').innerHTML = resultadoMostrar;
-        const logo = document.querySelector('.segundoInicio');
+        const logo = document.querySelector('.bienvenido');
         logo.style.width = "20%";
-        logo.style.marginTop = "-10%";
         // Seleccionar todas las imágenes recién añadidas y agregarles el evento de clic
         const images = document.querySelectorAll('.contenedorOpciones img');
         images.forEach(image => {
@@ -71,10 +70,11 @@ document.addEventListener('DOMContentLoaded', function () {
     function elegirjuego() {
         let resultadoMostrar = "";
         botonesJugar.style.display = "none";
+        document.body.style.backgroundImage = "url('img/fondos/fondo.jpeg')";
 
         // Generación dinámica del slider
         resultadoMostrar += `
-                <img src="img/iconos/segundoMemory.png" alt="logoMemory" class="segundoInicio">
+                <div class="bienvenido"><img src="img/iconos/segundoMemory.png" alt="logoMemory" class="logoBienvenido"></div>
                 <h1 class="textoEleccion">¿Qué quieres jugar?</h1>
                 <div class="contenedorOpciones">
                     <img src="img/iconos/botonSecuencia.png" class="oJuegos zoom" alt="Imagen 1" id="juegoSecuencia">
@@ -89,11 +89,11 @@ document.addEventListener('DOMContentLoaded', function () {
                     <img src="img/iconos/paises.png" alt="Imagen 4" class="oJuegos zoom" id="juegoPaises">
                     <img src="img/iconos/tecnologia.png" alt="Imagen 5" class="oJuegos zoom" id="juegoTecnologia">
                 </div>
-                                <h1 class="textoEleccion">Elige el nivel</h1>
+                                <h1 class="textoEleccion">Elige el nivel de dificultad</h1>
                 <div class="contenedorOpciones">
-                    <img src="img/iconos/facil.png" class="oJuegos zoom" alt="Imagen 1" id="nivelFacil">
-                    <img src="img/iconos/intermedio.png" class="oJuegos zoom" alt="Imagen 2" id="nivelMedio">
-                    <img src="img/iconos/dificil.png" class="oJuegos zoom" alt="Imagen 3" id="nivelDificil">
+                    <img src="img/iconos/facil.png" class="oJuegos nivel zoom" alt="Imagen 1" id="nivelFacil">
+                    <img src="img/iconos/intermedio.png" class="oJuegos nivel zoom" alt="Imagen 2" id="nivelMedio">
+                    <img src="img/iconos/dificil.png" class="oJuegos nivel zoom" alt="Imagen 3" id="nivelDificil">
                 </div>
         `;
 
@@ -101,7 +101,7 @@ document.addEventListener('DOMContentLoaded', function () {
         document.getElementById('contenido').innerHTML = resultadoMostrar;
 
         // Seleccionar todas las imágenes recién añadidas y agregarles el evento de clic
-        const logo = document.querySelector('.segundoInicio');
+        const logo = document.querySelector('.bienvenido');
         logo.style.width = "10%";
         const images = document.querySelectorAll('.contenedorOpciones img');
         images.forEach(image => {
@@ -118,7 +118,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
         // Generación dinámica del slider
         resultadoMostrar += `
-                <img src="img/iconos/segundoMemory.png" alt="logoMemory" class="segundoInicio">
+                <div class="bienvenido"><img src="img/iconos/segundoMemory.png" alt="logoMemory" class="logoBienvenido"></div>
                 <h1 class="textoEleccion">Selecciona una opción</h1>
                 <div class="contenedorOpciones">
                     <img src="img/iconos/unirseVs.png" class="oJuegos zoom" alt="Imagen 1" id="unirseVs">
@@ -129,9 +129,8 @@ document.addEventListener('DOMContentLoaded', function () {
 
         // Insertar el HTML dinámico en el DOM
         document.getElementById('contenido').innerHTML = resultadoMostrar;
-        const logo = document.querySelector('.segundoInicio');
+        const logo = document.querySelector('.bienvenido');
         logo.style.width = "10%";
-        logo.style.marginTop = "1px";
         // Seleccionar todas las imágenes recién añadidas y agregarles el evento de clic
         const images = document.querySelectorAll('.contenedorOpciones img');
         images.forEach(image => {
@@ -148,7 +147,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
         // Generación dinámica del slider
         resultadoMostrar += `
-                <img src="img/iconos/segundoMemory.png" alt="logoMemory" class="segundoInicio">
+                <div class="bienvenido"><img src="img/iconos/segundoMemory.png" alt="logoMemory" class="logoBienvenido"></div>
                 <h1 class="textoEleccion">Selecciona una opción</h1>
                 <div class="contenedorOpciones">
                     <img src="img/iconos/unirseSala.png" class="oJuegos zoom" alt="Imagen 1" id="unirseSala">
@@ -159,9 +158,8 @@ document.addEventListener('DOMContentLoaded', function () {
 
         // Insertar el HTML dinámico en el DOM
         document.getElementById('contenido').innerHTML = resultadoMostrar;
-        const logo = document.querySelector('.segundoInicio');
+        const logo = document.querySelector('.bienvenido');
         logo.style.width = "10%";
-        logo.style.marginTop = "1px";
         // Seleccionar todas las imágenes recién añadidas y agregarles el evento de clic
         const images = document.querySelectorAll('.contenedorOpciones img');
         images.forEach(image => {
@@ -178,7 +176,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
         // Generación dinámica del slider
         resultadoMostrar += `
-                <img src="img/iconos/segundoMemory.png" alt="logoMemory" class="segundoInicio">
+                <div class="bienvenido"><img src="img/iconos/segundoMemory.png" alt="logoMemory" class="logoBienvenido"></div>
                 <div class="unirse">
             <h1 class="textoEleccion">Ingresa el código de invitación</h1>
             <div class="formField"><input id="codigo" required="" type="text" /><span>Código de invitación</span><img src="img/iconos/camara.png" alt="" class="" id="" width="40"></div>
@@ -189,9 +187,8 @@ document.addEventListener('DOMContentLoaded', function () {
 
         // Insertar el HTML dinámico en el DOM
         document.getElementById('contenido').innerHTML = resultadoMostrar;
-        const logo = document.querySelector('.segundoInicio');
+        const logo = document.querySelector('.bienvenido');
         logo.style.width = "10%";
-        logo.style.marginTop = "1px";
         // Seleccionar todas las imágenes recién añadidas y agregarles el evento de clic
         const images = document.querySelectorAll('.contenedorOpciones img');
         images.forEach(image => {
