@@ -101,18 +101,17 @@
 
 <!-- Modal ayuda -->
 <div class="modal fade" id="exampleModal-ayuda" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
+    <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content fondo-ayuda">
             <div class="modal-header">
-                <div class="col-12 row">
-                    <div class="col-10">
-                        <h1 class="fs-5 titulo-ayuda">¿Cómo Jugar?</h1>
-                    </div>
-                    <div class="col-2">
-                        <img src="img/iconos/botonSalir.png" alt="salir" class="btn salir-ayuda" data-bs-dismiss="modal" aria-label="Close">
-                    </div>
+                
+                    <h1 class="titulo-ayuda">¿Cómo Jugar?</h1>
                     
-                </div>
+                    
+                    <img src="img/iconos/botonSalir.png" alt="salir" class="btn salir-ayuda" data-bs-dismiss="modal" aria-label="Close">
+                    
+                    
+                
             </div>
             <div class="modal-body">
                 <div class="texto">
@@ -121,16 +120,16 @@
                 </div>
                 
                 
-                <div class="col-12 row">
-                    <div class="col-4">
-                        <img src="img/iconos/botonCarta.png" alt="cartas" id="goToModal2" class="imgAyuda btn">
-                    </div>
-                    <div class="col-4">
-                        <img src="img/iconos/botonSecuencia.png" alt="secuencia" id="goToModal3" class="imgAyuda btn">
-                    </div>
-                    <div class="col-4">
-                        <img src="img/iconos/botonAsociacion.png" alt="asociacion" id="goToModal4" class="imgAyuda btn">
-                    </div>
+                <div class="contenedor-imgAyuda">
+                    
+                    <img src="img/iconos/botonCarta.png" alt="cartas" id="goToModal2" class="imgAyuda btn">
+                    
+                    
+                    <img src="img/iconos/botonSecuencia.png" alt="secuencia" id="goToModal3" class="imgAyuda btn">
+                    
+                    
+                    <img src="img/iconos/botonAsociacion.png" alt="asociacion" id="goToModal4" class="imgAyuda btn">
+                    
                 </div>
 
             </div>
@@ -141,17 +140,13 @@
 
 <!-- Modal ayuda CARTAS 2 -->
 <div class="modal fade" id="exampleModal-ayuda2" tabindex="-1" aria-labelledby="exampleModalLabel2" aria-hidden="true">
-    <div class="modal-dialog">
+    <div class="modal-dialog  modal-dialog-centered">
         <div class="modal-content fondo-ayuda">
             <div class="modal-header">
                
-                <div class="col-12 row">
-                    <div class="col-10">
-                        <h1 class="fs-5 titulo-ayuda">¿Cómo Jugar?</h1>
-                    </div>
-                    <div class="col-2">
-                    </div>    
-                </div>
+                
+                 <h1 class=" titulo-ayuda">¿Cómo Jugar?</h1>
+                 
             </div>
             <div class="modal-body">
                 
@@ -169,17 +164,12 @@
 
 <!-- Modal ayuda SECUENCIA 3 -->
 <div class="modal fade" id="exampleModal-ayuda3" tabindex="-1" aria-labelledby="exampleModalLabel3" aria-hidden="true">
-    <div class="modal-dialog">
+    <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content fondo-ayuda">
             <div class="modal-header">
-                <div class="col-12 row">
-                    <div class="col-10">
-                        <h1 class="fs-5 titulo-ayuda">¿Cómo Jugar?</h1>
-                    </div>
-                    <div class="col-2">
-                        <!-- Botón de cerrar (si lo necesitas) -->
-                    </div>    
-                </div>
+                
+                <h1 class=" titulo-ayuda">¿Cómo Jugar?</h1>
+                
             </div>
             <div class="modal-body">
                 <div class="texto">
@@ -193,17 +183,14 @@
 
 <!-- Modal ayuda ASOCIACION 4 -->
 <div class="modal fade" id="exampleModal-ayuda4" tabindex="-1" aria-labelledby="exampleModalLabel4" aria-hidden="true">
-    <div class="modal-dialog">
+    <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content fondo-ayuda">
             <div class="modal-header">
-                <div class="col-12 row">
-                    <div class="col-10">
-                        <h1 class="fs-5 titulo-ayuda">¿Cómo Jugar?</h1>
-                    </div>
-                    <div class="col-2">
-                        <!-- Botón de cerrar (si lo necesitas) -->
-                    </div>    
-                </div>
+                
+                    
+                <h1 class=" titulo-ayuda">¿Cómo Jugar?</h1>
+                       
+                
             </div>
             <div class="modal-body">
                 <div class="texto">
