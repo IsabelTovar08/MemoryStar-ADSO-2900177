@@ -2,42 +2,49 @@
 <nav class="nav flex-column apartado-iconos">
     <img id="controlMusica" src="img/iconos/sonido-apagadoo.png" alt="Reproducir" class="iconos efectosIconos">
     <img src="img/iconos/trofeo.png" alt="Histórico" class="iconos efectosIconos" data-bs-toggle="modal" data-bs-target="#hisorico">
-    <div class="ajustes">
-        <img src="img/iconos/ajustes.png" alt="Ajustes" class="iconos efectosIconos" data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
-        <div class="collapse" id="collapseExample">
-            <div class="card card-body col-5 color">
+    <img src="img/iconos/ajustes.png" alt="Ajustes" class="iconos efectosIconos" data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+    <!-- <div class=""> -->
+        <div class="collapse" id="collapseExample" style="width: 500%;">
+            <div class="card card-body color">
                 <div class="col-12 row">
-                    <div class="col-6">Música</div>
-                    <div class="col-6"><input type="range" id="volumenMusica" min="0" max="1" step="0.1" value="1"></div>
+                    <div class="col-5">Música</div>
+                    <div class="col-6"><input type="range" class="secondary" id="volumenMusica" min="0" max="1" step="0.1" value="1"></div>
                 </div>
                 <div class="col-12 row">
-                    <div class="col-6">Sonido</div>
+                    <div class="col-5">Sonido</div>
                     <div class="col-6"><input type="range" id="volumenSonido" min="0" max="1" step="0.1" value="1"></div>
                 </div>
                 <button id="botonSilencio" class="btn btn-primary">Silenciar</button>
             </div>
         </div>
-    </div>
+    <!-- </div> -->
     <img src="img/iconos/ayuda.png" alt="Ayuda" class="iconos efectosIconos" data-bs-toggle="modal" data-bs-target="#exampleModal-ayuda">
 </nav>
-<ul class="nav justify-content-end">
-    <li class="nav-item">
-        <div class="nombre">Usuario</div>
-    </li>
-    <li class="nav-item">
-        <img src="img/iconos/usuario.png" alt="user" class="usuario iconos efectosIconos" data-bs-toggle="offcanvas" data-bs-target="#perfil" aria-controls="offcanvasRight">
-    </li>
-</ul>
-<ul class="nav justify-content-end">
-    <li class="nav-item">
-        <img src="img/iconos/qr.png" alt="user" class="usuario iconos efectosIconos" data-bs-toggle="modal" data-bs-target="#escanerRapido">
-    </li>
-</ul>
-<ul class="nav justify-content-end">
-    <li class="nav-item">
-        <img src="img/iconos/carrito.png" alt="user" class="usuario iconos efectosIconos" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
-    </li>
-</ul>
+<div class="apartado-derecho">
+    <ul class="nav justify-content-end">
+        <li class="nav-item" >
+            <span class="nombre">Usuario</span>
+        </li>
+        <li class="nav-item usuario">
+            <img src="img/iconos/usuario.png" alt="user" class="iconos efectosIconos" data-bs-toggle="offcanvas" data-bs-target="#perfil" aria-controls="offcanvasRight">
+        </li>
+    </ul>
+    <ul class="nav justify-content-end">
+        <li class="nav-item usuario">
+            <img src="img/iconos/mapa.png" alt="user" class="iconos efectosIconos" data-bs-toggle="modal" data-bs-target="#Mapa">
+        </li>
+    </ul>
+    <ul class="nav justify-content-end">
+        <li class="nav-item usuario">
+            <img src="img/iconos/qr.png" alt="user" class="iconos efectosIconos" data-bs-toggle="modal" data-bs-target="#escanerRapido">
+        </li>
+    </ul>
+    <ul class="nav justify-content-end">
+        <li class="nav-item usuario">
+            <img src="img/iconos/carrito.png" alt="user" class="iconos efectosIconos" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+        </li>
+    </ul>
+</div>
 
 <!-- Modal Histórico-->
 <div class="modal fade" id="hisorico" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -94,18 +101,17 @@
 
 <!-- Modal ayuda -->
 <div class="modal fade" id="exampleModal-ayuda" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
+    <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content fondo-ayuda">
             <div class="modal-header">
-                <div class="col-12 row">
-                    <div class="col-10">
-                        <h1 class="fs-5 titulo-ayuda">¿Cómo Jugar?</h1>
-                    </div>
-                    <div class="col-2">
-                        <img src="img/iconos/botonSalir.png" alt="salir" class="btn salir-ayuda" data-bs-dismiss="modal" aria-label="Close">
-                    </div>
+                
+                    <h1 class="titulo-ayuda">¿Cómo Jugar?</h1>
                     
-                </div>
+                    
+                    <img src="img/iconos/botonSalir.png" alt="salir" class="btn salir-ayuda" data-bs-dismiss="modal" aria-label="Close">
+                    
+                    
+                
             </div>
             <div class="modal-body">
                 <div class="texto">
@@ -114,16 +120,16 @@
                 </div>
                 
                 
-                <div class="col-12 row">
-                    <div class="col-4">
-                        <img src="img/iconos/botonCarta.png" alt="cartas" id="goToModal2" class="imgAyuda btn">
-                    </div>
-                    <div class="col-4">
-                        <img src="img/iconos/botonSecuencia.png" alt="secuencia" id="goToModal3" class="imgAyuda btn">
-                    </div>
-                    <div class="col-4">
-                        <img src="img/iconos/botonAsociacion.png" alt="asociacion" id="goToModal4" class="imgAyuda btn">
-                    </div>
+                <div class="contenedor-imgAyuda">
+                    
+                    <img src="img/iconos/botonCarta.png" alt="cartas" id="goToModal2" class="imgAyuda btn">
+                    
+                    
+                    <img src="img/iconos/botonSecuencia.png" alt="secuencia" id="goToModal3" class="imgAyuda btn">
+                    
+                    
+                    <img src="img/iconos/botonAsociacion.png" alt="asociacion" id="goToModal4" class="imgAyuda btn">
+                    
                 </div>
 
             </div>
@@ -134,17 +140,13 @@
 
 <!-- Modal ayuda CARTAS 2 -->
 <div class="modal fade" id="exampleModal-ayuda2" tabindex="-1" aria-labelledby="exampleModalLabel2" aria-hidden="true">
-    <div class="modal-dialog">
+    <div class="modal-dialog  modal-dialog-centered">
         <div class="modal-content fondo-ayuda">
             <div class="modal-header">
                
-                <div class="col-12 row">
-                    <div class="col-10">
-                        <h1 class="fs-5 titulo-ayuda">¿Cómo Jugar?</h1>
-                    </div>
-                    <div class="col-2">
-                    </div>    
-                </div>
+                
+                 <h1 class=" titulo-ayuda">¿Cómo Jugar?</h1>
+                 
             </div>
             <div class="modal-body">
                 
@@ -162,17 +164,12 @@
 
 <!-- Modal ayuda SECUENCIA 3 -->
 <div class="modal fade" id="exampleModal-ayuda3" tabindex="-1" aria-labelledby="exampleModalLabel3" aria-hidden="true">
-    <div class="modal-dialog">
+    <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content fondo-ayuda">
             <div class="modal-header">
-                <div class="col-12 row">
-                    <div class="col-10">
-                        <h1 class="fs-5 titulo-ayuda">¿Cómo Jugar?</h1>
-                    </div>
-                    <div class="col-2">
-                        <!-- Botón de cerrar (si lo necesitas) -->
-                    </div>    
-                </div>
+                
+                <h1 class=" titulo-ayuda">¿Cómo Jugar?</h1>
+                
             </div>
             <div class="modal-body">
                 <div class="texto">
@@ -186,17 +183,14 @@
 
 <!-- Modal ayuda ASOCIACION 4 -->
 <div class="modal fade" id="exampleModal-ayuda4" tabindex="-1" aria-labelledby="exampleModalLabel4" aria-hidden="true">
-    <div class="modal-dialog">
+    <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content fondo-ayuda">
             <div class="modal-header">
-                <div class="col-12 row">
-                    <div class="col-10">
-                        <h1 class="fs-5 titulo-ayuda">¿Cómo Jugar?</h1>
-                    </div>
-                    <div class="col-2">
-                        <!-- Botón de cerrar (si lo necesitas) -->
-                    </div>    
-                </div>
+                
+                    
+                <h1 class=" titulo-ayuda">¿Cómo Jugar?</h1>
+                       
+                
             </div>
             <div class="modal-body">
                 <div class="texto">
@@ -252,6 +246,8 @@
                 <label for="exampleInputEmail1" class="form-label">Teléfono</label>
                 <div type="email" class="form-control" id="exampleInputEmail1">1234567890</div>
             </div>
+            
+            <div><img src="img/iconos/editar.png" alt="" width="25"></div>
             <div class="col-6 editar">Editar Perfil</div>
         </div>
         <button class="btn btn-primary">
@@ -345,6 +341,52 @@
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
         <button type="button" class="btn btn-primary">Understood</button>
       </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+<!-- Modal -->
+<div class="modal fade" id="Mapa" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog ">
+    <div class="modal-content cuerpoMapa ">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5  tituloMapa" id="staticBackdropLabel" >MAPA DE RECOMPENSAS</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body ">
+      <div class="containerMapa">
+                <div class="barra-containerMapa">
+                    <div class="barra-progreso" id="barra-progreso"></div>
+                </div>
+                <div class="recompensa primera">
+                    <img src="img/rangos/rangoBloqueadoo.png" alt="" class="imagenMapa rango">
+                </div>
+                <div class="recompensa segunda">
+                    <img src="img/rangos/rangoBloqueadoo.png" alt="" class="imagenMapa rango">
+                </div>
+                <div class="recompensa tercera">
+                    <img src="img/rangos/rangoBloqueadoo.png" alt="" class="imagenMapa rango">
+                </div>
+                <div class="recompensa cuarta">
+                    <img src="img/rangos/rangoBloqueadoo.png" alt="" class="imagenMapa rango">
+                </div>
+                <div class="recompensa quinta">
+                    <img src="img/rangos/rangoBloqueadoo.png" alt="" class="imagenMapa rango">
+                </div>
+
+            </div>
+
+            <form onsubmit="return operaciones()">
+                <label for="txtnumero1">Ingresa tu puntuación:</label>
+                <input type="number" id="txtnumero1">
+                <button type="submit">Enviar</button>
+            </form>
+      </div>
+      
     </div>
   </div>
 </div>
