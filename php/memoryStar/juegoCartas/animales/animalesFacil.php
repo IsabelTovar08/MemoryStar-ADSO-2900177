@@ -18,6 +18,9 @@
     background-image: url('../../img/fondoTematicas/f8e210a7-7519-4734-9a5a-797baf30869e.jpeg');
     background-position: center; 
     background-repeat: no-repeat;
+    background-size: cover;
+
+   
 }
 
 </style>
@@ -100,8 +103,8 @@
 </div>
 
    <?php include('../audios2.php') ?>
-    <a href="index.php"><button class="btn btn-success">Salir</button></a>
-    <a href="ordenar.php"><button class="btn btn-primary">Siguiente</button></a>
+    <a href="../../index.php"><button class="btn btn-success botonesCartas">Salir</button></a>
+    <a href="animalesMedio.php"><button class="btn btn-primary  botonesCartas ">Siguiente</button></a>
     <script src="../../js/overlayModal.js"></script>
     <script src="../../js/cartas.js"></script>
     <script src="../../js/sonidos.js"></script>

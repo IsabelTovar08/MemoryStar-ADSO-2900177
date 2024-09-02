@@ -44,6 +44,7 @@
         <script src="js/perfil.js"></script>
         <script src="js/play.js"></script>
         <script src="js/login.js"></script>
+        <script src="js/mapa.js"></script>
 </body>
 
 </html>
