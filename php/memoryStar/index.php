@@ -16,7 +16,9 @@
     <div class="container-fuid">
         <?php include('nabar.php'); ?>
         <div id="contenedor">
+<!-- <div onclick="history.back()">atras</div> -->
             <div id="contenido">
+
                 <img src="img/iconos/nuevoMemory.png" alt="logoMemory" class="logoInicio">
                 <div id="jugar">
                     <img src="img/iconos/clic.png" alt="" width="50" class="centrar" id="centrar1">
