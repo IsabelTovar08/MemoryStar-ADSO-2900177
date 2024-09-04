@@ -1,5 +1,5 @@
 body {
-    background-image: url('../img/fondos/loginDos.jpg');
+    background-image: url('../img/fondos/loginY.jpeg');
     margin: 0;
     padding: 0;
     width: 100vw;
@@ -22,10 +22,18 @@ body {
     position: relative;
     transition: transform 1s;
 }
-
+.contenido{
+    display: flex;
+    margin: 0 auto;
+    height: 100vh;
+    justify-content: center;
+    align-items: center;
+}
 .logo {
-    margin-top: 24%;
-    margin-left: 10%;
+    /* margin-top: 24%; */
+    margin-right: 10%;
+    width: 25%;
+    height: auto;
 }
 
 .formularioLogin {
@@ -35,13 +43,14 @@ body {
     background-color: transparent;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     text-align: center;
+    width: 150%;
+    height: 100%;
 }
 
 .label {
-    font-size: 36px;
-    margin-top: -90px;
-    position: fixed;
-    margin-left: 23.5px;
+    margin-top: -4.5%;
+    position: absolute;
+    margin-left: 3.6%;
     border-radius: 8px;
     background-color: #a7bce1;
     box-shadow: 4px 5px 4px #0000008c;
@@ -49,16 +58,31 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 250px;
+    text-align: center;
+    width: 19%;
+    height: 8%;
 }
 
 .label::before {
     content: "";
     position: absolute;
-    height: 400px;
-    width: 400px;
-    background-image: conic-gradient(#3672ae 20deg, transparent 120deg);
+    height: 700%;
+    width: 100%;
+    background-image: conic-gradient(#3672ae 70deg, transparent 150deg);
     animation: rotar 2s linear infinite;
+}
+
+.label::after {
+    content: "";
+    position: absolute;
+    height: 73%;
+    width: 94%;
+    background-color: #c9b0ff;
+    border-radius: 8px;
+}
+
+.iniciarS .label::after {
+    height: 42px;
 }
 
 @keyframes rotar {
@@ -71,26 +95,20 @@ body {
     }
 }
 
-.iniciarS .label {
-    margin-top: -60px;
-    margin-left: 17px;
-}
-
 .noTienesCuenta {
     display: block;
-    margin-top: 30px;
-    font-size: 1.1em;
+    margin-top: 8%;
+    font-size: 1.3em;
     color: #fff;
     cursor: pointer;
     text-align: center;
 }
 
 .olvidarContraseña {
-    margin-left: 100px;
+    margin-left: 14%;
     font-size: 1.1em;
     color: #fff;
     cursor: pointer;
-    text-align: center;
 }
 
 .olvidarContraseña:hover,
@@ -98,71 +116,135 @@ body {
     text-decoration: underline;
 }
 
-.iniciarS button {
-    margin-top: 12px;
-}
 
 button {
-    padding: 10px;
+    padding: 5%;
     border: none;
     border-radius: 4px;
     background-color: #3672ae;
     color: #fff;
-    font-size: 1em;
+    font-size: 1.1em;
     cursor: pointer;
-    margin-top: 30px;
+    margin-top: 12%;
+    height: 15%;
 }
 
 button:hover {
     transition: 0.9s ease;
     background-color: #502481;
+    box-shadow: 5px 5px 0px #2a3646
+}
+.recupera{
+    box-shadow: 20px 16px 30px 30px #0000008c;
+    border-radius: 15px;
+    h4{
+        color: #502481;
+        font-weight: bold;
+        text-shadow: 1px 1px 2px #2a3646;
+    }
+    .inputs span{
+        color: #000000;
+    }
+    button{
+        border: 2px solid #502481;
+        border-radius: 15px;
+        margin: 2%;
+    }
+    .botones{
+        display: inline-flex;
+        margin-left: 55%;
+    }
+    .aceptar{
+        background-color: #9149e2;
+        color: #fff;
+    }
+    .aceptar:hover{
+        background-color: #502481;
+    }
+    #cancelarR{
+        color: #502481;
+    }
+    #cancelarR:hover{
+        color: #ffffff;
+        background-color: #ff4242;
+    }
+    .inputs input{
+        background-color: #fff;
+        text-shadow: none;
+        border: 1px solid #8e8c8c;
+    }
+    .inputs span{
+        font-weight: normal;
+    }
+    .inputs input:focus+span,
+    .inputs input:valid+span {
+        color: #502481;
+        background-color: #fff;
+        font-size: 1em;
+        padding: 0 2% 0 2%;
+        margin-top: 6%;
+        margin-left: 5%;
+        text-shadow: none;
+    }
+}
+.dots {
+    text-align: center;
 }
 
+.dot {
+    display: inline-block;
+    width: 13px;
+    height: 13px;
+    margin: 10px 2px;
+    background-color: #bbb;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.dot.active {
+    background-color: #442656;
+}
 .tarjeta {
-    float: right;
-    margin-top: 25%;
-    margin: 25% 15%;
     border-radius: 10px;
-    width: 350px;
-    height: 400px;
+    width: 100%;
+    height: 66%;
     box-shadow: 16px 14px 20px #0000008c;
     position: relative;
     overflow: hidden;
     display: flex;
     align-items: center;
     justify-content: center;
+    padding: 2%;
+    float: right;
 }
-
-.iniciarS {
+.iniciarSesion .tarjeta{
+    margin-top: 15%;
     height: 500px;
-    margin: 20% 15%;
 }
-
-.iniciarS.tarjeta::after {
-    height: 495px;
+.iniciarSesion .form{
+    padding: 1.5em;
+    padding-top: 4%;
+    padding-bottom: 4%;
 }
-
+.iniciarSesion button{
+    margin-top: 1%;
+}
+.iniciarSesion .noTienesCuenta{
+    margin-top: 1%;
+}
+.iniciarSesion .label{
+    margin-top: -0.5%;
+}
 .tarjeta::after {
     content: "";
     position: absolute;
-    height: 395px;
-    width: 345px;
+    height: 100%;
+    width: 100%;
     background-color: #c9b0ff4f;
     border-radius: 8px;
 }
 
-.label::after {
-    content: "";
-    position: absolute;
-    height: 36px;
-    width: 240px;
-    background-color: #c9b0ff;
-    border-radius: 8px;
-}
-
-.iniciarS .label::after {
-    height: 42px;
-}
 
 h2 {
     color: rgb(255, 255, 255);
@@ -172,49 +254,64 @@ h2 {
     text-shadow: 1px 1px 1px black;
 }
 
-/* From Uiverse.io by bedirhan-arslan */
-.formField {
-    margin: 11px;
+.form {
+    padding: 2em;
+    transition: .4s ease-in-out;
+  }
+  
+  .form:hover {
+    transform: translateX(-0.5em) translateY(-0.5em);
+    border: 1px solid #535353;
+    box-shadow: 10px 10px 0px #2a3646;
+  }
+.inputs {
+    margin: 5%;
     position: relative;
-}
+    transition: .4s ease-in-out;
 
-.formField input {
-    padding: 10px 15px;
+}
+.inputs:hover {
+    outline: none;
+    border-radius: 10px;
+    box-shadow: 6px 6px 0px #2a3646
+  }
+.inputs input {
+    padding: 4% 5%;
     outline: none;
     border: 1px solid #3672ae;
     border-radius: 10px;
     background-color: #f1f1f1;
     color: #333;
-    font-size: 16px;
+    font-size: 1em;
     font-weight: 550;
     transition: 0.4s ease-in-out;
     box-shadow: 0 0 0 5px transparent;
     width: 100%;
 }
 
-.formField input:hover,
-.formField input:focus {
+.inputs input:hover,
+.inputs input:focus {
     box-shadow: 0 0 0 2px #502481;
 }
 
-.formField span {
+.inputs span {
     position: absolute;
     left: 0;
     top: 0;
-    padding: 8px 15px;
+    padding: 4% 5%;
     color: #3672ae;
-    font-size: 16px;
+    font-size: 1em;
     font-weight: 600;
     transition: 0.3s ease-in-out;
     pointer-events: none;
 }
 
-.formField input:focus+span,
-.formField input:valid+span {
-    transform: translateY(-34px) translateX(-5px) scale(0.95);
+.inputs input:focus+span,
+.inputs input:valid+span {
+    transform: translateY(-40px) translateX(-5px) scale(0.95);
     transition: 0.3s ease-in-out;
     color: #fff;
-    font-size: 20px;
+    font-size: 1.4em;
     text-shadow: 1px 1px 1px black;
 }
 

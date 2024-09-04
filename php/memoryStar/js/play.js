@@ -22,6 +22,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // Configura el intervalo para cambiar de objeto cada 1 segundo (1000 milisegundos)
     setInterval(mostrarSiguienteObjeto, 1000);
+    
     const ocultarMensaje = document.querySelector('.cerrarMensaje');
     const mensaje = document.querySelector('.mensaje');
     const mostrar = document.querySelector('.mostrarMensaje');
@@ -35,13 +36,21 @@ document.addEventListener('DOMContentLoaded', function () {
         mensaje.style.visibility = 'visible';
         mensaje.style.transition = '0.1s';
     };
+
+    window.addEventListener('popstate', e => {
+        console.log('hola'+history.state);
+    }
+    )
     // Función para elegir la temática del juego
     function elegirModo() {
         let resultadoMostrar = "";
+        // history.pushState(resultadoMostrar, 'ElegirModo', 'elegir')
         botonesJugar.style.display = "none";
 
         // Generación dinámica del slider
         resultadoMostrar += `
+<button class="atras">atras</button>
+
                 <div class="bienvenido"><img src="img/iconos/logoBienvenido.png" alt="logoMemory" class="logoBienvenido"></div>
                 <h1 class="textoEleccion">Selecciona el modo de Juego</h1>
                 <div class="contenedorOpciones">
@@ -56,6 +65,7 @@ document.addEventListener('DOMContentLoaded', function () {
         document.getElementById('contenido').innerHTML = resultadoMostrar;
         const logo = document.querySelector('.bienvenido');
         logo.style.width = "20%";
+        let atras = document.querySelector('.atras');
         // Seleccionar todas las imágenes recién añadidas y agregarles el evento de clic
         const images = document.querySelectorAll('.contenedorOpciones img');
         images.forEach(image => {
@@ -68,12 +78,16 @@ document.addEventListener('DOMContentLoaded', function () {
         jugarMultijugador.addEventListener('click',  multijugador);
     }
     function elegirjuego() {
+        // history.replaceState(null, 'ElegirJuego', 'juego')
+
         let resultadoMostrar = "";
         botonesJugar.style.display = "none";
         document.body.style.backgroundImage = "url('img/fondos/fondo.jpeg')";
 
         // Generación dinámica del slider
         resultadoMostrar += `
+<button class="atras">atras</button>
+
                 <div class="bienvenido"><img src="img/iconos/segundoMemory.png" alt="logoMemory" class="logoBienvenido"></div>
                 <h1 class="textoEleccion">¿Qué quieres jugar?</h1>
                 <div class="contenedorOpciones">
@@ -99,7 +113,8 @@ document.addEventListener('DOMContentLoaded', function () {
 
         // Insertar el HTML dinámico en el DOM
         document.getElementById('contenido').innerHTML = resultadoMostrar;
-
+let atras = document.querySelector('.atras');
+atras.addEventListener('click',elegirModo)
         // Seleccionar todas las imágenes recién añadidas y agregarles el evento de clic
         const logo = document.querySelector('.bienvenido');
         logo.style.width = "10%";
@@ -113,6 +128,7 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     function vs() {
+        history.replaceState(null, 'jugarVs', '/vs')
         let resultadoMostrar = "";
         botonesJugar.style.display = "none";
 
@@ -142,6 +158,8 @@ document.addEventListener('DOMContentLoaded', function () {
         crearVs.addEventListener('click',  elegirjuego);
     }
     function multijugador() {
+        history.pushState(null, 'multijugador', '/sala')
+
         let resultadoMostrar = "";
         botonesJugar.style.display = "none";
 
@@ -171,6 +189,8 @@ document.addEventListener('DOMContentLoaded', function () {
         crearSala.addEventListener('click',  elegirjuego);
     }
     function unirse() {
+        history.pushState(null, 'unirseSala', '/unirse')
+
         let resultadoMostrar = "";
         botonesJugar.style.display = "none";
 
@@ -279,11 +299,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
 //     document.getElementById('contenido').innerHTML = resultadoMostrar;
 
-//     // Añade los event listeners después de actualizar el DOM
-//     document.querySelector('.prev').addEventListener('click', prevSlide);
-//     document.querySelector('.next').addEventListener('click', nextSlide);
-//     addEventListenersToDots();
-
-//     // Inicializa el slide
-//     showSlide(currentIndex);
-// }
+window.addEventListener('popstate', e => {
+    console.log('hola'+history.state);
+}
+)
