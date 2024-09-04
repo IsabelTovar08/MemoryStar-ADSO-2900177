@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tabla Puntuacion Solo</title>
+    <link rel="stylesheet" href="../css/estiloTablaPuntuacion.css">
+    <link rel="stylesheet" href="../bootstrap/css/bootstrap.css">
+</head>
+<body>
+    
+    
+    <!-- Button trigger modal -->
+    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#tablapuntuacionsolo">
+        Tabla Puntuacion solo
+    </button>
+    
+    <!-- Modal -->
+    <div class="modal fade" id="tablapuntuacionsolo" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content contenedorTsolo">
+            <div class="tituloTsolo">Puntuación</div>
+            <div class="contenedorTsoloInterior" style="background-image: url('../img/fondosolo.png');">
+                <div class="contenedor-estrellas">
+                    <img src="../img/Star.png" class="star" alt="">
+                    <img src="../img/Star.png" class="star" alt="">
+                    <img src="../img/Star.png" class="star" alt="">
+                </div>
+                
+                <div class="puntaje-total">
+                    100
+                </div>
+
+                <div class="contenedor-puntaje">
+                    <div>+15</div><img src="../img/starpuntaje.png" alt="" class="estrella-puntaje">
+                    <div style="margin-left: 50px;">+15</div><img src="../img/rubipuntaje.png" alt="" class="rubi-puntaje">
+                </div>
+                
+                <div class="col-10 row contenedor-info">
+                    <div class="col-6"><img src="..//img/fotouser.png" alt="" style="width: 20px;">Usuario</div>
+                    <div class="col-3">00:00</div>
+                    <div class="col-3">9999</div>
+                </div>
+
+            </div>
+        
+            <div class="contenedor-botonTsolo">
+                <button class="botonTsolo">Jugar de nuevo</button>
+                <button class="botonTsolo" style="margin-left: 20px;"data-bs-dismiss="modal" aria-label="Close">Salir</button>
+            </div>
+        </div>
+        </div>
+    </div>
+
+        
+    
+
+    <script src="../bootstrap/js/bootstrap.js"></script>
+    
+</body>
+</html>

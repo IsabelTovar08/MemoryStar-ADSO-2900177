@@ -93,8 +93,8 @@
         </div>
     </div>
    <?php include('../audios2.php') ?>
-    <a href="index.php"><button class="btn btn-success">Salir</button></a>
-    <a href="ordenar.php"><button class="btn btn-primary">Siguiente</button></a>
+   <a href="../../index.php"><button class="btn btn-success botonesCartas">Salir</button></a>
+   <a href="matematicasMedio.php"><button class="btn btn-primary  botonesCartas ">Siguiente</button></a>
     <script src="../../js/cartas.js"></script>
     <script src="../../js/sonidos.js"></script>
     <script src="../../bootstrap/js/bootstrap.js"></script>

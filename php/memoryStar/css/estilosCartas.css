@@ -67,3 +67,91 @@
     color: blue;
     font-size: 36px;
 }
+
+
+
+
+
+@media (max-width: 1200px) {
+    .carta {
+        height: 90px;
+        width: 90px;
+        margin: 2px;
+    }
+
+    .central {
+        height: 90px;
+        width: 90px;
+        margin-top: 40px;
+    }
+
+    .contenedor {
+        width: 300px;
+        margin-top: -50px;
+    }
+
+    .imagen, .imagen2 {
+        height: 90px;
+        width: 90px;
+    }
+
+    .Titulo {
+        font-size: 28px;
+
+    }
+
+
+    .carta:nth-child(5), .carta:nth-child(0) {
+        margin-right: 100px; /* Ajuste de margen para evitar desalineaciones */
+        margin-left: 0;
+    }
+    
+
+}
+
+@media (max-width: 480px) {
+    .carta {
+        height: 80px; /* Ajusta el tamaño para adaptarse mejor a pantallas pequeñas */
+        width: 80px;
+        margin: 2px;
+    }
+
+    .central {
+        height: 80px;
+        width: 80px;
+        position:fixed; 
+        top: 47%; 
+        left: 50%; 
+        transform: translate(-50%, -50%); 
+        z-index: 10; 
+        
+       
+    }
+
+    .contenedor {
+        width: 260px;
+        flex-wrap: wrap;
+        margin-top: 50px;
+    }
+
+    .imagen, .imagen2 {
+        height: 80px; 
+        width: 80px;
+        border-radius: 4px;
+    }
+
+    .Titulo {
+        font-size: 28px; 
+        margin-top: 10px; 
+    }
+
+    .carta:nth-child(5), .carta:nth-child(0) {
+        margin-right: 90px; 
+     
+    }
+
+
+    .botonesCartas{
+        margin-top: 140px;
+    }
+}

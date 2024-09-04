@@ -8,14 +8,14 @@
     padding: 10px 20px; /* Espaciado interno */
     text-align: center; /* Centra el texto*/
     margin: 0 auto;
-    margin-left: 100px;
+    
 }
 
 .salir-ayuda{
     height: 50px;
     position: absolute;
-    margin-left: 60px;
-    margin-top: -40px;
+    margin-top: -70px;
+    left: 93%;
     
 
 }
@@ -37,22 +37,15 @@
 }
 
 .imgAyuda{
-    
-    width: 175px;
-    height: 175px;
-    display: block;
-    margin: 0 auto;
-    cursor: pointer;
-    transition: transform 0.3s;
-    text-align: center;
+    height: 35%;
+    width: 35%;
 }
 
 .imgAyuda2{
-    margin-top: 10px !important;
-    width: 200px;
-    height: 300px;
-    display: block;
-    margin: auto;
+    margin-top: 10px;
+    width: 100px;
+    height: 155px;
+    
     border-radius: 30px;
 }
 
@@ -63,23 +56,63 @@
 .fondo-ayuda{
     background-color: #704fa0;
     border: 10px solid #d1d1d1;
-    border-radius: 40px !important;
+    border-radius: 40px ;
     position: relative;
 }
 .texto{
-    font-size: 16px !important;
-    font-family: Arial, Helvetica, sans-serif !important;
+    flex-wrap: wrap;
+    font-size: 16px ;
+    font-family: Arial, Helvetica, sans-serif ;
     color: #ffff;
+}
+
+#exampleModal-ayuda .modal-body{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.contenedor-imgAyuda{
     
-   
+    display: flex;
+    justify-content: center; /* Centra las imágenes horizontalmente */
+    
     
 }
 
+@media (max-width:576px){
 
+    #exampleModal-ayuda .modal-dialog{
+        width: 90%;
+        
+        margin: auto;
+    }
 
+    
 
+    .titulo-ayuda{
+        font-size: 20px;
+      
+        
+    }
 
+    .texto{
+        font-size: 15px;
+    }
 
+    
+
+    
+   .imgAyuda2{
+        width: 100px;
+        height: 150px;
+   }
+   .atras-ayuda{
+    font-size: 15px;
+   }
+}
 
 
 

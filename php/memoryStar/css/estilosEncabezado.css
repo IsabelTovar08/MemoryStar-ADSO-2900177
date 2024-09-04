@@ -5,7 +5,7 @@
     justify-content: center;
     align-items: center;
     margin: 50px;
-    margin-top: -73px;
+    margin-top: -10px;
     margin-left: 420px;
 }
 
@@ -116,4 +116,131 @@
 .figura-abajo img {
     width: 50px;
     height: 50px;
+}
+
+
+
+@media (max-width: 1200px) {
+    .contenedorCabeza {
+        width: 100%;
+        margin: 20px auto;
+        margin-top: 0;
+        margin-left: 0;
+    }
+
+    .tituloCabeza {
+        font-size: 30px;
+        margin-bottom: 15px;
+    }
+
+    .figuras-arriba {
+        
+        margin-bottom: 10px;
+    }
+
+    .rectangulo {
+        width: 60px;
+        height: 25px;
+        margin: 10px 0;
+    }
+
+
+    .imgRombo{
+        width: 60px;
+        height: 60px;
+        margin: 10px 0;
+    }
+
+    .rombo {
+        width: 90px;
+        height: 10px;
+    }
+
+    .estrella {
+        width: 25px;
+        height: 20px;
+    }
+
+    .numero1,
+    .numero2 {
+        margin-left: 0;
+        text-align: center;
+    }
+
+    .figuras-abajo {
+      
+        align-items: center;
+    }
+
+    .figura-abajo {
+        margin: 10px 0;
+    }
+
+    .figura-abajo img {
+        width: 40px;
+        height: 40px;
+    }
+}
+
+
+/* Media query para pantallas con un ancho máximo de 480px */
+@media (max-width: 480px) {
+    .contenedorCabeza {
+        width: 100%;
+        margin: 20px auto;
+        margin-top: 140px;
+        margin-left: 0;
+        padding: 10px;
+    }
+
+    .tituloCabeza {
+        font-size: 24px;
+        margin-bottom: 10px;
+    }
+
+    .figuras-arriba {
+       
+        margin-bottom: 10px;
+    }
+
+    .rectangulo {
+        width: 80px;
+        height: 25px;
+        margin: 5px 0;
+        padding-left: 3px;
+    }
+
+    .rombo {
+        width: 80px;
+        height: 40px;
+    }
+
+    .estrella {
+        width: 20px;
+        height: 15px;
+    }
+
+    .numero1,
+    .numero2 {
+        margin-left: 0;
+        text-align: center;
+    }
+
+    .figuras-abajo {
+       
+        align-items: center;
+        width: 100%;
+    }
+
+    .figura-abajo {
+        width: 90px;
+        height: 70px;
+        margin: 5px 0;
+        margin-top: -20px;
+    }
+
+    .figura-abajo img {
+        width: 35px;
+        height: 35px;
+    }
 }
