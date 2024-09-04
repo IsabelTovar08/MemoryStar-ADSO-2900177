@@ -1,0 +1,130 @@
+.buy-btn {
+    background-color: #4143cc;
+    color: white;
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    margin-top: 10px;
+    position: relative;
+    left: 8px;
+}
+
+.buy-btn:hover {
+    background-color: #142792;
+}
+
+.imgTienda{
+    
+    width: 100px;
+    height: 100px;
+    display: block;
+    margin: 0 auto;
+    cursor: pointer;
+    transition: transform 0.3s;
+    text-align: center;
+    
+}
+
+.imgTiendaF{
+    
+    width: 150px;
+    height: 100px;
+    display: block;
+    margin: 0 auto;
+    cursor: pointer;
+    transition: transform 0.3s;
+    text-align: center;
+}
+
+/* Estilos del letrero de madera */
+
+.wooden-sign {
+    background: linear-gradient(135deg, #2d3e9c, #87aade); /* Gradiente de madera */
+    border: 5px solid #2e1149; /* Borde de madera más oscuro */
+    border-radius: 20px;
+    padding: 3px;
+    box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.3); /* Sombra sutil */
+    text-align: center;
+    width: 200px;
+    height: 50px;
+    position: relative;
+    text-align: center;
+    
+}
+
+/* Estilo del texto */
+.sign-text {
+    text-shadow: 1px 1px 5px #000;
+    color: #fff;
+    font-size: 17px;
+    font-weight: bold;
+    line-height: 1;
+}
+
+
+/* Estilos para cada elemento de número y diamante */
+.number-item {
+    display: flex;
+    align-items: center;
+    font-size: 24px;
+    color: #333;
+    position: relative;
+    left: 20px;
+}
+
+.number {
+    margin-right: 10px; /* Espacio entre el número y el diamante */
+    font-weight: bold;
+
+}
+
+/* Estilos del diamante */
+.diamond {
+    width: 20px;
+    height: 20px;
+    background-color: #d12a2a; /* Color del diamante */
+    clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+}
+
+.text-po{
+    align-items: center;
+    position: relative;
+    left: 40px;
+}
+
+.number-item2 {
+    display: flex;
+    align-items: center;
+    font-size: 24px;
+    color: #333;
+    position: relative;
+    left: 60px;
+}
+
+.buy-btn2 {
+    background-color: #4143cc;
+    color: white;
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    margin-top: 10px;
+    position: relative;
+    left: 45px;
+}
+
+.icon-perfil{
+    display: flex;
+    text-align: center;
+}
+
+
+.division{
+    border: 2px solid #111949;
+    width: 130% !important;
+    margin-bottom: auto;
+    margin-top: auto;
+}

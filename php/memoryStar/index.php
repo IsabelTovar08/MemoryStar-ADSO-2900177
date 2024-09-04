@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="bootstrap/css/bootstrap.css">
     <link rel="stylesheet" href="css/estilosInicio.css">
     <link rel="stylesheet" href="css/estilosAyuda.css">
+    <link rel="stylesheet" href="css/estiloTienda.css">
     <!-- <link rel="stylesheet" href="css/estilosPerfil.css"> -->
     <title>MemoryStart ¡Pon a prueba tu memoria!</title>
     <link rel="shortcut icon" href="img/iconos/segundoMemory.png">

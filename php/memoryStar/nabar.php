@@ -41,7 +41,7 @@
     </ul>
     <ul class="nav justify-content-end">
         <li class="nav-item usuario">
-            <img src="img/iconos/carrito.png" alt="user" class="iconos efectosIconos" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+            <img src="img/iconos/carrito.png" alt="user" class="iconos efectosIconos" data-bs-toggle="modal" data-bs-target="#exampleModal-tienda">
         </li>
     </ul>
 </div>
@@ -391,7 +391,182 @@
                 <button type="submit">Enviar</button>
             </form>
       </div>
-      
     </div>
   </div>
 </div>
+
+<!-- Modal tienda -->
+<div class="modal fade" id="exampleModal-tienda" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content fondo-ayuda">
+            <div class="modal-header">
+                <div class="col-12 row">
+                    <div class="col-10">
+                        <h1 class="fs-5 titulo-ayuda">Tienda memoryStar</h1>
+                    </div>
+                    <div class="col-2">
+                        <img src="img/iconos/botonSalir.png" alt="salir" class="btn salir-ayuda" data-bs-dismiss="modal" aria-label="Close">
+                    </div>
+                    
+                </div>
+            </div>
+            <div class="modal-body texto">
+
+            Compra artículos especiales para mejorar tu experiencia en el juego. <br>
+            
+              <br>
+              <div class="icon-perfil">
+                    <div class="wooden-sign">
+                      <p class="sign-text">Iconos de perfil</p>
+                    </div>
+                    <hr class="division">
+              </div>
+            <br>
+            <div class="col-12 row">
+                    <div class="col-4"> 
+                        <img src="img/iconos/perfil1.png" alt="cartas" id="goToModal2" class="imgTienda btn">
+                        <div class="modal-body texto">
+
+                    <div class="number-item">
+                        <span class="number">115</span>
+                        <div class="diamond"></div>
+                    </div>
+                        <button class="buy-btn">Comprar</button>
+                        </div>
+                    </div>
+                    <div class="col-4">
+                        <img src="img/iconos/perfil2.png" alt="secuencia" id="goToModal3" class="imgTienda btn">
+                        <div class="modal-body texto">
+                    <div class="number-item">
+                        <span class="number">130</span>
+                        <div class="diamond"></div>
+                    </div>
+                        <button class="buy-btn">Comprar</button>
+                        </div>
+                    </div>
+                    <div class="col-4">
+                        <img src="img/iconos/perfil3.png" alt="asociacion" id="goToModal4" class="imgTienda btn">
+                        <div class="modal-body texto">
+                    <div class="number-item">
+                        <span class="number">155</span>
+                        <div class="diamond"></div>
+                    </div>
+                        <button class="buy-btn">Comprar</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 row">
+                    <div class="col-4"> 
+                        <img src="img/iconos/perfil4.png" alt="cartas" id="goToModal2" class="imgTienda btn">
+                        <div class="modal-body texto">
+                    <div class="number-item">
+                        <span class="number">167</span>
+                        <div class="diamond"></div>
+                    </div>
+                        <button class="buy-btn">Comprar</button>
+                        </div>
+                    </div>
+                    <div class="col-4">
+                        <img src="img/iconos/perfil5.png" alt="secuencia" id="goToModal3" class="imgTienda btn">
+                        <div class="modal-body texto">
+                    <div class="number-item">
+                        <span class="number">172</span>
+                        <div class="diamond"></div>
+                    </div>
+                        <button class="buy-btn">Comprar</button>
+                        </div>
+                    </div>
+                    <div class="col-4">
+                        <img src="img/iconos/perfil6.png" alt="asociacion" id="goToModal4" class="imgTienda btn">
+                        <div class="modal-body texto">
+                    <div class="number-item">
+                        <span class="number">185</span>
+                        <div class="diamond"></div>
+                    </div>
+                        <button class="buy-btn">Comprar</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="icon-perfil">
+                <br>
+                <div class="wooden-sign"> 
+                    <p class="sign-text">Fondos de pantalla</p>
+                    </div>
+                    <hr class="division">
+                </div>
+
+               <br> <div class="col-12 row">
+                    <div class="col-4"> 
+                        <img src="img/iconos/pantalla1.png" alt="cartas" id="goToModal2" class="imgTiendaF btn">
+                        <div class="modal-body texto">
+
+                    <div class="number-item">
+                        <span class="number">130</span>
+                        <div class="diamond"></div>
+                    </div>
+                        <button class="buy-btn">Comprar</button>
+                        </div>
+                    </div>
+                    <div class="col-4">
+                        <img src="img/iconos/pantalla2.png" alt="secuencia" id="goToModal3" class="imgTiendaF btn">
+                        <div class="modal-body texto">
+                    <div class="number-item">
+                        <span class="number">165</span>
+                        <div class="diamond"></div>
+                    </div>
+                        <button class="buy-btn">Comprar</button>
+                        </div>
+                    </div>
+                    <div class="col-4">
+                        <img src="img/iconos/pantalla4.png" alt="asociacion" id="goToModal4" class="imgTiendaF btn">
+                        <div class="modal-body texto">
+                    <div class="number-item">
+                        <span class="number">190</span>
+                        <div class="diamond"></div>
+                    </div>
+                        <button class="buy-btn">Comprar</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="icon-perfil">
+                <br>
+                <div class="wooden-sign"> 
+                    <p class="sign-text">Poderes</p>
+                    </div>
+                    <hr class="division">
+                </div>
+
+               <br> <div class="col-12 row">
+                    <div class="col-6"> 
+                        <img src="img/iconos/poder1.png" alt="cartas" id="goToModal2" class="imgTienda btn">
+                        <p class="text-po">Congelar tiempo</p>
+                        <div class="modal-body texto">
+
+                    <div class="number-item2">
+                        <span class="number">220</span>
+                        <div class="diamond"></div>
+                    </div>
+                        <button class="buy-btn2">Comprar</button>
+                        </div>
+                    </div>
+                    <div class="col-6">
+                        <img src="img/iconos/poderes2.png" alt="secuencia" id="goToModal3" class="imgTienda">
+                        <p class="text-po">Revelar cartas</p>
+                        <div class="modal-body texto">
+                    <div class="number-item2">
+                        <span class="number">265</span>
+                        <div class="diamond"></div>
+                    </div>
+                        <button class="buy-btn2">Comprar</button>
+                        </div>
+                    </div>
+                </div>                
+            </div>
+        </div>
+    </div>
+</div>
+                
+     
+
+
+        
