@@ -12,6 +12,7 @@
 </head>
 
 <body>
+<a href="index.php">Volver</a>
 <div class="container-xxl contenido">
         <img id="imagen" src="img/iconos/nuevoMemory.png" alt="Ejemplo de Imagen" class="logo">
         <div class="iniciarSesion">

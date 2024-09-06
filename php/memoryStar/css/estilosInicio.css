@@ -1,4 +1,4 @@
-body{
+body {
     background-image: url('../img/fondos/fondonuevo.jpg');
     margin: 0;
     padding: 0;
@@ -11,11 +11,13 @@ body{
     overflow: hidden;
     padding: 1%;
 }
+
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
+
 /* slider Inicio */
 .slider {
     width: 450px;
@@ -36,7 +38,8 @@ body{
 }
 
 .slide {
-    width: 150; /* Cada slide ocupa un tercio del contenedor del slider */
+    width: 150;
+    /* Cada slide ocupa un tercio del contenedor del slider */
     box-sizing: border-box;
     border-color: linear-gradient(blue, red);
     border-radius: 20px;
@@ -47,7 +50,8 @@ body{
     display: block;
 }
 
-.prev, .next {
+.prev,
+.next {
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
@@ -67,12 +71,16 @@ body{
 .next {
     right: 30%;
 }
-.slide:hover{
+
+.slide:hover {
     background: #e1dcff;
 }
-.prev:hover, .next:hover {
+
+.prev:hover,
+.next:hover {
     color: #000000;
 }
+
 .dots {
     text-align: center;
 }
@@ -91,8 +99,9 @@ body{
 .dot.active {
     background-color: #442656;
 }
+
 /* fin slider */
-#contenedor{
+#contenedor {
     display: flex;
     margin: 0 auto;
     height: 100vh;
@@ -100,6 +109,7 @@ body{
     justify-content: center;
     align-items: center;
 }
+
 /* .logo{
     margin: 0 auto;
     display: flex;
@@ -107,54 +117,63 @@ body{
     width: 40%;
     height: 100%;
 } */
- #contenido{
+#contenido {
     width: 100vh;
     height: auto;
- }
+}
+
 .logoInicio {
     display: flex;
     margin: 0 auto;
     width: 50%;
     height: auto;
 }
+
 .bienvenido {
     margin: 0 auto;
     display: flex;
     justify-content: center;
 }
-.logoBienvenido{
+
+.logoBienvenido {
     width: 100%;
     height: auto;
 }
-.oJuegos{
+
+.oJuegos {
     width: 15%;
     height: auto;
     cursor: pointer;
 }
-h1{
+
+h1 {
     display: flex;
     justify-content: center;
 }
-.contenedorOpciones{
+
+.contenedorOpciones {
     display: flex;
     justify-content: center;
 }
-.textoEleccion{
-    text-align: left; 
-    font-family: Comic Sans MS; 
-    font-weight:bold; 
-    font-size: 140%; 
-    color: #e3d8ed; 
+
+.textoEleccion {
+    text-align: left;
+    font-family: Comic Sans MS;
+    font-weight: bold;
+    font-size: 140%;
+    color: #e3d8ed;
     text-shadow: -1px 0 #414D68, 0 1px #414D68, 1px 0 #414D68, 0 -1px #414D68, -2px 2px 0 #414D68, 2px 2px 0 #414D68, 1px 1px #414D68, 2px 2px #414D68, 3px 3px #414D68, 4px 4px #414D68, 5px 5px #414D68, 6px 6px #414D68, 7px 7px #414D68;
 }
-.apartado-iconos{
+
+.apartado-iconos {
     display: block;
     width: 4.6%;
     height: auto;
     margin: 0.5%;
     position: absolute;
 }
-.iconos{
+
+.iconos {
     width: 100%;
     height: 100%;
     margin: 3%;
@@ -162,78 +181,92 @@ h1{
     transition: transform 0.3s;
 }
 
-.ajustes{
+.ajustes {
     font-family: cursive;
     color: aliceblue;
 }
-.card{
+
+.card {
     text-align: center;
 }
-#centrar2{
+
+#centrar2 {
     width: 3.5%;
     margin-left: 58%;
 }
-#centrar1{
+
+#centrar1 {
     width: 5%;
     margin-top: 0.2%;
 }
-.centrar{
+
+.centrar {
     margin: 0 auto;
     display: none;
     margin-left: 55%;
     margin-bottom: -2%;
     position: absolute;
 }
-.apartado-derecho{
+
+.apartado-derecho {
     width: 15%;
     height: auto;
     right: 0%;
     position: absolute;
     margin: 1%;
 }
-.usuario{
+
+.usuario {
     width: 30.67%;
     height: 100%;
     position: relative;
 }
-.nombre{
+
+.nombre {
     font-family: cursive;
     font-size: 160%;
     margin-bottom: 0;
     color: white;
     text-shadow:
-        -1px -1px 0 #000,  
-         1px -1px 0 #000,
-        -1px  1px 0 #000,
-         1px  1px 0 #000,
-         0px   0px 5px rgba(0, 0, 0, 0.5); 
+        -1px -1px 0 #000,
+        1px -1px 0 #000,
+        -1px 1px 0 #000,
+        1px 1px 0 #000,
+        0px 0px 5px rgba(0, 0, 0, 0.5);
 }
-.iconos:hover{
+
+.iconos:hover {
     transform: scale(1.2);
 }
-.zoom{
+
+.zoom {
     transition: transform 0.3s;
 }
-.zoom:hover{
+
+.zoom:hover {
     transform: scale(1.05);
 }
-.color{
+
+.color {
     background-color: #704fa0;
     color: #fff;
 }
-.titulo-ayuda{
+
+.titulo-ayuda {
     justify-content: center;
     text-align: center;
 }
-.play{
+
+.play {
     display: block;
     margin: 0 auto;
     width: 30%;
     cursor: pointer;
     margin-top: 1%;
 }
+
 /* Ordenar */
-.contenedor-inicial{
+.contenedor-inicial {
     border-radius: 20px;
     background-color: beige;
     height: 120px;
@@ -242,7 +275,8 @@ h1{
     margin: 0 auto;
     margin-top: 100px;
 }
-.contenedor-final{
+
+.contenedor-final {
     border-radius: 20px;
     background-color: beige;
     height: 120px;
@@ -251,28 +285,40 @@ h1{
     margin: 0 auto;
     margin-top: 20px;
 }
+
 /* Inicio estilos Perfil */
-.perfil{
-        font-size: 20px !important; /* Tamaño de la fuente */
-        font-weight: bold; /* Texto en negrita */
-        color: black; /* Color del texto */
-        background-color: white; /* Fondo  */
-        border: 2px solid #2E4372; /* Borde azul oscuro */
-        border-radius: 20px; /* Esquinas redondeadas */
-        padding: 10px 20px; /* Espaciado interno */
-        text-align: center; /* Centra el texto*/
-        /* margin-right: 145px; */
-    
+.perfil {
+    font-size: 20px !important;
+    /* Tamaño de la fuente */
+    font-weight: bold;
+    /* Texto en negrita */
+    color: black;
+    /* Color del texto */
+    background-color: white;
+    /* Fondo  */
+    border: 2px solid #2E4372;
+    /* Borde azul oscuro */
+    border-radius: 20px;
+    /* Esquinas redondeadas */
+    padding: 10px 20px;
+    /* Espaciado interno */
+    text-align: center;
+    /* Centra el texto*/
+    /* margin-right: 145px; */
+
 }
+
 .fotoPerfil {
     border: 1px solid #000;
     width: 40%;
     height: 35%;
     border-radius: 50%;
-    overflow: hidden; /* Oculta cualquier parte de la imagen que se salga del círculo */
+    overflow: hidden;
+    /* Oculta cualquier parte de la imagen que se salga del círculo */
     margin: 0 auto;
 }
-.cosita{
+
+.cosita {
     width: 40px;
     height: 40px;
     margin-left: 60%;
@@ -280,10 +326,12 @@ h1{
     font-size: 22px;
     padding: 0%;
 }
-.cosita img{
+
+.cosita img {
     margin-left: -30%;
     margin-top: -30%;
 }
+
 /* Fin perfil */
 /* Estilos generales para todos los dispositivos */
 .robot {
@@ -291,16 +339,16 @@ h1{
     margin-right: -70%;
     bottom: 0;
     width: 28%;
-  }
-  
-  .robot img {
+}
+
+.robot img {
     display: block;
     width: 50%;
     cursor: pointer;
     margin-left: 50%;
-  }
-  
-  .speech-bubble {
+}
+
+.mensaje {
     position: relative;
     background-color: #f0f0f0;
     border-radius: 15px;
@@ -315,9 +363,9 @@ h1{
     box-shadow: 12px 12px 15px #10111d;
     margin-left: 15%;
     padding-bottom: 5%;
-  }
-  
-  .speech-bubble::after {
+}
+
+.mensaje::after {
     content: '';
     position: absolute;
     left: 78%;
@@ -326,143 +374,244 @@ h1{
     transform: rotate(-38deg);
     border-width: 40px 18px 0;
     border-style: solid;
-    border-color: #f0f0f0 transparent transparent transparent; /* Triángulo apuntando hacia abajo */
-  }
-  
-  /* Media Queries para dispositivos móviles */
-  @media (max-width: 800px) {
+    border-color: #f0f0f0 transparent transparent transparent;
+    /* Triángulo apuntando hacia abajo */
+}
+#imagen {
+    position: relative;
+    transition: transform 1s;
+}
+.tarjeta {
+    border-radius: 10px;
+    width: 35%;
+    height: 70%;
+    box-shadow: 16px 14px 20px #0000008c;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2%;
+    background-color: #ffffff75;
+    flex-direction: column;
+    margin: 0 auto;
+}
+
+
+.contenInicio{
+    display: flex;
+    margin: 0 auto;
+    height: 90vh;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+}
+.fondo {
+    background-image: url('../img/fondos/fondoModal.jpeg');
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 90vh !important;
+    background-size: auto 120%;
+    background-position: center;
+    background-repeat: no-repeat;
+    font-family: cursive;
+    overflow: hidden;
+    box-shadow: 1px 1px 50px #575555;
+    background-repeat: repeat-x; /* La imagen se repetirá horizontalmente */
+    background-position: 0 0;
+    animation: moveBackground 5s linear infinite;
+    
+}
+
+
+@keyframes moveBackground {
+    from {
+        background-position: 0 0;
+    }
+    to {
+        background-position: 100% 0;
+    }
+}
+h1 {
+    font-family: "Just Me Again Down Here", cursive;
+    font-weight: 500;
+    font-style: normal;
+    font-size: 400%;
+    position: relative;
+}
+.logo {
+    /* margin-right: 10%; */
+    width: 25%;
+    height: auto;
+    margin: 0 auto;
+}
+
+/* Media Queries para dispositivos móviles */
+@media (max-width: 800px) {
     .robot {
-      /* right: -3%; Ajusta el margen derecho para pantallas pequeñas */
-      bottom: 0;
-      width: 25%; /* Aumenta el ancho del robot para mejor visibilidad */
+        /* right: -3%; Ajusta el margen derecho para pantallas pequeñas */
+        bottom: 0;
+        width: 25%;
+        /* Aumenta el ancho del robot para mejor visibilidad */
     }
-  
+
     .robot img {
-      width: 80%; /* Ajusta el tamaño de la imagen dentro del contenedor del robot */
-      margin-left: 10%; /* Reduce el margen izquierdo para centrar mejor la imagen */
+        width: 80%;
+        /* Ajusta el tamaño de la imagen dentro del contenedor del robot */
+        margin-left: 10%;
+        /* Reduce el margen izquierdo para centrar mejor la imagen */
     }
-  
-    .speech-bubble {
-      width: 70%; /* Aumenta el ancho de la burbuja de diálogo para dispositivos móviles */
-      font-size: 60%; /* Aumenta el tamaño de la fuente para mejor legibilidad */
-      margin-left: -20%; /* Ajusta el margen izquierdo para centrado en pantallas más pequeñas */
-      padding-bottom: 8%;
+
+    .mensaje {
+        width: 70%;
+        /* Aumenta el ancho de la burbuja de diálogo para dispositivos móviles */
+        font-size: 60%;
+        /* Aumenta el tamaño de la fuente para mejor legibilidad */
+        margin-left: -20%;
+        /* Ajusta el margen izquierdo para centrado en pantallas más pequeñas */
+        padding-bottom: 8%;
     }
-  
-    .speech-bubble::after {
-      left: 80%; /* Ajusta la posición de la cola de la burbuja de diálogo */
-      bottom: -20px;
-      transform: translateX(50px);
-      transform: rotate(-38deg);
-      border-width: 40px 15px 0; /* Ajusta el tamaño de la cola para que se vea mejor en pantallas pequeñas */
+
+    .mensaje::after {
+        left: 80%;
+        /* Ajusta la posición de la cola de la burbuja de diálogo */
+        bottom: -20px;
+        transform: translateX(50px);
+        transform: rotate(-38deg);
+        border-width: 40px 15px 0;
+        /* Ajusta el tamaño de la cola para que se vea mejor en pantallas pequeñas */
     }
-  }
-  
-  @media (max-width: 480px) {
+}
+
+@media (max-width: 480px) {
     .robot {
-      margin-right: -50%; /* Ajusta aún más el margen derecho para pantallas muy pequeñas */
-      width: 30%; /* Reduce el ancho del robot para dispositivos muy pequeños */
-      /* bottom: 0; */
+        margin-right: -50%;
+        /* Ajusta aún más el margen derecho para pantallas muy pequeñas */
+        width: 30%;
+        /* Reduce el ancho del robot para dispositivos muy pequeños */
+        /* bottom: 0; */
     }
-  
+
     .robot img {
-      width: 120%; /* Haz que la imagen del robot ocupe todo el ancho del contenedor en pantallas muy pequeñas */
-     /* Elimina el margen izquierdo para centrar la imagen */
+        width: 120%;
+        /* Haz que la imagen del robot ocupe todo el ancho del contenedor en pantallas muy pequeñas */
+        /* Elimina el margen izquierdo para centrar la imagen */
     }
-  
-    .speech-bubble {
-      width: 90%; /* Aumenta el ancho de la burbuja de diálogo para ocupar más espacio en la pantalla */
-      font-size: 55%; /* Incrementa el tamaño de la fuente para una mejor legibilidad en pantallas pequeñas */
-      margin-left: -20%; /* Centra la burbuja de diálogo */
-      padding: 5%;
+
+    .mensaje {
+        width: 90%;
+        /* Aumenta el ancho de la burbuja de diálogo para ocupar más espacio en la pantalla */
+        font-size: 55%;
+        /* Incrementa el tamaño de la fuente para una mejor legibilidad en pantallas pequeñas */
+        margin-left: -20%;
+        /* Centra la burbuja de diálogo */
+        padding: 5%;
     }
-  
-    .speech-bubble::after {
-      left: 20%; /* Ajusta la posición de la cola de la burbuja de diálogo */
-      bottom: -15px;
-      transform: translateX(50px);
-      border-width: 20px 10px 0; /* Ajusta el tamaño de la cola */
+
+    .mensaje::after {
+        left: 20%;
+        /* Ajusta la posición de la cola de la burbuja de diálogo */
+        bottom: -15px;
+        transform: translateX(50px);
+        border-width: 20px 10px 0;
+        /* Ajusta el tamaño de la cola */
     }
-    .apartado-iconos{
+
+    .apartado-iconos {
         margin-top: 3%;
         /* margin-right: -10%; */
         width: 16%;
         height: auto;
     }
-    .iconos{
+
+    .iconos {
         margin: 5%;
     }
-    .iconos:hover{
+
+    .iconos:hover {
         transform: none;
     }
-    .apartado-derecho{
+
+    .apartado-derecho {
         /* margin-top: 5%; */
         width: 52.18%;
         height: auto;
         margin: 3%;
     }
+
     .logoInicio {
         width: 60%;
         height: auto;
     }
-    .logoBienvenido{
+
+    .logoBienvenido {
         width: 300%;
         height: auto;
     }
-    .oJuegos{
+
+    .oJuegos {
         width: 20%;
         height: auto;
     }
-    .textoEleccion{
-        font-family: Comic Sans MS; 
-        font-weight:bold; 
-        font-size: 140%; 
-        color: #e3d8ed; 
+
+    .textoEleccion {
+        font-family: Comic Sans MS;
+        font-weight: bold;
+        font-size: 140%;
+        color: #e3d8ed;
         text-shadow: -1px 0 #414D68, 0 1px #414D68, 1px 0 #414D68, 0 -1px #414D68, -2px 2px 0 #414D68, 2px 2px 0 #414D68, 1px 1px #414D68, 2px 2px #414D68, 3px 3px #414D68, 4px 4px #414D68, 5px 5px #414D68, 6px 6px #414D68, 7px 7px #414D68;
     }
-    .play{
+
+    .play {
         width: 50%;
     }
-    .oJuegos.nivel{
+
+    .oJuegos.nivel {
         width: 25%;
         height: auto;
     }
-  }
-  
-  .cerrarMensaje{
+}
+
+.cerrarMensaje {
     text-align: right;
     margin-top: 0;
     margin-right: -90%;
-  }
-.unirse{
+}
+
+.unirse {
     width: 40%;
     border-radius: 8px;
     margin: 0 auto;
 }
-.unirse .play{
+
+.unirse .play {
     width: 40%;
 }
 
-.tituloMapa{
+.tituloMapa {
     margin: auto;
 }
 
 
 .containerMapa {
     position: relative;
-    width: 100%; /* Ocupa el ancho completo del contenedor padre */
-    max-width: 450px; /* Ancho máximo para pantallas grandes */
+    width: 100%;
+    /* Ocupa el ancho completo del contenedor padre */
+    max-width: 450px;
+    /* Ancho máximo para pantallas grandes */
     height: 300px;
     border: 1px solid #000;
     margin-bottom: 20px;
     border-radius: 20px;
     background-image: url('../img/fondos/loginDos.jpg');
     background-position: center;
-    background-size: cover; /* Asegura que la imagen de fondo cubra el área */
+    background-size: cover;
+    /* Asegura que la imagen de fondo cubra el área */
 }
 
-.cuerpoMapa{
-    background-color: #27ae60;  
+.cuerpoMapa {
+    background-color: #27ae60;
     border-radius: 25px;
 }
 
@@ -476,23 +625,44 @@ h1{
 
 .imagenMapa {
     width: 100%;
-    height: auto; 
+    height: auto;
 }
 
 
-.primera { top: 120px; left: 10px; }
-.segunda { top: 20px; left: 160px; }
-.tercera { top: 90px; left: 310px; }
-.cuarta { top: 193px; left: 180px; }
-.quinta { top: 213px; left: 320px; }
+.primera {
+    top: 120px;
+    left: 10px;
+}
+
+.segunda {
+    top: 20px;
+    left: 160px;
+}
+
+.tercera {
+    top: 90px;
+    left: 310px;
+}
+
+.cuarta {
+    top: 193px;
+    left: 180px;
+}
+
+.quinta {
+    top: 213px;
+    left: 320px;
+}
 
 
 .barra-containerMapa {
     position: absolute;
-    top: 15px; 
+    top: 15px;
     left: 0;
-    width: 80%; /* Ajuste responsivo del ancho */
-    max-width: 100px; /* Ancho máximo para pantallas grandes */
+    width: 80%;
+    /* Ajuste responsivo del ancho */
+    max-width: 100px;
+    /* Ancho máximo para pantallas grandes */
     height: 10px;
     background-color: #bdc3c7;
     border-radius: 5px;
@@ -501,7 +671,8 @@ h1{
 
 .barra-progreso {
     height: 100%;
-    width: 0; /* Inicialmente sin progreso */
+    width: 0;
+    /* Inicialmente sin progreso */
     background-color: #27ae60;
     transition: width 0.4s ease;
 }
@@ -509,7 +680,7 @@ h1{
 
 @media (max-width: 767px) {
     .containerMapa {
-        height: 250px; 
+        height: 250px;
     }
 
     .recompensa {
@@ -524,15 +695,33 @@ h1{
     }
 
     .barra-containerMapa {
-        width: 70%; 
-        max-width: 80px; 
+        width: 70%;
+        max-width: 80px;
     }
 
-    
-    .primera { top: 100px; left: 5px; }
-    .segunda { top: 15px; left: 140px; }
-    .tercera { top: 70px; left: 270px; }
-    .cuarta { top: 160px; left: 160px; }
-    .quinta { top: 180px; left: 280px; }
-}
 
+    .primera {
+        top: 100px;
+        left: 5px;
+    }
+
+    .segunda {
+        top: 15px;
+        left: 140px;
+    }
+
+    .tercera {
+        top: 70px;
+        left: 270px;
+    }
+
+    .cuarta {
+        top: 160px;
+        left: 160px;
+    }
+
+    .quinta {
+        top: 180px;
+        left: 280px;
+    }
+}

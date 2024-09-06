@@ -30,7 +30,6 @@ body {
     align-items: center;
 }
 .logo {
-    /* margin-top: 24%; */
     margin-right: 10%;
     width: 25%;
     height: auto;
@@ -219,7 +218,7 @@ button:hover {
     float: right;
 }
 .iniciarSesion .tarjeta{
-    margin-top: 15%;
+    margin-top: 0%;
     height: 500px;
 }
 .iniciarSesion .form{
@@ -234,7 +233,7 @@ button:hover {
     margin-top: 1%;
 }
 .iniciarSesion .label{
-    margin-top: -0.5%;
+    margin-top: -4.5%;
 }
 .tarjeta::after {
     content: "";

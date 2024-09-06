@@ -10,13 +10,38 @@
     <!-- <link rel="stylesheet" href="css/estilosPerfil.css"> -->
     <title>MemoryStart ¡Pon a prueba tu memoria!</title>
     <link rel="shortcut icon" href="img/iconos/segundoMemory.png">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Just+Me+Again+Down+Here&display=swap');
+    </style>
 </head>
 
 <body>
+    <!-- Modal -->
+    <div class="modal fade" id="modalInicio" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog modal-xl">
+            <div class="modal-content fondo">
+                <div class="modal-body container-fluid">
+                    <div class="contenInicio" id="">
+                        <img id="imagen" src="img/iconos/nuevoMemory.png" alt="Ejemplo de Imagen" class="logo">
+                        <div class="tarjeta">
+                            <h1>¡Bienvenido a <br>
+                                MemoryStar!</h1>
+                            <h5> Para tener una mejor experiencia de juego, inicia sesión o regístrate, ¡Es gratis!</h5>
+                            <div class="botones">
+                                <a href="login.php"><button class="btn btn-primary">Iniciar Sesión</button></a>
+                                <a href=""><button class="btn btn-primary">Registrarse</button></a>
+                            </div>
+                            <a href="index.php" data-bs-dismiss="modal">Continuar como invitado</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
     <div class="container-fuid">
         <?php include('nabar.php'); ?>
         <div id="contenedor">
-<!-- <div onclick="history.back()">atras</div> -->
+            <!-- <div onclick="history.back()">atras</div> -->
             <div id="contenido">
 
                 <img src="img/iconos/nuevoMemory.png" alt="logoMemory" class="logoInicio">
@@ -27,7 +52,7 @@
                 </div>
             </div>
             <div class="robot">
-                <div class="speech-bubble mensaje">
+                <div class="mensaje">
                     <button type="button" class="btn-close cerrarMensaje"></button>
                     <p>¡Hola! ¿En qué te puedo ayudar?</p>
                     <a href="">Jugar con amigos</a><br>

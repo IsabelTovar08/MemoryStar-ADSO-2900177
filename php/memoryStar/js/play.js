@@ -1,4 +1,6 @@
 document.addEventListener('DOMContentLoaded', function () {
+    var myModal = new bootstrap.Modal(document.getElementById('modalInicio'));
+    myModal.show();
     const objetos = document.querySelectorAll('.centrar');
     const boton = document.getElementById('play');
     const botonesJugar = document.getElementById('jugar');
@@ -49,7 +51,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
         // Generación dinámica del slider
         resultadoMostrar += `
-<button class="atras">atras</button>
+<button class="atras"><a href="index.php">atras</a></button>
 
                 <div class="bienvenido"><img src="img/iconos/logoBienvenido.png" alt="logoMemory" class="logoBienvenido"></div>
                 <h1 class="textoEleccion">Selecciona el modo de Juego</h1>
@@ -128,7 +130,7 @@ atras.addEventListener('click',elegirModo)
     }
 
     function vs() {
-        history.replaceState(null, 'jugarVs', '/vs')
+        // history.replaceState(null, 'jugarVs', '/vs')
         let resultadoMostrar = "";
         botonesJugar.style.display = "none";
 
@@ -158,7 +160,7 @@ atras.addEventListener('click',elegirModo)
         crearVs.addEventListener('click',  elegirjuego);
     }
     function multijugador() {
-        history.pushState(null, 'multijugador', '/sala')
+        // history.pushState(null, 'multijugador', '/sala')
 
         let resultadoMostrar = "";
         botonesJugar.style.display = "none";
@@ -189,7 +191,7 @@ atras.addEventListener('click',elegirModo)
         crearSala.addEventListener('click',  elegirjuego);
     }
     function unirse() {
-        history.pushState(null, 'unirseSala', '/unirse')
+        // history.pushState(null, 'unirseSala', '/unirse')
 
         let resultadoMostrar = "";
         botonesJugar.style.display = "none";
