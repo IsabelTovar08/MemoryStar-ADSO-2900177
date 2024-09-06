@@ -35,7 +35,7 @@
     width: 600px;
     flex-wrap: wrap;
     margin: auto;
-   margin-right: 348px;
+   margin-right: 328px;
     margin-top: -70px; 
 }
 .imagen{
@@ -54,4 +54,74 @@
     text-align: center;
     color: blue;
     font-size: 36px;
+}
+
+
+
+
+
+
+
+@media (max-width: 1200px) {
+    .carta {
+        height: 90px;
+        width: 90px;
+        margin: 2px;
+    }
+
+    
+
+    .contenedor {
+        width: 380px;
+        margin-top: -50px;
+        margin: auto;
+    }
+
+    .imagen, .imagen2 {
+        height: 90px;
+        width: 90px;
+    }
+
+    .Titulo {
+        font-size: 28px;
+
+    }
+
+
+    
+
+}
+
+@media (max-width: 480px) {
+    .carta {
+        height: 80px;
+        width: 80px;
+        margin: 2px;
+    }
+
+   
+    .contenedor {
+        width: 340px;
+        flex-wrap: wrap;
+        margin-top: 50px;
+        margin: auto;
+    }
+
+    .imagen, .imagen2 {
+        height: 80px; 
+        width: 80px;
+        border-radius: 4px;
+    }
+
+    .Titulo {
+        font-size: 28px; 
+        margin-top: 10px; 
+    }
+
+    
+
+
+    .botonesCartas{
+        margin-top: 140px;
+    }
 }
