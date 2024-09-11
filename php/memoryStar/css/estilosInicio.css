@@ -1,5 +1,5 @@
 body {
-    background-image: url('../img/fondos/fondonuevo.jpg');
+    background-image: url('../img/fondos/fondonuevoY.jpeg');
     margin: 0;
     padding: 0;
     width: 100vw;
@@ -136,12 +136,11 @@ body {
 }
 
 .logoBienvenido {
-    width: 100%;
+    width: 30vh;
     height: auto;
 }
-
 .oJuegos {
-    width: 15%;
+    width: 17%;
     height: auto;
     cursor: pointer;
 }
@@ -160,7 +159,7 @@ h1 {
     text-align: left;
     font-family: Comic Sans MS;
     font-weight: bold;
-    font-size: 140%;
+    font-size: 4.6vh;
     color: #e3d8ed;
     text-shadow: -1px 0 #414D68, 0 1px #414D68, 1px 0 #414D68, 0 -1px #414D68, -2px 2px 0 #414D68, 2px 2px 0 #414D68, 1px 1px #414D68, 2px 2px #414D68, 3px 3px #414D68, 4px 4px #414D68, 5px 5px #414D68, 6px 6px #414D68, 7px 7px #414D68;
 }
@@ -264,7 +263,150 @@ h1 {
     cursor: pointer;
     margin-top: 1%;
 }
+/* Estilos Selector */
+/* From Uiverse.io by Yaya12085 */ 
+.radio-inputs {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    max-width: 350px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    transition: transform 0.5s;
 
+  }
+  
+  .radio-inputs > * {
+    margin: 6px;
+  }
+  
+  .radio-input:checked + .radio-tile {
+    border-color: #000000;
+    color: #2260ff;
+    box-shadow:0px 5px 10px #000000, 5px 0px 20px #0091ff,  0px -5px 10px #000000,  0px -3px 4px #aea9a9 inset;
+    transform: scale(1.12);
+
+  }
+
+  .radio-input:checked + .radio-tile:before {
+    transform: scale(1);
+    opacity: 1;
+    background-color: #0091ff;
+    border-color: #000000;
+
+  }
+  
+  .radio-input:checked + .radio-tile .radio-label {
+    text-shadow: 1px 1px 1px #3f3f3f;
+    color: #ffffff;
+  }
+  
+  .radio-input:focus + .radio-tile {
+    border-color: #000000;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1), 0 0 0 4px #b5c9fc;
+
+  }
+  
+  .radio-input:focus + .radio-tile:before {
+    transform: scale(1);
+    opacity: 1;
+  }
+  
+  .radio-tile {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border-radius: 2vh;
+    width: 15vh;
+    height: 13vh;
+    border: 1px solid #3f3f3f;
+    background-color: #4c85aecc;
+    box-shadow: 0px 5px 10px #000000,  0px -5px 10px #000000,0px -3px 4px #aea9a9 inset;
+    padding: 1%;
+    padding-bottom: 8%;
+    transition: 0.15s ease;
+    cursor: pointer;
+    position: relative;
+
+  }
+  .radio-tile img{
+    width: 67%;
+  }
+  
+  .radio-tile:before {
+    content: "";
+    position: absolute;
+    display: block;
+    width: 0.75rem;
+    height: 0.75rem;
+    border: 2px solid #b5bfd9;
+    border-radius: 50%;
+    top: 0.25rem;
+    left: 0.25rem;
+    opacity: 0;
+    transform: scale(0);
+    transition: 0.25s ease;
+  }
+  
+  .radio-tile:hover {
+    border-color: #2260ff;
+  }
+  
+  .radio-tile:hover:before {
+    transform: scale(1);
+    opacity: 1;
+  }
+  .radio-input:checked + .radio-tile .radio-label.facil{
+    color: #0091ff;
+  }
+  .radio-input:checked + .radio-tile .radio-label.medio{
+    color: #fbff00;
+  }
+  .radio-input:checked + .radio-tile .radio-label.dificil{
+    color: #ff0000;
+  }
+  .niveles{
+    height: 8vh;
+    span{
+        font-size: 3.5vh;
+        font-weight: bold;
+        text-shadow: 1px 1px 1px #000, -1px -1px 1px #000;
+    }
+    span.facil{
+        color: #0091ff;
+    }
+    span.medio{
+        color: #fbff00;
+    }
+    span.dificil{
+        color: #ff0000;
+    }
+  }
+  .niveles.inter{
+        width: 25vh;
+  }
+
+  .radio-label {
+    color: #ffffff;
+    transition: 0.375s ease;
+    text-align: center;
+    font-size: 2.5vh;
+    text-shadow: 1px 1px 1px #000;
+  }
+  
+  .radio-input {
+    clip: rect(0 0 0 0);
+    -webkit-clip-path: inset(100%);
+    clip-path: inset(100%);
+    height: 1px;
+    overflow: hidden;
+    position: absolute;
+    white-space: nowrap;
+    width: 1px;
+  }
 /* Ordenar */
 .contenedor-inicial {
     border-radius: 20px;
@@ -331,7 +473,19 @@ h1 {
     margin-left: -30%;
     margin-top: -30%;
 }
-
+.rangosObtenidos{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 2%;
+}
+.editar-perfil{
+    display: flex;
+    justify-content: center;
+    align-items: end;
+    margin-bottom: 4%;
+    cursor: pointer;
+}
 /* Fin perfil */
 /* Estilos generales para todos los dispositivos */
 .robot {
@@ -365,6 +519,7 @@ h1 {
     padding-bottom: 5%;
 }
 
+
 .mensaje::after {
     content: '';
     position: absolute;
@@ -377,16 +532,15 @@ h1 {
     border-color: #f0f0f0 transparent transparent transparent;
     /* Triángulo apuntando hacia abajo */
 }
-#imagen {
+.imagen {
     position: relative;
     transition: transform 1s;
 }
 .tarjeta {
     border-radius: 10px;
-    width: 35%;
-    height: 70%;
+    width: 37%;
+    height: auto;
     box-shadow: 16px 14px 20px #0000008c;
-    position: relative;
     overflow: hidden;
     display: flex;
     align-items: center;
@@ -395,13 +549,17 @@ h1 {
     background-color: #ffffff75;
     flex-direction: column;
     margin: 0 auto;
+    h5{
+        font-size: 4vh;
+        text-align: justify;
+    }
 }
-
 
 .contenInicio{
     display: flex;
     margin: 0 auto;
-    height: 90vh;
+    height: 100%;
+    /* height: auto; */
     width: 100%;
     justify-content: center;
     align-items: center;
@@ -412,7 +570,7 @@ h1 {
     padding: 0;
     width: 100%;
     height: 90vh !important;
-    background-size: auto 120%;
+    background-size: auto 150%;
     background-position: center;
     background-repeat: no-repeat;
     font-family: cursive;
@@ -421,6 +579,7 @@ h1 {
     background-repeat: repeat-x; /* La imagen se repetirá horizontalmente */
     background-position: 0 0;
     animation: moveBackground 5s linear infinite;
+    border-radius: 30px;
     
 }
 
@@ -433,70 +592,93 @@ h1 {
         background-position: 100% 0;
     }
 }
-h1 {
+.fondo h1 {
     font-family: "Just Me Again Down Here", cursive;
     font-weight: 500;
-    font-style: normal;
-    font-size: 400%;
-    position: relative;
+    font-size: 10vh;
+    margin: 5%;
+
 }
 .logo {
-    /* margin-right: 10%; */
     width: 25%;
     height: auto;
     margin: 0 auto;
+    margin-right: -5%;
 }
 
 /* Media Queries para dispositivos móviles */
-@media (max-width: 800px) {
+@media screen and (max-width: 800px) {
+    /* .tarjeta {
+        border-radius: 10px;
+        width: 50%;
+        height: 70%;
+        padding: 2%;
+    } */
     .robot {
-        /* right: -3%; Ajusta el margen derecho para pantallas pequeñas */
         bottom: 0;
         width: 25%;
-        /* Aumenta el ancho del robot para mejor visibilidad */
     }
 
     .robot img {
         width: 80%;
-        /* Ajusta el tamaño de la imagen dentro del contenedor del robot */
         margin-left: 10%;
-        /* Reduce el margen izquierdo para centrar mejor la imagen */
     }
 
     .mensaje {
         width: 70%;
-        /* Aumenta el ancho de la burbuja de diálogo para dispositivos móviles */
         font-size: 60%;
-        /* Aumenta el tamaño de la fuente para mejor legibilidad */
         margin-left: -20%;
-        /* Ajusta el margen izquierdo para centrado en pantallas más pequeñas */
         padding-bottom: 8%;
     }
 
     .mensaje::after {
         left: 80%;
-        /* Ajusta la posición de la cola de la burbuja de diálogo */
         bottom: -20px;
         transform: translateX(50px);
         transform: rotate(-38deg);
         border-width: 40px 15px 0;
-        /* Ajusta el tamaño de la cola para que se vea mejor en pantallas pequeñas */
     }
 }
 
-@media (max-width: 480px) {
+@media (max-width: 991px){
+    .tarjeta{
+        border-radius: 10px;
+        width: 70%;
+        /* height: 70%; */
+        /* font-size: 10%; */
+        padding: 2%;
+    }
+    .logo{
+        margin-right: 0;
+     }
+}
+
+@media screen and (max-width: 480px) {
+    .contenInicio{
+        display: block;
+    }
+    .logo{
+        justify-content: center;
+        display: block;
+        margin: 0 auto;
+    }
+    .tarjeta{
+        border-radius: 10px;
+        width: 100%;
+        /* height: 70%; */
+        /* font-size: 10%; */
+        padding: 2%;
+        h1{
+            font-size: 50px;
+        }
+    }
     .robot {
         margin-right: -50%;
-        /* Ajusta aún más el margen derecho para pantallas muy pequeñas */
         width: 30%;
-        /* Reduce el ancho del robot para dispositivos muy pequeños */
-        /* bottom: 0; */
     }
 
     .robot img {
         width: 120%;
-        /* Haz que la imagen del robot ocupe todo el ancho del contenedor en pantallas muy pequeñas */
-        /* Elimina el margen izquierdo para centrar la imagen */
     }
 
     .mensaje {
@@ -546,7 +728,7 @@ h1 {
     }
 
     .logoBienvenido {
-        width: 300%;
+        width: 20vh;
         height: auto;
     }
 
@@ -566,11 +748,14 @@ h1 {
     .play {
         width: 50%;
     }
-
-    .oJuegos.nivel {
+    .radio-tile{
+        width: 10vh;
+        height: 10vh;
+    }
+    /* .oJuegos.nivel {
         width: 25%;
         height: auto;
-    }
+    } */
 }
 
 .cerrarMensaje {

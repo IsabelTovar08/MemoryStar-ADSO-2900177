@@ -21,9 +21,9 @@
             </div>
             <div class="tarjeta form">
                 <form class="formularioLogin">
-                <div class="inputs"><input id="name" required="" type="text" /><span><i class="bi bi-person"></i> Nombre</span></div>
-                <div class="inputs"><input id="lastname" required="" type="text" /><span><i class="bi bi-person"></i> Apellido</span></div>
-                <div class="inputs"><input id="email" required="" type="text" /><span><i class="bi bi-person"></i> Email</span></div>
+                <div class="inputs"><input id="name" required="" type="text" /><span><i class="bi bi-person-add"></i> Nombre</span></div>
+                <div class="inputs"><input id="lastname" required="" type="text" /><span><i class="bi bi-person-add"></i> Apellido</span></div>
+                <div class="inputs"><input id="email" required="" type="text" /><span><i class="bi bi-envelope-at"></i> Email</span></div>
                     <div class="inputs"><input id="username" required="" type="text" /><span><i class="bi bi-person"></i> Usuario</span></div>
                     <div class="inputs"><input id="password" required="" type="password" /><span><i class="bi bi-lock"></i> Contraseña</span></div>
                     <button type="submit">Iniciar <i class="bi bi-box-arrow-in-right"></i></button>

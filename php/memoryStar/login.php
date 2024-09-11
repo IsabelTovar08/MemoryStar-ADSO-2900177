@@ -54,6 +54,7 @@
             </div>
         </div>
     </div>
+    <script src="js/movimiento.js"></script>
     <script src="js/login.js"></script>
     <script src="bootstrap/js/bootstrap.js"></script>
 </body>

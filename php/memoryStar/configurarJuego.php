@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="css/estilosAyuda.css">
     <link rel="stylesheet" href="css/estiloTienda.css">
     <!-- <link rel="stylesheet" href="css/estilosPerfil.css"> -->
-    <title>MemoryStart ¡Pon a prueba tu memoria!</title>
+    <title>JUGAR MemoryStart ¡Pon a prueba tu memoria!</title>
     <link rel="shortcut icon" href="img/iconos/segundoMemory.png">
     <!-- <link
     rel="stylesheet"
@@ -21,38 +21,17 @@
 </head>
 
 <body>
-    <!-- Modal -->
-    <!-- <div class="modal fade" id="modalInicio" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-        <div class="modal-dialog modal-xl">
-            <div class="modal-content fondo">
-                <div class="modal-body container-fluid">
-                    <div class="contenInicio" id="">
-                        <img id="" src="img/iconos/nuevoMemory.png" alt="Ejemplo de Imagen" class="logo imagen">
-                        <div class="tarjeta">
-                            <h1>¡Bienvenido a <br>
-                                MemoryStar!</h1>
-                            <h5> Para tener una mejor experiencia de juego, inicia sesión o regístrate, ¡Es gratis!</h5>
-                            <div class="botones">
-                                <a href="login.php"><button class="btn btn-primary">Iniciar Sesión</button></a>
-                                <a href=""><button class="btn btn-primary">Registrarse</button></a>
-                            </div>
-                            <a href="index.php" data-bs-dismiss="modal">Continuar como invitado</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div> -->
     <div class="container-fuid">
         <?php include('nabar.php'); ?>
         <div id="contenedor">
-            <!-- <div onclick="history.back()">atras</div> -->
             <div id="contenido">
-                <img src="img/iconos/nuevoMemory.png" alt="logoMemory" class="logoInicio">
-                <div id="jugar">
-                    <img src="img/iconos/clic.png" alt="" width="50" class="centrar" id="centrar1">
-                    <img src="img/iconos/clic2.png" alt="" width="50" class="centrar" id="centrar2">
-                    <a href="configurarJuego.php"><img src="img/iconos/play.png" alt="" class="play zoom" id="play"></a>
+                <a href="index.php"><img src="img/iconos/atras.png" alt="" width="50" class="atras" style="width: 8vh;"></a>
+                <div class="bienvenido"><img src="img/iconos/logoBienvenido.png" alt="logoMemory" class="logoBienvenido"></div>
+                <h1 class="textoEleccion">Selecciona el modo de Juego</h1>
+                <div class="contenedorOpciones">
+                    <img src="img/iconos/jugarSolo.png" class="oJuegos zoom" alt="Imagen 1" id="jugarSolo">
+                    <img src="img/iconos/modoVs.png" class="oJuegos zoom" alt="Imagen 2" id="jugarVs">
+                    <img src="img/iconos/multijugador.png" class="oJuegos zoom" alt="Imagen 3" id="jugarMultijugador">
                 </div>
             </div>
             <div class="robot">
