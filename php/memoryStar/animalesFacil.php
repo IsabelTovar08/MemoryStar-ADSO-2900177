@@ -10,6 +10,8 @@
     <link rel="stylesheet" href="bootstrap/css/bootstrap.css">
     <link rel="stylesheet" href="css/estilosAyuda.css">
     <link rel="stylesheet" href="css/animacion.css">
+    <link rel="stylesheet" href="css/estilosTablaPuntuacion.css">
+    <link rel="stylesheet" href="estilosSeguirJugando.css">
   
     <link rel="shortcut icon" href="img/iconos/segundoMemory.png">
 
@@ -164,6 +166,7 @@
     <script src="bootstrap/js/bootstrap.js"></script>
     <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
     <scrip src="js/animacion.js"></script>
+    <script src="js/barra.js"></script>
     
     
 </body>
