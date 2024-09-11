@@ -1,16 +1,128 @@
+.carta{
+    height: 121px;
+    width: 121px;
+    cursor: pointer; 
+    transition: transform 0.6s;
+    transform-style: preserve-3d;
+    margin: 1%;
+    position: relative; 
+    
+    
+}
+.nose{
+    display: flex;
+    justify-content: center;
+    position: relative;
+}
+
+body {
+    background-image: url('../img/fondoTematicas/fondoAnimal.jpeg');
+    margin: 0;
+
+    width: 100vw;
+    height: 100vh;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    font-family: cursive;
+    overflow: hidden;
+    padding: 1%;
+
+    
+}
+
+.juegoCartas{
+    justify-content: center;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    position: relative;
+    width: 100%;
+}
+
+.carta.volteada {
+    transform: rotateY(180deg);
+}
+.frente {
+    z-index: 2;
+    transform: rotateY(0deg);
+}
+
+.reverso {
+    transform: rotateY(180deg);
+}
+.carta:nth-child(5), .carta:nth-child(0) {
+     margin-right: 33%;
+     margin-left: 1%;
+    
+}
+.cara {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+}
+.central {
+
+    height: 121px;
+    width: 121px;
+    
+    position:fixed; /* Se ubica en el centro absoluto del contenedor */
+    top: 53.5%; /* Mover hacia el centro vertical */
+    left: 49.5%; /* Mover hacia el centro horizontal */
+    transform: translate(-50%, -50%); /* Ajustar la posición al centro exacto */
+    z-index: 10; /* Asegura que esté por encima de otras cartas */
+}
+.contenedorCartas{
+    /* width: 400px; */
+    flex-direction: column;
+    /* margin: auto; */
+    /* margin-top: -70px;  */
+    display: flex;
+    position: relative;
+
+    justify-content: center;
+    align-items: center; 
+   
+}
+.imagen{
+    height: 121px;   
+    width: 121px;
+  
+    border-radius: 6px;
+}
+.imagen2{
+    height: 121px;   
+    width: 121px;
+    
+    border-radius: 6px;
+}
+.Titulo{
+    text-align: center;
+    color: blue;
+    font-size: 36px;
+}
+
+
+
+/*  estilos encabezado */
+
 .contenedorCabeza {
-    width: 500px;
+    width: 100%;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    margin: 50px;
-    margin-top: -10px;
-    margin-left: 420px;
+    margin: 0 auto;
+    height: 100vh;
+   padding: 1%;
 }
 
+
+
+
 .tituloCabeza {
-    font-size: 50px;
+    font-size: 300%;
     font-style: inter;
     margin-bottom: 20px;
     color: white;
@@ -120,7 +232,45 @@
 
 
 
-@media (max-width: 1200px) {
+@media (max-width: 800px) {
+    .carta {
+        height: 90px;
+        width: 90px;
+        margin: 2px;
+    }
+
+    .central {
+        height: 90px;
+        width: 90px;
+        margin-top: 40px;
+    }
+
+    .contenedor {
+        width: 300px;
+        margin-top: -50px;
+    }
+
+    .imagen, .imagen2 {
+        height: 90px;
+        width: 90px;
+    }
+
+    .Titulo {
+        font-size: 28px;
+
+    }
+
+
+    .carta:nth-child(5), .carta:nth-child(0) {
+        margin-right: 100px; /* Ajuste de margen para evitar desalineaciones */
+        margin-left: 0;
+    }
+
+
+
+    /*estilos encabezado*/
+
+
     .contenedorCabeza {
         width: 100%;
         margin: 20px auto;
@@ -180,11 +330,70 @@
         width: 40px;
         height: 40px;
     }
+    
+
 }
 
-
-/* Media query para pantallas con un ancho máximo de 480px */
 @media (max-width: 480px) {
+    .carta {
+        height: 80px; /* Ajusta el tamaño para adaptarse mejor a pantallas pequeñas */
+        width: 80px;
+        margin: 2px;
+    }
+
+    .central {
+        height: 80px;
+        width: 80px;
+        position:fixed; 
+        top: 47%; 
+        left: 50%; 
+        transform: translate(-50%, -50%); 
+        z-index: 10; 
+       
+        
+       
+    }
+
+    .contenedor {
+        width: 260px;
+        flex-wrap: wrap;
+        margin-top: 50px;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .imagen {
+        height: 80px; 
+        width: 80px;
+        border-radius: 4px;
+     
+    }
+
+    .imagen2{
+        height: 90px; 
+        width: 80px;
+        border-radius: 4px;
+        margin: 50% 50% 50% 50% ;
+    }
+
+    .Titulo {
+        font-size: 28px; 
+        margin-top: 10px; 
+    }
+
+    .carta:nth-child(5), .carta:nth-child(0) {
+        margin-right: 90px; 
+     
+    }
+
+
+    .botonesCartas{
+        margin-top: 140px;
+    }
+
+
+    /*encabezado*/
+
     .contenedorCabeza {
         width: 100%;
         margin: 20px auto;
