@@ -4,13 +4,13 @@ document.addEventListener('DOMContentLoaded', function() {
     let intervalo;
 
     modal.addEventListener('shown.bs.modal', function () {
-        let timeLeft = 5; // segundos
-        regresiva.textContent = `${timeLeft}s`;
+        let tiempo = 5; // segundos
+        regresiva.textContent = `${tiempo}s`;
         intervalo = setInterval(function() {
-            timeLeft -= 1;
-            regresiva.textContent = `${timeLeft}s`;
+            tiempo -= 1;
+            regresiva.textContent = `${tiempo}s`;
 
-            if (timeLeft <= 0) {
+            if (tiempo <= 0) {
                 clearInterval(intervalo);
                 regresiva.textContent = "0s";
                 // Cierra el modal cuando el contador llega a cero
