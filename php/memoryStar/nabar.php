@@ -603,9 +603,7 @@
   </div>
 
 <!--Tabla Multijugador-->
-<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#tablaMulti">
-    Tabla Multijugador
-  </button>
+
 <div class="modal fade" id="tablaMulti" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
       <div class="modal-content">
@@ -686,9 +684,7 @@
   </div>
 
 <!--Tabla solo-->
-<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#tablapuntuacionsolo">
-        Tabla Puntuacion solo
-</button>
+
 <div class="modal fade" id="tablapuntuacionsolo" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content contenedorTsolo">
