@@ -274,4 +274,158 @@
             </div>
         </div>
     </div>
+    <!--modal seguir jugando-->
 
+    <div class="modal fade" id="seguirJugando" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-sm modal-dialog-centered">
+            <div class="modal-content">
+                
+                <div class="modal-body">
+                    <h1 class="modal-title" id="exampleModalLabel">¿Deseas seguir<br>jugando?</h1>
+                    
+                    <div class="contenedor-SeguirJugando">
+                        
+                        <div>
+                            Usa 10 <img src="../img/rubipuntaje.png" class="rubi-seguir"> para tener otra oportunidad
+                        </div>
+                        <div id="regresiva" class="mt-3">
+                            5s
+                        </div>
+                        
+
+                    </div>
+
+                    <div class="contenedor-botonSeguir">
+                        <div class="col-6">
+                            <button type="button" class=" botonSeguir">Comprar</button>
+                        </div>
+                        <div class="col-6">
+                            <button type="button" class=" botonSeguir">Salir</button>
+                        </div>
+                    </div>
+                    
+                    
+                    
+                </div>
+
+                
+            </div>
+        </div>
+  </div>
+
+<!--Tabla solo-->
+<div class="modal fade" id="tablapuntuacionsolo" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content contenedorTsolo">
+            <div class="tituloTsolo">Puntuación</div>
+            <div class="contenedorTsoloInterior" style="background-image: url('../tablas/fondosolo.png');">
+                <div class="contenedor-estrellas">
+                    <img src="../tablas/Star.png" class="star" alt="">
+                    <img src="../tablas/Star.png" class="star" alt="">
+                    <img src="../tablas/Star.png" class="star" alt="">
+                </div>
+                
+                <div class="puntaje-total">
+                    100
+                </div>
+
+                <div class="contenedor-puntaje">
+                    <div>+15</div><img src="../tablas/starpuntaje.png" alt="" class="estrella-puntaje">
+                    <div style="margin-left: 50px;">+15</div><img src="../tablas/rubipuntaje.png" alt="" class="rubi-puntaje">
+                </div>
+                
+                <div class="col-10 row contenedor-info">
+                    <div class="col-6"><img src="../tablas/fotouser.png" alt="" style="width: 20px;">Usuario</div>
+                    <div class="col-3">00:00</div>
+                    <div class="col-3">9999</div>
+                </div>
+
+            </div>
+        
+            <div class="contenedor-botonTsolo">
+                <button class="botonTsolo">Jugar de nuevo</button>
+                <button class="botonTsolo" style="margin-left: 20px;"data-bs-dismiss="modal" aria-label="Close">Salir</button>
+            </div>
+        </div>
+        </div>
+    </div>
+
+<!--tabla Multijugador-->
+<div class="modal fade" id="tablaMulti" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-body">
+            <h1 class="modal-title">Tabla Puntuacion</h1>
+
+            <div class="contenedor-tablaMulti">
+                <div>
+                    <img src="../tablas/segundo.png" class="medalla" alt="">
+                    <img src="../tablas/primero.png" class="medalla" alt="">
+                    <img src="../tablas/tercero.png" class="medalla" alt="">
+                </div>
+
+                <div class="contenedor-user">
+                    <img src="../tablas/usergrande.png" class="foto-user">
+                    <img src="../tablas/usergrande.png" class="foto-user">
+                    <img src="../tablas/usergrande.png" class="foto-user">
+                </div>
+
+                <div class="contenedor-userPunto">
+                    <div class="userPunto">usuario <br> 998 <br>00:00</div>
+                    <div class="userPunto">usuario <br> 999<br>00:00</div>
+                    <div class="userPunto">usuario <br> 997<br>00:00</div>
+                </div>
+
+                <div class="col-10 row contenedor-infoMulti">
+                    <div class="col-6">4.<img src="..//tablas/fotouser.png" alt="" style="width: 20px;">Usuario</div>
+                    <div class="col-3">00:00</div>
+                    <div class="col-3">9999</div>
+                </div>
+                <div class="col-10 row contenedor-infoMulti">
+                    <div class="col-6">5.<img src="..//tablas/fotouser.png" alt="" style="width: 20px;">Usuario</div>
+                    <div class="col-3">00:00</div>
+                    <div class="col-3">9999</div>
+                </div>
+                <div class="col-10 row contenedor-infoMulti">
+                    <div class="col-6">6.<img src="..//tablas/fotouser.png" alt="" style="width: 20px;">Usuario</div>
+                    <div class="col-3">00:00</div>
+                    <div class="col-3">9999</div>
+                </div>
+                <div class="col-10 row contenedor-infoMulti">
+                    <div class="col-6">7.<img src="..//tablas/fotouser.png" alt="" style="width: 20px;">Usuario</div>
+                    <div class="col-3">00:00</div>
+                    <div class="col-3">9999</div>
+                </div>
+                <div class="col-10 row contenedor-infoMulti">
+                    <div class="col-6">8.<img src="..//tablas/fotouser.png" alt="" style="width: 20px;">Usuario</div>
+                    <div class="col-3">00:00</div>
+                    <div class="col-3">9999</div>
+                </div>
+                <div class="col-10 row contenedor-infoMulti">
+                    <div class="col-6">9.<img src="..//tablas/fotouser.png" alt="" style="width: 20px;">Usuario</div>
+                    <div class="col-3">00:00</div>
+                    <div class="col-3">9999</div>
+                </div>
+                <div class="col-10 row contenedor-infoMulti">
+                    <div class="col-6">10.<img src="..//tablas/fotouser.png" alt="" style="width: 20px;">Usuario</div>
+                    <div class="col-3">00:00</div>
+                    <div class="col-3">9999</div>
+                </div>
+
+
+            </div>
+
+            <div class="contenedor-botonSeguir">
+                <div class="col-6">
+                    <button type="button" class=" botonSeguir">Continuar</button>
+                </div>
+                <div class="col-6">
+                    <button type="button" class=" botonSeguir" data-bs-dismiss="modal" aria-label="Close">Salir</button>
+                </div>
+            </div>
+            
+        </div>
+        
+      </div>
+    </div>
+  </div>

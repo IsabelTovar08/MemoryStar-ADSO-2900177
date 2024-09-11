@@ -109,5 +109,6 @@
     <script src="../../js/cartas.js"></script>
     <script src="../../js/sonidos.js"></script>
     <script src="../../bootstrap/js/bootstrap.js"></script>
+    <script src="../../js/barra.js"></script>
 </body>
 </html>
