@@ -36,7 +36,7 @@
                 <span class="loader"></span>
             </div>
 
-
+            
 
 
     <div class="juegoCartas" id ="juegoCartas">
@@ -164,7 +164,7 @@
     <script src="js/sonidos.js"></script>
     <script src="js/animacion.js"></script>
     <script src="bootstrap/js/bootstrap.js"></script>
-    <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+   
     <scrip src="js/animacion.js"></script>
     <script src="js/barra.js"></script>
     
