@@ -7,15 +7,41 @@
     <link rel="stylesheet" href="bootstrap/css/bootstrap.css">
     <link rel="stylesheet" href="css/estilosInicio.css">
     <link rel="stylesheet" href="css/estilosAyuda.css">
+    <link rel="stylesheet" href="css/animacion.css">
     <!-- <link rel="stylesheet" href="css/estilosPerfil.css"> -->
     <title>MemoryStart ¡Pon a prueba tu memoria!</title>
     <link rel="shortcut icon" href="img/iconos/segundoMemory.png">
 </head>
 
 <body>
+
+ 
+    
+
+
+
+
+
     <div class="container-fuid">
         <?php include('nabar.php'); ?>
+
+            <div class="animacion"   id ="loader" >
+                 <span class="loader"></span>
+            </div>
+
+
+
+
+
+
         <div id="contenedor">
+
+
+           
+
+
+
+
             <div id="contenido">
                 <img src="img/iconos/nuevoMemory.png" alt="logoMemory" class="logoInicio">
                 <div id="jugar">
@@ -45,6 +71,8 @@
         <script src="js/play.js"></script>
         <script src="js/login.js"></script>
         <script src="js/mapa.js"></script>
+        <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+        <script src="js/animacion.js"></script>
 </body>
 
 </html>
