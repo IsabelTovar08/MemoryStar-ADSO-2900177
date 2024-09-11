@@ -547,3 +547,20 @@ h1{
     .quinta { top: 180px; left: 280px; }
 }
 
+.ctempo{
+    width: 15vh;
+    height: 10vh;
+    border: 1px solid #000;
+    position: absolute;
+    flex-direction: column;
+    left: 150vh;
+    top: 20vh;
+    color: white;
+    text-shadow:
+        -1px -1px 0 #000,  
+         1px -1px 0 #000,
+        -1px  1px 0 #000,
+         1px  1px 0 #000,
+         0px   0px 5px rgba(0, 0, 0, 0.5); 
+
+}
