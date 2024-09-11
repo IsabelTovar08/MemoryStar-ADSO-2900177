@@ -381,7 +381,7 @@
             </div>
 
             <form onsubmit="return operaciones()">
-                <label for="txtnumero1">Ingresa tu puntuación:</label>
+                <label for="txtnumero1" class ="tituloMapa">Ingresa tu puntuación:</label>
                 <input type="number" id="txtnumero1">
                 <button type="submit">Enviar</button>
             </form>

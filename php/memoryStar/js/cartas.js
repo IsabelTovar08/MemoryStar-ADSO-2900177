@@ -23,7 +23,7 @@
  * Fecha: 05/07/2024
  */
 document.addEventListener('DOMContentLoaded', function() {
-    const contenedor = document.querySelector('.contenedor');
+    const contenedor = document.querySelector('.contenedorCartas');
     const central = document.querySelectorAll('.central');
     const cartas = Array.from(document.querySelectorAll('.carta')); // Convertir NodeList a Array
     let cartasVolteadas = [];
@@ -83,20 +83,4 @@ function mezclarCartas() {
     mezclarCartas();
     inicializarJuego();
 
-    // Mostrar resultados (opcional)
-    window.mostrarResultados = function() {
-        let imprimir = '<table class="table">';
-        imprimir += '<tr>';
-        aciertos.forEach(punto => {
-            imprimir += '<td>' + punto + '</td>';
-        });
-        imprimir += '</tr>';
-        imprimir += '<tr>';
-        fallos.forEach(error => {
-            imprimir += '<td>' + error + '</td>';
-        });
-        imprimir += '</tr>';
-        imprimir += '</table>';
-        document.getElementById("resultados").innerHTML = imprimir;
-    };
 });
