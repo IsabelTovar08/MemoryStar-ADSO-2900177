@@ -10,8 +10,8 @@
     <link rel="stylesheet" href="bootstrap/css/bootstrap.css">
     <link rel="stylesheet" href="css/estilosAyuda.css">
     <link rel="stylesheet" href="css/animacion.css">
-    <link rel="stylesheet" href="css/estilosTablaPuntuacion.css">
-    <link rel="stylesheet" href="estilosSeguirJugando.css">
+    <link rel="stylesheet" href="css/estiloTablaPuntuacion.css">
+    <link rel="stylesheet" href="css/estiloSeguirJugando.css">
   
     <link rel="shortcut icon" href="img/iconos/segundoMemory.png">
 

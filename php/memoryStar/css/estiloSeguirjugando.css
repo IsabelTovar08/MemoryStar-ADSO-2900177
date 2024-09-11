@@ -1,7 +1,7 @@
 #seguirJugando .modal-content{
     border-radius: 20px;
     border: 7px solid #aa00df;
-    background: linear-gradient(#1c266a 20%, #6600fa);
+    background: linear-gradient(#364399 20%, #7e2bfc);
     position: relative;
     
 }
@@ -17,7 +17,7 @@
     
     font-weight: bold;
     font-family: Arial, Helvetica, sans-serif;
-    background-color: #132556;
+    background-color: #213f92;
     border: 5px solid #aa00df;
     border-radius: 10px;
     padding: 5px 10px;
@@ -35,7 +35,7 @@
     flex-direction: column;
     display: flex;
     justify-content: center;
-    background-color: rgb(66, 81, 176,0.8);
+    background-color: rgba(122, 134, 216, 0.5);
     border-radius: 10px;
     color: #ffff;
     font-size: 22px;

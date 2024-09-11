@@ -261,6 +261,9 @@
 </div>
 
 <!--Seguir Jugando-->
+<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#seguirJugando">
+    Seguir Jugando
+  </button>
 <div class="modal fade" id="seguirJugando" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-sm modal-dialog-centered">
             <div class="modal-content">
@@ -271,7 +274,7 @@
                     <div class="contenedor-SeguirJugando">
                         
                         <div>
-                            Usa 10 <img src="../img/rubipuntaje.png" class="rubi-seguir"> para tener otra oportunidad
+                            Usa 10 <img src="img/tablas/rubipuntaje.png" class="rubi-seguir"> para tener otra oportunidad
                         </div>
                         <div id="regresiva" class="mt-3">
                             5s
@@ -299,6 +302,9 @@
   </div>
 
 <!--Tabla Multijugador-->
+<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#tablaMulti">
+    Tabla Multijugador
+  </button>
 <div class="modal fade" id="tablaMulti" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
       <div class="modal-content">
@@ -307,15 +313,15 @@
 
             <div class="contenedor-tablaMulti">
                 <div>
-                    <img src="../img/segundo.png" class="medalla" alt="">
-                    <img src="../img/primero.png" class="medalla" alt="">
-                    <img src="../img/tercero.png" class="medalla" alt="">
+                    <img src="img/tablas/segundo.png" class="medalla" alt="">
+                    <img src="img/tablas/primero.png" class="medalla" alt="">
+                    <img src="img/tablas/tercero.png" class="medalla" alt="">
                 </div>
 
                 <div class="contenedor-user">
-                    <img src="../img/usergrande.png" class="foto-user">
-                    <img src="../img/usergrande.png" class="foto-user">
-                    <img src="../img/usergrande.png" class="foto-user">
+                    <img src="img/tablas/usergrande.png" class="foto-user">
+                    <img src="img/tablas/usergrande.png" class="foto-user">
+                    <img src="img/tablas/usergrande.png" class="foto-user">
                 </div>
 
                 <div class="contenedor-userPunto">
@@ -379,15 +385,18 @@
   </div>
 
 <!--Tabla solo-->
+<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#tablapuntuacionsolo">
+        Tabla Puntuacion solo
+</button>
 <div class="modal fade" id="tablapuntuacionsolo" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content contenedorTsolo">
             <div class="tituloTsolo">Puntuación</div>
-            <div class="contenedorTsoloInterior" style="background-image: url('../img/fondosolo.png');">
+            <div class="contenedorTsoloInterior" style="background-image: url('img/tablas/fondosolo.png');">
                 <div class="contenedor-estrellas">
-                    <img src="../img/Star.png" class="star" alt="">
-                    <img src="../img/Star.png" class="star" alt="">
-                    <img src="../img/Star.png" class="star" alt="">
+                    <img src="img/tablas/Star.png" class="star" alt="">
+                    <img src="img/tablas/Star.png" class="star" alt="">
+                    <img src="img/tablas/Star.png" class="star" alt="">
                 </div>
                 
                 <div class="puntaje-total">
@@ -395,8 +404,8 @@
                 </div>
 
                 <div class="contenedor-puntaje">
-                    <div>+15</div><img src="../img/starpuntaje.png" alt="" class="estrella-puntaje">
-                    <div style="margin-left: 50px;">+15</div><img src="../img/rubipuntaje.png" alt="" class="rubi-puntaje">
+                    <div>+15</div><img src="img/tablas/starpuntaje.png" alt="" class="estrella-puntaje">
+                    <div style="margin-left: 50px;">+15</div><img src="img/tablas/rubipuntaje.png" alt="" class="rubi-puntaje">
                 </div>
                 
                 <div class="col-10 row contenedor-info">
