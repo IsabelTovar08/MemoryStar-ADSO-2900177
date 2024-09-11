@@ -87,34 +87,35 @@
 
 <!-- Modal ayuda -->
 <div class="modal fade" id="exampleModal-ayuda" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
+    <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content fondo-ayuda">
             <div class="modal-header">
-                <div class="col-12 row">
-                    <div class="col-10">
-                        <h1 class="fs-5 titulo-ayuda">¿Cómo Jugar?</h1>
-                    </div>
-                    <div class="col-2">
-                        <img src="../../img/iconos/botonSalir.png" alt="salir" class="btn salir-ayuda" data-bs-dismiss="modal" aria-label="Close">
-                    </div>
-                    
-                </div>
-            </div>
-            <div class="modal-body texto">
-
-                Aquí puedes encontrar ayuda sobre cómo jugar nuestros modos de juego. <br>
-                Selecciona el modo en el cual necesitas ayuda.
                 
-                <div class="col-12 row">
-                    <div class="col-4">
-                        <img src="../../img/iconos/botonCarta.png" alt="cartas" id="goToModal2" class="imgAyuda btn">
-                    </div>
-                    <div class="col-4">
-                        <img src="../../img/iconos/botonSecuencia.png" alt="secuencia" id="goToModal3" class="imgAyuda btn">
-                    </div>
-                    <div class="col-4">
-                        <img src="../../img/iconos/botonAsociacion.png" alt="asociacion" id="goToModal4" class="imgAyuda btn">
-                    </div>
+                    <h1 class="titulo-ayuda">¿Cómo Jugar?</h1>
+                    
+                    
+                    <img src="../../img/iconos/botonSalir.png" alt="salir" class="btn salir-ayuda" data-bs-dismiss="modal" aria-label="Close">
+                    
+                    
+                
+            </div>
+            <div class="modal-body">
+                <div class="texto">
+                    Aquí puedes encontrar ayuda sobre cómo jugar nuestros modos de juego. <br>
+                    Selecciona el modo en el cual necesitas ayuda.
+                </div>
+                
+                
+                <div class="contenedor-imgAyuda">
+                    
+                    <img src="../../img/iconos/botonCarta.png" alt="cartas" id="goToModal2" class="imgAyuda btn">
+                    
+                    
+                    <img src="../../img/iconos/botonSecuencia.png" alt="secuencia" id="goToModal3" class="imgAyuda btn">
+                    
+                    
+                    <img src="../../img/iconos/botonAsociacion.png" alt="asociacion" id="goToModal4" class="imgAyuda btn">
+                    
                 </div>
 
             </div>
@@ -125,21 +126,19 @@
 
 <!-- Modal ayuda CARTAS 2 -->
 <div class="modal fade" id="exampleModal-ayuda2" tabindex="-1" aria-labelledby="exampleModalLabel2" aria-hidden="true">
-    <div class="modal-dialog">
+    <div class="modal-dialog  modal-dialog-centered">
         <div class="modal-content fondo-ayuda">
             <div class="modal-header">
                
-                <div class="col-12 row">
-                    <div class="col-10">
-                        <h1 class="fs-5 titulo-ayuda">¿Cómo Jugar?</h1>
-                    </div>
-                    <div class="col-2">
-                    </div>    
-                </div>
-            </div>
-            <div class="modal-body texto">
                 
-                En el modo de juego de cartas tu objetivo es encontrar las parejas de cartas iguales
+                 <h1 class=" titulo-ayuda">¿Cómo Jugar?</h1>
+                 
+            </div>
+            <div class="modal-body">
+                
+                <div class="texto">
+                    En el modo de juego de cartas tu objetivo es encontrar las parejas de cartas iguales
+                </div>
 
                 <img src="img/ayuda/ayudaCarta.png" class="imgAyuda2">
             </div>
@@ -151,20 +150,17 @@
 
 <!-- Modal ayuda SECUENCIA 3 -->
 <div class="modal fade" id="exampleModal-ayuda3" tabindex="-1" aria-labelledby="exampleModalLabel3" aria-hidden="true">
-    <div class="modal-dialog">
+    <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content fondo-ayuda">
             <div class="modal-header">
-                <div class="col-12 row">
-                    <div class="col-10">
-                        <h1 class="fs-5 titulo-ayuda">¿Cómo Jugar?</h1>
-                    </div>
-                    <div class="col-2">
-                        <!-- Botón de cerrar (si lo necesitas) -->
-                    </div>    
-                </div>
+                
+                <h1 class=" titulo-ayuda">¿Cómo Jugar?</h1>
+                
             </div>
-            <div class="modal-body texto">
-                SECUENCIA
+            <div class="modal-body">
+                <div class="texto">
+                    SECUENCIA
+                </div>
             </div>
             <div alt="salir" class="btn atras-ayuda" id="salir2">Atras</div>
         </div>
@@ -173,25 +169,25 @@
 
 <!-- Modal ayuda ASOCIACION 4 -->
 <div class="modal fade" id="exampleModal-ayuda4" tabindex="-1" aria-labelledby="exampleModalLabel4" aria-hidden="true">
-    <div class="modal-dialog">
+    <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content fondo-ayuda">
             <div class="modal-header">
-                <div class="col-12 row">
-                    <div class="col-10">
-                        <h1 class="fs-5 titulo-ayuda">¿Cómo Jugar?</h1>
+                
+                    
+                <h1 class=" titulo-ayuda">¿Cómo Jugar?</h1>
+                       
+                
+            </div>
+            <div class="modal-body">
+                <div class="texto">
+                        ASOCIACIÓN
                     </div>
-                    <div class="col-2">
-                        <!-- Botón de cerrar (si lo necesitas) -->
-                    </div>    
                 </div>
-            </div>
-            <div class="modal-body texto">
-                ASOCIACION
-            </div>
             <div alt="salir" class="btn atras-ayuda" id="salir3">Atras</div>
         </div>
     </div>
 </div>
+
 
 
 
