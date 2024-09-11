@@ -1,47 +1,21 @@
-/** 
- * Borrador del movivmiento de las cartas
- * Autor:  Mauricio noscue 
- * Fecha: 01/07/204
-*/
-
-
-/**
- * Modificación: al voltear una carta muestre otro fondo
- * Mdoficado por: Mauricio noscue 
- * Fecha: 02/07/2024
- */
-
-/**
- * Modificación: Al voltear una carta que vuelva a la posición incial en dos segundos 
- * Mdoficado por: Mauricio noscue 
- * Fecha: 05/07/2024
- */
-
-/**
- * Modificación: Si las cartas son iguales que se mantengan volteadas y si no lo son que vuelvan a la posición inicial 
- * Mdoficado por: Mauricio noscue 
- * Fecha: 05/07/2024
- */
 document.addEventListener('DOMContentLoaded', function() {
-    const contenedor = document.querySelector('.contenedor');
-    const central = document.querySelectorAll('.central');
+    const contenedor = document.querySelector('.contenedorCartas');
     const cartas = Array.from(document.querySelectorAll('.carta')); // Convertir NodeList a Array
     let cartasVolteadas = [];
-    let aciertos = [];
-    let fallos = [];
-
-    
+    let aciertos = 0;
+    const totalAciertos = cartas.length / 2; // Total de pares de cartas
+    let intervalo;
+    let tiempoRestante = 60; // 60 segundos
 
     // Mezclar las cartas
-function mezclarCartas() {
-    // Filtrar las cartas que no tienen la clase 'central'
-    const cartasParaMezclar = cartas.filter(carta => !carta.classList.contains('central'));
+    function mezclarCartas() {
+        const cartasParaMezclar = cartas.filter(carta => !carta.classList.contains('central'));
 
-    for (let iteracionMezclar = cartasParaMezclar.length - 1; iteracionMezclar > 0; iteracionMezclar--) {
-        const j = Math.floor(Math.random() * (iteracionMezclar + 1));
-        contenedor.appendChild(cartasParaMezclar[j]);
+        for (let iteracionMezclar = cartasParaMezclar.length - 1; iteracionMezclar > 0; iteracionMezclar--) {
+            const j = Math.floor(Math.random() * (iteracionMezclar + 1));
+            contenedor.appendChild(cartasParaMezclar[j]);
+        }
     }
-}
 
     // Función para voltear las cartas
     function voltearCarta(carta) {
@@ -56,10 +30,15 @@ function mezclarCartas() {
             const idSegundaCarta = segundaCarta.getAttribute('data-id');
 
             if (idPrimeraCarta === idSegundaCarta) {
-                aciertos.push(20);
+                aciertos++;
                 cartasVolteadas = [];
+
+                // Verificar si todas las cartas han sido resueltas
+                if (aciertos === totalAciertos) {
+                    clearInterval(intervalo);
+                    alert("¡Has resuelto todas las cartas!");
+                }
             } else {
-                fallos.push(10);
                 setTimeout(() => {
                     primeraCarta.classList.remove('volteada');
                     segundaCarta.classList.remove('volteada');
@@ -67,6 +46,21 @@ function mezclarCartas() {
                 }, 1000);
             }
         }
+    }
+
+    // Iniciar el contador de tiempo
+    function iniciarContador() {
+        intervalo = setInterval(() => {
+            tiempoRestante--;
+            
+            console.log(`Tiempo restante: ${tiempoRestante} segundos`);
+
+            if (tiempoRestante <= 0) {
+                clearInterval(intervalo);
+                alert("¡Se acabó el tiempo!");
+                // Aquí podrías deshabilitar las cartas para que no se puedan seguir volteando
+            }
+        }, 1000);
     }
 
     // Vincular eventos de clic a las cartas después de mezclar
@@ -77,26 +71,9 @@ function mezclarCartas() {
             });
         }
     }
-    
 
     // Iniciar el juego
     mezclarCartas();
     inicializarJuego();
-
-    // Mostrar resultados (opcional)
-    window.mostrarResultados = function() {
-        let imprimir = '<table class="table">';
-        imprimir += '<tr>';
-        aciertos.forEach(punto => {
-            imprimir += '<td>' + punto + '</td>';
-        });
-        imprimir += '</tr>';
-        imprimir += '<tr>';
-        fallos.forEach(error => {
-            imprimir += '<td>' + error + '</td>';
-        });
-        imprimir += '</tr>';
-        imprimir += '</table>';
-        document.getElementById("resultados").innerHTML = imprimir;
-    };
+    iniciarContador();
 });
