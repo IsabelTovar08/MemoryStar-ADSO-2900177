@@ -145,7 +145,7 @@
             <div class="modal-header">
 
 
-                <h1 class=" titulo-ayuda">¿Cómo Jugar?</h1>
+                <h1 class=" titulo-ayuda">¿Cómo Jugar Cartas?</h1>
 
             </div>
             <div class="modal-body">
@@ -175,7 +175,7 @@
         <div class="modal-content fondo-ayuda">
             <div class="modal-header">
 
-                <h1 class=" titulo-ayuda">¿Cómo Jugar?</h1>
+                <h1 class=" titulo-ayuda">¿Cómo Jugar Secuencia?</h1>
 
             </div>
             <div class="modal-body">
@@ -202,7 +202,7 @@
             <div class="modal-header">
 
 
-                <h1 class=" titulo-ayuda">¿Cómo Jugar?</h1>
+                <h1 class=" titulo-ayuda">¿Cómo Jugar Asociación?</h1>
 
 
             </div>
