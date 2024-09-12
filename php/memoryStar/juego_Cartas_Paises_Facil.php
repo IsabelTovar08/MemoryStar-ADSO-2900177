@@ -1,44 +1,29 @@
-    <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>juego Animales Facil </title>
+    <title>juego Paises Facil </title>
     <link rel="stylesheet" href="css/estilosEncabezado.css">
     <link rel="stylesheet" href="css/estilosInicio.css">
     <link rel="stylesheet" href="css/estilosCartas.css">
     <link rel="stylesheet" href="bootstrap/css/bootstrap.css">
     <link rel="stylesheet" href="css/estilosAyuda.css">
-    <link rel="stylesheet" href="css/animacion.css">
     <link rel="stylesheet" href="css/estiloTablaPuntuacion.css">
     <link rel="stylesheet" href="css/estiloSeguirJugando.css">
-  
     <link rel="shortcut icon" href="img/iconos/segundoMemory.png">
 
 </head>
 
 <style>
     body{
-        background-image: url('img/fondoTematicas/fondoAnimal.jpeg');
+        background-image: url('img/fondoTematicas/fondoPaises.jpg');
     }
 </style>
 <body>
 
-
- 
-   
-
 <div class="container-fuid">
-    <?php include('nabar2.php') ?>
-
-
-             <div class="animacion"   id ="loader" >
-                <span class="loader"></span>
-            </div>
-
-            
-
-
+    <?php include('nabar.php') ?>
     <div class="juegoCartas" id ="juegoCartas">
         <div class="contenedorCabeza">
                 <h1 class="tituloCabeza">CARTAS</h1>
@@ -67,27 +52,27 @@
                     </div>
                 </div>
                 <div class="contenedorCartas">
-                        <div class="carta"  data-id="ave">
+                        <div class="carta"  data-id="alem">
                             <div class="cara reverso">
-                                <img src="img/cartasAnimales/ave.jpg
+                                <img src="img/cartasPaises/alem.jpg
                                 " class="imagen">
                             </div>
                             <div class="cara frente">
                                 <img src="img/Cartalogorehecha.png" class="imagen" alt="Reverso">
                             </div>
                         </div>
-                        <div class="carta" data-id="vaca">
+                        <div class="carta" data-id="bra">
                             <div class="cara reverso">
-                                <img src="img/cartasAnimales/vaca.jpg
+                                <img src="img/cartasPaises/bra.jpg
                                 " class="imagen">
                             </div>
                             <div class="cara frente">
                                 <img src="img/Cartalogorehecha.png" class="imagen" alt="Reverso">
                             </div>
                         </div>
-                        <div class="carta"  data-id="koala">
+                        <div class="carta"  data-id="coll">
                             <div class="cara reverso">
-                                <img src="img/cartasAnimales/koala.jpg" class="imagen">
+                                <img src="img/cartasPaises/coll.jpg" class="imagen">
                             </div>
                             <div class="cara frente">
                                 <img src="img/Cartalogorehecha.png" class="imagen" alt="Reverso">
@@ -95,9 +80,9 @@
                         </div>
                     
                     
-                    <div class="carta"  data-id="leon">
+                    <div class="carta"  data-id="espa">
                         <div class="cara reverso">
-                            <img src="img/cartasAnimales/leon.jpg" class="imagen">
+                            <img src="img/cartasPaises/espa.jpg" class="imagen">
                         </div>
                         <div class="cara frente">
                             <img src="img/Cartalogorehecha.png" class="imagen" alt="Reverso">
@@ -106,9 +91,9 @@
                     <div class="central">
                         <img src="img/logoNuevo1.png" class="imagen2">
                     </div>
-                    <div class="carta" data-id="ave">
+                    <div class="carta" data-id="alem">
                         <div class="cara reverso">
-                            <img src="img/cartasAnimales/ave.jpg
+                            <img src="img/cartasPaises/alem.jpg
                             " class="imagen">
                         </div>
                         <div class="cara frente">
@@ -118,26 +103,26 @@
 
 
 
-                    <div class="carta" data-id="vaca">
+                    <div class="carta" data-id="bra">
                         <div class="cara reverso">
-                            <img src="img/cartasAnimales/vaca.jpg
+                            <img src="img/cartasPaises/bra.jpg
                             " class="imagen">
                         </div>
                         <div class="cara frente">
                             <img src="img/Cartalogorehecha.png" class="imagen" alt="Reverso">
                         </div>
                     </div>
-                    <div class="carta" data-id="koala">
+                    <div class="carta" data-id="coll">
                         <div class="cara reverso">
-                            <img src="img/cartasAnimales/koala.jpg" class="imagen">
+                            <img src="img/cartasPaises/coll.jpg" class="imagen">
                         </div>
                         <div class="cara frente">
                             <img src="img/Cartalogorehecha.png" class="imagen" alt="Reverso">
                         </div>
                     </div>
-                    <div class="carta" data-id="leon">
+                    <div class="carta" data-id="espa">
                         <div class="cara reverso">
-                            <img src="img/cartasAnimales/leon.jpg" class="imagen">
+                            <img src="img/cartasPaises/espa.jpg" class="imagen">
                         </div>
                         <div class="cara frente">
                             <img src="img/Cartalogorehecha.png" class="imagen" alt="Reverso">
@@ -162,12 +147,9 @@
     <script src="js/overlayModal.js"></script>
     <script src="js/cartas.js"></script>
     <script src="js/sonidos.js"></script>
-    <script src="js/animacion.js"></script>
+
     <script src="bootstrap/js/bootstrap.js"></script>
-   
-    <scrip src="js/animacion.js"></script>
     <script src="js/barra.js"></script>
-    
     
 </body>
 </html>
