@@ -3,22 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>juego comida Facil </title>
+    <title>juego Paises Facil </title>
     <link rel="stylesheet" href="css/estilosEncabezado.css">
     <link rel="stylesheet" href="css/estilosInicio.css">
     <link rel="stylesheet" href="css/estilosCartas.css">
     <link rel="stylesheet" href="bootstrap/css/bootstrap.css">
     <link rel="stylesheet" href="css/estilosAyuda.css">
+    <link rel="stylesheet" href="css/estiloTablaPuntuacion.css">
+    <link rel="stylesheet" href="css/estiloSeguirJugando.css">
     <link rel="shortcut icon" href="img/iconos/segundoMemory.png">
 
 </head>
 
 <style>
     body{
-        background-image: url('img/fondoTematicas/fondoComida1.jpg');
+        background-image: url('img/fondoTematicas/fondoPaises.jpg');
     }
 </style>
 <body>
+
 <div class="container-fuid">
     <?php include('nabar.php') ?>
     <div class="juegoCartas" id ="juegoCartas">
@@ -49,27 +52,27 @@
                     </div>
                 </div>
                 <div class="contenedorCartas">
-                        <div class="carta"  data-id="dona">
+                        <div class="carta"  data-id="alem">
                             <div class="cara reverso">
-                                <img src="img/cartasComida/dona.jpg
+                                <img src="img/cartasPaises/alem.jpg
                                 " class="imagen">
                             </div>
                             <div class="cara frente">
                                 <img src="img/Cartalogorehecha.png" class="imagen" alt="Reverso">
                             </div>
                         </div>
-                        <div class="carta" data-id="hamburguesa">
+                        <div class="carta" data-id="bra">
                             <div class="cara reverso">
-                                <img src="img/cartasComida/hamburguesa.jpg
+                                <img src="img/cartasPaises/bra.jpg
                                 " class="imagen">
                             </div>
                             <div class="cara frente">
                                 <img src="img/Cartalogorehecha.png" class="imagen" alt="Reverso">
                             </div>
                         </div>
-                        <div class="carta"  data-id="sandwich">
+                        <div class="carta"  data-id="coll">
                             <div class="cara reverso">
-                                <img src="img/cartasComida/sandwich.jpg" class="imagen">
+                                <img src="img/cartasPaises/coll.jpg" class="imagen">
                             </div>
                             <div class="cara frente">
                                 <img src="img/Cartalogorehecha.png" class="imagen" alt="Reverso">
@@ -77,9 +80,9 @@
                         </div>
                     
                     
-                    <div class="carta"  data-id="pizza">
+                    <div class="carta"  data-id="espa">
                         <div class="cara reverso">
-                            <img src="img/cartasComida/pizza.jpg" class="imagen">
+                            <img src="img/cartasPaises/espa.jpg" class="imagen">
                         </div>
                         <div class="cara frente">
                             <img src="img/Cartalogorehecha.png" class="imagen" alt="Reverso">
@@ -88,9 +91,9 @@
                     <div class="central">
                         <img src="img/logoNuevo1.png" class="imagen2">
                     </div>
-                    <div class="carta" data-id="dona">
+                    <div class="carta" data-id="alem">
                         <div class="cara reverso">
-                            <img src="img/cartasComida/dona.jpg
+                            <img src="img/cartasPaises/alem.jpg
                             " class="imagen">
                         </div>
                         <div class="cara frente">
@@ -100,26 +103,26 @@
 
 
 
-                    <div class="carta" data-id="hamburguesa">
+                    <div class="carta" data-id="bra">
                         <div class="cara reverso">
-                            <img src="img/cartasComida/hamburguesa.jpg
+                            <img src="img/cartasPaises/bra.jpg
                             " class="imagen">
                         </div>
                         <div class="cara frente">
                             <img src="img/Cartalogorehecha.png" class="imagen" alt="Reverso">
                         </div>
                     </div>
-                    <div class="carta" data-id="sandwich">
+                    <div class="carta" data-id="coll">
                         <div class="cara reverso">
-                            <img src="img/cartasComida/sandwich.jpg" class="imagen">
+                            <img src="img/cartasPaises/coll.jpg" class="imagen">
                         </div>
                         <div class="cara frente">
                             <img src="img/Cartalogorehecha.png" class="imagen" alt="Reverso">
                         </div>
                     </div>
-                    <div class="carta" data-id="pizza">
+                    <div class="carta" data-id="espa">
                         <div class="cara reverso">
-                            <img src="img/cartasComida/pizza.jpg" class="imagen">
+                            <img src="img/cartasPaises/espa.jpg" class="imagen">
                         </div>
                         <div class="cara frente">
                             <img src="img/Cartalogorehecha.png" class="imagen" alt="Reverso">
@@ -138,10 +141,6 @@
    
 </div>
 
-  
-   
-   
-
    <?php include('audios.php') ?>
     <a href="index.php"><button class="btn btn-success botonesCartas">Salir</button></a>
     <a href="animalesMedio.php"><button class="btn btn-primary  botonesCartas ">Siguiente</button></a>
@@ -150,6 +149,7 @@
     <script src="js/sonidos.js"></script>
 
     <script src="bootstrap/js/bootstrap.js"></script>
+    <script src="js/barra.js"></script>
     
 </body>
 </html>
