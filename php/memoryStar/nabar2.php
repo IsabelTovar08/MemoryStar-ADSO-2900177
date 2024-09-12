@@ -85,10 +85,17 @@
             <div class="modal-body">
 
                 <div class="texto">
-                    En el modo de juego de cartas tu objetivo es encontrar las parejas de cartas iguales
+                    1. Se te presentará un tablero con varias cartas boca abajo. <br>
+                    2. Elige dos cartas para voltear. Si coinciden, se quedan boca arriba; si no, se vuelven a voltear. <br>
+                    3. Intenta recordar la ubicación de las cartas a medida que juegas. <br>
+                    4. Sigue volteando cartas hasta encontrar todas las parejas. <br>
+                    5. El juego puede tener un límite de tiempo o un número máximo de intentos. <br>
+                    6. Encuentra todas las parejas de cartas en el menor tiempo o con la menor cantidad de intentos posible.
                 </div>
-
-                <img src="img/ayuda/ayudaCarta.png" class="imgAyuda2">
+                <div class="d-flex justify-content-center align-items-center">
+                    <img src="img/ayuda/ayudaCarta.png" class="imgAyuda2">
+                </div>
+                
             </div>
             <div alt="salir" class="btn atras-ayuda" id="salir1">Atras</div>
 
@@ -107,7 +114,14 @@
             </div>
             <div class="modal-body">
                 <div class="texto">
-                    SECUENCIA
+                1. Memoriza la secuencia: Observa una secuencia de objetos que aparecerá por unos segundos.<br>
+                2. Reordena la secuencia: Después de desaparecer, la secuencia volverá desordenada. Reordénala correctamente.<br>
+                3. Tiempo límite: Tienes un tiempo limitado para completar el reordenamiento.<br>
+                4. Puntos: Ganas puntos por ordenar correctamente y más si lo haces rápido.<br>
+                </div>
+
+                <div class="d-flex justify-content-center align-items-center">
+                    <img src="img/ayuda/ayudaSecu.png" class="imgAyuda2">
                 </div>
             </div>
             <div alt="salir" class="btn atras-ayuda" id="salir2">Atras</div>
@@ -128,7 +142,14 @@
             </div>
             <div class="modal-body">
                 <div class="texto">
-                    ASOCIACIÓN
+                Visualiza las imágenes: Se mostrarán 2 columnas, la izquierda con imágenes principales y la derecha con imágenes asociadas. <br>
+                Asocia las imágenes: Haz coincidir cada imagen de la izquierda con la relacionada en la derecha. <br>
+                Tiempo límite: Tienes tiempo limitado para hacer todas las asociaciones. <br>
+                Puntos: Ganas puntos por cada asociación correcta, más si lo haces rápido. <br>
+                Niveles: Las asociaciones serán más difíciles conforme avances. <br>
+                </div>
+                <div class="d-flex justify-content-center align-items-center">
+                    <img src="img/ayuda/ayudaAsociar.png" class="imgAyuda2">
                 </div>
             </div>
             <div alt="salir" class="btn atras-ayuda" id="salir3">Atras</div>
