@@ -83,7 +83,7 @@ function elegirJuego() {
                    </span>
                </label>
                <label id="juegoAsociacion">
-                   <input class="radio-input" type="radio" name="juego" value="Asociación">
+                   <input class="radio-input" type="radio" name="juego" value="Asociacion">
                    <span class="radio-tile">
                        <span class="radio-icon">
                            <img src="img/iconos/asociar.png" alt="logoMemory" class="logoInicio">
@@ -109,7 +109,7 @@ function elegirJuego() {
                 seleccionarTematicaCartas();
             } else if (juegoSeleccionado === 'Secuencia') {
                 seleccionarTematicaSecuencia();
-            } else if (juegoSeleccionado === 'Asociación') {
+            } else if (juegoSeleccionado === 'Asociacion') {
                 seleccionarTematicaAsociacion();
             }
         });
@@ -329,7 +329,7 @@ function procesarEleccionSecuencia() {
 }
 
 function procesarEleccionAsociacion() {
-    procesarEleccion('Asociación');
+    procesarEleccion('Asociacion');
 }
 
 // Función para procesar la elección final y redirigir
@@ -402,8 +402,8 @@ function procesarEleccion(juegoSeleccionado) {
     // Función para el modo Vs
     function vs() {
         let resultadoMostrar = `
-            <img src="img/iconos/atras.png" alt="" class="atras" width="50">
-            <div class="bienvenido"><img src="img/iconos/segundoMemory.png" alt="logoMemory" class="segundo"></div>
+            <a href="configurarJuego.php"><img src="img/iconos/atras.png" alt="" class="atras"></a>
+            <div class="bienvenido"><img src="img/iconos/segundoMemory.png" alt="logoMemory" class="segundoLogo"></div>
             <h1 class="textoEleccion">Selecciona una opción</h1>
             <div class="contenedorOpciones">
                 <img src="img/iconos/unirseVs.png" class="oJuegos zoom" alt="Imagen 1" id="unirseVs">
@@ -413,9 +413,8 @@ function procesarEleccion(juegoSeleccionado) {
 
         document.getElementById('contenido').innerHTML = resultadoMostrar;
         aplicarAnimacion('#contenido');
-
-        document.querySelector('.atras').addEventListener('click', elegirModo);
-    const atras = document.querySelector('.atras').style.width = '8vh';
+        const logo = document.querySelector('.segundoLogo').style.width = '15vh';
+        const atras = document.querySelector('.atras').style.width = '8vh';
 
         document.getElementById('unirseVs').addEventListener('click', unirse);
         document.getElementById('crearVs').addEventListener('click', elegirJuego);
@@ -424,8 +423,8 @@ function procesarEleccion(juegoSeleccionado) {
     // Función para multijugador
     function multijugador() {
         let resultadoMostrar = `
-            <img src="img/iconos/atras.png" alt="" class="atras" width="50">
-            <div class="bienvenido"><img src="img/iconos/segundoMemory.png" alt="logoMemory" class="segundo"></div>
+            <a href="configurarJuego.php"><img src="img/iconos/atras.png" alt="" class="atras"></a>
+            <div class="bienvenido"><img src="img/iconos/segundoMemory.png" alt="logoMemory" class="segundoLogo"></div>
             <h1 class="textoEleccion">Selecciona una opción</h1>
             <div class="contenedorOpciones">
                 <img src="img/iconos/unirseSala.png" class="oJuegos zoom" alt="Imagen 1" id="unirseSala">
@@ -435,8 +434,9 @@ function procesarEleccion(juegoSeleccionado) {
 
         document.getElementById('contenido').innerHTML = resultadoMostrar;
         aplicarAnimacion('#contenido');
+        const logo = document.querySelector('.segundoLogo').style.width = '15vh';
+        const atras = document.querySelector('.atras').style.width = '8vh';
 
-        document.querySelector('.atras').addEventListener('click', elegirModo);
         document.getElementById('unirseSala').addEventListener('click', unirse);
         document.getElementById('crearSala').addEventListener('click', elegirJuego);
     }
@@ -444,14 +444,12 @@ function procesarEleccion(juegoSeleccionado) {
     // Función para unirse a una sala
     function unirse() {
         let resultadoMostrar = `
-            <img src="img/iconos/atras.png" alt="" class="atras" width="50">
-            <div class="bienvenido"><img src="img/iconos/segundoMemory.png" alt="logoMemory" class="segundo"></div>
-            <div class="unirse">
+            <a href="configurarJuego.php"><img src="img/iconos/atras.png" alt="" class="atras"></a>
+            <div class="bienvenido"><img src="img/iconos/segundoMemory.png" alt="logoMemory" class="segundoLogo"></div>
                 <h1 class="textoEleccion">Ingresa el código de invitación</h1>
-                <div class="formField">
-                    <input id="codigo" required="" type="text" />
-                    <span>Código de invitación</span>
-                    <img src="img/iconos/camara.png" alt="" width="40">
+            <div class="unirse">
+                <div class="">
+                    <input class="form-control" id="codigo" required="" type="text" />
                 </div>
                 <img src="img/iconos/play.png" alt="" class="play zoom" id="play" width="200">
             </div>
@@ -459,12 +457,14 @@ function procesarEleccion(juegoSeleccionado) {
 
         document.getElementById('contenido').innerHTML = resultadoMostrar;
         aplicarAnimacion('#contenido');
+        const logo = document.querySelector('.segundoLogo').style.width = '15vh';
+        const atras = document.querySelector('.atras').style.width = '8vh';
     }
 
     // Asignar evento al botón "play"
     document.getElementById('jugarSolo').addEventListener('click', elegirJuego);
-    document.getElementById('jugarVs').addEventListener('click', elegirJuego);
-    document.getElementById('jugarMultijugador').addEventListener('click', elegirJuego);
+    document.getElementById('jugarVs').addEventListener('click', vs);
+    document.getElementById('jugarMultijugador').addEventListener('click', multijugador);
 
     // Función para la navegación con el botón de retroceso
     window.addEventListener('popstate', e => {

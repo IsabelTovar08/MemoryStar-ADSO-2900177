@@ -30,10 +30,28 @@
     flex-wrap: wrap;
     overflow: hidden;  
   }
+  .asociar .dropzone{
+    display: block;
+    margin: 4%;
+    margin-left: 50%;
+    padding: 0;
+  }
+
+   .asociados{
+    display: block;
+    width: 18vh;
+    height: 17vh;
+    padding: 1%;
+    border: 1px solid #000;
+    margin: 4%;
+    border-radius: 2vh;
+   }
+   /* .segundaColumna{
+    background-color: aliceblue;
+   } */
   .draggable {
     width: 16vh;
     height: 16vh;
-    background-color: #4CAF50;
     color: white;
     text-align: center;
     margin: 3%;

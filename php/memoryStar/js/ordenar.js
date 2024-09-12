@@ -1,4 +1,3 @@
-// Obtener las zonas y los elementos arrastrables
 const draggables = document.querySelectorAll(".draggable");
 const dropzones = document.querySelectorAll(".dropzone");
 const startZone = document.getElementById("start-zone");
