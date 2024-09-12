@@ -62,7 +62,7 @@
                 <div id="jugar">
                     <img src="img/iconos/clic.png" alt="" width="50" class="centrar" id="centrar1">
                     <img src="img/iconos/clic2.png" alt="" width="50" class="centrar" id="centrar2">
-                    <a href="configurarJuego.php"><img src="img/iconos/play.png" alt="" class="play zoom" id="play"></a>
+                    <a href="animacionConf.php"><img src="img/iconos/play.png" alt="" class="play zoom" id="play"></a>
                 </div>
             </div>
             <div class="robot">
