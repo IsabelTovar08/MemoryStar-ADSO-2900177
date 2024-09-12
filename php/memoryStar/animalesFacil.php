@@ -29,7 +29,7 @@
    
 
 <div class="container-fuid">
-    <?php include('nabar.php') ?>
+    <?php include('nabar2.php') ?>
 
 
              <div class="animacion"   id ="loader" >
