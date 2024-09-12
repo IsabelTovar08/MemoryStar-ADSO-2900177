@@ -22,7 +22,7 @@
 
 <body>
     <!-- Modal -->
-    <!-- <div class="modal fade" id="modalInicio" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal fade" id="modalInicio" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
         <div class="modal-dialog modal-xl">
             <div class="modal-content fondo">
                 <div class="modal-body container-fluid">
@@ -42,7 +42,7 @@
                 </div>
             </div>
         </div>
-    </div> -->
+    </div>
     <div class="container-fuid">
         <?php include('nabar.php'); ?>
 
@@ -86,7 +86,6 @@
         <script src="bootstrap/js/bootstrap.js"></script>
         <script src="js/sonidos.js"></script>
         <script src="js/perfil.js"></script>
-        <script src="js/play.js"></script>
         <script src="js/mapa.js"></script>
         <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
         <script src="js/animacion.js"></script>

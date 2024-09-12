@@ -2,7 +2,7 @@
     justify-content: center;
     align-items: center;
     padding: 1%;
-    position: static;
+    /* position: static; */
   }
 
   .over{
@@ -29,7 +29,6 @@
     align-items: center;
     flex-wrap: wrap;
     overflow: hidden;  
-    margin: 5%;
   }
   .draggable {
     width: 16vh;
@@ -65,12 +64,26 @@
     }
   } 
 @media screen and (max-width: 480px){
-    .start-zone{
-        width: 100vw;
-        height: auto;
+  .arrastrar{
+
+    h1{
+        font-size: 3.2vh;
     }
-    .dropzones-container{
-        width: 100vw;
-        height: 100vh;
+  } 
+  .dropzones-container{
+    width: 80vw;
+    /* height: auto; */
+  }
+  .dropzone{
+    width: 8vh;
+    height: 8vh;
+  }
+    .draggable{
+      width: 6vh;
+      height: 7vh;
     }
+  .start-zone{
+    width: 80vw;
+    height: auto;
+  }
 }

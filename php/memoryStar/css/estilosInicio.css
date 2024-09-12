@@ -749,9 +749,24 @@ h1 {
         width: 50%;
     }
     .radio-tile{
-        width: 10vh;
-        height: 10vh;
+        width: 9vh;
+        height: 9vh;
+        border-radius: 1.5vh;
     }
+    .radio-label{
+        font-size: 1.6vh;
+    }
+    .niveles{
+        height: 5vh;
+        span{
+            font-size: 2vh;
+        }
+
+      }
+      .niveles.inter{
+            width: 15vh;
+      }
+    
     /* .oJuegos.nivel {
         width: 25%;
         height: auto;
