@@ -20,12 +20,15 @@
             <div class="label">
                 <h2>Iniciar Sesión</h2>
             </div>
+            <?php
+            include('controladores/controladorLogin.php')
+            ?>
             <div class="tarjeta form">
-                <form class="formularioLogin">
-                    <div class="inputs"><input id="username" required="" type="text" /><span><i class="bi bi-person"></i> Usuario</span></div>
-                    <div class="inputs"><input id="password" required="" type="password" /><span><i class="bi bi-lock"></i> Contraseña</span></div>
+                <form class="formularioLogin"  method="post" action="" >
+                    <div class="inputs"><input id="username"  name = "usuario" required="" type="text" /><span><i class="bi bi-person"></i> Usuario</span></div>
+                    <div class="inputs"><input id="password"  name = "contraseña" required="" type="password" /><span><i class="bi bi-lock"></i> Contraseña</span></div>
                     <span class="olvidarContraseña" data-bs-toggle="modal" data-bs-target="#recuperarContraseña">¿Olvidaste tu contraseña?</span>
-                    <button type="submit">Iniciar <i class="bi bi-box-arrow-in-right"></i></button>
+                    <input name = "btningresar" type="submit">Iniciar <i class="bi bi-box-arrow-in-right"></i></button>
                     <span class="noTienesCuenta">¿No tienes cuenta? <a href="signup.php">Regístrate</a></span>
                 </form>
             </div>
