@@ -13,9 +13,9 @@ if (!empty($_POST["btningresar"])) {
             $_SESSION["nombre"]=$datos->nombre;
             $_SESSION["usuario"]=$datos->usuario;
             
-            header("location:index.php");
+            header("location:pingpong.php");
         } else {
-            
+            echo "<script>alert('Usuario no existe ');</script>";
         }
         
     }

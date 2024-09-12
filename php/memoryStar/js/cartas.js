@@ -5,7 +5,7 @@ document.addEventListener('DOMContentLoaded', function() {
     let aciertos = 0;
     const totalAciertos = cartas.length / 2; // Total de pares de cartas
     let intervalo;
-    let tiempoRestante = 60; // 60 segundos
+    let tiempoRestante = 10; // 60 segundos
 
     // Mezclar las cartas
     function mezclarCartas() {
@@ -57,8 +57,21 @@ document.addEventListener('DOMContentLoaded', function() {
 
             if (tiempoRestante <= 0) {
                 clearInterval(intervalo);
-                alert("¡Se acabó el tiempo!");
-                // Aquí podrías deshabilitar las cartas para que no se puedan seguir volteando
+            
+                // Mostrar el primer modal
+                var myModal = new bootstrap.Modal(document.getElementById('seguirJugando'));
+                myModal.show();
+            
+                // Configurar para que se cierre automáticamente después de 3 segundos (puedes ajustar este tiempo)
+                setTimeout(function() {
+                    myModal.hide();
+                    
+                    // Mostrar el segundo modal después de que el primero se cierre
+                    myModal._element.addEventListener('hidden.bs.modal', function () {
+                        var modal2 = new bootstrap.Modal(document.getElementById('tablapuntuacionsolo'));
+                        modal2.show();
+                    }, {once: true}); // El {once: true} asegura que el evento se ejecuta solo una vez
+                }, 3000); // Tiempo en milisegundos (3 segundos)
             }
         }, 1000);
     }

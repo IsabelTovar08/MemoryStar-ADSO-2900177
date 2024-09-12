@@ -13,9 +13,9 @@ if (!empty($_POST["registro"])) {
 
        $sql=$conexion->query(" INSERT INTO jugador(nombre,apellido,email,usuario,contraseña)values('$nombre', '$apellido','$email','$usuario','$contraseña') ");
        if ($sql==1) {
-        echo 'usuario registrado correctamente';
+        echo "<script>alert('usuario registrado con exito');</script>";
        } else {
-        echo 'usuario no registrado ';
+        echo "<script>alert('usuario no registrado ');</script>";
        }
        
     }

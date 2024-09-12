@@ -1,1 +1,109 @@
-                        
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>pingpong</title>
+</head>
+<style>
+    body{
+        
+        background-image: url('img/fondos/fondonuevoY.jpeg');
+        margin: 0;
+        width: 100vw;
+        height: 100vh;
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        font-family: cursive;
+        overflow: hidden;
+        padding: 1%; 
+    }
+
+    .logoAani{
+        width: 30vh;
+        height: 30vh;
+        position: absolute;
+        top:15vh;
+        opacity: 0; /* La imagen comienza completamente opaca */
+        animation: desvanecerOpacidad 3s forwards;
+    }
+
+    .animacion{
+    
+    height: 100vh;
+    backdrop-filter: blur(20px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+   
+}
+
+.loader {
+  position: relative;
+  height: 40px;
+  width: 6px;
+  color: #000;
+  animation: paddles 0.75s ease-out infinite;
+}
+.loader:before {
+  content: "";
+  position: absolute;
+  margin: 0 auto;
+  left: 0;
+  right: 0;
+  top: 15px;
+  width: 12px;
+  height: 12px;
+  background-color: #de3500;
+  border-radius: 50%;
+  animation: ballbounce 0.6s ease-out infinite;
+}
+
+
+@keyframes desvanecerOpacidad {
+    0% {
+        opacity: 0; /* Comienza totalmente opaca */
+    }
+    100% {
+        opacity: 1; /* Al final de la animación, la imagen es completamente transparente */
+    }
+}
+
+@keyframes paddles {
+  0% { box-shadow: -25px -10px, 25px 10px}
+  50% { box-shadow: -25px 8px, 25px -10px }
+  100% { box-shadow: -25px -10px, 25px 10px}
+}
+@keyframes ballbounce {
+  0% { transform: translateX(-20px) scale(1, 1.2) }
+  25% { transform: scale(1.2, 1) }
+  50% { transform: translateX(15px) scale(1, 1.2) }
+  75% { transform: scale(1.2, 1) }
+  100% { transform: translateX(-20px) }
+}
+      
+
+</style>
+<body>
+    
+
+<div class="animacion">
+
+    <img src="img/iconos/nuevoMemory.png" class ="logoAani" alt="">
+<span class="loader" id ="loader"></span>
+</div>
+
+<script>
+
+        window.onload = function() {
+            setTimeout(function() {
+                window.location.href = 'index.php';
+            }, 3000); // 3000 ms = 3 segundos
+        }
+</script>
+
+
+
+</body>
+</html>
