@@ -43,10 +43,11 @@
 
 .imgAyuda2{
     margin-top: 10px;
-    width: 100px;
-    height: 155px;
-    
-    border-radius: 30px;
+    width: 120px;
+    height: 175px;
+    justify-content: center;
+    align-items: center;
+    border-radius: 20px;
 }
 
 .imgAyuda:hover{
