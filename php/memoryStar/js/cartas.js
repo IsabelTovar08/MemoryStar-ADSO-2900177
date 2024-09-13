@@ -5,7 +5,7 @@ document.addEventListener('DOMContentLoaded', function() {
     let aciertos = 0;
     const totalAciertos = cartas.length / 2; // Total de pares de cartas
     let intervalo;
-    let tiempoRestante = 10; // 60 segundos
+    let tiempoRestante = 60; // 60 segundos
 
     // Mezclar las cartas
     function mezclarCartas() {

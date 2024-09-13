@@ -1,5 +1,5 @@
 <audio id="musicaFondo" loop>
-        <source src="audio/inicio.mp3" type="audio/mpeg">
+        <source src="audio/inicio2.mp3" type="audio/mpeg">
             Tu navegador no soporta la etiqueta de audio.
     </audio>
     <audio id="click">

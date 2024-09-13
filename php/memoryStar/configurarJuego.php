@@ -17,10 +17,13 @@
   /> -->
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Just+Me+Again+Down+Here&display=swap');
+        body{
+            background-image: url('img/fondos/fondo.jpeg');
+        }
     </style>
 </head>
 
-<body>
+<body style="">
     <div class="container-fuid">
         <?php include('nabar.php'); ?>
         <div id="contenedor">
@@ -42,7 +45,8 @@
                     <a href="" data-bs-toggle="modal" data-bs-target="#exampleModal-ayuda">¿Cómo jugar?</a><br>
                     <a href="login.php">Iniciar Sesión</a>
                 </div>
-                <img src="img/iconos/robotM.png" alt="" class="mostrarMensaje imagen">
+                
+                <img src="img/iconos/mauro.png" alt="" class="mostrarMensaje imagen">
                 <img src="img/iconos/muñequitoAbajo.png" alt="" class=" " id="">
             </div>
 
