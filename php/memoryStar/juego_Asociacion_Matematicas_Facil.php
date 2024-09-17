@@ -52,6 +52,7 @@
             </div>
         </div>
         <?php include('audios.php') ?>
+        <script src="js/contador.js"></script>
         <script src="js/ordenar.js"></script>
         <script src="js/movimiento.js"></script>
         <script src="js/overlayModal.js"></script>

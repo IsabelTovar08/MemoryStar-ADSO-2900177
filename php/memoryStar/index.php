@@ -82,14 +82,14 @@
                     <a href="" data-bs-toggle="modal" data-bs-target="#exampleModal-ayuda">¿Cómo jugar?</a><br>
                     <a href="login.php">Iniciar Sesión</a>
                 </div>
-                <img src="img/iconos/robotM.png" alt="" class="mostrarMensaje imagen">
+                <img src="img/iconos/mauro.png" alt="" class="mostrarMensaje imagen">
                 <img src="img/iconos/muñequitoAbajo.png" alt="" class=" " id="">
             </div>
 
         </div>
         <?php include('audios.php') ?>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
-
+        <script src="js/play.js"></script>
         <script src="js/movimiento.js"></script>
         <script src="js/overlayModal.js"></script>
         <script src="bootstrap/js/bootstrap.js"></script>
