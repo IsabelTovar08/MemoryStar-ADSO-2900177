@@ -20,9 +20,6 @@
             <div class="label">
                 <h2>Iniciar Sesión</h2>
             </div>
-            <?php
-            include('controladores/controladorLogin.php')
-            ?>
             <div class="tarjeta form">
                 <form class="formularioLogin"  method="post" action="" >
                     <div class="inputs"><input id="username"  name = "usuario" required="" type="text" /><span><i class="bi bi-person"></i> Usuario</span></div>
@@ -42,10 +39,10 @@
                 <div class="modal-body">
                     <h4>Recuperar Cuenta</h4><br>
                     <h5 style="margin-left: 5%;">Ingresa el correo eléctrónico asociado a tu cuenta.</h5>
-                    <div class="inputs"><input id="emalRecuperar" required="" type="text" /><span><i class="bi bi-envelope-at"></i> Email</span></div>
+                    <div class="inputs"><input id="emalRecuperar" required type="text" /><span><i class="bi bi-envelope-at"></i> Email</span></div>
                     <div class="botones">
                         <button type="button" class="btn" id="cancelarR" data-bs-dismiss="modal">Cancelar</button>
-                        <button type="button" class="btn aceptar" id="buscarC">Buscar</button>
+                        <button type="submit" class="btn aceptar" id="buscarC">Buscar</button>
                     </div>
                 </div>
             </div>

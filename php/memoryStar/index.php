@@ -12,6 +12,9 @@
     <!-- <link rel="stylesheet" href="css/estilosPerfil.css"> -->
     <title>MemoryStart ¡Pon a prueba tu memoria!</title>
     <link rel="shortcut icon" href="img/iconos/segundoMemory.png">
+    <script src="https://cdn.jsdelivr.net/npm/@floating-ui/core@1.6.7"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@floating-ui/dom@1.6.10"></script>
+
     <!-- <link
     rel="stylesheet"
     href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
@@ -59,6 +62,11 @@
         <div id="contenedor">
             <!-- <div onclick="history.back()">atras</div> -->
             <div id="contenido">
+              <script>
+                const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]')
+                const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl))
+              </script>
+
                 <img src="img/iconos/nuevoMemory.png" alt="logoMemory" class="logoInicio">
                 <div id="jugar">
                     <img src="img/iconos/clic.png" alt="" width="50" class="centrar" id="centrar1">
@@ -86,7 +94,7 @@
         <script src="js/overlayModal.js"></script>
         <script src="bootstrap/js/bootstrap.js"></script>
         <script src="js/sonidos.js"></script>
-        <script src="js/perfil.js"></script>
+        <!-- <script src="js/perfil.js"></script> -->
         <script src="js/mapa.js"></script>
         <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
         <script src="js/animacion.js"></script>
