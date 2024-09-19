@@ -19,8 +19,23 @@
 
 <style>
     body{
-        background-image: url('img/fondoTematicas/fondoAnimal.jpeg');
+        background-image: url('img/fondoTematicas/ani.gif');
     }
+
+    .mensaje {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 20px;
+    background-color: rgba(0, 0, 0, 0.8);
+    color: white;
+    border-radius: 10px;
+    z-index: 1000;
+    
+}
+
+
 </style>
 <body>
 
@@ -145,9 +160,27 @@
                     </div>
 
                 </div>
+
+                <div id="mensaje1" class="mensaje" style="display: none;">
+                    <p id="mensajeTexto1">primera pista amnigo </p>
+
+                    <img src="img/iconos/mauro.png" alt="" class = "imagen" >
+                </div>
+                <div id="mensaje2" class="mensaje" style="display: none;">
+                    <p id="mensajeTexto2">   segunda pista</p>
+                    <img src="img/iconos/mauro.png" alt="" class = "imagen" >
+                </div>
+                <div id="mensaje3" class="mensaje" style="display: none;">
+                    <p id="mensajeTexto3">tercera pista </p>
+                    <img src="img/iconos/mauro.png" alt=""  class = "imagen">
+                </div>
+                <div id="mensaje4" class="mensaje" style="display: none;">
+                    <p id="mensajeTexto4">cuarta pista </p>
+                    <img src="img/iconos/mauro.png" alt="" class = "imagen">
+                </div>
         </div>
 
-
+    
 
 
            

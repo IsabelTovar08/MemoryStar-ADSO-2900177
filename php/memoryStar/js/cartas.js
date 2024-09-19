@@ -32,11 +32,13 @@ document.addEventListener('DOMContentLoaded', function() {
             if (idPrimeraCarta === idSegundaCarta) {
                 aciertos++;
                 cartasVolteadas = [];
+                mostrarMensaje(aciertos);
 
-                // Verificar si todas las cartas han sido resueltas
                 if (aciertos === totalAciertos) {
-                    clearInterval(intervalo);
-                    alert("¡Has resuelto todas las cartas!");
+                    setTimeout(() => {
+                        // Redirigir al usuario después de mostrar el último mensaje
+                        window.location.href = 'otra-pagina.html'; // Cambia esto a la URL de destino
+                    }, 3000); // Esperar 3 segundos antes de redirigir
                 }
             } else {
                 setTimeout(() => {
@@ -48,33 +50,22 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
 
-    // Iniciar el contador de tiempo
-    function iniciarContador() {
-        intervalo = setInterval(() => {
-            tiempoRestante--;
+    function mostrarMensaje(aciertos) {
+        const mensajeDiv = document.getElementById(`mensaje${aciertos}`);
+        const mensajeTexto = document.getElementById(`mensajeTexto${aciertos}`);
+        const mensajes = ['¡Pareja 1 completada!', '¡Pareja 2 completada!', '¡Pareja 3 completada!', '¡Pareja 4 completada!'];
+        
+        if (mensajeDiv) {
+            mensajeTexto.textContent = mensajes[aciertos - 1];
+            mensajeDiv.style.display = 'block';
             
-            console.log(`Tiempo restante: ${tiempoRestante} segundos`);
-
-            if (tiempoRestante <= 0) {
-                clearInterval(intervalo);
-            
-                // Mostrar el primer modal
-                var myModal = new bootstrap.Modal(document.getElementById('seguirJugando'));
-                myModal.show();
-            
-                // Configurar para que se cierre automáticamente después de 3 segundos (puedes ajustar este tiempo)
-                setTimeout(function() {
-                    myModal.hide();
-                    
-                    // Mostrar el segundo modal después de que el primero se cierre
-                    myModal._element.addEventListener('hidden.bs.modal', function () {
-                        var modal2 = new bootstrap.Modal(document.getElementById('tablapuntuacionsolo'));
-                        modal2.show();
-                    }, {once: true}); // El {once: true} asegura que el evento se ejecuta solo una vez
-                }, 3000); // Tiempo en milisegundos (3 segundos)
-            }
-        }, 1000);
+            setTimeout(() => {
+                mensajeDiv.style.display = 'none';
+            }, 6000); // Mostrar el mensaje durante 2 segundos
+        }
     }
+
+ 
 
     // Vincular eventos de clic a las cartas después de mezclar
     function inicializarJuego() {
