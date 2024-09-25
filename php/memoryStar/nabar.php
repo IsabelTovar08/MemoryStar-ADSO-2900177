@@ -101,8 +101,8 @@
 
 <!-- Modal ayuda -->
 <div class="modal fade" id="exampleModal-ayuda" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content fondo-ayuda">
+    <div class="modal-dialog card moover coloor">
+        <div class="modal-content coloor">
             <div class="modal-header">
 
                 <h1 class="titulo-ayuda">¿Cómo Jugar?</h1>
@@ -140,8 +140,8 @@
 
 <!-- Modal ayuda CARTAS 2 -->
 <div class="modal fade" id="exampleModal-ayuda2" tabindex="-1" aria-labelledby="exampleModalLabel2" aria-hidden="true">
-    <div class="modal-dialog  modal-dialog-centered">
-        <div class="modal-content fondo-ayuda">
+    <div class="modal-dialog card moover coloor">
+        <div class="modal-content coloor">
             <div class="modal-header">
 
 
@@ -171,8 +171,8 @@
 
 <!-- Modal ayuda SECUENCIA 3 -->
 <div class="modal fade" id="exampleModal-ayuda3" tabindex="-1" aria-labelledby="exampleModalLabel3" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content fondo-ayuda">
+    <div class="modal-dialog  card moover">
+        <div class="modal-content coloor">
             <div class="modal-header">
 
                 <h1 class=" titulo-ayuda">¿Cómo Jugar Secuencia?</h1>
@@ -197,8 +197,8 @@
 
 <!-- Modal ayuda ASOCIACION 4 -->
 <div class="modal fade" id="exampleModal-ayuda4" tabindex="-1" aria-labelledby="exampleModalLabel4" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content fondo-ayuda">
+    <div class="modal-dialog card moover">
+        <div class="modal-content coloor">
             <div class="modal-header">
 
 

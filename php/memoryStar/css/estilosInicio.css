@@ -138,7 +138,7 @@ button.btn:hover {
   }
   .card:hover{
     box-shadow: 2px 2px 30px #fff, 10px 10px 1px #acb6e5;
-    transform: translate(50px, 50px);
+    
     h1{
           /* color: #fda085; */
           display: flex;
@@ -151,7 +151,7 @@ button.btn:hover {
       }
   }
   .coloor{
-    background-color: #c3d6df;
+    background-color: #a3b5e6;
   
   }
   .card::before,
