@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>juego Animales Facil </title>
+        <title>juego Cartas</title>
         <link rel="stylesheet" href="css/estilosEncabezado.css">
         <link rel="stylesheet" href="css/estilosInicio.css">
         <link rel="stylesheet" href="css/estilosCartas.css">
@@ -21,19 +21,6 @@
     <style>
         body {
             background-image: url('img/cartasAnimales/er.png');
-        }
-
-        .mensaje {
-            position: fixed;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            padding: 20px;
-            background-color: rgba(0, 0, 0, 0.8);
-            color: white;
-            border-radius: 10px;
-            z-index: 1000;
-
         }
     </style>
 
@@ -57,6 +44,8 @@
             <div class="juegoCartas" id="juegoCartas">
                 <div class="contenedorCabeza">
                     <h1 class="tituloCabeza">CARTAS</h1>
+                    <img src="img/cartasAnimales/vg.png" class="movable" alt="Imagen 1">
+                    <img src="img/cartasAnimales/luna.png" class="luna">
                     <div class="figuras">
                         <div class="figuras-arriba">
                             <div class="rectangulo">
@@ -176,7 +165,10 @@
                     <div id="mensaje1" class="mensaje" style="display: none;">
                         <p id="mensajeTexto1">primera pista amnigo </p>
 
-                        <img src="img/iconos/mauro.png" alt="" class="imagen">
+                        fghjkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkas
+                        alkjsskjaskkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkk
+                        sjdhfkahdjkhkjahskjahkjsdhakjdhsajdaskdhsakdha
+                        akjshdakjhadkhj
                     </div>
                     <div id="mensaje2" class="mensaje" style="display: none;">
                         <p id="mensajeTexto2"> segunda pista</p>
@@ -202,7 +194,7 @@
         </div>
 
         <?php include('audios.php') ?>
-        
+
         <script src="js/overlayModal.js"></script>
         <script src="js/cartas.js"></script>
         <script src="js/sonidos.js"></script>
