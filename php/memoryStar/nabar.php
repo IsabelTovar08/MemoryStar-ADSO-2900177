@@ -1,8 +1,9 @@
 <!-- nab  -->
 <nav class="nav flex-column apartado-iconos">
-    <img id="controlMusica" src="img/iconos/sonido-apagadoo.png" alt="Reproducir" class="iconos efectosIconos">
-    <img src="img/iconos/trofeo.png" alt="Histórico" class="iconos efectosIconos" data-bs-toggle="modal" data-bs-target="#hisorico">
-    <img src="img/iconos/ajustes.png" alt="Ajustes" class="iconos efectosIconos" data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+<img id="desplegarOpciones" src="img/iconos/opcionesN.png" alt="desplegarOpciones" class="iconos efectosIconos">
+    <img id="controlMusica" src="img/iconos/musicaApagada.png" alt="Reproducir" class="iconos efectosIconos">
+    <img src="img/iconos/copaN.png" alt="Histórico" class="iconos efectosIconos" data-bs-toggle="modal" data-bs-target="#hisorico">
+    <img src="img/iconos/ajustesN.png" alt="Ajustes" class="iconos efectosIconos" data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
     <!-- <div class=""> -->
     <div class="collapse" id="collapseExample" style="width: 500%;">
         <div class="card card-body color">
@@ -18,7 +19,7 @@
         </div>
     </div>
     <!-- </div> -->
-    <img src="img/iconos/ayuda.png" alt="Ayuda" class="iconos efectosIconos" data-bs-toggle="modal" data-bs-target="#exampleModal-ayuda">
+    <img src="img/iconos/ayudaN.png" alt="Ayuda" class="iconos efectosIconos" data-bs-toggle="modal" data-bs-target="#exampleModal-ayuda">
 </nav>
 <div class="apartado-derecho">
     <ul class="nav justify-content-end">
@@ -26,22 +27,22 @@
             <span class="nombre">Usuario</span>
         </li>
         <li class="nav-item usuario">
-            <img src="img/iconos/usuario.png" alt="user" class="iconos efectosIconos" data-bs-toggle="offcanvas" data-bs-target="#perfil" aria-controls="offcanvasRight">
+            <img src="img/iconos/usuario.png" alt="user" class="derecho iconos efectosIconos" data-bs-toggle="offcanvas" data-bs-target="#perfil" aria-controls="offcanvasRight">
         </li>
     </ul>
     <ul class="nav justify-content-end">
         <li class="nav-item usuario">
-            <img src="img/iconos/mapa.png" alt="user" class="iconos efectosIconos" data-bs-toggle="modal" data-bs-target="#Mapa">
+            <img src="img/iconos/posicion.png" alt="user" class="derecho iconos efectosIconos" data-bs-toggle="modal" data-bs-target="#Mapa">
         </li>
     </ul>
-    <ul class="nav justify-content-end">
+    <!-- <ul class="nav justify-content-end">
         <li class="nav-item usuario">
-            <img src="img/iconos/qr.png" alt="user" class="iconos efectosIconos" data-bs-toggle="modal" data-bs-target="#escanerRapido">
+            <img src="img/iconos/qr.png" alt="user" class="derecho iconos efectosIconos" data-bs-toggle="modal" data-bs-target="#escanerRapido">
         </li>
-    </ul>
+    </ul> -->
     <ul class="nav justify-content-end">
         <li class="nav-item usuario">
-            <img src="img/iconos/carrito.png" alt="user" class="iconos efectosIconos" data-bs-toggle="modal" data-bs-target="#exampleModal-tienda">
+            <img src="img/iconos/tiendaN.png" alt="user" class="derecho iconos efectosIconos" data-bs-toggle="modal" data-bs-target="#exampleModal-tienda">
         </li>
     </ul>
 </div>
@@ -50,10 +51,11 @@
 <div class="modal fade" id="hisorico" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg card moveer">
         <div class="modal-content coloor">
-            <div class="modal-header">
+            <div class="tithe titulo">
                 <h1 class="fs-5" id="exampleModalLabel">Histórico</h1>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+
             <div class="modal-body">
                 <div class="tabla">
                     <div class="col-10 row espacioInicioTabla">
@@ -91,7 +93,7 @@
                     </div>
                 </div>
             </div>
-            <div class="modal-footer">
+            <div class="">
                 <button type="button" class="btn" data-bs-dismiss="modal">Cerrar</button>
             </div>
         </div>

@@ -16,50 +16,24 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     // Función para ocultar y mostrar mensaje
-    const ocultarMensaje = document.querySelector('.cerrarMensaje');
-    const mensaje = document.querySelector('.mensaje');
-    const mostrar = document.querySelector('.mostrarMensaje');
+    // const ocultarMensaje = document.querySelector('.cerrarMensaje');
+    // const mensaje = document.querySelector('.contenido-mensaje');
+    // const mostrar = document.querySelector('.mostrarMensaje');
 
-    ocultarMensaje.addEventListener('click', () => {
-        mensaje.style.visibility = 'hidden';
-        mensaje.style.transition = '0.1s';
-    });
+    // ocultarMensaje.addEventListener('click', () => {
+    //     mensaje.style.visibility = 'hidden';
+    //     mensaje.style.transition = '0.1s';
+    // });
 
-    mostrar.addEventListener('click', () => {
-        mensaje.style.visibility = 'visible';
-        mensaje.style.transition = '0.1s';
-    });
+    // mostrar.addEventListener('click', () => {
+    //     mensaje.style.visibility = 'visible';
+    //     mensaje.style.transition = '0.1s';
+    // });
 
-    // Función para elegir el modo de juego
 // Función para elegir el modo de juego
-// function elegirModo() {
-//     let resultadoMostrar = `
-//         <a href="index.php"><img src="img/iconos/atras.png" alt="" width="50" class="atras"></a>
-//         <div class="bienvenido"><img src="img/iconos/logoBienvenido.png" alt="logoMemory" class="logoBienvenido"></div>
-//         <h1 class="textoEleccion">Selecciona el modo de Juego</h1>
-//         <div class="contenedorOpciones">
-//             <img src="img/iconos/jugarSolo.png" class="oJuegos zoom" alt="Imagen 1" id="jugarSolo">
-//             <img src="img/iconos/modoVs.png" class="oJuegos zoom" alt="Imagen 2" id="jugarVs">
-//             <img src="img/iconos/multijugador.png" class="oJuegos zoom" alt="Imagen 3" id="jugarMultijugador">
-//         </div>
-//     `;
-
-//     document.getElementById('contenido').innerHTML = resultadoMostrar;
-//     aplicarAnimacion('#contenido');
-
-//     document.querySelectorAll('.contenedorOpciones img').forEach(image => {
-//         image.addEventListener('click', () => console.log(`Has hecho clic en la imagen con ID: ${image.id}`));
-//     });
-
-//     document.getElementById('jugarSolo').addEventListener('click', elegirJuego);
-//     document.getElementById('jugarVs').addEventListener('click', elegirJuego);
-//     document.getElementById('jugarMultijugador').addEventListener('click', elegirJuego);
-// }
-// Función para elegir el tipo de juego (Cartas, Secuencia, Asociación)
-// Función para elegir el tipo de juego (Cartas, Secuencia, Asociación)
 function elegirJuego() {
     let resultadoMostrar = `
-       <a href="configurarJuego.php"><img src="img/iconos/atras.png" alt="" class="atras"></a>
+       <a href="configurarJuego.php"><img src="img/iconos/atrasN.png" alt="" class="atras"></a>
             <div class="bienvenido"><img src="img/iconos/segundoMemory.png" alt="logoMemory" class="segundoLogo"></div>
        <h1 class="textoEleccion">¿Qué quieres jugar?</h1>
        <div class="contenedorOpciones">
@@ -115,7 +89,61 @@ function elegirJuego() {
         });
     });
 }
+function elegirJuegoSala() {
+    let resultadoMostrar = `
+       <h1 class="textoEleccion">¿Qué quieres jugar?</h1>
+       <div class="contenedorOpciones">
+           <div class="radio-inputs">
+               <label id="juegoCartas">
+                   <input class="radio-input" type="radio" name="juego" value="Cartas">
+                   <span class="radio-tile">
+                       <span class="radio-icon">
+                           <img src="img/iconos/cartas.png" alt="logoMemory" class="logoInicio">
+                       </span>
+                       <span class="radio-label">Cartas</span>
+                   </span>
+               </label>
+               <label id="juegoSecuencia">
+                   <input class="radio-input" type="radio" name="juego" value="Secuencia">
+                   <span class="radio-tile">
+                       <span class="radio-icon">
+                           <img src="img/iconos/secuencias.png" alt="logoMemory" class="logoInicio">
+                       </span>
+                       <span class="radio-label">Secuencia</span>
+                   </span>
+               </label>
+               <label id="juegoAsociacion">
+                   <input class="radio-input" type="radio" name="juego" value="Asociacion">
+                   <span class="radio-tile">
+                       <span class="radio-icon">
+                           <img src="img/iconos/asociar.png" alt="logoMemory" class="logoInicio">
+                       </span>
+                       <span class="radio-label">Asociación</span>
+                   </span>
+               </label>
+           </div>
+       </div>
+       <div id="res"></div>
+    `;
 
+    document.getElementById('contenidou').innerHTML = resultadoMostrar;
+    aplicarAnimacion('#contenido');
+
+
+    document.querySelectorAll('input[name="juego"]').forEach(juego => {
+        juego.addEventListener('change', function() {
+            let juegoSeleccionado = this.value;
+            if (juegoSeleccionado === 'Cartas') {
+                seleccionarTematicaCartas();
+            } else if (juegoSeleccionado === 'Secuencia') {
+                seleccionarTematicaSecuencia();
+            } else if (juegoSeleccionado === 'Asociacion') {
+                seleccionarTematicaAsociacion();
+            }
+        });
+    });
+}
+// window.onload = elegirJuegoSala;
 // Función para seleccionar temática y nivel para Cartas
 // Función para seleccionar temática y nivel para Cartas
 function seleccionarTematicaCartas() {
@@ -353,56 +381,11 @@ function procesarEleccion(juegoSeleccionado) {
 
 
 // Función para elegir el tipo de juego (Cartas, Secuencia, Asociación)
-
-
-    function desplegarNivel() {
-        document.body.style.backgroundImage = "url('img/fondos/fondo.jpeg')";
-        let resultadoMostrar = `
-        <h1 class="textoEleccion">Elige la temática</h1>
-        <h1 class="textoEleccion">Elige el nivel de dificultad</h1>
-        <div class="contenedorOpciones">
-            <div class="radio-inputs">
-                <label>
-                    <input class="radio-input" type="radio" name="engine">
-                    <span class="radio-tile">
-                        <span class="radio-icon">
-                            <img src="img/iconos/solo.png" alt="logoMemory" class="logoInicio">
-                        </span>
-                        <span class="radio-label">Fácil</span>
-                    </span>
-                </label>
-                <label>
-                    <input class="radio-input" type="radio" name="engine">
-                    <span class="radio-tile">
-                        <span class="radio-icon">
-                            <img src="img/iconos/solo.png" alt="logoMemory" class="logoInicio">
-                        </span>
-                        <span class="radio-label">Intermedio</span>
-                    </span>
-                </label>
-                <label>
-                    <input class="radio-input" type="radio" name="engine">
-                    <span class="radio-tile">
-                        <span class="radio-icon">
-                            <img src="img/iconos/solo.png" alt="logoMemory" class="logoInicio">
-                        </span>
-                        <span class="radio-label">Difícil</span>
-                    </span>
-                </label>
-            </div>
-        </div>
-    `;
-
-        document.getElementById('res').innerHTML = resultadoMostrar;
-
-        // aplicarAnimacion('#res');
-
-    }
    
     // Función para el modo Vs
     function vs() {
         let resultadoMostrar = `
-            <a href="configurarJuego.php"><img src="img/iconos/atras.png" alt="" class="atras"></a>
+            <a href="configurarJuego.php"><img src="img/iconos/atrasN.png" alt="" class="atras"></a>
             <div class="bienvenido"><img src="img/iconos/segundoMemory.png" alt="logoMemory" class="segundoLogo"></div>
             <h1 class="textoEleccion">Selecciona una opción</h1>
             <div class="contenedorOpciones">
@@ -417,13 +400,13 @@ function procesarEleccion(juegoSeleccionado) {
         const atras = document.querySelector('.atras').style.width = '8vh';
 
         document.getElementById('unirseVs').addEventListener('click', unirse);
-        document.getElementById('crearVs').addEventListener('click', elegirJuego);
+        document.getElementById('crearVs').addEventListener('click', crearSala);
     }
 
     // Función para multijugador
     function multijugador() {
         let resultadoMostrar = `
-            <a href="configurarJuego.php"><img src="img/iconos/atras.png" alt="" class="atras"></a>
+            <a href="configurarJuego.php"><img src="img/iconos/atrasN.png" alt="" class="atras"></a>
             <div class="bienvenido"><img src="img/iconos/segundoMemory.png" alt="logoMemory" class="segundoLogo"></div>
             <h1 class="textoEleccion">Selecciona una opción</h1>
             <div class="contenedorOpciones">
@@ -434,17 +417,18 @@ function procesarEleccion(juegoSeleccionado) {
 
         document.getElementById('contenido').innerHTML = resultadoMostrar;
         aplicarAnimacion('#contenido');
-        const logo = document.querySelector('.segundoLogo').style.width = '15vh';
-        const atras = document.querySelector('.atras').style.width = '8vh';
 
         document.getElementById('unirseSala').addEventListener('click', unirse);
-        document.getElementById('crearSala').addEventListener('click', elegirJuego);
+        document.getElementById('crearSala').addEventListener('click', crearSala);
     }
 
+    function crearSala(){
+        window.location.href = `crearSala.php`
+    }
     // Función para unirse a una sala
     function unirse() {
         let resultadoMostrar = `
-            <a href="configurarJuego.php"><img src="img/iconos/atras.png" alt="" class="atras"></a>
+            <a href="configurarJuego.php"><img src="img/iconos/atrasN.png" alt="" class="atras"></a>
             <div class="bienvenido"><img src="img/iconos/segundoMemory.png" alt="logoMemory" class="segundoLogo"></div>
                 <h1 class="textoEleccion">Ingresa el código de invitación</h1>
             <div class="unirse">
