@@ -12,7 +12,10 @@
     <link rel="stylesheet" href="css/estiloTablaPuntuacion.css">
     <link rel="stylesheet" href="css/estiloSeguirJugando.css">
     <link rel="shortcut icon" href="img/iconos/segundoMemory.png">
-
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Just+Me+Again+Down+Here&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
+    </style>
 </head>
 
 <style>

@@ -26,4 +26,4 @@ function iniciarContador() {
     }
 
 
-    iniciarContador();
+iniciarContador();

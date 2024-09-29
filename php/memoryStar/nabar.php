@@ -685,13 +685,15 @@
 
 <!--Tabla Multijugador-->
 
+
+
 <div class="modal fade" id="tablaMulti" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
             <div class="modal-body">
                 <h1 class="modal-title">Tabla Puntuacion</h1>
 
-                <div class="contenedor-tablaMulti" style="background-image: url(img/tablas/fondomulti.png);">
+                <div class="contenedor-tablaMulti">
                     <div>
                         <img src="img/tablas/segundo.png" class="medalla" alt="">
                         <img src="img/tablas/primero.png" class="medalla" alt="">
@@ -767,10 +769,10 @@
 <!--Tabla solo-->
 
 <div class="modal fade" id="tablapuntuacionsolo" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-dialog modal-sm modal-dialog-centered">
         <div class="modal-content contenedorTsolo">
             <div class="tituloTsolo">Puntuación</div>
-            <div class="contenedorTsoloInterior" style="background-image: url('img/tablas/fondosolo.png');">
+            <div class="contenedorTsoloInterior">
                 <div class="contenedor-estrellas">
                     <img src="img/tablas/Star.png" class="star" alt="">
                     <img src="img/tablas/Star.png" class="star" alt="">

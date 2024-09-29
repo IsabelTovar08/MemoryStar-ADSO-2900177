@@ -35,8 +35,8 @@
 
 <!-- Modal ayuda -->
 <div class="modal fade" id="exampleModal-ayuda" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content fondo-ayuda">
+    <div class="modal-dialog card moover coloor">
+        <div class="modal-content coloor">
             <div class="modal-header">
 
                 <h1 class="titulo-ayuda">¿Cómo Jugar?</h1>
@@ -74,8 +74,8 @@
 
 <!-- Modal ayuda CARTAS 2 -->
 <div class="modal fade" id="exampleModal-ayuda2" tabindex="-1" aria-labelledby="exampleModalLabel2" aria-hidden="true">
-    <div class="modal-dialog  modal-dialog-centered">
-        <div class="modal-content fondo-ayuda">
+    <div class="modal-dialog card moover coloor">
+        <div class="modal-content coloor">
             <div class="modal-header">
 
 
@@ -95,7 +95,7 @@
                 <div class="d-flex justify-content-center align-items-center">
                     <img src="img/ayuda/ayudaCarta.png" class="imgAyuda2">
                 </div>
-                
+
             </div>
             <div alt="salir" class="btn atras-ayuda" id="salir1">Atras</div>
 
@@ -105,8 +105,8 @@
 
 <!-- Modal ayuda SECUENCIA 3 -->
 <div class="modal fade" id="exampleModal-ayuda3" tabindex="-1" aria-labelledby="exampleModalLabel3" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content fondo-ayuda">
+    <div class="modal-dialog  card moover">
+        <div class="modal-content coloor">
             <div class="modal-header">
 
                 <h1 class=" titulo-ayuda">¿Cómo Jugar Secuencia?</h1>
@@ -114,10 +114,10 @@
             </div>
             <div class="modal-body">
                 <div class="texto">
-                1. Memoriza la secuencia: Observa una secuencia de objetos que aparecerá por unos segundos.<br>
-                2. Reordena la secuencia: Después de desaparecer, la secuencia volverá desordenada. Reordénala correctamente.<br>
-                3. Tiempo límite: Tienes un tiempo limitado para completar el reordenamiento.<br>
-                4. Puntos: Ganas puntos por ordenar correctamente y más si lo haces rápido.<br>
+                    1. Memoriza la secuencia: Observa una secuencia de objetos que aparecerá por unos segundos.<br>
+                    2. Reordena la secuencia: Después de desaparecer, la secuencia volverá desordenada. Reordénala correctamente.<br>
+                    3. Tiempo límite: Tienes un tiempo limitado para completar el reordenamiento.<br>
+                    4. Puntos: Ganas puntos por ordenar correctamente y más si lo haces rápido.<br>
                 </div>
 
                 <div class="d-flex justify-content-center align-items-center">
@@ -131,8 +131,8 @@
 
 <!-- Modal ayuda ASOCIACION 4 -->
 <div class="modal fade" id="exampleModal-ayuda4" tabindex="-1" aria-labelledby="exampleModalLabel4" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content fondo-ayuda">
+    <div class="modal-dialog card moover">
+        <div class="modal-content coloor">
             <div class="modal-header">
 
 
@@ -142,11 +142,11 @@
             </div>
             <div class="modal-body">
                 <div class="texto">
-                Visualiza las imágenes: Se mostrarán 2 columnas, la izquierda con imágenes principales y la derecha con imágenes asociadas. <br>
-                Asocia las imágenes: Haz coincidir cada imagen de la izquierda con la relacionada en la derecha. <br>
-                Tiempo límite: Tienes tiempo limitado para hacer todas las asociaciones. <br>
-                Puntos: Ganas puntos por cada asociación correcta, más si lo haces rápido. <br>
-                Niveles: Las asociaciones serán más difíciles conforme avances. <br>
+                    Visualiza las imágenes: Se mostrarán 2 columnas, la izquierda con imágenes principales y la derecha con imágenes asociadas. <br>
+                    Asocia las imágenes: Haz coincidir cada imagen de la izquierda con la relacionada en la derecha. <br>
+                    Tiempo límite: Tienes tiempo limitado para hacer todas las asociaciones. <br>
+                    Puntos: Ganas puntos por cada asociación correcta, más si lo haces rápido. <br>
+                    Niveles: Las asociaciones serán más difíciles conforme avances. <br>
                 </div>
                 <div class="d-flex justify-content-center align-items-center">
                     <img src="img/ayuda/ayudaAsociar.png" class="imgAyuda2">

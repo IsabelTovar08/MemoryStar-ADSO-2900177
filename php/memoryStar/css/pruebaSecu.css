@@ -1,0 +1,290 @@
+/* Estilo general para la página */
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f4f4f9;
+  color: #333;
+}
+
+#contenedor-secuInt {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+.contenedor-estante{
+  position: relative;
+  width: 100%; /* La imagen ocupará el 100% del contenedor padre */
+  max-width: 750px; /* Limitar el tamaño máximo en pantallas grandes */
+  height: auto;
+  margin: 0 auto;
+}
+
+.estanteImg{
+  width: 100%; /* Imagen que se escala responsivamente */
+  height: auto;
+}
+.contenedor-libros {
+  position: absolute;
+  display: flex;
+  width: 80%;
+  margin: 0 auto;
+  margin-top: vh;
+  justify-content: center;
+  align-items: center;
+  top: 10%;
+  left: 9%;
+}
+
+.libro {
+
+  width: 7%;
+  height: auto;
+  cursor: grab;
+}
+
+.libro.seleccionado {
+  transform: scale(1.1) rotate(-2deg);
+  box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.7);
+  cursor: grabbing;
+  /* opacity: 0; */
+}
+.libro.fantasma {
+  opacity: 0;
+}
+.libro.drag {
+  opacity: 0;
+  cursor: grabbing;
+}
+
+@keyframes aparecerDesdeIzquierda {
+  0% {
+    opacity: 0;
+    transform: translateX(-100%);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+#contenedor-secuInt {
+  animation: aparecerDesdeIzquierda 1s ease-out forwards;
+}
+
+.libro.inicio {
+  animation: aparecerDesdeIzquierda 1s ease-out forwards;
+}
+
+@media (max-width: 576px) {
+  
+
+  
+}
+
+/* Estilos juego objetos
+*
+*
+*
+*
+*
+*/
+.contenedor-juego-objetos {
+  display: flex;
+  flex-direction: column;
+  width: 87%;
+  
+}
+
+.contenedor-imagen {
+  position: relative;
+  width: 100%; /* La imagen ocupará el 100% del contenedor padre */
+  max-width: 950px; /* Limitar el tamaño máximo en pantallas grandes */
+  height: auto;
+  margin: 0 auto; /* Centrar la imagen en pantallas más grandes */
+  
+}
+
+#imagen-principal {
+  animation: aparecerDesdeIzquierda 1s ease-out forwards;
+}
+
+.imagen-objeto {
+  width: 100%; /* Imagen que se escala responsivamente */
+  height: auto;
+  
+}
+.dropzone {
+  position: absolute;
+  min-width: 30px;
+  min-height: 30px;
+  width:auto; /* Tamaño relativo para que se escale con la imagen */
+  height:auto;
+  border: 2px dashed #ffff;
+}
+.dropzone:nth-child(6){
+  min-height: 60px;
+}
+
+/*dropzone*/
+#droplibro {
+  top: 67%; /* Porcentajes para que se ajusten en relación con la imagen */
+  left: 54%;
+}
+
+#dropzapatos {
+  top: 81%;
+  left: 19%;
+}
+
+#dropcuadro {
+  top: 40%;
+  left: 31%;
+}
+#droplampara {
+  top: 58%;
+  left: 81%;
+}
+#dropcactus{
+  top: 33%;
+  left: 65%;
+}
+#dropjarra{
+  top: 59%;
+  left: 72%;
+}
+/*fin dropzone*/
+
+
+
+
+
+.contenedor-objetos {
+  display: flex;
+  min-height: 30px;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-top: 10px;
+  border: 1px dashed #fff;
+  width: 100%;
+  max-width: 950px;
+  top: 85%;
+  margin: 0 auto;
+  backdrop-filter: blur(3px);
+}
+
+
+.arrastrable {
+  
+  margin: 5px;
+  height: 8%;
+  width: 8%;
+  cursor: move;
+
+  text-align: center;
+}
+
+/*Tamaños*/
+#lampara{
+  height: 3%;
+  width: 3%;
+}
+#cactus{
+  height: 3%;
+  width: 3%;
+}
+#jarra{
+  height: 5%;
+  width: 5%;
+}
+#lampara.lampara-cambiado {
+  width: 48%;  /* Ajusta el tamaño deseado */
+  height: 48%; /* Ajusta el tamaño deseado */
+}
+#cactus.objeto-cambiado{
+  width: 45%;  /* Ajusta el tamaño deseado */
+  height: 45%;
+}
+#jarra.objeto-cambiado{
+  width: 45%;  /* Ajusta el tamaño deseado */
+  height: 45%;
+}
+
+#zapatos.objeto-cambiado2{
+  width: 45%;
+  height: 45%;
+
+}
+#libro.objeto-cambiado2{
+  width: 45%;
+  height: 45%;
+  
+}
+#cuadro.objeto-cambiado2{
+  width: 45%;
+  height: 45%;
+  
+}
+/*Fin Tamaños*/
+
+
+
+
+@media (max-width: 576px) {
+  
+
+  .arrastrable {
+    height: 15%; /* Ajustar el tamaño de los objetos */
+    width: 15%;
+  }
+  #lampara{
+    height: 7%;
+    width: 7%;
+  }
+  #cactus{
+    height: 10%;
+    width: 10%;
+  }
+  #jarra{
+    height: 15%;
+    width: 15%;
+  }
+  
+  .dropzone {
+    min-width: 20px; /* Ajuste en pantallas pequeñas */
+    min-height: 20px;
+    
+  }
+  #lampara.lampara-cambiado {
+    width: 30%;  /* Ajusta el tamaño deseado */
+    height: 30%; /* Ajusta el tamaño deseado */
+  }
+  #cactus.objeto-cambiado{
+    width: 15%;  /* Ajusta el tamaño deseado */
+    height: 15%;
+  }
+  #jarra.objeto-cambiado{
+    width: 15%;  /* Ajusta el tamaño deseado */
+    height: 15%;
+  }
+  
+  #zapatos.objeto-cambiado2{
+    width: 18%;
+    height: 18%;
+  
+  }
+  #libro.objeto-cambiado2{
+    width: 18%;
+    height: 18%;
+    
+  }
+  #cuadro.objeto-cambiado2{
+    width: 18%;
+    height: 18%;
+    
+  }
+  #dropcactus{
+    top:35%
+  }
+  #dropcuadro{
+    top:42%;
+    left: 29%;
+  }
+}

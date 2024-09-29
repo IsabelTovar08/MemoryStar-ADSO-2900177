@@ -1,3 +1,9 @@
+#exampleModal-ayuda .modal-dialog{
+    width: 90%;
+    
+    margin: auto;
+}
+
 .titulo-ayuda{
     font-size: 20px !important; /* Tamaño de la fuente */
     font-weight: bold; /* Texto en negrita */
@@ -65,6 +71,8 @@
     font-size: 16px ;
     font-family: Arial, Helvetica, sans-serif ;
     color: #ffff;
+    -webkit-text-stroke-width: 0.1px;
+  -webkit-text-stroke-color: black;
 }
 
 #exampleModal-ayuda .modal-body{
@@ -86,6 +94,21 @@
 @media (max-width:576px){
 
     #exampleModal-ayuda .modal-dialog{
+        width: 90%;
+        
+        margin: auto;
+    }
+    #exampleModal-ayuda2 .modal-dialog{
+        width: 90%;
+        
+        margin: auto;
+    }
+    #exampleModal-ayuda3 .modal-dialog{
+        width: 90%;
+        
+        margin: auto;
+    }
+    #exampleModal-ayuda4 .modal-dialog{
         width: 90%;
         
         margin: auto;
