@@ -19,7 +19,12 @@
         <div class="login">
             <div class="label">
                 <h2>Iniciar Sesión</h2>
+
+               
             </div>
+
+            <?php include('controladores/controladorLogin.php');?>
+                
             <div class="tarjeta form">
                 <form class="formularioLogin"  method="post" action="" >
                     <div class="inputs"><input id="username"  name = "usuario" required="" type="text" /><span><i class="bi bi-person"></i> Usuario</span></div>
