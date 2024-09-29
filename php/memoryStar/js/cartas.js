@@ -61,7 +61,7 @@ document.addEventListener("DOMContentLoaded", function () {
         if (aciertos === totalAciertos) {
           setTimeout(() => {
             // Redirigir al usuario después de mostrar el último mensaje
-            window.location.href = "otra-pagina.html"; // Cambia esto a la URL de destino
+            window.location.href = "./espacial/juegoDulces/index.html"; // Cambia esto a la URL de destino
           }, 3000); // Esperar 3 segundos antes de redirigir
         }
       } else {
