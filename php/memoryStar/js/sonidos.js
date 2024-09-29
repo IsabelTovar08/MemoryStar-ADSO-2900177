@@ -25,10 +25,10 @@ const musicTime = localStorage.getItem('musicTime');
 if (musicStatus === 'playing') {
     musicaFondo.currentTime = musicTime ? parseFloat(musicTime) : 0;
     musicaFondo.play();
-    iconoMusica.src = 'img/iconos/sonido-encendido.png';
+    iconoMusica.src = 'img/iconos/musicaa.png';
     iconoMusica.alt = 'Pausar';
 } else {
-    iconoMusica.src = 'img/iconos/sonido-apagadoo.png';
+    iconoMusica.src = 'img/iconos/musicaApagada.png';
     iconoMusica.alt = 'Reproducir';
 }
 
@@ -36,12 +36,12 @@ if (musicStatus === 'playing') {
 function funcionMusicaFondo() {
     if (musicaFondo.paused) {
         musicaFondo.play();
-        iconoMusica.src = 'img/iconos/sonido-encendido.png';
+        iconoMusica.src = 'img/iconos/musicaa.png';
         iconoMusica.alt = 'Pausar';
         localStorage.setItem('musicStatus', 'playing');
     } else {
         musicaFondo.pause();
-        iconoMusica.src = 'img/iconos/sonido-apagadoo.png';
+        iconoMusica.src = 'img/iconos/musicaApagada.png';
         iconoMusica.alt = 'Reproducir';
         localStorage.setItem('musicStatus', 'paused');
     }

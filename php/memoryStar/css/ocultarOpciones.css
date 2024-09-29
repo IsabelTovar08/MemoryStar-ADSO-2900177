@@ -1,0 +1,324 @@
+/* Títuloo */
+.radio-inputsNuevo {
+    display: flex;
+    flex-wrap: wrap;
+    width: 50%;
+    justify-content: center;
+    align-content: flex-start;
+    gap: 1vh;
+}
+#juegoSecuenciaNuevo{
+    padding: 5px; /* Tamaño del borde */
+    background-color: #6200ff; /* Color del borde */
+    clip-path: polygon(15% 0%, 100% 0%, 100% 85%, 85% 100%, 0% 100%, 0% 15%);
+    width: 13vh;
+    height: 15vh;
+    background-color: #9aabf8;
+    color: white;
+    font-size: 2vw;
+    border-radius: 10px;
+    text-align: center;
+}
+.contenInput{
+    background-color: #0080ff3a;
+    width: 5.5vw;
+    height: 7vh;
+}
+.contenInput img{
+    width: 70%;
+    margin-top: 20%;
+    margin-left: -20%;
+}
+.texto-label{
+    text-align: center;
+    font-size: 1.7vh;
+}
+
+.confi{
+    background-color: #805cd4b2;
+    height: 70vh;
+    border-radius: 10%;
+    border: 2px solid #9b4caf;
+    box-shadow: 0 0 30px #9b4caf;
+    margin: 1%;
+    display: flex;
+}
+.opcio{
+    background-color: #654dbb85;
+    border-radius: 10px;
+    width: 10vw;
+    height: auto;
+    font-size: 1.3vw;
+    box-shadow: 5px 5px 0 #000;
+}
+.opcio:hover{
+    box-shadow: 8px 8px 0 #000;
+
+}
+.opcio input{
+    background-color: #9b4caf;
+    height: 6vh;
+    /* border:none; */
+    width: 10vw;
+    border-radius: 10px;
+
+}
+.container {
+    position: relative;
+}
+
+.game-title {
+    font-family: 'Arial', sans-serif;
+    font-size: 6vh;
+    font-weight: bold;
+    color: #d4e8ff; /* Color azul */
+    text-shadow: 
+        0 0 5px rgba(255, 255, 255, 0.6), 
+        0 0 10px rgba(255, 255, 255, 0.5), 
+        0 0 15px rgba(255, 255, 0, 0.8); /* Efecto de resplandor */
+    animation: sparkle 1.5s infinite; /* Animación de chispa */
+}
+
+@keyframes sparkle {
+    0%, 100% {
+        text-shadow: 
+            0 0 5px rgba(255, 255, 255, 0.6), 
+            0 0 10px rgba(255, 255, 255, 0.5), 
+            0 0 15px rgba(255, 255, 0, 0.8); /* Resplandor normal */
+    }
+    50% {
+        text-shadow: 
+            0 0 10px rgba(255, 255, 255, 1), 
+            0 0 20px rgba(255, 255, 255, 0.8), 
+            0 0 30px rgba(255, 255, 0, 1); /* Resplandor más fuerte */
+    }
+}
+
+/* Letra que gira */
+.animated-shadow {
+    color: #ffffff;
+    font: normal 5vh Varela Round, sans-serif;
+    left: 0;
+    letter-spacing: 5px;
+    text-align: center;
+    text-transform: uppercase;
+    width: 100%;
+    animation: move linear 2000ms infinite;
+    z-index: 2
+  }
+  /*Animación para rotar las sombras*/
+  @keyframes move {
+    0% {
+      text-shadow:
+        4px -4px 0 #da0641,
+        3px -3px 0 #da0641,
+        2px -2px 0 #da0641,
+        1px -1px 0 #da0641,
+        -4px 4px 0 #13f1fc,
+        -3px 3px 0 #13f1fc,
+        -2px 2px 0 #13f1fc,
+        -1px 1px 0 #13f1fc
+      ;
+    }
+    25% {
+      text-shadow:
+        -4px -4px 0 #13f1fc,
+        -3px -3px 0 #13f1fc,
+        -2px -2px 0 #13f1fc,
+        -1px -1px 0 #13f1fc,
+        4px 4px 0 #da0641,
+        3px 3px 0 #da0641,
+        2px 2px 0 #da0641,
+        1px 1px 0 #da0641
+      ;
+    }
+    50% {
+      text-shadow:
+        -4px 4px 0 #da0641,
+        -3px 3px 0 #da0641,
+        -2px 2px 0 #da0641,
+        -1px 1px 0 #da0641,
+        4px -4px 0 #13f1fc,
+        3px -3px 0 #13f1fc,
+        2px -2px 0 #13f1fc,
+        1px -1px 0 #13f1fc
+      ;
+    }
+    75% {
+      text-shadow:
+        4px 4px 0 #13f1fc,
+        3px 3px 0 #13f1fc,
+        2px 2px 0 #13f1fc,
+        1px 1px 0 #13f1fc,
+        -4px -4px 0 #da0641,
+        -3px -3px 0 #da0641,
+        -2px -2px 0 #da0641,
+        -1px -1px 0 #da0641
+      ;
+    }
+    100% {
+      text-shadow:
+        4px -4px 0 #da0641,
+        3px -3px 0 #da0641,
+        2px -2px 0 #da0641,
+        1px -1px 0 #da0641,
+        -4px 4px 0 #13f1fc,
+        -3px 3px 0 #13f1fc,
+        -2px 2px 0 #13f1fc,
+        -1px 1px 0 #13f1fc
+      ;
+    }
+  }
+.linea {
+    position: absolute;
+    height: 2px;
+    background-color: rgba(255, 0, 255, 0.2); 
+    width: 30%; 
+}
+
+.linea-superior {
+    top: 20%;
+    left: 0;
+}
+
+.linea-inferior {
+    top: 70%;
+    right: 0;
+}
+
+.circulo {
+    width: 15px;
+    height: 15px;
+    background-color: #fa65fa;
+    border-radius: 50%;
+    position: absolute;
+    top: -6px;
+    box-shadow: 0 0 15px #ffffff, 0 0 15px #fa65fa; 
+}
+
+.circulo-superior {
+    animation: mover-mitad-izquierda 3s ease-in-out infinite;
+}
+
+.circulo-inferior {
+    animation: mover-mitad-derecha 3s ease-in-out infinite;
+}
+
+@keyframes mover-mitad-izquierda {
+    0% {
+        left: 0;
+    }
+    50% {
+        left: 100%; 
+    }
+    100% {
+        left: 0;
+    }
+}
+
+@keyframes mover-mitad-derecha {
+    0% {
+        left: 100%;
+    }
+    50% {
+        left: 0;
+    }
+    100% {
+        left: 100%;
+    }
+}
+
+.linea-superior::before,
+.linea-inferior::before {
+    content: '';
+    position: absolute;
+    height: 100%;
+    background-color: #ff00ff;
+    width: 0%;
+    transition: width 1.5s;
+}
+
+.linea-superior::before {
+    left: 0;
+    animation: iluminar-linea-izquierda 3s ease-in-out infinite;
+}
+
+.linea-inferior::before {
+    right: 0;
+    animation: iluminar-linea-derecha 3s ease-in-out infinite;
+}
+
+@keyframes iluminar-linea-izquierda {
+    0% {
+        width: 0;
+    }
+    50% {
+        width: 100%; 
+    }
+    100% {
+        width: 0;
+    }
+}
+
+@keyframes iluminar-linea-derecha {
+    0% {
+        width: 0;
+    }
+    50% {
+        width: 100%; 
+    }
+    100% {
+        width: 0;
+    }
+}
+@keyframes rebote {
+0% {
+transform: translateX(-100%); 
+opacity: 0; 
+}
+50% {
+transform: translateX(15%);
+opacity: 1; 
+}
+100% {
+transform: translateX(0);
+}
+}
+@keyframes reboteDerecho {
+0% {
+transform: translateX(100%); 
+opacity: 0; 
+}
+50% {
+transform: translateX(-15%);
+opacity: 1; 
+}
+100% {
+transform: translateX(0);
+}
+}
+
+.iconos {
+visibility: hidden; 
+opacity: 0; 
+}
+
+.iconos.visible {
+visibility: visible; 
+opacity: 1; 
+animation: rebote 0.8s forwards; 
+
+}
+.derecho.iconos {
+visibility: hidden; 
+opacity: 0; 
+}
+.derecho.iconos.visible {
+visibility: visible; 
+opacity: 1; 
+animation: reboteDerecho 0.8s forwards; 
+}
+#desplegarOpciones{
+display: block;
+visibility: visible;
+}

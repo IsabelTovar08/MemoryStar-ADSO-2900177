@@ -1,301 +1,360 @@
-.carta{
-    height: 121px;
-    width: 121px;
-    cursor: pointer; 
-    transition: transform 0.6s;
-    transform-style: preserve-3d;
-    margin: 1%;
-    position: relative; 
-    
-    
-    
+.mensaje {
+  top: 30%;
+  left: 60%;
+
+  position: fixed;
+  width: 20%;
+  /* Ancho del contenedor */
+  max-width: 300px;
+  /* Establece un ancho máximo */
+  height: auto;
+  /* Altura ajustable */
+  padding: 10px;
+  /* Espaciado interno */
+  background-color: rgba(0, 0, 0, 0.8);
+  /* Fondo semi-transparente */
+  color: white;
+  /* Color del texto */
+  border-radius: 10px;
+  /* Bordes redondeados */
+  z-index: 1000;
+  white-space: normal;
+  /* Permite que el texto se ajuste automáticamente */
+  word-wrap: break-word;
+  /* Rompe palabras largas para que quepan */
 }
+
+.carta {
+  height: 11vw; /* Tamaño más pequeño */
+  width: 8vw; /* Ajuste proporcional */
+  cursor: pointer;
+  transition: transform 0.6s;
+  transform-style: preserve-3d;
+  position: relative;
+
+  /* border: 1px solid #000; */
+  margin: 8px; /* Margen reducido */
+}
+
+@keyframes car {
+  0% {
+    transform: scale(1);
+  }
+
+  50% {
+    transform: scale(1.04);
+  }
+
+  100% {
+    transform: scale(1);
+  }
+}
+/* .movable {
+    position: absolute;
+    width: 100px;
+    animation: move 5s infinite alternate ease-in-out;
+    margin-left: -90%;
+    margin-top: 30%;
+} */
+
+.movable {
+  position: absolute;
+  width: 100px; /* Ajusta el tamaño según sea necesario */
+  transition: transform 0.5s ease; /* Suaviza el movimiento */
+  margin-left: -90%;
+  margin-top: 10%;
+}
+
+.luna {
+  position: absolute;
+  width: 20%; /* Ajusta el tamaño según sea necesario */
+  transition: transform 0.3s;
+  animation: levitar 4s ease-in-out infinite; /* Suaviza el movimiento */
+  /* margin-left: 90%; 0*/
+  margin-left: 60%;
+  margin-top: 10%;
+}
+
+@keyframes levitar {
+  0%,
+  100% {
+    transform: translateY(0); /* Comienza y termina en la posición original */
+  }
+  50% {
+    transform: translateY(
+      -10px
+    ); /* Se mueve hacia arriba, distancia reducida */
+  }
+}
+
+/* @keyframes move {
+    0% {
+        transform: translate(0, 0); 
+    }
+    25% {
+        transform: translate(40vw, 20vh);
+    }
+    50% {
+        transform: translate(80vw, 0); 
+    }
+    75% {
+        transform: translate(40vw, -20vh); 
+    }
+    100% {
+        transform: translate(0, 0);
+    }
+} */
+
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
+
 body {
-    
-    margin: 0;
-    width: 100vw;
-    height: 100vh;
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    font-family: cursive;
-    overflow: hidden;
-    padding: 1%;    
+  margin: 0;
+  width: 100vw;
+  height: 100vh;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  font-family: cursive;
+  overflow: hidden;
+  padding: 1%;
 }
 
 .carta.volteada {
-    transform: rotateY(180deg);
+  transform: rotateY(180deg);
 }
-.frente {
-    z-index: 2;
-    transform: rotateY(0deg);
-}
-.reverso {
-    transform: rotateY(180deg);
-}
-.carta:nth-child(5), .carta:nth-child(0) {
-     margin-right: 33%;
-     margin-left: 1%;   
-}
-.cara {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    backface-visibility: hidden;
-}
-.central {
-    height: 121px;
-    width: 121px;
-    position:fixed; /* Se ubica en el centro absoluto del contenedor */
-    top: 65%; /* Mover hacia el centro vertical */
-    left: 49.5%; /* Mover hacia el centro horizontal */
-    transform: translate(-50%, -50%); /* Ajustar la posición al centro exacto */
-    z-index: 10; /* Asegura que esté por encima de otras cartas */
-}
-.contenedorCartas{
-    /* width: 400px; */
 
-    /* margin: auto; */
-    /* margin-top: -70px;  */
-    display: flex;
-   
-    flex-wrap: wrap;
-    justify-content: center;
-    align-items: center; 
-    width: 80%;
-    max-width: 400px;
-    top: 10%;
+.frente {
+  z-index: 2;
+  transform: rotateY(0deg);
 }
-.imagen{
-    height: 121px;   
-    width: 121px;
-    border-radius: 6px;
+
+.reverso {
+  transform: rotateY(180deg);
 }
-.imagen2{
-    height: 121px;   
-    width: 121px;
-    border-radius: 6px;
+
+.cara {
+  position: absolute;
+  width: 100%; /* Ajustado al tamaño de la carta */
+  height: 100%;
+  backface-visibility: hidden;
 }
-.Titulo{
-    text-align: center;
-    color: blue;
-    font-size: 36px;
+
+.contenedorCartas {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  width: 60%;
+  /* Ajuste al tamaño máximo */
+  margin: 0 auto; /* Centramos el contenedor */
+}
+
+.imagen {
+  height: 100%;
+  width: 100%;
+  animation: car 4s infinite;
+}
+
+.Titulo {
+  text-align: center;
+  color: blue;
+  font-size: 36px;
 }
 /*  estilos encabezado */
 .contenedorCabeza {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    height: 100vh;
-   padding: 1%;
-    margin-top: 0px;
-   
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100vh;
+  padding: 1%;
+  margin-top: 0px;
 }
 .tituloCabeza {
-    font-size: 300%;
-    font-style: inter;
-    margin-bottom: 20px;
-    color: white;
-    text-shadow:
-        -1px -1px 0 #000,  
-         1px -1px 0 #000,
-        -1px  1px 0 #000,
-         1px  1px 0 #000,
-         0px   0px 5px rgba(0, 0, 0, 0.5); 
+  font-size: 300%;
+  font-style: inter;
+  margin-bottom: 20px;
+  color: white;
+  text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000,
+    1px 1px 0 #000, 0px 0px 5px rgba(0, 0, 0, 0.5);
 }
 .figuras {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 .figuras-arriba {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-bottom: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 20px;
 }
 .rectangulo {
-    width: 125px;
-    height: 30px;
-    border-radius: 10px;
-    border: 3px solid #3E87FF;
-    margin: 0 20px;
-    display: flex;
-    align-items: center;
-    padding-left: 5px;
+  width: 125px;
+  height: 30px;
+  border-radius: 10px;
+  border: 3px solid #3e87ff;
+  margin: 0 20px;
+  display: flex;
+  align-items: center;
+  padding-left: 5px;
 }
 .rombo {
-    width: 120px;
-    height: 60px;
-    display: flex;
-    justify-content: center;
-    align-items: center;   
+  width: 120px;
+  height: 60px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 .estrella {
-    width: 30px;
-    height: 25px;
+  width: 30px;
+  height: 25px;
 }
 .numero1 {
-    margin-left: 10px;
-    text-align: left;  
-   color: white;
-    text-shadow:
-        -1px -1px 0 #000,  
-         1px -1px 0 #000,
-        -1px  1px 0 #000,
-         1px  1px 0 #000,
-         0px   0px 5px rgba(0, 0, 0, 0.5); 
+  margin-left: 10px;
+  text-align: left;
+  color: white;
+  text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000,
+    1px 1px 0 #000, 0px 0px 5px rgba(0, 0, 0, 0.5);
 }
 .numero2 {
-    margin-left: 68px;
-    text-align: right;  
-   color: white;
-    text-shadow:
-        -1px -1px 0 #000,  
-         1px -1px 0 #000,
-        -1px  1px 0 #000,
-         1px  1px 0 #000,
-         0px   0px 5px rgba(0, 0, 0, 0.5); 
+  margin-left: 68px;
+  text-align: right;
+  color: white;
+  text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000,
+    1px 1px 0 #000, 0px 0px 5px rgba(0, 0, 0, 0.5);
 }
 .numeroRombo {
-    font-size: 24px;
-    color: white;
-    text-shadow:
-        -1px -1px 0 #000,  
-         1px -1px 0 #000,
-        -1px  1px 0 #000,
-         1px  1px 0 #000,
-         0px   0px 5px rgba(0, 0, 0, 0.5); 
-    position: absolute;
+  font-size: 24px;
+  color: white;
+  text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000,
+    1px 1px 0 #000, 0px 0px 5px rgba(0, 0, 0, 0.5);
+  position: absolute;
 }
 .figuras-abajo {
-    display: flex;
-    justify-content: space-between;
-    width: 100%;
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
 }
 .figura-abajo {
-    width: 125px;
-    height: 100px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin: 0 90px;
-    margin-top: -50px;
+  width: 125px;
+  height: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 90px;
+  margin-top: -50px;
 }
 
 .figura-abajo img {
-    width: 50px;
-    height: 50px;
+  width: 50px;
+  height: 50px;
 }
-@media (max-width: 510px) {
-    .carta {
-        height: 80px; /* Ajusta el tamaño para adaptarse mejor a pantallas pequeñas */
-        width: 80px;
-        margin: 2px;
-    }
-    .central {
-        height: 80px;
-        width: 80px;
-        position:fixed; 
-        top: 58%; 
-        left: 48%; 
-           
-    }
-  
-    .contenedorCartas {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
-        align-items: center; 
-        width: 80%;
-        max-width: 270px;
-        margin-top: 40%;
-        
-    }
-    .imagen {
-        height: 80px; 
-        width: 80px;
-        border-radius: 4px;
-    }
-    .imagen2{
-        height: 90px; 
-        width: 80px;
-        border-radius: 4px;
-       
-    }
-    .Titulo {
-        font-size: 28px; 
-        margin-top: 10px; 
-    }
-    .carta:nth-child(5), .carta:nth-child(0) {
-        margin-right: 90px; 
-    }
-    .botonesCartas{
-        margin-top: 140px;
-    }
-    /*encabezado*/
-    .contenedorCabeza {
-        width: 100%;
-        margin:0 ;
-        margin-left: 0;
-        padding: 10px;
-        
-    }
-    .tituloCabeza {
-        font-size: 24px;
-        margin-bottom: 10px;
-    }
-    .figuras-arriba {  
-        margin-bottom: 10px;
-    }
-    .imgRombo{
-        width: 80px;
-        height: 80px;
-        margin: 0;
-    }
-    .rectangulo {
-        width: 80px;
-        height: 30px;
-        margin: 5px 9px;
-        padding-left: 3px;
-      
-    }
-    .rombo {
-        width: 40%;
-        height: 100%;
-    }
-    .estrella {
-        width: 20px;
-        height: 15px;
-    }
-    .numero1,
-    .numero2 {
-        margin-left: 0;
-        text-align: center;
-    }
-    .figuras-abajo {  
-        align-items: center;
-        width: 100%;
-    }
-    .figura-abajo {
-        width: 90px;
-        height: 70px;
-        margin: 0px 0;
-        margin-top: -20px;
-    }
+@media only screen and (max-width: 1024px) and (orientation: landscape) {
+  .mensaje {
+    top: 20%;
+    left: 50%;
+  }
 
-    .figura-abajo img {
-        width: 40px;
-        height: 35px;
-    }
+  .carta {
+    height: 10vw; /* Ajustado para pantallas pequeñas */
+    width: 8vw;
+    margin: 1%; /* Mantener espaciado proporcional */
+  }
 
-    .figuras{
+  .contenedorCartas {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    width: 60%; /* Ajuste proporcional */
+
+    /* Ajuste para centrar mejor en pantallas pequeñas */
+  }
+
+  .imagen {
+    height: 10vw;
+    width: 8vw;
+    border-radius: 4px;
+    animation: car 4s infinite;
+  }
+
+  .luna {
+    margin-left: 40%;
+  }
+
+  .Titulo {
+    font-size: 5vw;
+    margin-top: 2vh;
+  }
+
+  .numeroRombo {
+    color: rgb(233, 0, 0);
+    text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000,
+      1px 1px 0 #000, 0px 0px 5px rgba(0, 0, 0, 0.5);
+    position: absolute;
+  }
+
+  /*encabezado*/
+  .contenedorCabeza {
+    width: 100%;
+    margin: 0;
+    margin-left: 0;
+    padding: 10px;
+  }
+
+  .tituloCabeza {
+    font-size: 24px;
+    margin-bottom: 10px;
+  }
+  .figuras-arriba {
+    margin-bottom: 10px;
+  }
+  .imgRombo {
+    width: 80px;
+    height: 80px;
+    margin: 0;
+  }
+  .rectangulo {
+    width: 80px;
+    height: 30px;
+    margin: 5px 9px;
+    padding-left: 3px;
+  }
+  .rombo {
+    width: 40%;
+    height: 100%;
+  }
+  .estrella {
+    width: 20px;
+    height: 15px;
+  }
+  .numero1,
+  .numero2 {
+    margin-left: 0;
+    text-align: center;
+  }
+  .figuras-abajo {
+    align-items: center;
+    width: 100%;
+  }
+  .figura-abajo {
+    width: 90px;
+    height: 70px;
+    margin: 0px 0;
+    margin-top: -20px;
+  }
+
+  .figura-abajo img {
+    width: 40px;
+    height: 35px;
+  }
+
+  /* .figuras{
         margin-top: 15%;
-    }
+    } */
 }
