@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ensayo</title>
+  <script src="phaser.min.js"></script>
+  <script type="module" src="juego.js"></script>
+  <!-- <link rel="stylesheet" href="../bootstrap/css/bootstrap.css"> -->
+  <style>
+    body {
+      display: grid;
+      height: 100vh;
+      width: 100vh;
+      background: #02112c;
+      /* justify-content: center; */
+      overflow: hidden;
+    }
+    #game{
+      background-color: antiquewhite;
+    }
+  </style>
+</head>
+<body>
+  <!-- Modal HTML -->
+<div id="myModal" class="modal">
+  <div class="modal-content">
+    <span class="close">&times;</span>
+    <p>Este es un modal en Phaser</p>
+  </div>
+</div>
+<!-- CSS para el Modal -->
+<style>
+  .apartado-iconos {
+    display: block;
+    width: 4.6%;
+    height: auto;
+    margin: 0.5%;
+    position: absolute;
+}
+
+.iconos {
+    width: 100%;
+    height: 100%;
+    margin: 3%;
+    cursor: pointer;
+    transition: transform 0.3s;
+}
+
+.ajustes {
+    font-family: cursive;
+    color: aliceblue;
+}
+
+.card {
+    text-align: center;
+}
+
+  .modal {
+    display: none;
+    position: fixed;
+    /* z-index: 1; */
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgb(0,0,0);
+    background-color: rgba(0,0,0,0.4);
+  }
+
+</style>
+<script src="../bootstrap/js/bootstrap.js"></script>
+</body>
+</html>
