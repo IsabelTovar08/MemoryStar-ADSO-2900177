@@ -11,21 +11,21 @@ export class ManejarPuntos {
     this.tiempoText.setScrollFactor(0);
 
     // Puntuación
-    this.score = 0;
+    this.score = parseInt(localStorage.getItem('puntuacionAcumulada')) || 0; 
     this.scoreText = this.scene.add.text(
       this.scene.scale.width - 200,
       0,
-      "Score: 0",
+      "Score: " + this.score,
       { fontSize: "32px", fill: "#fff" }
     );
     this.scoreText.setScrollFactor(0);
     this.modalVisible = false;
 
-    this.diamantes = 0;
+    this.diamantes = parseInt(localStorage.getItem('diamantesAcumulados')) || 0; 
     this.diamantesText = this.scene.add.text(
       this.scene.scale.width - 300,
       100,
-      "Diamantes: 0",
+      "Diamantes: " + this.diamantes,
       { fontSize: "32px", fill: "#fff" }
     );
     this.diamantesText.setScrollFactor(0);
@@ -230,18 +230,21 @@ export class ManejarPuntos {
 }
 
 
-  recolectarMineral(jugador, mineral) {
-    mineral.disableBody(true, true);
-    this.score += 10;
-    this.diamantes += 1;
-    this.scoreText.setText("Score: " + this.score);
-    this.diamantesText.setText("Diamantes: " + this.diamantes);
+recolectarMineral(jugador, mineral) {
+  mineral.disableBody(true, true);
+  this.score += 10; 
+  this.diamantes += 1; 
+  this.scoreText.setText("Score: " + this.score);
+  this.diamantesText.setText("Diamantes: " + this.diamantes);
 
-    if (this.score >= 60) {
-      this.scoreText.setText("Score: " + this.score + " - NIVEL COMPLETADO");
-      this.showModal();
-    }
+  localStorage.setItem('puntuacionAcumulada', this.score); 
+  localStorage.setItem('diamantesAcumulados', this.diamantes); 
+
+  if (this.score >= 60) {
+    this.scoreText.setText("Score: " + this.score + " - NIVEL COMPLETADO");
+    this.showModal();
   }
+}
 
   configurarColisionMineral(mineralGroup) {
     this.scene.physics.add.overlap(
