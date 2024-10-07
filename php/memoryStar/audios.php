@@ -10,3 +10,11 @@
         <source src="audio/pasar-mouse .mp3" type="audio/mpeg">
             Tu navegador no soporta la etiqueta de audio.
     </audio>
+    <audio id="bien">
+        <source src="audio/sonidoBien.mp3" type="audio/mpeg">
+            Tu navegador no soporta la etiqueta de audio.
+    </audio>
+    <audio id="voltear">
+        <source src="audio/voltear-cartas.mp3" type="audio/mpeg">
+            Tu navegador no soporta la etiqueta de audio.
+    </audio>

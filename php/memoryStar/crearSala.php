@@ -11,327 +11,234 @@
     <title>JUGAR MemoryStart ¡Pon a prueba tu memoria!</title>
     <link rel="shortcut icon" href="img/iconos/segundoMemory.png">
     <link rel="stylesheet" href="css/ocultarOpciones.css">
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Just+Me+Again+Down+Here&display=swap');
-
-        body {
-            background-image: url('img/fondos/fondoSala.jpeg');
-        }
-    </style>
 </head>
-<style>
-    #contenido {
-        background-color: #d4e8ff6b;
-        width: 80vw;
-        padding: 2%;
-        border-radius: 10px;
-    }
 
-    .radio-tile {
-        width: 6vw;
-        height: auto;
-    }
-
-    .play {
-        margin-left: 105%;
-    }
-
-    .textoEleccion {
-        font-size: 2vh;
-    }
-
-    /* From Uiverse.io by andrew-demchenk0 */
-    .container {
-        --input-focus: #2d8cf0;
-        --input-out-of-focus: #ccc;
-        --bg-color: #fff;
-        --bg-color-alt: #666;
-        --main-color: #323232;
-        position: relative;
-        cursor: pointer;
-        width: 3.3vh;
-        padding: 0;
-        display: flex;
-        float: left;
-    }
-
-    label .container {
-        margin-bottom: 100vh;
-
-        padding: 0;
-    }
-
-    .container input {
-        position: absolute;
-        opacity: 0;
-    }
-
-    .checkmark {
-        width: 3.3vh;
-        height: 3.3vh;
-        position: relative;
-        top: 0;
-        left: 0;
-        right: 0;
-        border: 2px solid var(--main-color);
-        border-radius: 50%;
-        box-shadow: 4px 4px var(--main-color);
-        background-color: var(--input-out-of-focus);
-        transition: all 0.3s;
-    }
-
-    .container input:checked~.checkmark {
-        background-color: var(--input-focus);
-    }
-
-    .checkmark:after {
-        content: "";
-        width: 1vh;
-        height: 2vh;
-        position: absolute;
-        top: 0.2vh;
-        left: 1vh;
-        display: none;
-        border: solid var(--bg-color);
-        border-width: 0 2.5px 2.5px 0;
-        transform: rotate(45deg);
-    }
-
-    .container input:checked~.checkmark:after {
-        display: block;
-    }
-
-    .imgAvatar {
-        width: 4vw;
-        height: 4vw;
-
-    }
-</style>
-
-<body>
+<body style="background-image: url('img/fondos/rosa2.png');">
     <div class="container-fuid">
         <?php include('nabar.php'); ?>
-        <div class="linea linea-superior">
-            <div class="circulo circulo-superior"></div>
+        <div class="control" style="width:5px; bottom: 0; position: absolute;">
+            <img src="img/fondos/controles.png" alt="" style="width:30vh;">
         </div>
-        <div class="linea linea-inferior">
-            <div class="circulo circulo-inferior"></div>
-        </div>
+
         <div id="contenedor">
-            <div id="contenido">
-                <h1 class="game-title">CREAR SALA</h1>
-                <a href="configurarJuego.php"><img src="img/iconos/atrasN.png" alt="" width="50" class="atras"
-                        style="width: 8vh;"></a>
-                <h1 class="animated-shadow" style="font-size:2vh;">¿Preparado para la aventura?</h1>
+
+            <div id="contenido" style="width: 80vw;">
+                <h1 class="game-title">Crear Sala</h1>
                 <div class="col row">
-                    <div class="confi col row">
-                        <h3>Avatar</h3>
-                        <div class="col">
-                            <label class="container">
-                                <input type="radio" id="img1" name="carousel" value="Imagen 1" checked>
-                                <div class="checkmark"></div>
-                            </label>
-                            <img src="img/iconos/perfil2.png" class="imgAvatar" alt="...">
+                    <div class="col-4 sala">
+                        <h1 class="textoEleccion">Elje tu avatar</h1>
+                        <div id="carouselExampleIndicators" class="carousel slide carousel-container" data-bs-interval="false">
+                            <div class="carousel-indicators">
+                                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0"
+                                    class="active" aria-current="true" aria-label="Slide 1"></button>
+                                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1"
+                                    aria-label="Slide 2"></button>
+                                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2"
+                                    aria-label="Slide 3"></button>
+                            </div>
+                            <div class="carousel-inner carousel-images">
+                                <div class="carousel-item active">
+                                    <img src="img/gif/esqueleto.gif" class="d-block w-100" alt="..." style="padding:5%">
+                                    <input type="radio" id="img1" name="carousel" value="Imagen 1" checked>
+                                </div>
+                                <div class="carousel-item">
+                                    <img src="img/gif/calabaza.gif" class="d-block w-100" alt="...">
+                                    <input type="radio" id="img2" name="carousel" value="Imagen 2">
+                                </div>
+                                <div class="carousel-item">
+                                    <img src="img/gif/hongo.gif" class="d-block w-100" alt="..." style="padding:19%;">
+                                    <input type="radio" id="img3" name="carousel" value="Imagen 3">
+                                </div>
+                            </div>
+                            <button class="carousel-control-prev" type="button"
+                                data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                <span class="visually-hidden">Previous</span>
+                            </button>
+                            <button class="carousel-control-next" type="button"
+                                data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                <span class="visually-hidden">Next</span>
+                            </button>
                         </div>
-                        <div class="col">
-                            <label class="container">
-                                <input type="radio" id="img1" name="carousel" value="Imagen 2">
-                                <div class="checkmark"></div>
-                            </label>
-                            <img src="img/iconos/perfil3.png" class="imgAvatar" alt="...">
+                        <div class="button-container">
+                            <div class="btn-accept"></div>
                         </div>
-                        <div class="col">
-                            <label class="container">
-                                <input type="radio" id="img1" name="carousel" value="Imagen 3">
-                                <div class="checkmark"></div>
-                            </label>
-                            <img src="img/iconos/perfil5.png" class="imgAvatar" alt="...">
+                        <div class="boton-avatar ">
+                            <button class="btn" onclick="seleccionarImagen()">Seleccionar</button>
                         </div>
-                        <div class="col">
-                            <label class="container">
-                                <input type="radio" id="img1" name="carousel" value="Imagen 4">
-                                <div class="checkmark"></div>
-                            </label>
-                            <img src="img/iconos/perfil6.png" class="imgAvatar" alt="...">
-                        </div>
-                        <div class="col">
-                            <label class="container">
-                                <input type="radio" id="img1" name="carousel" value="Imagen 5">
-                                <div class="checkmark"></div>
-                            </label>
-                            <img src="img/iconos/vaca.png" class="imgAvatar" alt="...">
-                        </div>
-                        <button class="boton-seleccion" onclick="seleccionarImagen()">Seleccionar Imagen</button>
-                        <div class="seleccion-resultado" id="resultado"></div>
-
+                        <!-- <div class="seleccion-resultado" id="resultado"></div> -->
                         <script>
+                            const carouselElement = document.querySelector('#carouselExampleIndicators');
+                            carouselElement.addEventListener('slid.bs.carousel', function () {
+                                // Obtener el índice del carousel-item activo
+                                const activeIndex = [...carouselElement.querySelectorAll('.carousel-item')].findIndex(item => item.classList.contains('active'));
+
+                                // Desmarcar todos los inputs
+                                const inputs = carouselElement.querySelectorAll('input[type="radio"]');
+                                inputs.forEach(input => input.checked = false);
+
+                                // Activar el input correspondiente
+                                if (inputs[activeIndex]) {
+                                    inputs[activeIndex].checked = true;
+                                }
+                            });
                             function seleccionarImagen() {
+                                // Seleccionar el input marcado
                                 const seleccionada = document.querySelector('input[name="carousel"]:checked');
-                                document.getElementById('resultado').textContent = `Has seleccionado: ${seleccionada.value}`;
+
+                                // Actualizar el contenido de 'resultado'
+                                // document.getElementById('resultado').textContent = `Has seleccionado: ${seleccionada.value}`;
+
+                                // Eliminar la clase 'seleccion' de cualquier item que la tenga
+                                const previousSelectedItem = document.querySelector('.carousel-item.seleccion');
+                                if (previousSelectedItem) {
+                                    previousSelectedItem.classList.remove('seleccion');
+                                }
+
+                                // Seleccionar el item activo
+                                const activeItem = document.querySelector('.carousel-item.active');
+
+                                // Agregar la clase 'seleccion' al item activo
+                                if (activeItem) {
+                                    activeItem.classList.add('seleccion');
+                                }
+                                const bieen = document.getElementById('bien');
+                                bieen.play();
                             }
+
                         </script>
-
-                        <div class="row">
-                            <div class="col">
-                                <div class="opcio">Tu nombre
-                                    <input type="text">
+                        <div class="tarjetas-container confiSala">
+                            <div class="option capacidad">
+                                <input type="number" min="1" max="25" oninput="validity.valid||(value='');">
+                                <div class="romboide">
+                                    <h6>Capacidad máxima</h6>
                                 </div>
                             </div>
                         </div>
-
-                        <div class="row">
-                            <h5>Configuración Sala</h5>
-                            <div class="col">
-                                <div class="opcio">Nombre de <br> la Sala
-                                    <input type="text">
-                                </div>
-                            </div>
-                            <div class="col">
-                                <div class="opcio">Cantidad Jugadores
-                                    <input type="number">
+                        <div class="tarjetas-container confiSala">
+                            <div class="option nombreSala">
+                                <input type="text" pattern="[A-Za-z\s]+" maxlength="30"
+                                    oninput="validity.valid||(value='');"
+                                    title="Solo se permiten letras, máximo 30 caracteres">
+                                <div class="romboide">
+                                    <h6>Nombre de sala</h6>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="confi col row">
+                    <div class="col-7 sala">
+                        <h1 class="textoEleccion">Elije el juego</h1>
+                        <div class="tarjetas-container">
+                            <div class="option juegoUno">
+                                <input type="radio" name="tipoJuego" id="juegoEspacial" value="juegoEspacial">
+                                <label class="tarjetaOpcion" for="juegoEspacial">
+                                    <img src="img/gif/espacial.gif" alt="">
+                                </label>
+                                <div class="romboide">
+                                    <h6>Planetscape </h6>
+                                </div>
+                            </div>
+                            <div class="option">
+                                <input type="radio" name="tipoJuego" id="juegoOrdenar" value="juegoOrdenar">
+                                <label class="tarjetaOpcion" for="juegoOrdenar">
+                                    <img src="img/gif/memorizar.gif" alt="">
+                                </label>
+                                <div class="romboide">
+                                    <h6>Memorix</h6>
+                                </div>
+                            </div>
+                        </div>
                         <div class="col row">
-                            <div class="row contenedorOpciones">
-                                <h1 class="textoEleccion">¿Qué quieres jugar?</h1>
-                                <div id="juegoSecuenciaNuevo">
-                                    <div class="contenInput">
-                                        <label class="container">
-                                            <input type="radio" id="img1" name="dos" value="Imagen 2" checked>
-                                            <div class="checkmark"></div>
+                            <div class="col">
+                                <h1 class="textoEleccion">Elije la temática</h1>
+                                <div class="tarjetas-container">
+                                    <div class="option quimica">
+                                        <input type="radio" name="juegoOrdenar" id="ordenarQuimica"
+                                            value="ordenarQuimica">
+                                        <label class="tarjetaOpcion" for="ordenarQuimica">
+                                            <img src="img/iconos/quimica.png" alt="">
                                         </label>
-                                        <img src="img/iconos/vaca.png" class="imgAvatar" alt="...">
-                                        <div class="texto-label">Ordenar Elementos</div>
+                                        <div class="romboide">
+                                            <h6>QuimiLab</h6>
+                                        </div>
+                                    </div>
+                                    <div class="option habitacion">
+                                        <input type="radio" name="juegoOrdenar" id="ordenarHabitacion"
+                                            value="ordenarHabitacion">
+                                        <label class="tarjetaOpcion" for="ordenarHabitacion">
+                                            <img src="img/iconos/habitacion.png" alt="">
+                                        </label>
+                                        <div class="romboide">
+                                            <h6>MagicRoom</h6>
+                                        </div>
                                     </div>
                                 </div>
-                                <div id="juegoSecuenciaNuevo">
-                                    <div class="contenInput">
-                                        <label class="container">
-                                            <input type="radio" id="img1" name="dos" value="Imagen 2">
-                                            <div class="checkmark"></div>
+                                <div class="tarjetas-container">
+                                    <div class="option oficina">
+                                        <input type="radio" name="juegoOrdenar" id="ordenarOficina"
+                                            value="ordenarOficina">
+                                        <label class="tarjetaOpcion" for="ordenarOficina">
+                                            <img src="img/iconos/oficina.png" alt="">
                                         </label>
-                                        <img src="img/iconos/vaca.png" class="imgAvatar" alt="...">
-                                        <div class="texto-label">Ordenar Elementos</div>
+                                        <div class="romboide">
+                                            <h6>OfiMundo</h6>
+                                        </div>
+                                    </div>
+                                    <div class="option biblioteca">
+                                        <input type="radio" name="juegoOrdenar" id="ordenarBiblioteca"
+                                            value="ordenarBiblioteca">
+                                        <label class="tarjetaOpcion" for="ordenarBiblioteca">
+                                            <img src="img/iconos/libros.png" alt="">
+                                        </label>
+                                        <div class="romboide">
+                                            <h6>Bookify</h6>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <h1 class="textoEleccion">Elije la dificultad</h1>
+                                <div class="tarjetas-container">
+                                    <div class="option facil">
+                                        <input type="radio" name="nivel" id="nivelFacil" value="nivelFacil">
+                                        <label class="tarjetaOpcion" for="nivelFacil">
+                                            <img src="img/iconos/facil.png" alt="">
+                                        </label>
+                                        <div class="romboide">
+                                            <h6>Básico</h6>
+                                        </div>
+                                    </div>
+                                    <div class="option medio">
+                                        <input type="radio" name="nivel" id="nivelMedio" value="nivelMedio">
+                                        <label class="tarjetaOpcion" for="nivelMedio">
+                                            <img src="img/iconos/medio (2).png" alt="">
+                                        </label>
+                                        <div class="romboide">
+                                            <h6>Desafiante</h6>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="tarjetas-container">
+                                    <div class="option dificil">
+                                        <input type="radio" name="nivel" id="nivelDificil" value="nivelDificil">
+                                        <label class="tarjetaOpcion" for="nivelDificil">
+                                            <img src="img/iconos/dificill.png" alt="">
+                                        </label>
+                                        <div class="romboide">
+                                            <h6>Pro</h6>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="row ">
-                            <div class="radio-inputsNuevo">
-                            <div style="width:100%">
-                                <h1 class="textoEleccion">Temática</h1>
-                            </div>
-                                <div id="juegoSecuenciaNuevo">
-                                    <div class="contenInput">
-                                        <label class="container">
-                                            <input type="radio" id="img1" name="tres" value="Imagen 2" checked>
-                                            <div class="checkmark"></div>
-                                        </label>
-                                        <img src="img/iconos/vaca.png" class="imgAvatar" alt="...">
-                                        <div class="texto-label">Ordenar Elementos</div>
-                                    </div>
-                                </div>
-                                <div id="juegoSecuenciaNuevo">
-                                    <div class="contenInput">
-                                        <label class="container">
-                                            <input type="radio" id="img1" name="tres" value="Imagen 2">
-                                            <div class="checkmark"></div>
-                                        </label>
-                                        <img src="img/iconos/vaca.png" class="imgAvatar" alt="...">
-                                        <div class="texto-label">Ordenar Elementos</div>
-                                    </div>
-                                </div>
-                                <div id="juegoSecuenciaNuevo">
-                                    <div class="contenInput">
-                                        <label class="container">
-                                            <input type="radio" id="img1" name="tres" value="Imagen 2">
-                                            <div class="checkmark"></div>
-                                        </label>
-                                        <img src="img/iconos/vaca.png" class="imgAvatar" alt="...">
-                                        <div class="texto-label">Ordenar Elementos</div>
-                                    </div>
-                                </div>
-                                <div id="juegoSecuenciaNuevo">
-                                    <div class="contenInput">
-                                        <label class="container">
-                                            <input type="radio" id="img1" name="tres" value="Imagen 2">
-                                            <div class="checkmark"></div>
-                                        </label>
-                                        <img src="img/iconos/vaca.png" class="imgAvatar" alt="...">
-                                        <div class="texto-label">Ordenar Elementos</div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="radio-inputsNuevo">
-                            <div style="width:100%">
-                                <h1 class="textoEleccion">Nivel</h1>
-                            </div>
-                                <div id="juegoSecuenciaNuevo">
-                                    <div class="contenInput">
-                                        <label class="container">
-                                            <input type="radio" id="img1" name="cuatro" value="Imagen 2" checked>
-                                            <div class="checkmark"></div>
-                                        </label>
-                                        <img src="img/iconos/vaca.png" class="imgAvatar" alt="...">
-                                        <div class="texto-label">Ordenar Elementos</div>
-                                    </div>
-                                </div>
-                                <div id="juegoSecuenciaNuevo">
-                                    <div class="contenInput">
-                                        <label class="container">
-                                            <input type="radio" id="img1" name="cuatro" value="Imagen 2">
-                                            <div class="checkmark"></div>
-                                        </label>
-                                        <img src="img/iconos/vaca.png" class="imgAvatar" alt="...">
-                                        <div class="texto-label">Ordenar Elementos</div>
-                                    </div>
-                                </div>
-                                <div id="juegoSecuenciaNuevo">
-                                    <div class="contenInput">
-                                        <label class="container">
-                                            <input type="radio" id="img1" name="cuatro" value="Imagen 2">
-                                            <div class="checkmark"></div>
-                                        </label>
-                                        <img src="img/iconos/vaca.png" class="imgAvatar" alt="...">
-                                        <div class="texto-label">Ordenar Elementos</div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+
                     </div>
-
-
-
                 </div>
-
-                <!-- <div class="confi col">
-                        <div id="contenidou"></div>
-
-
-                    </div> -->
-
             </div>
 
         </div>
-        <!-- <img src="img/iconos/play.png" alt="" class="play zoom" id="procesarJuegoCartas"> -->
 
-        <!-- <div class="robot">
-                <div class="contenido-mensaje">
-                    <div class="mensaje">
-                        <button type="button" class="btn-close cerrarMensaje"></button>
-                        <div id="texto"></div>
-                        <a href="">Jugar con amigos</a><br>
-                        <a href="" data-bs-toggle="modal" data-bs-target="#exampleModal-ayuda">¿Cómo jugar?</a><br>
-                        <a href="login.php">Iniciar Sesión</a>
-                    </div>
-                </div>
-                    
-                <img src="img/iconos/vaca.png" alt="" class="mostrarMensaje imagen">
-                <img src="img/iconos/muñequitoAbajo.png" alt="" class=" " id="">
-            </div> -->
 
     </div>
     <?php include('audios.php') ?>
@@ -345,6 +252,6 @@
     <script src="js/play.js"></script>
     <script src="js/mapa.js"></script>
     <script src="js/visivilidadIconos.js"></script>
-</body>
+    </bodyb>
 
 </html>
