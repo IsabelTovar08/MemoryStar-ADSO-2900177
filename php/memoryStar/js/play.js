@@ -271,7 +271,7 @@ document.addEventListener('DOMContentLoaded', function () {
         console.log(`Juego: ${juegoSeleccionado}, Temática: ${tematicaSeleccionada}, Nivel: ${nivelSeleccionado}`);
 
         // Redirigir a la página correspondiente
-        window.location.href = `${juegoSeleccionado}${tematicaSeleccionada}${nivelSeleccionado}.php`;
+        window.location.href = `${juegoSeleccionado}${tematicaSeleccionada}${nivelSeleccionado}.html`;
     }
     function procesarEleccionEspacial(juegoSeleccionado) {
         let tematicaSeleccionada = document.querySelector('input[name="tipoJuegoEspacial"]:checked');

@@ -646,10 +646,6 @@
     </div>
 </div>
 
-<!--Seguir Jugando-->
-<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#seguirJugando">
-  Launch demo modal
-</button>
 
 <div class="modal fade" id="seguirJugando" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-sm modal-dialog-centered">
