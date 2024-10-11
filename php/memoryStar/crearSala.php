@@ -19,15 +19,15 @@
         <div class="control" style="width:5px; bottom: 0; position: absolute;">
             <img src="img/fondos/controles.png" alt="" style="width:30vh;">
         </div>
-
         <div id="contenedor">
-
             <div id="contenido" style="width: 80vw;">
+            <a href="configurarJuego.php"><img src="img/iconos/atrasN.png" alt="" class="atras"></a>
                 <h1 class="game-title">Crear Sala</h1>
                 <div class="col row">
                     <div class="col-4 sala">
                         <h1 class="textoEleccion">Elje tu avatar</h1>
-                        <div id="carouselExampleIndicators" class="carousel slide carousel-container" data-bs-interval="false">
+                        <div id="carouselExampleIndicators" class="carousel slide carousel-container"
+                            data-bs-interval="false">
                             <div class="carousel-indicators">
                                 <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0"
                                     class="active" aria-current="true" aria-label="Slide 1"></button>
@@ -68,46 +68,6 @@
                             <button class="btn" onclick="seleccionarImagen()">Seleccionar</button>
                         </div>
                         <!-- <div class="seleccion-resultado" id="resultado"></div> -->
-                        <script>
-                            const carouselElement = document.querySelector('#carouselExampleIndicators');
-                            carouselElement.addEventListener('slid.bs.carousel', function () {
-                                // Obtener el índice del carousel-item activo
-                                const activeIndex = [...carouselElement.querySelectorAll('.carousel-item')].findIndex(item => item.classList.contains('active'));
-
-                                // Desmarcar todos los inputs
-                                const inputs = carouselElement.querySelectorAll('input[type="radio"]');
-                                inputs.forEach(input => input.checked = false);
-
-                                // Activar el input correspondiente
-                                if (inputs[activeIndex]) {
-                                    inputs[activeIndex].checked = true;
-                                }
-                            });
-                            function seleccionarImagen() {
-                                // Seleccionar el input marcado
-                                const seleccionada = document.querySelector('input[name="carousel"]:checked');
-
-                                // Actualizar el contenido de 'resultado'
-                                // document.getElementById('resultado').textContent = `Has seleccionado: ${seleccionada.value}`;
-
-                                // Eliminar la clase 'seleccion' de cualquier item que la tenga
-                                const previousSelectedItem = document.querySelector('.carousel-item.seleccion');
-                                if (previousSelectedItem) {
-                                    previousSelectedItem.classList.remove('seleccion');
-                                }
-
-                                // Seleccionar el item activo
-                                const activeItem = document.querySelector('.carousel-item.active');
-
-                                // Agregar la clase 'seleccion' al item activo
-                                if (activeItem) {
-                                    activeItem.classList.add('seleccion');
-                                }
-                                const bieen = document.getElementById('bien');
-                                bieen.play();
-                            }
-
-                        </script>
                         <div class="tarjetas-container confiSala">
                             <div class="option capacidad">
                                 <input type="number" min="1" max="25" oninput="validity.valid||(value='');">
@@ -127,116 +87,82 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-7 sala">
-                        <h1 class="textoEleccion">Elije el juego</h1>
-                        <div class="tarjetas-container">
-                            <div class="option juegoUno">
-                                <input type="radio" name="tipoJuego" id="juegoEspacial" value="juegoEspacial">
-                                <label class="tarjetaOpcion" for="juegoEspacial">
-                                    <img src="img/gif/espacial.gif" alt="">
-                                </label>
-                                <div class="romboide">
-                                    <h6>Planetscape </h6>
-                                </div>
-                            </div>
-                            <div class="option">
-                                <input type="radio" name="tipoJuego" id="juegoOrdenar" value="juegoOrdenar">
-                                <label class="tarjetaOpcion" for="juegoOrdenar">
-                                    <img src="img/gif/memorizar.gif" alt="">
-                                </label>
-                                <div class="romboide">
-                                    <h6>Memorix</h6>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col row">
-                            <div class="col">
-                                <h1 class="textoEleccion">Elije la temática</h1>
-                                <div class="tarjetas-container">
-                                    <div class="option quimica">
-                                        <input type="radio" name="juegoOrdenar" id="ordenarQuimica"
-                                            value="ordenarQuimica">
-                                        <label class="tarjetaOpcion" for="ordenarQuimica">
-                                            <img src="img/iconos/quimica.png" alt="">
-                                        </label>
-                                        <div class="romboide">
-                                            <h6>QuimiLab</h6>
-                                        </div>
-                                    </div>
-                                    <div class="option habitacion">
-                                        <input type="radio" name="juegoOrdenar" id="ordenarHabitacion"
-                                            value="ordenarHabitacion">
-                                        <label class="tarjetaOpcion" for="ordenarHabitacion">
-                                            <img src="img/iconos/habitacion.png" alt="">
-                                        </label>
-                                        <div class="romboide">
-                                            <h6>MagicRoom</h6>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="tarjetas-container">
-                                    <div class="option oficina">
-                                        <input type="radio" name="juegoOrdenar" id="ordenarOficina"
-                                            value="ordenarOficina">
-                                        <label class="tarjetaOpcion" for="ordenarOficina">
-                                            <img src="img/iconos/oficina.png" alt="">
-                                        </label>
-                                        <div class="romboide">
-                                            <h6>OfiMundo</h6>
-                                        </div>
-                                    </div>
-                                    <div class="option biblioteca">
-                                        <input type="radio" name="juegoOrdenar" id="ordenarBiblioteca"
-                                            value="ordenarBiblioteca">
-                                        <label class="tarjetaOpcion" for="ordenarBiblioteca">
-                                            <img src="img/iconos/libros.png" alt="">
-                                        </label>
-                                        <div class="romboide">
-                                            <h6>Bookify</h6>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col">
-                                <h1 class="textoEleccion">Elije la dificultad</h1>
-                                <div class="tarjetas-container">
-                                    <div class="option facil">
-                                        <input type="radio" name="nivel" id="nivelFacil" value="nivelFacil">
-                                        <label class="tarjetaOpcion" for="nivelFacil">
-                                            <img src="img/iconos/facil.png" alt="">
-                                        </label>
-                                        <div class="romboide">
-                                            <h6>Básico</h6>
-                                        </div>
-                                    </div>
-                                    <div class="option medio">
-                                        <input type="radio" name="nivel" id="nivelMedio" value="nivelMedio">
-                                        <label class="tarjetaOpcion" for="nivelMedio">
-                                            <img src="img/iconos/medio (2).png" alt="">
-                                        </label>
-                                        <div class="romboide">
-                                            <h6>Desafiante</h6>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="tarjetas-container">
-                                    <div class="option dificil">
-                                        <input type="radio" name="nivel" id="nivelDificil" value="nivelDificil">
-                                        <label class="tarjetaOpcion" for="nivelDificil">
-                                            <img src="img/iconos/dificill.png" alt="">
-                                        </label>
-                                        <div class="romboide">
-                                            <h6>Pro</h6>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                    <div class="col-7 sala" id="juegoSala">
+                     
 
                     </div>
                 </div>
             </div>
-
+            <!-- Modal -->
+            <div class="modal fade" id="ordenar" tabindex="-1" aria-labelledby="exampleModalLabel"
+                aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h1 class="modal-title fs-5" id="exampleModalLabel">¡Memorix! </h1>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            Observa un patrón por unos segundos, memorízalo y luego ordena los objetos en su lugar
+                            correcto. Cada escenario es un reto único que pondrá a prueba tu memoria. ¡Desafía tu mente
+                            y demuestra lo rápido que puedes recordar!
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Aceptar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal fade" id="espacial" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h1 class="modal-title fs-5" id="exampleModalLabel">¡Planetscape!</h1>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            Embárcate en una aventura espacial con dos desafíos únicos, ¡Explora
+                            planetas, resuelve acertijos y encuentra tu camino de regreso a la Tierra!
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Aceptar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal fade" id="nave" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h1 class="modal-title fs-5" id="exampleModalLabel">¡Planetscape!</h1>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                            Busca parejas de cartas para recuperar las piezas de tu nave perdida; y en el modo Memorize &
+                            Escape, memoriza el orden correcto para ensamblar un arma y derrotar al enemigo. ¡Explora
+                            planetas, resuelve acertijos y encuentra tu camino de regreso a la Tierra!
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Aceptar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal fade" id="arma" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h1 class="modal-title fs-5" id="exampleModalLabel">¡Planetscape!</h1>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            Memoriza el orden correcto para ensamblar un arma y derrotar al enemigo.
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Aceptar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
 
 
@@ -249,9 +175,10 @@
     <script src="js/movimiento.js"></script>
     <script src="js/sonidos.js"></script>
     <script src="js/perfil.js"></script>
-    <script src="js/play.js"></script>
     <script src="js/mapa.js"></script>
     <script src="js/visivilidadIconos.js"></script>
+    <script src="js/seleccionarAvatar.js"></script>
+    <script src="js/juegoSala.js"></script>
     </bodyb>
 
 </html>
