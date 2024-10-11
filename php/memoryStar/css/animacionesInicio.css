@@ -164,7 +164,7 @@
 .circuloos {
     display: flex;
     justify-content: center;
-    margin-top: 2%;
+    padding-top: 2%;
 }
 .loguito{
     transition: transform 0.3s;

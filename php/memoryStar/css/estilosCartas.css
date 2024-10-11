@@ -60,7 +60,7 @@
 .movable {
   position: absolute;
   width: 100px; /* Ajusta el tamaño según sea necesario */
-  transition: transform 0.5s ease; /* Suaviza el movimiento */
+  transition: transform 5s; /* Suaviza el movimiento */
   margin-left: -90%;
   margin-top: 10%;
 }

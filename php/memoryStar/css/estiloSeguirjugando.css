@@ -1,105 +1,117 @@
-#seguirJugando .modal-content{
-    border-radius: 20px;
-    border: 7px solid #aa00df;
-    background: linear-gradient(#364399 20%, #7e2bfc);
-    position: relative;
-    
+#seguirJugando .modal-content {
+  border-radius: 20px;
+  border: 7px solid #aa00df;
+  background: linear-gradient(
+      to bottom,
+      rgba(245, 158, 245, 0.3),
+      rgba(58, 11, 95, 0.9)
+    );
+    box-shadow: 0 0 20px rgb(255, 106, 233);
+  position: relative;
 }
 #seguirJugando .modal-body {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
 }
 
 #seguirJugando .modal-title {
-    
-    font-weight: bold;
-    font-family: Arial, Helvetica, sans-serif;
-    background-color: #213f92;
-    border: 5px solid #aa00df;
-    border-radius: 10px;
-    padding: 5px 10px;
-    color: #ffff;
-    line-height: 25px;
+    font-size: 150%;
     text-align: center;
-    font-size: 25px;
+    font-family: "Bebas Neue", sans-serif;
+    background: linear-gradient(
+      to bottom,
+      rgba(245, 158, 245, 0.3),
+      rgba(58, 11, 95, 0.9)
+    );
+    box-shadow: 0 0 20px rgb(255, 106, 233);
     position: absolute;
-    top: -40px;
-    
-    
+    color: #ffff;
+    border: 3px solid #aa00df;
+    border-radius: 10px;
+    padding: 5px 15px;
+    margin-top: -67%;
+    left: 24%;
+    line-height: 80%;
 }
 
-.contenedor-SeguirJugando{
-    flex-direction: column;
-    display: flex;
-    justify-content: center;
-    background-color: rgba(122, 134, 216, 0.5);
-    border-radius: 10px;
-    color: #ffff;
-    font-size: 22px;
-    padding: 30px 5px;
-    margin-top: 20px;
-    width: 100%;
-    text-align: center;
-    line-height: 20px;
-    
+.contenedor-SeguirJugando {
+  flex-direction: column;
+  display: flex;
+  justify-content: center;
+  border-radius: 10px;
+  color: #ffff;
+  font-size: 22px;
+  padding: 30px 5px;
+  margin-top: 20px;
+  width: 100%;
+  text-align: center;
+  line-height: 20px;
+  margin-top: 0px;
+  background: linear-gradient(
+    to bottom,
+    rgba(245, 158, 245, 0.3),
+    rgba(58, 11, 95, 0.9)
+  );
+  box-shadow: 0px 0px 30px 20px rgba(255, 255, 255, 0.1);
 }
-.rubi-seguir{
-    height: 22px;
+.rubi-seguir {
+  height: 22px;
 }
 
 #regresiva {
-    font-size: 24px; 
-    font-weight: bold; 
-    text-align: center; 
-    color: #fff;
+  font-size: 24px;
+  font-weight: bold;
+  text-align: center;
+  color: #fff;
 }
 
 .contenedor-botonSeguir {
-    display: flex;
-    justify-content: center;
-    position: absolute;
-    top: 155px;
-    
+  display: flex;
+  justify-content: center;
+  position: absolute;
+  top: 135px;
+  left: 6%;
 }
 
-.botonSeguir{
-    background-color: #6f4b4b;
-    margin: 30px;
-    padding: 5px 5px;
+.botonSeguir {
+    font-family: "Comic Sans MS", "Arial", sans-serif; /* Fuente con estilo similar */
+    font-size: 100%;
+    color: #ffffff;
+    background: linear-gradient(
+      to bottom,
+      rgba(245, 158, 245, 0.3),
+      rgba(58, 11, 95, 0.9)
+    );
+    box-shadow: 0 0 20px rgb(255, 106, 233);
+    border-radius: 30px;
+    padding: 10px 5px;
+    text-align: center;
+    width: 70%;
+    height: auto;
+    line-height: 18px;
     border: none;
-    border-radius: 10px;
-    color: #fff;
-    font-weight: bold;
-    font-size: 20px;
-    background: linear-gradient(#1c266a, #6003ef);
-    
-    
 }
-
-
-
 
 @media (max-width: 576px) {
-    #seguirJugando .modal-dialog {
-        width: 70%;
-        margin: auto;
-        
-    }
+  #seguirJugando .modal-dialog {
+    width: 70%;
+    margin: auto;
+  }
 
-    #seguirJugando .modal-title {
-        font-size: 22px;
-        width: 70%;
-    }
+  #seguirJugando .modal-title {
+    font-size: 22px;
+    width: 70%;
+  }
 
-    .contenedor-SeguirJugando{
-        padding: 25px 5px;
-        line-height: 25px;
-        font-size: 20px;
-    }
-    .rubi-seguir{
-        height: 20px;
-    }
+  .contenedor-SeguirJugando {
+    padding: 25px 5px;
+    line-height: 25px;
+    font-size: 20px;
+  }
+  .rubi-seguir {
+    height: 20px;
+  }
 }

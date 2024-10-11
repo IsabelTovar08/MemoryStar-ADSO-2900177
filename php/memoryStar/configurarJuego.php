@@ -23,59 +23,87 @@
     <div class="container-fuid">
     <?php include('nabar.php'); ?>
         <div id="contenedor">
-            <div id="contenido">
-                <a href="index.php"><img src="img/iconos/atrasN.png" alt="" width="50" class="atras" style="width: 8vh;"></a>
+            <div id="contenido" style="width: 80vw;">
+                <a href="index.php"><img src="img/iconos/atrasN.png" alt="" width="50" class="atras"></a>
                 <div class="bienvenido"><img src="img/iconos/logoBienvenido.png" alt="logoMemory" class="logoBienvenido"></div>
                 <h1 class="animated-shadow">¿Preparado para la aventura?</h1>
                 <h1 class="textoEleccion">Selecciona el modo de Juego</h1>
                 <div class="contenedorOpciones">
                     <img src="img/iconos/jugarSolo.png" class="oJuegos zoom" alt="Imagen 1" id="jugarSolo">
-                    <img src="img/iconos/modoVs.png" class="oJuegos zoom" alt="Imagen 2" id="jugarVs">
                     <img src="img/iconos/multijugador.png" class="oJuegos zoom" alt="Imagen 3" id="jugarMultijugador">
                 </div>
-                <div class="radio-inputs">
-                  <label>
-                      <span class="radio-tile">
-                          <span class="radio-icon">
-                              <img src="img/iconos/solo.png" alt="logoMemory" class="logoInicio">
-                          </span>
-                          <span class="radio-label">Fácil</span>
-                      </span>
-                  </label>
-                  <label>
-                      <span class="radio-tile">
-                          <span class="radio-icon">
-                              <img src="img/iconos/solo.png" alt="logoMemory" class="logoInicio">
-                          </span>
-                          <span class="radio-label">Intermedio</span>
-                      </span>
-                  </label>
-                  <label>
-                      <span class="radio-tile">
-                          <span class="radio-icon">
-                              <img src="img/iconos/solo.png" alt="logoMemory" class="logoInicio">
-                          </span>
-                          <span class="radio-label">Difícil</span>
-                      </span>
-                  </label>
-                </div>
             </div>
-            <div class="robot">
-                <div class="contenido-mensaje">
-                    <div class="mensaje">
-                        <button type="button" class="btn-close cerrarMensaje"></button>
-                        <div id="texto"></div>
-                        <a href="">Jugar con amigos</a><br>
-                        <a href="" data-bs-toggle="modal" data-bs-target="#exampleModal-ayuda">¿Cómo jugar?</a><br>
-                        <a href="login.php">Iniciar Sesión</a>
+        </div>
+        <!-- Modal -->
+        <div class="modal fade" id="ordenar" tabindex="-1" aria-labelledby="exampleModalLabel"
+                aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h1 class="modal-title fs-5" id="exampleModalLabel">¡Memorix! </h1>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            Observa un patrón por unos segundos, memorízalo y luego ordena los objetos en su lugar
+                            correcto. Cada escenario es un reto único que pondrá a prueba tu memoria. ¡Desafía tu mente
+                            y demuestra lo rápido que puedes recordar!
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Aceptar</button>
+                        </div>
                     </div>
                 </div>
-                    
-                <img src="img/iconos/vaca.png" alt="" class="mostrarMensaje imagen">
-                <img src="img/iconos/muñequitoAbajo.png" alt="" class=" " id="">
             </div>
-
-        </div>
+            <div class="modal fade" id="espacial" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h1 class="modal-title fs-5" id="exampleModalLabel">¡Planetscape!</h1>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            Embárcate en una aventura espacial con dos desafíos únicos, ¡Explora
+                            planetas, resuelve acertijos y encuentra tu camino de regreso a la Tierra!
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Aceptar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal fade" id="nave" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h1 class="modal-title fs-5" id="exampleModalLabel">¡Planetscape!</h1>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                            Busca parejas de cartas para recuperar las piezas de tu nave perdida; y en el modo Memorize &
+                            Escape, memoriza el orden correcto para ensamblar un arma y derrotar al enemigo. ¡Explora
+                            planetas, resuelve acertijos y encuentra tu camino de regreso a la Tierra!
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Aceptar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal fade" id="arma" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h1 class="modal-title fs-5" id="exampleModalLabel">¡Planetscape!</h1>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            Memoriza el orden correcto para ensamblar un arma y derrotar al enemigo.
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Aceptar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
         <?php include('audios.php') ?>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
         <script src="js/movimiento.js"></script>

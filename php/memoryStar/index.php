@@ -11,7 +11,11 @@
     <link rel="stylesheet" href="css/estiloTienda.css">
     <link rel="stylesheet" href="css/estiloTablaPuntuacion.css">
     <link rel="stylesheet" href="css/animacionesInicio.css">
+<<<<<<< HEAD
+=======
+    <link rel="stylesheet" href="css/estiloSeguirjugando.css">
     <!-- <link rel="stylesheet" href="css/estilosPerfil.css"> -->
+>>>>>>> e03a64db7adf9d99c7b8b743ee91f5e05ae76a81
     <title>MemoryStart ¡Pon a prueba tu memoria!</title>
     <link rel="shortcut icon" href="img/iconos/segundoMemory.png">
     <script src="https://cdn.jsdelivr.net/npm/@floating-ui/core@1.6.7"></script>
@@ -24,7 +28,8 @@
 
 <body>
     <!-- Modal -->
-    <div class="modal fade" id="modalInicio" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal fade" id="modalInicio" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+        aria-labelledby="staticBackdropLabel" aria-hidden="true">
         <div class="modal-dialog modal-xl">
             <div class="modal-content fondo">
                 <div class="modal-body container-fluid">
@@ -47,32 +52,27 @@
     </div>
     <div class="container-fuid">
         <?php include('nabar.php'); ?>
-
-            <div class="animacion"   id ="loader" >
-                 <span class="loader"></span>
-            </div>
-
-
-
-
-            <div class="circuloos">
-        <div class="circle green-circle"></div>
-        <div class="circle red-circle"></div>
-        <div class="circle blue-circle"></div>
-    </div>
-    <div class="linea linea-izquierda">
-        <div class="circulo circulo-izquierda"></div>
-    </div>
-    <div class="linea linea-derecha">
-        <div class="circulo circulo-derecha"></div>
-    </div>
+        <div class="animacion" id="loader">
+            <span class="loader"></span>
+        </div>
+        <div class="circuloos">
+            <div class="circle green-circle"></div>
+            <div class="circle red-circle"></div>
+            <div class="circle blue-circle"></div>
+        </div>
+        <div class="linea linea-izquierda">
+            <div class="circulo circulo-izquierda"></div>
+        </div>
+        <div class="linea linea-derecha">
+            <div class="circulo circulo-derecha"></div>
+        </div>
         <div id="contenedor">
             <!-- <div onclick="history.back()">atras</div> -->
             <div id="contenido">
-              <script>
-                const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]')
-                const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl))
-              </script>
+                <script>
+                    const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]')
+                    const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl))
+                </script>
 
                 <img src="img/iconos/nuevoMemory.png" alt="logoMemory" class="logoInicio loguito">
                 <div id="jugar">
@@ -91,12 +91,26 @@
                         <a href="login.php">Iniciar Sesión</a>
                     </div>
                 </div>
-                    
+
                 <img src="img/iconos/vaca.png" alt="" class="mostrarMensaje imagen">
                 <img src="img/iconos/muñequitoAbajo.png" alt="" class=" " id="">
             </div>
 
         </div>
+<<<<<<< HEAD
+    </div>
+    <?php include('audios.php') ?>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
+    <script src="js/play.js"></script>
+    <script src="js/movimiento.js"></script>
+    <script src="js/overlayModal.js"></script>
+    <script src="bootstrap/js/bootstrap.js"></script>
+    <script src="js/sonidos.js"></script>
+    <!-- <script src="js/perfil.js"></script> -->
+    <script src="js/mapa.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+    <script src="js/animacion.js"></script>
+=======
         <?php include('audios.php') ?>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
         <script src="js/play.js"></script>
@@ -108,6 +122,8 @@
         <script src="js/mapa.js"></script>
         <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
         <script src="js/animacion.js"></script>
+        <script src="js/barra.js"></script>
+>>>>>>> e03a64db7adf9d99c7b8b743ee91f5e05ae76a81
 </body>
 
 </html>

@@ -43,6 +43,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // Función para voltear las cartas
   function voltearCarta(carta) {
+    const bieen = document.getElementById('voltear');
+    bieen.play();
     if (cartasVolteadas.length === 2) return;
 
     carta.classList.add("volteada");
@@ -54,6 +56,8 @@ document.addEventListener("DOMContentLoaded", function () {
       const idSegundaCarta = segundaCarta.getAttribute("data-id");
 
       if (idPrimeraCarta === idSegundaCarta) {
+        const bieen = document.getElementById('bien');
+        bieen.play();
         aciertos++;
         cartasVolteadas = [];
         mostrarMensaje(aciertos);
