@@ -58,7 +58,7 @@
 
     </div>
     <?php include('audios.php') ?>
-    <script src="https://cdn.jsdelivr.net/npm/sortablejs@latest/Sortable.min.js"></script>
+    <script src="js/Sortable.min.js"></script>
 
     <script src="js/libros.js"></script>
     <script src="js/movimiento.js"></script>

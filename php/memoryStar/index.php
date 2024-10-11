@@ -11,6 +11,11 @@
     <link rel="stylesheet" href="css/estiloTienda.css">
     <link rel="stylesheet" href="css/estiloTablaPuntuacion.css">
     <link rel="stylesheet" href="css/animacionesInicio.css">
+<<<<<<< HEAD
+=======
+    <link rel="stylesheet" href="css/estiloSeguirjugando.css">
+    <!-- <link rel="stylesheet" href="css/estilosPerfil.css"> -->
+>>>>>>> e03a64db7adf9d99c7b8b743ee91f5e05ae76a81
     <title>MemoryStart ¡Pon a prueba tu memoria!</title>
     <link rel="shortcut icon" href="img/iconos/segundoMemory.png">
     <script src="https://cdn.jsdelivr.net/npm/@floating-ui/core@1.6.7"></script>
@@ -92,6 +97,7 @@
             </div>
 
         </div>
+<<<<<<< HEAD
     </div>
     <?php include('audios.php') ?>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
@@ -104,6 +110,20 @@
     <script src="js/mapa.js"></script>
     <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
     <script src="js/animacion.js"></script>
+=======
+        <?php include('audios.php') ?>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
+        <script src="js/play.js"></script>
+        <script src="js/movimiento.js"></script>
+        <script src="js/overlayModal.js"></script>
+        <script src="bootstrap/js/bootstrap.js"></script>
+        <script src="js/sonidos.js"></script>
+        <!-- <script src="js/perfil.js"></script> -->
+        <script src="js/mapa.js"></script>
+        <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+        <script src="js/animacion.js"></script>
+        <script src="js/barra.js"></script>
+>>>>>>> e03a64db7adf9d99c7b8b743ee91f5e05ae76a81
 </body>
 
 </html>

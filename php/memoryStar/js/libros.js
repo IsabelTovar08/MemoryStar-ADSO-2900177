@@ -94,17 +94,17 @@ setTimeout(() => {
   habilitarDrag();
 }, 5000); // Cambia 5000 para modificar el tiempo (en milisegundos)
 
-// Al hacer clic en el botón de verificar
-// botonVerificar.addEventListener('click', () => {
-//   let ordenActual = Sortable.get(libros).toArray();
-//   // Agregar comillas simples para la comparación
-//   let ordenActualConComillas = ordenActual.map(id => `'${id}'`);
-//   let esCorrecto = ordenActualConComillas.every((id, index) => id === ordenCorrecto[index]);
+//Al hacer clic en el botón de verificar
+botonVerificar.addEventListener('click', () => {
+  let ordenActual = Sortable.get(libros).toArray();
+  //Agregar comillas simples para la comparación
+  let ordenActualConComillas = ordenActual.map(id => `'${id}'`);
+  let esCorrecto = ordenActualConComillas.every((id, index) => id === ordenCorrecto[index]);
 
-//   // Mostrar el resultado
-//   if (esCorrecto) {
-//     resultado.innerHTML = '<p style="color: green;">¡El orden es correcto!</p>';
-//   } else {
-//     resultado.innerHTML = '<p style="color: red;">El orden es incorrecto. ¡Intenta de nuevo!</p>';
-//   }
-// });
+  //Mostrar el resultado
+  if (esCorrecto) {
+    resultado.innerHTML = '<p style="color: green;">¡El orden es correcto!</p>';
+  } else {
+    resultado.innerHTML = '<p style="color: red;">El orden es incorrecto. ¡Intenta de nuevo!</p>';
+  }
+});
