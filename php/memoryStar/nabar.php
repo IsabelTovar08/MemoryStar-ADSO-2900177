@@ -647,6 +647,9 @@
 </div>
 
 <!--Seguir Jugando-->
+<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#seguirJugando">
+  Launch demo modal
+</button>
 
 <div class="modal fade" id="seguirJugando" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-sm modal-dialog-centered">
@@ -654,7 +657,6 @@
 
             <div class="modal-body">
                 <h1 class="modal-title" id="exampleModalLabel">¿Deseas seguir<br>jugando?</h1>
-
                 <div class="contenedor-SeguirJugando">
 
                     <div>
@@ -663,7 +665,6 @@
                     <div id="regresiva" class="mt-3">
                         5s
                     </div>
-
 
                 </div>
 
@@ -675,12 +676,7 @@
                         <button type="button" class=" botonSeguir" data-bs-dismiss="modal" aria-label="Close">Salir</button>
                     </div>
                 </div>
-
-
-
             </div>
-
-
         </div>
     </div>
 </div>

@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="css/estiloTienda.css">
     <link rel="stylesheet" href="css/estiloTablaPuntuacion.css">
     <link rel="stylesheet" href="css/animacionesInicio.css">
+    <link rel="stylesheet" href="css/estiloSeguirjugando.css">
     <!-- <link rel="stylesheet" href="css/estilosPerfil.css"> -->
     <title>MemoryStart ¡Pon a prueba tu memoria!</title>
     <link rel="shortcut icon" href="img/iconos/segundoMemory.png">
@@ -108,6 +109,7 @@
         <script src="js/mapa.js"></script>
         <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
         <script src="js/animacion.js"></script>
+        <script src="js/barra.js"></script>
 </body>
 
 </html>
