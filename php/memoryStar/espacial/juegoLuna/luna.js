@@ -2,6 +2,8 @@ import { Personaje } from "../js/comun/animations.js";
 import { ManejarPuntos } from "../js/comun/crearPuntos.js";
 import { estrellasFondo } from "../js/comun/estrellasFondo.js";
 import { createPlatforms } from "./plataformas.js";
+import { Boss } from "../js/comun/boss.js";
+// import{BossScene} from "../js/comun/boss.js"
 
 class MyScene extends Phaser.Scene {
   constructor() {
@@ -9,21 +11,33 @@ class MyScene extends Phaser.Scene {
   }
 
   preload() {
+    this.load.image("sky", "imgLuna/d");
     this.load.image("button", "imgLava/arriba.png");
     this.load.image("leftButton", "imgLava/izqui.png");
     this.load.image("rightButton", "imgLava/derecha.png");
     this.load.image("star", "imgLuna/estrella.png");
-    this.load.spritesheet(
-      "mario",
-      "../super-midu-bros-main/assets/entities/mario.png",
-      { frameWidth: 18, frameHeight: 16 }
-    );
+    // this.load.spritesheet(
+    //   "mario",
+    //   "../super-midu-bros-main/assets/entities/mario.png",
+    //   { frameWidth: 18, frameHeight: 16 }
+    // );
     this.load.image("caramelo", "../super-midu-bros-main/planetas/cristal.png");
     this.load.audio(
       "gameover",
       "../super-midu-bros-main/assets/sound/music/gameover.mp3"
     );
     this.load.image("oxigeno", "../super-midu-bros-main/assets/oxigeno.png");
+
+    this.load.spritesheet("mario", "imgLuna/vaca.png", {
+      frameWidth: 32,
+      frameHeight: 24,
+    });
+
+    this.load.spritesheet("boss", "../super-midu-bros-main/assets/entities/mario.png", {
+      frameWidth: 18,
+      frameHeight: 14,
+    });
+    this.load.image("projectile", "imgLuna/bo.png");
 
     this.load.image("b", "imgLuna/b.png");
     this.load.image("hueso", "imgLuna/hueso.png");
@@ -46,7 +60,6 @@ class MyScene extends Phaser.Scene {
     this.load.image("p1", "imgLuna/yy.png");
     this.load.image("p2", "imgLuna/y2.png");
     this.load.image("p3", "imgLuna/y3.png");
-    this.load.image("ob", "imgLuna/ob.png");
     this.load.image("uno", "imgLuna/1.png");
     this.load.image("dos", "imgLuna/2.png");
     this.load.image("tres", "imgLuna/3.png");
@@ -116,7 +129,6 @@ class MyScene extends Phaser.Scene {
     this.add.image(450, config.height - 370, "cinco").setScale(0.06);
     this.add.image(750, config.height - 360, "cinco").setScale(0.06);
     this.add.image(430, config.height - 160, "seis").setScale(0.07);
-    // this.add.image(1250, config.height - 270, 'siete').setScale(0.19)
     this.add.image(930, config.height - 310, "seis").setScale(0.07);
 
     this.tweens.add({
@@ -127,27 +139,64 @@ class MyScene extends Phaser.Scene {
       yoyo: true,
       repeat: -1,
     });
+
+    // Crear instancia del boss
+
     this.floor = this.physics.add.staticGroup();
+    this.projectile = this.physics.add.group();
 
     createPlatforms(this);
-
     this.estrellasFondo = new estrellasFondo(this);
     this.instanciaPersonaje = new Personaje(this);
+    this.jugador = this.instanciaPersonaje.jugador;
 
     const manejarPuntos = new ManejarPuntos(this);
     this.mineral = manejarPuntos.crearMinerales();
     this.oxigeno = manejarPuntos.crearOxigeno();
-    this.siete = manejarPuntos.crearSiete(400, 300);
+    this.siete = manejarPuntos.crearSiete(1200, 300);
+    const boss = new Boss(this, this.jugador, manejarPuntos); // Pasar el jugador como referencia
+    boss.crearBoss(400, 100);
+
+    // Configurar las colisiones con el jugador
+    boss.configurarColisionConJugador();
+
+    // Configurar colisiones con las plataformas
+    boss.configurarColisionConPlataformas(this.floor);
 
     manejarPuntos.configurarColisionOxigeno(this.oxigeno);
     manejarPuntos.configurarColisionMineral(this.mineral);
-    manejarPuntos.configurarColisionSiete(this.siete);
+    manejarPuntos.configurarColisionSiete(
+      this.siete,
+      "../../espacial/index.html"
+    );
 
     this.physics.world.setBounds(0, config.height - 1300, 1450, 1300);
     this.physics.add.collider(this.instanciaPersonaje.jugador, this.floor);
     this.physics.add.collider(this.mineral, this.floor);
     this.physics.add.collider(this.oxigeno, this.floor);
     this.physics.add.collider(this.siete, this.floor);
+
+    const datos = manejarPuntos.obtenerDatos();
+    const datosJSON = JSON.stringify(datos);
+
+    // Puedes usar este JSON según necesites
+    console.log(datosJSON);
+
+    fetch("../libreria/espacial.php", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: datosJSON,
+    })
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error("Network response was not ok " + response.statusText);
+        }
+        return response.json();
+      })
+      .then((data) => console.log(data))
+      .catch((error) => console.error("Error:", error));
 
     this.cameras.main.setBounds(0, config.height - 1300, 1450, 1300);
 

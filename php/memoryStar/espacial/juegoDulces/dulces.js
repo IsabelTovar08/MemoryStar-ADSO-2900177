@@ -160,7 +160,7 @@ class MyScene extends Phaser.Scene {
 
     manejarPuntos.configurarColisionOxigeno(this.oxigeno);
     manejarPuntos.configurarColisionMineral(this.mineral);
-    manejarPuntos.configurarColisionSiete(this.siete);
+    manejarPuntos.configurarColisionSiete(this.siete, "../juegoLuna/luna.html");
 
     this.physics.world.setBounds(0, config.height - 1300, 1450, 1300);
     this.physics.add.collider(this.instanciaPersonaje.jugador, this.floor);

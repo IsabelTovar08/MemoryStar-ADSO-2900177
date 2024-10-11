@@ -1,27 +1,71 @@
 <!DOCTYPE html>
 <html lang="es">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Juego luna </title>
-  <script src="../super-midu-bros-main/phaser.min.js"></script>
-  <script type="module" src="luna.js"></script>
-  <!-- <link rel="stylesheet" href="../bootstrap/css/bootstrap.css"> -->
-  <style>
-   body {
-      display: grid;
-      height: 100vh;
-      width: 100vh;
-      background: #14293e;
-      /* justify-content: center; */
-      overflow: hidden;
-    }
-    #game{
-      background-color: antiquewhite;
-    }
-  </style>
-</head>
-<body>
-
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Juego lava</title>
+    <script src="../super-midu-bros-main/phaser.min.js"></script>
+    <script type="module" src="luna.js"></script>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- <link rel="stylesheet" href="../bootstrap/css/bootstrap.css"> -->
+    <style>
+      body {
+        display: grid;
+        height: 100vh;
+        width: 100vh;
+        background: #02112c;
+        /* justify-content: center; */
+        overflow: hidden;
+      }
+      #game {
+        background-color: antiquewhite;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="modal" id="modal" tabindex="-1">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">¿Te quedaste sin oxígeno?</h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <p>Compra 1 por solo 1$</p>
+            <div class="col row">
+              <div class="col">Diamantes disponibles:</div>
+              <div class="col" id="diamantes"></div>
+            </div>
+            <div id="temporizador" style="font-size: 24px">5</div>
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-bs-dismiss="modal"
+            >
+              Close
+            </button>
+            <button
+              type="button"
+              id="comprarOxigeno"
+              data-bs-dismiss="modal"
+              class="btn btn-primary"
+            >
+              Comprar
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
 </html>

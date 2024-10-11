@@ -2,7 +2,7 @@ import { Personaje } from '../js/comun/animations.js';
 import { ManejarPuntos } from '../js/comun/crearPuntos.js';
 import { estrellasFondo } from '../js/comun/estrellasFondo.js';
 import { createPlatforms } from './plataformasPixel.js';
-
+import { Boss } from "../js/comun/boss.js";
 class MyScene extends Phaser.Scene {
    constructor() {
       super({ key: 'MyScene' });
@@ -11,6 +11,11 @@ class MyScene extends Phaser.Scene {
    preload() {
       this.load.image('star', '../super-midu-bros-main/planetas/estrella.png');
       this.load.spritesheet('mario', '../super-midu-bros-main/assets/entities/mario.png', { frameWidth: 18, frameHeight: 16 });
+      this.load.spritesheet("boss", "../super-midu-bros-main/assets/entities/mario.png", {
+         frameWidth: 18,
+         frameHeight: 14,
+       });
+       this.load.image("projectile", "imgLuna/bo.png");
       this.load.image('corazon', 'imgPixel/corazon.png');
       this.load.audio('gameover', '../super-midu-bros-main/assets/sound/music/gameover.mp3');
       this.load.image('oxigeno', '../super-midu-bros-main/assets/oxigeno.png');
@@ -70,6 +75,7 @@ class MyScene extends Phaser.Scene {
       this.add.image(1315, config.height - 480, 'piedra').setScale(0.04);
 
       this.floor = this.physics.add.staticGroup();
+      this.projectile = this.physics.add.group();
 
       // Llamar a la función de creación de plataformas
       createPlatforms(this);
@@ -78,7 +84,7 @@ class MyScene extends Phaser.Scene {
 
       // Crear instancia de Mario
       this.instanciaPersonaje = new Personaje(this);
-
+      this.jugador = this.instanciaPersonaje.jugador;
       // const manejarPuntos2 = new ManejarPuntos(this)
 
 
@@ -86,17 +92,26 @@ class MyScene extends Phaser.Scene {
       this.mineral = manejarPuntos.crearCorazones();
       this.oxigeno = manejarPuntos.crearOxigeno();
       this.siete = manejarPuntos.crearSiete(1200, 300);
+      const boss = new Boss(this, this.jugador, manejarPuntos); // Pasar el jugador como referencia
+      boss.crearBoss(400, 100);
+  
+      // Configurar las colisiones con el jugador
+      boss.configurarColisionConJugador();
+  
+      // Configurar colisiones con las plataformas
+      boss.configurarColisionConPlataformas(this.floor);
+  
 
       manejarPuntos.configurarColisionOxigeno(this.oxigeno);
       manejarPuntos.configurarColisionMineral(this.mineral);
-      manejarPuntos.configurarColisionSiete(this.siete);
+      manejarPuntos.configurarColisionSiete(this.siete, "../juegoLava/index.html");
 
       this.physics.world.setBounds(0, config.height - 1500, 1850, 1500);
       this.physics.add.collider(this.instanciaPersonaje.jugador, this.floor);
       this.physics.add.collider(this.mineral, this.floor);
       this.physics.add.collider(this.oxigeno, this.floor);
       this.physics.add.collider(this.siete,this.floor);
-      
+      // ../../espacial/index.html
 
       this.cameras.main.setBounds(0, config.height - 1500, 1850, 1500);
       this.cameras.main.startFollow(this.instanciaPersonaje.jugador);

@@ -4,6 +4,8 @@ export class ManejarPuntos {
     this.scene = scene;
     // Tiempo
     this.tiempo = 25;
+    this.score =0;
+    this.diamantes = 0;
     this.tiempoText = this.scene.add.text(0, 0, "TIEMPO DE VIDA: 25", {
       fontSize: "32px",
       fill: "#fff",
@@ -11,7 +13,7 @@ export class ManejarPuntos {
     this.tiempoText.setScrollFactor(0);
 
     // Puntuación
-    this.score = parseInt(localStorage.getItem('puntuacionAcumulada')) || 0; 
+    
     this.scoreText = this.scene.add.text(
       this.scene.scale.width - 200,
       0,
@@ -21,7 +23,7 @@ export class ManejarPuntos {
     this.scoreText.setScrollFactor(0);
     this.modalVisible = false;
 
-    this.diamantes = parseInt(localStorage.getItem('diamantesAcumulados')) || 0; 
+    
     this.diamantesText = this.scene.add.text(
       this.scene.scale.width - 300,
       100,
@@ -30,6 +32,7 @@ export class ManejarPuntos {
     );
     this.diamantesText.setScrollFactor(0);
 
+    
     // Temporizador
     this.scene.time.addEvent({
       delay: 1000,
@@ -37,6 +40,14 @@ export class ManejarPuntos {
       callbackScope: this,
       loop: true,
     });
+  }
+
+  obtenerDatos() {
+    return {
+      diamantes: this.diamantes,
+      puntuacion: this.score,
+      tiempo: this.tiempo,
+    };
   }
 
   crearSiete(x = config.width * 0.5, y = config.height * 0.5) {
@@ -186,7 +197,13 @@ export class ManejarPuntos {
     oxigeno.disableBody(true, true);
     this.tiempo = 25;
     this.tiempoText.setText("TIEMPO DE VIDA: " + this.tiempo);
-  }
+
+    // Actualiza el JSON también aquí
+    const datos = this.obtenerDatos();
+    const datosJSON = JSON.stringify(datos);
+    console.log(datosJSON); // Aquí puedes ver el estado actualizado
+}
+
 
   configurarColisionOxigeno(oxigenGroup) {
     this.scene.physics.add.overlap(
@@ -198,53 +215,42 @@ export class ManejarPuntos {
     );
   }
 
-  configurarColisionSiete(cohete) {
+  configurarColisionSiete(cohete, url) {
     this.scene.physics.add.overlap(
       this.scene.instanciaPersonaje.jugador,
       cohete,
-      this.redirigir,
+      (jugador, cohete) => this.redirigir(jugador, cohete, url),
       null,
       this
     );
-  }
-  redirigir(jugador, cohete) {
+}
+
+  redirigir(jugador, cohete, url) {
     cohete.disableBody(true, true);
-
-    const paginas = [
-      "../juegoPixel/index.html",
-      "../juegoLava/index.html",
-      "../juegoDulces/index.html",
-      "../juegoLuna/luna.html",
-    ];
-
-    // Obtiene la URL actual
-    const paginaActual = window.location.pathname;
-
-    // Filtra la página actual de la lista de posibles redirecciones
-    const paginasFiltradas = paginas.filter(pagina => !pagina.includes(paginaActual));
-
-    // Si solo queda una página, redirige a esa, de lo contrario, elige una aleatoria
-    const paginaAleatoria = paginasFiltradas[Math.floor(Math.random() * paginasFiltradas.length)];
-
-    window.location.href = paginaAleatoria;
+    window.location.href = url;
 }
 
 
 recolectarMineral(jugador, mineral) {
   mineral.disableBody(true, true);
-  this.score += 10; 
-  this.diamantes += 1; 
+  this.score += 10;
+  this.diamantes += 1;
   this.scoreText.setText("Score: " + this.score);
   this.diamantesText.setText("Diamantes: " + this.diamantes);
 
-  localStorage.setItem('puntuacionAcumulada', this.score); 
-  localStorage.setItem('diamantesAcumulados', this.diamantes); 
 
+  // Guarda los datos en un JSON
+  const datos = this.obtenerDatos();
+  const datosJSON = JSON.stringify(datos);
+  console.log(datosJSON); // Aquí puedes ver el estado actualizado
+
+  // Mostrar modal si se cumple la condición
   if (this.score >= 60) {
-    this.scoreText.setText("Score: " + this.score + " - NIVEL COMPLETADO");
-    this.showModal();
+      this.scoreText.setText("Score: " + this.score + " - NIVEL COMPLETADO");
+      this.showModal();
   }
 }
+
 
   configurarColisionMineral(mineralGroup) {
     this.scene.physics.add.overlap(

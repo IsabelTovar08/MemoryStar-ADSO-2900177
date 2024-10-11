@@ -104,7 +104,7 @@
         <script src="js/overlayModal.js"></script>
         <script src="bootstrap/js/bootstrap.js"></script>
         <script src="js/sonidos.js"></script>
-        <!-- <script src="js/perfil.js"></script> -->
+        <script src="js/perfil.js"></script>
         <script src="js/mapa.js"></script>
         <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
         <script src="js/animacion.js"></script>
