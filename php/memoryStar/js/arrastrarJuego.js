@@ -1,6 +1,5 @@
 
 const idDropzone = [];
-
 const lista = document.getElementById("listaDrop");
 const dropzoneId = document.querySelectorAll(".dropzone");
 // RAAMDOMIZAR ID
@@ -170,12 +169,12 @@ function mostrarObjetosEnDropzones() {
     }px, ${dropzoneRect.top - objeto.offsetTop}px)`;
   });
 
-  // TIEMPO DE POSTA
+  // TIEMPO DE PiSTA
   setTimeout(() => {
     objetos.forEach((objeto) => {
       objeto.style.transform = "translate(0px, 0px)"; // LO DEVUELVE
     });
-  }, 5000); 
+  }, 10000); 
 }
 mostrarObjetosEnDropzones();
 
