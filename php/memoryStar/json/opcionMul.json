@@ -1,0 +1,12 @@
+{
+    "multi" :{
+        "logo": "img/iconos/segundoMemory.png",
+        "texto":"Selecciona una opción",
+        "unirse":"img/iconos/unirseSala.png",
+        "crear": "img/iconos/crearSala.png",
+        "textoU": "Ingresa el código de invitación",
+        "imgU": "img/iconos/play.png"
+
+
+    }
+}

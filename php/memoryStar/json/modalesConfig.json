@@ -1,0 +1,16 @@
+{
+    "modales": {
+        "modalOpciones":[
+            {
+                "id":"ordenar",
+                "nombre":"Ordenar",
+                "descripcion":" Observa un patrón por unos segundos, memorízalo y luego ordena los objetos en su lugar correcto. Cada escenario es un reto único que pondrá a prueba tu memoria. ¡Desafía tu mente y demuestra lo rápido que puedes recordar!"
+            },
+            {
+                "id":"espacial",
+                "nombre":"Espacial",
+                "descripcion":"Embárcate en una aventura espacial con dos desafíos únicos, ¡Explora planetas, resuelve acertijos y encuentra tu camino de regreso a la Tierra!"
+            }
+        ]
+    }
+}

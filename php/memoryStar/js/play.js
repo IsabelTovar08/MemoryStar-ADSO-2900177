@@ -1,28 +1,27 @@
-document.addEventListener('DOMContentLoaded', function () {
-    // var myModal = new bootstrap.Modal(document.getElementById('modalInicio'));
-    // myModal.show();
-    const boton = document.querySelector('.play');
-    const botonesJugar = document.getElementById('jugar');
+document.addEventListener("DOMContentLoaded", function () {
+  // var myModal = new bootstrap.Modal(document.getElementById('modalInicio'));
+  // myModal.show();
+  const boton = document.querySelector(".play");
+  const botonesJugar = document.getElementById("jugar");
 
+  // Función para ocultar y mostrar mensaje
+  // const ocultarMensaje = document.querySelector('.cerrarMensaje');
+  // const mensaje = document.querySelector('.contenido-mensaje');
+  // const mostrar = document.querySelector('.mostrarMensaje');
 
-    // Función para ocultar y mostrar mensaje
-    // const ocultarMensaje = document.querySelector('.cerrarMensaje');
-    // const mensaje = document.querySelector('.contenido-mensaje');
-    // const mostrar = document.querySelector('.mostrarMensaje');
+  // ocultarMensaje.addEventListener('click', () => {
+  //     mensaje.style.visibility = 'hidden';
+  //     mensaje.style.transition = '0.1s';
+  // });
 
-    // ocultarMensaje.addEventListener('click', () => {
-    //     mensaje.style.visibility = 'hidden';
-    //     mensaje.style.transition = '0.1s';
-    // });
+  // mostrar.addEventListener('click', () => {
+  //     mensaje.style.visibility = 'visible';
+  //     mensaje.style.transition = '0.1s';
+  // });
 
-    // mostrar.addEventListener('click', () => {
-    //     mensaje.style.visibility = 'visible';
-    //     mensaje.style.transition = '0.1s';
-    // });
-
-    // Función para elegir el modo de juego
-    function elegirJuego() {
-        let resultadoMostrar = `
+  // Función para elegir el modo de juego
+  function elegirJuego() {
+    let resultadoMostrar = `
                 <a href="configurarJuego.php"><img src="img/iconos/atrasN.png" alt="" class="atras"></a>
                 <h1 class="game-title">Configurar Juego</h1>
                 <div class="col row">
@@ -100,27 +99,27 @@ document.addEventListener('DOMContentLoaded', function () {
                 </div>
                 
         `;
-    
-        document.getElementById('contenido').innerHTML = resultadoMostrar;
-    
-        // Corregido el nombre aquí
-        document.querySelectorAll('input[name="tipoJuego"]').forEach(juego => {
-            juego.addEventListener('change', function () {
-                let juegoSeleccionado = this.value;
-                if (juegoSeleccionado === 'JuegoEspacial') {
-                    seleccionarTematicaCartas();
-                } else if (juegoSeleccionado === 'JuegoOrdenar') {
-                    seleccionarTematicaSecuencia();
-                }
-            });
-        });
-    }
 
-    // window.onload = elegirJuegoSala;
-    // Función para seleccionar temática y nivel para Cartas
-    // Función para seleccionar temática y nivel para Cartas
-    function seleccionarTematicaCartas() {
-        let nivelTematicaHTML = `
+    document.getElementById("contenido").innerHTML = resultadoMostrar;
+
+    // Corregido el nombre aquí
+    document.querySelectorAll('input[name="tipoJuego"]').forEach((juego) => {
+      juego.addEventListener("change", function () {
+        let juegoSeleccionado = this.value;
+        if (juegoSeleccionado === "JuegoEspacial") {
+          seleccionarTematicaCartas();
+        } else if (juegoSeleccionado === "JuegoOrdenar") {
+          seleccionarTematicaSecuencia();
+        }
+      });
+    });
+  }
+
+  // window.onload = elegirJuegoSala;
+  // Función para seleccionar temática y nivel para Cartas
+  // Función para seleccionar temática y nivel para Cartas
+  function seleccionarTematicaCartas() {
+    let nivelTematicaHTML = `
        <h1 class="textoEleccion">Selecciona la temática</h1>
              <div class="tarjetas-container">
                             <div class="option juegoUno">
@@ -145,152 +144,202 @@ document.addEventListener('DOMContentLoaded', function () {
        <img src="img/iconos/play.png" alt="" class="play zoom" id="procesarJuegoCartas">
     `;
 
-        document.getElementById('res').innerHTML = nivelTematicaHTML;
-        document.querySelector('.play').style.width = '20vh';
-        document.getElementById('procesarJuegoCartas').addEventListener('click', procesarEleccionCartas);
-    }
+    document.getElementById("res").innerHTML = nivelTematicaHTML;
+    document.querySelector(".play").style.width = "20vh";
+    document
+      .getElementById("procesarJuegoCartas")
+      .addEventListener("click", procesarEleccionCartas);
+  }
 
-    // Función para seleccionar temática y nivel para Secuencia
-    function seleccionarTematicaSecuencia() {
-        let nivelTematicaHTML = `
-       <h1 class="textoEleccion">Selecciona la temática</h1>
+  // Función para seleccionar temática y nivel para Secuencia
+  function seleccionarTematicaSecuencia() {
+    let nivelTematicaHTML = `
+         <h1 class="textoEleccion">Selecciona la temática</h1>
                                <div class="col row">
-                            <div class="col">
-                                <h1 class="textoEleccion">Elije la temática</h1>
-                                <div class="tarjetas-container">
-                                    <div class="option quimica">
-                                        <input type="radio" name="juegoOrdenar" id="ordenarQuimica"
-                                            value="Quimica">
-                                        <label class="tarjetaOpcion" for="ordenarQuimica">
-                                            <img src="img/iconos/quimica.png" alt="">
-                                        </label>
-                                        <div class="romboide">
-                                            <h6>QuimiLab</h6>
+                                    <div class="col">
+                                        <h1 class="textoEleccion">Elije la temática</h1>
+
+
+
+                                        <div class="tarjetas-container">
+
+
+                                            <div class="option quimica">
+                                                <input type="radio" name="juegoOrdenar" id="ordenarQuimica"
+                                                    value="Quimica">
+                                                <label class="tarjetaOpcion" for="ordenarQuimica">
+                                                    <img src="img/iconos/quimica.png" alt="">
+                                                </label>
+                                                <div class="romboide">
+                                                    <h6>QuimiLab</h6>
+                                                </div>
+                                            </div>
+                                            <div class="option habitacion">
+                                                <input type="radio" name="juegoOrdenar" id="ordenarHabitacion"
+                                                    value="Habitacion">
+                                                <label class="tarjetaOpcion" for="ordenarHabitacion">
+                                                    <img src="img/iconos/habitacion.png" alt="">
+                                                </label>
+                                                <div class="romboide">
+                                                    <h6>MagicRoom</h6>
+                                                </div>
+                                            </div>
+
                                         </div>
-                                    </div>
-                                    <div class="option habitacion">
-                                        <input type="radio" name="juegoOrdenar" id="ordenarHabitacion"
-                                            value="Habitacion">
-                                        <label class="tarjetaOpcion" for="ordenarHabitacion">
-                                            <img src="img/iconos/habitacion.png" alt="">
-                                        </label>
-                                        <div class="romboide">
-                                            <h6>MagicRoom</h6>
+
+
+
+                                        <div class="tarjetas-container">
+
+                                        
+                                            <div class="option oficina">
+                                                <input type="radio" name="juegoOrdenar" id="ordenarOficina"
+                                                    value="Oficina">
+                                                <label class="tarjetaOpcion" for="ordenarOficina">
+                                                    <img src="img/iconos/oficina.png" alt="">
+                                                </label>
+                                                <div class="romboide">
+                                                    <h6>OfiMundo</h6>
+                                                </div>
+                                            </div>
+                                            <div class="option biblioteca">
+                                                <input type="radio" name="juegoOrdenar" id="ordenarBiblioteca"
+                                                    value="Biblioteca">
+                                                <label class="tarjetaOpcion" for="ordenarBiblioteca">
+                                                    <img src="img/iconos/libros.png" alt="">
+                                                </label>
+                                                <div class="romboide">
+                                                    <h6>Bookify</h6>
+                                                </div>
+                                            </div>
+
+
+
                                         </div>
+
+
                                     </div>
-                                </div>
-                                <div class="tarjetas-container">
-                                    <div class="option oficina">
-                                        <input type="radio" name="juegoOrdenar" id="ordenarOficina"
-                                            value="Oficina">
-                                        <label class="tarjetaOpcion" for="ordenarOficina">
-                                            <img src="img/iconos/oficina.png" alt="">
-                                        </label>
-                                        <div class="romboide">
-                                            <h6>OfiMundo</h6>
+
+
+
+
+                                    <div class="col">
+                                        <h1 class="textoEleccion">Elije la dificultad</h1>
+
+
+                                        <div class="tarjetas-container">
+                                            <div class="option facil">
+                                                <input type="radio" name="nivel" id="nivelFacil" value="Facil">
+                                                <label class="tarjetaOpcion" for="nivelFacil">
+                                                    <img src="img/iconos/facil.png" alt="">
+                                                </label>
+                                                <div class="romboide">
+                                                    <h6>Básico</h6>
+                                                </div>
+                                            </div>
+                                            <div class="option medio">
+                                                <input type="radio" name="nivel" id="nivelMedio" value="Medio">
+                                                <label class="tarjetaOpcion" for="nivelMedio">
+                                                    <img src="img/iconos/medio (2).png" alt="">
+                                                </label>
+                                                <div class="romboide">
+                                                    <h6>Desafiante</h6>
+                                                </div>
+                                            </div>
                                         </div>
-                                    </div>
-                                    <div class="option biblioteca">
-                                        <input type="radio" name="juegoOrdenar" id="ordenarBiblioteca"
-                                            value="Biblioteca">
-                                        <label class="tarjetaOpcion" for="ordenarBiblioteca">
-                                            <img src="img/iconos/libros.png" alt="">
-                                        </label>
-                                        <div class="romboide">
-                                            <h6>Bookify</h6>
+
+
+                                        <div class="tarjetas-container">
+
+
+                                            <div class="option dificil">
+                                                <input type="radio" name="nivel" id="nivelDificil" value="Dificil">
+                                                <label class="tarjetaOpcion" for="nivelDificil">
+                                                    <img src="img/iconos/dificill.png" alt="">
+                                                </label>
+                                                <div class="romboide">
+                                                    <h6>Pro</h6>
+                                                </div>
+                                            </div>
+
+
                                         </div>
+
+
+
                                     </div>
-                                </div>
-                            </div>
-                            <div class="col">
-                                <h1 class="textoEleccion">Elije la dificultad</h1>
-                                <div class="tarjetas-container">
-                                    <div class="option facil">
-                                        <input type="radio" name="nivel" id="nivelFacil" value="Facil">
-                                        <label class="tarjetaOpcion" for="nivelFacil">
-                                            <img src="img/iconos/facil.png" alt="">
-                                        </label>
-                                        <div class="romboide">
-                                            <h6>Básico</h6>
-                                        </div>
-                                    </div>
-                                    <div class="option medio">
-                                        <input type="radio" name="nivel" id="nivelMedio" value="Medio">
-                                        <label class="tarjetaOpcion" for="nivelMedio">
-                                            <img src="img/iconos/medio (2).png" alt="">
-                                        </label>
-                                        <div class="romboide">
-                                            <h6>Desafiante</h6>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="tarjetas-container">
-                                    <div class="option dificil">
-                                        <input type="radio" name="nivel" id="nivelDificil" value="Dificil">
-                                        <label class="tarjetaOpcion" for="nivelDificil">
-                                            <img src="img/iconos/dificill.png" alt="">
-                                        </label>
-                                        <div class="romboide">
-                                            <h6>Pro</h6>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+
+
+
+
+                             </div>
        <img src="img/iconos/play.png" alt="" class="play zoom" id="procesarJuegoSecuencia">
     `;
 
-        document.getElementById('res').innerHTML = nivelTematicaHTML;
-        document.querySelector('.play').style.width = '20vh';
-        document.getElementById('procesarJuegoSecuencia').addEventListener('click', procesarEleccionSecuencia);
+    document.getElementById("res").innerHTML = nivelTematicaHTML;
+    document.querySelector(".play").style.width = "20vh";
+    document
+      .getElementById("procesarJuegoSecuencia")
+      .addEventListener("click", procesarEleccionSecuencia);
+  }
+
+  // Funciones para procesar la elección final de cada juego
+  function procesarEleccionCartas() {
+    procesarEleccionEspacial("Espacial");
+  }
+
+  function procesarEleccionSecuencia() {
+    procesarEleccion("ordenar");
+  }
+
+  // Función para procesar la elección final y redirigir
+  function procesarEleccion(juegoSeleccionado) {
+    let tematicaSeleccionada = document.querySelector(
+      'input[name="juegoOrdenar"]:checked'
+    );
+    let nivelSeleccionado = document.querySelector(
+      'input[name="nivel"]:checked'
+    );
+
+    if (!tematicaSeleccionada || !nivelSeleccionado) {
+      alert("Por favor completa todas las selecciones.");
+      return;
     }
 
+    tematicaSeleccionada = tematicaSeleccionada.value;
+    nivelSeleccionado = nivelSeleccionado.value;
 
-    // Funciones para procesar la elección final de cada juego
-    function procesarEleccionCartas() {
-        procesarEleccionEspacial('Espacial');
+    console.log(
+      `Juego: ${juegoSeleccionado}, Temática: ${tematicaSeleccionada}, Nivel: ${nivelSeleccionado}`
+    );
+
+    // Redirigir a la página correspondiente
+    window.location.href = `${juegoSeleccionado}${tematicaSeleccionada}${nivelSeleccionado}.html`;
+  }
+  function procesarEleccionEspacial(juegoSeleccionado) {
+    let tematicaSeleccionada = document.querySelector(
+      'input[name="tipoJuegoEspacial"]:checked'
+    );
+
+    if (!tematicaSeleccionada) {
+      alert("Por favor completa todas las selecciones.");
+      return;
     }
 
-    function procesarEleccionSecuencia() {
-        procesarEleccion('ordenar');
-    }
+    tematicaSeleccionada = tematicaSeleccionada.value;
 
-    // Función para procesar la elección final y redirigir
-    function procesarEleccion(juegoSeleccionado) {
-        let tematicaSeleccionada = document.querySelector('input[name="juegoOrdenar"]:checked');
-        let nivelSeleccionado = document.querySelector('input[name="nivel"]:checked');
+    console.log(
+      `Juego: ${juegoSeleccionado}, Temática: ${tematicaSeleccionada}`
+    );
 
-        if (!tematicaSeleccionada || !nivelSeleccionado) {
-            alert("Por favor completa todas las selecciones.");
-            return;
-        }
+    // Redirigir a la página correspondiente
+    window.location.href = `${juegoSeleccionado}${tematicaSeleccionada}.php`;
+  }
 
-        tematicaSeleccionada = tematicaSeleccionada.value;
-        nivelSeleccionado = nivelSeleccionado.value;
 
-        console.log(`Juego: ${juegoSeleccionado}, Temática: ${tematicaSeleccionada}, Nivel: ${nivelSeleccionado}`);
 
-        // Redirigir a la página correspondiente
-        window.location.href = `${juegoSeleccionado}${tematicaSeleccionada}${nivelSeleccionado}.html`;
-    }
-    function procesarEleccionEspacial(juegoSeleccionado) {
-        let tematicaSeleccionada = document.querySelector('input[name="tipoJuegoEspacial"]:checked');
-
-        if (!tematicaSeleccionada) {
-            alert("Por favor completa todas las selecciones.");
-            return;
-        }
-
-        tematicaSeleccionada = tematicaSeleccionada.value;
-
-        console.log(`Juego: ${juegoSeleccionado}, Temática: ${tematicaSeleccionada}`);
-
-        // Redirigir a la página correspondiente
-        window.location.href = `${juegoSeleccionado}${tematicaSeleccionada}.php`;
-    }
-
-    function multijugador() {
-        let resultadoMostrar = `
+  function multijugador() {
+    let resultadoMostrar = `
             <a href="configurarJuego.php"><img src="img/iconos/atrasN.png" alt="" class="atras"></a>
             <div class="bienvenido"><img src="img/iconos/segundoMemory.png" alt="logoMemory" class="segundoLogo"></div>
             <h1 class="textoEleccion">Selecciona una opción</h1>
@@ -300,17 +349,17 @@ document.addEventListener('DOMContentLoaded', function () {
             </div>
         `;
 
-        document.getElementById('contenido').innerHTML = resultadoMostrar;
+    document.getElementById("contenido").innerHTML = resultadoMostrar;
 
-        document.getElementById('unirseSala').addEventListener('click', unirse);
-        document.getElementById('crearSala').addEventListener('click', crearSala);
-    }
-    function crearSala() {
-        window.location.href = `crearSala.php`
-    }
-    // Función para unirse a una sala
-    function unirse() {
-        let resultadoMostrar = `
+    document.getElementById("unirseSala").addEventListener("click", unirse);
+    document.getElementById("crearSala").addEventListener("click", crearSala);
+  }
+  function crearSala() {
+    window.location.href = `crearSala.php`;
+  }
+  // Función para unirse a una sala
+  function unirse() {
+    let resultadoMostrar = `
             <div class="bienvenido"><img src="img/iconos/segundoMemory.png" alt="logoMemory" class="segundoLogo"></div>
                 <h1 class="textoEleccion">Ingresa el código de invitación</h1>
             <div class="unirse">
@@ -321,17 +370,19 @@ document.addEventListener('DOMContentLoaded', function () {
             </div>
         `;
 
-        document.getElementById('contenido').innerHTML = resultadoMostrar;
-        const logo = document.querySelector('.segundoLogo').style.width = '15vh';
-        const atras = document.querySelector('.atras').style.width = '8vh';
-    }
+    document.getElementById("contenido").innerHTML = resultadoMostrar;
+    const logo = (document.querySelector(".segundoLogo").style.width = "15vh");
+    const atras = (document.querySelector(".atras").style.width = "8vh");
+  }
 
-    // Asignar evento al botón "play"
-    document.getElementById('jugarSolo').addEventListener('click', elegirJuego);
-    document.getElementById('jugarMultijugador').addEventListener('click', multijugador);
+  // Asignar evento al botón "play"
+  document.getElementById("jugarSolo").addEventListener("click", elegirJuego);
+  document
+    .getElementById("jugarMultijugador")
+    .addEventListener("click", multijugador);
 
-    // Función para la navegación con el botón de retroceso
-    window.addEventListener('popstate', e => {
-        console.log('Navegación: ' + history.state);
-    });
+  // Función para la navegación con el botón de retroceso
+  window.addEventListener("popstate", (e) => {
+    console.log("Navegación: " + history.state);
+  });
 });
