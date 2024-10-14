@@ -1,5 +1,5 @@
 const libros = document.getElementById('lista');
-const botonVerificar = document.getElementById('verificar1');
+const botonVerificar = document.getElementById('verificarBtn');
 const resultado = document.getElementById('resultado');
 const tiempo = 5000; 
 
@@ -92,17 +92,73 @@ setTimeout(() => {
 }, 5000); 
 
 
+ // CONTADOR
+ let contador = -5;
+ let intervaloBarra; //parte de barra
+ let botonPresionado = false;
+ function iniciarTemp() {
+   contador = -5;
+   let intervalo = setInterval(function () {
+     contador++;
+     if (contador >= 0) {
+       document.getElementById("temp").innerHTML = `TIEMPO: ${contador}s`;
+       document.getElementById("verificarBtn").disabled = false;
+
+       if (!intervaloBarra) {
+         iniciarBarra();
+       }
+     } else {
+       document.getElementById("verificarBtn").disabled = true;
+     }
+   }, 1000);
+ }
+ window.addEventListener("DOMContentLoaded", function () {
+   iniciarTemp();
+ });
+
+ // BARRA
+ let tiempoRestante = 10;
+ const barraRegresiva = document.getElementById("countdown-bar");
+ const textoRegresivo = document.getElementById("countdown-text");
+
+ function iniciarBarra() {
+   // Evitar que se ejecute más de una vez
+   intervaloBarra = setInterval(() => {
+     tiempoRestante--;
+     textoRegresivo.textContent = tiempoRestante;
+     barraRegresiva.style.width = tiempoRestante * 10 + "%"; // estilo mod
+
+     if (tiempoRestante <= 0) {
+       clearInterval(intervaloBarra);
+       textoRegresivo.textContent = "¡Tiempo!";
+       barraRegresiva.style.width = "0%";
+       if (!botonPresionado) {
+         new bootstrap.Modal(
+           document.getElementById("tablapuntuacionsolo")
+         ).show();
+       }
+     }
+   }, 1000);
+ }
+
 //verificar
+let aciertos = 0; 
 botonVerificar.addEventListener('click', () => {
-  let ordenActual = Sortable.get(libros).toArray();
+  let ordenActual = Sortable.get(libros).toArray(); 
 
   let ordenActualConComillas = ordenActual.map(id => `'${id}'`);
-  let esCorrecto = ordenActualConComillas.every((id, index) => id === ordenCorrecto[index]);
+  let aciertos = 0; 
+  ordenActualConComillas.forEach((id, index) => {
+    if (id === ordenCorrecto[index]) {
+      aciertos=aciertos+100; 
+    }
+  });
 
-  //Mostrar el resultado
-  if (esCorrecto) {
-    resultado.innerHTML = '<p style="color: green;">¡El orden es correcto!</p>';
+  // Mostrar el resultado
+  if (aciertos === ordenCorrecto.length) {
+    alert('¡Correcto! Has acertado en todas las posiciones.');
   } else {
-    resultado.innerHTML = '<p style="color: red;">El orden es incorrecto. ¡Intenta de nuevo!</p>';
+    alert(`Has acertado en ${aciertos} posiciones de ${ordenCorrecto.length}.`);
   }
 });
+

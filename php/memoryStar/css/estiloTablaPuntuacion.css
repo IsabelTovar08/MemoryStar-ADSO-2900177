@@ -3,6 +3,7 @@
 */
 
 .contenedorTsolo {
+  
   margin-top: 50px;
   position: relative;
   width: 90%;
@@ -12,7 +13,7 @@
   border-radius: 20px;
   background: linear-gradient(
     to bottom,
-    rgba(245, 158, 245, 0.3),
+    rgba(245, 158, 245, 0.7),
     rgba(58, 11, 95, 0.9)
   );
   box-shadow: 0px 0px 30px 20px rgba(255, 255, 255, 0.1);
@@ -29,12 +30,12 @@
 }
 
 .tituloTsolo {
-  font-size: 150%;
+  font-size: 170%;
   font-weight: bold;
   font-family: "Bebas Neue", sans-serif;
   background: linear-gradient(
     to bottom,
-    rgba(245, 158, 245, 0.3),
+    rgba(245, 158, 245, 0.7),
     rgba(58, 11, 95, 0.9)
   );
   box-shadow: 0 0 20px rgb(255, 106, 233);
@@ -44,11 +45,12 @@
   border-radius: 10px;
   padding: 5px 15px;
   margin-top: -10%;
-  left: 28%;
+  left: 17%;
 }
 .contenedor-estrellas {
   display: flex;
   justify-content: center;
+ 
 }
 
 .contenedor-estrellas:nth-child(1) {
@@ -104,10 +106,12 @@
   margin-top: 70px;
   display: flex;
   justify-content: center;
+  
   font-size: 25px;
   font-weight: bold;
   color: #ffff;
   font-family: Arial, Helvetica, sans-serif;
+  
 }
 .estrella-puntaje {
   width: 40px;
@@ -132,13 +136,14 @@
 .contenedor-info {
   position: relative;
   margin-top: 5px;
+  margin-bottom: 20px;
   font-size: 15px;
   color: #ffff;
   font-family: Arial, Helvetica, sans-serif;
   border-radius: 10px;
   padding: 3px 8px;
-  /* left: 10%; */
-  margin: 0 auto;
+  left: 13%;
+  justify-content: center;
   background: linear-gradient(
     to bottom,
     rgba(240, 219, 240, 0.3),
@@ -150,24 +155,24 @@
   position: absolute;
   display: flex;
   justify-content: center;
-  left: 14%;
-  top: 95%;
+  left: 20%;
+  top: 92%;
 }
 
 .botonTsolo {
   font-family: "Comic Sans MS", "Arial", sans-serif; /* Fuente con estilo similar */
-  font-size: 100%;
+  font-size: 150%;
   color: #ffffff;
   background: linear-gradient(
     to bottom,
-    rgba(245, 158, 245, 0.3),
+    rgba(245, 158, 245, 0.7),
     rgba(58, 11, 95, 0.9)
   );
   box-shadow: 0 0 20px rgb(255, 106, 233);
   border-radius: 30px;
-  padding: 5px 5px;
+  padding: 10px 20px;
   text-align: center;
-  width: 50%;
+  width: 100%;
   height: auto;
   line-height: 18px;
   border: none;
@@ -177,6 +182,10 @@
   .contenedorTsolo {
     width: 80%;
   }
+  .tituloTsolo{
+    left: 30%;
+  }
+
   /* .star {
         width: 0%; 
         height: auto;
@@ -203,7 +212,7 @@
   position: relative;
   background: linear-gradient(
     to bottom,
-    rgba(245, 158, 245, 0.3),
+    rgba(245, 158, 245, 0.7),
     rgba(58, 11, 95, 0.9)
   );
   box-shadow: 0px 0px 30px 20px rgba(255, 255, 255, 0.1);
@@ -225,7 +234,7 @@
   font-family: "Bebas Neue", sans-serif;
   background: linear-gradient(
     to bottom,
-    rgba(245, 158, 245, 0.3),
+    rgba(245, 158, 245, 0.7),
     rgba(58, 11, 95, 0.9)
   );
   border: 3px solid #aa00df;
@@ -362,13 +371,16 @@
   font-size: 20px;
   background: linear-gradient(
     to bottom,
-    rgba(245, 158, 245, 0.3),
+    rgba(245, 158, 245, 0.7),
     rgba(58, 11, 95, 0.9)
   );
   box-shadow: 0 0 40px rgb(255, 106, 233);
 }
 
 @media (max-width: 576px) {
+  #tablaMulti .modal-content{
+    width: 90%;
+  }
   #tablaMulti .modal-title {
     font-size: 25px;
   }

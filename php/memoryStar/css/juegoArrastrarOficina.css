@@ -30,6 +30,22 @@ body {
     3px 3px #414d68, 4px 4px #414d68, 5px 5px #414d68, 6px 6px #414d68,
     7px 7px #414d68;
 }
+.tiempo{
+  position: absolute;
+  top: 5%;
+  left: 80%;
+  color: white;
+  font-size: 5vh;
+  z-index: 1;
+}
+.puntos{
+  position: absolute;
+  top: 5%;
+  left: 5%;
+  color: white;
+  font-size: 5vh;
+  z-index: 1;
+}
 #contenedor-imagen img {
   height: 100vh;
   object-fit: cover;

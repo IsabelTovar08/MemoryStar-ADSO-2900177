@@ -646,7 +646,10 @@
     </div>
 </div>
 
-
+<!-- seguir jugando -->
+<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#seguirJugando">
+  Launch demo modal
+</button>
 <div class="modal fade" id="seguirJugando" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-sm modal-dialog-centered">
         <div class="modal-content">
@@ -761,6 +764,9 @@
 </div>
 
 <!--Tabla solo-->
+<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#tablapuntuacionsolo">
+  Launch demo modal
+</button>
 
 <div class="modal fade" id="tablapuntuacionsolo" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-sm modal-dialog-centered">
@@ -773,13 +779,13 @@
                     <img src="img/tablas/Star.png" class="star" alt="">
                 </div>
 
-                <div class="puntaje-total">
+                <div id="puntosSecu1"class="puntaje-total">
                     100
                 </div>
 
                 <div class="contenedor-puntaje">
-                    <div>+15</div><img src="img/tablas/starpuntaje.png" alt="" class="estrella-puntaje">
-                    <div style="margin-left: 50px;">+15</div><img src="img/tablas/rubipuntaje.png" alt="" class="rubi-puntaje">
+                    
+                    <div>+15</div><img src="img/tablas/rubipuntaje.png" alt="" class="rubi-puntaje">
                 </div>
 
                 <div class="col-10 row contenedor-info">
@@ -791,8 +797,8 @@
             </div>
 
             <div class="contenedor-botonTsolo">
-                <button class="botonTsolo">Jugar de nuevo</button>
-                <button class="botonTsolo" style="margin-left: 20px;" data-bs-dismiss="modal" aria-label="Close">Salir</button>
+                <!-- <button class="botonTsolo">Jugar de nuevo</button> -->
+                <button class="botonTsolo" style="margin-left: 20px;" data-bs-dismiss="modal" aria-label="Close">Aceptar</button>
             </div>
         </div>
     </div>

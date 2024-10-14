@@ -17,6 +17,22 @@ body {
   height: 100vh; /* Ocupa toda la altura de la pantalla */
   padding: 0;
 }
+.tiempo{
+  position: absolute;
+  top: 5%;
+  left: 80%;
+  color: white;
+  font-size: 5vh;
+  z-index: 1;
+}
+.puntos{
+  position: absolute;
+  top: 5%;
+  left: 5%;
+  color: white;
+  font-size: 5vh;
+  z-index: 1;
+}
 .textoArrastrar {
   top: 1%;
   position: absolute;

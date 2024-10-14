@@ -30,7 +30,7 @@ body {
     3px 3px #414d68, 4px 4px #414d68, 5px 5px #414d68, 6px 6px #414d68,
     7px 7px #414d68;
 }
-.tiempo{
+.tiempo {
   position: absolute;
   top: 5%;
   left: 80%;
@@ -38,7 +38,7 @@ body {
   font-size: 5vh;
   z-index: 1;
 }
-.puntos{
+.puntos {
   position: absolute;
   top: 5%;
   left: 5%;
@@ -46,6 +46,35 @@ body {
   font-size: 5vh;
   z-index: 1;
 }
+
+.countdown-container {
+  position: absolute; /* Mantener el contenedor relativo */
+  top: 6%;
+  left: 4%;
+  width: 300px;
+  height: 50px;
+  border: 2px solid #007BFF;
+  border-radius: 5px;
+  overflow: hidden;
+}
+
+.countdown-bar {
+  position: absolute; /* Cambiar a posición absoluta */
+  height: 100%;
+  width: 100%;
+  background-color: #007BFF;
+  transition: width 1s linear;
+}
+
+.countdown-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 24px;
+  color: white;
+}
+
 #contenedor-imagen img {
   height: 100vh;
   object-fit: cover;
@@ -61,14 +90,13 @@ body {
   object-fit: cover;
   z-index: 1;
 }
-.caja{
+.caja {
   position: absolute;
   height: 25vh;
   top: 72%;
   left: 45%;
   margin: 5px;
   object-fit: cover;
-  
 }
 #objeto1 {
   height: 8vh;
@@ -163,7 +191,30 @@ body {
 
 #verificarBtn {
   position: absolute;
-  top: 20%;
+  top: 12%;
+  left: 45%;
+
+  background: linear-gradient(
+    to bottom,
+    #67c5d4,
+    #688e90
+  ); /* Degradado verde */
+  border: 3px solid white; /* Borde blanco */
+  border-radius: 20px; /* Bordes redondeados */
+  color: white; /* Color del texto */
+  font-size: 170%; /* Tamaño del texto */
+  font-family: Arial, sans-serif; /* Fuente del texto */
+  font-weight: bold; /* Texto en negrita */
+  padding: 5px 5px; /* Espaciado interno del botón */
+  text-align: center;
+  display: inline-block;
+  text-decoration: none; /* Eliminar subrayado */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3); /* Sombra */
+  cursor: pointer;
+}
+
+#verificarBtn:hover {
+  background: linear-gradient(to bottom, #688e90, #67c5d4); /* Invertir degradado al hacer hover */
 }
 /* Estilo para las dropzones cuando un objeto está sobre ellas */
 .dropzone-highlight {
@@ -181,10 +232,14 @@ body {
 }
 
 .dropzone-highlight-temp {
-  background-color: rgba(255, 255, 0, 0.5); /* Color amarillo semitransparente */
+  background-color: rgba(
+    255,
+    255,
+    0,
+    0.5
+  ); /* Color amarillo semitransparente */
   border: 2px solid #ff0000; /* Borde rojo para resaltar */
 }
-
 
 @media only screen and (max-width: 1024px) and (orientation: landscape) {
   .dropzone {
@@ -194,5 +249,4 @@ body {
   }
 }
 @media (min-width: 1600px) {
-  
 }

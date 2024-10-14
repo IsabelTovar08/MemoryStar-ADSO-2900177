@@ -12,6 +12,7 @@
     <link rel="stylesheet" href="css/estiloTablaPuntuacion.css">
     <link rel="stylesheet" href="css/estiloSeguirJugando.css">
     <!-- <link rel="stylesheet" href="css/estilosPerfil.css"> -->
+     
     <title>MemoryStart ¡Pon a prueba tu memoria!</title>
     <link rel="shortcut icon" href="img/iconos/segundoMemory.png">
     <link
@@ -25,6 +26,7 @@
 
 <body style="background-image: url('img/fondoTematicas/fondoMate.jpg');">
     <div class="container-fuid">
+        
         <style>
             .dropzones-container {
                 display: flex;
@@ -38,6 +40,9 @@
             }
         </style>
         <?php include('nabar.php'); ?>
+        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#tablaMulti">
+  Launch demo modal
+</button>
         <div id="contenedor">
             <div class="contenido arrastrar">
                 <h1 class="textoEleccion">Ordenar Elementos</h1>
