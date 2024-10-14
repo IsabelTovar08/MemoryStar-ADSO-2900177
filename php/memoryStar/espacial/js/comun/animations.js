@@ -70,7 +70,7 @@ export class Personaje {
   handleDeath() {
     this.isDead = true;
     this.jugador.setCollideWorldBounds(false);
-    this.scene.sound.add('gameover', { volume: 0.2 }).play();
+    this.scene.sound.add('caida', { volume: 0.2 }).play();
 
     setTimeout(() => {
       this.jugador.setVelocityY(-350);

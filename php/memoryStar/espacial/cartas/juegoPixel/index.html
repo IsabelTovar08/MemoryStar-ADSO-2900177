@@ -1,16 +1,17 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Juego Dulces</title>
   <script src="../../super-midu-bros-main/phaser.min.js"></script>
   <script type="module" src="pixel.js"></script>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-  <!-- <link rel="stylesheet" href="../bootstrap/css/bootstrap.css"> -->
+  <link rel="stylesheet" href="../../bootstrap/css/bootstrap.css">
+  <link rel="stylesheet" href="../../bootstrap/js/bootstrap.js">
+
   <style>
-   body {
+    body {
       display: grid;
       height: 100vh;
       width: 100vh;
@@ -18,14 +19,16 @@
       /* justify-content: center; */
       overflow: hidden;
     }
-    #game{
+
+    #game {
       background-color: antiquewhite;
     }
   </style>
 </head>
+
 <body>
   <div class="modal" id="modal" tabindex="-1">
-    <div class="modal-dialog">
+    <div class="modal-dialog modal-dialog-centered">
       <div class="modal-content">
         <div class="modal-header">
           <h5 class="modal-title">¿Te quedaste sin oxígeno?</h5>
@@ -34,7 +37,8 @@
         <div class="modal-body">
           <p>Compra 1 por solo 1$</p>
           <div class="col row">
-            <div class="col">Diamantes disponibles: </div><div class="col" id="diamantes"></div> 
+            <div class="col">Diamantes disponibles: </div>
+            <div class="col" id="diamantes"></div>
           </div>
           <div id="temporizador" style="font-size: 24px;">5</div>
         </div>
@@ -45,5 +49,80 @@
       </div>
     </div>
   </div>
+  <style>
+    /* Cambiar la opacidad del backdrop del modal */
+    .modal-backdrop {
+      background-color: rgba(0, 0, 0, 0.1);
+      /* Cambia 0.5 por el nivel de opacidad deseado (0.0 a 1.0) */
+    }
+
+    .modal-content {
+      transform: translateY(-50px);
+      /* Comienza más arriba */
+      transition: transform 0.5s ease;
+      /* Transición suave */
+    }
+
+    /* Clase activa para el rebote hacia abajo */
+    .modal.show .modal-content {
+      animation: bounce 0.5s forwards;
+      /* Aplica la animación de rebote */
+    }
+
+    /* Animación de rebote */
+    @keyframes bounce {
+      0% {
+        transform: translateY(-50px);
+        /* Comienza más arriba */
+      }
+
+      50% {
+        transform: translateY(20px);
+        /* Rebota hacia abajo */
+      }
+
+      100% {
+        transform: translateY(0);
+        /* Regresa a su posición original */
+      }
+    }
+    .modal-content{
+      background-color: #f5deb280;
+      box-shadow: 0 0 20px #02112c;
+      color: white;
+      font-size: 4vh;
+      font-family: monospace;
+      text-shadow: 0 0 1px #000;
+    }
+    .btn.aceptar{
+      width: 30%;
+      margin-top: 10%;
+    }
+  </style>
+  <div class="modal" id="modalObjeto" tabindex="-1">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-body">
+          Felicidades Primer objeto
+        </div>
+      </div>
+      
+    </div>
+  </div>
+  <div class="modal" id="modalRedireccion" tabindex="-1">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-body">
+          A continuación serás redirigido a la siguiente fase del juego.
+        </div>
+        <div class="modal-footer">
+          <button type="button" id="aceptarRedireccion" class="btn btn-primary">Aceptar</button>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+  <script src="../../bootstrap/js/bootstrap.bundle.min.js"></script>
 </body>
+
 </html>
