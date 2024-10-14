@@ -159,7 +159,7 @@ class MyScene extends Phaser.Scene {
 
     // Configurar las colisiones con el jugador
     boss.configurarColisionConJugador();
-
+ 
     // Configurar colisiones con las plataformas
     boss.configurarColisionConPlataformas(this.floor);
 

@@ -251,7 +251,7 @@ recolectarMineral(jugador, mineral) {
   }
 }
 
-
+  
   configurarColisionMineral(mineralGroup) {
     this.scene.physics.add.overlap(
       this.scene.instanciaPersonaje.jugador,

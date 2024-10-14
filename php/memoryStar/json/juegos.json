@@ -1,0 +1,43 @@
+{
+    "configurarJuego": {
+      "titulo": "Configurar Juego",
+      "avatarTitulo": "Elige tu avatar", 
+      "imagenes": [
+        {
+          "src": "img/gif/esqueleto.gif",
+          "alt": "Esqueleto",
+          "value": "Imagen1",
+          "checked": true
+        },
+        { 
+          "src": "img/gif/calabaza.gif",
+          "alt": "Calabaza",
+          "value": "Imagen2",
+          "checked": false
+        },
+        { 
+          "src": "img/gif/hongo.gif",
+          "alt": "Hongo",
+          "value": "Imagen3",
+          "checked": false
+        }
+      ],
+      "juegos": [
+        {
+          "nombre": "Planetscape",
+          "src": "img/gif/espacial.gif",
+          "modalTarget": "#espacial",
+          "value": "JuegoEspacial"
+        },
+        {
+          "nombre": "Memorix",
+          "src": "img/gif/memorizar.gif",
+          "modalTarget": "#ordenar",
+          "value": "JuegoOrdenar"
+        }
+      ]
+    }
+
+    
+  }
+  

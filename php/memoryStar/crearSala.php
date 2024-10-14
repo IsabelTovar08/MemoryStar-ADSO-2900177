@@ -18,7 +18,7 @@
         <?php include('nabar.php'); ?>
         <div class="control" style="width:5px; bottom: 0; position: absolute;">
             <img src="img/fondos/controles.png" alt="" style="width:30vh;">
-        </div>
+        </div> 
         <div id="contenedor">
             <div id="contenido" style="width: 80vw;">
             <a href="configurarJuego.php"><img src="img/iconos/atrasN.png" alt="" class="atras"></a>
@@ -93,43 +93,6 @@
                     </div>
                 </div>
             </div>
-            <!-- Modal -->
-            <div class="modal fade" id="ordenar" tabindex="-1" aria-labelledby="exampleModalLabel"
-                aria-hidden="true">
-                <div class="modal-dialog modal-dialog-centered">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h1 class="modal-title fs-5" id="exampleModalLabel">¡Memorix! </h1>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                        </div>
-                        <div class="modal-body">
-                            Observa un patrón por unos segundos, memorízalo y luego ordena los objetos en su lugar
-                            correcto. Cada escenario es un reto único que pondrá a prueba tu memoria. ¡Desafía tu mente
-                            y demuestra lo rápido que puedes recordar!
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Aceptar</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="modal fade" id="espacial" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                <div class="modal-dialog modal-dialog-centered">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h1 class="modal-title fs-5" id="exampleModalLabel">¡Planetscape!</h1>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                        </div>
-                        <div class="modal-body">
-                            Embárcate en una aventura espacial con dos desafíos únicos, ¡Explora
-                            planetas, resuelve acertijos y encuentra tu camino de regreso a la Tierra!
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Aceptar</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
             <div class="modal fade" id="nave" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <div class="modal-dialog modal-dialog-centered">
                     <div class="modal-content">
@@ -178,7 +141,8 @@
     <script src="js/mapa.js"></script>
     <script src="js/visivilidadIconos.js"></script>
     <script src="js/seleccionarAvatar.js"></script>
-    <script src="js/juegoSala.js"></script>
+    <script src="js/jueSala.js"></script>
+    <script src="js/modales.js"></script>
     </bodyb>
 
 </html>
