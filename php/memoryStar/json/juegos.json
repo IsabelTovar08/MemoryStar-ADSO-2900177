@@ -12,7 +12,7 @@
         { 
           "src": "img/gif/calabaza.gif",
           "alt": "Calabaza",
-          "value": "Imagen2",
+          "value": "Imagen2", 
           "checked": false
         },
         { 

@@ -169,15 +169,15 @@ class MyScene extends Phaser.Scene {
       this.physics.add.collider(this.object3, this.floor);
       this.physics.add.collider(this.object4, this.floor);
 
-
+ 
 
 
 
       // Pasando funciones para actualizar el estado
-      this.instanciaPartesNave.recolectarObjeto(this.object1, this.instanciaPartesNave.object1Collected, "modalObjeto", this.nave, () => { this.instanciaPartesNave.object1Collected = true; });
-      this.instanciaPartesNave.recolectarObjeto(this.object2, this.instanciaPartesNave.object2Collected, "modalObjeto", this.propulsores, () => { this.instanciaPartesNave.object2Collected = true; });
-      this.instanciaPartesNave.recolectarObjeto(this.object3, this.instanciaPartesNave.object3Collected, "modalObjeto", this.cabina, () => { this.instanciaPartesNave.object3Collected = true; });
-      this.instanciaPartesNave.recolectarObjeto(this.object4, this.instanciaPartesNave.object4Collected, "modalObjeto", this.cubierta, () => { this.instanciaPartesNave.object4Collected = true; });
+      this.instanciaPartesNave.recolectarObjeto(this.object1, this.instanciaPartesNave.object1Collected, "modalObjeto1", this.nave, () => { this.instanciaPartesNave.object1Collected = true; });
+      this.instanciaPartesNave.recolectarObjeto(this.object2, this.instanciaPartesNave.object2Collected, "modalObjeto2", this.propulsores, () => { this.instanciaPartesNave.object2Collected = true; });
+      this.instanciaPartesNave.recolectarObjeto(this.object3, this.instanciaPartesNave.object3Collected, "modalObjeto3", this.cabina, () => { this.instanciaPartesNave.object3Collected = true; });
+      this.instanciaPartesNave.recolectarObjeto(this.object4, this.instanciaPartesNave.object4Collected, "modalObjeto4", this.cubierta, () => { this.instanciaPartesNave.object4Collected = true; });
 
       // ../../espacial/index.html
       const datos = this.manejoPuntos.obtenerDatos();
