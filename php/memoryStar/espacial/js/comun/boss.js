@@ -1,8 +1,8 @@
 export class Boss {
-  constructor(scene, jugador, manejarPuntos) {
+  constructor(scene, jugador, manejoPuntos) {
     this.scene = scene;
     this.jugador = jugador; // Referencia al jugador
-    this.manejarPuntos = manejarPuntos; // Recibe instancia de ManejarPuntos
+    this.manejoPuntos = manejoPuntos; // Recibe instancia de manejoPuntos
     this.boss = null; // Inicializamos el boss como null
     this.bossSpeed = 100;
     this.bossDirection = "left";
@@ -19,7 +19,6 @@ export class Boss {
       .setCollideWorldBounds(true);
 
     this.boss.body.setAllowGravity(false); // Deshabilitar la gravedad
-    this.boss.setY(100); // Ajustar la posición en la parte superior
 
     this.boss.health = 100;
 
@@ -82,14 +81,14 @@ export class Boss {
   // Función para reducir tiempo cuando el jugador es golpeado por un proyectil
   reducirTiempoPorProyectil(jugador, projectile) {
     projectile.disableBody(true, true);
+    console.log(this.jugador)
 
-    // Reducir tiempo de ManejarPuntos
-    this.manejarPuntos.tiempo -= 5;
-    this.manejarPuntos.tiempoText.setText(
-      "TIEMPO DE VIDA: " + this.manejarPuntos.tiempo
-    );
+    // Reducir tiempo de manejoPuntos
+    console.log(this.manejoPuntos)
 
-    console.log("¡Colisión! Tiempo restante: " + this.manejarPuntos.tiempo);
+    this.manejoPuntos.tiempo -= 5;
+
+    console.log("¡Colisión! Tiempo restante: " + this.manejoPuntos.tiempo);
 
     if (this.scene.tiempo <= 0) {
       this.jugador.deteriorarJugador();

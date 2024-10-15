@@ -3,8 +3,9 @@ import { ManejarPuntos } from "../../js/comun/crearPuntos.js";
 import { estrellasFondo } from "../../js/comun/estrellasFondo.js";
 import { createPlatforms } from './plataformasPixel.js';
 import { partesNave } from "../../js/comun/nave.js";
-// import { ManejoTiempo } from "../../js/comun/time.js";
 import { creacionRecolectables } from "../../js/comun/basePuntos.js";
+import { UIElementsBarras } from "../../js/comun/crearBarras.js";
+
 class MyScene extends Phaser.Scene {
    constructor() {
       super({ key: 'MyScene' });
@@ -17,25 +18,15 @@ class MyScene extends Phaser.Scene {
          frameWidth: 18,
          frameHeight: 14,
       });
-      this.load.image('fondoPartes', 'imgPixel/partesNave.png');
+      this.load.audio('sonido', '../../sonidos/recolectar.mp3');
+      this.load.audio('coin', '../../sonidos/coin.mp3');
+      this.load.audio('soundCoin', '../../sonidos/soundCoin.mp3');
+      this.load.audio('caida', '../../sonidos/caida.mp3');
+      this.load.audio('muerte', '../../sonidos/muerte.mp3');
+      this.load.audio('victoria', '../../sonidos/victoria.mp3');
+      this.load.audio('sonidoOxigeno', '../../sonidos/recolectaOxigeno.mp3');
 
-     
-
-      this.load.audio('sonido', 'imgPixel/recolectar.mp3');
-      this.load.audio('coin', 'imgPixel/coin.mp3');
-      this.load.audio('soundCoin', 'imgPixel/soundCoin.mp3');
-      this.load.audio('caida', 'imgPixel/caida.mp3');
-      this.load.audio('muerte', 'imgPixel/muerte.mp3');
-      this.load.audio('victoria', 'imgPixel/victoria.mp3');
-      this.load.audio('sonidoOxigeno', 'imgPixel/recolectaOxigeno.mp3');
-      this.load.image('oxigeRecort', 'imgPixel/oxigen.png');
-
-
-
-      this.load.image("projectile", "imgLuna/bo.png");
       this.load.image('corazon', 'imgPixel/corazon.png');
-      this.load.audio('gameover', '../../super-midu-bros-main/assets/sound/music/gameover.mp3');
-      this.load.image('oxigeno', '../../super-midu-bros-main/assets/oxigeno.png');
       this.load.image('suelo', 'imgPixel/pop/1.png');
       this.load.image('flotante', 'imgPixel/pñp/12.png');
       this.load.image('suelo-flotante', 'imgPixel/kok/1.png');
@@ -60,25 +51,25 @@ class MyScene extends Phaser.Scene {
       this.load.image('siete', '../juegoLuna/imgLuna/7.png')
       this.load.image('nave', 'imgPixel/nave.png');
 
-      this.load.image('alas', 'imgPixel/alasC.png');
-      this.load.image('propulsores', 'imgPixel/propulsores.png');
-      this.load.image('cabina', 'imgPixel/cabina.png');
-      this.load.image('cubierta', 'imgPixel/cubierta.png');
+      this.load.image('alas', '../../img/alasC.png');
+      this.load.image('propulsores', '../../img/propulsores.png');
+      this.load.image('cabina', '../../img/cabina.png');
+      this.load.image('cubierta', '../../img/cubierta.png');
+
+      this.load.image('diamante', '../../img/diamante.png');
+      this.load.image('temporizador', '../../img/tiempo.png');
+      this.load.image('estrellaPuntos', '../../img/puntos.png');
+      this.load.image('salir', '../../img/salir.png');
+      this.load.image('oxigeRecort', '../../img/oxigen.png');
+
+   
+      this.load.image("button", "../../img/arriba.png");
+      this.load.image("leftButton", "../../img/izqui.png");
+      this.load.image("rightButton", "../../img/derecha.png");
    }
 
    create() {
       this.add.image(0, config.height - 5, 'fondo').setOrigin(0, 1).setScale(2);
-      // this.add.image(475, 10, 'fondoPartes').setOrigin(0, 0).setScale(1.1);
-
-
-      let graphicsTiempo = this.add.graphics().fillStyle(0xf5deb2, 0.25).fillRect(15, 10, 270, 50).setScrollFactor(0);
-
-      let maskGraphicsTiempo = this.make.graphics().fillStyle(0xffffff).fillRoundedRect(15, 10, 270, 50, 5).setScrollFactor(0);
-
-      graphicsTiempo.setMask(maskGraphicsTiempo.createGeometryMask()); // Aplicar la máscara
-      
-
-      this.add.image(28, 13, 'oxigeRecort').setScale(0.09).setOrigin(0, 0).setScrollFactor(0);
 
       this.add.image(85, config.height - 112, 'luz').setScale(0.2);
 
@@ -107,9 +98,8 @@ class MyScene extends Phaser.Scene {
       this.add.image(650, config.height - 458, 'piedra').setScale(0.05);
       this.add.image(1100, config.height - 290, 'arbol').setScale(0.2);
       this.add.image(1300, config.height - 512, 'arbol-amarillo').setScale(0.15);
-
       this.add.image(1315, config.height - 480, 'piedra').setScale(0.04);
-     
+
       // this.add.image(500, config.height - 200, 'siete').setScale(0.06);
 
       this.object1 = this.physics.add.image(Phaser.Math.Between(700, 1100), config.height - 300, 'alas').setScale(0.15);
@@ -119,13 +109,8 @@ class MyScene extends Phaser.Scene {
 
 
       this.floor = this.physics.add.staticGroup();
-      this.projectile = this.physics.add.group();
-
       createPlatforms(this);
-
-      
-
-     
+      this.elementosSuperiores = new UIElementsBarras(this);
 
       this.manejoPuntos = new ManejarPuntos(this);
       this.manejoRecolectables = new creacionRecolectables(this, this.manejoPuntos)
@@ -135,33 +120,38 @@ class MyScene extends Phaser.Scene {
       this.instanciaPersonaje = new Personaje(this);
       this.jugador = this.instanciaPersonaje.jugador;
 
-      this.instanciaPartesNave = new partesNave(this);
 
-      this.mineral = this.manejoRecolectables.crearCorazones();
+      this.corazones = this.manejoRecolectables.crearCorazones();
       this.oxigeno = this.manejoRecolectables.crearOxigeno();
       this.siete = this.manejoRecolectables.crearSiete(1200, 300);
+      this.iniciarOxigeno = this.manejoPuntos.drawProgressBar();
+      this.manejoPuntos.start(1, 0, 650, 10);
+
+      // Se instancia al final para que no interfiera con el diseño
+      this.instanciaPartesNave = new partesNave(this);
+
+      // Botón salir
+      const botonSalir = this.add.image(config.width - 10, config.height - 10, 'salir').setScale(0.11).setOrigin(1, 1).setScrollFactor(0).setInteractive();
+
+      botonSalir.on('pointerover', () => {
+         botonSalir.setScale(0.12).setTint(0xaaaaaa);
+      });
+      botonSalir.on('pointerout', () => {
+         botonSalir.setScale(0.11).clearTint();
+      });
+      botonSalir.on('pointerdown', () => {
+         window.location.href = '../../../index.php';
+      });
 
 
-      let graphicsPartes = this.add.graphics().fillStyle(0xf5deb2, 0.3).fillRect(15, 60, 80, this.scale.height -270).setScrollFactor(0);
-
-      let maskGraphicsPartes = this.make.graphics().fillStyle(0xffffff).fillRoundedRect(15, 60, 80, this.scale.height -270, 5).setScrollFactor(0);
-
-      graphicsPartes.setMask(maskGraphicsPartes.createGeometryMask()); // Aplicar la máscara
-
-
-      this.nave = this.add.image(20, 70, 'alas').setScale(0.12).setTint(0x505050).setScrollFactor(0).setOrigin(0, 0);
-      this.propulsores = this.add.image(20, 140, 'propulsores').setScale(0.6).setTint(0x505050).setScrollFactor(0).setOrigin(0, 0);
-      this.cabina = this.add.image(20, 190, 'cabina').setScale(0.5).setTint(0x505050).setScrollFactor(0).setOrigin(0, 0);
-      this.cubierta = this.add.image(20, 250, 'cubierta').setScale(0.75).setTint(0x505050).setScrollFactor(0).setOrigin(0, 0);
-
-
+      // COnfigurar coliciones para el oxigeno y corazones
       this.manejoRecolectables.configurarColisionOxigeno(this.oxigeno);
-      this.manejoRecolectables.configurarColisionMineral(this.mineral);
+      this.manejoRecolectables.configurarColisionMineral(this.corazones);
       // manejarPuntos.configurarColisionSiete(this.siete, "../juegoLava/index.html");
 
-      this.physics.world.setBounds(0, config.height - 1500, 1850, 1500);
+      // Coliciones entre el personaje y el suelo y los recolectables y el suelo
       this.physics.add.collider(this.instanciaPersonaje.jugador, this.floor);
-      this.physics.add.collider(this.mineral, this.floor);
+      this.physics.add.collider(this.corazones, this.floor);
       this.physics.add.collider(this.oxigeno, this.floor);
       this.physics.add.collider(this.siete, this.floor);
       this.physics.add.collider(this.object1, this.floor);
@@ -169,15 +159,14 @@ class MyScene extends Phaser.Scene {
       this.physics.add.collider(this.object3, this.floor);
       this.physics.add.collider(this.object4, this.floor);
 
+ 
 
 
-
-
-      // Pasando funciones para actualizar el estado
-      this.instanciaPartesNave.recolectarObjeto(this.object1, this.instanciaPartesNave.object1Collected, "modalObjeto", this.nave, () => { this.instanciaPartesNave.object1Collected = true; });
-      this.instanciaPartesNave.recolectarObjeto(this.object2, this.instanciaPartesNave.object2Collected, "modalObjeto", this.propulsores, () => { this.instanciaPartesNave.object2Collected = true; });
-      this.instanciaPartesNave.recolectarObjeto(this.object3, this.instanciaPartesNave.object3Collected, "modalObjeto", this.cabina, () => { this.instanciaPartesNave.object3Collected = true; });
-      this.instanciaPartesNave.recolectarObjeto(this.object4, this.instanciaPartesNave.object4Collected, "modalObjeto", this.cubierta, () => { this.instanciaPartesNave.object4Collected = true; });
+// Actualizar el estado de las partes recolectadas
+      this.instanciaPartesNave.recolectarObjeto(this.object1, this.instanciaPartesNave.object1Collected, "modalObjeto1", this.instanciaPartesNave.nave, () => { this.instanciaPartesNave.object1Collected = true; });
+      this.instanciaPartesNave.recolectarObjeto(this.object2, this.instanciaPartesNave.object2Collected, "modalObjeto2", this.instanciaPartesNave.propulsores, () => { this.instanciaPartesNave.object2Collected = true; });
+      this.instanciaPartesNave.recolectarObjeto(this.object3, this.instanciaPartesNave.object3Collected, "modalObjeto3", this.instanciaPartesNave.cabina, () => { this.instanciaPartesNave.object3Collected = true; });
+      this.instanciaPartesNave.recolectarObjeto(this.object4, this.instanciaPartesNave.object4Collected, "modalObjeto4", this.instanciaPartesNave.cubierta, () => { this.instanciaPartesNave.object4Collected = true; });
 
       // ../../espacial/index.html
       const datos = this.manejoPuntos.obtenerDatos();
@@ -203,15 +192,10 @@ class MyScene extends Phaser.Scene {
          .catch((error) => console.error("Error:", error));
 
 
-
+      this.physics.world.setBounds(0, config.height - 1500, 1850, 1500);
       this.cameras.main.setBounds(0, config.height - 1500, 1850, 1500);
       this.cameras.main.startFollow(this.instanciaPersonaje.jugador);
-
-
    }
-
-
-
    update(time, delta) {
       this.estrellasFondo.update();
       if (!this.instanciaPersonaje.jugador.isDead) {
@@ -223,8 +207,8 @@ class MyScene extends Phaser.Scene {
 
 const config = {
    type: Phaser.AUTO,
-   width: window.innerWidth > 800 ? window.innerWidth : 400,
-   height: window.innerHeight > 600 ? window.innerHeight : 200,
+   width: window.innerWidth,
+   height: window.innerHeight,
    scene: MyScene,
    physics: {
       default: 'arcade',

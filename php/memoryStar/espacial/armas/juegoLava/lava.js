@@ -2,6 +2,8 @@ import { Personaje } from "../../js/comun/animations.js";
 import { ManejarPuntos } from "../../js/comun/crearPuntos.js";
 import { estrellasFondo } from "../../js/comun/estrellasFondo.js";
 import { createPlatforms } from "./plataformas.js";
+import { creacionRecolectables } from "../../js/comun/basePuntos.js";
+import { UIElementsBarras } from "../../js/comun/crearBarras.js";
 
 class MyScene extends Phaser.Scene {
   constructor() {
@@ -12,9 +14,6 @@ class MyScene extends Phaser.Scene {
     this.load.image("1112", "imgLava/isla.png");
     this.load.image("hola", "imgLava/lo.png");
     this.load.image("111", "imgLava/looo.png");
-    this.load.image("button", "imgLava/arriba.png");
-    this.load.image("leftButton", "imgLava/izqui.png"); 
-    this.load.image("rightButton", "imgLava/derecha.png");
     this.load.image("star", "imgLava/bo.png");
     this.load.spritesheet(
       "mario",
@@ -22,11 +21,15 @@ class MyScene extends Phaser.Scene {
       { frameWidth: 18, frameHeight: 16 }
     );
     // this.load.image('caramelo', 'imgLava/oro.png');
-    this.load.audio(
-      "gameover",
-      "../../super-midu-bros-main/assets/sound/music/gameover.mp3"
-    );
-    this.load.image("oxigeno", "../../super-midu-bros-main/assets/oxigeno.png");
+
+    this.load.audio('sonido', '../../sonidos/recolectar.mp3');
+    this.load.audio('coin', '../../sonidos/coin.mp3');
+    this.load.audio('soundCoin', '../../sonidos/soundCoin.mp3');
+    this.load.audio('caida', '../../sonidos/caida.mp3');
+    this.load.audio('muerte', '../../sonidos/muerte.mp3');
+    this.load.audio('victoria', '../../sonidos/victoria.mp3');
+    this.load.audio('sonidoOxigeno', '../../sonidos/recolectaOxigeno.mp3');
+
     this.load.image("volcan", "imgLava/ki.png");
     this.load.image("lava", "imgLava/lava.png");
     this.load.image("lavita", "imgLava/lavita.png");
@@ -42,6 +45,17 @@ class MyScene extends Phaser.Scene {
     this.load.image("iglu", "imgLava/iglu.png");
     this.load.image("caramelo", "imgLava/w.png");
     this.load.image("siete", "imgLava/rr.png");
+
+    this.load.image("button", "../../img/arriba.png");
+    this.load.image("leftButton", "../../img/izqui.png");
+    this.load.image("rightButton", "../../img/derecha.png");
+    this.load.image("siete", "imgDulces/rr.png");
+
+    this.load.image('oxigeRecort', '../../img/oxigen.png');
+    this.load.image('diamante', '../../img/diamante.png');
+    this.load.image('temporizador', '../../img/tiempo.png');
+    this.load.image('estrellaPuntos', '../../img/puntos.png');
+    this.load.image('salir', '../../img/salir.png');
   }
 
   create() {
@@ -73,24 +87,46 @@ class MyScene extends Phaser.Scene {
 
     // Llamar a la función de creación de plataformas
     createPlatforms(this);
+    this.elementosSuperiores = new UIElementsBarras(this);
 
     this.estrellasFondo = new estrellasFondo(this);
 
     // Crear instancia de Mario
     this.instanciaPersonaje = new Personaje(this);
 
-    const manejarPuntos = new ManejarPuntos(this);
-    this.mineral = manejarPuntos.crearMinerales();
-    this.oxigeno = manejarPuntos.crearOxigeno();
-    this.siete = manejarPuntos.crearSiete(1200, 300);
 
-    manejarPuntos.configurarColisionOxigeno(this.oxigeno);
-    manejarPuntos.configurarColisionMineral(this.mineral);
-    manejarPuntos.configurarColisionSiete(this.siete, "../juegoDulces/index.html");
+    this.manejoPuntos = new ManejarPuntos(this);
+    this.manejoRecolectables = new creacionRecolectables(this, this.manejoPuntos)
+    this.iniciarOxigeno = this.manejoPuntos.drawProgressBar();
+    this.manejoPuntos.start(1, 0, 650, 10);
+    
+    this.minerales = this.manejoRecolectables.crearMinerales();
+    this.oxigeno = this.manejoRecolectables.crearOxigeno();
+    this.siete = this.manejoRecolectables.crearSiete(1200, 300);
+
+    this.manejoRecolectables.configurarColisionOxigeno(this.oxigeno);
+    this.manejoRecolectables.configurarColisionMineral(this.minerales);
+
+    const botonSalir = this.add.image(config.width - 10, config.height - 10, 'salir').setScale(0.11).setOrigin(1, 1).setScrollFactor(0).setInteractive();
+
+    botonSalir.on('pointerover', () => {
+      botonSalir.setScale(0.12).setTint(0xaaaaaa);
+    });
+    botonSalir.on('pointerout', () => {
+      botonSalir.setScale(0.11).clearTint();
+    });
+    botonSalir.on('pointerdown', () => {
+      window.location.href = '../../../index.php';
+    });
+
+
+    // COnfigurar coliciones para el oxigeno y minerales
+    this.manejoRecolectables.configurarColisionOxigeno(this.oxigeno);
+    this.manejoRecolectables.configurarColisionMineral(this.minerales);
 
     this.physics.world.setBounds(0, config.height - 1300, 1450, 1300);
     this.physics.add.collider(this.instanciaPersonaje.jugador, this.floor);
-    this.physics.add.collider(this.mineral, this.floor);
+    this.physics.add.collider(this.minerales, this.floor);
     this.physics.add.collider(this.oxigeno, this.floor);
     this.physics.add.collider(this.siete, this.floor);
 
@@ -98,11 +134,13 @@ class MyScene extends Phaser.Scene {
     this.cameras.main.startFollow(this.instanciaPersonaje.jugador);
   }
 
-  update() {
+  update(time, delta) {
     this.estrellasFondo.update();
     if (!this.instanciaPersonaje.jugador.isDead) {
       this.instanciaPersonaje.handleMovement();
     }
+    this.manejoPuntos.update(time, delta);
+
   }
 }
 
