@@ -2,8 +2,12 @@ import { Personaje } from "../../js/comun/animations.js";
 import { ManejarPuntos } from "../../js/comun/crearPuntos.js";
 import { estrellasFondo } from "../../js/comun/estrellasFondo.js";
 import { createPlatforms } from "../../super-midu-bros-main/plataformas.js";
+import { creacionRecolectables } from "../../js/comun/basePuntos.js";
+import { UIElementsBarras } from "../../js/comun/crearBarras.js";
+import { Boss } from "../../js/comun/boss.js";
 
-class MyScene extends Phaser.Scene {  
+
+class MyScene extends Phaser.Scene {
   constructor() {
     super({ key: "MyScene" });
   }
@@ -15,15 +19,18 @@ class MyScene extends Phaser.Scene {
       "../../super-midu-bros-main/assets/entities/mario.png",
       { frameWidth: 18, frameHeight: 16 }
     );
-    this.load.image(
-      "floorbricks",
-      "../../super-midu-bros-main/assets/scenery/overworld/floorbricks.png"
-    );
-    this.load.image("mineral", "../super-midu-bros-main/planetas/cristal.png");
-    this.load.audio(
-      "gameover",
-      "../../super-midu-bros-main/assets/sound/music/gameover.mp3"
-    );
+    this.load.spritesheet("boss", "../../super-midu-bros-main/assets/entities/mario.png", {
+      frameWidth: 18,
+      frameHeight: 14,
+    });
+    this.load.audio('sonido', '../../sonidos/recolectar.mp3');
+    this.load.audio('coin', '../../sonidos/coin.mp3');
+    this.load.audio('soundCoin', '../../sonidos/soundCoin.mp3');
+    this.load.audio('caida', '../../sonidos/caida.mp3');
+    this.load.audio('muerte', '../../sonidos/muerte.mp3');
+    this.load.audio('victoria', '../../sonidos/victoria.mp3');
+    this.load.audio('sonidoOxigeno', '../../sonidos/recolectaOxigeno.mp3');
+    
     this.load.image("oxigeno", "../super-midu-bros-main/assets/oxigeno.png");
     this.load.image("suelo", "imgDulces/suelo.png");
     this.load.image("suelo-dos", "imgDulces/suelo-dos.png");
@@ -58,10 +65,17 @@ class MyScene extends Phaser.Scene {
     this.load.image("fondo", "imgDulces/fondoo.png");
     this.load.image("fondo2", "imgDulces/fondo-2.png");
     this.load.image("fondo3", "imgDulces/fondo-3.png");
-    this.load.image("button", "../juegoLava/imgLava/arriba.png");
-    this.load.image("leftButton", "../juegoLava/imgLava/izqui.png");
-    this.load.image("rightButton", "../juegoLava/imgLava/derecha.png");
+
+    this.load.image("button", "../../img/arriba.png");
+    this.load.image("leftButton", "../../img/izqui.png");
+    this.load.image("rightButton", "../../img/derecha.png");
     this.load.image("siete", "imgDulces/rr.png");
+
+    this.load.image('oxigeRecort', '../../img/oxigen.png');
+    this.load.image('diamante', '../../img/diamante.png');
+    this.load.image('temporizador', '../../img/tiempo.png');
+    this.load.image('estrellaPuntos', '../../img/puntos.png');
+    this.load.image('salir', '../../img/salir.png');
   }
 
   create() {
@@ -147,24 +161,62 @@ class MyScene extends Phaser.Scene {
 
     // Llamar a la función de creación de plataformas
     createPlatforms(this);
+    this.elementosSuperiores = new UIElementsBarras(this);
 
     this.estrellasFondo = new estrellasFondo(this);
 
     // Crear instancia de Mario
     this.instanciaPersonaje = new Personaje(this);
 
-    const manejarPuntos = new ManejarPuntos(this);
-    this.mineral = manejarPuntos.crearMinerales();
-    this.oxigeno = manejarPuntos.crearOxigeno();
-    this.siete = manejarPuntos.crearSiete(1200, 300);
+    this.manejoPuntos = new ManejarPuntos(this);
+    this.manejoRecolectables = new creacionRecolectables(this, this.manejoPuntos)
+    this.iniciarOxigeno = this.manejoPuntos.drawProgressBar();
+    this.manejoPuntos.start(1, 0, 650, 10);
 
-    manejarPuntos.configurarColisionOxigeno(this.oxigeno);
-    manejarPuntos.configurarColisionMineral(this.mineral);
-    manejarPuntos.configurarColisionSiete(this.siete, "../juegoLuna/luna.html");
+    const boss = new Boss(this, this.jugador, this.manejoPuntos); // Pasar el jugador como referencia
+    boss.crearBoss(800, config.height - 350);
+
+    // Configurar las colisiones con el jugador
+    boss.configurarColisionConJugador();
+ 
+    // Configurar colisiones con las plataformas
+    boss.configurarColisionConPlataformas(this.floor);
+
+    this.minerales = this.manejoRecolectables.crearMinerales();
+    this.oxigeno = this.manejoRecolectables.crearOxigeno();
+    this.siete = this.manejoRecolectables.crearSiete(1200, 300);
+
+    this.manejoRecolectables.configurarColisionOxigeno(this.oxigeno);
+    this.manejoRecolectables.configurarColisionMineral(this.minerales);
+    // const manejarPuntos = new ManejarPuntos(this);
+    // this.mineral = manejarPuntos.crearMinerales();
+    // this.oxigeno = manejarPuntos.crearOxigeno();
+    // this.siete = manejarPuntos.crearSiete(1200, 300);
+
+    // manejarPuntos.configurarColisionOxigeno(this.oxigeno);
+    // manejarPuntos.configurarColisionMineral(this.mineral);
+    // manejarPuntos.configurarColisionSiete(this.siete, "../juegoLuna/luna.html");
+
+    const botonSalir = this.add.image(config.width - 10, config.height - 10, 'salir').setScale(0.11).setOrigin(1, 1).setScrollFactor(0).setInteractive();
+
+    botonSalir.on('pointerover', () => {
+      botonSalir.setScale(0.12).setTint(0xaaaaaa);
+    });
+    botonSalir.on('pointerout', () => {
+      botonSalir.setScale(0.11).clearTint();
+    });
+    botonSalir.on('pointerdown', () => {
+      window.location.href = '../../../index.php';
+    });
+
+
+    // COnfigurar coliciones para el oxigeno y minerales
+    this.manejoRecolectables.configurarColisionOxigeno(this.oxigeno);
+    this.manejoRecolectables.configurarColisionMineral(this.minerales);
 
     this.physics.world.setBounds(0, config.height - 1300, 1450, 1300);
     this.physics.add.collider(this.instanciaPersonaje.jugador, this.floor);
-    this.physics.add.collider(this.mineral, this.floor);
+    this.physics.add.collider(this.minerales, this.floor);
     this.physics.add.collider(this.oxigeno, this.floor);
     this.physics.add.collider(this.siete, this.floor);
 
@@ -172,11 +224,13 @@ class MyScene extends Phaser.Scene {
     this.cameras.main.startFollow(this.instanciaPersonaje.jugador);
   }
 
-  update() {
+  update(time, delta) {
     this.estrellasFondo.update();
     if (!this.instanciaPersonaje.jugador.isDead) {
       this.instanciaPersonaje.handleMovement();
     }
+    this.manejoPuntos.update(time, delta);
+
   }
 }
 

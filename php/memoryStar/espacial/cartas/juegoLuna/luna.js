@@ -2,7 +2,10 @@ import { Personaje } from "../../js/comun/animations.js";
 import { ManejarPuntos } from "../../js/comun/crearPuntos.js";
 import { estrellasFondo } from "../../js/comun/estrellasFondo.js";
 import { createPlatforms } from "./plataformas.js";
-import { Boss } from "../../js/comun/boss.js";
+import { creacionRecolectables } from "../../js/comun/basePuntos.js";
+import { UIElementsBarras } from "../../js/comun/crearBarras.js";
+import { partesNave } from "../../js/comun/nave.js";
+
 // import{BossScene} from "../js/comun/boss.js"
 
 class MyScene extends Phaser.Scene {
@@ -21,22 +24,22 @@ class MyScene extends Phaser.Scene {
     //   "../super-midu-bros-main/assets/entities/mario.png",
     //   { frameWidth: 18, frameHeight: 16 }
     // );
+    this.load.audio('sonido', '../../sonidos/recolectar.mp3');
+    this.load.audio('coin', '../../sonidos/coin.mp3');
+    this.load.audio('soundCoin', '../../sonidos/soundCoin.mp3');
+    this.load.audio('caida', '../../sonidos/caida.mp3');
+    this.load.audio('muerte', '../../sonidos/muerte.mp3');
+    this.load.audio('victoria', '../../sonidos/victoria.mp3');
+    this.load.audio('sonidoOxigeno', '../../sonidos/recolectaOxigeno.mp3');
+
     this.load.image("caramelo", "../../super-midu-bros-main/planetas/cristal.png");
-    this.load.audio(
-      "gameover",
-      "../../super-midu-bros-main/assets/sound/music/gameover.mp3"
-    );
-    this.load.image("oxigeno", "../../super-midu-bros-main/assets/oxigeno.png");
 
     this.load.spritesheet("mario", "imgLuna/vaca.png", {
       frameWidth: 32,
       frameHeight: 24,
     });
 
-    this.load.spritesheet("boss", "../../super-midu-bros-main/assets/entities/mario.png", {
-      frameWidth: 18,
-      frameHeight: 14,
-    });
+
     this.load.image("projectile", "imgLuna/bo.png");
 
     this.load.image("b", "imgLuna/b.png");
@@ -68,6 +71,22 @@ class MyScene extends Phaser.Scene {
     this.load.image("seis", "imgLuna/6.png");
     this.load.image("siete", "imgLuna/7.png");
     this.load.image("cohete", "imgLuna/98.png");
+
+    this.load.image('alas', '../../img/alasC.png');
+    this.load.image('propulsores', '../../img/propulsores.png');
+    this.load.image('cabina', '../../img/cabina.png');
+    this.load.image('cubierta', '../../img/cubierta.png');
+
+    this.load.image("button", "../../img/arriba.png");
+    this.load.image("leftButton", "../../img/izqui.png");
+    this.load.image("rightButton", "../../img/derecha.png");
+    this.load.image("siete", "imgDulces/rr.png");
+
+    this.load.image('oxigeRecort', '../../img/oxigen.png');
+    this.load.image('diamante', '../../img/diamante.png');
+    this.load.image('temporizador', '../../img/tiempo.png');
+    this.load.image('estrellaPuntos', '../../img/puntos.png');
+    this.load.image('salir', '../../img/salir.png');
   }
 
   create() {
@@ -131,6 +150,11 @@ class MyScene extends Phaser.Scene {
     this.add.image(430, config.height - 160, "seis").setScale(0.07);
     this.add.image(930, config.height - 310, "seis").setScale(0.07);
 
+    this.object1 = this.physics.add.image(Phaser.Math.Between(700, 1100), config.height - 300, 'alas').setScale(0.15);
+    this.object2 = this.physics.add.image(Phaser.Math.Between(80, 380), config.height - 400, 'propulsores').setScale(0.6);
+    this.object3 = this.physics.add.image(Phaser.Math.Between(400, 500), config.height - 500, 'cabina').setScale(0.6);
+    this.object4 = this.physics.add.image(Phaser.Math.Between(900, 1300), config.height - 500, 'cubierta').setScale(0.8);
+
     this.tweens.add({
       targets: planetas,
       y: "+=6",
@@ -146,37 +170,83 @@ class MyScene extends Phaser.Scene {
     this.projectile = this.physics.add.group();
 
     createPlatforms(this);
+    this.elementosSuperiores = new UIElementsBarras(this);
+
     this.estrellasFondo = new estrellasFondo(this);
     this.instanciaPersonaje = new Personaje(this);
     this.jugador = this.instanciaPersonaje.jugador;
 
-    const manejarPuntos = new ManejarPuntos(this);
-    this.mineral = manejarPuntos.crearMinerales();
-    this.oxigeno = manejarPuntos.crearOxigeno();
-    this.siete = manejarPuntos.crearSiete(1200, 300);
-    const boss = new Boss(this, this.jugador, manejarPuntos); // Pasar el jugador como referencia
-    boss.crearBoss(400, 100);
+    // const manejarPuntos = new ManejarPuntos(this);
+    // this.mineral = manejarPuntos.crearMinerales();
+    // this.oxigeno = manejarPuntos.crearOxigeno();
+    // this.siete = manejarPuntos.crearSiete(1200, 300);
+   
 
-    // Configurar las colisiones con el jugador
-    boss.configurarColisionConJugador();
- 
-    // Configurar colisiones con las plataformas
-    boss.configurarColisionConPlataformas(this.floor);
+    // manejarPuntos.configurarColisionOxigeno(this.oxigeno);
+    // manejarPuntos.configurarColisionMineral(this.mineral);
+    // manejarPuntos.configurarColisionSiete(
+    //   this.siete,
+    //   "../../espacial/index.html"
+    // );
 
-    manejarPuntos.configurarColisionOxigeno(this.oxigeno);
-    manejarPuntos.configurarColisionMineral(this.mineral);
-    manejarPuntos.configurarColisionSiete(
-      this.siete,
-      "../../espacial/index.html"
-    );
+    // this.physics.world.setBounds(0, config.height - 1300, 1450, 1300);
+    // this.physics.add.collider(this.instanciaPersonaje.jugador, this.floor);
+    // this.physics.add.collider(this.mineral, this.floor);
+    // this.physics.add.collider(this.oxigeno, this.floor);
+    // this.physics.add.collider(this.siete, this.floor);
 
-    this.physics.world.setBounds(0, config.height - 1300, 1450, 1300);
-    this.physics.add.collider(this.instanciaPersonaje.jugador, this.floor);
-    this.physics.add.collider(this.mineral, this.floor);
-    this.physics.add.collider(this.oxigeno, this.floor);
-    this.physics.add.collider(this.siete, this.floor);
 
-    const datos = manejarPuntos.obtenerDatos();
+    this.manejoPuntos = new ManejarPuntos(this);
+    this.manejoRecolectables = new creacionRecolectables(this ,this.manejoPuntos)
+    this.iniciarOxigeno = this.manejoPuntos.drawProgressBar();
+    this.manejoPuntos.start(1, 0, 650, 10);
+    
+    this.minerales = this.manejoRecolectables.crearMinerales();
+    this.oxigeno = this.manejoRecolectables.crearOxigeno();
+    this.siete = this.manejoRecolectables.crearSiete(1200, 300);
+
+    this.manejoRecolectables.configurarColisionOxigeno(this.oxigeno);
+    this.manejoRecolectables.configurarColisionMineral(this.minerales);
+
+    this.instanciaPartesNave = new partesNave(this);
+
+
+    const botonSalir = this.add.image(config.width - 10, config.height - 10, 'salir').setScale(0.11).setOrigin(1, 1).setScrollFactor(0).setInteractive();
+
+    botonSalir.on('pointerover', () => {
+      botonSalir.setScale(0.12).setTint(0xaaaaaa);
+    });
+    botonSalir.on('pointerout', () => {
+      botonSalir.setScale(0.11).clearTint();
+    });
+    botonSalir.on('pointerdown', () => {
+      window.location.href = '../../../index.php';
+    });
+
+
+    // COnfigurar coliciones para el oxigeno y minerales
+    this.manejoRecolectables.configurarColisionOxigeno(this.oxigeno);
+    this.manejoRecolectables.configurarColisionMineral(this.minerales);
+
+
+              // Se instancia al final para que no interfiera con el diseño
+   // Coliciones entre el personaje y el suelo y los recolectables y el suelo
+   this.physics.add.collider(this.instanciaPersonaje.jugador, this.floor);
+   this.physics.add.collider(this.minerales, this.floor);
+   this.physics.add.collider(this.oxigeno, this.floor);
+   this.physics.add.collider(this.siete, this.floor);
+   this.physics.add.collider(this.object1, this.floor);
+   this.physics.add.collider(this.object2, this.floor);
+   this.physics.add.collider(this.object3, this.floor);
+   this.physics.add.collider(this.object4, this.floor);
+
+   // Actualizar el estado de las partes recolectadas
+   this.instanciaPartesNave.recolectarObjeto(this.object1, this.instanciaPartesNave.object1Collected, "modalObjeto", this.instanciaPartesNave.nave, () => { this.instanciaPartesNave.object1Collected = true; });
+   this.instanciaPartesNave.recolectarObjeto(this.object2, this.instanciaPartesNave.object2Collected, "modalObjeto", this.instanciaPartesNave.propulsores, () => { this.instanciaPartesNave.object2Collected = true; });
+   this.instanciaPartesNave.recolectarObjeto(this.object3, this.instanciaPartesNave.object3Collected, "modalObjeto", this.instanciaPartesNave.cabina, () => { this.instanciaPartesNave.object3Collected = true; });
+   this.instanciaPartesNave.recolectarObjeto(this.object4, this.instanciaPartesNave.object4Collected, "modalObjeto", this.instanciaPartesNave.cubierta, () => { this.instanciaPartesNave.object4Collected = true; });
+
+    const datos = this.manejoPuntos.obtenerDatos();
     const datosJSON = JSON.stringify(datos);
 
     // Puedes usar este JSON según necesites
@@ -203,7 +273,7 @@ class MyScene extends Phaser.Scene {
     this.cameras.main.startFollow(this.instanciaPersonaje.jugador);
   }
 
-  update() {
+  update(time, delta) {
     this.estrellasFondo.update();
     if (!this.instanciaPersonaje.jugador.isDead) {
       this.instanciaPersonaje.handleMovement();
@@ -218,6 +288,8 @@ class MyScene extends Phaser.Scene {
         meteorito.velocidadX = Phaser.Math.Between(1, 3);
       }
     });
+    this.manejoPuntos.update(time, delta);
+
   }
 }
 
