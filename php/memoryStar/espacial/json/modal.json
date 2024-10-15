@@ -1,0 +1,36 @@
+{
+    "infoModal":{
+        "Muerte": {
+            "id":"modal",
+            "texto":"¿Te quedaste sin oxígeno?",
+            "body":"Compra 7 por solo 1$",
+            "Ddisponibles":"Diamantes disponibles:",
+            "idDiamantes":"diamantes",
+            "idTemporizador":"temporizador",
+            "idOxigeno":"comprarOxigeno"
+        },
+        "partesNave": [
+            {
+                "ids":"modalObjeto1",
+                "texto": "Felicidades Primer objeto"
+            },
+            {
+                "ids":"modalObjeto2",
+                "texto": "Felicidades Segundo objeto"
+            },
+            {
+                "ids":"modalObjeto3",
+                "texto": "Felicidades Tercer objeto"
+            },
+            {
+                "ids":"modalObjeto4",
+                "texto": "Felicidades Cuarto objeto"
+            }
+        ],
+        "redireccion":{
+            "id":"modalRedireccion",
+            "texto":"A continuación serás redirigido a la siguiente fase del juego.",
+            "id2":"aceptarRedireccion"
+        }
+    }
+}

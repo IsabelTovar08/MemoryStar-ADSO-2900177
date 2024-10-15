@@ -1,0 +1,48 @@
+ /* Cambiar la opacidad del backdrop del modal */
+ .modal-backdrop {
+    background-color: rgba(0, 0, 0, 0.1);
+    /* Cambia 0.5 por el nivel de opacidad deseado (0.0 a 1.0) */
+  }
+
+  .modal-content {
+    transform: translateY(-50px);
+    /* Comienza más arriba */
+    transition: transform 0.5s ease;
+    /* Transición suave */
+  }
+
+  /* Clase activa para el rebote hacia abajo */
+  .modal.show .modal-content {
+    animation: bounce 0.5s forwards;
+    /* Aplica la animación de rebote */
+  }
+
+  /* Animación de rebote */
+  @keyframes bounce {
+    0% {
+      transform: translateY(-50px);
+      /* Comienza más arriba */
+    }
+
+    50% {
+      transform: translateY(20px);
+      /* Rebota hacia abajo */
+    }
+
+    100% {
+      transform: translateY(0);
+      /* Regresa a su posición original */
+    }
+  }
+  .modal-content{
+    background-color: #f5deb280;
+    box-shadow: 0 0 20px #02112c;
+    color: white;
+    font-size: 4vh;
+    font-family: monospace;
+    text-shadow: 0 0 1px #000;
+  }
+  .btn.aceptar{
+    width: 30%;
+    margin-top: 10%;
+  }

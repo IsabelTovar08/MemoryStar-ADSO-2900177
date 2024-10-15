@@ -77,7 +77,7 @@ export class ManejarPuntos {
     var diamantesIndex = document.getElementById("diamantes");
     let contador = 5;
     diamantesIndex.textContent = this.diamantes;
-    temporizador.textContent = contador;
+    temporizador.textContent = contador; 
 
     aceptar.onclick = () => {
       modalOxigeno.hide();

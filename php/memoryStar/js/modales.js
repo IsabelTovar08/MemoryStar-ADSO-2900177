@@ -10,7 +10,7 @@ document.addEventListener("DOMContentLoaded", function () {
             console.error("Error al cargar el JSON de temáticas:", error)
           );
     }
-
+ 
     peticionModal();
 
     function mostrarModal (mostrar){
