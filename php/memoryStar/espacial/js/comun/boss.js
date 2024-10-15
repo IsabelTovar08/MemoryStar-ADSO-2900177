@@ -1,14 +1,17 @@
 export class Boss {
-  constructor(scene, jugador, manejoPuntos) {
+  constructor(scene, jugador, manejarPuntos, vidaJugador) {
     this.scene = scene;
+    this.vidaJugador = vidaJugador;
     this.jugador = jugador; // Referencia al jugador
-    this.manejoPuntos = manejoPuntos; // Recibe instancia de manejoPuntos
+    this.manejarPuntos = manejarPuntos; // Recibe instancia de ManejarPuntos
     this.boss = null; // Inicializamos el boss como null
     this.bossSpeed = 100;
     this.bossDirection = "left";
 
     // Crear grupo de proyectiles
     this.projectileGroup = this.scene.physics.add.group();
+    this.configurarColisionConJugador();
+
   }
 
   crearBoss(x, y) {
@@ -19,6 +22,7 @@ export class Boss {
       .setCollideWorldBounds(true);
 
     this.boss.body.setAllowGravity(false); // Deshabilitar la gravedad
+    this.boss.setY(100); // Ajustar la posición en la parte superior
 
     this.boss.health = 100;
 
@@ -57,39 +61,41 @@ export class Boss {
     this.scene.time.addEvent({
       delay: 2000, // Intervalo entre cada ráfaga
       callback: () => {
-        for (let i = 0; i < 5; i++) {
+        for (let i = 0; i < 2; i++) {
           // Generar 5 proyectiles
-          let projectile = this.projectileGroup.create(
-            this.boss.x,
-            this.boss.y,
-            "projectile"
-          );
-          projectile.setScale(0.09); // Escala el proyectil
 
-          // Velocidad del proyectil, con una desviación aleatoria en el eje X
-          let randomXVelocity = Phaser.Math.Between(-100, 100); // Variación en la dirección
-          projectile.setVelocity(randomXVelocity, 200); // Hacer que caigan hacia abajo
+          this.scene.time.addEvent({
+            delay: i * 200, // Retrasar cada proyectil para que no se lancen todos al mismo tiempo
+            callback: () => {
+              let projectile = this.projectileGroup.create(this.boss.x, this.boss.y, "projectile");
+              projectile.setScale(0.09); // Escala el proyectil
+              this.scene.sound.add("disparo", { volume: 1 }).play();
+              // Velocidad del proyectil, con una desviación aleatoria en el eje X
+              let randomXVelocity = Phaser.Math.Between(-100, 100); // Variación en la dirección
+              projectile.setVelocity(randomXVelocity, 200); // Hacer que caigan hacia abajo
+            }
+          });
         }
+        console.log('empieza')
 
         // Configurar colisión de los proyectiles con el jugador
         this.configurarColisionConJugador();
+        console.log(this.configurarColisionConJugador)
       },
       loop: true,
     });
   }
 
+
   // Función para reducir tiempo cuando el jugador es golpeado por un proyectil
   reducirTiempoPorProyectil(jugador, projectile) {
     projectile.disableBody(true, true);
-    console.log(this.jugador)
+    this.scene.sound.add("daño", { volume: 1 }).play();
 
-    // Reducir tiempo de manejoPuntos
-    console.log(this.manejoPuntos)
+    // Reducir tiempo de ManejarPuntos
+    console.log('colicion yaaaaa')
 
-    this.manejoPuntos.tiempo -= 5;
-
-    console.log("¡Colisión! Tiempo restante: " + this.manejoPuntos.tiempo);
-
+    this.vidaJugador.takeDamage(15);
     if (this.scene.tiempo <= 0) {
       this.jugador.deteriorarJugador();
     }
@@ -97,13 +103,14 @@ export class Boss {
 
   configurarColisionConJugador() {
     this.scene.physics.add.overlap(
+      this.scene.instanciaPersonaje.jugador,
       this.projectileGroup,
-      this.jugador,
-      (jugador, projectile) =>
-        this.reducirTiempoPorProyectil(jugador, projectile),
+      this.reducirTiempoPorProyectil,
       null,
       this
     );
+    console.log('siu')
+
   }
 
   configurarColisionConPlataformas(plataformas) {
