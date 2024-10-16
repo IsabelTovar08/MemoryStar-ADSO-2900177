@@ -1,20 +1,21 @@
 export class Disparo {
-    constructor(scene, player) {
-        this.scene = scene;           // Referencia a la escena principal
-        this.player = player;         // Referencia al jugador
-        this.balas = null;            // Grupo de balas
-        this.velocidadBala = 400;     // Velocidad de las balas
-        this.ultimaBalaDisparada = 0; // Tiempo del último disparo
+    constructor(scene, player, boss) { // Recibe el boss como parámetro
+        this.scene = scene;
+        this.player = player;
+        this.balas = null;
+        this.velocidadBala = 700;
+        this.ultimaBalaDisparada = 0;
+        this.boss = boss; // Guardar la referencia al boss
 
-        this.crearGrupoBalas();       // Crear el grupo de balas
+        this.crearGrupoBalas();
+        this.configurarColisionConBoss(); // Configurar colisión con el boss
     }
 
     crearGrupoBalas() {
         this.balas = this.scene.physics.add.group({
             defaultKey: 'projectile',
-            maxSize: 100,
             createCallback: (bala) => {
-                bala.setScale(0.1); // Escalar la bala
+                bala.setScale(0.05); // Escalar la bala
             }
         });
     }
@@ -22,7 +23,6 @@ export class Disparo {
     disparar() {
         const tiempoActual = this.scene.game.getTime();
         if (tiempoActual > this.ultimaBalaDisparada) {
-            // Crear una nueva bala
             const bala = this.balas.get(this.player.x, this.player.y);
             this.scene.sound.add("disparo", { volume: 1 }).play();
 
@@ -38,8 +38,21 @@ export class Disparo {
                     bala.destroy();  // Eliminar la bala
                 });
 
-                this.ultimaBalaDisparada = tiempoActual + 300;  // Control de la frecuencia de disparo
+                this.ultimaBalaDisparada = tiempoActual + 300;
             }
         }
+    }
+
+    configurarColisionConBoss() {
+        // Detectar la colisión entre las balas y el boss
+        this.scene.physics.add.collider(this.balas, this.boss.boss, this.colisionBalaBoss, null, this);
+    }
+
+    colisionBalaBoss(boss, bala) {
+        console.log("¡La bala ha colisionado con el Boss!");
+        bala.destroy();  // Destruir la bala al impactar
+
+        // Reducir la vida del boss o cualquier otro efecto
+        this.boss.reducirVida(20); // Llamar al método que reduce la vida del boss
     }
 }

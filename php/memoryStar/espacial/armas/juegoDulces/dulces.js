@@ -21,10 +21,7 @@ class MyScene extends Phaser.Scene {
       "../../super-midu-bros-main/assets/entities/mario.png",
       { frameWidth: 18, frameHeight: 16 }
     );
-    this.load.spritesheet("boss", "../../super-midu-bros-main/assets/entities/mario.png", {
-      frameWidth: 18,
-      frameHeight: 14,
-    });
+    this.load.image("boss", "../../img/enemigo.png");
     this.load.audio('sonido', '../../sonidos/recolectar.mp3');
     this.load.audio('coin', '../../sonidos/coin.mp3');
     this.load.audio('soundCoin', '../../sonidos/soundCoin.mp3');
@@ -183,14 +180,13 @@ class MyScene extends Phaser.Scene {
     this.manejoPuntos.start(1, 0, 650, 10);
     this.vidaJugador = new VidaJugador(this);
 
-    const boss = new Boss(this, this.jugador, this.manejoPuntos, this.vidaJugador); // Pasar el jugador como referencia
-    boss.crearBoss(400, 100);
+    this.boss = new Boss(this, this.jugador, this.manejoPuntos, this.vidaJugador); // Pasar el jugador como referencia
+    this.boss.crearBoss(400, 500);
 
     // Configurar las colisiones con el jugador
-    boss.configurarColisionConJugador();
+    this.boss.configurarColisionConJugador();
  
     // Configurar colisiones con las plataformas
-    boss.configurarColisionConPlataformas(this.floor);
         
     // Crear un gestor de salud para el jugador
 
@@ -204,7 +200,6 @@ class MyScene extends Phaser.Scene {
     this.input.on('pointermove', this.rotarJugador, this);
 
     // Crear instancia de la clase Disparo
-    this.disparo = new Disparo(this, this.arma);
 
     // Disparo al hacer clic o tocar
     this.input.on('pointerdown', () => {
@@ -215,6 +210,7 @@ class MyScene extends Phaser.Scene {
     this.input.keyboard.on('keydown-ENTER', () => {
         this.disparo.disparar();
     });
+    this.disparo = new Disparo(this, this.arma, this.boss);
 
     this.minerales = this.manejoRecolectables.crearMinerales();
     this.oxigeno = this.manejoRecolectables.crearOxigeno();
