@@ -61,6 +61,8 @@
         <script src="js/sonidos.js"></script>
         <script src="js/perfil.js"></script>
         <script src="js/mapa.js"></script>
+        <script src="js/comprat.js"></script>
+        <script src="js/fotosperfil.js"></script>
 </body>
 
 </html>

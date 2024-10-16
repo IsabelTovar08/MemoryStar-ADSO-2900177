@@ -1,0 +1,45 @@
+[
+    {
+      "id": "perfil1",
+      "image": "img/iconos/iconoperf3.png",
+      "price": 115
+    },
+    {
+      "id": "perfil2",
+      "image": "img/iconos/iconoperf5.png",
+      "price": 130
+    },
+    {
+      "id": "perfil3",
+      "image": "img/iconos/iconoperf.png",
+      "price": 155
+    },
+    {
+      "id": "perfil4",
+      "image": "img/iconos/perfil4.png",
+      "price": 167
+    },
+    {
+      "id": "perfil5",
+      "image": "img/iconos/iconoperf4.png",
+      "price": 172
+    },
+    {
+      "id": "perfil6",
+      "image": "img/iconos/iconoperf2.png",
+      "price": 185
+    },
+    {
+      "id": "poder1",
+      "image": "img/iconos/poder1.png",
+      "price": 220,
+      "description": "Congelar tiempo"
+    },
+    {
+      "id": "poder2",
+      "image": "img/iconos/poderes2.png",
+      "price": 265,
+      "description": "Revelar cartas"
+    }
+  ]
+  

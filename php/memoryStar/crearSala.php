@@ -345,6 +345,8 @@
     <script src="js/play.js"></script>
     <script src="js/mapa.js"></script>
     <script src="js/visivilidadIconos.js"></script>
+    <script src="js/comprat.js"></script>
+    <script src="js/fotosperfil.js"></script>
 </body>
 
 </html>

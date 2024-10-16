@@ -1,0 +1,27 @@
+[
+  {
+    "id": "perfil1",
+    "image": "img/iconos/iconoperf3.png"
+  },
+  {
+    "id": "perfil2",
+    "image": "img/iconos/iconoperf5.png"
+  },
+  {
+    "id": "perfil3",
+    "image": "img/iconos/iconoperf.png"
+  },
+  {
+    "id": "perfil4",
+    "image": "img/iconos/perfil4.png"
+  },
+  {
+    "id": "perfil5",
+    "image": "img/iconos/iconoperf4.png"
+  },
+  {
+    "id": "perfil6",
+    "image": "img/iconos/iconoperf2.png"
+  }
+]
+

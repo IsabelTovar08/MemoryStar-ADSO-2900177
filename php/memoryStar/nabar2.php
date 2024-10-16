@@ -25,7 +25,7 @@
             <span class="nombre">Usuario</span>
         </li>
         <li class="nav-item usuario">
-            <img src="img/iconos/usuario.png" alt="user" class="iconos efectosIconos" data-bs-toggle="offcanvas" data-bs-target="#perfil" aria-controls="offcanvasRight">
+            <img src="img/iconos/usuario.png" id="profileImage2" alt="user" class="iconos efectosIconos" data-bs-toggle="offcanvas" data-bs-target="#perfil" aria-controls="offcanvasRight">
         </li>
     </ul>
     
@@ -183,9 +183,14 @@
             <img src="img/rangos/rangoBloqueadoo.png" alt="" class="" width="50">
             <img src="img/rangos/rangoBloqueadoo.png" alt="" class="" width="50">
             <img src="img/rangos/rangoBloqueadoo.png" alt="" class="" width="50">
-        </div>
+    </div>
+    <br>
+    <h5 class="offcanvas-title perfil" id="offcanvasRightLabel">Tus iconos de de perfil:</h5>
+    <br>
+    <div class="modal-profile-items row"></div>
+    <br>
 
-
+    
         <!-- <div class="input-group mb-3">
             <input type="text" class="form-control" placeholder="Recipient's username" aria-label="Recipient's username" aria-describedby="basic-addon2">
             <span class="input-group-text" id="basic-addon2"><img src="img/iconos/camera.png" alt="" class="position-absolute" width="25"></span>

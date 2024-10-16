@@ -203,10 +203,8 @@
         <script src="js/sonidos.js"></script>
         <script src="js/animacion.js"></script>
         <script src="bootstrap/js/bootstrap.js"></script>
-
-        <scrip src="js/animacion.js">
-            </script>
-            <script src="js/barra.js"></script>
+        <scrip src="js/animacion.js"></script>
+        <script src="js/barra.js"></script>
 
 
     </body>
