@@ -18,7 +18,7 @@
         { 
           "src": "img/gif/hongo.gif",
           "alt": "Hongo",
-          "value": "Imagen3",
+          "value": "Imagen3", 
           "checked": false
         }
       ],
