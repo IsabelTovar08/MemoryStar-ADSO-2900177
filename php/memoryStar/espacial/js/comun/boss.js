@@ -18,7 +18,7 @@ export class Boss {
   crearBoss(x, y) {
     this.boss = this.scene.physics.add
       .sprite(x, y, "boss")
-      .setScale(0.05)
+      .setScale(0.1)
       .setCollideWorldBounds(true);
 
     this.boss.body.setAllowGravity(false);
@@ -106,7 +106,7 @@ export class Boss {
               callback: () => {
                 if (this.boss && this.boss.active) {
                   let projectile = this.projectileGroup.create(this.boss.x, this.boss.y, "projectile");
-                  projectile.setScale(0.09); // Escala el proyectil
+                  projectile.setScale(0.05); // Escala el proyectil
                   this.scene.sound.add("disparo", { volume: 1 }).play();
                   // Velocidad del proyectil, con una desviación aleatoria en el eje X
                   let randomXVelocity = Phaser.Math.Between(-100, 100); // Variación en la dirección

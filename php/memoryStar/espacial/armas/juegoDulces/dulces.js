@@ -181,7 +181,7 @@ class MyScene extends Phaser.Scene {
     this.vidaJugador = new VidaJugador(this);
 
     this.boss = new Boss(this, this.jugador, this.manejoPuntos, this.vidaJugador); // Pasar el jugador como referencia
-    this.boss.crearBoss(400, 500);
+    this.boss.crearBoss(400, 300);
 
     // Configurar las colisiones con el jugador
     this.boss.configurarColisionConJugador();
