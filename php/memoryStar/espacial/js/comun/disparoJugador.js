@@ -45,7 +45,7 @@ export class Disparo {
 
     configurarColisionConBoss() {
         // Detectar la colisión entre las balas y el boss
-        this.scene.physics.add.collider(this.balas, this.boss.boss, this.colisionBalaBoss, null, this);
+        this.scene.physics.add.overlap(this.balas, this.boss.boss, this.colisionBalaBoss, null, this);
     }
 
     colisionBalaBoss(boss, bala) {
