@@ -225,6 +225,7 @@
 
 .buy-btn2 {
     background-color: #4143cc;
+    width: 70%;
     color: white;
     border: none;
     padding: 8px;
@@ -233,7 +234,7 @@
     font-size: 14px;
     margin-top: 10px;
     position: relative;
-    left: 30px;
+    left: 50px;
 }
 
 .number-item3 {

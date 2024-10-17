@@ -1,0 +1,87 @@
+{
+    "opciones": {
+      "textoELeccion": "Selecciona la temática",
+      "textoTematica": "Elije la temática",
+      "opcionesCartas": [
+        {
+          "nombre": "Mario Cartas",
+          "src": "img/gif/espacial.gif",
+          "descripcion": "juegoUno",
+          "id": "cartas",
+          "value": "Cartas",
+          "for": "cartas"
+        },
+        {
+          "nombre": "Mario Armas",
+          "src": "img/gif/espacial.gif",
+          "descripcion": "ninini",
+          "id": "arma",
+          "value": "Arma",
+          "for": "arma"
+        }
+      ], 
+      "opcionesOrdenar": {
+        "grupo1": [
+          {
+            "id": "ordenarQuimica",
+            "value": "quimica",
+            "nombre": "QuimiLab",
+            "imgSrc": "img/iconos/quimica.png",
+            "value2": "Quimica"
+          },
+          {
+            "id": "ordenarHabitacion",
+            "value": "habitacion",
+            "nombre": "MagicRoom",
+            "imgSrc": "img/iconos/habitacion.png",
+            "value2": "Habitacion"
+          }
+        ],
+        "grupo2": [
+          {
+            "id": "ordenarOficina",
+            "value": "oficina",
+            "nombre": "OfiMundo",
+            "imgSrc": "img/iconos/oficina.png",
+            "value2": "Oficina"
+          },
+          {
+            "id": "ordenarBiblioteca",
+            "value": "biblioteca",
+            "nombre": "Bookify",
+            "imgSrc": "img/iconos/libros.png",
+            "value2": "Biblioteca"
+          }
+        ],
+        "difcultades1":[
+            {
+                "option":"facil",
+                "id":"nivelFacil",
+                "value":"Facil",
+                "for":"nivelFacil",
+                "img":"img/iconos/facil.png",
+                "nombre":"Básico"
+            },
+            {
+                "option":"medio",
+                "id":"nivelMedio",
+                "value":"Medio",
+                "for":"nivelMedio",
+                "img":"img/iconos/medio (2).png",
+                "nombre":"Desafiante"
+            }
+        ],
+        "dificultades2": [
+            {
+                "option":"dificil",
+                "id":"nivelDificil",
+                "value":"Dificil",
+                "for":"nivelDificil",
+                "img":"img/iconos/dificill.png",
+                "nombre":"Pro"
+            }
+        ]
+      }
+    }
+  }
+  

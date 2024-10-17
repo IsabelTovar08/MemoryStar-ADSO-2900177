@@ -43,6 +43,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // Función para voltear las cartas
   function voltearCarta(carta) {
+    const bieen = document.getElementById('voltear');
+    bieen.play();
     if (cartasVolteadas.length === 2) return;
 
     carta.classList.add("volteada");
@@ -54,15 +56,22 @@ document.addEventListener("DOMContentLoaded", function () {
       const idSegundaCarta = segundaCarta.getAttribute("data-id");
 
       if (idPrimeraCarta === idSegundaCarta) {
+        const bieen = document.getElementById('bien');
+        bieen.play();
         aciertos++;
         cartasVolteadas = [];
         mostrarMensaje(aciertos);
 
         if (aciertos === totalAciertos) {
+          //   
           setTimeout(() => {
             // Redirigir al usuario después de mostrar el último mensaje
-            window.location.href = "./espacial/juegoDulces/index.html"; // Cambia esto a la URL de destino
-          }, 3000); // Esperar 3 segundos antes de redirigir
+            const mensajeDiv = document.getElementById(`mensaje10`);
+            mensajeDiv.style.display = "block";// Cambia esto a la URL de destino
+          }, 5000); // Esperar 3 segundos antes de redirigir
+          setTimeout(() => {
+            window.location.href = "./espacial/cartas/juegoPixel/index.html"; // Cambia esto a la URL de destino
+          }, 7000); // Esperar 3 segundos antes de redirigir
         }
       } else {
         setTimeout(() => {
@@ -74,25 +83,48 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   }
 
+
+  // Array para almacenar el orden en que se muestran los mensajes
+  const ordenMensajes = [];
+
   function mostrarMensaje(aciertos) {
-    const mensajeDiv = document.getElementById(`mensaje${aciertos}`);
-    const mensajeTexto = document.getElementById(`mensajeTexto${aciertos}`);
-    const mensajes = [
-      "¡Pareja 1 completada!",
-      "¡Pareja 2 completada!",
-      "¡Pareja 3 completada!",
-      "¡Pareja 4 completada!",
+    let mensajes = [
+      "Cabina - El Cerebro de la Nave: Controla la nave y la misión desde su centro estratégico.",
+      "Motores - El Corazón Propulsor: Impulsa la nave con fuerza hacia el espacio.",
+      "Paneles Solares - Las Alas Energéticas: Absorben la luz del sol y la convierten en energía para la nave. ",
+      "Escudo de Calor: Protege la nave del calor extremo al reentrar en la atmósfera.",
     ];
 
+    // Filtrar los mensajes ya mostrados para que no se repitan
+    const mensajesRestantes = mensajes.filter(mensaje => !ordenMensajes.includes(mensaje));
+
+    // Seleccionar aleatoriamente un mensaje de los restantes
+    const elegido = Math.floor(Math.random() * mensajesRestantes.length);
+
+    // Guardar el mensaje en el array 'ordenMensajes'
+    ordenMensajes.push(mensajesRestantes[elegido]);
+
+    // Mostrar el mensaje correspondiente
+    const mensajeDiv = document.getElementById(`mensaje${aciertos}`);
+    const mensajeText = document.getElementById(`mensajeTexto${ordenMensajes.length}`);
+
+
     if (mensajeDiv) {
-      mensajeTexto.textContent = mensajes[aciertos - 1];
+
+      mensajeText.textContent = aciertos;
+      mensajeText.textContent = mensajesRestantes[elegido];
+
       mensajeDiv.style.display = "block";
 
       setTimeout(() => {
         mensajeDiv.style.display = "none";
-      }, 6000); // Mostrar el mensaje durante 2 segundos
+      }, 5000); // Mostrar el mensaje durante 1 segundo
     }
   }
+  console.log(ordenMensajes)
+
+  // Para ver el orden de los mensajes mostrados
+
 
   // Vincular eventos de clic a las cartas después de mezclar
   function inicializarJuego() {

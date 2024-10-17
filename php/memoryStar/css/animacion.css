@@ -13,6 +13,7 @@
     background-repeat: no-repeat;
     box-sizing: border-box;
     animation: animloaderBack 1s linear infinite alternate;
+    color: #aaaaaa;
   }
   .animacion{
     

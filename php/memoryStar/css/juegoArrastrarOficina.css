@@ -1,0 +1,182 @@
+body {
+  font-family: Arial, sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  height: 100vh;
+  margin: 0;
+  touch-action: none;
+}
+.contenedor-arrastrar {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100vh; /* Ocupa toda la altura de la pantalla */
+  padding: 0;
+}
+.textoArrastrar {
+  top: 1%;
+  position: absolute;
+  text-align: left;
+  font-family: Comic Sans MS;
+  font-weight: bold;
+  font-size: 4.6vh;
+  color: #e3d8ed;
+  text-shadow: -1px 0 #414d68, 0 1px #414d68, 1px 0 #414d68, 0 -1px #414d68,
+    -2px 2px 0 #414d68, 2px 2px 0 #414d68, 1px 1px #414d68, 2px 2px #414d68,
+    3px 3px #414d68, 4px 4px #414d68, 5px 5px #414d68, 6px 6px #414d68,
+    7px 7px #414d68;
+}
+#contenedor-imagen img {
+  height: 100vh;
+  object-fit: cover;
+  user-select: none; /* Evita la selección de la imagen */
+  pointer-events: none;
+}
+
+.objetos {
+  position: absolute;
+
+  cursor: pointer;
+  margin: 5px;
+  object-fit: cover;
+  z-index: 1;
+}
+.caja{
+  position: absolute;
+  height: 25vh;
+  top: 72%;
+  left: 45%;
+  margin: 5px;
+  object-fit: cover;
+  
+}
+#objeto1 {
+  height: 5vh;
+  top: 88%;
+  left: 30%;
+}
+
+#objeto2 {
+  height: 7vh;
+  top: 88%;
+  left: 40%;
+}
+#objeto3 {
+  height: 10vh;
+  top: 88%;
+  left: 50%;
+}
+#objeto4 {
+  height: 10vh;
+  top: 88%;
+  left: 60%;
+}
+#objeto5 {
+  height: 10vh;
+  top: 88%;
+  left: 70%;
+}
+#objeto6 {
+  height: 6vh;
+  top: 79%;
+  left: 40%;
+}
+#objeto7 {
+  height: 5vh;
+  top: 79%;
+  left: 50%;
+}
+#objeto8 {
+  height: 6.5vh;
+  top: 79%;
+  left: 60%;
+}
+
+.dropzone {
+  width: 10vh; /* Ajusta el tamaño de las dropzones según tus objetos */
+  height: 8vh;
+  border: 2px dashed #fff;
+  position: absolute;
+  z-index: 1; /* Para que estén encima de la imagen principal */
+}
+
+/* Posiciona las dropzones donde desees que los objetos vayan */
+.posicion1 {
+  top: 9vh;
+  left: 64vw;
+}
+
+.posicion2 {
+  top: 18vh;
+  left: 20.5vw;
+}
+
+.posicion3 {
+  top: 9vh;
+  left: 34vw;
+}
+
+.posicion4 {
+  top: 65vh;
+  left: 14vw;
+}
+
+.posicion5 {
+  top: 56vh;
+  left: 60.5vw;
+}
+.posicion6 {
+  top: 78vh;
+  left: 22vw;
+}
+.posicion7 {
+  top: 45vh;
+  left: 56vw;
+}
+.posicion8 {
+  top: 23vh;
+  left: 32vw;
+}
+.drag {
+  box-shadow: 10px #014dff;
+}
+
+#verificarBtn {
+  position: absolute;
+  top: 20%;
+}
+/* Estilo para las dropzones cuando un objeto está sobre ellas */
+.dropzone-highlight {
+  background-color: rgba(
+    0,
+    255,
+    0,
+    0.5
+  ); /* Color de fondo verde cuando hay un objeto sobre la dropzone */
+}
+
+/* Clase para indicar que el objeto puede ser soltado */
+.can-drop {
+  border: 2px solid #00ff00; /* Bordes verdes cuando el objeto puede ser soltado */
+}
+
+.dropzone-highlight-temp {
+  background-color: rgba(255, 255, 0, 0.5); /* Color amarillo semitransparente */
+  border: 2px solid #ff0000; /* Borde rojo para resaltar */
+}
+
+
+@media only screen and (max-width: 1024px) and (orientation: landscape) {
+  .dropzone {
+    width: 8vh; /* Ajusta el tamaño de las dropzones según tus objetos */
+    height: 8vh;
+    /* Para que estén encima de la imagen principal */
+  }
+}
+@media (min-width: 1600px) {
+  
+}

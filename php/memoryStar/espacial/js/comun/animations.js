@@ -10,13 +10,13 @@ export class Personaje {
     this.jugador = this.scene.physics.add.sprite(this.startX, this.startY, 'mario')
       .setOrigin(0, 1)
       .setGravityY(300)
-      .setScale(2.5);
+      .setScale(3);
 
     this.jugador.setCollideWorldBounds(true);
 
     this.createAnimations();
     this.createTouchControls();  // Añadido: crear controles táctiles
-  }
+  } 
 
   createAnimations() {
     this.scene.anims.create({
@@ -70,7 +70,7 @@ export class Personaje {
   handleDeath() {
     this.isDead = true;
     this.jugador.setCollideWorldBounds(false);
-    this.scene.sound.add('gameover', { volume: 0.2 }).play();
+    this.scene.sound.add('caida', { volume: 0.2 }).play();
 
     setTimeout(() => {
       this.jugador.setVelocityY(-350);
