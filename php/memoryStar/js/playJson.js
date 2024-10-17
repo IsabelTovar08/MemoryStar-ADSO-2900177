@@ -69,7 +69,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     juegoConfig.juegos.forEach((juego) => {
       resultadoMostrar += `
-                  <div class="option" data-bs-toggle="modal" data-bs-target="${juego.modalTarget}">
+                  <div class="option " data-bs-toggle="modal" data-bs-target="${juego.modalTarget}">
                       <input type="radio" name="tipoJuego" id="${juego.value}" value="${juego.value}">
                       <label class="tarjetaOpcion" for="${juego.value}">
                           <img src="${juego.src}" alt="${juego.nombre}">
@@ -297,8 +297,33 @@ function procesarEleccion(juegoSeleccionado) {
     `Juego: ${juegoSeleccionado}, Temática: ${tematicaSeleccionada}, Nivel: ${nivelSeleccionado}`
   );
 
-  // Redirigir a la página correspondiente
-  window.location.href = `${juegoSeleccionado}${tematicaSeleccionada}${nivelSeleccionado}.html`;
+  const datosJuego = {
+    juego: juegoSeleccionado,
+    tematica: tematicaSeleccionada,
+    nivel: nivelSeleccionado,
+  };
+
+ 
+  fetch("server/recibirConfiguracion.php", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(datosJuego),
+  })
+    .then((response) => response.json())
+    .then((data) => {
+      console.log("Respuesta del servidor:", data);
+
+      if (data.success) {
+        window.location.href = data.redireccion;
+      } else {
+        alert("Error en el servidor: " + data.message);
+      }
+    })
+    .catch((error) => {
+      console.error("Error en la petición:", error);
+    });
 }
 function procesarEleccionEspacial(juegoSeleccionado) {
   let tematicaSeleccionada = document.querySelector(
