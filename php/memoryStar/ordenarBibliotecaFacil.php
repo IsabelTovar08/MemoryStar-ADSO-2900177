@@ -34,19 +34,19 @@
                     <div class="contenedor-estante">
                         <img src="img/SecuLibro/estanteria.png" class="estanteImg">
                         <div class="contenedor-libros" id="lista">
-                        <img src="img/secuLibro/librito1.png" alt="" class="libro" data-id="1">
-                        <img src="img/secuLibro/librito2.png" alt="" class="libro" data-id="2">
-                        <img src="img/secuLibro/librito3.png" alt="" class="libro" data-id="3">
-                        <img src="img/secuLibro/librito4.png" alt="" class="libro" data-id="4">
-                        <!-- <img src="img/secuLibro/librito5.png" alt="" class="libro" data-id="5"> 
+                            <img src="img/secuLibro/librito1.png" alt="" class="libro" data-id="1">
+                            <img src="img/secuLibro/librito2.png" alt="" class="libro" data-id="2">
+                            <img src="img/secuLibro/librito3.png" alt="" class="libro" data-id="3">
+                            <img src="img/secuLibro/librito4.png" alt="" class="libro" data-id="4">
+                            <!-- <img src="img/secuLibro/librito5.png" alt="" class="libro" data-id="5"> 
                         <img src="img/secuLibro/librito6.png" alt="" class="libro" data-id="6"> 
                         <img src="img/secuLibro/librito7.png" alt="" class="libro" data-id="7"> 
                         <img src="img/secuLibro/librito8.png" alt="" class="libro" data-id="8"> 
                         <img src="img/secuLibro/librito9.png" alt="" class="libro" data-id="9">   -->
 
+                        </div>
                     </div>
-                    </div>
-                    
+
 
 
                 </div>

@@ -1,0 +1,42 @@
+.holis
+.contenedor-armar img {
+  display: flex;
+  width: 30vw;
+  height: auto;
+  margin: 0 auto;
+}
+
+.contenedor-nave {
+  display: flex;
+  justify-content: center;
+}
+.cuadro {
+  margin: 5px;
+  width: 15vh;
+  height: auto;
+}
+#verificar {
+  font-size: 3vh;
+  background: linear-gradient(
+    to bottom,
+    #a3c9d9,
+    #c5e3c6
+  ); /* Degradado verde */
+  
+  border: none;
+  border-radius: 20px; /* Bordes redondeados */
+  color: white; /* Color del texto */
+  font-size: 170%; /* Tamaño del texto */
+  font-family: Arial, sans-serif; /* Fuente del texto */
+  font-weight: bold; /* Texto en negrita */
+  padding: 5px 5px; /* Espaciado interno del botón */
+  text-align: center;
+  display: inline-block;
+  text-decoration: none; /* Eliminar subrayado */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3); /* Sombra */
+  cursor: pointer;
+  
+}
+#verificar:hover {
+    background: linear-gradient(to bottom, #c5e3c6, #a3c9d9); /* Invertir degradado al hacer hover */
+}

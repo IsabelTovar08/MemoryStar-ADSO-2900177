@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    
+    <link rel="stylesheet" href="../bootstrap/css/bootstrap.css">
+    <link rel="stylesheet" href="css/armarNave.css">
+
+</head>
+<body>
+    <!-- Button trigger modal -->
+    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+        Launch demo modal
+    </button>
+
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-xl">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">Arma la nave</h1>
+                </div>
+                    <div class="modal-body holis">
+                        <div class="contenedor-armar">
+                            <img src="imgNave/nave.png" alt="">
+                        </div>
+
+                        <div class="contenedor-nave" id="lista1">
+                            <img src="imgNave/Calas.png" alt="" class="cuadro" data-id="1">
+                            <img src="imgNave/Ccabina.png" alt="" class="cuadro" data-id="2">
+                            <img src="imgNave/Cdorsal.png" alt="" class="cuadro" data-id="3">
+                            <img src="imgNave/Cpropulsor.png" alt="" class="cuadro" data-id="4">
+                        </div>
+                        <button id="verificar">VERIFICAR</button>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+        
+
+        
+        <script src="js/Sortable.min.js"></script>
+        <script src="js/armarNave.js"></script>
+        <script src="../bootstrap/js/bootstrap.js"></script>
+
+</body>
+</html>
