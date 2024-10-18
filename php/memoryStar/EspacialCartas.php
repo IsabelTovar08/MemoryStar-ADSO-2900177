@@ -121,7 +121,7 @@
 </script>
 
     <div class="container-fuid">
-        <?php include('nabar2.php') ?>
+        <?php include('nabar.php') ?>
 
 
         <div class="animacion" id="loader">

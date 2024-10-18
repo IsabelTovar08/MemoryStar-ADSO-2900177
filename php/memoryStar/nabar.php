@@ -27,7 +27,7 @@
             <span class="nombre">Usuario</span>
         </li>
         <li class="nav-item usuario">
-            <img src="img/iconos/usuario.png" alt="user" class="derecho iconos efectosIconos" data-bs-toggle="offcanvas" data-bs-target="#perfil" aria-controls="offcanvasRight">
+            <img src="img/iconos/usuario.png" id="profileImage2" alt="user" class="derecho iconos efectosIconos" data-bs-toggle="offcanvas" data-bs-target="#perfil" aria-controls="offcanvasRight">
         </li>
     </ul>
     <ul class="nav justify-content-end">
@@ -353,10 +353,10 @@
 <div class="offcanvas offcanvas-end" tabindex="-1" id="perfil" aria-labelledby="offcanvasRightLabel">
     <div class="cardDos">
         <div class="card__img">
-            <img src="img/fondos/perfil3.jpg" alt="">
+        <img src="img/fondos/perfil3.jpg" id="profileImage2" alt="">
         </div>
         <div class="card__avatar fotoPerfil">
-            <img id="profileImage" src="#" alt="Foto de perfil">
+            <img src="#" id="profileImage2" alt="Foto de perfil">
             <input type="file" id="fileInput" accept="image/*" style="display: none;">
         </div>
         <div class="card__title ">Cameron Williamson</div>
@@ -374,6 +374,11 @@
             <img src="img/rangos/rangoBloqueadoo.png" alt="" class="" width="50">
             <img src="img/rangos/rangoBloqueadoo.png" alt="" class="" width="50">
         </div>
+        <br>
+        <h5 class="offcanvas-title perfil" id="offcanvasRightLabel">Tus iconos de de perfil:</h5>
+        <br>
+        <div class="modal-profile-items row"></div>
+        <br>
 
         <div class="col-12 row">
             <div class="col-6 ">
@@ -475,181 +480,81 @@
 
 <!-- Modal tienda -->
 <div class="modal fade" id="exampleModal-tienda" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
+  <div class="modal-dialog card moveer">
+    <div class="modal-content fondo-tienda">
+      <div class="modal-header">
+        <div class="col-12 row">
+          <div class="col-10">
+            <h1 class="fs-5 titulo-tienda">Tienda memoryStar</h1>
+          </div>
+          <div class="col-2">
+            <img src="img/iconos/botonSalir.png" alt="salir" class="btn salir-tienda" data-bs-dismiss="modal" aria-label="Close">
+          </div>
+        </div>
+      </div>
+      <div class="modal-body texto">
+        Compra artículos especiales para mejorar tu experiencia en el juego. <br><br>
+        <div class="wooden-sign">
+          <p class="sign-text2">Iconos de perfil</p>
+          <div class="wooden-sign2">
+            <div class="number-item3">
+              <span class="number">diamantes: 500</span>
+              <div class="diamond"></div>
+            </div>
+          </div>
+        </div>
+        <hr class="division">
+        <div class="store-items row"></div>
+      </div>
+    </div>
+  </div>
+  <!-- Contenedor de alerta -->
+  <div id="custom-alert" class="custom-alert" style="display:none;">
+    <span id="alert-message"></span>
+    <button id="close-alert" class="btn-close">X</button>
+    </div>
+</div>
+
+<!-- Modal compra -->
+<div class="modal fade" id="exampleModal-comprar1" tabindex="-1" aria-labelledby="exampleModalLabel2" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content fondo-tienda">
+      <div class="modal-body texto">
+        ¿Deseas usar tus diamantes para comprar este ítem?
+      </div>
+      <div alt="salir" class="btn atras-tienda" id="salir4">Cancelar</div>
+      <div alt="salir" class="btn atras-comprar" id="compra1">Comprar</div>
+    </div>
+  </div>
+</div>
+
+ 
+<!-- Modal Colección -->
+<div class="modal fade" id="exampleModal-coleccion" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog card moveer">
         <div class="modal-content fondo-ayuda">
             <div class="modal-header">
                 <div class="col-12 row">
                     <div class="col-10">
-                        <h1 class="fs-5 titulo-ayuda">Tienda memoryStar</h1>
+                        <h1 class="fs-5 titulo-tienda">Colección</h1>
                     </div>
                     <div class="col-2">
-                        <img src="img/iconos/botonSalir.png" alt="salir" class="btn salir-ayuda" data-bs-dismiss="modal" aria-label="Close">
+                    <img src="img/iconos/botonSalir.png" alt="salir" class="btn salir-tienda" data-bs-dismiss="modal" aria-label="Close">
                     </div>
 
                 </div>
             </div>
-            <div class="modal-body texto">
-
-                Compra artículos especiales para mejorar tu experiencia en el juego. <br>
-
-                <br>
-                <div class="icon-perfil">
-                    <div class="wooden-sign">
-                        <p class="sign-text">Iconos de perfil</p>
-                    </div>
-                    <hr class="division">
-                </div>
-                <br>
-                <div class="col-12 row">
-                    <div class="col-4">
-                        <img src="img/iconos/perfil1.png" alt="cartas" id="goToModal2" class="imgTienda btn">
-                        <div class="modal-body texto">
-
-                            <div class="number-item">
-                                <span class="number">115</span>
-                                <div class="diamond"></div>
-                            </div>
-                            <button class="buy-btn">Comprar</button>
-                        </div>
-                    </div>
-                    <div class="col-4">
-                        <img src="img/iconos/perfil2.png" alt="secuencia" id="goToModal3" class="imgTienda btn">
-                        <div class="modal-body texto">
-                            <div class="number-item">
-                                <span class="number">130</span>
-                                <div class="diamond"></div>
-                            </div>
-                            <button class="buy-btn">Comprar</button>
-                        </div>
-                    </div>
-                    <div class="col-4">
-                        <img src="img/iconos/perfil3.png" alt="asociacion" id="goToModal4" class="imgTienda btn">
-                        <div class="modal-body texto">
-                            <div class="number-item">
-                                <span class="number">155</span>
-                                <div class="diamond"></div>
-                            </div>
-                            <button class="buy-btn">Comprar</button>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-12 row">
-                    <div class="col-4">
-                        <img src="img/iconos/perfil4.png" alt="cartas" id="goToModal2" class="imgTienda btn">
-                        <div class="modal-body texto">
-                            <div class="number-item">
-                                <span class="number">167</span>
-                                <div class="diamond"></div>
-                            </div>
-                            <button class="buy-btn">Comprar</button>
-                        </div>
-                    </div>
-                    <div class="col-4">
-                        <img src="img/iconos/perfil5.png" alt="secuencia" id="goToModal3" class="imgTienda btn">
-                        <div class="modal-body texto">
-                            <div class="number-item">
-                                <span class="number">172</span>
-                                <div class="diamond"></div>
-                            </div>
-                            <button class="buy-btn">Comprar</button>
-                        </div>
-                    </div>
-                    <div class="col-4">
-                        <img src="img/iconos/perfil6.png" alt="asociacion" id="goToModal4" class="imgTienda btn">
-                        <div class="modal-body texto">
-                            <div class="number-item">
-                                <span class="number">185</span>
-                                <div class="diamond"></div>
-                            </div>
-                            <button class="buy-btn">Comprar</button>
-                        </div>
-                    </div>
-                </div>
-                <div class="icon-perfil">
-                    <br>
-                    <div class="wooden-sign">
-                        <p class="sign-text">Fondos de pantalla</p>
-                    </div>
-                    <hr class="division">
-                </div>
-
-                <br>
-                <div class="col-12 row">
-                    <div class="col-4">
-                        <img src="img/iconos/pantalla1.png" alt="cartas" id="goToModal2" class="imgTiendaF btn">
-                        <div class="modal-body texto">
-
-                            <div class="number-item">
-                                <span class="number">130</span>
-                                <div class="diamond"></div>
-                            </div>
-                            <button class="buy-btn">Comprar</button>
-                        </div>
-                    </div>
-                    <div class="col-4">
-                        <img src="img/iconos/pantalla2.png" alt="secuencia" id="goToModal3" class="imgTiendaF btn">
-                        <div class="modal-body texto">
-                            <div class="number-item">
-                                <span class="number">165</span>
-                                <div class="diamond"></div>
-                            </div>
-                            <button class="buy-btn">Comprar</button>
-                        </div>
-                    </div>
-                    <div class="col-4">
-                        <img src="img/iconos/pantalla4.png" alt="asociacion" id="goToModal4" class="imgTiendaF btn">
-                        <div class="modal-body texto">
-                            <div class="number-item">
-                                <span class="number">190</span>
-                                <div class="diamond"></div>
-                            </div>
-                            <button class="buy-btn">Comprar</button>
-                        </div>
-                    </div>
-                </div>
-                <div class="icon-perfil">
-                    <br>
-                    <div class="wooden-sign">
-                        <p class="sign-text">Poderes</p>
-                    </div>
-                    <hr class="division">
-                </div>
-
-                <br>
-                <div class="col-12 row">
-                    <div class="col-6">
-                        <img src="img/iconos/poder1.png" alt="cartas" id="goToModal2" class="imgTienda btn">
-                        <p class="text-po">Congelar tiempo</p>
-                        <div class="modal-body texto">
-
-                            <div class="number-item2">
-                                <span class="number">220</span>
-                                <div class="diamond"></div>
-                            </div>
-                            <button class="buy-btn2">Comprar</button>
-                        </div>
-                    </div>
-                    <div class="col-6">
-                        <img src="img/iconos/poderes2.png" alt="secuencia" id="goToModal3" class="imgTienda">
-                        <p class="text-po">Revelar cartas</p>
-                        <div class="modal-body texto">
-                            <div class="number-item2">
-                                <span class="number">265</span>
-                                <div class="diamond"></div>
-                            </div>
-                            <button class="buy-btn2">Comprar</button>
-                        </div>
-                    </div>
+            <div class="modal-body">
+                <div id="coleccion-items">
+                    <!-- Los artículos comprados se mostrarán aquí -->
                 </div>
             </div>
         </div>
     </div>
 </div>
 
-<!-- seguir jugando -->
-<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#seguirJugando">
-  Launch demo modal
-</button>
+
+
 <div class="modal fade" id="seguirJugando" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-sm modal-dialog-centered">
         <div class="modal-content">

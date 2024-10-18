@@ -12,7 +12,6 @@
     <link rel="stylesheet" href="css/estiloTablaPuntuacion.css">
     <link rel="stylesheet" href="css/animacionesInicio.css">
 
-
     <link rel="stylesheet" href="css/estiloSeguirjugando.css">
     <!-- <link rel="stylesheet" href="css/estilosPerfil.css"> -->
 
@@ -97,6 +96,7 @@
             </div>
 
         </div>
+   
         <?php include('audios.php') ?>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
         <script src="js/play.js"></script>
@@ -108,7 +108,8 @@
         <script src="js/mapa.js"></script>
         <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
         <script src="js/animacion.js"></script>
-        <script src="js/barra.js"></script>
+        <script src="js/comprat.js"></script>
+        <script src="js/fotosperfil.js"></script>
 </body>
 
 </html>
