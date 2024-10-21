@@ -27,7 +27,28 @@
 
 <body>
     <!-- Modal -->
-
+    <div class="modal fade" id="modalInicio" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+        aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog modal-xl">
+            <div class="modal-content fondo">
+                <div class="modal-body container-fluid">
+                    <div class="contenInicio" id="">
+                        <img id="" src="img/iconos/nuevoMemory.png" alt="Ejemplo de Imagen" class="logo imagen">
+                        <div class="tarjeta">
+                            <h1>¡Bienvenido a <br>
+                                MemoryStar!</h1>
+                            <h5> Para tener una mejor experiencia de juego, inicia sesión o regístrate, ¡Es gratis!</h5>
+                            <div class="botones">
+                                <a href="login.php"><button class="btn btn-primary">Iniciar Sesión</button></a>
+                                <a href=""><button class="btn btn-primary">Registrarse</button></a>
+                            </div>
+                            <a href="index.php" data-bs-dismiss="modal">Continuar como invitado</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
     <div class="container-fuid">
         <?php include('nabar.php'); ?>
         <div class="animacion" id="loader">
@@ -75,9 +96,10 @@
             </div>
 
         </div>
-
+   
+        <?php include('audios.php') ?>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
-        <script src="js/play.js"></script>
+        <script src="js/playJson #exampleModal-ayuda.js"></script>
         <script src="js/movimiento.js"></script>
         <script src="js/overlayModal.js"></script>
         <script src="bootstrap/js/bootstrap.js"></script>
@@ -86,8 +108,6 @@
         <script src="js/animacion.js"></script>
         <script src="js/comprat.js"></script>
         <script src="js/fotosperfil.js"></script>
-        <script type="module" src="sonidos/sonidos.js"></script>
-        <script type="module" src="sonidos/eventosSonidos.js"></script>
 </body>
 
 </html>
