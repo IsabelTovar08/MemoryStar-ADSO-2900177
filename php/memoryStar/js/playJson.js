@@ -12,7 +12,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   function mostrarConfiguracion(juegoConfig) {
     let resultadoMostrar = `
-              <a href="configurarJuego.php"><img src="img/iconos/atrasN.png" alt="" class="atras"></a>
+              <a href="configurarJuego.html"><img src="img/iconos/atrasN.png" alt="" class="atras"></a>
               <h1 class="game-title">${juegoConfig.titulo}</h1>
               <div class="col row">
                   <div class="col-4 sala">
@@ -342,7 +342,7 @@ function procesarEleccionEspacial(juegoSeleccionado) {
   );
 
   // Redirigir a la página correspondiente
-  window.location.href = `${juegoSeleccionado}${tematicaSeleccionada}.php`;
+  window.location.href = `${juegoSeleccionado}${tematicaSeleccionada}.html`;
 }
 
 const multijuga = document.getElementById('jugarMultijugador');
@@ -360,7 +360,7 @@ multijuga.addEventListener("click", ()=>{
 
 function multijugador(condicion) {
   let resultadoMostrar = `
-          <a href="configurarJuego.php"><img src="img/iconos/atrasN.png" alt="" class="atras"></a>
+          <a href="configurarJuego.html"><img src="img/iconos/atrasN.png" alt="" class="atras"></a>
           <div class="bienvenido"><img src="${condicion.logo}" alt="logoMemory" class="segundoLogo"></div>
           <h1 class="textoEleccion">${condicion.texto}</h1>
           <div class="contenedorOpciones">
@@ -374,7 +374,7 @@ function multijugador(condicion) {
   document.getElementById("crearSala").addEventListener("click", crearSala);
 }
 function crearSala() {
-  window.location.href = `crearSala.php`;
+  window.location.href = `crearSala.html`;
 }
 
 
