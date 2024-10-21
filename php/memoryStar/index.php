@@ -49,8 +49,8 @@
             </div>
         </div>
     </div>
-    <div class="container-fuid">
-        <?php include('nabar.php'); ?>
+    <div class="container-fuid" id="fluid">
+     
         <div class="animacion" id="loader">
             <span class="loader"></span>
         </div>
@@ -108,6 +108,7 @@
         <script src="js/animacion.js"></script>
         <script src="js/comprat.js"></script>
         <script src="js/fotosperfil.js"></script>
+        <script src="js/nabar.js"></script>
 </body>
 
 </html>
