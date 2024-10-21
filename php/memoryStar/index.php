@@ -49,8 +49,8 @@
             </div>
         </div>
     </div>
-    <div class="container-fuid">
-        <?php include('nabar.php'); ?>
+    <div class="container-fuid" id="fluid">
+    
         <div class="animacion" id="loader">
             <span class="loader"></span>
         </div>
@@ -95,11 +95,11 @@
                 <img src="img/iconos/muñequitoAbajo.png" alt="" class=" " id="">
             </div>
 
-        </div>
+        </div> 
    
         <?php include('audios.php') ?>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
-        <script src="js/play.js"></script>
+        <script src="js/playJson #exampleModal-ayuda.js"></script>
         <script src="js/movimiento.js"></script>
         <script src="js/overlayModal.js"></script>
         <script src="bootstrap/js/bootstrap.js"></script>
@@ -110,6 +110,7 @@
         <script src="js/animacion.js"></script>
         <script src="js/comprat.js"></script>
         <script src="js/fotosperfil.js"></script>
+        <script src="js/nabar.js"></script>
 </body>
 
 </html>
