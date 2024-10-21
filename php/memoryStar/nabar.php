@@ -600,9 +600,15 @@
 </div>
 
 <!--Tabla solo-->
+<<<<<<< HEAD
 <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#tablapuntuacionsolo">
     Launch demo modal
 </button>
+=======
+<!-- <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#tablapuntuacionsolo">
+  Launch demo modal
+</button> -->
+>>>>>>> c50f13abc597b612318ef8f5f8cba81cbc22cf83
 
 <div class="modal fade" id="tablapuntuacionsolo" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-sm modal-dialog-centered">

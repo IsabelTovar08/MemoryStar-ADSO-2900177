@@ -2,6 +2,7 @@
 
 
 
+
 const lista = document.getElementById("lista1");
 Sortable.create(lista,{
     animation :250,
@@ -12,3 +13,4 @@ Sortable.create(lista,{
         },
     },
 })
+
