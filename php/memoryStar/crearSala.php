@@ -140,9 +140,6 @@
     <script src="js/perfil.js"></script>
     <script src="js/mapa.js"></script>
     <script src="js/visivilidadIconos.js"></script>
-    <script src="js/seleccionarAvatar.js"></script>
-    <script src="js/jueSala.js"></script>
-    <script src="js/modales.js"></script>
-    </bodyb>
+</body>
 
 </html>

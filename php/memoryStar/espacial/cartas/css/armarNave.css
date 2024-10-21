@@ -1,4 +1,29 @@
-.holis
+#armarNave .modal-content  {
+  border-radius: 40px;
+  background-image: url('/php/memoryStar/espacial/cartas/imgNave/fondonave.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  padding: 1rem;
+}
+
+.holis{
+  
+  
+  display: flex;
+  
+  align-items: center;
+  flex-direction: column;
+}
+.titulo-nave{
+  
+  font-size: 5vh;
+  margin: 0 auto;
+  color: #ffff;
+  background-color: #a3c9d9;
+  border: 4px solid #ffff;
+  border-radius: 20px;
+  padding: 0.2rem 0.5rem;
+}
 .contenedor-armar img {
   display: flex;
   width: 30vw;
@@ -9,6 +34,7 @@
 .contenedor-nave {
   display: flex;
   justify-content: center;
+  
 }
 .cuadro {
   margin: 5px;
@@ -26,15 +52,14 @@
   border: none;
   border-radius: 20px; /* Bordes redondeados */
   color: white; /* Color del texto */
-  font-size: 170%; /* Tamaño del texto */
   font-family: Arial, sans-serif; /* Fuente del texto */
   font-weight: bold; /* Texto en negrita */
   padding: 5px 5px; /* Espaciado interno del botón */
   text-align: center;
-  display: inline-block;
-  text-decoration: none; /* Eliminar subrayado */
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3); /* Sombra */
   cursor: pointer;
+
+  
   
 }
 #verificar:hover {

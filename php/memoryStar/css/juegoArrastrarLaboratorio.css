@@ -49,19 +49,19 @@ body {
 
 .countdown-container {
   position: absolute; /* Mantener el contenedor relativo */
-  top: 6%;
-  left: 4%;
-  width: 300px;
-  height: 50px;
+  top: 6vh; /* Relativo a la altura de la pantalla */
+  left: 4vw; /* Relativo al ancho de la pantalla */
+  width: 30vw; /* Ancho relativo al viewport */
+  height: 5vh; /* Altura relativa al viewport */
   border: 2px solid #007BFF;
   border-radius: 5px;
   overflow: hidden;
 }
 
 .countdown-bar {
-  position: absolute; /* Cambiar a posición absoluta */
+  position: absolute; /* Mantener posición absoluta */
   height: 100%;
-  width: 100%;
+  width: 100%; /* El ancho cambiará durante la cuenta regresiva */
   background-color: #007BFF;
   transition: width 1s linear;
 }
@@ -71,7 +71,7 @@ body {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  font-size: 24px;
+  font-size: 2vh; /* Tamaño de texto relativo a la altura */
   color: white;
 }
 
@@ -191,26 +191,23 @@ body {
 
 #verificarBtn {
   position: absolute;
-  top: 12%;
-  left: 45%;
-
-  background: linear-gradient(
-    to bottom,
-    #67c5d4,
-    #688e90
-  ); /* Degradado verde */
-  border: 3px solid white; /* Borde blanco */
-  border-radius: 20px; /* Bordes redondeados */
-  color: white; /* Color del texto */
-  font-size: 170%; /* Tamaño del texto */
-  font-family: Arial, sans-serif; /* Fuente del texto */
-  font-weight: bold; /* Texto en negrita */
-  padding: 5px 5px; /* Espaciado interno del botón */
+  top: 12vh; /* Altura relativa a la pantalla */
+  left: 45vw; /* Anchura relativa */
+  background: linear-gradient(to bottom, #67c5d4, #688e90);
+  border: 3px solid white;
+  border-radius: 20px;
+  color: white;
+  font-size: 3rem; /* Tamaño adaptable */
+  font-family: Arial, sans-serif;
+  font-weight: bold;
+  padding: 1rem; /* Espaciado adaptable */
   text-align: center;
   display: inline-block;
-  text-decoration: none; /* Eliminar subrayado */
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3); /* Sombra */
+  text-decoration: none;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
   cursor: pointer;
+  width: auto;
+  height: auto;
 }
 
 #verificarBtn:hover {
@@ -249,4 +246,11 @@ body {
   }
 }
 @media (min-width: 1600px) {
+}
+@media (min-width:576px){
+  #verificarBtn {
+    font-size: 1rem;
+    padding: 0.3rem;
+    width: 21vh; /* Botón más pequeño */
+  }
 }
