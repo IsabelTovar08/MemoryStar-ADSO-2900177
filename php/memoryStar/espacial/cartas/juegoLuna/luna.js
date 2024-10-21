@@ -19,11 +19,7 @@ class MyScene extends Phaser.Scene {
     this.load.image("leftButton", "imgLava/izqui.png");
     this.load.image("rightButton", "imgLava/derecha.png");
     this.load.image("star", "imgLuna/estrella.png");
-    // this.load.spritesheet(
-    //   "mario", 
-    //   "../super-midu-bros-main/assets/entities/mario.png",
-    //   { frameWidth: 18, frameHeight: 16 }
-    // );
+    this.load.spritesheet("mario","../../img/vacaUltima.png", { frameWidth: 365, frameHeight: 400 });
     this.load.audio('sonido', '../../sonidos/recolectar.mp3');
     this.load.audio('coin', '../../sonidos/coin.mp3');
     this.load.audio('soundCoin', '../../sonidos/soundCoin.mp3');
@@ -33,13 +29,6 @@ class MyScene extends Phaser.Scene {
     this.load.audio('sonidoOxigeno', '../../sonidos/recolectaOxigeno.mp3');
 
     this.load.image("caramelo", "../../super-midu-bros-main/planetas/cristal.png");
-
-    this.load.spritesheet("mario", "imgLuna/vaca.png", {
-      frameWidth: 32,
-      frameHeight: 24,
-    });
-
-
     this.load.image("projectile", "imgLuna/bo.png");
 
     this.load.image("b", "imgLuna/b.png");
@@ -71,6 +60,8 @@ class MyScene extends Phaser.Scene {
     this.load.image("seis", "imgLuna/6.png");
     this.load.image("siete", "imgLuna/7.png");
     this.load.image("cohete", "imgLuna/98.png");
+    this.load.image("sueloF", "imgLuna/87.png");
+
 
     this.load.image('alas', '../../img/alasC.png');
     this.load.image('propulsores', '../../img/propulsores.png');
@@ -90,7 +81,7 @@ class MyScene extends Phaser.Scene {
   }
 
   create() {
-    this.add.image(700, config.height - 300, "we").setScale(0.3);
+    this.add.image(0, config.height, "we").setOrigin(0,1).setScale(0.32);
     const planetas = [
       this.add
         .image(150, config.height - 100, "d")

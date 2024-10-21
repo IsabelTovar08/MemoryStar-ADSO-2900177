@@ -15,11 +15,8 @@ class MyScene extends Phaser.Scene {
     this.load.image("hola", "imgLava/lo.png");
     this.load.image("111", "imgLava/looo.png");
     this.load.image("star", "imgLava/bo.png");
-    this.load.spritesheet(
-      "mario",
-      "../../super-midu-bros-main/assets/entities/mario.png",
-      { frameWidth: 18, frameHeight: 16 }
-    );
+    this.load.spritesheet("mario","../../img/vacaUltima.png", { frameWidth: 365, frameHeight: 412 });
+
     // this.load.image('caramelo', 'imgLava/oro.png');
 
     this.load.audio('sonido', '../../sonidos/recolectar.mp3');
@@ -59,7 +56,7 @@ class MyScene extends Phaser.Scene {
   }
 
   create() {
-    this.add.image(700, config.height - 300, "fondo").setScale(0.3);
+    this.add.image(0, config.height, "fondo").setOrigin(0,1).setScale(0.4);
     this.add.image(300, config.height - 430, "hielo").setScale(0.2);
     // this.add.image(600, config.height -130, 'sec1').setScale(1)
 

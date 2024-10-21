@@ -16,11 +16,7 @@ class MyScene extends Phaser.Scene {
 
   preload() {
     this.load.image("star", "../../super-midu-bros-main/planetas/estrella.png");
-    this.load.spritesheet(
-      "mario",
-      "../../super-midu-bros-main/assets/entities/mario.png",
-      { frameWidth: 18, frameHeight: 16 }
-    );
+    this.load.spritesheet("mario","../../img/vacaUltima.png", { frameWidth: 365, frameHeight: 412 });
     this.load.image("boss", "../../img/enemigo.png");
     this.load.audio('sonido', '../../sonidos/recolectar.mp3');
     this.load.audio('coin', '../../sonidos/coin.mp3');
@@ -87,7 +83,7 @@ class MyScene extends Phaser.Scene {
 
   create() {
     //   this.add.image(400, 300, 'fondo').setScale(0.5);
-    this.add.image(0, -500, "fondo3").setOrigin(0, 0).setScale(2);
+    this.add.image(0, config.height, "fondo3").setOrigin(0, 1).setScale(2.5);
     this.add.image(400, 300, "planetaC").setScale(0.3);
     this.add.image(350, -100, "planetaT").setScale(0.4).setAlpha(0.8);
     this.add.image(1300, 400, "planetaCh").setScale(0.4).setAlpha(0.8);
@@ -193,7 +189,7 @@ class MyScene extends Phaser.Scene {
 
 
 
-    this.arma =  this.add.image(this.instanciaPersonaje.jugador.x, this.instanciaPersonaje.jugador.y, "arma").setScale(0.09);
+    this.arma =  this.add.image(this.instanciaPersonaje.jugador.x, this.instanciaPersonaje.jugador.y, "arma").setScale(0.08);
       
 
     // Control del jugador
@@ -253,6 +249,45 @@ class MyScene extends Phaser.Scene {
 
     this.cameras.main.setBounds(0, config.height - 1300, 1450, 1300);
     this.cameras.main.startFollow(this.instanciaPersonaje.jugador);
+    // this.joystickBase = this.add.sprite(100, 500, 'joystickBase').setInteractive();
+    // this.joystickThumb = this.add.sprite(100, 500, 'joystickThumb').setInteractive();
+
+    // // Variables para manejar el joystick
+    // this.dragging = false;
+    // this.joystickRadius = 50; // Radio máximo del joystick
+
+    // // Eventos de entrada táctil para manejar el movimiento del joystick
+    // this.joystickThumb.on('pointerdown', (pointer) => {
+    //     this.dragging = true;
+    // });
+
+    // this.input.on('pointerup', () => {
+    //     this.dragging = false;
+    //     this.joystickThumb.setPosition(this.joystickBase.x, this.joystickBase.y); // Volver el joystick al centro
+    // });
+
+    // this.input.on('pointermove', (pointer) => {
+    //     if (this.dragging) {
+    //         // Calcular la distancia del dedo desde el centro del joystick
+    //         let deltaX = pointer.x - this.joystickBase.x;
+    //         let deltaY = pointer.y - this.joystickBase.y;
+    //         let distance = Math.sqrt(deltaX * deltaX + deltaY * deltaY);
+
+    //         // Limitar el movimiento del thumb del joystick al radio máximo
+    //         if (distance > this.joystickRadius) {
+    //             let angle = Math.atan2(deltaY, deltaX);
+    //             deltaX = Math.cos(angle) * this.joystickRadius;
+    //             deltaY = Math.sin(angle) * this.joystickRadius;
+    //         }
+
+    //         // Mover el thumb del joystick
+    //         this.joystickThumb.setPosition(this.joystickBase.x + deltaX, this.joystickBase.y + deltaY);
+
+    //         // Rotar el jugador en base a la dirección del joystick
+    //         let angleToPointer = Phaser.Math.Angle.Between(this.player.x, this.player.y, this.player.x + deltaX, this.player.y + deltaY);
+    //         this.player.setRotation(angleToPointer);
+    //     }
+    // });
   }
 
   update(time, delta) {
@@ -260,9 +295,12 @@ class MyScene extends Phaser.Scene {
     if (!this.instanciaPersonaje.jugador.isDead) {
       this.instanciaPersonaje.handleMovement();
     }
-    this.arma.x = this.instanciaPersonaje.jugador.x + 25;
-    this.arma.y = this.instanciaPersonaje.jugador.y - 15;
+    this.arma.x = this.instanciaPersonaje.jugador.x + 35;
+    this.arma.y = this.instanciaPersonaje.jugador.y - 20;
     this.manejoPuntos.update(time, delta);
+
+
+    
     // Simulación de recibir disparos (esto debería estar vinculado a alguna colisión o evento)
     // if (/* condición para que el jugador reciba un disparo */) {
     //     this.vidaJugador.receiveShot(); // Aplicar el daño
@@ -270,9 +308,19 @@ class MyScene extends Phaser.Scene {
   }
   rotarJugador(pointer) {
     // Rotar el jugador hacia el puntero del ratón
-    const angulo = Phaser.Math.Angle.Between(this.arma.x, this.arma.y, pointer.x, pointer.y);
+    let angulo = Phaser.Math.Angle.Between(this.arma.x, this.arma.y, pointer.x, pointer.y);
+
+    // Limitar el ángulo para que solo gire hacia arriba (entre -90° y 90°)
+    const anguloMaximo = Phaser.Math.DegToRad(0);  // 90° en radianes
+    const anguloMinimo = Phaser.Math.DegToRad(-180); // -90° en radianes
+
+    // Limitar el ángulo entre -π/2 y π/2 (entre -90° y 90°)
+    angulo = Phaser.Math.Clamp(angulo, anguloMinimo, anguloMaximo);
+
+    // Aplicar la rotación al arma
     this.arma.setRotation(angulo);
 }
+
 }
 
 const config = {

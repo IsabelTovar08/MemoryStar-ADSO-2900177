@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Multitouch en Phaser 3</title>
+    <script src="https://cdn.jsdelivr.net/npm/phaser@3.60.0/dist/phaser.min.js"></script>
+    <style>
+        body {
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f0f0f0;
+            font-family: Arial, sans-serif;
+        }
+        #message {
+            position: absolute;
+            font-size: 20px;
+            color: #333;
+            top: 10px;
+            left: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div id="message"></div>
+    <script>
+        const config = {
+            type: Phaser.AUTO,
+            width: 800,
+            height: 600,
+            scene: {
+                preload: preload,
+                create: create,
+                update: update
+            },
+            input: {
+                activePointers: 2 // Permitir hasta 2 punteros táctiles
+            }
+        };
+
+        const game = new Phaser.Game(config);
+        const messageDiv = document.getElementById('message');
+
+        function preload() {
+            // Carga de recursos, si es necesario
+        }
+
+        function create() {
+            // Crear botones
+            const button1 = this.add.rectangle(300, 300, 150, 100, 0x00bfff).setOrigin(0.5).setInteractive();
+            const button2 = this.add.rectangle(500, 300, 150, 100, 0x32cd32).setOrigin(0.5).setInteractive();
+
+            // Manejadores de eventos para el botón 1
+            button1.on('pointerdown', function (pointer) {
+                button1.setFillStyle(0x0000ff); // Cambiar color al ser tocado
+                messageDiv.innerHTML = `Pointer down on Botón 1: ${pointer.id}`;
+            });
+
+            button1.on('pointerup', function (pointer) {
+                button1.setFillStyle(0x00bfff); // Restaurar color al soltar
+                messageDiv.innerHTML += `<br>Pointer up on Botón 1: ${pointer.id}`;
+            });
+
+            // Manejadores de eventos para el botón 2
+            button2.on('pointerdown', function (pointer) {
+                button2.setFillStyle(0x008000); // Cambiar color al ser tocado
+                messageDiv.innerHTML = `Pointer down on Botón 2: ${pointer.id}`;
+            });
+
+            button2.on('pointerup', function (pointer) {
+                button2.setFillStyle(0x32cd32); // Restaurar color al soltar
+                messageDiv.innerHTML += `<br>Pointer up on Botón 2: ${pointer.id}`;
+            });
+        }
+
+        function update() {
+            // Lógica del juego
+        }
+    </script>
+</body>
+</html>

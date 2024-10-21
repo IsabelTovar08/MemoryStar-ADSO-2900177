@@ -1,7 +1,7 @@
 export class Personaje {
   constructor(scene) {
     this.scene = scene;
-    
+
     this.keys = scene.input.keyboard.createCursorKeys();
     this.isDead = false;
     this.startX = 100;
@@ -10,19 +10,19 @@ export class Personaje {
     this.jugador = this.scene.physics.add.sprite(this.startX, this.startY, 'mario')
       .setOrigin(0, 1)
       .setGravityY(300)
-      .setScale(3);
+      .setScale(0.15);
 
     this.jugador.setCollideWorldBounds(true);
 
     this.createAnimations();
     this.createTouchControls();  // Añadido: crear controles táctiles
-  } 
+  }
 
   createAnimations() {
     this.scene.anims.create({
       key: 'mario-walk',
-      frames: this.scene.anims.generateFrameNumbers('mario', { start: 1, end: 3 }),
-      frameRate: 12,
+      frames: this.scene.anims.generateFrameNumbers('mario', { start: 0, end: 2 }),
+      frameRate: 13,
       repeat: -1
     });
 
@@ -49,10 +49,12 @@ export class Personaje {
       this.jugador.anims.play('mario-walk', true);
       this.jugador.x -= 4;
       this.jugador.flipX = true;
+      // this.scene.arma.flipX = true;  // Invertir horizontalmente al moverse a la izquierda
     } else if (this.keys.right.isDown) {
       this.jugador.anims.play('mario-walk', true);
       this.jugador.x += 4;
       this.jugador.flipX = false;
+      // this.scene.arma.flipX = false; // Mantener normal al moverse a la derecha
     } else {
       this.jugador.anims.play('mario-idle', true);
     }
@@ -62,6 +64,7 @@ export class Personaje {
       this.jugador.anims.play('mario-jump', true);
     }
 
+    // Si el jugador cae fuera de la pantalla, manejar su muerte
     if (this.jugador.y >= this.scene.scale.height) {
       this.handleDeath();
     }
@@ -151,5 +154,4 @@ export class Personaje {
       });
     }
   }
-  
 }

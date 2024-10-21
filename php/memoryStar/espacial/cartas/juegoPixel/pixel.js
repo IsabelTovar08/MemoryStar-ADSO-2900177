@@ -13,7 +13,7 @@ class MyScene extends Phaser.Scene {
 
    preload() {
       this.load.image('star', '../../super-midu-bros-main/planetas/estrella.png');
-      this.load.spritesheet('mario', '../../super-midu-bros-main/assets/entities/mario.png', { frameWidth: 18, frameHeight: 16 });
+      this.load.spritesheet("mario","../../img/vacaUltima.png", { frameWidth: 365, frameHeight: 412 });
       this.load.spritesheet("boss", "../../super-midu-bros-main/assets/entities/mario.png", {
          frameWidth: 18,
          frameHeight: 14,

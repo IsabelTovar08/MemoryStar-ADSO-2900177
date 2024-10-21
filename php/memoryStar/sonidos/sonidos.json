@@ -1,0 +1,34 @@
+{
+    "audios": [
+        {
+            "id": "musicaFondo",
+            "src": "sonidos/cargarSonidos/inicio2.mp3",
+            "loop": true,
+            "type": "audio/mpeg"
+        },
+        {
+            "id": "click",
+            "src": "sonidos/cargarSonidos/click.mp3",
+            "loop": false,
+            "type": "audio/mpeg"
+        },
+        {
+            "id": "sonidoCursor",
+            "src": "sonidos/cargarSonidos/mouseover.mp3",
+            "loop": false,
+            "type": "audio/mpeg"
+        },
+        {
+            "id": "bien",
+            "src": "sonidos/cargarSonidos/sonidoBien.mp3",
+            "loop": false,
+            "type": "audio/mpeg"
+        },
+        {
+            "id": "voltear",
+            "src": "sonidos/cargarSonidos/voltear-cartas.mp3",
+            "loop": false,
+            "type": "audio/mpeg"
+        }
+    ]
+}
