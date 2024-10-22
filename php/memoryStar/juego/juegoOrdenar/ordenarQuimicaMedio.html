@@ -5,14 +5,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Secuencia Objetos Medio</title>
-    <link rel="stylesheet" href="bootstrap/css/bootstrap.css">
+    <link rel="stylesheet" href="../../bootstrap/css/bootstrap.css">
     <link rel="stylesheet" href="css/juegoArrastrarLaboratorio.css">
-    <link rel="stylesheet" href="css/estilosInicio.css">
-    <link rel="stylesheet" href="css/estilosAyuda.css">
-    <link rel="stylesheet" href="css/estiloTienda.css">
-    <link rel="stylesheet" href="css/estiloTablaPuntuacion.css">
-    <link rel="stylesheet" href="css/estiloSeguirJugando.css">
-    <link rel="stylesheet" href="css/animacion.css">
+    <link rel="stylesheet" href="../../css/estilosInicio.css">
+    <!-- <link rel="stylesheet" href="../css/estilosAyuda.css">
+    <link rel="stylesheet" href="../css/estiloTienda.css"> -->
+    <link rel="stylesheet" href="../../modales/modales/css/estiloTablaPuntuacion.css">
+    <link rel="stylesheet" href="../../modales/modales/css/estiloSeguirJugando.css">
+    <link rel="stylesheet" href="../css/animacion.css">
 </head>
 
 <body>
@@ -26,9 +26,9 @@
                 <div class="tituloTsolo">Puntuación</div>
                 <div class="contenedorTsoloInterior">
                     <div class="contenedor-estrellas">
-                        <img src="img/tablas/Star.png" class="star" alt="">
-                        <img src="img/tablas/Star.png" class="star" alt="">
-                        <img src="img/tablas/Star.png" class="star" alt="">
+                        <img src="../../modales/modales/img/tablas/Star.png" class="star" alt="">
+                        <img src="../../modales/modales/img/tablas/Star.png" class="star" alt="">
+                        <img src="../../modales/modales/img/tablas/Star.png" class="star" alt="">
                     </div>
 
                     <div id="puntosSecu1" class="puntaje-total">
@@ -37,11 +37,11 @@
 
                     <div class="contenedor-puntaje">
 
-                        <div id="rubis">+0</div><img src="img/tablas/rubipuntaje.png" alt="" class="rubi-puntaje">
+                        <div id="rubis">+0</div><img src="../../modales/modales/img/tablas/rubipuntaje.png" alt="" class="rubi-puntaje">
                     </div>
 
                     <div class="col-10 row contenedor-info">
-                        <div class="col-6"><img src="..//img/fotouser.png" alt="" style="width: 20px;">Usuario</div>
+                        <div class="col-6"><img src="../../modales/modales/img/tablas/fotouser.png" alt="" style="width: 20px;">Usuario</div>
                         <div class="col-3" id="tiempo1">0</div>
                         <div class="col-3" id="puntosSecu2">0</div>
                     </div>
@@ -72,7 +72,7 @@
 
         <div id="contenedor-imagen">
 
-            <img src="img/juegoObjetos/newLaboratorio.png" id=imagen-principal class="imagen-objeto">
+            <img src="img/newLaboratorio.png" id=imagen-principal class="imagen-objeto">
             <div id="listaDrop">
                 <div class="dropzone posicion1"></div>
                 <div class="dropzone posicion2"></div>
@@ -87,15 +87,15 @@
         </div>
 
         <div class="contenedor-objetos">
-            <img src="img/juegoObjetos/pocion.png" id="objeto1" class="objetos arrastrable">
-            <img src="img/juegoObjetos/tapabocas.png" id="objeto2" class="objetos arrastrable">
-            <img src="img/juegoObjetos/nose.png" id="objeto3" class="objetos arrastrable">
-            <img src="img/juegoObjetos/gafas.png" id="objeto4" class="objetos arrastrable">
-            <img src="img/juegoObjetos/probeta.png" id="objeto5" class="objetos arrastrable">
-            <img src="img/juegoObjetos/mosca.png" id="objeto6" class="objetos arrastrable">
-            <!-- <img src="img/juegoObjetos/libro.png" id="objeto7" class="objetos arrastrable">
-            <img src="img/juegoObjetos/tubo.png" id="objeto8" class="objetos arrastrable"> -->
-            <!-- <img src="img/juegoObjetos/caja.png"class="caja"> -->
+            <img src="img/pocion.png" id="objeto1" class="objetos arrastrable">
+            <img src="img/tapabocas.png" id="objeto2" class="objetos arrastrable">
+            <img src="img/nose.png" id="objeto3" class="objetos arrastrable">
+            <img src="img/gafas.png" id="objeto4" class="objetos arrastrable">
+            <img src="img/probeta.png" id="objeto5" class="objetos arrastrable">
+            <img src="img/mosca.png" id="objeto6" class="objetos arrastrable">
+            <!-- <img src="img/libro.png" id="objeto7" class="objetos arrastrable">
+            <img src="img/tubo.png" id="objeto8" class="objetos arrastrable"> -->
+            <!-- <img src="img/caja.png"class="caja"> -->
 
 
         </div>
@@ -103,17 +103,15 @@
         <?php include('audios.php') ?>
     </div>
 
-    <script src="animacion.js"></script>
     <script src="js/interactJS.js"></script>
     <script src="js/arrastrarJuego.js"></script>
-    <script src="js/movimiento.js"></script>
-    <script src="js/overlayModal.js"></script>
-    <script src="bootstrap/js/bootstrap.js"></script>
-    <script src="js/sonidos.js"></script>
-    <script src="js/perfil.js"></script>
-    <script src="js/mapa.js"></script>
-    <script src="js/barra.js"></script>
-    <script src="js/animacion.js"></script>
+    <script src="../js/movimiento.js"></script>
+    <script src="../js/overlayModal.js"></script>
+    <script src="../bootstrap/js/bootstrap.js"></script>
+    <script src="../js/sonidos.js"></script>
+    <script src="../js/perfil.js"></script>
+    <script src="../js/mapa.js"></script>
+    <script src="../../modales/modales/js/barra.js"></script>
 </body>
 
 </html>
