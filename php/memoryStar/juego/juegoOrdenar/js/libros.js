@@ -30,7 +30,7 @@ function mostrarLibrosEnOrden(orden) {
     let img = document.createElement("img");
 
     let idSinComillas = id.replace(/'/g, "");
-    img.setAttribute("src", `img/secuLibro/librito${idSinComillas}.png`);
+    img.setAttribute("src", `img/librito${idSinComillas}.png`);
     img.setAttribute("data-id", idSinComillas);
     img.classList.add("libro", "inicio");
     libros.appendChild(img);
