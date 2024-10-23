@@ -324,7 +324,7 @@ var modalHTML = `
         <button class="position-relative translate-middle badge rounded-pill bg-success cosita" onclick="document.getElementById('fileInput').click();">
             <img src="img/iconos/camera.png" alt="" class="position-absolute" width="25">
         </button>
-        <div class="card__title ">Cameron Williamson</div>
+        <div class="card__title " id="usuarioBienvenida"></div>
         <div class="card__subtitle">Web Development</div>
     </div>
     <div class="offcanvas-header">
@@ -364,7 +364,7 @@ var modalHTML = `
             <img src="#" id="profileImage2" alt="Foto de perfil">
             <input type="file" id="fileInput" accept="image/*" style="display: none;">
         </div>
-        <div class="card__title ">Cameron Williamson</div>
+        <div class="card__title " id="usuarioBienvenida"></div>
         <div class="card__subtitle">Web Development</div>
     </div>
     <div class="offcanvas-body">
