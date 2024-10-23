@@ -3,11 +3,13 @@ async function obtenerDatosUsuario() {
     try {
       const response = await fetch('registro/procesos/obtenerUsuario.php');  
         const data = await response.json();
-        console.log(data)
+        // console.log(data)
         if (data.success) {
-            const nombreUsuarioElement = document.getElementById('nombreUsuario');
+            const nombreUsuarioElement = document.querySelectorAll('.usuarioPerfill');
             if (nombreUsuarioElement) {
-                nombreUsuarioElement.textContent = data.personaNombre;
+                nombreUsuarioElement.forEach(elemento => {
+                    elemento.innerHTML = data.usuario;
+                });
             }
         } else {
             window.location.href = 'registro/login.html';
@@ -17,6 +19,7 @@ async function obtenerDatosUsuario() {
     }
   }
   
-  
-    obtenerDatosUsuario();  // Solo ejecuta si existe el elemento
+  document.addEventListener('DOMContentLoaded', () => {
+    obtenerDatosUsuario();  
+});
   

@@ -25,7 +25,11 @@
 </head>
 
 <body>
-        
+    <script>
+        function cerrarSesion() {
+            window.location.href = 'registro/procesos/cerrar.php';
+        }
+    </script>
     <!-- Modal -->
     <div class="modal fade" id="modalInicio" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
         aria-labelledby="staticBackdropLabel" aria-hidden="true">
@@ -66,8 +70,10 @@
             <div class="circulo circulo-derecha"></div>
         </div>
         <div id="contenedor">
-            <button onclick="cerrarSesion()">Cerrar Sesión</button>
-            <!-- <div onclick="history.back()">atras</div> -->
+          
+            <div id="nombre"></div>
+            
+
             <div id="contenido">
                 <script>
                     const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]')
@@ -101,7 +107,7 @@
      
         <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
         <script src="js/playJson.js"></script>
-        <script src="js/session.js"></script>
+        
         <script src="js/inicio/movimiento.js"></script>
         <script src="modales/modales/js/overlayModal.js"></script>
         <script src="bootstrap/js/bootstrap.js"></script>
@@ -112,6 +118,7 @@
         <!-- <script src="js/nombre.js"></script>     -->
         <script src="js/perfil/fotosperfil.js"></script>
         <script src="js/nabar/nabar.js"></script>
+        <script src="js/session.js"></script>
         
         <script type="module" src="sonidos/sonidos.js"></script>
         <script type="module" src="sonidos/eventosSonidos.js"></script>
