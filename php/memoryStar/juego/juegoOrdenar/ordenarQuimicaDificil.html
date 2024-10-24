@@ -16,7 +16,7 @@
 </head>
 
 <body>
-    <?php include('nabar.php') ?>
+    
 
     <!-- modal -->
     <div class="modal fade" id="tablapuntuacionsolo" tabindex="-1" aria-labelledby="exampleModalLabel"
@@ -51,14 +51,13 @@
                 <div class="contenedor-botonTsolo">
                     <!-- <button class="botonTsolo">Jugar de nuevo</button> -->
                     <button class="botonTsolo" style="margin-left: 20px;" data-bs-dismiss="modal"
-                        aria-label="Close">Aceptar</button>
+                        aria-label="Close" id="ronda">Aceptar</button>
                 </div>
             </div>
         </div>
     </div>
     <!-- juego -->
-    <div class="contenedor-arrastrar">
-
+    <div class="contenedor-arrastrar" id="estructura">
         <h1 class="textoArrastrar">Pon los objetos en su lugar</h1>
         <button id="verificarBtn">Verificar</button>
         <div class="tiempo" id="temp">TIEMPO: 0s</div>
@@ -80,27 +79,26 @@
                 <div class="dropzone posicion4"></div>
                 <div class="dropzone posicion5"></div>
                 <div class="dropzone posicion6"></div>
-                <div class="dropzone posicion7"></div>
-                <div class="dropzone posicion8"></div>
+                <!-- <div class="dropzone posicion7"></div>
+                <div class="dropzone posicion8"></div> -->
             </div>
 
         </div>
 
-        <div class="contenedor-objetos">
+        <div class="contenedor-objetos" id="listaObjeto">
             <img src="img/pocion.png" id="objeto1" class="objetos arrastrable">
             <img src="img/tapabocas.png" id="objeto2" class="objetos arrastrable">
             <img src="img/nose.png" id="objeto3" class="objetos arrastrable">
             <img src="img/gafas.png" id="objeto4" class="objetos arrastrable">
             <img src="img/probeta.png" id="objeto5" class="objetos arrastrable">
             <img src="img/mosca.png" id="objeto6" class="objetos arrastrable">
-            <img src="img/libro.png" id="objeto7" class="objetos arrastrable">
-            <img src="img/tubo.png" id="objeto8" class="objetos arrastrable">
-            <!-- <img src="img/caja.png"class="caja"> -->
+            <!-- <img src="img/libro.png" id="objeto7" class="objetos arrastrable">
+            <img src="img/tubo.png" id="objeto8" class="objetos arrastrable"> -->
 
 
         </div>
+        
 
-        <?php include('audios.php') ?>
     </div>
     <script src="../../js/session.js"></script>
     <script src="js/interactJS.js"></script>

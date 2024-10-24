@@ -1,0 +1,162 @@
+/* body{
+  cursor: url('../img/flecha.png'), auto;
+  height: 100vh;
+} */
+
+#armarArma .modal-content {
+  position: relative;
+  border-radius: 40px;
+  background-image: url("../img/fondo2.png");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  padding: 2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  height: 65vh;
+  width: 65vh;
+  margin: 0;
+  touch-action: none;
+}
+
+.holis {
+  display: flex;
+
+  align-items: center;
+  flex-direction: column;
+}
+.contenedor-imagen img {
+  position: relative;
+  top: 30%;
+  height: 30vh;
+  object-fit: cover;
+  user-select: none; /* Evita la selección de la imagen */
+  pointer-events: none;
+}
+
+/* .contenedor-armar {
+  width: 30vw;
+  height: auto;
+  margin: 0 auto;
+} */
+.titulo-arma {
+  font-size: 5vh;
+  margin: 0 auto;
+  color: #ffff;
+  background: linear-gradient(135deg, #000020, #001a4d);
+  border: 4px solid #ffff;
+  border-radius: 20px;
+  padding: 0.2rem 0.5rem;
+  position: absolute;
+  top: 5%;
+}
+
+#verificar {
+  font-size: 3vh;
+  background: linear-gradient(135deg, #000020, #001a4d); /* Degradado verde */
+
+  border: none;
+  border-radius: 20px; /* Bordes redondeados */
+  color: white; /* Color del texto */
+  font-family: Arial, sans-serif; /* Fuente del texto */
+  font-weight: bold; /* Texto en negrita */
+  padding: 5px 5px; /* Espaciado interno del botón */
+  text-align: center;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3); /* Sombra */
+  cursor: pointer;
+}
+#verificar:hover {
+  background: linear-gradient(
+    to bottom,
+    #001a4d,
+    #000020
+  ); /* Invertir degradado al hacer hover */
+}
+.dropzone {
+  width: 5vh; /* Ajusta el tamaño de las dropzones según tus objetos */
+  height: 5vh;
+  border: 2px dashed #fff;
+  position: absolute;
+  z-index: 0; /* Para que estén encima de la imagen principal */
+}
+.posicion1 {
+  left: 74%;
+  top: 35%;
+}
+.posicion2 {
+  left: 28%;
+  top: 37%;
+}
+.dropzone.posicion2 {
+  height: 8vh;
+}
+.posicion3 {
+  left: 52%;
+  top: 35%;
+}
+.dropzone.posicion3 {
+  width: 10vh;
+}
+.posicion4 {
+  left: 14%;
+  top: 35%;
+}
+.posicion5 {
+  left: 38%;
+  top: 25%;
+}
+.arrastable {
+  position: absolute;
+  cursor: pointer;
+  margin: 5px;
+  object-fit: cover;
+  z-index: 1;
+}
+.objeto1 {
+  height: 7vh;
+}
+.objeto2 {
+  height: 15vh;
+}
+.objeto3 {
+  height: 10.8vh;
+}
+.objeto4 {
+  height: 8vh;
+}
+.objeto5 {
+  height: 3vh;
+}
+
+.dropzone-highlight {
+  background-color: rgba(
+    0,
+    255,
+    0,
+    0.5
+  ); /* Color de fondo verde cuando hay un objeto sobre la dropzone */
+}
+
+/* Clase para indicar que el objeto puede ser soltado */
+.can-drop {
+  border: 2px solid #00ff00; /* Bordes verdes cuando el objeto puede ser soltado */
+}
+
+.dropzone-highlight-temp {
+  background-color: rgba(
+    255,
+    255,
+    0,
+    0.5
+  ); /* Color amarillo semitransparente */
+}
+
+.correcto {
+  border: 2px solid green;
+}
+
+.incorrecto {
+  border: 2px solid red;
+}
