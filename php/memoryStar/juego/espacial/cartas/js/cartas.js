@@ -22,7 +22,6 @@ document.addEventListener("DOMContentLoaded", function () {
   let cartasVolteadas = [];
   let aciertos = 0;
   const totalAciertos = cartas.length / 2; // Total de pares de cartas
-  let intervalo;
   let tiempoRestante = 60; // 60 segundos
 
   // Mezclar las cartas
@@ -45,7 +44,9 @@ document.addEventListener("DOMContentLoaded", function () {
   function voltearCarta(carta) {
     const bieen = document.getElementById('voltear');
     bieen.play();
-    if (cartasVolteadas.length === 2) return;
+
+    // Si la carta ya está emparejada o hay dos cartas volteadas, no hacer nada
+    if (carta.classList.contains("emparejada") || cartasVolteadas.length === 2) return;
 
     carta.classList.add("volteada");
     cartasVolteadas.push(carta);
@@ -55,25 +56,31 @@ document.addEventListener("DOMContentLoaded", function () {
       const idPrimeraCarta = primeraCarta.getAttribute("data-id");
       const idSegundaCarta = segundaCarta.getAttribute("data-id");
 
-      if (idPrimeraCarta === idSegundaCarta) {
+      // Verificar que las dos cartas tengan el mismo "data-id" y que sean efectivamente diferentes cartas
+      if (idPrimeraCarta === idSegundaCarta && primeraCarta !== segundaCarta) {
         const bieen = document.getElementById('bien');
         bieen.play();
         aciertos++;
+
+        // Marcar las cartas como emparejadas
+        primeraCarta.classList.add("emparejada");
+        segundaCarta.classList.add("emparejada");
+
         cartasVolteadas = [];
         mostrarMensaje(aciertos);
 
         if (aciertos === totalAciertos) {
-          //   
           setTimeout(() => {
-            // Redirigir al usuario después de mostrar el último mensaje
             const mensajeDiv = document.getElementById(`mensaje10`);
-            mensajeDiv.style.display = "block";// Cambia esto a la URL de destino
-          }, 5000); // Esperar 3 segundos antes de redirigir
+            mensajeDiv.style.display = "block";
+          }, 5000);
+
           setTimeout(() => {
-            window.location.href = "./espacial/cartas/juegoPixel/index.html"; // Cambia esto a la URL de destino
-          }, 7000); // Esperar 3 segundos antes de redirigir
+            window.location.href = "./juego/espacial/cartas/juegoPixel/index.html";
+          }, 7000);
         }
       } else {
+        // Las cartas no coinciden, voltearlas de nuevo después de un tiempo
         setTimeout(() => {
           primeraCarta.classList.remove("volteada");
           segundaCarta.classList.remove("volteada");
@@ -83,20 +90,28 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   }
 
-
   // Array para almacenar el orden en que se muestran los mensajes
   const ordenMensajes = [];
+  let titulos = [
+    'PRIMERA PIEZA A ENSAMBLAR',
+    'SEGUNDA PIEZA A ENSAMBLAR',
+    'TERCERA PIEZA A ENSAMBLAR',
+    'CUARTA PIEZA A ENSAMBLAR'
+  ];
 
   function mostrarMensaje(aciertos) {
     let mensajes = [
-      "Cabina - El Cerebro de la Nave: Controla la nave y la misión desde su centro estratégico.",
-      "Motores - El Corazón Propulsor: Impulsa la nave con fuerza hacia el espacio.",
-      "Paneles Solares - Las Alas Energéticas: Absorben la luz del sol y la convierten en energía para la nave. ",
-      "Escudo de Calor: Protege la nave del calor extremo al reentrar en la atmósfera.",
+      "Cabina: El área donde los astronautas controlan la nave. Lleno de pantallas y botones",
+      "Dorsal: La función del dorsal de una nave es alojar paneles, sensores o sistemas estructurales clave",
+      "Propulsores: La parte trasera que contiene los motores, responsables de empujar la nave hacia adelante.",
+      "Alas: Proporcionan estabilidad y control durante el descenso y aterrizaje en la Tierra."
     ];
 
     // Filtrar los mensajes ya mostrados para que no se repitan
     const mensajesRestantes = mensajes.filter(mensaje => !ordenMensajes.includes(mensaje));
+
+    // Si ya se han mostrado todos los mensajes, no hacer nada
+    if (mensajesRestantes.length === 0) return;
 
     // Seleccionar aleatoriamente un mensaje de los restantes
     const elegido = Math.floor(Math.random() * mensajesRestantes.length);
@@ -105,26 +120,26 @@ document.addEventListener("DOMContentLoaded", function () {
     ordenMensajes.push(mensajesRestantes[elegido]);
 
     // Mostrar el mensaje correspondiente
-    const mensajeDiv = document.getElementById(`mensaje${aciertos}`);
+    const mensajeDiv = document.getElementById(`mostrarParte`);
     const mensajeText = document.getElementById(`mensajeTexto${ordenMensajes.length}`);
+    const titulo = document.getElementById(`titulo${ordenMensajes.length}`);
+
+    // const modalOrden = document.getElementById('ordenNave');
 
 
     if (mensajeDiv) {
 
-      mensajeText.textContent = aciertos;
       mensajeText.textContent = mensajesRestantes[elegido];
-
+      titulo.textContent = "hjgyguj";
+      // mensajeDiv.textContent = titulos[0];
       mensajeDiv.style.display = "block";
+      // modalOrden.style.display = "block";
 
       setTimeout(() => {
         mensajeDiv.style.display = "none";
-      }, 5000); // Mostrar el mensaje durante 1 segundo
+      }, 5000); // Mostrar el mensaje durante 5 segundos
     }
   }
-  console.log(ordenMensajes)
-
-  // Para ver el orden de los mensajes mostrados
-
 
   // Vincular eventos de clic a las cartas después de mezclar
   function inicializarJuego() {
@@ -138,5 +153,4 @@ document.addEventListener("DOMContentLoaded", function () {
   // Iniciar el juego
   mezclarCartas();
   inicializarJuego();
-  iniciarContador();
 });

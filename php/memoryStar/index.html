@@ -6,22 +6,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="bootstrap/css/bootstrap.css">
     <link rel="stylesheet" href="css/estilosInicio.css">
-    <link rel="stylesheet" href="css/estilosAyuda.css">
+    <link rel="stylesheet" href="modales/modales/css/estilosAyuda.css">
+    <link rel="stylesheet" href="css/animaciones/animacionesInicio.css">
     <link rel="stylesheet" href="css/animaciones/animacion.css">
+
     <link rel="stylesheet" href="modales/tienda/css/estiloTienda.css">
     <link rel="stylesheet" href="modales/modales/css/estiloTablaPuntuacion.css">
-    <link rel="stylesheet" href="css/animacionesInicio.css">
-    <link rel="stylesheet" href="modales/modales/estilosAyuda.css">
     <link rel="stylesheet" href="modales/modales/css/estiloSeguirjugando.css">
     <!-- <link rel="stylesheet" href="css/estilosPerfil.css"> -->
     <title>MemoryStart ¡Pon a prueba tu memoria!</title>
     <link rel="shortcut icon" href="img/iconos/segundoMemory.png">
-    <script src="https://cdn.jsdelivr.net/npm/@floating-ui/core@1.6.7"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@floating-ui/dom@1.6.10"></script>
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Just+Me+Again+Down+Here&display=swap');
-        @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
-    </style>
 </head>
 
 <body>
@@ -67,15 +61,8 @@
         <div id="contenedor">
             <!-- <div onclick="history.back()">atras</div> -->
             <div id="contenido">
-                <script>
-                    const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]')
-                    const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl))
-                </script>
-
                 <img src="img/iconos/nuevoMemory.png" alt="logoMemory" class="logoInicio loguito">
                 <div id="jugar">
-                    <img src="img/iconos/clic.png" alt="" width="50" class="centrar" id="centrar1">
-                    <img src="img/iconos/clic2.png" alt="" width="50" class="centrar" id="centrar2">
                     <a href="animacionConf.html"><img src="img/iconos/play.png" alt="" class="play zoom" id="play"></a>
                 </div>
             </div>
@@ -97,15 +84,13 @@
         </div>
    
      
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
         <script src="js/playJson.js"></script>
         <script src="js/inicio/movimiento.js"></script>
         <script src="modales/modales/js/overlayModal.js"></script>
         <script src="bootstrap/js/bootstrap.js"></script>
         <script src="modales/modales/js/mapa.js"></script>
-        <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
         <script src="js/animaciones/animacion.js"></script>
-        <script src="js/comprat.js"></script>
+        <script src="modales/tienda/js/comprat.js"></script>
         <script src="js/perfil/fotosperfil.js"></script>
         <script src="js/nabar/nabar.js"></script>
         <script type="module" src="sonidos/sonidos.js"></script>

@@ -9,7 +9,6 @@
     <link rel="stylesheet" href="css/estilosInicio.css">
     <link rel="stylesheet" href="juego/espacial/cartas/css/estilosCartas.css">
     <link rel="stylesheet" href="bootstrap/css/bootstrap.css">
-    <link rel="stylesheet" href="modales/modales/estilosAyuda.css">
     <link rel="stylesheet" href="css/animaciones/animacion.css">
     <link rel="stylesheet" href="modales/modales/css/estiloTablaPuntuacion.css">
     <link rel="stylesheet" href="modales/modales/css/estiloSeguirjugando.css">
@@ -28,8 +27,6 @@
 </style>
 
 <body>
-    <!-- Modal -->
-    <!-- Modal -->
     <div class="modal fade" id="modalUno" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
         aria-labelledby="staticBackdropLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
@@ -76,57 +73,35 @@
 
     <script>
         // Contenidos de los modales
-        const modalContents = [
-            "¡Bienvenido, explorador! Tu misión es encontrar las cartas que contienen pistas esenciales para ensamblar una nave espacial. Cada pareja de cartas que encuentres te acercará a tu objetivo.",
-            "Comienza volteando las cartas para buscar parejas. Cuando encuentres una pareja, recibirás una pista que te mostrará el orden correcto para ensamblar la nave espacial. ¡Mantente atento a los detalles!",
-            "Una vez que hayas encontrado todas las parejas, serás transportado a la siguiente escena. Aquí deberás buscar las partes de la nave que corresponden a las pistas que has recogido."
-        ];
 
-        let currentModalIndex = 0; // Índice del contenido actual del modal
-        const modalBody = document.getElementById('modalBody');
-        const nextButton = document.getElementById('nextButton');
-
-        nextButton.addEventListener('click', function () {
-            // Aplicar la animación de desvanecimiento
-            modalBody.classList.add('fade-out');
-
-            // Esperar a que la animación termine antes de cambiar el contenido
-            setTimeout(() => {
-                currentModalIndex++; // Aumenta el índice del modal actual
-
-                if (currentModalIndex < modalContents.length) {
-                    // Cambia el contenido del modal si hay más contenido
-                    modalBody.innerHTML = modalContents[currentModalIndex];
-
-                    // Aplicar la animación de aparición
-                    modalBody.classList.remove('fade-out');
-                    modalBody.classList.add('fade-in');
-
-                    // Si es el último contenido, cambia el texto del botón a "Finalizar"
-                    if (currentModalIndex === modalContents.length - 1) {
-                        nextButton.textContent = 'Finalizar';
-                    }
-                } else {
-                    // Si no hay más contenido, cierra el modal
-                    const modal = bootstrap.Modal.getInstance(modalBody.closest('.modal'));
-                    modal.hide(); // Cierra el modal sin contenido vacío
-                }
-
-                // Eliminar la clase de animación de aparición después de un tiempo
-                setTimeout(() => {
-                    modalBody.classList.remove('fade-in');
-                }, 500); // Tiempo igual a la duración de la animación
-            }, 500); // Tiempo igual a la duración de la animación de desvanecimiento
-        });
     </script>
-
+    <nav class="nav flex-column apartado-iconos">
+        <img id="controlMusica" src="img/iconos/musicaApagada.png" alt="Reproducir" class="iconos efectosIconos">
+        <img src="img/iconos/ajustesN.png" alt="Ajustes" class="iconos efectosIconos" data-bs-toggle="collapse"
+            data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+        <!-- <div class=""> -->
+        <div class="collapse" id="collapseExample" style="width: 500%;">
+            <div class="card card-body color">
+                <div class="col-12 row">
+                    <div class="col-5">Música</div>
+                    <div class="col-6"><input type="range" class="secondary" id="volumenMusica" min="0" max="1"
+                            step="0.1" value="1"></div>
+                </div>
+                <div class="col-12 row">
+                    <div class="col-5">Sonido</div>
+                    <div class="col-6"><input type="range" id="volumenSonido" min="0" max="1" step="0.1" value="1">
+                    </div>
+                </div>
+                <button id="botonSilencio" class="btn btn-primary">Silenciar</button>
+            </div>
+    </nav>
     <div class="container-fuid" id="fluid">
         <!-- <div class="animacion" id="loader">
             <span class="loader"></span>
         </div> -->
         <div class="juegoCartas" id="juegoCartas">
+            <h1 class="textoEleccion">De el orden correcto</h1>
             <div class="contenedorCabeza">
-                <h1 class="tituloCabeza">CARTAS</h1>
                 <img src="juego/espacial/cartas/img/vg.png" class="movable" alt="Imagen 1">
                 <img src="juego/espacial/cartas/img/luna.png" class="luna">
                 <div class="figuras">
@@ -232,41 +207,48 @@
                 </div>
                 <style>
                     .mensajePistas {
-                        border: 2px solid #000;
-                        position: absolute;
-                        margin-top: 15%;
-                        background-color: cadetblue;
-                        width: 60vh;
-                        height: 20vh;
-                        padding: 2%;
-                        border-radius: 2vh;
-                        box-shadow: 0 0 45px #4827;
-                        animation: rebote 0.5s;
+                        color: white;
+                        font-size: 3vh;
+                        font-family: monospace;
+
+                        .modal-content {
+                            background-color: #9886c5c1;
+                            border-radius: 3vh;
+                            text-shadow: 0 0 10px #000;
+                            box-shadow: 0 0 20px #02112c;
+                            animation: bounce 0.5s forwards;
+
+                        }
 
                     }
+
+                    @keyframes bounce {
+                        0% {
+                            transform: translateY(-50px);
+                            /* Comienza más arriba */
+                        }
+
+                        50% {
+                            transform: translateY(20px);
+                            /* Rebota hacia abajo */
+                        }
+
+                        100% {
+                            transform: translateY(0);
+                            /* Regresa a su posición original */
+                        }
+                    }
                 </style>
+                <div class="modal" id="mostrarParte" tabindex="-1">
+                    <div class="modal-dialog mensajePistas">
+                        <div class="modal-content">
+                            <div class="modal-body">
+                                <div id="titulo1"></div>
+                                <p id="mensajeTexto1"></p>
 
-                <div id="mensaje1" class="mensajePistas" style="display: none;">
-                    PRIMERA PIEZA A ENSAMBLAR
-                    <p id="mensajeTexto1"></p>
-
-                </div>
-                <div id="mensaje2" class="mensajePistas" style="display: none;">
-                    SEGUNDA PIEZA A ENSAMBLAR
-                    <p id="mensajeTexto2"> </p>
-
-                </div>
-                <div id="mensaje3" class="mensajePistas" style="display: none;">
-                    TERCERA PIEZA A ENSAMBLAR
-                    <p id="mensajeTexto3"> </p>
-                </div>
-                <div id="mensaje4" class="mensajePistas" style="display: none;">
-                    CUARTAA PIEZA A ENSAMBLAR
-                    <p id="mensajeTexto4"></p>
-                </div>
-                <div id="mensaje10" class="mensajePistas" style="display: none;">
-                    PASASTE A LA SEGUNDA RONDA
-                    <p id="mensajeTexto4"></p>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -275,24 +257,12 @@
     </div>
 
 
-    <script src="js/overlayModal.js"></script>
     <script src="juego/espacial/cartas/js/cartas.js"></script>
-    <script src="js/sonidos.js"></script>
-   
+    <script src="js/modaleCartas.js"></script>
     <script src="bootstrap/js/bootstrap.js"></script>
-    <script src="js/nabar/nabar.js"></script>
-    <scrip src="js/animaciones/animacion.js">
-        </script>
-        <script src="js/animaciones/barra.js"></script>
-
-        <script>
-            document.addEventListener('DOMContentLoaded', function () {
-                var myModal = new bootstrap.Modal(document.getElementById('modalUno'));
-                myModal.show();
-            });
-        </script>
-        <script type="module" src="sonidos/sonidos.js"></script>
-        <script type="module" src="sonidos/eventosSonidos.js"></script>
+    <scrip src="js/animaciones/animacion.js"></script>
+    <script type="module" src="sonidos/sonidos.js"></script>
+    <script type="module" src="sonidos/eventosSonidos.js"></script>
 </body>
 
 </html>

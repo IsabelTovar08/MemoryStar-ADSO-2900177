@@ -1,30 +1,49 @@
 /* Títuloo */
+body {
+    background-image: url('../img/fondos/fondoOpciones.jpeg');
+    margin: 0;
+    padding: 0;
+    width: 100vw;
+    height: 100vh;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    font-family: cursive;
+    overflow: hidden;
+    cursor: url('../img/iconos/cursor.cur'), auto;
+}
+
 .carousel-item {
     position: relative;
     transition: background-color 1s ease, transform 1s ease;
 }
-.carousel{
+
+.carousel {
     width: 80%;
     margin: 0 auto;
 }
+
 /* Cambia el color de fondo del item activo */
 
 
 input[type="radio"] {
     display: none;
 }
+
 .tarjetas-container {
     display: flex;
     gap: 20px;
     justify-content: center;
     align-items: center;
 }
-.textoEleccion{
+
+.textoEleccion {
     width: 100%;
 }
+
 .tarjetaOpcion {
-    width: 15vh;
-    height: 15vh;
+    width: 13vh;
+    height: 13vh;
     background-color: #f6ffc5;
     border-radius: 1vh;
     box-shadow: 0 4px 8px #00000075, 0 0 30px #ffffff85;
@@ -40,34 +59,42 @@ input[type="radio"] {
 .option input[type="radio"] {
     display: none;
 }
-.option{
+
+.option {
     margin: 2vh;
     transition: transform 0.3s;
 }
-.option:hover{
+
+.option:hover {
     transform: scale(1.03);
 }
+
 /* Estilos para cuando el radio está seleccionado */
-.option input[type="radio"]:checked + label + .romboide, 
-.option input[type="radio"]:checked + label {
-  transform: scale(1.2); /* Ajusta el valor de scale si lo prefieres más grande o pequeño */
-  transition: transform 0.3s ease;
-  border: 2px solid;
+.option input[type="radio"]:checked+label+.romboide,
+.option input[type="radio"]:checked+label {
+    transform: scale(1.2);
+    /* Ajusta el valor de scale si lo prefieres más grande o pequeño */
+    transition: transform 0.3s ease;
+    border: 2px solid;
 }
-.option input[type="radio"]:checked + label + .romboide{
+
+.option input[type="radio"]:checked+label+.romboide {
     box-shadow: 0 0 10px #000 inset;
     border: none;
-    h6{
+
+    h6 {
         text-shadow: 0 0 5px #000, 0 0 7px #13f1fc;
     }
 
 
 }
-.option input[type="radio"]:checked + label{
+
+.option input[type="radio"]:checked+label {
     box-shadow: 0 0 20px #fff, 0 0 10px #13f1fc, 0 0 30px #000;
 }
+
 .romboide {
-    width: 18vh;
+    width: 16vh;
     height: 3.5vh;
     background-color: #FFEB3B;
     clip-path: polygon(0% 12%, 95% 0%, 100% 88%, 5% 100%);
@@ -76,7 +103,8 @@ input[type="radio"] {
     text-align: center;
     padding: 0.5vh;
     transition: transform 0.3s, background-color 0.3s;
-    h6{
+
+    h6 {
         transform: rotate(-2.2deg);
         color: #fff;
         text-shadow: 0 0 2px #000;
@@ -85,86 +113,104 @@ input[type="radio"] {
     }
 }
 
-.option label img{
+.option label img {
     width: 100%;
     height: 100%;
     object-fit: fill;
 }
+
 .opcionesJuego {
     margin: 1vh;
 }
+
 .juegoUno {
-    .tarjetaOpcion{
+    .tarjetaOpcion {
         background-color: #d0c5ff;
 
     }
-    .romboide{
+
+    .romboide {
         background-color: #1E1E78;
     }
 }
+
 .quimica {
-    .tarjetaOpcion{
+    .tarjetaOpcion {
         background-color: #c5ffc5;
 
     }
-    .romboide{
+
+    .romboide {
         background-color: #4CAF50;
     }
 }
+
 .habitacion {
-    .tarjetaOpcion{
+    .tarjetaOpcion {
         background-color: #c5d5ff;
 
     }
-    .romboide{
-        background-color: #007BFF ;
+
+    .romboide {
+        background-color: #007BFF;
     }
 }
+
 .oficina {
-    .tarjetaOpcion{
+    .tarjetaOpcion {
         background-color: #b9b9b9;
 
     }
-    .romboide{
-        background-color: #7D7D7D ;
+
+    .romboide {
+        background-color: #7D7D7D;
     }
 }
+
 .biblioteca {
-    .tarjetaOpcion{
+    .tarjetaOpcion {
         background-color: #f3d2b4;
 
     }
-    .romboide{
-        background-color: #8B4513 ;
+
+    .romboide {
+        background-color: #8B4513;
     }
 }
+
 .facil {
-    .tarjetaOpcion{
+    .tarjetaOpcion {
         background-color: #b6f3b4;
 
     }
-    .romboide{
-        background-color: #66BB6A ;
+
+    .romboide {
+        background-color: #66BB6A;
     }
 }
+
 .medio {
-    .tarjetaOpcion{
+    .tarjetaOpcion {
         background-color: #f3edb4;
 
     }
-    .romboide{
-        background-color: #FFD54F ;
+
+    .romboide {
+        background-color: #FFD54F;
     }
 }
+
 .dificil {
-    .tarjetaOpcion{
+    .tarjetaOpcion {
         background-color: #f3beb4;
 
     }
-    .romboide{
-        background-color: #FF5252 ;
+
+    .romboide {
+        background-color: #FF5252;
     }
 }
+
 .cardse {
     background-color: #7c98e6ce;
     border-radius: 20%;
@@ -204,7 +250,7 @@ input[type="radio"] {
             0 0 5px rgba(255, 255, 255, 0.6),
             0 0 10px rgba(255, 255, 255, 0.5),
             0 0 15px rgba(255, 255, 0, 0.8),
-        0 0 3px #000;
+            0 0 3px #000;
 
         /* Resplandor normal */
     }
@@ -214,7 +260,7 @@ input[type="radio"] {
             0 0 10px rgba(255, 255, 255, 1),
             0 0 20px rgba(255, 255, 255, 0.8),
             0 0 30px rgba(255, 255, 0, 1),
-        0 0 3px #000;
+            0 0 3px #000;
 
         /* Resplandor más fuerte */
     }
@@ -476,84 +522,106 @@ input[type="radio"] {
     height: 4vw;
 
 }
-.sala{
+
+.sala {
     border-radius: 2vh;
-    border: 5px solid ;
+    border: 5px solid;
     box-shadow: 0 0 15px #000;
     margin: 1%;
 }
 
-.confiSala{
+.confiSala {
     font-family: Verdana, Geneva, Tahoma, sans-serif;
-    input{
+
+    input {
         border-radius: 1vh;
         width: 25vh;
         height: 5vh;
         text-align: center;
     }
-    input:focus{
+
+    input:focus {
         border: 1px solid #1E1E78;
         box-shadow: 0 0 15px #4CAF50;
         outline: none;
     }
-    .romboide{
+
+    .romboide {
         width: 30vh;
         height: 5vh;
     }
-    .capacidad .romboide{
+
+    .capacidad .romboide {
         background-color: #1E1E78;
     }
-    .nombreSala input{
+
+    .nombreSala input {
         width: 40vh;
 
     }
-    .nombreSala .romboide{
+
+    .nombreSala .romboide {
         background-color: #ff00ff;
         width: 45vh;
     }
-}     
-.boton-avatar{
-   display: flex;
-   align-items: center;
-   justify-content: center;
-   button{
-    width: 30%;
-    box-shadow: 0 0 5px #000, 5px 5px 0 #000, 0 0 20px #1832a5;
-   }
 }
+
+.boton-avatar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    button {
+        width: 30%;
+        box-shadow: 0 0 5px #000, 5px 5px 0 #000, 0 0 20px #1832a5;
+    }
+}
+
 .carousel-container {
     display: flex;
     justify-content: center;
     align-items: center;
     position: relative;
-  }
+}
 
-  /* Sombra debajo del carrusel */
-  .carousel-container::before {
+/* Sombra debajo del carrusel */
+.carousel-container::before {
     content: '';
     position: absolute;
-    top: 10px; /* Ajusta para que la sombra esté más cerca del carrusel */
+    top: 10px;
+    /* Ajusta para que la sombra esté más cerca del carrusel */
     left: 50%;
     transform: translateX(-50%);
-    width: 80%; /* Anchura de la sombra */
-    height: 100%; /* Altura de la sombra */
+    width: 80%;
+    /* Anchura de la sombra */
+    height: 100%;
+    /* Altura de la sombra */
     background-color: #ffffff5d;
-    clip-path: polygon(0 0, 100% 0, 75% 100%, 25% 100%); /* Forma de trapecio */
-    filter: blur(30vh); /* Desenfoque para la sombra */
-    z-index: -1; /* Sombra detrás del carrusel */
+    clip-path: polygon(0 0, 100% 0, 75% 100%, 25% 100%);
+    /* Forma de trapecio */
+    filter: blur(30vh);
+    /* Desenfoque para la sombra */
+    z-index: -1;
+    /* Sombra detrás del carrusel */
     border: 3px solid #000;
-  }
-  .seleccion{/* Ajusta para que la sombra esté más cerca del carrusel */
+}
+
+.seleccion {
+    /* Ajusta para que la sombra esté más cerca del carrusel */
     left: 10%;
-    width: 80%; /* Anchura de la sombra */
+    width: 80%;
+    /* Anchura de la sombra */
     height: 20vw;
-    background-color: #3356f341; /* Color de sombra verde con transparencia */
-    clip-path: polygon(0 0, 100% 0, 75% 100%, 25% 100%); /* Forma de trapecio */
+    background-color: #3356f341;
+    /* Color de sombra verde con transparencia */
+    clip-path: polygon(0 0, 100% 0, 75% 100%, 25% 100%);
+    /* Forma de trapecio */
     padding: 0;
 }
-  /* Estilos para las imágenes del carrusel */
-    .carousel-images img {
-      width: 100px;
-      margin: 0 10px;
-      cursor: pointer;
-    }
+
+/* Estilos para las imágenes del carrusel */
+.carousel-images img {
+    width: 100px;
+    margin: 0 10px;
+    cursor: pointer;
+}

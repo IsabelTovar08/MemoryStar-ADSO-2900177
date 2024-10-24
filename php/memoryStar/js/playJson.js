@@ -296,6 +296,7 @@ function procesarEleccion(juegoSeleccionado) {
   console.log(
     `Juego: ${juegoSeleccionado}, Temática: ${tematicaSeleccionada}, Nivel: ${nivelSeleccionado}`
   );
+  window.location.href = `juego/juegoOrdenar/${juegoSeleccionado}${tematicaSeleccionada}${nivelSeleccionado}.html`;
 
   const datosJuego = {
     juego: juegoSeleccionado,

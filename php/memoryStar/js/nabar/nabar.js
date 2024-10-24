@@ -373,11 +373,11 @@ var modalHTML = `
             <h5 class="offcanvas-title perfil" id="offcanvasRightLabel">1.565 Puntos</h5>
         </div>
         <div class="rangosObtenidos">
-            <img src="img/rangos/rangoBloqueadoo.png" alt="" class="" width="50">
-            <img src="img/rangos/rangoBloqueadoo.png" alt="" class="" width="50">
-            <img src="img/rangos/rangoBloqueadoo.png" alt="" class="" width="50">
-            <img src="img/rangos/rangoBloqueadoo.png" alt="" class="" width="50">
-            <img src="img/rangos/rangoBloqueadoo.png" alt="" class="" width="50">
+            <img src="modales/modales/img/rangos/rangoBloqueadoo.png" alt="" class="" width="50">
+            <img src="modales/modales/img/rangos/rangoBloqueadoo.png" alt="" class="" width="50">
+            <img src="modales/modales/img/rangos/rangoBloqueadoo.png" alt="" class="" width="50">
+            <img src="modales/modales/img/rangos/rangoBloqueadoo.png" alt="" class="" width="50">
+            <img src="modales/modales/img/rangos/rangoBloqueadoo.png" alt="" class="" width="50">
         </div>
         <br>
         <h5 class="offcanvas-title perfil" id="offcanvasRightLabel">Tus iconos de de perfil:</h5>
