@@ -35,7 +35,7 @@ function iniciarSesion() {
                   alert(data.error);
               } else {  
                 
-                  window.location.href = '../index.html'; 
+                  window.location.href = '../pingpong.html'; 
               }
           })
           .catch(error => console.error('Error:', error));

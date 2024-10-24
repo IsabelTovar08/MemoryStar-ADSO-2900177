@@ -129,13 +129,13 @@ var modalHTML = `
 
                 <div class="contenedor-imgAyuda">
 
-                    <img src="img/iconos/botonCarta.png" alt="cartas" id="goToModal2" class="imgAyuda btn">
+                    <img src="img/iconos/uu.png" alt="cartas" id="goToModal2" class="imgAyuda btn">
 
 
-                    <img src="img/iconos/botonSecuencia.png" alt="secuencia" id="goToModal3" class="imgAyuda btn">
+                    <img src="img/iconos/secuencias.png" alt="secuencia" id="goToModal3" class="imgAyuda btn">
 
 
-                    <img src="img/iconos/botonAsociacion.png" alt="asociacion" id="goToModal4" class="imgAyuda btn">
+                    
 
                 </div>
 

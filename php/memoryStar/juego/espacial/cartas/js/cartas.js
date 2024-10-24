@@ -102,6 +102,7 @@ document.addEventListener("DOMContentLoaded", function () {
       "Alas: Proporcionan estabilidad y control durante el descenso y aterrizaje en la Tierra."
     ];
 
+    const ordenMensajes = [];
     // Filtrar los índices ya usados para que no se repitan
     const indicesRestantes = mensajes
         .map((_, index) => index) // Crear un array de índices

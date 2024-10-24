@@ -89,7 +89,7 @@ body {
 .dropzone {
   width: 5vh; /* Ajusta el tamaño de las dropzones según tus objetos */
   height: 5vh;
-  border: 2px dashed #fff;
+  /* border: 2px dashed #fff; */
   position: absolute;
   z-index: 0; /* Para que estén encima de la imagen principal */
 }

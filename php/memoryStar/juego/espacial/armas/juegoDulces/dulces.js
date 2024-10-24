@@ -232,7 +232,7 @@ class MyScene extends Phaser.Scene {
       botonSalir.setScale(0.11).clearTint();
     });
     botonSalir.on('pointerdown', () => {
-      window.location.href = '../../../index.php';
+      window.location.href = '../../../../index.html';
     });
 
 

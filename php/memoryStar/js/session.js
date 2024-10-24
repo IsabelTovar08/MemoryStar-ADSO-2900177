@@ -12,7 +12,7 @@ async function obtenerDatosUsuario() {
                 });
             }
         } else {
-            window.location.href = 'registro/login.html';
+            window.location.href = 'antesLogin.html';
         }
     } catch (error) {
         console.error('Error al obtener los datos del usuario:', error);
