@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../bootstrap/css/bootstrap.css">
+    <link rel="stylesheet" href="css/armarArma.css">
+</head>
+
+<body>
+    <!-- Button trigger modal -->
+    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#armarArma">
+        Launch demo modal
+    </button>
+
+    <!-- Modal -->
+    <div class="modal fade" id="armarArma" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <h1 class="titulo-arma" id="exampleModalLabel">Construye el arma</h1>
+                <div class="modal-body holis">
+
+                    <div class="contenedor-imagen">
+                        <img src="img/contono.png" alt="">
+                        <div class="contenedor-arma" id="lista1">
+
+                            <div class="dropzone posicion1" data-id="1"></div>
+                            <div class="dropzone posicion2" data-id="2"></div>
+                            <div class="dropzone posicion3" data-id="3"></div>
+                            <div class="dropzone posicion4" data-id="4"></div>
+                            <div class="dropzone posicion5" data-id="5"></div>
+                        </div>
+                    </div>
+
+                    <div class="contenedor-arma">
+                        <img src="img/boquilla.png" class="objeto1 arrastrable " data-id="1">
+                        <img src="img/cargador.png" class="objeto2 arrastrable " data-id="2">
+                        <img src="img/cuerpo.png" class="objeto3 arrastrable " data-id="3">
+                        <img src="img/culata.png" class="objeto4 arrastrable " data-id="4">
+                        <img src="img/mira.png" class="objeto5 arrastrable " data-id="5">
+                    </div>
+                    <button id="verificar">VERIFICAR</button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
+    <script src="js/interactJS.js"></script>
+    <script src="js/armarArma.js"></script>
+    <script src="../bootstrap/js/bootstrap.js"></script>
+</body>
+
+</html>

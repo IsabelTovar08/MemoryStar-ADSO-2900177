@@ -1,13 +1,13 @@
 #armarNave .modal-content  {
   border-radius: 40px;
-  background-image: url('/php/memoryStar/espacial/cartas/imgNave/fondonave.jpg');
+  background-image: url('../img/fondo2.png');
+  background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
   padding: 1rem;
 }
 
 .holis{
-  
   
   display: flex;
   
