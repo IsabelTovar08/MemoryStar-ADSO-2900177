@@ -5,16 +5,19 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="../bootstrap/css/bootstrap.css">
-    <link rel="stylesheet" href="css/armarArma.css">
+    <link rel="stylesheet" href="bootstrap/css/bootstrap.css">
+    <link rel="stylesheet" href="juego/espacial/armas/css/armarArma.css">
 </head>
 
 <body>
     <!-- Button trigger modal -->
-        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#armarArma">
-        Launch demo modal
-    </button>
 
+    <div class="contenido">
+        <h1 class="game-title">¿LISTO PARA EMPEZAR?</h1>
+        <button type="button" class="" data-bs-toggle="modal" data-bs-target="#armarArma">
+            <img src="img/iconos/play.png" alt="" class="">
+        </button>
+    </div>
     <!-- Modal -->
     <div class="modal fade" id="armarArma" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
 
@@ -24,7 +27,7 @@
                 <div class="modal-body holis">
 
                     <div class="contenedor-imagen">
-                        <img src="img/contono.png" alt="">
+                        <img src="juego/espacial/armas/img/contono.png" alt="">
                         <div class="contenedor-arma" id="lista1">
 
                             <div class="dropzone posicion1" data-id="1"></div>
@@ -36,11 +39,11 @@
                     </div>
 
                     <div class="contenedor-arma">
-                        <img src="img/boquilla.png" class="objeto1 arrastrable " data-id="1">
-                        <img src="img/cargador.png" class="objeto2 arrastrable " data-id="2">
-                        <img src="img/cuerpo.png" class="objeto3 arrastrable " data-id="3">
-                        <img src="img/culata.png" class="objeto4 arrastrable " data-id="4">
-                        <img src="img/mira.png" class="objeto5 arrastrable " data-id="5">
+                        <img src="juego/espacial/armas/img/boquilla.png" class="objeto1 arrastrable " data-id="1">
+                        <img src="juego/espacial/armas/img/cargador.png" class="objeto2 arrastrable " data-id="2">
+                        <img src="juego/espacial/armas/img/cuerpo.png" class="objeto3 arrastrable " data-id="3">
+                        <img src="juego/espacial/armas/img/culata.png" class="objeto4 arrastrable " data-id="4">
+                        <img src="juego/espacial/armas/img/mira.png" class="objeto5 arrastrable " data-id="5">
                     </div>
                     <button id="verificar">VERIFICAR</button>
                 </div>
@@ -50,9 +53,9 @@
     </div>
 
 
-    <script src="js/interactJS.js"></script>
-    <script src="js/armarArma.js"></script>
-    <script src="../bootstrap/js/bootstrap.js"></script>
+    <script src="juego/espacial/armas/js/interactJS.js"></script>
+    <script src="juego/espacial/armas/js/armarArma.js"></script>
+    <script src="bootstrap/js/bootstrap.js"></script>
 </body>
 
 </html>

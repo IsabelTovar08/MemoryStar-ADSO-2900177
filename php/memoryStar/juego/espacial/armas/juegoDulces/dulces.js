@@ -249,45 +249,7 @@ class MyScene extends Phaser.Scene {
 
     this.cameras.main.setBounds(0, config.height - 1300, 1450, 1300);
     this.cameras.main.startFollow(this.instanciaPersonaje.jugador);
-    // this.joystickBase = this.add.sprite(100, 500, 'joystickBase').setInteractive();
-    // this.joystickThumb = this.add.sprite(100, 500, 'joystickThumb').setInteractive();
 
-    // // Variables para manejar el joystick
-    // this.dragging = false;
-    // this.joystickRadius = 50; // Radio máximo del joystick
-
-    // // Eventos de entrada táctil para manejar el movimiento del joystick
-    // this.joystickThumb.on('pointerdown', (pointer) => {
-    //     this.dragging = true;
-    // });
-
-    // this.input.on('pointerup', () => {
-    //     this.dragging = false;
-    //     this.joystickThumb.setPosition(this.joystickBase.x, this.joystickBase.y); // Volver el joystick al centro
-    // });
-
-    // this.input.on('pointermove', (pointer) => {
-    //     if (this.dragging) {
-    //         // Calcular la distancia del dedo desde el centro del joystick
-    //         let deltaX = pointer.x - this.joystickBase.x;
-    //         let deltaY = pointer.y - this.joystickBase.y;
-    //         let distance = Math.sqrt(deltaX * deltaX + deltaY * deltaY);
-
-    //         // Limitar el movimiento del thumb del joystick al radio máximo
-    //         if (distance > this.joystickRadius) {
-    //             let angle = Math.atan2(deltaY, deltaX);
-    //             deltaX = Math.cos(angle) * this.joystickRadius;
-    //             deltaY = Math.sin(angle) * this.joystickRadius;
-    //         }
-
-    //         // Mover el thumb del joystick
-    //         this.joystickThumb.setPosition(this.joystickBase.x + deltaX, this.joystickBase.y + deltaY);
-
-    //         // Rotar el jugador en base a la dirección del joystick
-    //         let angleToPointer = Phaser.Math.Angle.Between(this.player.x, this.player.y, this.player.x + deltaX, this.player.y + deltaY);
-    //         this.player.setRotation(angleToPointer);
-    //     }
-    // });
   }
 
   update(time, delta) {
@@ -299,12 +261,6 @@ class MyScene extends Phaser.Scene {
     this.arma.y = this.instanciaPersonaje.jugador.y - 20;
     this.manejoPuntos.update(time, delta);
 
-
-    
-    // Simulación de recibir disparos (esto debería estar vinculado a alguna colisión o evento)
-    // if (/* condición para que el jugador reciba un disparo */) {
-    //     this.vidaJugador.receiveShot(); // Aplicar el daño
-    // }
   }
   rotarJugador(pointer) {
     // Rotar el jugador hacia el puntero del ratón

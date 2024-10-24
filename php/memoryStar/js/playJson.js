@@ -69,7 +69,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     juegoConfig.juegos.forEach((juego) => {
       resultadoMostrar += `
-                  <div class="option " data-bs-toggle="modal" data-bs-target="${juego.modalTarget}">
+                  <div class="option juegoUno" data-bs-toggle="modal" data-bs-target="${juego.modalTarget}">
                       <input type="radio" name="tipoJuego" id="${juego.value}" value="${juego.value}">
                       <label class="tarjetaOpcion" for="${juego.value}">
                           <img src="${juego.src}" alt="${juego.nombre}">

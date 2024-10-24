@@ -33,12 +33,12 @@ export class Personaje {
 
     this.scene.anims.create({
       key: 'mario-jump',
-      frames: [{ key: 'mario', frame: 5 }]
+      frames: [{ key: 'mario', frame: 4 }]
     });
 
     this.scene.anims.create({
       key: 'mario-dead',
-      frames: [{ key: 'mario', frame: 4 }]
+      frames: [{ key: 'mario', frame: 5 }]
     });
   }
 

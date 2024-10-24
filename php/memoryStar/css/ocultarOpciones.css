@@ -210,7 +210,30 @@ input[type="radio"] {
         background-color: #FF5252;
     }
 }
+.nave{
+    .tarjetaOpcion {
+        background-color: #f3beb4;
 
+    }
+    .romboide{
+        margin-left: -3vh;
+        width: 20vh;
+        background-color: #da0641;
+    }
+}
+.arma{
+    .tarjetaOpcion {
+        background-color: #b9b9b9;
+
+    }
+
+    .romboide {
+        margin-left: -3vh;
+        width: 20vh;
+        height: 7vh;
+        background-color: #7D7D7D;
+    }
+}
 .cardse {
     background-color: #7c98e6ce;
     border-radius: 20%;

@@ -71,6 +71,7 @@ btnVerificar.addEventListener("click", function () {
 
   if (correcto) {
     console.log("Todos los objetos están en las dropzones correctas.");
+    window.location.href = 'juego/espacial/armas/juegoDulces/index.html';
   } else {
     console.log("Algunos objetos no están en las dropzones correctas.");
   }

@@ -4,17 +4,17 @@
       "textoTematica": "Elije la temática",
       "opcionesCartas": [
         {
-          "nombre": "Mario Cartas",
-          "src": "img/gif/espacial.gif",
-          "descripcion": "juegoUno",
+          "nombre": "Arma tu nave",
+          "src": "juego/espacial/img/naveBien.png",
+          "descripcion": "nave",
           "id": "cartas",
           "value": "Cartas",
           "for": "cartas"
         },
         {
-          "nombre": "Mario Armas",
-          "src": "img/gif/espacial.gif",
-          "descripcion": "ninini",
+          "nombre": "Derrota al enemigo",
+          "src": "juego/espacial/img/enemigo.png",
+          "descripcion": "arma",
           "id": "arma",
           "value": "Arma",
           "for": "arma"

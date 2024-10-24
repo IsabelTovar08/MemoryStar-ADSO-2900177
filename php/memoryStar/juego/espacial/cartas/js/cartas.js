@@ -86,7 +86,6 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   // Array para almacenar el orden en que se muestran los mensajes
-  const ordenMensajes = [];
   let contar = 0;
   let titulos = [
     'PRIMERA PIEZA A ENSAMBLAR',

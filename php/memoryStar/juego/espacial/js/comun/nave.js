@@ -107,6 +107,6 @@ export class partesNave {
     }
 
     redirigir() {
-        window.location.href = "../juegoLava/index.html";
+        window.location.href = "../pruebaNave.html";
     }
 }

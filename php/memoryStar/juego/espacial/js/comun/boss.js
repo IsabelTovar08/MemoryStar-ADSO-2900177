@@ -7,7 +7,7 @@ export class Boss {
     this.boss = null;
     this.bossSpeed = 100;
     this.bossDirection = "left";
-    
+
     this.maxHealth = 100; // Vida máxima del boss
     this.bossHealthBar = null; // Barra de vida del boss
 
@@ -68,9 +68,11 @@ export class Boss {
       console.log("¡El Boss ha sido derrotado!");
       this.boss.disableBody(true, true); // Destruir el boss cuando su vida llegue a 0
       this.bossHealthBar.destroy(); // Destruir la barra de vida
-    }
-  }
+      this.scene.add.text(300, this.scene.scale.height - 500, "¡FELICIDADES, DERROTASTE AL ENEMIGO!", { fontSize: "60px", fill: "#fff", stroke: "#000", strokeThickness: 3 });
 
+
+  }
+}
   moverBoss() {
     this.scene.time.addEvent({
       delay: 70,
@@ -93,7 +95,7 @@ export class Boss {
       loop: true,
     });
   }
-  
+
 
   dispararProyectiles() {
     this.scene.time.addEvent({
@@ -107,10 +109,16 @@ export class Boss {
                 if (this.boss && this.boss.active) {
                   let projectile = this.projectileGroup.create(this.boss.x, this.boss.y, "projectile");
                   projectile.setScale(0.05); // Escala el proyectil
-                  this.scene.sound.add("disparo", { volume: 1 }).play();
+                  const disparo = this.scene.sound.add("disparo", { volume: 1 });
+                  disparo.play();
                   // Velocidad del proyectil, con una desviación aleatoria en el eje X
                   let randomXVelocity = Phaser.Math.Between(-100, 100); // Variación en la dirección
                   projectile.setVelocity(randomXVelocity, 200); // Hacer que caigan hacia abajo
+                  if (this.scene.instanciaPersonaje.jugador.isDead) {
+                    projectile.destroy();
+                    disparo.stop();
+                    console.log("jahdxsikj")
+                  }
                 }
               }
             });
@@ -119,6 +127,7 @@ export class Boss {
       },
       loop: true,
     });
+
   }
 
   reducirTiempoPorProyectil(jugador, projectile) {

@@ -100,12 +100,19 @@ export class ManejarPuntos {
   }
 
   confirmAction() {
-    this.tiempo = 25;
-    this.progress = 100;
-    this.diamantes -= 1;
-    this.diamantesText.setText(+ this.diamantes);
-    this.scene.sound.add("sonidoOxigeno", { volume: 0.2 }).play();
+    if(this.diamantes>0){
+      this.tiempo = 25;
+      this.progress = 100;
+      this.diamantes -= 1;
+      this.diamantesText.setText(+ this.diamantes);
+      this.scene.sound.add("sonidoOxigeno", { volume: 0.2 }).play();
+  
+    }else{
+    alert( "No tienes suficientes diamantes para comprar oxígeno.");
+    modalOxigeno.hide();
 
+    }
+    
   }
 
   deteriorarJugador() {
