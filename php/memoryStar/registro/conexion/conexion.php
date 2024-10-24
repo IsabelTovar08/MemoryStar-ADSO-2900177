@@ -19,7 +19,7 @@ class conexion {
             PDO::ATTR_ERRMODE =>PDO::ERRMODE_EXCEPTION,
             PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC
         ]);
-            echo 'conexion exitosa yei';
+            // echo 'conexion exitosa yei';
        }catch(PDOException $e){
             echo 'conexion fallida'. $e->getMessage();
        }
@@ -29,7 +29,8 @@ class conexion {
         $pdo =$this->conectar();
         $stmt= $pdo->prepare($sql);
         $stmt->execute($valores);
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 }
-$conexion = new conexion();
-$conexion->conectar();
+// $conexion = new conexion();
+// $conexion->conectar();
