@@ -5,7 +5,7 @@ document.addEventListener('DOMContentLoaded', function () {
     const modalContents = [
         "¡Bienvenido, explorador! Tu misión es encontrar las cartas que contienen pistas esenciales para ensamblar una nave espacial. Cada pareja de cartas que encuentres te acercará a tu objetivo.",
         "Comienza volteando las cartas para buscar parejas. Cuando encuentres una pareja, recibirás una pista que te mostrará el orden correcto para ensamblar la nave espacial. ¡Mantente atento a los detalles!",
-        "Una vez que hayas encontrado todas las parejas, serás transportado a la siguiente escena. Aquí deberás buscar las partes de la nave que corresponden a las pistas que has recogido."
+        "Una vez que hayas encontrado todas las parejas, serás transportado a la siguiente escena. Allí deberás buscar las partes de la nave que corresponden a las pistas que has recogido."
     ];
     
     let currentModalIndex = 0; // Índice del contenido actual del modal

@@ -358,3 +358,53 @@ body {
         margin-top: 15%;
     } */
 }
+/* From Uiverse.io by NorthFishHasNa */ 
+.siguiente button {
+  display: inline-block;
+  border-radius: 4px;
+  background-color: #67269c;
+  border: none;
+  color: #FFFFFF;
+  text-align: center;
+
+  transition: all 0.5s;
+  cursor: pointer;
+  margin: 5px;
+ }
+ button{
+  width: auto;
+  height: 6vh;
+  padding: 2%;
+
+ }
+ .siguiente button span {
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  transition: 0.5s;
+  font-size: 3vh;
+
+ }
+ 
+ .siguiente button span:after {
+  content: '»';
+  position: absolute;
+  opacity: 0;
+  top: 0;
+  right: -15px;
+  transition: 0.5s;
+ }
+ 
+ .siguiente button:hover span {
+  padding-right: 15px;
+  transform: translateX(-1vh);
+ }
+ 
+ .siguiente button:hover span:after {
+  opacity: 1;
+  right: 0;
+ }
+ .omitir{
+  background-color: #ffffff00 !important;
+  border: none;
+ }

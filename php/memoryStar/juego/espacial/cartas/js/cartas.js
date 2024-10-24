@@ -71,11 +71,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
         if (aciertos === totalAciertos) {
           setTimeout(() => {
-            const mensajeDiv = document.getElementById(`mensaje10`);
-            mensajeDiv.style.display = "block";
-          }, 5000);
-
-          setTimeout(() => {
             window.location.href = "./juego/espacial/cartas/juegoPixel/index.html";
           }, 7000);
         }
@@ -92,6 +87,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // Array para almacenar el orden en que se muestran los mensajes
   const ordenMensajes = [];
+  let contar = 0;
   let titulos = [
     'PRIMERA PIEZA A ENSAMBLAR',
     'SEGUNDA PIEZA A ENSAMBLAR',
@@ -107,39 +103,40 @@ document.addEventListener("DOMContentLoaded", function () {
       "Alas: Proporcionan estabilidad y control durante el descenso y aterrizaje en la Tierra."
     ];
 
-    // Filtrar los mensajes ya mostrados para que no se repitan
-    const mensajesRestantes = mensajes.filter(mensaje => !ordenMensajes.includes(mensaje));
+    // Filtrar los índices ya usados para que no se repitan
+    const indicesRestantes = mensajes
+        .map((_, index) => index) // Crear un array de índices
+        .filter(index => !ordenMensajes.includes(index)); // Excluir los índices ya seleccionados
 
     // Si ya se han mostrado todos los mensajes, no hacer nada
-    if (mensajesRestantes.length === 0) return;
+    if (indicesRestantes.length === 0) return;
 
-    // Seleccionar aleatoriamente un mensaje de los restantes
-    const elegido = Math.floor(Math.random() * mensajesRestantes.length);
+    // Seleccionar aleatoriamente un índice de los restantes
+    const elegido = Math.floor(Math.random() * indicesRestantes.length);
+    const indiceSeleccionado = indicesRestantes[elegido];
 
-    // Guardar el mensaje en el array 'ordenMensajes'
-    ordenMensajes.push(mensajesRestantes[elegido]);
+    // Guardar el índice seleccionado en 'ordenMensajes' para evitar repeticiones
+    ordenMensajes.push(indiceSeleccionado);
 
-    // Mostrar el mensaje correspondiente
-    const mensajeDiv = document.getElementById(`mostrarParte`);
-    const mensajeText = document.getElementById(`mensajeTexto${ordenMensajes.length}`);
-    const titulo = document.getElementById(`titulo${ordenMensajes.length}`);
-
-    // const modalOrden = document.getElementById('ordenNave');
-
+    // Mostrar el mensaje correspondiente usando el índice seleccionado
+    const mensajeDiv = document.getElementById('mostrarParte');
+    const mensajeText = document.getElementById('mensajeTexto1');
+    const titulo = document.getElementById('titulo1');
 
     if (mensajeDiv) {
+      mensajeText.textContent = mensajes[indiceSeleccionado];
+      titulo.textContent = titulos[contar];
+      mensajeDiv.style.display = 'block';
 
-      mensajeText.textContent = mensajesRestantes[elegido];
-      titulo.textContent = "hjgyguj";
-      // mensajeDiv.textContent = titulos[0];
-      mensajeDiv.style.display = "block";
-      // modalOrden.style.display = "block";
-
+      // Ocultar el mensaje después de 5 segundos
       setTimeout(() => {
-        mensajeDiv.style.display = "none";
-      }, 5000); // Mostrar el mensaje durante 5 segundos
+        mensajeDiv.style.display = 'none';
+      }, 5000);
     }
-  }
+
+    contar++;
+    console.log(ordenMensajes); // Verificar el orden de los índices seleccionados
+}
 
   // Vincular eventos de clic a las cartas después de mezclar
   function inicializarJuego() {

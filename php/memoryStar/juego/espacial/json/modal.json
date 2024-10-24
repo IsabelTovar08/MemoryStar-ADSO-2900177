@@ -12,24 +12,24 @@
         "partesNave": [
             {
                 "ids":"modalObjeto1",
-                "texto": "Felicidades Primer objeto"
+                "texto": "Felicidades, has recolectado las alas."
             },
             {
                 "ids":"modalObjeto2",
-                "texto": "Felicidades Segundo objeto"
+                "texto": "Felicidades, has recolectado los propulsores."
             },
             {
                 "ids":"modalObjeto3",
-                "texto": "Felicidades Tercer objeto"
+                "texto": "Felicidades, has recolectado la cabina."
             },
             {
                 "ids":"modalObjeto4",
-                "texto": "Felicidades Cuarto objeto"
+                "texto": "Felicidades, has recolectado la dorsal."
             }
         ],
         "redireccion":{
             "id":"modalRedireccion",
-            "texto":"A continuación serás redirigido a la siguiente fase del juego.",
+            "texto":"A continuación serás redirigido a la siguiente fase del juego. ¿Estás listo para la siguiente aventura?",
             "id2":"aceptarRedireccion"
         }
     }

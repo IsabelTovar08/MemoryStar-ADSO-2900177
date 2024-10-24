@@ -53,8 +53,8 @@ class MyScene extends Phaser.Scene {
 
       this.load.image('alas', '../../img/alasC.png');
       this.load.image('propulsores', '../../img/propulsores.png');
-      this.load.image('cabina', '../../img/cabina.png');
-      this.load.image('cubierta', '../../img/cubierta.png');
+      this.load.image('cabina', '../../img/cabinaN.png');
+      this.load.image('cubierta', '../../img/cuerpoNave.png');
 
       this.load.image('diamante', '../../img/diamante.png');
       this.load.image('temporizador', '../../img/tiempo.png');
@@ -104,8 +104,8 @@ class MyScene extends Phaser.Scene {
 
       this.object1 = this.physics.add.image(Phaser.Math.Between(700, 1100), config.height - 300, 'alas').setScale(0.15);
       this.object2 = this.physics.add.image(Phaser.Math.Between(80, 380), config.height - 400, 'propulsores').setScale(0.6);
-      this.object3 = this.physics.add.image(Phaser.Math.Between(400, 500), config.height - 500, 'cabina').setScale(0.6);
-      this.object4 = this.physics.add.image(Phaser.Math.Between(900, 1300), config.height - 500, 'cubierta').setScale(0.8);
+      this.object3 = this.physics.add.image(Phaser.Math.Between(400, 500), config.height - 500, 'cabina').setScale(0.5);
+      this.object4 = this.physics.add.image(Phaser.Math.Between(900, 1300), config.height - 500, 'cubierta').setScale(0.35);
 
 
       this.floor = this.physics.add.staticGroup();

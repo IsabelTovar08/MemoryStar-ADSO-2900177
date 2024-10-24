@@ -42,8 +42,8 @@ export class partesNave {
     addPartesNave() {
         this.nave = this.scene.add.image(23, 77, 'alas').setScale(0.1).setTint(0x505050).setScrollFactor(0).setOrigin(0, 0);
         this.propulsores = this.scene.add.image(23, 140, 'propulsores').setScale(0.55).setTint(0x505050).setScrollFactor(0).setOrigin(0, 0);
-        this.cabina = this.scene.add.image(23, 190, 'cabina').setScale(0.45).setTint(0x505050).setScrollFactor(0).setOrigin(0, 0);
-        this.cubierta = this.scene.add.image(23, 250, 'cubierta').setScale(0.7).setTint(0x505050).setScrollFactor(0).setOrigin(0, 0);
+        this.cabina = this.scene.add.image(23, 190, 'cabina').setScale(0.4).setTint(0x505050).setScrollFactor(0).setOrigin(0, 0);
+        this.cubierta = this.scene.add.image(23, 250, 'cubierta').setScale(0.23).setTint(0x505050).setScrollFactor(0).setOrigin(0, 0);
     }
 
     adjustForMobile() {
