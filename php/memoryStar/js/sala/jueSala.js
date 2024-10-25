@@ -245,7 +245,7 @@ function procesarEleccion(juegoSeleccionado) {
   );
 
   // Redirigir a la página correspondiente
-  window.location.href = `${juegoSeleccionado}${tematicaSeleccionada}${nivelSeleccionado}.html`;
+  window.location.href = `juego/juegoOrdenar/${juegoSeleccionado}${tematicaSeleccionada}${nivelSeleccionado}.html`;
 }
 function procesarEleccionEspacial(juegoSeleccionado) {
   let tematicaSeleccionada = document.querySelector(
@@ -264,6 +264,6 @@ function procesarEleccionEspacial(juegoSeleccionado) {
   );
 
   // Redirigir a la página correspondiente
-  window.location.href = `${juegoSeleccionado}${tematicaSeleccionada}.php`;
+  window.location.href = `${juegoSeleccionado}${tematicaSeleccionada}.html`;
 }
 })

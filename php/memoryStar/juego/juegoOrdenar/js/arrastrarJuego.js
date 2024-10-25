@@ -103,7 +103,7 @@ window.addEventListener("DOMContentLoaded", function () {
 });
 
 // BARRA
-let tiempoRestante = 10;
+let tiempoRestante = 30;
 const barraRegresiva = document.getElementById("countdown-bar");
 const textoRegresivo = document.getElementById("countdown-text");
 

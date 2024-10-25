@@ -42,11 +42,12 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // Función para voltear las cartas
   function voltearCarta(carta) {
-    const bieen = document.getElementById('voltear');
+    const bieen = document.getElementById("voltear");
     bieen.play();
 
     // Si la carta ya está emparejada o hay dos cartas volteadas, no hacer nada
-    if (carta.classList.contains("emparejada") || cartasVolteadas.length === 2) return;
+    if (carta.classList.contains("emparejada") || cartasVolteadas.length === 2)
+      return;
 
     carta.classList.add("volteada");
     cartasVolteadas.push(carta);
@@ -58,7 +59,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
       // Verificar que las dos cartas tengan el mismo "data-id" y que sean efectivamente diferentes cartas
       if (idPrimeraCarta === idSegundaCarta && primeraCarta !== segundaCarta) {
-        const bieen = document.getElementById('bien');
+        const bieen = document.getElementById("bien");
         bieen.play();
         aciertos++;
 
@@ -71,7 +72,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
         if (aciertos === totalAciertos) {
           setTimeout(() => {
-            window.location.href = "./juego/espacial/cartas/juegoPixel/index.html";
+            window.location.href =
+              "./juego/espacial/cartas/juegoPixel/index.html";
           }, 7000);
         }
       } else {
@@ -86,12 +88,14 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   // Array para almacenar el orden en que se muestran los mensajes
+  const ordenMensajes = [];
+
   let contar = 0;
   let titulos = [
-    'PRIMERA PIEZA A ENSAMBLAR',
-    'SEGUNDA PIEZA A ENSAMBLAR',
-    'TERCERA PIEZA A ENSAMBLAR',
-    'CUARTA PIEZA A ENSAMBLAR'
+    "PRIMERA PIEZA A ENSAMBLAR",
+    "SEGUNDA PIEZA A ENSAMBLAR",
+    "TERCERA PIEZA A ENSAMBLAR",
+    "CUARTA PIEZA A ENSAMBLAR",
   ];
 
   function mostrarMensaje(aciertos) {
@@ -99,14 +103,13 @@ document.addEventListener("DOMContentLoaded", function () {
       "Cabina: El área donde los astronautas controlan la nave. Lleno de pantallas y botones",
       "Dorsal: La función del dorsal de una nave es alojar paneles, sensores o sistemas estructurales clave",
       "Propulsores: La parte trasera que contiene los motores, responsables de empujar la nave hacia adelante.",
-      "Alas: Proporcionan estabilidad y control durante el descenso y aterrizaje en la Tierra."
+      "Alas: Proporcionan estabilidad y control durante el descenso y aterrizaje en la Tierra.",
     ];
 
-    const ordenMensajes = [];
     // Filtrar los índices ya usados para que no se repitan
     const indicesRestantes = mensajes
-        .map((_, index) => index) // Crear un array de índices
-        .filter(index => !ordenMensajes.includes(index)); // Excluir los índices ya seleccionados
+      .map((_, index) => index) // Crear un array de índices
+      .filter((index) => !ordenMensajes.includes(index)); // Excluir los índices ya seleccionados
 
     // Si ya se han mostrado todos los mensajes, no hacer nada
     if (indicesRestantes.length === 0) return;
@@ -119,24 +122,24 @@ document.addEventListener("DOMContentLoaded", function () {
     ordenMensajes.push(indiceSeleccionado);
 
     // Mostrar el mensaje correspondiente usando el índice seleccionado
-    const mensajeDiv = document.getElementById('mostrarParte');
-    const mensajeText = document.getElementById('mensajeTexto1');
-    const titulo = document.getElementById('titulo1');
+    const mensajeDiv = document.getElementById("mostrarParte");
+    const mensajeText = document.getElementById("mensajeTexto1");
+    const titulo = document.getElementById("titulo1");
 
     if (mensajeDiv) {
       mensajeText.textContent = mensajes[indiceSeleccionado];
       titulo.textContent = titulos[contar];
-      mensajeDiv.style.display = 'block';
+      mensajeDiv.style.display = "block";
 
       // Ocultar el mensaje después de 5 segundos
       setTimeout(() => {
-        mensajeDiv.style.display = 'none';
+        mensajeDiv.style.display = "none";
       }, 5000);
     }
 
     contar++;
     console.log(ordenMensajes); // Verificar el orden de los índices seleccionados
-}
+  }
 
   // Vincular eventos de clic a las cartas después de mezclar
   function inicializarJuego() {
@@ -150,4 +153,48 @@ document.addEventListener("DOMContentLoaded", function () {
   // Iniciar el juego
   mezclarCartas();
   inicializarJuego();
+  //nave
+  const btnVeri = document.getElementById("verificar");
+  // const ordenCorrect = [1, 2, 3, 4];
+  let ordenActual;
+
+  const lista = document.getElementById("lista1");
+  Sortable.create(lista, {
+    animation: 250,
+    store: {
+      set: (sortable) => {
+        ordenActual = sortable.toArray();
+        console.log(ordenActual);
+      },
+    },
+  });
+
+  let aciertosNave = 0;
+
+  // verificar
+  btnVeri.addEventListener("click", function () {
+    aciertosNave = 0;
+    ordenActual = Sortable.get(lista).toArray();
+    const cuadros = document.querySelectorAll(".cuadro");
+
+    ordenActual.forEach((id, index) => {
+      const cuadro = cuadros[index];
+      cuadro.classList.remove("mal");
+      if (parseInt(id) === ordenMensajes[index]) {
+        aciertosNave += 1;
+      } else {
+        cuadro.classList.add("mal");
+      }
+    });
+
+    if (aciertos === ordenMensajes.length) {
+      alert("¡Correcto! Has acertado en todas las posiciones.");
+    } else {
+      alert(
+        `Has acertado en ${aciertos} de ${ordenMensajes.length} posiciones.`
+      );
+    }
+  });
 });
+
+//nave

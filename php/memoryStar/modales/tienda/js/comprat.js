@@ -5,7 +5,7 @@ let unlockedItems = JSON.parse(localStorage.getItem('unlockedItems')) || [];
 
 // Cargar el JSON de los ítems y renderizar la tienda
 function loadItems() {
-  fetch('jsontienda/items.json')
+  fetch('modales/tienda/jsontienda/items.json')
     .then(response => response.json())
     .then(data => {
       items = data;

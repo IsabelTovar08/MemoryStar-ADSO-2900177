@@ -1,6 +1,6 @@
 // Función para cargar y renderizar los ítems de perfil desde el JSON
 function renderProfileItems() {
-  fetch('jsontienda/perfil_items.json')
+  fetch('js/perfil/jsontienda/perfil_items.json')
     .then(response => response.json())
     .then(profileItems => {
       const modalContainer = document.querySelector(".modal-profile-items");
