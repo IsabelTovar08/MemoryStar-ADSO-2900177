@@ -1,15 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    
+
     <link rel="stylesheet" href="../bootstrap/css/bootstrap.css">
     <link rel="stylesheet" href="css/armarNave.css">
     <link rel="stylesheet" href="../../../css/estilosInicio.css">
 
 </head>
+
+<body>
 <body style="background-image: url('../../../img/fondos/nuevoFondoS.png');">
     <nav class="nav flex-column apartado-iconos">
         <img id="controlMusica" src="../../../img/iconos/musicaApagada.png" alt="Reproducir" class="iconos efectosIconos">
@@ -38,6 +41,12 @@
 
     <!-- Modal -->
 
+    <div class="nave">
+        <h1 class="titulo-nave">Arma la nave</h1>
+        <div class="holis">
+            <div class="contenedor-armar">
+                <img src="img/nave.png" alt="">
+            </div>
             <div class="nave">
                 <h1 class="titulo-nave">Arma la nave</h1>
                     <div class="holis">
@@ -45,23 +54,33 @@
                             <img src="img/nave.png" alt="">
                         </div>
 
-                        <div class="contenedor-nave" id="lista1">
-                            <img src="img/Calas.png" alt="" class="cuadro" data-id="0">
-                            <img src="img/Ccabina.png" alt="" class="cuadro" data-id="1">
-                            <img src="img/Cdorsal.png" alt="" class="cuadro" data-id="2">
-                            <img src="img/Cpropulsor.png" alt="" class="cuadro" data-id="3">
-                        </div>
-                        <button id="verificar">VERIFICAR</button>
-                    </div>
-                    
+            <div class="contenedor-nave" id="lista1">
+                <div class="cuadro" data-id="0">
+                    CABINA
                 </div>
-        
+                <div class="cuadro" data-id="1">
+                    DORSAL
+                </div>
+                <div class="cuadro" data-id="2">
+                    PROPULSOR
+                </div>
+                <div class="cuadro" data-id="3">
+                    ALAS
+                </div>
+                
+            </div>
+            <button id="verificar">VERIFICAR</button>
+        </div>
 
-        
-        <script src="js/Sortable.min.js"></script>
-        <script src="js/armarNave.js"></script>
-        <script src="../bootstrap/js/bootstrap.js"></script>
-        <script src="js/cartas.js"></script>
+    </div>
+
+
+
+    <script src="js/Sortable.min.js"></script>
+    <script src="js/armarNave.js"></script>
+    <script src="../bootstrap/js/bootstrap.js"></script>
+    <script src="js/cartas.js"></script>
 
 </body>
+
 </html>

@@ -16,6 +16,8 @@ document.addEventListener("DOMContentLoaded", function () {
     const lista = document.getElementById("lista1");
     Sortable.create(lista, {
       animation: 250,
+      chosenClass: "seleccionado",
+      dragClass: "drag",
       store: {
         set: (sortable) => {
           ordenActual = sortable.toArray();
