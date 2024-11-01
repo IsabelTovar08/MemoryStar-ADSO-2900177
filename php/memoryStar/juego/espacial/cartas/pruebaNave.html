@@ -7,18 +7,30 @@
     
     <link rel="stylesheet" href="../bootstrap/css/bootstrap.css">
     <link rel="stylesheet" href="css/armarNave.css">
+    <link rel="stylesheet" href="../../../css/estilosInicio.css">
 
 </head>
-<body style="    background-image: url('../../../img/fondos/nuevoFondoS.png');
-margin: 0;
-padding: 0;
-width: 100vw;
-height: 100vh;
-background-size: cover;
-background-position: center;
-background-repeat: no-repeat;
-font-family: cursive;
-overflow: hidden;">
+<body style="background-image: url('../../../img/fondos/nuevoFondoS.png');">
+    <nav class="nav flex-column apartado-iconos">
+        <img id="controlMusica" src="../../../img/iconos/musicaApagada.png" alt="Reproducir" class="iconos efectosIconos">
+        <img src="../../../img/iconos/ajustesN.png" alt="Ajustes" class="iconos efectosIconos" data-bs-toggle="collapse"
+            data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+        <!-- <div class=""> -->
+        <div class="collapse" id="collapseExample" style="width: 500%;">
+            <div class="card card-body color">
+                <div class="col-12 row">
+                    <div class="col-5">Música</div>
+                    <div class="col-6"><input type="range" class="secondary" id="volumenMusica" min="0" max="1"
+                            step="0.1" value="1"></div>
+                </div>
+                <div class="col-12 row">
+                    <div class="col-5">Sonido</div>
+                    <div class="col-6"><input type="range" id="volumenSonido" min="0" max="1" step="0.1" value="1">
+                    </div>
+                </div>
+                <button id="botonSilencio" class="btn btn-primary">Silenciar</button>
+            </div>
+    </nav>
     <!-- Button trigger modal -->
     <!-- <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#armarNave">
         Launch demo modal
@@ -26,9 +38,9 @@ overflow: hidden;">
 
     <!-- Modal -->
 
-            <div class="modal-content" style="background-color: #ffffff00;">
-                <h1 class="titulo-nave" id="exampleModalLabel">Arma la nave</h1>
-                    <div class="modal-body holis">
+            <div class="nave">
+                <h1 class="titulo-nave">Arma la nave</h1>
+                    <div class="holis">
                         <div class="contenedor-armar">
                             <img src="img/nave.png" alt="">
                         </div>

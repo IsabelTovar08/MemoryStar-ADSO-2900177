@@ -16,8 +16,14 @@ export class Boss {
   }
 
   crearBoss(x, y) {
+    // Lista de posibles sprites para el jefe
+    const spritesBoss = ["boss1", "boss2", "boss3"]; // Cambia los nombres según tus sprites disponibles
+
+    // Selecciona un sprite aleatorio de la lista
+    const spriteAleatorio = spritesBoss[Math.floor(Math.random() * spritesBoss.length)];
+
     this.boss = this.scene.physics.add
-      .sprite(x, y, "boss")
+      .sprite(x, y, spriteAleatorio)
       .setScale(0.1)
       .setCollideWorldBounds(true);
 

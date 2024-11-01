@@ -15,24 +15,33 @@ body {
   overflow: hidden;
   
 }
+.modal{
+  background-color: #0044ff0a;
+}
 #armarArma .modal-content {
   position: relative;
   border-radius: 40px;
-  background-image: url("../img/fondo2.png");
+  border: 4px solid #00374db4;
+  outline: 2px solid #bae0f7;
+  background-image: url("../img/fondo.jpg");
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
-  padding: 2rem;
+  /* padding: 2rem; */
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
   height: 65vh;
-  width: 65vh;
+  /* width: 65vh; */
   margin: 0;
   touch-action: none;
+  box-shadow: 0 0 20px #000;
+  transition: transform 0.3s;
 }
-
+#armarArma .modal-content:hover{
+  transform: scale(1.03);
+}
 .holis {
   display: flex;
 
@@ -174,7 +183,7 @@ body {
 }
 .game-title {
   font-family: 'Arial', sans-serif;
-  font-size: 6vh;
+  font-size: 8.5vh;
   font-weight: bold;
   color: #d4e8ff;
   /* Color azul */
@@ -229,4 +238,173 @@ button{
   align-items: center;
 height: 100vh;
 flex-direction: column;
+}
+
+button#space-btn {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  overflow: hidden;
+  border: 0;
+  outline: 0;
+  border-radius: 3vh;
+  background: #03001e;
+  background: linear-gradient(100deg, #ffc578ab, #53399b);
+  box-shadow: 0 0 10px #251f02, 0 0 50px #040118 ;
+  cursor: url('../img/iconos/cursor.cur'), auto;
+  border: 2px solid #221974;
+  cursor: pointer;
+}
+
+.btn-container {
+  width: 30vh;
+  height: 60px;
+  position: relative;
+  overflow: visible;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.btn-container::after {
+  content: "";
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  left: 0;
+  top: 20px;
+  z-index: -1;
+  background: #03001e;
+  background: linear-gradient(80deg, #7303c0, #03001e);
+  filter: blur(20px);
+  opacity: 0;
+}
+
+.btn-container:hover {
+  transform: scale(1.1);
+  transition: all 0.6s cubic-bezier(0.15, 0.83, 0.66, 1);
+}
+
+.btn-container:hover:after {
+  transition: all 0.6s cubic-bezier(0.15, 0.83, 0.66, 1);
+  opacity: 1;
+}
+
+.btn-container:active {
+  transform: scale(1);
+}
+
+.btn-container:active:after {
+  opacity: 0;
+}
+
+button span {
+  color: white;
+  font-weight: 700;
+  font-size: 5vh;
+  text-shadow: 0 0 7px #000;
+}
+
+button#space-btn div.star {
+  width: 1px;
+  height: 1px;
+  background-color: white;
+  border-radius: 50%;
+  animation: blink 2s cubic-bezier(0.15, 0.83, 0.66, 1) infinite;
+}
+
+button#space-btn div.shooting-star {
+  width: 80px;
+  height: 1px;
+  position: absolute;
+  background: linear-gradient(80deg, #ffffffff, #ffffff00);
+  border-radius: 50%;
+  transform: rotate(-40deg);
+  opacity: 0;
+}
+
+button#space-btn div.shooting-star-1 {
+  animation: fallingStar1 4s 6s cubic-bezier(0.15, 0.83, 0.66, 1) infinite;
+}
+
+button#space-btn div.shooting-star-2 {
+  animation: fallingStar2 2s 10s cubic-bezier(0.15, 0.83, 0.66, 1) infinite;
+}
+
+button#space-btn div.shooting-star-3 {
+  animation: fallingStar3 8s 20s cubic-bezier(0.15, 0.83, 0.66, 1) infinite;
+}
+
+button#space-btn div.shooting-star-4 {
+  animation: fallingStar4 4s 6s cubic-bezier(0.15, 0.83, 0.66, 1) infinite;
+}
+
+@keyframes blink {
+  0% {
+    box-shadow: 0 0 10px 0 white;
+  }
+
+  50% {
+    box-shadow: 0 0 10px 2px white;
+  }
+
+  100% {
+    box-shadow: 0 0 10px 0 white;
+  }
+}
+
+@keyframes fallingStar1 {
+  0% {
+    top: -10px;
+    left: 220px;
+    opacity: 1;
+  }
+
+  100% {
+    top: 200px;
+    left: -20px;
+    opacity: 1;
+  }
+}
+
+@keyframes fallingStar2 {
+  0% {
+    top: -10px;
+    left: 150px;
+    opacity: 1;
+  }
+
+  100% {
+    top: 200px;
+    left: -90px;
+    opacity: 1;
+  }
+}
+
+@keyframes fallingStar3 {
+  0% {
+    top: -10px;
+    left: 80px;
+    opacity: 1;
+  }
+
+  100% {
+    top: 200px;
+    left: -160px;
+    opacity: 1;
+  }
+}
+
+@keyframes fallingStar4 {
+  0% {
+    top: -10px;
+    left: 0px;
+    opacity: 1;
+  }
+
+  100% {
+    top: 200px;
+    left: -240px;
+    opacity: 1;
+  }
 }

@@ -1,7 +1,7 @@
 import { Personaje } from "../../js/comun/animations.js";
 import { ManejarPuntos } from "../../js/comun/crearPuntos.js";
 import { estrellasFondo } from "../../js/comun/estrellasFondo.js";
-import { createPlatforms } from "../../super-midu-bros-main/plataformas.js";
+import { createPlatforms } from "./plataformas.js";
 import { creacionRecolectables } from "../../js/comun/basePuntos.js";
 import { UIElementsBarras } from "../../js/comun/crearBarras.js";
 import { Boss } from "../../js/comun/boss.js";
@@ -17,7 +17,10 @@ class MyScene extends Phaser.Scene {
   preload() {
     this.load.image("star", "../../super-midu-bros-main/planetas/estrella.png");
     this.load.spritesheet("mario","../../img/vacaUltima.png", { frameWidth: 365, frameHeight: 412 });
-    this.load.image("boss", "../../img/enemigo.png");
+    this.load.image("boss1", "../../img/enemigo.png");
+    this.load.image("boss2", "imgDulces/pCaramel.png");
+    this.load.image("boss3", "imgDulces/caramelo.png");
+
     this.load.audio('sonido', '../../sonidos/recolectar.mp3');
     this.load.audio('coin', '../../sonidos/coin.mp3');
     this.load.audio('soundCoin', '../../sonidos/soundCoin.mp3');
@@ -60,6 +63,8 @@ class MyScene extends Phaser.Scene {
     this.load.image("chispas", "imgDulces/arbol-chispas.png");
     this.load.image("casa", "imgDulces/casa.png");
     this.load.image("dona-2", "imgDulces/dona-2.png");
+    this.load.image("dona-medio", "imgDulces/dona-2-medio.png");
+
     this.load.image("media-dona", "imgDulces/media-dona.png");
     this.load.image("flor", "imgDulces/flor.png");
     this.load.image("fondo", "imgDulces/fondoo.png");
@@ -110,12 +115,12 @@ class MyScene extends Phaser.Scene {
       .image(700, config.height - 240, "piedraC")
       .setScale(0.07)
       .setAlpha(0.8);
-    this.add.image(200, config.height - 85, "media-dona").setScale(0.6);
+    this.add.image(200, config.height - 97, "media-dona").setScale(0.7);
 
-    this.add.image(300, config.height - 85, "media-dona").setScale(0.6);
+    this.add.image(300, config.height - 97, "media-dona").setScale(0.7);
 
-    this.add.image(400, config.height - 85, "media-dona").setScale(0.6);
-    this.add.image(500, config.height - 85, "media-dona").setScale(0.6);
+    this.add.image(400, config.height - 97, "media-dona").setScale(0.7);
+    this.add.image(500, config.height - 97, "media-dona").setScale(0.7);
     this.add
       .image(250, config.height - 108, "arbol-verde")
       .setScale(0.2)
