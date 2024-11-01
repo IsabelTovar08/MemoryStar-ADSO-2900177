@@ -139,6 +139,28 @@ document.addEventListener("DOMContentLoaded", function () {
 
     contar++;
     console.log(ordenMensajes); // Verificar el orden de los índices seleccionados
+
+    if (ordenMensajes.length === 4) {
+      const ordenDef = ordenMensajes;
+      console.log(ordenDef);
+
+      if (ordenMensajes.length === 4) {
+        const ordenDef = ordenMensajes;
+        console.log(ordenDef);
+    
+        // Enviar `ordenDef` al servidor
+        fetch('juego/espacial/cartas/php/almacenar_orden.php', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ ordenDef })
+        })
+        .then(response => response.json())
+        .then(data => console.log(data.status)); // Debería mostrar "success"
+    }
+    
+    }
   }
 
   // Vincular eventos de clic a las cartas después de mezclar
@@ -153,48 +175,6 @@ document.addEventListener("DOMContentLoaded", function () {
   // Iniciar el juego
   mezclarCartas();
   inicializarJuego();
-  //nave
-  const btnVeri = document.getElementById("verificar");
-  // const ordenCorrect = [1, 2, 3, 4];
-  let ordenActual;
-
-  const lista = document.getElementById("lista1");
-  Sortable.create(lista, {
-    animation: 250,
-    store: {
-      set: (sortable) => {
-        ordenActual = sortable.toArray();
-        console.log(ordenActual);
-      },
-    },
-  });
-
-  let aciertosNave = 0;
-
-  // verificar
-  btnVeri.addEventListener("click", function () {
-    aciertosNave = 0;
-    ordenActual = Sortable.get(lista).toArray();
-    const cuadros = document.querySelectorAll(".cuadro");
-
-    ordenActual.forEach((id, index) => {
-      const cuadro = cuadros[index];
-      cuadro.classList.remove("mal");
-      if (parseInt(id) === ordenMensajes[index]) {
-        aciertosNave += 1;
-      } else {
-        cuadro.classList.add("mal");
-      }
-    });
-
-    if (aciertos === ordenMensajes.length) {
-      alert("¡Correcto! Has acertado en todas las posiciones.");
-    } else {
-      alert(
-        `Has acertado en ${aciertos} de ${ordenMensajes.length} posiciones.`
-      );
-    }
-  });
 });
 
 //nave
