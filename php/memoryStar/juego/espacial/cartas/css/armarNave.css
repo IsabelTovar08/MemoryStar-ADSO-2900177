@@ -11,35 +11,44 @@ body {
   overflow: hidden;
   display: flex;
   align-items: center;
+  justify-content: center;
 }
 
 .nave {
   /* background: none; */
   display: block;
-  margin: 0 auto;
-  /* flex-direction: column; */
+  align-items: center;
+  flex-direction: column;
 
-  width: 50vh;
+  width: 55vh;
   /* margin-top: 10vh; */
 }
 
 .holis {
 
-  display: flex;
-
+  
+display: flex;
   align-items: center;
   flex-direction: column;
 }
 
 .titulo-nave {
-
   font-size: 5vh;
-  text-align: center;
-  color: #ffff;
+  color: #ffffff;
   background: linear-gradient(135deg, #000020, #001a4d);
-  border: 4px solid #ffff;
+  border: 4px solid #ffffff;
   border-radius: 20px;
-  padding: 0.2rem 0.5rem;
+  padding: 0.5rem 1rem;
+  text-shadow: 3px 3px 8px rgba(95, 230, 237, 0.8);
+  letter-spacing: 0.1rem;
+  transition: color 0.3s ease, text-shadow 0.3s ease;
+  text-transform: uppercase;
+  text-align: center;
+}
+
+.titulo-nave:hover {
+  color: #ffffff;
+  text-shadow: 5px 5px 15px rgb(46, 255, 252);
 }
 
 .contenedor-armar img {
@@ -57,30 +66,35 @@ body {
 }
 
 .cuadro {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   margin: 5px;
-  width: 15vh;
-  height: auto;
+  padding: 1rem 0rem;
+  width: 17vh;
+  border-radius: 20px;
+  background-color: #4a90e2;  /* Fondo azul claro */
+  border: 3px solid #1c3d5a;  /* Borde azul oscuro */
+  color: #ffffff;             /* Texto blanco para buen contraste */
+  font-weight: bold;
+  font-size: 1rem;
+  cursor: pointer;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3); /* Sombra sutil */
 }
+
 
 #verificar {
   font-size: 3vh;
+  color: #ffffff;
   background: linear-gradient(135deg, #000020, #001a4d);
-  /* Degradado verde */
-
-  border: none;
+  border: 3px solid #ffffff;
   border-radius: 20px;
-  /* Bordes redondeados */
-  color: white;
-  /* Color del texto */
-  font-family: Arial, sans-serif;
-  /* Fuente del texto */
-  font-weight: bold;
-  /* Texto en negrita */
-  padding: 5px 5px;
-  /* Espaciado interno del botón */
+  padding: 0.5rem 1rem;
+  text-shadow: 3px 3px 8px rgba(95, 230, 237, 0.8);
+  letter-spacing: 0.1rem;
+  transition: color 0.3s ease, text-shadow 0.3s ease;
+  text-transform: uppercase;
   text-align: center;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
-  /* Sombra */
   cursor: pointer;
 
 
@@ -89,7 +103,8 @@ body {
 
 #verificar:hover {
   background: linear-gradient(to bottom, #001a4d, #000020);
-  /* Invertir degradado al hacer hover */
+  color: #ffffff;
+  text-shadow: 5px 5px 15px rgb(46, 255, 252);
 }
 
 .mal{
@@ -102,3 +117,18 @@ body {
   border-radius: 20px;
   box-shadow: 0px 0px 10px #5fe6ed;
 }
+.cuadro.seleccionado{
+  transform: transform 0.5s;
+  transform: scale(1.1);
+
+}
+@media (max-width: 946px) {
+  .cuadro {
+    width: 26vh;  
+    padding: 1.5rem 0rem;                /* Aumenta el ancho en pantallas pequeñas */
+    font-size: 1em;               /* Reduce ligeramente el tamaño de la fuente */
+    padding: 10px;                /* Agrega un poco de padding para dar espacio al texto */
+    border-radius: 15px;          /* Redondea un poco más las esquinas */
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2); /* Reduce la sombra */
+  }
+} 
