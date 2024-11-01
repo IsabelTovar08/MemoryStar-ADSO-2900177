@@ -134,7 +134,7 @@ document.addEventListener("DOMContentLoaded", function () {
       // Ocultar el mensaje después de 5 segundos
       setTimeout(() => {
         mensajeDiv.style.display = "none";
-      }, 5000);
+      }, 2000);
     }
 
     contar++;

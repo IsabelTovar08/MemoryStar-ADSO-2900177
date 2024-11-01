@@ -1,24 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    
+
     <link rel="stylesheet" href="../bootstrap/css/bootstrap.css">
     <link rel="stylesheet" href="css/armarNave.css">
 
 </head>
-<body style="    background-image: url('../../../img/fondos/nuevoFondoS.png');
-margin: 0;
-padding: 0;
-width: 100vw;
-height: 100vh;
-background-size: cover;
-background-position: center;
-background-repeat: no-repeat;
-font-family: cursive;
-overflow: hidden;">
+
+<body>
     <!-- Button trigger modal -->
     <!-- <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#armarNave">
         Launch demo modal
@@ -26,30 +19,31 @@ overflow: hidden;">
 
     <!-- Modal -->
 
-            <div class="modal-content" style="background-color: #ffffff00;">
-                <h1 class="titulo-nave" id="exampleModalLabel">Arma la nave</h1>
-                    <div class="modal-body holis">
-                        <div class="contenedor-armar">
-                            <img src="img/nave.png" alt="">
-                        </div>
+    <div class="nave">
+        <h1 class="titulo-nave">Arma la nave</h1>
+        <div class="holis">
+            <div class="contenedor-armar">
+                <img src="img/nave.png" alt="">
+            </div>
 
-                        <div class="contenedor-nave" id="lista1">
-                            <img src="img/Calas.png" alt="" class="cuadro" data-id="0">
-                            <img src="img/Ccabina.png" alt="" class="cuadro" data-id="1">
-                            <img src="img/Cdorsal.png" alt="" class="cuadro" data-id="2">
-                            <img src="img/Cpropulsor.png" alt="" class="cuadro" data-id="3">
-                        </div>
-                        <button id="verificar">VERIFICAR</button>
-                    </div>
-                    
-                </div>
-        
+            <div class="contenedor-nave" id="lista1">
+                <img src="img/Ccabina.png" alt="" class="cuadro" data-id="0">
+                <img src="img/Cdorsal.png" alt="" class="cuadro" data-id="1">
+                <img src="img/Cpropulsor.png" alt="" class="cuadro" data-id="2">
+                <img src="img/Calas.png" alt="" class="cuadro" data-id="3">
+            </div>
+            <button id="verificar">VERIFICAR</button>
+        </div>
 
-        
-        <script src="js/Sortable.min.js"></script>
-        <script src="js/armarNave.js"></script>
-        <script src="../bootstrap/js/bootstrap.js"></script>
-        <script src="js/cartas.js"></script>
+    </div>
+
+
+
+    <script src="js/Sortable.min.js"></script>
+    <script src="js/armarNave.js"></script>
+    <script src="../bootstrap/js/bootstrap.js"></script>
+    <script src="js/cartas.js"></script>
 
 </body>
+
 </html>
