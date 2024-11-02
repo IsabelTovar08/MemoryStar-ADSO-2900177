@@ -21,24 +21,20 @@
     body {
         background-image: url('juego/espacial/cartas/img/er.png');
     }
-
-    @import url('https://fonts.googleapis.com/css2?family=Just+Me+Again+Down+Here&display=swap');
-    @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
 </style>
 
 <body>
-    <div class="modal fade" id="modalUno" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+
+
+    <!-- <div class="modal fade" id="modalUno" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
         aria-labelledby="staticBackdropLabel" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered mensajePistas">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content modalRedirigir">
                 <div class="modal-body" id="modalBody">
                     "¡Bienvenido, explorador! Tu misión es encontrar las cartas que contienen pistas esenciales para
                     ensamblar una nave espacial. Cada pareja de cartas que encuentres te acercará a tu objetivo."
                 </div>
-                <div class="modal-footer">
+                <div class="botones">
                     <button type="button" class="omitir" data-bs-dismiss="modal">Omitir</button>
                     <div class="siguiente">
                         <button type="button" class="btn" id="nextButton">
@@ -48,34 +44,8 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> -->
 
-    <!-- CSS para la animación -->
-    <style>
-        .fade-in {
-            opacity: 0;
-            animation: fadeIn 0.5s forwards;
-        }
-
-        @keyframes fadeIn {
-            to {
-                opacity: 1;
-            }
-        }
-
-        .fade-out {
-            opacity: 1;
-            animation: fadeOut 0.5s forwards;
-        }
-
-        @keyframes fadeOut {
-            to {
-                opacity: 0;
-            }
-        }
-    </style>
-
- 
     <nav class="nav flex-column apartado-iconos">
         <img id="controlMusica" src="img/iconos/musicaApagada.png" alt="Reproducir" class="iconos efectosIconos">
         <img src="img/iconos/ajustesN.png" alt="Ajustes" class="iconos efectosIconos" data-bs-toggle="collapse"
@@ -206,40 +176,23 @@
                         </div>
                     </div>
                 </div>
-                <style>
-                    .mensajePistas {
-                        color: white;
-                        font-size: 3vh;
-                        font-family: monospace;
 
-                        .modal-content {
-                            background-color: #9886c5c1;
-                            border-radius: 3vh;
-                            text-shadow: 0 0 10px #000;
-                            box-shadow: 0 0 20px #02112c;
-                            animation: bounce 0.5s forwards;
+                <div class="overlay"></div>
 
-                        }
-
-                    }
-
-                    @keyframes bounce {
-                        0% {
-                            transform: translateY(-50px);
-                            /* Comienza más arriba */
-                        }
-
-                        50% {
-                            transform: translateY(20px);
-                            /* Rebota hacia abajo */
-                        }
-
-                        100% {
-                            transform: translateY(0);
-                            /* Regresa a su posición original */
-                        }
-                    }
-                </style>
+                <!-- Tarjeta principal -->
+                <div class="tarjeta_inferior">
+                  <div class="character">
+                    <!-- Puedes reemplazar esto con una imagen del personaje -->
+                     <img src="img/iconos/vaca.png" alt="">
+                  </div>
+                  <div class="text-section">
+                    <h3>¡Bienvenido!</h3>
+                    <p>Now watch out, they often try a slight variation of that attack pattern. We lost a lot of good people before we figured out the difference.</p>
+                    <p>Speak of the devil, they're trying it now.</p>
+                    <button class="next-button">Next Level</button>
+                  </div>
+                </div>
+            
                 <div class="modal" id="mostrarParte" tabindex="-1">
                     <div class="modal-dialog mensajePistas">
                         <div class="modal-content">
@@ -261,7 +214,8 @@
     <script src="juego/espacial/cartas/js/cartas.js"></script>
     <script src="js/modaleCartas.js"></script>
     <script src="bootstrap/js/bootstrap.js"></script>
-    <scrip src="js/animaciones/animacion.js"></script>
+    <scrip src="js/animaciones/animacion.js">
+        </script>
         <script type="module" src="sonidos/sonidos.js"></script>
         <script type="module" src="sonidos/eventosSonidos.js"></script>
 </body>

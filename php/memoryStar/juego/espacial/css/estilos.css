@@ -46,3 +46,28 @@
     width: 30%;
     margin-top: 10%;
   }
+  .modalRedirigir{
+    box-shadow: 0 0 20px #000, 0 0 10px #bae0f7;
+    background-color: #02112cbc;
+  outline: 2px solid #bae0f7;
+    
+  }
+  .boton_aceptar {
+    display: flex;
+    justify-content: center;
+    align-items: center; /* Agregado para centrar también verticalmente */
+    width: 100%; /* Ocupa todo el ancho del contenedor */
+    margin-top: 1rem; /* Opcional, agrega espacio arriba del botón si lo deseas */
+}
+
+.boton_aceptar button {
+    width: 20vh;
+    border-radius: 2vh;
+    background-color: blueviolet;
+    border: 2px solid #02112c;
+    box-shadow: 0 0 10px #9c50ff;
+}
+.boton_aceptar button:hover{
+  background-color: #8250ff;
+  border-color: #9c50ff;
+}

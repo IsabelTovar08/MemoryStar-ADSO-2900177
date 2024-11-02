@@ -44,9 +44,9 @@ document.addEventListener("DOMContentLoaded", function () {
     function modales(modal) {
         let modalJuego = "";
         modalJuego += `
-            <div class="modal" id="${modal.id}" tabindex="-1">
+            <div class="modal" id="${modal.id}" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
                 <div class="modal-dialog modal-dialog-centered">
-                    <div class="modal-content">
+                    <div class="modal-content modalRedirigir">
                         <div class="modal-header">
                             <h5 class="modal-title">${modal.texto}</h5>
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
@@ -93,14 +93,12 @@ document.addEventListener("DOMContentLoaded", function () {
     function redirigir(ir) {
       let redirigir = "";
       redirigir += `
-          <div class="modal" id="${ir.id}" tabindex="-1">
-              <div class="modal-dialog">
-                  <div class="modal-content">
+          <div class="modal" id="${ir.id}" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+              <div class="modal-dialog modal-dialog-centered">
+                  <div class="modal-content modalRedirigir">
                       <div class="modal-body">
                           ${ir.texto}
-                      </div>
-                      <div class="modal-footer">
-                          <button type="button" id="${ir.id2}" class="btn btn-primary">Aceptar</button>
+                          <div class="boton_aceptar"><button type="button" id="${ir.id2}" class="btn btn-primary">Aceptar</button></div>
                       </div>
                   </div>
               </div>

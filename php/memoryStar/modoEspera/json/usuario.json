@@ -1,0 +1,52 @@
+[
+    {
+        "img":"img/descarga.jpeg",
+        "nombre":"juan",
+        "descripcion": "lider✨",
+        "monedas": "80",
+        "imgMoneda":"img/currency-circle-dollar-duotone-svgrepo-com.svg"
+    },
+    {
+        "img":"img/images.jpeg",
+        "nombre":"luis",
+        "descripcion": "miembro👾",
+        "monedas": "50",
+        "imgMoneda":"img/currency-circle-dollar-duotone-svgrepo-com.svg"
+    },
+    {
+        "img":"img/images.jpeg",
+        "nombre":"luis",
+        "descripcion": "miembro👾",
+        "monedas": "50",
+        "imgMoneda":"img/currency-circle-dollar-duotone-svgrepo-com.svg"
+    },
+    {
+        "img":"img/images.jpeg",
+        "nombre":"luis",
+        "descripcion": "miembro👾",
+        "monedas": "50",
+        "imgMoneda":"img/currency-circle-dollar-duotone-svgrepo-com.svg"
+    },
+    {
+        "img":"img/images.jpeg",
+        "nombre":"luis",
+        "descripcion": "miembro👾",
+        "monedas": "50",
+        "imgMoneda":"img/currency-circle-dollar-duotone-svgrepo-com.svg"
+    },
+    {
+        "img":"img/images.jpeg",
+        "nombre":"luis",
+        "descripcion": "miembro👾",
+        "monedas": "50",
+        "imgMoneda":"img/currency-circle-dollar-duotone-svgrepo-com.svg"
+    },
+    {
+        "img":"img/images.jpeg",
+        "nombre":"luis",
+        "descripcion": "miembro👾",
+        "monedas": "50",
+        "imgMoneda":"img/currency-circle-dollar-duotone-svgrepo-com.svg"
+    }
+    
+]

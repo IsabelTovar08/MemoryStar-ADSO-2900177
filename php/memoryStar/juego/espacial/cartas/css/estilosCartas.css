@@ -25,15 +25,18 @@
 }
 
 .carta {
-  height: 11vw; /* Tamaño más pequeño */
-  width: 8vw; /* Ajuste proporcional */
+  height: 11vw;
+  /* Tamaño más pequeño */
+  width: 8vw;
+  /* Ajuste proporcional */
   cursor: pointer;
   transition: transform 0.6s;
   transform-style: preserve-3d;
   position: relative;
 
   /* border: 1px solid #000; */
-  margin: 8px; /* Margen reducido */
+  margin: 8px;
+  /* Margen reducido */
 }
 
 @keyframes car {
@@ -49,6 +52,7 @@
     transform: scale(1);
   }
 }
+
 /* .movable {
     position: absolute;
     width: 100px;
@@ -59,31 +63,37 @@
 
 .movable {
   position: absolute;
-  width: 100px; /* Ajusta el tamaño según sea necesario */
-  transition: transform 5s; /* Suaviza el movimiento */
+  width: 100px;
+  /* Ajusta el tamaño según sea necesario */
+  transition: transform 5s;
+  /* Suaviza el movimiento */
   margin-left: -90%;
   margin-top: 10%;
 }
 
 .luna {
   position: absolute;
-  width: 20%; /* Ajusta el tamaño según sea necesario */
+  width: 20%;
+  /* Ajusta el tamaño según sea necesario */
   transition: transform 0.3s;
-  animation: levitar 4s ease-in-out infinite; /* Suaviza el movimiento */
+  animation: levitar 4s ease-in-out infinite;
+  /* Suaviza el movimiento */
   /* margin-left: 90%; 0*/
   margin-left: 60%;
   margin-top: 10%;
 }
 
 @keyframes levitar {
+
   0%,
   100% {
-    transform: translateY(0); /* Comienza y termina en la posición original */
+    transform: translateY(0);
+    /* Comienza y termina en la posición original */
   }
+
   50% {
-    transform: translateY(
-      -10px
-    ); /* Se mueve hacia arriba, distancia reducida */
+    transform: translateY(-10px);
+    /* Se mueve hacia arriba, distancia reducida */
   }
 }
 
@@ -138,7 +148,8 @@ body {
 
 .cara {
   position: absolute;
-  width: 100%; /* Ajustado al tamaño de la carta */
+  width: 100%;
+  /* Ajustado al tamaño de la carta */
   height: 100%;
   backface-visibility: hidden;
 }
@@ -150,7 +161,8 @@ body {
   align-items: center;
   width: 60%;
   /* Ajuste al tamaño máximo */
-  margin: 0 auto; /* Centramos el contenedor */
+  margin: 0 auto;
+  /* Centramos el contenedor */
 }
 
 .imagen {
@@ -164,6 +176,7 @@ body {
   color: blue;
   font-size: 36px;
 }
+
 /*  estilos encabezado */
 .contenedorCabeza {
   width: 100%;
@@ -174,6 +187,7 @@ body {
   padding: 1%;
   margin-top: 0px;
 }
+
 .tituloCabeza {
   font-size: 300%;
   font-style: inter;
@@ -182,17 +196,20 @@ body {
   text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000,
     1px 1px 0 #000, 0px 0px 5px rgba(0, 0, 0, 0.5);
 }
+
 .figuras {
   display: flex;
   flex-direction: column;
   align-items: center;
 }
+
 .figuras-arriba {
   display: flex;
   justify-content: center;
   align-items: center;
   margin-bottom: 20px;
 }
+
 .rectangulo {
   width: 125px;
   height: 30px;
@@ -203,6 +220,7 @@ body {
   align-items: center;
   padding-left: 5px;
 }
+
 .rombo {
   width: 120px;
   height: 60px;
@@ -210,10 +228,12 @@ body {
   justify-content: center;
   align-items: center;
 }
+
 .estrella {
   width: 30px;
   height: 25px;
 }
+
 .numero1 {
   margin-left: 10px;
   text-align: left;
@@ -221,6 +241,7 @@ body {
   text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000,
     1px 1px 0 #000, 0px 0px 5px rgba(0, 0, 0, 0.5);
 }
+
 .numero2 {
   margin-left: 68px;
   text-align: right;
@@ -228,6 +249,7 @@ body {
   text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000,
     1px 1px 0 #000, 0px 0px 5px rgba(0, 0, 0, 0.5);
 }
+
 .numeroRombo {
   font-size: 24px;
   color: white;
@@ -235,11 +257,13 @@ body {
     1px 1px 0 #000, 0px 0px 5px rgba(0, 0, 0, 0.5);
   position: absolute;
 }
+
 .figuras-abajo {
   display: flex;
   justify-content: space-between;
   width: 100%;
 }
+
 .figura-abajo {
   width: 125px;
   height: 100px;
@@ -254,6 +278,7 @@ body {
   width: 50px;
   height: 50px;
 }
+
 @media only screen and (max-width: 1024px) and (orientation: landscape) {
   .mensaje {
     top: 20%;
@@ -261,9 +286,11 @@ body {
   }
 
   .carta {
-    height: 10vw; /* Ajustado para pantallas pequeñas */
+    height: 10vw;
+    /* Ajustado para pantallas pequeñas */
     width: 8vw;
-    margin: 1%; /* Mantener espaciado proporcional */
+    margin: 1%;
+    /* Mantener espaciado proporcional */
   }
 
   .contenedorCartas {
@@ -271,7 +298,8 @@ body {
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
-    width: 60%; /* Ajuste proporcional */
+    width: 60%;
+    /* Ajuste proporcional */
 
     /* Ajuste para centrar mejor en pantallas pequeñas */
   }
@@ -311,37 +339,45 @@ body {
     font-size: 24px;
     margin-bottom: 10px;
   }
+
   .figuras-arriba {
     margin-bottom: 10px;
   }
+
   .imgRombo {
     width: 80px;
     height: 80px;
     margin: 0;
   }
+
   .rectangulo {
     width: 80px;
     height: 30px;
     margin: 5px 9px;
     padding-left: 3px;
   }
+
   .rombo {
     width: 40%;
     height: 100%;
   }
+
   .estrella {
     width: 20px;
     height: 15px;
   }
+
   .numero1,
   .numero2 {
     margin-left: 0;
     text-align: center;
   }
+
   .figuras-abajo {
     align-items: center;
     width: 100%;
   }
+
   .figura-abajo {
     width: 90px;
     height: 70px;
@@ -358,7 +394,8 @@ body {
         margin-top: 15%;
     } */
 }
-/* From Uiverse.io by NorthFishHasNa */ 
+
+/* From Uiverse.io by NorthFishHasNa */
 .siguiente button {
   display: inline-block;
   border-radius: 4px;
@@ -369,42 +406,191 @@ body {
 
   transition: all 0.5s;
   cursor: pointer;
-  margin: 5px;
- }
- button{
+  margin: 2vh;
+}
+
+button {
   width: auto;
   height: 6vh;
   padding: 2%;
 
- }
- .siguiente button span {
+}
+
+.siguiente button span {
   cursor: pointer;
   display: inline-block;
   position: relative;
   transition: 0.5s;
   font-size: 3vh;
 
- }
- 
- .siguiente button span:after {
+}
+
+.siguiente button span:after {
   content: '»';
   position: absolute;
   opacity: 0;
   top: 0;
   right: -15px;
   transition: 0.5s;
- }
- 
- .siguiente button:hover span {
+}
+
+.siguiente button:hover span {
   padding-right: 15px;
-  transform: translateX(-1vh);
- }
- 
- .siguiente button:hover span:after {
+}
+
+.siguiente button:hover span:after {
   opacity: 1;
   right: 0;
- }
- .omitir{
-  background-color: #ffffff00 !important;
+}
+
+.omitir {
+  background: none;
   border: none;
- }
+}
+
+.omitir:hover {
+  color: #fff;
+}
+
+/* Animacion modal */
+.fade-in {
+  opacity: 0;
+  animation: fadeIn 0.5s forwards;
+}
+
+@keyframes fadeIn {
+  to {
+    opacity: 1;
+  }
+}
+
+.fade-out {
+  opacity: 1;
+  animation: fadeOut 0.5s forwards;
+}
+
+@keyframes fadeOut {
+  to {
+    opacity: 0;
+  }
+}
+
+.botones {
+  display: flex;
+  justify-content: end;
+  align-items: center;
+  /* Agregado para centrar también verticalmente */
+  width: 100%;
+  /* Ocupa todo el ancho del contenedor */
+}
+
+
+.mensajePistas {
+  color: white;
+  font-size: 3vh;
+  font-family: monospace;
+
+  .modal-content {
+    background-color: #9886c5c1;
+    border-radius: 3vh;
+    text-shadow: 0 0 10px #000;
+    box-shadow: 0 0 20px #02112c;
+    animation: bounce 0.5s forwards;
+
+  }
+
+}
+
+.modal-content.modalRedirigir {
+  box-shadow: 0 0 30px #956eff, 0 0 10px #261353 inset;
+  background-color: #131d53;
+  outline: 8px solid #6340ff;
+  color: #fff;
+}
+.modal-content.modalRedirigir:hover{
+  box-shadow: 0 0 30px #6ef5ff;
+}
+@keyframes bounce {
+  0% {
+    transform: translateY(-50px);
+    /* Comienza más arriba */
+  }
+
+  50% {
+    transform: translateY(20px);
+    /* Rebota hacia abajo */
+  }
+
+  100% {
+    transform: translateY(0);
+    /* Regresa a su posición original */
+  }
+}
+
+/* Tarjeta inferior  */
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.5); /* Color negro semi-transparente */
+  z-index: 1; /* Asegura que el overlay esté detrás de la tarjeta */
+}
+.tarjeta_inferior {
+  position: fixed;
+  bottom: 20px;
+  left: 20px;
+  display: flex;
+  align-items: center;
+  background-color: #2b1e4f; /* Fondo oscuro de la tarjeta */
+  color: #ffffff;
+  padding: 20px;
+  border-radius: 10px;
+  max-width: 600px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+  clip-path: polygon(0 0, 100% 10%, 100% 100%, 0 100%);
+  z-index: 2; /* Asegura que la tarjeta esté encima del overlay */
+}
+
+/* Imagen del personaje */
+.character img{
+  width: 20vh;
+  height: 25vh;
+  margin-right: 20px;
+  object-fit: fill;
+}
+
+/* Sección de texto */
+.text-section {
+  flex: 1;
+}
+
+/* Título y párrafo de descripción */
+.text-section h3 {
+  margin: 0;
+  font-size: 1.2em;
+  font-weight: normal;
+}
+
+.text-section p {
+  margin: 10px 0;
+  line-height: 1.5;
+}
+
+/* Botón de "Next Level" */
+.next-button {
+  background-color: #6f5a99; /* Color del botón */
+  color: #ffffff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1em;
+  transition: background-color 0.3s;
+}
+
+.next-button:hover {
+  background-color: #8a75b3; /* Color de fondo al pasar el cursor */
+}
