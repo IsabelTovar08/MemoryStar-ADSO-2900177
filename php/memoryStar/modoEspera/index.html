@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Modo Espera...</title>
     <link rel="stylesheet" href="./style/style.css">
-    <script src="./js/javascript.js"></script>
+    <script src="js/javascript.js"></script>
     <link rel="stylesheet" href="../bootstrap/css/bootstrap.css">
     <link rel="stylesheet" href="fontawesome/css/fontawesome.css">
     <script src="fontawesome/js/all.js"></script>
@@ -14,21 +14,37 @@
 </head>
 
 <body>
+    
+
     <div class="color-fondo">
 
     </div>
     <div class="linea-con-texto">
         <span>Sala de espera</span>
     </div>
-
+    <div class="lengua-Salida" >
+        <div class="salida-Texto" onclick="salirSala()">
+            <b>salir</b>
+        </div>
+        <div class="salida-img" onclick="salirLeguna()">
+            <b>></b>
+        </div>
+        
+    </div>
 
     <div class="contenedor">
         <div class="congijuraJuego">
             <div class="contenedor-apartado">
                 <div class="conte-apartado">
-                    <div>Tipo Juego</div>
-                    <div>Temática</div>
-                    <div>Nivel</div>
+                    <div class="tipo-juego">
+                        <b>Tipo de juego</b>
+                    </div>
+                    <div class="tematica">
+                        <b>Temát</b>ica
+                    </div>
+                    <div class="nivel">
+                        <b>Nivel</b>
+                    </div>
                 </div>
 
             </div>
@@ -59,7 +75,7 @@
         </div>
     </div>
     <!-- footter -->
-    <button>Iniciar</button>
+    <button class="botton-iniciar" onclick="comienzaEn()">Iniciar</button>
     <script src="js/fecht.js"></script>
 
 </body>
