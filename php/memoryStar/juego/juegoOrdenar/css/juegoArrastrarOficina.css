@@ -30,7 +30,7 @@ body {
     3px 3px #414d68, 4px 4px #414d68, 5px 5px #414d68, 6px 6px #414d68,
     7px 7px #414d68;
 }
-.tiempo{
+.tiempo {
   position: absolute;
   top: 5%;
   left: 80%;
@@ -38,13 +38,41 @@ body {
   font-size: 5vh;
   z-index: 1;
 }
-.puntos{
+.puntos {
   position: absolute;
   top: 5%;
   left: 5%;
   color: white;
   font-size: 5vh;
   z-index: 1;
+}
+
+.countdown-container {
+  position: absolute; /* Mantener el contenedor relativo */
+  top: 6vh; /* Relativo a la altura de la pantalla */
+  left: 4vw; /* Relativo al ancho de la pantalla */
+  width: 30vw; /* Ancho relativo al viewport */
+  height: 5vh; /* Altura relativa al viewport */
+  border: 2px solid #007BFF;
+  border-radius: 5px;
+  overflow: hidden;
+}
+
+.countdown-bar {
+  position: absolute; /* Mantener posición absoluta */
+  height: 100%;
+  width: 100%; /* El ancho cambiará durante la cuenta regresiva */
+  background-color: #007BFF;
+  transition: width 1s linear;
+}
+
+.countdown-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 2vh; /* Tamaño de texto relativo a la altura */
+  color: white;
 }
 #contenedor-imagen img {
   height: 100vh;
@@ -163,7 +191,27 @@ body {
 
 #verificarBtn {
   position: absolute;
-  top: 20%;
+  top: 12vh; /* Altura relativa a la pantalla */
+  left: 45vw; /* Anchura relativa */
+  background: linear-gradient(to bottom, #67c5d4, #688e90);
+  border: 3px solid white;
+  border-radius: 20px;
+  color: white;
+  font-size: 3rem; /* Tamaño adaptable */
+  font-family: Arial, sans-serif;
+  font-weight: bold;
+  padding: 1rem; /* Espaciado adaptable */
+  text-align: center;
+  display: inline-block;
+  text-decoration: none;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+  cursor: pointer;
+  width: auto;
+  height: auto;
+}
+
+#verificarBtn:hover {
+  background: linear-gradient(to bottom, #688e90, #67c5d4); /* Invertir degradado al hacer hover */
 }
 /* Estilo para las dropzones cuando un objeto está sobre ellas */
 .dropzone-highlight {
@@ -181,10 +229,14 @@ body {
 }
 
 .dropzone-highlight-temp {
-  background-color: rgba(255, 255, 0, 0.5); /* Color amarillo semitransparente */
+  background-color: rgba(
+    255,
+    255,
+    0,
+    0.5
+  ); /* Color amarillo semitransparente */
   border: 2px solid #ff0000; /* Borde rojo para resaltar */
 }
-
 
 @media only screen and (max-width: 1024px) and (orientation: landscape) {
   .dropzone {
@@ -194,5 +246,11 @@ body {
   }
 }
 @media (min-width: 1600px) {
-  
+}
+@media (min-width:576px){
+  #verificarBtn {
+    font-size: 1rem;
+    padding: 0.3rem;
+    width: 21vh; /* Botón más pequeño */
+  }
 }
