@@ -165,12 +165,10 @@ border: 1px solid #000;
     h1 {
         font-size: 2.5vh;
     }
-
 }
 
 .card:hover {
     box-shadow: 2px 2px 30px #9b8f8f, 10px 10px 1px #9aabf8;
-    transform: translate(50px, 50px);
 
     h1 {
         /* color: #fda085; */
@@ -407,87 +405,7 @@ h1 {
     text-shadow: -1px 0 #414D68, 0 1px #414D68, 1px 0 #414D68, 0 -1px #414D68, -2px 2px 0 #414D68, 2px 2px 0 #414D68, 1px 1px #414D68, 2px 2px #414D68, 3px 3px #414D68, 4px 4px #414D68, 5px 5px #414D68, 6px 6px #414D68, 7px 7px #414D68;
 }
 
-.apartado-iconos {
-    display: block;
-    width: 4.6%;
-    height: auto;
-    margin: 0.5%;
-    position: absolute;
-}
 
-.iconos {
-    width: 100%;
-    height: 100%;
-    margin: 3%;
-    cursor: pointer;
-    transition: transform 0.3s;
-}
-
-.ajustes {
-    font-family: cursive;
-    color: aliceblue;
-}
-
-.card {
-    text-align: center;
-}
-
-#centrar2 {
-    width: 3.5%;
-    margin-left: 58%;
-}
-
-#centrar1 {
-    width: 5%;
-    margin-top: 0.2%;
-}
-
-.centrar {
-    margin: 0 auto;
-    display: none;
-    margin-left: 55%;
-    margin-bottom: -2%;
-    position: absolute;
-}
-
-.apartado-derecho {
-    width: 15%;
-    height: auto;
-    right: 0%;
-    position: absolute;
-    margin: 1%;
-}
-
-.usuario {
-    width: 30.67%;
-    height: 100%;
-    position: relative;
-}
-
-.nombre {
-    font-family: cursive;
-    font-size: 160%;
-    margin-bottom: 0;
-    color: white;
-    text-shadow:
-        -1px -1px 0 #000,
-        1px -1px 0 #000,
-        -1px 1px 0 #000,
-        1px 1px 0 #000,
-        0px 0px 5px rgba(0, 0, 0, 0.5);
-}
-
-.iconos:hover {
-    transform: scale(1.2);
-}
-
-.zoom {
-    transition: transform 0.3s;
-}
-
-.zoom:hover {
-    transform: scale(1.05);
-}
 
 .color {
     background-color: #704fa0;
@@ -982,28 +900,6 @@ h1 {
         transform: translateX(50px);
         border-width: 20px 10px 0;
         /* Ajusta el tamaño de la cola */
-    }
-
-    .apartado-iconos {
-        margin-top: 3%;
-        /* margin-right: -10%; */
-        width: 16%;
-        height: auto;
-    }
-
-    .iconos {
-        margin: 5%;
-    }
-
-    .iconos:hover {
-        transform: none;
-    }
-
-    .apartado-derecho {
-        /* margin-top: 5%; */
-        width: 52.18%;
-        height: auto;
-        margin: 3%;
     }
 
     .logoBienvenido {

@@ -1,0 +1,204 @@
+.apartado-iconos {
+    display: block;
+    width: 4.6%;
+    height: auto;
+    margin: 0.5%;
+    position: absolute;
+}
+
+.iconos {
+    width: 100%;
+    height: 100%;
+    margin: 3%;
+    cursor: pointer;
+    transition: transform 0.3s;
+}
+
+.ajustes {
+    font-family: cursive;
+    color: aliceblue;
+}
+
+.card {
+    text-align: center;
+}
+
+
+
+.apartado-derecho {
+    width: 15%;
+    height: auto;
+    right: 0%;
+    position: absolute;
+    margin: 1%;
+}
+
+.usuario {
+    width: 30.67%;
+    height: 100%;
+    position: relative;
+}
+
+.nombre {
+    font-family: cursive;
+    font-size: 160%;
+    margin-bottom: 0;
+    color: white;
+    text-shadow:
+        -1px -1px 0 #000,
+        1px -1px 0 #000,
+        -1px 1px 0 #000,
+        1px 1px 0 #000,
+        0px 0px 5px rgba(0, 0, 0, 0.5);
+}
+
+.iconos:hover {
+    transform: scale(1.2);
+}
+
+.zoom {
+    transition: transform 0.3s;
+}
+
+.zoom:hover {
+    transform: scale(1.05);
+}
+
+.textoEleccion {
+    text-align: left;
+    font-family: Comic Sans MS;
+    font-weight: bold;
+    font-size: 4.6vh;
+    color: #e3d8ed;
+    text-shadow: -1px 0 #414D68, 0 1px #414D68, 1px 0 #414D68, 0 -1px #414D68, -2px 2px 0 #414D68, 2px 2px 0 #414D68, 1px 1px #414D68, 2px 2px #414D68, 3px 3px #414D68, 4px 4px #414D68, 5px 5px #414D68, 6px 6px #414D68, 7px 7px #414D68;
+}
+
+
+@media screen and (max-width: 480px) {
+    .apartado-iconos {
+        margin-top: 3%;
+        /* margin-right: -10%; */
+        width: 16%;
+        height: auto;
+    }
+    
+    .iconos {
+        margin: 5%;
+    }
+    
+    .iconos:hover {
+        transform: none;
+    }
+    
+    .apartado-derecho {
+        /* margin-top: 5%; */
+        width: 52.18%;
+        height: auto;
+        margin: 3%;
+    }
+    .textoEleccion {
+        font-family: Comic Sans MS;
+        font-weight: bold;
+        font-size: 140%;
+        color: #e3d8ed;
+        text-shadow: -1px 0 #414D68, 0 1px #414D68, 1px 0 #414D68, 0 -1px #414D68, -2px 2px 0 #414D68, 2px 2px 0 #414D68, 1px 1px #414D68, 2px 2px #414D68, 3px 3px #414D68, 4px 4px #414D68, 5px 5px #414D68, 6px 6px #414D68, 7px 7px #414D68;
+    }
+}
+
+
+/* Mensaje Inicial  */
+.game-start-message {
+    position: fixed;
+    top: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #0a0a28cc; /* Fondo semi-transparente */
+    color: #FFFFFF;
+    padding: 15px 40px;
+    font-size: 1.8em;
+    font-weight: bold;
+    font-family: 'Orbitron', sans-serif; /* Tipografía futurista */
+    border: 2px solid #65bac9; /* Borde brillante */
+    border-radius: 12px;
+    box-shadow: 0 0 20px #65bac9d3, 0 0 40px rgba(138, 43, 226, 0.6);
+    text-align: center;
+    z-index: 1000;
+    animation: hologram 2s ease-in-out infinite, slideDown 0.7s ease-out forwards, fadeOut 2s ease-out 2s forwards;
+    display: none;
+  }
+  
+  /* Efecto de resplandor holográfico */
+  @keyframes hologram { 
+    0%, 100% {
+        box-shadow: 0 0 20px rgba(0, 229, 255, 0.8), 0 0 40px rgba(138, 43, 226, 0.6);
+        color: #FFFFFF;
+    }
+    50% {
+        box-shadow: 0 0 25px rgba(0, 229, 255, 1), 0 0 50px rgba(138, 43, 226, 1);
+        color: #65bac9;
+    }
+  }
+  
+  /* Animación de deslizamiento desde arriba */
+  @keyframes slideDown {
+    0% {
+        transform: translateX(-50%) translateY(-30px);
+        opacity: 0;
+    }
+    100% {
+        transform: translateX(-50%) translateY(0);
+        opacity: 1;
+    }
+  }
+  
+  /* Animación de desaparición */
+  @keyframes fadeOut {
+    0% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+        display: none;
+    }
+  }
+  
+  .contenedor-salir{
+    display: flex;
+    justify-content: end;
+  }
+  .salir img{
+    margin-bottom: 0;
+    margin-right: 0;
+    width: 11vh;
+  }
+  .salir:hover{
+    transform: scale(1.1);
+  }
+  
+  /* Estilo inicial para el texto de puntos */
+  /* Estilo inicial para el texto de puntos */
+  #puntos {
+    transition: color 0.5s ease; /* Transición suave de color */
+    position: relative; /* Necesario para el posicionamiento absoluto del texto de la suma */
+  }
+  
+  /* Animación de fusión */
+  @keyframes fusion {
+    0% {
+        transform: translateY(-30px); /* Inicia 30px por encima */
+        opacity: 0; /* Comienza invisible */
+    }
+    50% {
+        opacity: 1; /* Se vuelve visible */
+    }
+    100% {
+        transform: translateY(10px); /* Se mueve a la posición original */
+    }
+  }
+  
+  /* Estilo para el efecto de suma */
+  .animate {
+    color: #00ff00; /* Color vibrante para la animación */
+    animation: fusion 1s ease; /* Aplicar la animación de fusión */
+    position: absolute; /* Para que el texto se superponga */
+  }

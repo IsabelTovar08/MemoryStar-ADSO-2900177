@@ -162,6 +162,8 @@ body {
   width: 60%;
   /* Ajuste al tamaño máximo */
   margin: 0 auto;
+  margin-top: 5%;
+
   /* Centramos el contenedor */
 }
 
@@ -183,7 +185,7 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  height: 100vh;
+  height: 80vh;
   padding: 1%;
   margin-top: 0px;
 }
@@ -207,12 +209,12 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-bottom: 20px;
+  /* margin-bottom: 20px; */
 }
 
 .rectangulo {
-  width: 125px;
-  height: 30px;
+  width: 20vh;
+  height: 5.5vh;
   border-radius: 10px;
   border: 3px solid #3e87ff;
   margin: 0 20px;
@@ -222,16 +224,16 @@ body {
 }
 
 .rombo {
-  width: 120px;
-  height: 60px;
+  width: 18vh;
+  height: 10vh;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
 .estrella {
-  width: 30px;
-  height: 25px;
+  width: 4vh;
+  height: 4vh;
 }
 
 .numero1 {
@@ -262,21 +264,6 @@ body {
   display: flex;
   justify-content: space-between;
   width: 100%;
-}
-
-.figura-abajo {
-  width: 125px;
-  height: 100px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin: 0 90px;
-  margin-top: -50px;
-}
-
-.figura-abajo img {
-  width: 50px;
-  height: 50px;
 }
 
 @media only screen and (max-width: 1024px) and (orientation: landscape) {
@@ -373,22 +360,8 @@ body {
     text-align: center;
   }
 
-  .figuras-abajo {
-    align-items: center;
-    width: 100%;
-  }
 
-  .figura-abajo {
-    width: 90px;
-    height: 70px;
-    margin: 0px 0;
-    margin-top: -20px;
-  }
 
-  .figura-abajo img {
-    width: 40px;
-    height: 35px;
-  }
 
   /* .figuras{
         margin-top: 15%;
@@ -497,19 +470,12 @@ button {
     box-shadow: 0 0 20px #02112c;
     animation: bounce 0.5s forwards;
 
+
   }
 
 }
 
-.modal-content.modalRedirigir {
-  box-shadow: 0 0 30px #956eff, 0 0 10px #261353 inset;
-  background-color: #131d53;
-  outline: 8px solid #6340ff;
-  color: #fff;
-}
-.modal-content.modalRedirigir:hover{
-  box-shadow: 0 0 30px #6ef5ff;
-}
+
 @keyframes bounce {
   0% {
     transform: translateY(-50px);
@@ -528,7 +494,9 @@ button {
 }
 
 /* Tarjeta inferior  */
-
+.imagenV {
+  transition: transform 1s; /* Transición de movimiento vertical */
+}
 .overlay {
   position: fixed;
   top: 0;
@@ -538,22 +506,28 @@ button {
   background-color: rgba(0, 0, 0, 0.5); /* Color negro semi-transparente */
   z-index: 1; /* Asegura que el overlay esté detrás de la tarjeta */
 }
-.tarjeta_inferior {
+.modalRedirigir {
   position: fixed;
-  bottom: 20px;
-  left: 20px;
+  bottom: 3vh;
+  left: 3vh;
   display: flex;
   align-items: center;
-  background-color: #2b1e4f; /* Fondo oscuro de la tarjeta */
   color: #ffffff;
-  padding: 20px;
+  padding: 3vh;
   border-radius: 10px;
-  max-width: 600px;
-  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
-  clip-path: polygon(0 0, 100% 10%, 100% 100%, 0 100%);
-  z-index: 2; /* Asegura que la tarjeta esté encima del overlay */
-}
+  width: 90vh;
+  box-shadow: 0 0 30px #956eff, 0 0 10px #261353 inset;
+  background-color: #131d53;
+  outline: 8px solid #6340ff;
+  color: #fff;
+  z-index: 2; /* Asegura que el overlay esté detrás de la tarjeta */
+  /* display: none; */
+  animation: bounce 0.5s forwards;
 
+}
+.modalRedirigir:hover{
+  box-shadow: 0 0 30px #6ef5ff;
+}
 /* Imagen del personaje */
 .character img{
   width: 20vh;
@@ -593,4 +567,32 @@ button {
 
 .next-button:hover {
   background-color: #8a75b3; /* Color de fondo al pasar el cursor */
+}
+
+
+/* Estilo inicial para el texto de puntos */
+#puntos {
+  transition: color 0.5s ease; /* Transición suave de color */
+  position: relative; /* Necesario para el posicionamiento absoluto del texto de la suma */
+}
+
+/* Animación de fusión */
+@keyframes fusion {
+  0% {
+      transform: translateY(-30px); /* Inicia 30px por encima */
+      opacity: 0; /* Comienza invisible */
+  }
+  50% {
+      opacity: 1; /* Se vuelve visible */
+  }
+  100% {
+      transform: translateY(0); /* Se mueve a la posición original */
+  }
+}
+
+/* Estilo para el efecto de suma */
+.animate {
+  color: #00ff00; /* Color vibrante para la animación */
+  animation: fusion 1s ease; /* Aplicar la animación de fusión */
+  position: absolute; /* Para que el texto se superponga */
 }

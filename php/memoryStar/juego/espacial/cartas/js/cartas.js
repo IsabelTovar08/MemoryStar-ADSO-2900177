@@ -1,6 +1,14 @@
 document.addEventListener("DOMContentLoaded", function () {
   const images = document.querySelectorAll(".movable");
+  const puntos = document.getElementById('puntos');
+  const puntosContainer = document.getElementById('puntos-container');
+let puntoss = 0;
 
+const diamantes = document.getElementById('diamantes');
+const diamantesContainer = document.getElementById('diamantes-container');
+let diamantess = 0;
+
+puntos.textContent = puntoss;
   function getRandomPosition() {
     const x = Math.random() * (window.innerWidth - 100); // -100 para evitar que la imagen se salga de la vista
     const y = Math.random() * (window.innerHeight - 100); // -100 para evitar que la imagen se salga de la vista
@@ -62,6 +70,32 @@ document.addEventListener("DOMContentLoaded", function () {
         const bieen = document.getElementById("bien");
         bieen.play();
         aciertos++;
+        puntoss += 100;
+        diamantess += 1;
+        puntos.textContent = puntoss;
+        diamantes.textContent = diamantess;
+    
+        // Crea un elemento para mostrar el "+100"
+        const sumaTexto = document.createElement('span');
+        sumaTexto.textContent = `+${100}`;
+        sumaTexto.className = 'animate'; // Agrega la clase para la animación
+    
+        // Establece la posición del texto de suma
+        sumaTexto.style.position = 'absolute'; // Asegúrate de que esté en posición absoluta
+        sumaTexto.style.left = `${puntos.offsetLeft}px`; // Alinea horizontalmente
+        sumaTexto.style.top = `${puntos.offsetTop - 30}px`; // Posición inicial 30px arriba
+        puntosContainer.appendChild(sumaTexto); // Agrega el texto al contenedor
+    
+        // Establece un temporizador para eliminar el texto después de unos segundos
+        setTimeout(() => {
+            sumaTexto.style.opacity = 0; // Desvanece el texto
+        }, 1000); // Tiempo en milisegundos (1000 ms = 1 segundo)
+    
+        // Quita el texto del DOM después de la animación
+        setTimeout(() => {
+            puntosContainer.removeChild(sumaTexto);
+        }, 1500); // Tiempo en milisegundos (1500 ms = 1.5 segundos)Tiempo en milisegundos (1500 ms = 1.5 segundos)
+
 
         // Marcar las cartas como emparejadas
         primeraCarta.classList.add("emparejada");

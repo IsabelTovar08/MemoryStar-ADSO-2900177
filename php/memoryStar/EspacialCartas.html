@@ -6,12 +6,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>juego Cartas</title>
     <!-- <link rel="stylesheet" href="css/estilosEncabezado.css"> -->
-    <link rel="stylesheet" href="css/estilosInicio.css">
+    <link rel="stylesheet" href="css/nav/nav.css">
     <link rel="stylesheet" href="juego/espacial/cartas/css/estilosCartas.css">
     <link rel="stylesheet" href="bootstrap/css/bootstrap.css">
     <link rel="stylesheet" href="css/animaciones/animacion.css">
     <link rel="stylesheet" href="modales/modales/css/estiloTablaPuntuacion.css">
     <link rel="stylesheet" href="modales/modales/css/estiloSeguirjugando.css">
+    <link rel="stylesheet" href="css/salir/salir.css">
 
     <link rel="shortcut icon" href="img/iconos/segundoMemory.png">
 
@@ -24,33 +25,34 @@
 </style>
 
 <body>
-
-
-    <!-- <div class="modal fade" id="modalUno" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
-        aria-labelledby="staticBackdropLabel" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content modalRedirigir">
-                <div class="modal-body" id="modalBody">
-                    "¡Bienvenido, explorador! Tu misión es encontrar las cartas que contienen pistas esenciales para
-                    ensamblar una nave espacial. Cada pareja de cartas que encuentres te acercará a tu objetivo."
-                </div>
-                <div class="botones">
-                    <button type="button" class="omitir" data-bs-dismiss="modal">Omitir</button>
-                    <div class="siguiente">
-                        <button type="button" class="btn" id="nextButton">
-                            <span>Siguiente</span>
-                        </button>
-                    </div>
+    <div class="game-start-message">
+        ¡Prepárate, la aventura está a punto de comenzar!
+    </div>
+    <div class="modalRedirigir">
+        <div class="character">
+            <!-- Puedes reemplazar esto con una imagen del personaje -->
+            <img src="img/iconos/2.png" alt="" class="mostrarMensaje imagenV">
+        </div>
+        <div class="text-section">
+            <div id="modalBody">
+                <h3>¡Bienvenido, explorador!</h3>
+                Tu misión es encontrar las cartas que contienen pistas esenciales para
+                ensamblar una nave espacial. Cada pareja de cartas que encuentres te acercará a tu objetivo.
+            </div>
+            <div class="botones">
+                <button type="button" class="omitir">Omitir</button>
+                <div class="siguiente">
+                    <button type="button" class="btn" id="nextButton">
+                        <span>Siguiente</span>
+                    </button>
                 </div>
             </div>
         </div>
-    </div> -->
-
+    </div>
     <nav class="nav flex-column apartado-iconos">
         <img id="controlMusica" src="img/iconos/musicaApagada.png" alt="Reproducir" class="iconos efectosIconos">
         <img src="img/iconos/ajustesN.png" alt="Ajustes" class="iconos efectosIconos" data-bs-toggle="collapse"
             data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
-        <!-- <div class=""> -->
         <div class="collapse" id="collapseExample" style="width: 500%;">
             <div class="card card-body color">
                 <div class="col-12 row">
@@ -79,23 +81,20 @@
                     <div class="figuras-arriba">
                         <div class="rectangulo">
                             <img src="img/imagenesCabeza/estrella.png" class="estrella">
-                            <span class="numero1">67</span>
+                            <div id="puntos-container">
+                                <span class="numero1" id="puntos">67</span>
+                            </div>
+
                         </div>
                         <div class="rombo">
                             <img src="img/imagenesCabeza/Polygon 1poligono.png" class="imgRombo" alt="">
                             <span class="numeroRombo">77</span>
                         </div>
                         <div class="rectangulo">
-                            <span class="numero2">99</span>
+                            <div id="diamantes-container">
+                                <span class="numero1" id="diamantes">67</span>
+                            </div>
                             <img src="img/imagenesCabeza/diamante.png" class="estrella">
-                        </div>
-                    </div>
-                    <div class="figuras-abajo">
-                        <div class="figura-abajo">
-                            <img src="img/imagenesCabeza/bombillo.png">
-                        </div>
-                        <div class="figura-abajo">
-                            <img src="img/imagenesCabeza/segundoD.png">
                         </div>
                     </div>
                 </div>
@@ -180,19 +179,7 @@
                 <div class="overlay"></div>
 
                 <!-- Tarjeta principal -->
-                <div class="tarjeta_inferior">
-                  <div class="character">
-                    <!-- Puedes reemplazar esto con una imagen del personaje -->
-                     <img src="img/iconos/vaca.png" alt="">
-                  </div>
-                  <div class="text-section">
-                    <h3>¡Bienvenido!</h3>
-                    <p>Now watch out, they often try a slight variation of that attack pattern. We lost a lot of good people before we figured out the difference.</p>
-                    <p>Speak of the devil, they're trying it now.</p>
-                    <button class="next-button">Next Level</button>
-                  </div>
-                </div>
-            
+
                 <div class="modal" id="mostrarParte" tabindex="-1">
                     <div class="modal-dialog mensajePistas">
                         <div class="modal-content">
@@ -204,12 +191,36 @@
                         </div>
                     </div>
                 </div>
+
+            </div>
+            <div class="contenedor-salir">
+                <div class="salir"><img src="img/iconos/salir.png" alt="" data-bs-toggle="modal"
+                        data-bs-target="#exitModal"></div>
             </div>
         </div>
 
+        <!-- Modal -->
+        <div class="modal fade" id="exitModal" tabindex="-1" aria-labelledby="exitModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="salir modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exitModalLabel">¿Estás seguro que quieres salir?</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <p>¿Quieres abandonar la misión espacial?</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-no" data-bs-dismiss="modal">No</button>
+                        <a href="index.html"><button type="button" class="btn btn-yes">Sí</button></a>
+                    </div>
+                </div>
+            </div>
+        </div>
 
     </div>
-
+    <script src="js/inicio/movimiento.js"></script>
+    <script src="puntos/prueba.js"></script>
     <script src="js/session.js"></script>
     <script src="juego/espacial/cartas/js/cartas.js"></script>
     <script src="js/modaleCartas.js"></script>

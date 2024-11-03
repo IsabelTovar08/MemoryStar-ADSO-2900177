@@ -1,6 +1,14 @@
 document.addEventListener('DOMContentLoaded', function () {
-    var myModal = new bootstrap.Modal(document.getElementById('modalUno'));
-    myModal.show();
+    var myModal = document.querySelector('.modalRedirigir');
+    const overlay = document.querySelector('.overlay');
+    const omitir = document.querySelector('.omitir');
+    const empezar = document.querySelector('.game-start-message');
+
+    omitir.addEventListener('click', () => {
+        myModal.style.display = 'none';
+        overlay.style.display = 'none';
+        empezar.style.display = 'block';
+    })
 
     const modalContents = [
         "¡Bienvenido, explorador! Tu misión es encontrar las cartas que contienen pistas esenciales para ensamblar una nave espacial. Cada pareja de cartas que encuentres te acercará a tu objetivo.",
@@ -33,9 +41,11 @@ document.addEventListener('DOMContentLoaded', function () {
                     nextButton.textContent = 'Finalizar';
                 }
             } else {
-                // Si no hay más contenido, cierra el modal
-                const modal = bootstrap.Modal.getInstance(modalBody.closest('.modal'));
-                modal.hide(); // Cierra el modal sin contenido vacío
+                myModal.style.display = 'none';
+                overlay.style.display = 'none';
+                empezar.style.display = 'block';
+
+
             }
     
             // Eliminar la clase de animación de aparición después de un tiempo
