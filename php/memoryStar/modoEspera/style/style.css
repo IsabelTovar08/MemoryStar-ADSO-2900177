@@ -80,9 +80,11 @@ body{
     display: flex;
 }
 .congijuraJuego{
+    display: flex;
     flex-direction: column;
     width: 30%;
 }
+
 .contenedor-apartado{
     margin: 1%;
     /* margin-top: 2%; */
@@ -109,8 +111,52 @@ body{
     background-color:#2a198a ;
     border: 10px solid rgb(42, 161, 207);
     border-radius: 5%;
+    overflow: hidden;
     box-shadow: 0px 0px 10px 5px rgb(42, 161, 207), -15px 10px 1px #2a198a, -12px 8px  rgb(5, 31, 78);
 }
+.conte-apartado div{
+    width: 100%;
+    height: 33.33%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.5em;
+}
+.conte-apartado div:nth-child(1){
+    background-color: #3e4675;
+
+    animation: desplazar-left 3s ease ;
+}
+.conte-apartado div:nth-child(2){
+    background-color: #0e092c;
+    animation: desplazar-right 3s ease ;
+   
+}
+.conte-apartado div:nth-child(3){
+    background-color: #a4a0b8;
+ 
+    animation: desplazar-left 3s ease ;
+}
+@keyframes desplazar-left {
+    from{
+        transform: translateX(-80%);
+    }
+    to{ 
+        transform: translateX(0%);
+    }
+  
+}
+
+@keyframes desplazar-right {
+    to{
+        transform: translateX(0%);
+    }
+    from{
+        transform: translateX(80%);
+    }
+}
+
+
 
 @keyframes slide-in {
     from {
@@ -556,7 +602,123 @@ body{
     z-index: 1;
 }
 
+.botton-iniciar{
+    width: 12.5vw;
+    height: 8vh;
+    position: absolute;
+    top:80%;
+    left: 0%;
+    right: 0%;
+    bottom: 0%;
+    margin: auto;
+    background: linear-gradient(45deg, #6a0dad, #ffffff4f, #6a0dad);
+    background-size: 400%;
+    color: #ffffff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    animation: bgMove 3s infinite;
+}
+.capa{
+    width: 100vw;
+    height: 100vh;
+    background: linear-gradient(45deg, #007de488, #1a1a1a88);
+    background-size: 200% 200%;
+    color: #ffffff;
+    position: absolute;
+    top: 0%;
+    display: flex;
+    justify-content: center ;
+    align-items: center;
+    animation: colorShift 3s ease infinite;
 
+}
+.contenedo-comenzar{
+    width: 20vw;
+    height: 20vh;
+    background-color: #2a198a;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    animation: sacar  980ms ease ;
+}
+@keyframes sacar{
+    from{
+        transform: scale(1);
+    }
+    to{
+        transform: scale(1.2);
+
+    }
+}
+.comenzar-titulo{
+    text-align: center;
+    width: 100%;
+    height: 50%;
+}
+.comienza-contador{
+    text-align: center;
+    width: 100%;
+    height: 50%;
+}
+
+.lengua-Salida{
+    width: 22vh;
+    height: 8vh;
+    display: flex;
+    position: absolute;
+    left: -8%;
+    transition: all 2s ease;
+    background:  #791;
+}
+.salida-Texto{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 70%;
+    height: 100%;
+}
+.salida-img{
+    font-size: 2em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 30%;
+    height: 100%;
+    background-color: #4a4372;
+
+}
+.salir{
+    position: absolute;
+    left: 0%;
+    transition: all 2s ease;
+}
+
+  @keyframes colorShift {
+    0% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+    100% {
+      background-position: 0% 50%;
+    }
+  }
+  
+  
+  @keyframes bgMove {
+    0% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+    100% {
+      background-position: 0% 50%;
+    }
+  }
 /* animation: glow 1.5s ease-in-out infinite;
 @keyframes glow {
     0%, 100% {
@@ -569,6 +731,13 @@ body{
 
 /* media query para dispositivo horizontal */
 
+/* para modificar */
+/*
+    .conte-apartado div{
+        font-size: 1.5em;
+    }
+    .botton-iniciar{}
+*/
 @media (min-width:200px)and (max-width:300px){
     
 }
