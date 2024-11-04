@@ -1,6 +1,6 @@
 <?php 
 include('../conexion/conexion.php');
-include('usuario.php');
+include('../usuario/usuario.php');
 
 class Registrar extends Usuario {
     private $sqlInsertar;
@@ -24,7 +24,7 @@ class Registrar extends Usuario {
         ];
 
         
-        $conexion->ejecutar($this->sqlInsertar, $valores);    
+        $conexion->login($this->sqlInsertar, $valores);    
     }
 }
 

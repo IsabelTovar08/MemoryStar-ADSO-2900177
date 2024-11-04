@@ -1,7 +1,7 @@
 <?php 
 class Usuario{
     private $nombreUsuario;
-    private $emailUsuario;
+     private $emailUsuario;
     private $clave;
 
     public function setNombreUsuario($nombreUsuario){

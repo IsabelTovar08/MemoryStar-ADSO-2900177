@@ -1,7 +1,7 @@
 
 async function obtenerDatosUsuario() {
     try {
-      const response = await fetch('registro/procesos/obtenerUsuario.php');  
+      const response = await fetch('procesos/login/obtenerUsuario.php');  
         const data = await response.json();
         // console.log(data)
         if (data.success) {
