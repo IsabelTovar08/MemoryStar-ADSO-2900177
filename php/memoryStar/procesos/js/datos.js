@@ -1,5 +1,8 @@
 
-function registrarUsuario(){
+function registrarUsuario(event){
+
+  event.preventDefault();
+  console.log('jpña')
   let email = document.getElementById('email').value;
   let usuario = document.getElementById('username').value;
   let password = document.getElementById('password').value;
@@ -29,7 +32,7 @@ function registrarUsuario(){
         "password": password
       };
 
-      fetch('procesos/registrarPersona.php', {
+      fetch('../registrar/registrarPersona.php', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -44,7 +47,7 @@ function registrarUsuario(){
           alert('Datos enviados correctamente');
     
           alert('seras enviado al login');
-          window.location.href = 'login.html';
+          window.location.href = '../login/login.html';
         }
       })
       .catch(error => console.error('Error:', error));

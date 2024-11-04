@@ -67,6 +67,7 @@ document.addEventListener("DOMContentLoaded", function () {
                   <div class="tarjetas-container">
           `;
 
+
     juegoConfig.juegos.forEach((juego) => {
       resultadoMostrar += `
                   <div class="option juegoUno" data-bs-toggle="modal" data-bs-target="${juego.modalTarget}">
@@ -159,7 +160,7 @@ document.addEventListener("DOMContentLoaded", function () {
         .catch((error) =>
             console.error("Error al cargar el JSON de temáticas:", error)
         );
-}
+  }
 
 function mostrarOpcionesOrdenar(opciones) {
     document.getElementById("res").innerHTML = "";
@@ -265,7 +266,7 @@ function mostrarOpcionesOrdenar(opciones) {
     document
       .getElementById("procesarJuegoSecuencia")
       .addEventListener("click", procesarEleccionSecuencia);
-}
+  }
 
 // Funciones para procesar la elección final de cada juego
 function procesarEleccionCartas() {

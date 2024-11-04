@@ -7,10 +7,10 @@ class conexion {
     private $baseDatos;
     public function __construct(){
         $this->servidor = "localhost";
-        $this->usuario = "soporte";
+        $this->usuario = "postgres";
         $this->password = "123456";
         $this->puerto = "5432";
-        $this->baseDatos = "memo";
+        $this->baseDatos = "corredor";
     }
     public function conectar (){
        try{
@@ -25,12 +25,33 @@ class conexion {
        }
        return $pdo;
     }
-    public function ejecutar($sql, $valores){
-        $pdo =$this->conectar();
-        $stmt= $pdo->prepare($sql);
-        $stmt->execute($valores);
-        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+        
+
+        public function ejecutar($sql, $valores) {
+            $pdo = $this->conectar();
+            if (!$pdo) return false; 
+    
+            $stmt = $pdo->prepare($sql);
+            return $stmt->execute($valores); 
+        }
+
+
+        public function login($sql, $valores){
+            $pdo =$this->conectar();
+            $stmt= $pdo->prepare($sql);
+            $stmt->execute($valores);
+            return $stmt->fetchAll(PDO::FETCH_ASSOC);
+        }
+
+
     }
-}
+
+   
+
+
+
+
+
+
 // $conexion = new conexion();
 // $conexion->conectar();

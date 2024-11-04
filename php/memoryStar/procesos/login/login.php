@@ -1,6 +1,6 @@
 <?php
 include('../conexion/conexion.php');
-include('usuario.php');
+include('../usuario/usuario.php');
 
 class sesion extends usuario {
     private $sqlSesion;
@@ -15,8 +15,8 @@ class sesion extends usuario {
             'clave' => $this->getclave(),
         ];
 
-        // Ejecutar la consulta
-        $resultado = $conexion->ejecutar($this->sqlSesion, $valores);
+        // login la consulta
+        $resultado = $conexion->login($this->sqlSesion, $valores);
 
         // Si la consulta fue exitosa y hay resultados
         if ($resultado && count($resultado) > 0) {

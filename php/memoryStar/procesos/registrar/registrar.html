@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"/>
+    <link rel="stylesheet" href="../../css/estilosRR.css" />
+    <title>Registro</title>
+</head>
+
+<body>
+    <div class="container" id="container">
+        <div class="form-container sign-up hidden-form">
+            <form id="formRegistro" novalidate onsubmit="return registrarUsuario(event)">
+                <h1>Registrarse</h1>
+                
+                <input type="text" id="username" placeholder="Nombre" required />
+                <input type="email" id="email" placeholder="Email" required />
+                <input type="password" id="password" placeholder="Contraseña" required />
+                <button type="submit" id="registrar">Registrarse</button>
+            </form>
+            <div id="mensajeError" style="color:red;"></div>
+        </div>
+        
+        <div class="form-container sign-in">
+            <form novalidate onsubmit="return iniciarSesion(event)">
+                <h1>Iniciar Sesión</h1>
+                
+                <input type="text" id="username2" placeholder="Nombre de usuario" required />
+                <input type="password" id="password2" placeholder="Contraseña" required />
+                <a href="#">¿Olvidaste tu contraseña?</a>
+                <button type="submit" id="ingresar">Iniciar Sesión</button>
+            </form>
+            <div id="mensajeError" style="color:red;"></div>
+        </div>
+        
+        <div class="toggle-container">
+            <div class="toggle">
+                <div class="toggle-panel toggle-left">
+                    <img id="imagen" src="../../img/iconos/nuevoMemory.png" alt="Logo" class="logomemo">
+                    <p>Introduce tus datos para acceder a todas las funciones</p>
+                    <button class="hidden" id="login">Iniciar Sesión</button>
+                </div>
+                <div class="toggle-panel toggle-right">
+                    <img id="imagen" src="../../img/iconos/nuevoMemory.png" alt="Logo" class="logomemo">
+                    <p>Regístrate para acceder a todas las funciones del sitio</p>
+                    <button class="hidden" id="register">Registrarse</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const container = document.getElementById("container");
+        const registerBtn = document.getElementById("register");
+        const loginBtn = document.getElementById("login");
+        
+        registerBtn.addEventListener("click", () => {
+            if (!container.classList.contains("active")) {
+                container.classList.add("active");
+            }
+        });
+        
+        loginBtn.addEventListener("click", () => {
+            if (container.classList.contains("active")) {
+                container.classList.remove("active");
+            }
+        });
+        
+    </script>
+
+    <script src="../../sonidos/sonidos.js"></script>
+    <script src="../js/datos.js"></script>
+    <script src="../js/login.js"></script>
+</body>
+</html>
