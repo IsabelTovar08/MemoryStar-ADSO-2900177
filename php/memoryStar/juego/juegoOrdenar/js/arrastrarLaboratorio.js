@@ -1,4 +1,4 @@
-// Configuration for different difficulty levels
+// configuracion por nivel
 const DIFFICULTY_CONFIGS = {
   facil: {
     objetosIniciales: 4,
@@ -20,16 +20,16 @@ const DIFFICULTY_CONFIGS = {
   }
 };
 
-// Get current difficulty from HTML filename
+// seleccionar dificaultad
 function getCurrentDifficulty() {
   const pathname = window.location.pathname;
-  if (pathname.includes('ordenarQuimicaFacil')) return 'facil';
-  if (pathname.includes('ordenarQuimicaMedio')) return 'medio';
-  if (pathname.includes('ordenarQuimicaDificil')) return 'dificil';
+  if (pathname.includes('MemorixQuimilabbasico')) return 'facil';
+  if (pathname.includes('MemorixQuimilabDesafiante')) return 'medio';
+  if (pathname.includes('MemorixQuimilabPro')) return 'dificil';
   return 'facil'; // Default to easy if not found
 }
 
-// Get game configuration based on current difficulty
+// aplicar dificultad
 function getGameConfig() {
   const difficulty = getCurrentDifficulty();
   return DIFFICULTY_CONFIGS[difficulty];
@@ -46,28 +46,34 @@ let tiempoRestante;
 let idDropzone = [];
 let GAME_CONFIG;
 
-// Function to get number of objects for current round
+// numero de objetos por ronda
 function getObjetosParaRonda() {
-  return GAME_CONFIG.objetosIniciales + ((rondaActual - 1) * GAME_CONFIG.incrementoPorRonda);
+  return (
+    GAME_CONFIG.objetosIniciales +
+    (rondaActual - 1) * GAME_CONFIG.incrementoPorRonda
+  );
 }
 
-// Create dropzones dynamically
+// crear dropzone
 function createDropzones() {
   const cantidadObjetos = getObjetosParaRonda();
-  const listaDrop = document.getElementById('listaDrop');
-  listaDrop.innerHTML = ''; // Clear existing dropzones
+  const listaDrop = document.getElementById("listaDrop");
+  listaDrop.innerHTML = ""; // Clear existing dropzones
   idDropzone = [];
 
   for (let i = 1; i <= cantidadObjetos; i++) {
-    const dropzone = document.createElement('div');
-    dropzone.className = 'dropzone';
+    const dropzone = document.createElement("div");
+    dropzone.className = "dropzone";
     dropzone.classList.add(`posicion${i}`);
     listaDrop.appendChild(dropzone);
   }
 
-  // Initialize random IDs for dropzones
+  // id ramdom
   const dropzoneElements = document.querySelectorAll(".dropzone");
-  const numeros = Array.from({ length: cantidadObjetos }, (_, index) => index + 1);
+  const numeros = Array.from(
+    { length: cantidadObjetos },
+    (_, index) => index + 1
+  );
   const numerosBarajados = shuffleArray([...numeros]);
 
   dropzoneElements.forEach((dropzone, index) => {
@@ -77,22 +83,22 @@ function createDropzones() {
   });
 }
 
-// Create draggable objects dynamically
+// objetos
 function createObjects() {
   const cantidadObjetos = getObjetosParaRonda();
-  const listaObjeto = document.getElementById('listaObjeto');
-  listaObjeto.innerHTML = ''; // Clear existing objects
+  const listaObjeto = document.getElementById("listaObjeto");
+  listaObjeto.innerHTML = ""; // Clear existing objects
 
   for (let i = 1; i <= cantidadObjetos; i++) {
-    const objeto = document.createElement('img');
+    const objeto = document.createElement("img");
     objeto.src = `img/lab/objeto${i}.png`;
     objeto.id = `objeto${i}`;
-    objeto.className = 'objetos arrastrable';
+    objeto.className = "objetos arrastrable";
     listaObjeto.appendChild(objeto);
   }
 }
 
-// Shuffle array function
+// meszclar
 function shuffleArray(array) {
   for (let i = array.length - 1; i > 0; i--) {
     const j = Math.floor(Math.random() * (i + 1));
@@ -101,7 +107,7 @@ function shuffleArray(array) {
   return array;
 }
 
-// Initialize drag and drop interactions
+// drag
 function initializeDragDrop() {
   interact(".arrastrable").draggable({
     listeners: {
@@ -146,7 +152,7 @@ function initializeDragDrop() {
   });
 }
 
-// Timer functions
+// tiempos
 function iniciarTemp() {
   contador = -5;
   limpiarIntervalos();
@@ -180,7 +186,8 @@ function iniciarBarra() {
   intervaloBarra = setInterval(() => {
     tiempoRestante--;
     textoRegresivo.textContent = tiempoRestante;
-    barraRegresiva.style.width = (tiempoRestante / GAME_CONFIG.tiempoRonda) * 100 + "%";
+    barraRegresiva.style.width =
+      (tiempoRestante / GAME_CONFIG.tiempoRonda) * 100 + "%";
 
     if (tiempoRestante <= 0) {
       clearInterval(intervaloBarra);
@@ -194,7 +201,7 @@ function iniciarBarra() {
   }, 1000);
 }
 
-// Verification function
+// verificar
 function verificarPosicion() {
   const objetos = document.querySelectorAll(".arrastrable");
   let aciertos = 0;
@@ -220,7 +227,7 @@ function finalizarRonda() {
   verificarPosicion();
 }
 
-// Show round results
+// mostrar rexultados
 function mostrarResultadosRonda(aciertos) {
   const objetosTotales = getObjetosParaRonda();
   const puntajePerfecto = objetosTotales * 100;
@@ -234,20 +241,26 @@ function mostrarResultadosRonda(aciertos) {
     document.getElementById("rubis").innerHTML = `+${rubis}`;
   }
 
-  const modal = new bootstrap.Modal(document.getElementById("tablapuntuacionsolo"));
+  const modal = new bootstrap.Modal(
+    document.getElementById("tablapuntuacionsolo")
+  );
   modal.show();
 
-  document.getElementById("tablapuntuacionsolo").addEventListener("hidden.bs.modal", () => {
-    if (rondaActual < 3) {
-      rondaActual++;
-      iniciarNuevaRonda();
-    } else {
-      mostrarResultadosFinales();
-    }
-  }, { once: true });
+  document.getElementById("tablapuntuacionsolo").addEventListener(
+    "hidden.bs.modal",
+    () => {
+      if (rondaActual < 3) {
+        rondaActual++;
+        iniciarNuevaRonda();
+      } else {
+        mostrarResultadosFinales();
+      }
+    },
+    { once: true }
+  );
 }
 
-// Clean up intervals
+// limpiar tiempos
 function limpiarIntervalos() {
   if (intervaloBarra) {
     clearInterval(intervaloBarra);
@@ -259,15 +272,17 @@ function limpiarIntervalos() {
   }
 }
 
-// Show initial positions
+//pista
 function mostrarObjetosEnDropzones() {
   const objetos = document.querySelectorAll(".arrastrable");
 
   objetos.forEach((objeto, index) => {
     const dropzone = document.getElementById(`drop-objeto${index + 1}`);
     const dropzoneRect = dropzone.getBoundingClientRect();
-    
-    objeto.style.transform = `translate(${dropzoneRect.left - objeto.offsetLeft}px, ${dropzoneRect.top - objeto.offsetTop}px)`;
+
+    objeto.style.transform = `translate(${
+      dropzoneRect.left - objeto.offsetLeft
+    }px, ${dropzoneRect.top - objeto.offsetTop}px)`;
   });
 
   setTimeout(() => {
@@ -279,61 +294,71 @@ function mostrarObjetosEnDropzones() {
   }, GAME_CONFIG.tiempoVisualizacion);
 }
 
-// Initialize new round
+// nueva ronda
 function iniciarNuevaRonda() {
   limpiarIntervalos();
   botonPresionado = false;
-  
+
   createDropzones();
   createObjects();
   initializeDragDrop();
-  
-  // Update round display
-  document.querySelector(".textoArrastrar").textContent = 
-    `Ronda ${rondaActual} de 3 - Pon los objetos en su lugar (${getObjetosParaRonda()} objetos)`;
-  
+
+  // titulo
+  document.querySelector(
+    ".textoArrastrar"
+  ).textContent = `Ronda ${rondaActual} de 3 - Pon los objetos en su lugar (${getObjetosParaRonda()} objetos)`;
+
   iniciarTemp();
   mostrarObjetosEnDropzones();
 }
 
-// Show final results
+// resultadp final
 function mostrarResultadosFinales() {
-  const tiempoPromedio = (tiemposPorRonda.reduce((a, b) => a + b, 0) / tiemposPorRonda.length).toFixed(1);
-  
+  const tiempoPromedio = (
+    tiemposPorRonda.reduce((a, b) => a + b, 0) / tiemposPorRonda.length
+  ).toFixed(1);
+
   const modalFinal = document.createElement("div");
   modalFinal.className = "modal fade";
   modalFinal.id = "modalFinal";
   modalFinal.innerHTML = `
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title">¡Juego Completado!</h5>
-        </div>
-        <div class="modal-body">
-          <p>Puntaje Final: ${puntajeTotal}</p>
-          <p>Tiempo Promedio: ${tiempoPromedio}s</p>
-          <p>Objetos por ronda:</p>
-          <ul>
-            <li>Ronda 1: ${GAME_CONFIG.objetosIniciales} objetos</li>
-            <li>Ronda 2: ${GAME_CONFIG.objetosIniciales + GAME_CONFIG.incrementoPorRonda} objetos</li>
-            <li>Ronda 3: ${GAME_CONFIG.objetosIniciales + (GAME_CONFIG.incrementoPorRonda * 2)} objetos</li>
-          </ul>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-primary" onclick="location.reload()">Jugar de nuevo</button>
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">¡Juego Completado!</h5>
+          </div>
+          <div class="modal-body">
+            <p>Puntaje Final: ${puntajeTotal}</p>
+            <p>Tiempo Promedio: ${tiempoPromedio}s</p>
+            <p>Objetos por ronda:</p>
+            <ul>
+              <li>Ronda 1: ${GAME_CONFIG.objetosIniciales} objetos</li>
+              <li>Ronda 2: ${
+                GAME_CONFIG.objetosIniciales + GAME_CONFIG.incrementoPorRonda
+              } objetos</li>
+              <li>Ronda 3: ${
+                GAME_CONFIG.objetosIniciales +
+                GAME_CONFIG.incrementoPorRonda * 2
+              } objetos</li>
+            </ul>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-primary" onclick="location.reload()">Jugar de nuevo</button>
+          </div>
         </div>
       </div>
-    </div>
-  `;
-  
+    `;
+
   document.body.appendChild(modalFinal);
-  new bootstrap.Modal(modalFinal, { backdrop: 'static' }).show();
+  new bootstrap.Modal(modalFinal, { backdrop: "static" }).show();
 }
 
-// Initialize game
+// reiniciar juego
 window.addEventListener("DOMContentLoaded", function () {
   GAME_CONFIG = getGameConfig();
-  document.getElementById("verificarBtn").addEventListener("click", verificarPosicion);
+  document
+    .getElementById("verificarBtn")
+    .addEventListener("click", verificarPosicion);
   document.getElementById("verificarBtn").disabled = true;
 
   iniciarNuevaRonda();

@@ -1,18 +1,18 @@
 // Configuración de niveles
 const NIVELES = {
-  "ordenarBibliotecaFacil.html": {
+  "MemorixBookifybasico.html": {
     librosIniciales: 4,
     incrementoPorRonda: 1,
     tiempoVisualizacion: 5000,
     tiempoRonda: 15,
   },
-  "ordenarBibliotecaMedio.html": {
+  "MemorixBookifyDesafiante.html": {
     librosIniciales: 5,
     incrementoPorRonda: 1,
     tiempoVisualizacion: 5000,
     tiempoRonda: 15,
   },
-  "ordenarBibliotecaDificil.html": {
+  "MemorixBookifyPro.html": {
     librosIniciales: 6,
     incrementoPorRonda: 2,
     tiempoVisualizacion: 5000,
