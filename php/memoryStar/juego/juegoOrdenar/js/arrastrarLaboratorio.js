@@ -4,29 +4,29 @@ const DIFFICULTY_CONFIGS = {
     objetosIniciales: 4,
     incrementoPorRonda: 1,
     tiempoVisualizacion: 5000,
-    tiempoRonda: 30
+    tiempoRonda: 30,
   },
   medio: {
     objetosIniciales: 5,
     incrementoPorRonda: 1,
     tiempoVisualizacion: 5000,
-    tiempoRonda: 30
+    tiempoRonda: 30,
   },
   dificil: {
     objetosIniciales: 6,
     incrementoPorRonda: 1,
     tiempoVisualizacion: 5000,
-    tiempoRonda: 30
-  }
+    tiempoRonda: 30,
+  },
 };
 
 // seleccionar dificaultad
 function getCurrentDifficulty() {
   const pathname = window.location.pathname;
-  if (pathname.includes('MemorixQuimilabbasico')) return 'facil';
-  if (pathname.includes('MemorixQuimilabDesafiante')) return 'medio';
-  if (pathname.includes('MemorixQuimilabPro')) return 'dificil';
-  return 'facil'; // Default to easy if not found
+  if (pathname.includes("MemorixQuimilabbasico")) return "facil";
+  if (pathname.includes("MemorixQuimilabDesafiante")) return "medio";
+  if (pathname.includes("MemorixQuimilabPro")) return "dificil";
+  return "facil"; // Default to easy if not found
 }
 
 // aplicar dificultad
@@ -321,33 +321,49 @@ function mostrarResultadosFinales() {
   const modalFinal = document.createElement("div");
   modalFinal.className = "modal fade";
   modalFinal.id = "modalFinal";
+  modalFinal.setAttribute("tabindex", "-1");
+  modalFinal.setAttribute("aria-labelledby", "modalFinalLabel");
+  modalFinal.setAttribute("aria-hidden", "true");
+  modalFinal.setAttribute("data-bs-backdrop", "static");
+  modalFinal.setAttribute("data-bs-keyboard", "false");
+
   modalFinal.innerHTML = `
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title">¡Juego Completado!</h5>
+      <div class="modal-dialog modal-sm modal-dialog-centered">
+          <div class="modal-content contenedorTsolo">
+              <div class="tituloTsolo">¡Juego Completado!</div>
+              <div class="contenedorTsoloInterior">
+              <div class="contenedor-estrellas">
+                            <img src="../../modales/modales/img/tablas/Star.png" class="star" alt="">
+                            <img src="../../modales/modales/img/tablas/Star.png" class="star" alt="">
+                            <img src="../../modales/modales/img/tablas/Star.png" class="star" alt="">
+                        </div>
+                  <div class="puntaje-total">
+                      ${puntajeTotal}
+                  </div>
+  
+                  <div class="contenedor-puntaje">
+                      Tiempo Promedio:
+                      ${tiempoPromedio}s
+                  </div>
+  
+                  <div class="col-12 row contenedor-info">
+                      <div class="col-6">
+                          <img src="../../modales/modales/img/tablas/fotouser.png" alt="" style="width: 16px;">
+                          Usuario
+                      </div>
+                      <div class="col-3">${tiempoPromedio}s</div>
+                      <div class="col-3">${puntajeTotal}pts</div>
+                  </div>
+              </div>
+  
+              <div class="contenedor-botonTsolo">
+                  <button class="botonTsolo" onclick="salir()" style="margin-left: 20px;">
+                      Salir
+                  </button>
+              </div>
           </div>
-          <div class="modal-body">
-            <p>Puntaje Final: ${puntajeTotal}</p>
-            <p>Tiempo Promedio: ${tiempoPromedio}s</p>
-            <p>Objetos por ronda:</p>
-            <ul>
-              <li>Ronda 1: ${GAME_CONFIG.objetosIniciales} objetos</li>
-              <li>Ronda 2: ${
-                GAME_CONFIG.objetosIniciales + GAME_CONFIG.incrementoPorRonda
-              } objetos</li>
-              <li>Ronda 3: ${
-                GAME_CONFIG.objetosIniciales +
-                GAME_CONFIG.incrementoPorRonda * 2
-              } objetos</li>
-            </ul>
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-primary" onclick="location.reload()">Jugar de nuevo</button>
-          </div>
-        </div>
       </div>
-    `;
+  `;
 
   document.body.appendChild(modalFinal);
   new bootstrap.Modal(modalFinal, { backdrop: "static" }).show();
