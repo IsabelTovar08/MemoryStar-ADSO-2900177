@@ -46,8 +46,8 @@ function registrarUsuario(event){
         } else {
           alert('Datos enviados correctamente');
     
-          alert('seras enviado al login');
-          window.location.href = '../login/login.html';
+          // alert('seras enviado al login');
+          // window.location.href = '../login/login.html';
         }
       })
       .catch(error => console.error('Error:', error));
