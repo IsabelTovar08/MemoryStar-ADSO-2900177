@@ -19,17 +19,17 @@
 
 
     <!-- modal -->
-    <div class="modal fade" id="tablapuntuacionsolo" tabindex="-1" aria-labelledby="exampleModalLabel"
-        aria-hidden="true">
+    <div class="modal fade" id="tablapuntuacionsolo" data-bs-backdrop="static" tabindex="-1"
+        aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-sm modal-dialog-centered">
             <div class="modal-content contenedorTsolo">
-                <div class="tituloTsolo">Puntuación</div>
+                <div class="tituloTsolo">Puntuación Ronda</div>
                 <div class="contenedorTsoloInterior">
-                    <div class="contenedor-estrellas">
-                        <img src="../../modales/modales/img/tablas/Star.png" class="star" alt="">
-                        <img src="../../modales/modales/img/tablas/Star.png" class="star" alt="">
-                        <img src="../../modales/modales/img/tablas/Star.png" class="star" alt="">
-                    </div>
+                    <!-- <div class="contenedor-estrellas">
+                   <img src="../../modales/modales/img/tablas/Star.png" class="star" alt="">
+                   <img src="../../modales/modales/img/tablas/Star.png" class="star" alt="">
+                   <img src="../../modales/modales/img/tablas/Star.png" class="star" alt="">
+               </div> -->
 
                     <div id="puntosSecu1" class="puntaje-total">
                         0
@@ -41,23 +41,19 @@
                             class="rubi-puntaje">
                     </div>
 
-                    <div class="col-10 row contenedor-info">
+                    <div class="col-12 row contenedor-info">
                         <div class="col-6"><img src="../../modales/modales/img/tablas/fotouser.png" alt=""
-                                style="width: 20px;">Usuario</div>
+                                style="width: 16px;">Usuario</div>
                         <div class="col-3" id="tiempo1">0</div>
-                        <div class="col-3" id="puntosSecu2">0</div>
+                        <div class="col-3" id="puntosSecu2">0s</div>
                     </div>
 
                 </div>
 
                 <div class="contenedor-botonTsolo">
-                    
-
-                    <button class="botonTsolo" style="margin-left: 20px;" data-bs-dismiss="modal" aria-label="Close"
-                        id="ronda">
-                        Aceptar
-                    </button>
-
+                    <!-- <button class="botonTsolo">Jugar de nuevo</button> -->
+                    <button class="botonTsolo" style="margin-left: 20px;" data-bs-dismiss="modal"
+                        aria-label="Close">Aceptar</button>
                 </div>
             </div>
         </div>
@@ -93,15 +89,15 @@
 
         <div class="contenedor-objetos" id="listaObjeto">
             <img src="img/lab/objeto4.png" id="objeto1" class="objetos arrastrable">
-            <img src="img/lab/objeto8.png" id="objeto2" class="objetos arrastrable"> 
+            <img src="img/lab/objeto8.png" id="objeto2" class="objetos arrastrable">
             <img src="img/lab/objeto2.png" id="objeto3" class="objetos arrastrable">
             <img src="img/lab/objeto1.png" id="objeto4" class="objetos arrastrable">
             <img src="img/lab/objeto5.png" id="objeto5" class="objetos arrastrable">
             <img src="img/lab/objeto3.png" id="objeto6" class="objetos arrastrable">
             <img src="img/lab/objeto7.png" id="objeto7" class="objetos arrastrable">
             <img src="img/lab/objeto6.png" id="objeto8" class="objetos arrastrable">
-            
-            
+
+
 
 
         </div>

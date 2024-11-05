@@ -348,22 +348,43 @@ function mostrarResultadosFinales() {
   modalFinal.setAttribute("data-bs-keyboard", "false");
 
   modalFinal.innerHTML = `
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="modalFinalLabel">¡Juego Completado!</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                <p>Puntaje Final: ${puntajeTotal}</p>
-                <p>Tiempo Promedio: ${tiempoPromedio}s</p>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-primary" onclick="salir()">Salir</button>
-            </div>
-        </div>
-    </div>
-`;
+      <div class="modal-dialog modal-sm modal-dialog-centered">
+          <div class="modal-content contenedorTsolo">
+              <div class="tituloTsolo">¡Juego Completado!</div>
+              <div class="contenedorTsoloInterior">
+              <div class="contenedor-estrellas">
+                            <img src="../../modales/modales/img/tablas/Star.png" class="star" alt="">
+                            <img src="../../modales/modales/img/tablas/Star.png" class="star" alt="">
+                            <img src="../../modales/modales/img/tablas/Star.png" class="star" alt="">
+                        </div>
+                  <div class="puntaje-total">
+                      ${puntajeTotal}
+                  </div>
+  
+                  <div class="contenedor-puntaje">
+                      Tiempo Promedio:
+                      ${tiempoPromedio}s
+                  </div>
+  
+                  <div class="col-12 row contenedor-info">
+                      <div class="col-6">
+                          <img src="../../modales/modales/img/tablas/fotouser.png" alt="" style="width: 16px;">
+                          Usuario
+                      </div>
+                      <div class="col-3">${tiempoPromedio}s</div>
+                      <div class="col-3">${puntajeTotal}pts</div>
+                  </div>
+              </div>
+  
+              <div class="contenedor-botonTsolo">
+                  <button class="botonTsolo" onclick="salir()" style="margin-left: 20px;">
+                      Salir
+                  </button>
+              </div>
+          </div>
+      </div>
+  `;
+
   document.body.appendChild(modalFinal);
   new bootstrap.Modal(modalFinal).show();
 }
