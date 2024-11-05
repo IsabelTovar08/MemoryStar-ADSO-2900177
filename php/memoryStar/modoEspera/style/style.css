@@ -8,8 +8,7 @@
 body{
     color: white !important;
     font-family: cursive !important;
-    /* background-image: url(../img/descarga\ \(1\).jpeg); */
-    background: rgb(11, 26, 88) !important;
+    background: linear-gradient(135deg, #001f3f, #7f00ff, #bf00ff);
     background-repeat: no-repeat;
     background-size:cover;
     width: 100vw;
@@ -21,7 +20,9 @@ body{
     
     width: 100vw;
     height: 12vh;
-    background: rgb(1, 1, 53);
+
+
+
     filter: blur(5px);
   
 }
@@ -33,7 +34,7 @@ body{
     text-align: center;
     width: 100%;
     height: 5%;
-    color: rgba(255, 255, 255, 0.582);
+    color: rgb(255, 255, 255);
 }
 
 
@@ -73,7 +74,7 @@ body{
 
 .contenedor{
    
-    text-shadow: 0px 0px 4px white;
+    text-shadow: 0px 0px 4px rgb(0, 132, 255);
     margin: 1% auto 0% auto;
     width:76vw;
     height: 80vh;
@@ -108,7 +109,6 @@ body{
     height: 99%;
     animation: slide-in 1.2s ease-out ;
     opacity: 1;
-    background-color:#2a198a ;
     border: 10px solid rgb(42, 161, 207);
     border-radius: 5%;
     overflow: hidden;
@@ -123,17 +123,23 @@ body{
     font-size: 1.5em;
 }
 .conte-apartado div:nth-child(1){
-    background-color: #3e4675;
+    background-color: #0f69c4;
+
+
 
     animation: desplazar-left 3s ease ;
 }
 .conte-apartado div:nth-child(2){
-    background-color: #0e092c;
+    background-color: #4b0082;
+
+
     animation: desplazar-right 3s ease ;
    
 }
 .conte-apartado div:nth-child(3){
-    background-color: #a4a0b8;
+    background-color: #d580ff;
+
+
  
     animation: desplazar-left 3s ease ;
 }
@@ -611,18 +617,23 @@ body{
     right: 0%;
     bottom: 0%;
     margin: auto;
-    background: linear-gradient(45deg, #6a0dad, #ffffff4f, #6a0dad);
+    background: linear-gradient(45deg, #6a0dad, #ffffff4f, #640ba3);
     background-size: 400%;
     color: #ffffff;
-    border: none;
+    /* border: none; */
     border-radius: 5px;
     cursor: pointer;
     animation: bgMove 3s infinite;
+
+}
+.botton-iniciar:hover{
+    transition: all 2.5 ease ;
+    transform: scale(.9);
 }
 .capa{
     width: 100vw;
     height: 100vh;
-    background: linear-gradient(45deg, #007de488, #1a1a1a88);
+    background: linear-gradient(45deg, #64037786, #1958ac94);
     background-size: 200% 200%;
     color: #ffffff;
     position: absolute;
@@ -670,7 +681,7 @@ body{
     position: absolute;
     left: -8%;
     transition: all 2s ease;
-    background:  #791;
+    background:  rgb(3, 102, 194)
 }
 .salida-Texto{
     display: flex;
@@ -687,6 +698,7 @@ body{
     width: 30%;
     height: 100%;
     background-color: #4a4372;
+    cursor: pointer;
 
 }
 .salir{
