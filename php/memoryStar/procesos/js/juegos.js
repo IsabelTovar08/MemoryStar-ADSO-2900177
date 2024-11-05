@@ -435,7 +435,7 @@ function hola(){
           window.location.href =  `${data.nombrejuego}${data.tematicajuego}.html`;
           console.log(`${data.nombrejuego}${data.tematicajuego}.html`)
         }else{
-         window.location.href = `${data.nombrejuego}${data.tematicajuego}${data.nombredificultad}.html`;
+         window.location.href = `juego/juegoOrdenar/${data.nombrejuego}${data.tematicajuego}${data.nombredificultad}.html`;
         console.log(`${data.nombrejuego}${data.tematicajuego}${data.nombredificultad}.html`)
         }
     })
