@@ -25,7 +25,7 @@ const copiar = document.querySelector('.botto-copiar')
 copiar.addEventListener('click', () => {
     navigator.clipboard.writeText(codigo.textContent)
     .then(() => {
-        console.log('Texto copiado')
+        alert("copiado")
     })
     .catch(err => {
         console.error('No se pudo copiar', err)

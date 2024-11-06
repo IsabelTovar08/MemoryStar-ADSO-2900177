@@ -107,6 +107,50 @@ var modalHTML = `
                     
                 </tbody>
                 </table>
+
+                <table class="Tabla-cuerpo">
+                <thead>
+                    <tr class="encabezado-header">
+                        <th> Últimas partidas</th>
+                        <th> Tiempo</th>
+                        <th> Puntos</th>
+                        <th> posicion</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Partida 009</td>
+                        <td>00:00</td>
+                        <td>000</td>
+                        <td>3</td>
+                    </tr>
+                    <tr>
+                        <td>Partida 009</td>
+                        <td>00:00</td>
+                        <td>000</td>
+                        <td>1</td>
+                    </tr>
+                    <tr>
+                        <td>Partida 009</td>
+                        <td>00:00</td>
+                        <td>000</td>
+                        <td>5</td>
+                    </tr>
+                    <tr>
+                        <td>Partida 009</td>
+                        <td>00:00</td>
+                        <td>000</td>
+                        <td>7</td>
+                    </tr>
+                    <tr>
+                        <td>Partida 009</td>
+                        <td>00:00</td>
+                        <td>000</td>
+                        <td>4</td>
+                    </tr>
+                    
+                </tbody>
+                </table>
             </div>
             <div class="">
                 <button type="button" class="btn" data-bs-dismiss="modal">Cerrar</button>
