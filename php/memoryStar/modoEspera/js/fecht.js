@@ -1,5 +1,6 @@
 const conteUsuario = document.querySelector('.body-linea'); // Selecciona el elemento con la clase body-linea
 const conterUsuario = document.querySelector('.contenedor-usuario')
+let contador = 0;
 document.addEventListener('DOMContentLoaded',function(){
     fetch('json/usuario.json')
     .then(response => response.json())
@@ -33,7 +34,7 @@ document.addEventListener('DOMContentLoaded',function(){
             </div>
             
             `
-            
+
             conteUsuario.innerHTML += html
           
     });

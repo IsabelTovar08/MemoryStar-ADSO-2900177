@@ -1,0 +1,49 @@
+.historio-modo{
+    display: flex;
+    justify-content: flex-end;
+    height: 5vh;
+    width: 100%;
+    
+}
+.historico-solo{
+    height: 100%;
+    width: 10%;
+    display: flex;
+    justify-content: center ;
+    align-items: center ;
+    background-color: rgb(43, 7, 247);
+    border-top-left-radius: 10vh;
+    border-bottom-left-radius:10vh;
+    clip-path: polygon(
+        0% 0%,    /* Top left corner */
+        100% 0%,   /* Top right */
+        100% 100%, /* Bottom right */
+        0% 100%, /* Bottom left */
+        40% 0%     /* Left middle point */
+      );
+}
+.historico-multi{
+    height: 100%;
+    width: 10%;
+    display: flex;
+    justify-content: center ;
+    align-items: center ;
+    background-color: bisque;
+    border-top-right-radius: 10vh;
+    border-bottom-right-radius:10vh;
+    clip-path: polygon(
+        0% 0%,    /* Top left corner */
+        100% 0%,   /* Top right */
+        100% 100%, /* Bottom right */
+        0% 100%, /* Bottom left */
+        40% 0%     /* Left middle point */
+      );
+}
+.Tabla-cuerpo{
+    width: 100%;
+    background-color: aquamarine;
+
+}
+.encabezado-header{
+    border-bottom: 2px solid black;
+}

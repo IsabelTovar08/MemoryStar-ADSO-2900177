@@ -9,8 +9,14 @@
     <script src="js/javascript.js"></script>
     <link rel="stylesheet" href="../bootstrap/css/bootstrap.css">
     <link rel="stylesheet" href="fontawesome/css/fontawesome.css">
+    
+    <!-- <link rel="stylesheet" href="QR/style.css"> -->
+    <script defer src="QR/QR-libreria.js"></script>
+    <script defer src="QR/javascrip.js"></script>
+
     <script src="fontawesome/js/all.js"></script>
     <script src="bootstrap/js/bootstrap.js"></script>
+
 </head>
 
 <body>
@@ -63,9 +69,9 @@
                 <div class="header-linea">
                     <div class="conte-left">
 
-                        <h2>13/15</h2>
+                        <h2><span class="numero-usuario">13</span>/20</h2>
                         <i class="fa-solid fa-people-group fa-2xl"></i>
-                        <button class="invitar">Invite</button>
+                        <button class="invitar"  data-bs-toggle="modal" data-bs-target="#staticBackdrop">compartir</button>
                     </div>
                 </div>
                 <div class="body-linea">
@@ -76,8 +82,37 @@
     </div>
     <!-- footter -->
     <button class="botton-iniciar" onclick="comienzaEn()">Iniciar</button>
-    <script src="js/fecht.js"></script>
 
+
+
+  
+  <!-- Modal -->
+  <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="staticBackdropLabel">Compartir</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+            <div class="contenedor-QR">    
+                <div id="QR"></div>
+                <div class="ponerCodigo">
+                    <div class="conte-codigo"><h2 class="codigo"></h2></div>
+                    <button class="botto-copiar">copiar</button>
+                </div>
+            </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">cerrar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/fecht.js"></script>
+  <script src="../bootstrap/js/bootstrap.js"></script>
+  
 </body>
 
 </html>
