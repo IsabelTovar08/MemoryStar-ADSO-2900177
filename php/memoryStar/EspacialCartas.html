@@ -28,7 +28,10 @@
     <div class="game-start-message">
         ¡Prepárate, la aventura está a punto de comenzar!
     </div>
-    <div class="modalRedirigir">
+    <div class="game-start-message">
+        Felicidades, haz completado la primera fase
+    </div>
+    <div class="modalRedirigir" id="modalInicio">
         <div class="character">
             <!-- Puedes reemplazar esto con una imagen del personaje -->
             <img src="img/iconos/2.png" alt="" class="mostrarMensaje imagenV">
@@ -47,6 +50,47 @@
                     </button>
                 </div>
             </div>
+        </div>
+    </div>
+    <div class="modalRedirigir" id="segundaRonda">
+        <div class="character">
+            <!-- Puedes reemplazar esto con una imagen del personaje -->
+            <img src="img/iconos/2.png" alt="" class="mostrarMensaje imagenV">
+        </div>
+        <div class="text-section">
+            <div id="modalBody">
+                <h3>¡Felicidades!</h3>
+                Haz encontrado el orden correcto, ahora puedes ponerte en marcha para buscar las partes de la nave
+                espacial, ¡Recuerda el orden correcto!
+            </div>
+            <div class="botones">
+                <div class="siguiente">
+                    <button type="button" class="btn" id="nextButton">
+                        <span>Aceptar</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Button trigger modal -->
+
+
+    <!-- Modal -->
+
+    <div class="modal-content" id="staticBackdrop">
+        <div class="modal-header">
+            <h1 class="modal-title fs-5" id="staticBackdropLabel">Modal title</h1>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+            <div id="puntosFin"></div>
+            <div id="diamantesFin"></div>
+            <div id="tiempoFin"></div>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-primary" id="siguiente">Understood</button>
         </div>
     </div>
     <nav class="nav flex-column apartado-iconos">
@@ -73,157 +117,173 @@
             <span class="loader"></span>
         </div> -->
         <div class="juegoCartas" id="juegoCartas">
-            <h1 class="textoEleccion">De el orden correcto</h1>
-            <div class="contenedorCabeza">
-                <img src="juego/espacial/cartas/img/vg.png" class="movable" alt="Imagen 1">
-                <img src="juego/espacial/cartas/img/luna.png" class="luna">
-                <div class="figuras">
-                    <div class="figuras-arriba">
-                        <div class="rectangulo">
+            <h1 class="fire-title">Descubre el orden correcto</h1>
+
+            <div class="resources-bar">
+                <div class="resources-group">
+                </div>
+                <div class="resources-group">
+                    <div class="resource blue-resource" id="puntos-container">
+                        <div class="icon blue-potion"><img src="img/imagenesCabeza/estrella.png" alt="" width="20"></div>
+                        <div id="timer" class="tiempo">00:00:00</div>
+                    </div>
+                </div>
+
+                <div class="resources-group">
+                    <div class="resource gold-resource" id="puntos-container">
+                        <div class="icon coins"><img src="img/imagenesCabeza/estrella.png" alt="" width="20"></div>
+                        <span class="count" id="puntos">01300</span>
+                    </div>
+                    <div class="resource red-resource" id="diamantes-container">
+                        <div class="icon heart"><img src="img/imagenesCabeza/diamante.png" alt="" width="20"></div>
+                        <span class="count" id="diamantes">02</span>
+                    </div>
+                    <div class="ronda-container">
+                        <h1 class="ronda" id="ronda">Ronda 1</h1>
+                    </div>
+                </div>
+            </div>
+            <!-- <div class="resources-group">
+                <div class="resource gold-resource" id="puntos-container">
+                    <div class="icon coins"><img src="img/imagenesCabeza/estrella.png" alt="" width="20"></div>
+                    <span class="count" id="puntos">01300</span>
+                </div>
+                <div class="resource red-resource" id="diamantes-container">
+                    <div class="icon heart"><img src="img/imagenesCabeza/diamante.png" alt="" width="20"></div>
+                    <span class="count" id="diamantes">02</span>
+                </div> -->
+        </div>
+        <div class="contenedorCabeza">
+            <img src="juego/espacial/cartas/img/vg.png" class="movable" alt="Imagen 1">
+            <img src="juego/espacial/cartas/img/luna.png" class="luna">
+            <div class="figuras">
+                <div class="figuras-arriba">
+                    <!-- <div class="rectangulo">
                             <img src="img/imagenesCabeza/estrella.png" class="estrella">
                             <div id="puntos-container">
                                 <span class="numero1" id="puntos">67</span>
                             </div>
 
-                        </div>
                         <div class="rombo">
                             <img src="img/imagenesCabeza/Polygon 1poligono.png" class="imgRombo" alt="">
-                            <span class="numeroRombo">77</span>
+                            <span class="numeroRombo">Ronda 1</span>
                         </div>
-                        <div class="rectangulo">
+                        <!-- <div class="rectangulo">
                             <div id="diamantes-container">
                                 <span class="numero1" id="diamantes">67</span>
                             </div>
                             <img src="img/imagenesCabeza/diamante.png" class="estrella">
-                        </div>
-                    </div>
+                        </div> -->
+
                 </div>
-
-                <div class="contenerdorImagen">
-                    <div class="contenedorCartas">
-                        <div class="carta" data-id="paloma">
-                            <div class="cara reverso">
-                                <img src="juego/espacial/cartas/img/paloma.png
-                                " class="imagen">
-                            </div>
-                            <div class="cara frente">
-                                <img src="juego/espacial/cartas/img/reverso.png" class="imagen" alt="Reverso">
-                            </div>
-                        </div>
-                        <div class="carta" data-id="llamita">
-                            <div class="cara reverso">
-                                <img src="juego/espacial/cartas/img/llamita.png
-                                " class="imagen">
-                            </div>
-                            <div class="cara frente">
-                                <img src="juego/espacial/cartas/img/reverso.png" class="imagen" alt="Reverso">
-                            </div>
-                        </div>
-                        <div class="carta" data-id="perro">
-                            <div class="cara reverso">
-                                <img src="juego/espacial/cartas/img/perro.png" class="imagen">
-                            </div>
-                            <div class="cara frente">
-                                <img src="juego/espacial/cartas/img/reverso.png" class="imagen" alt="Reverso">
-                            </div>
-                        </div>
-
-
-                        <div class="carta" data-id="pollo">
-                            <div class="cara reverso">
-                                <img src="juego/espacial/cartas/img/pollo.png" class="imagen">
-                            </div>
-                            <div class="cara frente">
-                                <img src="juego/espacial/cartas/img/reverso.png" class="imagen" alt="Reverso">
-                            </div>
-                        </div>
-
-                        <div class="carta" data-id="paloma">
-                            <div class="cara reverso">
-                                <img src="juego/espacial/cartas/img/paloma.png
-                            " class="imagen">
-                            </div>
-                            <div class="cara frente">
-                                <img src="juego/espacial/cartas/img/reverso.png" class="imagen" alt="Reverso">
-                            </div>
-                        </div>
-
-                        <div class="carta" data-id="llamita">
-                            <div class="cara reverso">
-                                <img src="juego/espacial/cartas/img/llamita.png
-                            " class="imagen">
-                            </div>
-                            <div class="cara frente">
-                                <img src="juego/espacial/cartas/img/reverso.png" class="imagen" alt="Reverso">
-                            </div>
-                        </div>
-                        <div class="carta" data-id="perro">
-                            <div class="cara reverso">
-                                <img src="juego/espacial/cartas/img/perro.png" class="imagen">
-                            </div>
-                            <div class="cara frente">
-                                <img src="juego/espacial/cartas/img/reverso.png" class="imagen" alt="Reverso">
-                            </div>
-                        </div>
-                        <div class="carta" data-id="pollo">
-                            <div class="cara reverso">
-                                <img src="juego/espacial/cartas/img/pollo.png" class="imagen">
-                            </div>
-                            <div class="cara frente">
-                                <img src="juego/espacial/cartas/img/reverso.png" class="imagen" alt="Reverso">
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="overlay"></div>
-
-                <!-- Tarjeta principal -->
-
-                <div class="modal" id="mostrarParte" tabindex="-1">
-                    <div class="modal-dialog mensajePistas">
-                        <div class="modal-content">
-                            <div class="modal-body">
-                                <div id="titulo1"></div>
-                                <p id="mensajeTexto1"></p>
-
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
             </div>
-            <div class="contenedor-salir">
-                <div class="salir"><img src="img/iconos/salir.png" alt="" data-bs-toggle="modal"
-                        data-bs-target="#exitModal"></div>
+
+            <div class="contenerdorImagen">
+                <div class="contenedorCartas">
+                    <div class="carta" data-id="paloma">
+                        <div class="cara reverso">
+                            <img src="juego/espacial/cartas/img/paloma.png
+                                " class="imagen">
+                        </div>
+                        <div class="cara frente">
+                            <img src="juego/espacial/cartas/img/reverso.png" class="imagen" alt="Reverso">
+                        </div>
+                    </div>
+                    <div class="carta" data-id="llamita">
+                        <div class="cara reverso">
+                            <img src="juego/espacial/cartas/img/llamita.png
+                                " class="imagen">
+                        </div>
+                        <div class="cara frente">
+                            <img src="juego/espacial/cartas/img/reverso.png" class="imagen" alt="Reverso">
+                        </div>
+                    </div>
+                    <div class="carta" data-id="perro">
+                        <div class="cara reverso">
+                            <img src="juego/espacial/cartas/img/perro.png" class="imagen">
+                        </div>
+                        <div class="cara frente">
+                            <img src="juego/espacial/cartas/img/reverso.png" class="imagen" alt="Reverso">
+                        </div>
+                    </div>
+
+
+                    <div class="carta" data-id="pollo">
+                        <div class="cara reverso">
+                            <img src="juego/espacial/cartas/img/pollo.png" class="imagen">
+                        </div>
+                        <div class="cara frente">
+                            <img src="juego/espacial/cartas/img/reverso.png" class="imagen" alt="Reverso">
+                        </div>
+                    </div>
+
+                    <div class="carta" data-id="paloma">
+                        <div class="cara reverso">
+                            <img src="juego/espacial/cartas/img/paloma.png
+                            " class="imagen">
+                        </div>
+                        <div class="cara frente">
+                            <img src="juego/espacial/cartas/img/reverso.png" class="imagen" alt="Reverso">
+                        </div>
+                    </div>
+
+                    <div class="carta" data-id="llamita">
+                        <div class="cara reverso">
+                            <img src="juego/espacial/cartas/img/llamita.png
+                            " class="imagen">
+                        </div>
+                        <div class="cara frente">
+                            <img src="juego/espacial/cartas/img/reverso.png" class="imagen" alt="Reverso">
+                        </div>
+                    </div>
+                    <div class="carta" data-id="perro">
+                        <div class="cara reverso">
+                            <img src="juego/espacial/cartas/img/perro.png" class="imagen">
+                        </div>
+                        <div class="cara frente">
+                            <img src="juego/espacial/cartas/img/reverso.png" class="imagen" alt="Reverso">
+                        </div>
+                    </div>
+                    <div class="carta" data-id="pollo">
+                        <div class="cara reverso">
+                            <img src="juego/espacial/cartas/img/pollo.png" class="imagen">
+                        </div>
+                        <div class="cara frente">
+                            <img src="juego/espacial/cartas/img/reverso.png" class="imagen" alt="Reverso">
+                        </div>
+                    </div>
+                </div>
             </div>
+
+            <div class="overlay"></div>
+
+            <!-- Tarjeta principal -->
+
+            <div class="modal" id="mostrarParte">
+                <div class="modal-dialog mensajePistas">
+                    <div class="modal-content">
+                        <div class="modal-body">
+                            <div id="titulo1"></div>
+                            <strong id="mensajeTexto1"></strong>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
         </div>
+        <div class="contenedor-salir" id="Content-salir">
 
-        <!-- Modal -->
-        <div class="modal fade" id="exitModal" tabindex="-1" aria-labelledby="exitModalLabel" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered">
-                <div class="salir modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="exitModalLabel">¿Estás seguro que quieres salir?</h5>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-                    <div class="modal-body">
-                        <p>¿Quieres abandonar la misión espacial?</p>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-no" data-bs-dismiss="modal">No</button>
-                        <a href="index.html"><button type="button" class="btn btn-yes">Sí</button></a>
-                    </div>
-                </div>
-            </div>
         </div>
 
     </div>
+
+    </div>
+    <script src="js/modalSalir/modalSalir.js"></script>
     <script src="js/inicio/movimiento.js"></script>
     <script src="puntos/prueba.js"></script>
     <script src="js/session.js"></script>
-    <script src="juego/espacial/cartas/js/cartas.js"></script>
-    <script src="js/modaleCartas.js"></script>
+    <script type="module" src="js/modaleCartas.js"></script>
     <script src="bootstrap/js/bootstrap.js"></script>
     <scrip src="js/animaciones/animacion.js">
         </script>
