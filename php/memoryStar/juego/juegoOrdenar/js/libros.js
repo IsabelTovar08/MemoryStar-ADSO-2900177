@@ -14,7 +14,7 @@ const NIVELES = {
   },
   "MemorixBookifyPro.html": {
     librosIniciales: 6,
-    incrementoPorRonda: 2,
+    incrementoPorRonda: 1,
     tiempoVisualizacion: 5000,
     tiempoRonda: 15,
   },
@@ -367,9 +367,9 @@ function mostrarResultadosFinales() {
                   </div>
   
                   <div class="col-12 row contenedor-info">
-                      <div class="col-6">
+                      <div class="col-6 usuarioPerfill">
                           <img src="../../modales/modales/img/tablas/fotouser.png" alt="" style="width: 16px;">
-                          Usuario
+                          
                       </div>
                       <div class="col-3">${tiempoPromedio}s</div>
                       <div class="col-3">${puntajeTotal}pts</div>
