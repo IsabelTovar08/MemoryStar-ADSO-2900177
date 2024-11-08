@@ -86,10 +86,11 @@ export class partesNave {
                 if (this.object1Collected && this.object2Collected && this.object3Collected && this.object4Collected) {
                     // Retraso de 2 segundos para reproducir el sonido de victoria
                     setTimeout(() => {
-                        this.scene.add.text(300, this.scene.scale.height - 450, "FELICIDADES, ENCONTRASTE TODAS LAS PARTES!", {
+                        this.scene.add.text(200, this.scene.scale.height - 500, "FELICIDADES, ENCONTRASTE TODAS LAS PARTES!", {
                             fontSize: "40px",
                             fill: "#fff",
-                        });
+                            stroke: "#000", strokeThickness: 3 
+                        }).setScrollFactor(0);
                         this.scene.sound.add("victoria", { volume: 0.2 }).play();
                         console.log('sonido de victoria');
                     }, 1000);

@@ -96,9 +96,6 @@ display: flex;
   text-transform: uppercase;
   text-align: center;
   cursor: pointer;
-
-
-
 }
 
 #verificar:hover {
@@ -107,7 +104,7 @@ display: flex;
   text-shadow: 5px 5px 15px rgb(46, 255, 252);
 }
 
-.mal{
+.mal {
   border: 3px solid #ff0000;
   border-radius: 20px;
   box-shadow: 0px 0px 10px #ff0000;
@@ -132,3 +129,42 @@ display: flex;
     box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2); /* Reduce la sombra */
   }
 } 
+
+/* Animación Verificación  */
+.loader {
+  border: 8px solid #f3f3f3;
+  border-top: 8px solid #3498db;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  animation: spin 1s linear infinite;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1000;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Estilo para el desenfoque */
+.blur {
+  filter: blur(5px);
+}
+
+/* Toast personalizado */
+.toast-container {
+  width: 100%; /* Ocupa todo el ancho de la pantalla */
+  max-width: 600px; /* Limita el ancho para que no sea demasiado grande */
+  text-align: center;
+}
+
+.toast {
+  background-color: #0004ff !important;
+  color: #ffcc00;
+  font-family: 'Press Start 2P', cursive; /* Fuente tipo videojuego */
+  box-shadow: 0 0 15px rgba(255, 204, 0, 0.8);
+}

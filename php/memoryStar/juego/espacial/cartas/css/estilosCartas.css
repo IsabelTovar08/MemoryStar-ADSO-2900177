@@ -25,15 +25,18 @@
 }
 
 .carta {
-  height: 11vw; /* Tamaño más pequeño */
-  width: 8vw; /* Ajuste proporcional */
+  height: 11vw;
+  /* Tamaño más pequeño */
+  width: 8vw;
+  /* Ajuste proporcional */
   cursor: pointer;
   transition: transform 0.6s;
   transform-style: preserve-3d;
   position: relative;
 
   /* border: 1px solid #000; */
-  margin: 8px; /* Margen reducido */
+  margin: 8px;
+  /* Margen reducido */
 }
 
 @keyframes car {
@@ -49,6 +52,7 @@
     transform: scale(1);
   }
 }
+
 /* .movable {
     position: absolute;
     width: 100px;
@@ -59,31 +63,37 @@
 
 .movable {
   position: absolute;
-  width: 100px; /* Ajusta el tamaño según sea necesario */
-  transition: transform 5s; /* Suaviza el movimiento */
+  width: 100px;
+  /* Ajusta el tamaño según sea necesario */
+  transition: transform 5s;
+  /* Suaviza el movimiento */
   margin-left: -90%;
   margin-top: 10%;
 }
 
 .luna {
   position: absolute;
-  width: 20%; /* Ajusta el tamaño según sea necesario */
+  width: 20%;
+  /* Ajusta el tamaño según sea necesario */
   transition: transform 0.3s;
-  animation: levitar 4s ease-in-out infinite; /* Suaviza el movimiento */
+  animation: levitar 4s ease-in-out infinite;
+  /* Suaviza el movimiento */
   /* margin-left: 90%; 0*/
   margin-left: 60%;
   margin-top: 10%;
 }
 
 @keyframes levitar {
+
   0%,
   100% {
-    transform: translateY(0); /* Comienza y termina en la posición original */
+    transform: translateY(0);
+    /* Comienza y termina en la posición original */
   }
+
   50% {
-    transform: translateY(
-      -10px
-    ); /* Se mueve hacia arriba, distancia reducida */
+    transform: translateY(-10px);
+    /* Se mueve hacia arriba, distancia reducida */
   }
 }
 
@@ -138,7 +148,8 @@ body {
 
 .cara {
   position: absolute;
-  width: 100%; /* Ajustado al tamaño de la carta */
+  width: 100%;
+  /* Ajustado al tamaño de la carta */
   height: 100%;
   backface-visibility: hidden;
 }
@@ -150,7 +161,10 @@ body {
   align-items: center;
   width: 60%;
   /* Ajuste al tamaño máximo */
-  margin: 0 auto; /* Centramos el contenedor */
+  margin: 0 auto;
+  margin-top: 5%;
+
+  /* Centramos el contenedor */
 }
 
 .imagen {
@@ -164,16 +178,18 @@ body {
   color: blue;
   font-size: 36px;
 }
+
 /*  estilos encabezado */
 .contenedorCabeza {
   width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
-  height: 100vh;
+  height: 70vh;
   padding: 1%;
   margin-top: 0px;
 }
+
 .tituloCabeza {
   font-size: 300%;
   font-style: inter;
@@ -182,20 +198,23 @@ body {
   text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000,
     1px 1px 0 #000, 0px 0px 5px rgba(0, 0, 0, 0.5);
 }
+
 .figuras {
   display: flex;
   flex-direction: column;
   align-items: center;
 }
+
 .figuras-arriba {
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-bottom: 20px;
+  /* margin-bottom: 20px; */
 }
+
 .rectangulo {
-  width: 125px;
-  height: 30px;
+  width: 20vh;
+  height: 5.5vh;
   border-radius: 10px;
   border: 3px solid #3e87ff;
   margin: 0 20px;
@@ -203,17 +222,20 @@ body {
   align-items: center;
   padding-left: 5px;
 }
+
 .rombo {
-  width: 120px;
-  height: 60px;
+  width: 18vh;
+  height: 10vh;
   display: flex;
   justify-content: center;
   align-items: center;
 }
+
 .estrella {
-  width: 30px;
-  height: 25px;
+  width: 4vh;
+  height: 4vh;
 }
+
 .numero1 {
   margin-left: 10px;
   text-align: left;
@@ -221,6 +243,7 @@ body {
   text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000,
     1px 1px 0 #000, 0px 0px 5px rgba(0, 0, 0, 0.5);
 }
+
 .numero2 {
   margin-left: 68px;
   text-align: right;
@@ -228,6 +251,7 @@ body {
   text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000,
     1px 1px 0 #000, 0px 0px 5px rgba(0, 0, 0, 0.5);
 }
+
 .numeroRombo {
   font-size: 24px;
   color: white;
@@ -235,25 +259,13 @@ body {
     1px 1px 0 #000, 0px 0px 5px rgba(0, 0, 0, 0.5);
   position: absolute;
 }
+
 .figuras-abajo {
   display: flex;
   justify-content: space-between;
   width: 100%;
 }
-.figura-abajo {
-  width: 125px;
-  height: 100px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin: 0 90px;
-  margin-top: -50px;
-}
 
-.figura-abajo img {
-  width: 50px;
-  height: 50px;
-}
 @media only screen and (max-width: 1024px) and (orientation: landscape) {
   .mensaje {
     top: 20%;
@@ -261,9 +273,11 @@ body {
   }
 
   .carta {
-    height: 10vw; /* Ajustado para pantallas pequeñas */
+    height: 10vw;
+    /* Ajustado para pantallas pequeñas */
     width: 8vw;
-    margin: 1%; /* Mantener espaciado proporcional */
+    margin: 1%;
+    /* Mantener espaciado proporcional */
   }
 
   .contenedorCartas {
@@ -271,7 +285,8 @@ body {
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
-    width: 60%; /* Ajuste proporcional */
+    width: 60%;
+    /* Ajuste proporcional */
 
     /* Ajuste para centrar mejor en pantallas pequeñas */
   }
@@ -311,54 +326,49 @@ body {
     font-size: 24px;
     margin-bottom: 10px;
   }
+
   .figuras-arriba {
     margin-bottom: 10px;
   }
+
   .imgRombo {
     width: 80px;
     height: 80px;
     margin: 0;
   }
+
   .rectangulo {
     width: 80px;
     height: 30px;
     margin: 5px 9px;
     padding-left: 3px;
   }
+
   .rombo {
     width: 40%;
     height: 100%;
   }
+
   .estrella {
     width: 20px;
     height: 15px;
   }
+
   .numero1,
   .numero2 {
     margin-left: 0;
     text-align: center;
   }
-  .figuras-abajo {
-    align-items: center;
-    width: 100%;
-  }
-  .figura-abajo {
-    width: 90px;
-    height: 70px;
-    margin: 0px 0;
-    margin-top: -20px;
-  }
 
-  .figura-abajo img {
-    width: 40px;
-    height: 35px;
-  }
+
+
 
   /* .figuras{
         margin-top: 15%;
     } */
 }
-/* From Uiverse.io by NorthFishHasNa */ 
+
+/* From Uiverse.io by NorthFishHasNa */
 .siguiente button {
   display: inline-block;
   border-radius: 4px;
@@ -369,42 +379,432 @@ body {
 
   transition: all 0.5s;
   cursor: pointer;
-  margin: 5px;
- }
- button{
+  margin: 2vh;
+}
+
+button {
   width: auto;
   height: 6vh;
   padding: 2%;
 
- }
- .siguiente button span {
+}
+
+.siguiente button span {
   cursor: pointer;
   display: inline-block;
   position: relative;
   transition: 0.5s;
   font-size: 3vh;
 
- }
- 
- .siguiente button span:after {
+}
+
+.siguiente button span:after {
   content: '»';
   position: absolute;
   opacity: 0;
   top: 0;
   right: -15px;
   transition: 0.5s;
- }
- 
- .siguiente button:hover span {
+}
+
+.siguiente button:hover span {
   padding-right: 15px;
-  transform: translateX(-1vh);
- }
- 
- .siguiente button:hover span:after {
+}
+
+.siguiente button:hover span:after {
   opacity: 1;
   right: 0;
- }
- .omitir{
-  background-color: #ffffff00 !important;
+}
+
+.omitir {
+  background: none;
   border: none;
- }
+}
+
+.omitir:hover {
+  color: #fff;
+}
+
+/* Animacion modal */
+.fade-in {
+  opacity: 0;
+  animation: fadeIn 0.5s forwards;
+}
+
+@keyframes fadeIn {
+  to {
+    opacity: 1;
+  }
+}
+
+.fade-out {
+  opacity: 1;
+  animation: fadeOut 0.5s forwards;
+}
+
+@keyframes fadeOut {
+  to {
+    opacity: 0;
+  }
+}
+
+.botones {
+  display: flex;
+  justify-content: end;
+  align-items: center;
+  /* Agregado para centrar también verticalmente */
+  width: 100%;
+  /* Ocupa todo el ancho del contenedor */
+}
+
+#mostrarParte {
+  pointer-events: none;
+
+}
+
+.mensajePistas {
+  color: white;
+  font-size: 2.8vh;
+  font-family: monospace;
+
+  .modal-content {
+    background-color: #9886c5c1;
+    border-radius: 2vh;
+    text-shadow: 0 0 10px #000;
+    box-shadow: 0 0 20px #02112c;
+    animation: bounce 0.5s forwards;
+  }
+
+}
+
+
+@keyframes bounce {
+  0% {
+    transform: translateY(-50px);
+    /* Comienza más arriba */
+  }
+
+  50% {
+    transform: translateY(20px);
+    /* Rebota hacia abajo */
+  }
+
+  100% {
+    transform: translateY(0);
+    /* Regresa a su posición original */
+  }
+}
+
+/* Tarjeta inferior  */
+.imagenV {
+  transition: transform 1s;
+  /* Transición de movimiento vertical */
+}
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.5);
+  /* Color negro semi-transparente */
+  z-index: 1;
+  /* Asegura que el overlay esté detrás de la tarjeta */
+}
+
+.tiempo {
+  color: #fff;
+}
+
+.modalRedirigir {
+  position: fixed;
+  bottom: 3vh;
+  left: 3vh;
+  display: none;
+  align-items: center;
+  color: #ffffff;
+  padding: 3vh;
+  border-radius: 10px;
+  width: 90vh;
+  box-shadow: 0 0 30px #956eff, 0 0 10px #261353 inset;
+  background-color: #131d53;
+  outline: 8px solid #6340ff;
+  color: #fff;
+  z-index: 2;
+  /* Asegura que el overlay esté detrás de la tarjeta */
+  /* display: none; */
+  animation: bounce 0.5s forwards;
+
+}
+
+#staticBackdrop {
+  display: none;
+  width: 30vh;
+  position: absolute;
+  margin-left: 10%;
+
+}
+
+#segundaRonda {
+  display: none;
+}
+
+.modalRedirigir:hover {
+  box-shadow: 0 0 30px #6ef5ff;
+}
+
+/* Imagen del personaje */
+.character img {
+  width: 20vh;
+  height: 25vh;
+  margin-right: 20px;
+  object-fit: fill;
+}
+
+/* Sección de texto */
+.text-section {
+  flex: 1;
+}
+
+/* Título y párrafo de descripción */
+.text-section h3 {
+  margin: 0;
+  font-size: 1.2em;
+  font-weight: normal;
+}
+
+.text-section p {
+  margin: 10px 0;
+  line-height: 1.5;
+}
+
+/* Botón de "Next Level" */
+.next-button {
+  background-color: #6f5a99;
+  /* Color del botón */
+  color: #ffffff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1em;
+  transition: background-color 0.3s;
+}
+
+.next-button:hover {
+  background-color: #8a75b3;
+  /* Color de fondo al pasar el cursor */
+}
+
+#diamantes {
+  transition: color 0.5s ease;
+  /* Transición suave de color */
+  position: relative;
+  /* Necesario para el posicionamiento absoluto del texto de la suma */
+}
+
+/* Estilo inicial para el texto de puntos */
+#puntos {
+  transition: color 0.5s ease;
+  /* Transición suave de color */
+  position: relative;
+  /* Necesario para el posicionamiento absoluto del texto de la suma */
+}
+
+/* Animación de fusión */
+@keyframes fusion {
+  0% {
+    transform: translateY(-30px);
+    /* Inicia 30px por encima */
+    opacity: 0;
+    /* Comienza invisible */
+  }
+
+  50% {
+    opacity: 1;
+    /* Se vuelve visible */
+  }
+
+  100% {
+    transform: translateY(0);
+    /* Se mueve a la posición original */
+  }
+}
+
+/* Estilo para el efecto de suma */
+.animate {
+  color: #00ff00;
+  /* Color vibrante para la animación */
+  animation: fusion 1s ease;
+  /* Aplicar la animación de fusión */
+  position: absolute;
+  /* Para que el texto se superponga */
+}
+
+.resources-bar {
+  /* padding: 1% 16% 0 10%; */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  height: 7vh;
+  float: left;
+  margin-top: 1%;
+}
+
+.resources-group {
+  display: flex;
+  gap: 20px;
+  /* margin: 5%; */
+}
+
+.resource {
+  background: #fff;
+  padding: 4px 12px;
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.2);
+  width: 20vh;
+  height: 5vh;
+}
+
+.icon {
+  width: 24px;
+  height: 24px;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.blue-potion {
+  background: linear-gradient(135deg, #4fa3d1, #2980b9);
+  border: 2px solid #5fb3e1;
+}
+
+.energy {
+  background: linear-gradient(135deg, #ffd700, #ffa500);
+  border: 2px solid #ffe44d;
+}
+
+.heart {
+  background: linear-gradient(135deg, #ff4757, #ff6b81);
+  border: 2px solid #ff6b81;
+
+  img {
+    filter: drop-shadow(0 0 10px #000);
+  }
+}
+
+.coins {
+  background: linear-gradient(135deg, #ffd700, #ffa500);
+  border: 2px solid #ffe44d;
+
+  img {
+    filter: drop-shadow(0 0 10px #000);
+  }
+}
+
+.count {
+  color: white;
+  font-weight: bold;
+  font-size: 16px;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+.blue-resource {
+  background: linear-gradient(to right, rgba(79, 163, 209, 1), rgba(41, 128, 185, 0.5));
+}
+
+.yellow-resource {
+  background: linear-gradient(to right, rgba(255, 215, 0, 1), rgba(255, 165, 0, 0.5));
+}
+
+.red-resource {
+  background: linear-gradient(to right, rgba(255, 71, 87, 1), rgba(255, 107, 129, 0.5));
+}
+
+.gold-resource {
+  background: linear-gradient(to right, rgba(255, 215, 0, 1), rgba(255, 165, 0, 0.5));
+}
+
+
+.ronda-container {
+  width: 30vh;
+}
+
+.ronda {
+  font-size: 6vh;
+  color: #6340ff;
+  /* Color llamativo */
+  opacity: 0;
+  /* Invisible inicialmente */
+  animation: aparecer 1s forwards, atencion 2s 1s forwards infinite;
+  text-align: right;
+  margin: 0;
+  transform: translateY(-10px);
+  display: none;
+  text-shadow: 0 0 1px #000, 0 0 5px #5fb3e1;
+}
+
+@keyframes aparecer {
+  0% {
+    top: -100px;
+    opacity: 0;
+  }
+
+  100% {
+    top: 0%;
+    /* Cambia según la posición deseada */
+    opacity: 1;
+  }
+}
+
+@keyframes atencion {
+
+  0%,
+  20%,
+  50%,
+  80%,
+  100% {
+    transform: translateY(-10px);
+  }
+
+  40% {
+    transform: translateY(-18px);
+    /* Salto hacia arriba */
+  }
+
+  60% {
+    transform: translateY(-15px);
+    /* Salto hacia abajo */
+  }
+}
+
+/* Estilo 1: Fuego */
+.fire-title {
+  font-family: 'Arial Black', sans-serif;
+  font-size: 5.5vh;
+  background: linear-gradient(0deg, #2f00ff, #6340ff, #6340ff);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  text-shadow: 0 0 20px #5fb3e1;
+  /* animation: fire 0.8s ease-in-out infinite alternate; */
+  text-align: center;
+}
+
+@keyframes fire {
+  0% {
+    transform: scale(1);
+  }
+
+  100% {
+    transform: scale(1.05);
+  }
+}

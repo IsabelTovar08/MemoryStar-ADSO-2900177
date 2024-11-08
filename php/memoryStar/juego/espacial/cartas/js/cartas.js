@@ -1,180 +1,253 @@
-document.addEventListener("DOMContentLoaded", function () {
-  const images = document.querySelectorAll(".movable");
+export class JuegoCartas {
+    constructor() {
+      this.images = document.querySelectorAll(".movable");
+      this.puntosHTML = document.getElementById("puntos");
+      this.puntosContainer = document.getElementById("puntos-container");
+      this.puntosSumar = 100;
+      this.diamantesHTML = document.getElementById("diamantes");
+      this.diamantesContainer = document.getElementById("diamantes-container");
+      this.diamantesSumar = 1;
+      this.contenedor = document.querySelector(".contenedorCartas");
+      this.cartas = Array.from(document.querySelectorAll(".carta"));
+      this.cartasVolteadas = [];
+      this.aciertos = 0;
+      this.totalAciertos = this.cartas.length / 2;
+      this.tiempoRestante = 60;
+      this.ordenMensajes = [];
+      this.contar = 0;
+      this.titulos = [
+        "PRIMERA PARTE:",
+        "SEGUNDA PARTE:",
+        "TERCERA PARTE:",
+        "CUARTA PARTE:",
+      ];
+      this.mensajes = [
+        "Cabina: El área donde los astronautas controlan la nave. Lleno de pantallas y botones",
+        "Dorsal: Su función es alojar paneles, sensores o sistemas estructurales clave",
+        "Propulsores: La parte trasera que contiene los motores, responsables de empujar la nave hacia adelante.",
+        "Alas: Proporcionan estabilidad y control durante el descenso y aterrizaje en la Tierra.",
+      ];
+      this.segundaRonda = document.getElementById('segundaRonda');
+      this.puntiaciom = document.getElementById('staticBackdrop');
+      this.insertarPuntos = document.getElementById('puntosFin');
+      this.insertarDiamantes = document.getElementById('diamantesFin');
+      this.insertarTiempo = document.getElementById('tiempoFin');
 
-  function getRandomPosition() {
-    const x = Math.random() * (window.innerWidth - 100); // -100 para evitar que la imagen se salga de la vista
-    const y = Math.random() * (window.innerHeight - 100); // -100 para evitar que la imagen se salga de la vista
-    return { x, y };
-  }
+      this.siguiente = document.getElementById('siguiente');
 
-  function moveImages() {
-    images.forEach((image) => {
-      const { x, y } = getRandomPosition(); // Obtener posiciones aleatorias
-      image.style.transform = `translate(${x}px, ${y}px)`; // Mueve la imagen
-    });
-  }
 
-  // Mueve las imágenes cada 2 segundos
-  setInterval(moveImages, 1000);
+      this.puntoss = 0;
+      this.diamantess = 0;
+      this.seconds = 0;
+      this.timerInterval;
 
-  const contenedor = document.querySelector(".contenedorCartas");
-  const cartas = Array.from(document.querySelectorAll(".carta")); // Convertir NodeList a Array
-  let cartasVolteadas = [];
-  let aciertos = 0;
-  const totalAciertos = cartas.length / 2; // Total de pares de cartas
-  let tiempoRestante = 60; // 60 segundos
-
-  // Mezclar las cartas
-  function mezclarCartas() {
-    const cartasParaMezclar = cartas.filter(
-      (carta) => !carta.classList.contains("central")
-    );
-
-    for (
-      let iteracionMezclar = cartasParaMezclar.length - 1;
-      iteracionMezclar > 0;
-      iteracionMezclar--
-    ) {
-      const j = Math.floor(Math.random() * (iteracionMezclar + 1));
-      contenedor.appendChild(cartasParaMezclar[j]);
+      this.init();
     }
-  }
 
-  // Función para voltear las cartas
-  function voltearCarta(carta) {
-    const bieen = document.getElementById("voltear");
-    bieen.play();
+    init() {
+      this.puntosHTML.textContent = this.puntoss;
+      this.diamantesHTML.textContent = this.diamantess;
 
-    // Si la carta ya está emparejada o hay dos cartas volteadas, no hacer nada
-    if (carta.classList.contains("emparejada") || cartasVolteadas.length === 2)
-      return;
+      setInterval(this.moveImages.bind(this), 1000);
 
-    carta.classList.add("volteada");
-    cartasVolteadas.push(carta);
+      this.mezclarCartas();
+      this.inicializarJuego();
+      this.startTimer();
 
-    if (cartasVolteadas.length === 2) {
-      const [primeraCarta, segundaCarta] = cartasVolteadas;
+    }
+
+    stopTimer() {
+      clearInterval(this.timerInterval);
+      this.timerInterval = null;
+    }
+    startTimer() {
+      if (!this.timerInterval) {
+        this.timerInterval = setInterval(() => this.updateTimer(), 1000);
+      }
+    }
+    
+    updateTimer() {
+      this.seconds++;
+      document.getElementById("timer").textContent = this.formatTime(this.seconds);
+    }
+    
+    formatTime(totalSeconds) {
+      const hours = Math.floor(totalSeconds / 3600);
+      const minutes = Math.floor((totalSeconds % 3600) / 60);
+      const seconds = totalSeconds % 60;
+      return `${String(hours).padStart(2, '0')}:${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
+    }    
+    getRandomPosition() {
+      const x = Math.random() * (window.innerWidth - 100);
+      const y = Math.random() * (window.innerHeight - 100);
+      return { x, y };
+    }
+
+    moveImages() {
+      this.images.forEach((image) => {
+        const { x, y } = this.getRandomPosition();
+        image.style.transform = `translate(${x}px, ${y}px)`;
+      });
+    }
+
+    mezclarCartas() {
+      const cartasParaMezclar = this.cartas.filter(
+        (carta) => !carta.classList.contains("central")
+      );
+
+      for (
+        let i = cartasParaMezclar.length - 1;
+        i > 0;
+        i--
+      ) {
+        const j = Math.floor(Math.random() * (i + 1));
+        this.contenedor.appendChild(cartasParaMezclar[j]);
+      }
+    }
+
+    voltearCarta(carta) {
+      const bieen = document.getElementById("voltear");
+      bieen.play();
+
+      if (
+        carta.classList.contains("emparejada") ||
+        this.cartasVolteadas.length === 2
+      )
+        return;
+
+      carta.classList.add("volteada");
+      this.cartasVolteadas.push(carta);
+
+      if (this.cartasVolteadas.length === 2) {
+        this.compararCartas();
+      }
+    }
+
+    compararCartas() {
+      const [primeraCarta, segundaCarta] = this.cartasVolteadas;
       const idPrimeraCarta = primeraCarta.getAttribute("data-id");
       const idSegundaCarta = segundaCarta.getAttribute("data-id");
 
-      // Verificar que las dos cartas tengan el mismo "data-id" y que sean efectivamente diferentes cartas
-      if (idPrimeraCarta === idSegundaCarta && primeraCarta !== segundaCarta) {
-        const bieen = document.getElementById("bien");
-        bieen.play();
-        aciertos++;
-
-        // Marcar las cartas como emparejadas
-        primeraCarta.classList.add("emparejada");
-        segundaCarta.classList.add("emparejada");
-
-        cartasVolteadas = [];
-        mostrarMensaje(aciertos);
-
-        if (aciertos === totalAciertos) {
-          setTimeout(() => {
-            window.location.href =
-              "./juego/espacial/cartas/juegoPixel/index.html";
-          }, 7000);
-        }
+      if (
+        idPrimeraCarta === idSegundaCarta &&
+        primeraCarta !== segundaCarta
+      ) {
+        this.procesarAcierto(primeraCarta, segundaCarta);
       } else {
-        // Las cartas no coinciden, voltearlas de nuevo después de un tiempo
         setTimeout(() => {
           primeraCarta.classList.remove("volteada");
           segundaCarta.classList.remove("volteada");
-          cartasVolteadas = [];
+          this.cartasVolteadas = [];
         }, 1000);
       }
     }
-  }
 
-  // Array para almacenar el orden en que se muestran los mensajes
-  const ordenMensajes = [];
+    procesarAcierto(primeraCarta, segundaCarta) {
+      const bieen = document.getElementById("bien");
+      bieen.play();
+      this.aciertos++;
 
-  let contar = 0;
-  let titulos = [
-    "PRIMERA PIEZA A ENSAMBLAR",
-    "SEGUNDA PIEZA A ENSAMBLAR",
-    "TERCERA PIEZA A ENSAMBLAR",
-    "CUARTA PIEZA A ENSAMBLAR",
-  ];
+      this.puntoss += this.puntosSumar;
+      this.diamantess += this.diamantesSumar;
+      this.actualizarPuntos();
 
-  function mostrarMensaje(aciertos) {
-    let mensajes = [
-      "Cabina: El área donde los astronautas controlan la nave. Lleno de pantallas y botones",
-      "Dorsal: La función del dorsal de una nave es alojar paneles, sensores o sistemas estructurales clave",
-      "Propulsores: La parte trasera que contiene los motores, responsables de empujar la nave hacia adelante.",
-      "Alas: Proporcionan estabilidad y control durante el descenso y aterrizaje en la Tierra.",
-    ];
 
-    // Filtrar los índices ya usados para que no se repitan
-    const indicesRestantes = mensajes
-      .map((_, index) => index) // Crear un array de índices
-      .filter((index) => !ordenMensajes.includes(index)); // Excluir los índices ya seleccionados
+      primeraCarta.classList.add("emparejada");
+      segundaCarta.classList.add("emparejada");
+      this.cartasVolteadas = [];
+      this.mostrarMensaje(this.aciertos);
 
-    // Si ya se han mostrado todos los mensajes, no hacer nada
-    if (indicesRestantes.length === 0) return;
+      if (this.aciertos === this.totalAciertos) {
+        this.mostrar();
+      }
+    }
 
-    // Seleccionar aleatoriamente un índice de los restantes
-    const elegido = Math.floor(Math.random() * indicesRestantes.length);
-    const indiceSeleccionado = indicesRestantes[elegido];
+    actualizarPuntos() {
+      this.puntosHTML.textContent = this.puntoss;
+      this.diamantesHTML.textContent = this.diamantess;
 
-    // Guardar el índice seleccionado en 'ordenMensajes' para evitar repeticiones
-    ordenMensajes.push(indiceSeleccionado);
+      this.animarIncremento(this.puntosHTML, this.puntosContainer, `+${this.puntosSumar}`);
+      this.animarIncremento(this.diamantesHTML, this.diamantesContainer, `+${this.diamantesSumar}`);
+    }
+    mostrar() {
+        this.stopTimer();
+        this.puntiaciom.style.display = 'block';
+        this.siguiente.addEventListener('click', () => {
+        window.location.href = "./juego/espacial/cartas/juegoPixel/index.html";
+      })
+        // this.segundaRonda.style.display = 'flex';
+      this.insertarPuntos.textContent = this.puntoss;
+      this.insertarDiamantes.textContent = this.diamantess;
+      this.insertarTiempo.textContent = this.formatTime(this.seconds);
 
-    // Mostrar el mensaje correspondiente usando el índice seleccionado
-    const mensajeDiv = document.getElementById("mostrarParte");
-    const mensajeText = document.getElementById("mensajeTexto1");
-    const titulo = document.getElementById("titulo1");
+    }
+    animarIncremento(elemento, container, texto) {
+      const sumaTexto = document.createElement("span");
+      sumaTexto.textContent = texto;
+      sumaTexto.className = "animate";
+      sumaTexto.style.position = "absolute";
+      sumaTexto.style.left = `${elemento.offsetLeft}px`;
+      sumaTexto.style.top = `${elemento.offsetTop - 30}px`;
+      container.appendChild(sumaTexto);
 
-    if (mensajeDiv) {
-      mensajeText.textContent = mensajes[indiceSeleccionado];
-      titulo.textContent = titulos[contar];
-      mensajeDiv.style.display = "block";
-
-      // Ocultar el mensaje después de 5 segundos
       setTimeout(() => {
-        mensajeDiv.style.display = "none";
-      }, 2000);
+        sumaTexto.style.opacity = 0;
+      }, 1000);
+
+      setTimeout(() => {
+        container.removeChild(sumaTexto);
+      }, 1500);
     }
 
-    contar++;
-    console.log(ordenMensajes); // Verificar el orden de los índices seleccionados
+    mostrarMensaje(aciertos) {
+      const indicesRestantes = this.mensajes
+        .map((_, index) => index)
+        .filter((index) => !this.ordenMensajes.includes(index));
 
-    if (ordenMensajes.length === 4) {
-      const ordenDef = ordenMensajes;
-      console.log(ordenDef);
+      if (indicesRestantes.length === 0) return;
 
-      if (ordenMensajes.length === 4) {
-        const ordenDef = ordenMensajes;
-        console.log(ordenDef);
-    
-        // Enviar `ordenDef` al servidor
-        fetch('juego/espacial/cartas/php/almacenar_orden.php', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({ ordenDef })
-        })
-        .then(response => response.json())
-        .then(data => console.log(data.status)); // Debería mostrar "success"
+      const elegido = Math.floor(Math.random() * indicesRestantes.length);
+      const indiceSeleccionado = indicesRestantes[elegido];
+      this.ordenMensajes.push(indiceSeleccionado);
+
+      const mensajeDiv = document.getElementById("mostrarParte");
+      const mensajeText = document.getElementById("mensajeTexto1");
+      const titulo = document.getElementById("titulo1");
+
+      if (mensajeDiv) {
+        mensajeText.textContent = this.mensajes[indiceSeleccionado];
+        titulo.textContent = this.titulos[this.contar];
+        mensajeDiv.style.display = "block";
+
+        setTimeout(() => {
+          mensajeDiv.style.display = "none";
+        }, 5000);
+      }
+
+      this.contar++;
+
+      if (this.ordenMensajes.length === 4) {
+        this.enviarOrden();
+      }
     }
-    
-    }
-  }
 
-  // Vincular eventos de clic a las cartas después de mezclar
-  function inicializarJuego() {
-    for (let iteracion = 0; iteracion < cartas.length; iteracion++) {
-      cartas[iteracion].addEventListener("click", function () {
-        voltearCarta(cartas[iteracion]);
+    enviarOrden() {
+      fetch("juego/espacial/cartas/php/almacenar_orden.php", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ ordenDef: this.ordenMensajes }),
+      })
+        .then((response) => response.json())
+        .then((data) => console.log(data.status));
+    }
+
+    inicializarJuego() {
+      this.cartas.forEach((carta, index) => {
+        carta.addEventListener("click", () => {
+          this.voltearCarta(carta);
+        });
       });
     }
   }
-
-  // Iniciar el juego
-  mezclarCartas();
-  inicializarJuego();
-});
-
-//nave

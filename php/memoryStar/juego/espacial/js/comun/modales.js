@@ -35,18 +35,18 @@ document.addEventListener("DOMContentLoaded", function () {
           console.error("Error al cargar el JSON de temáticas:", error)
       );
     }
+    salir();
   
     informacionModales();
     objetos();
     redi();
 
-
     function modales(modal) {
         let modalJuego = "";
         modalJuego += `
-            <div class="modal" id="${modal.id}" tabindex="-1">
+            <div class="modal" id="${modal.id}" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
                 <div class="modal-dialog modal-dialog-centered">
-                    <div class="modal-content">
+                    <div class="modal-content modalRedirigir">
                         <div class="modal-header">
                             <h5 class="modal-title">${modal.texto}</h5>
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
@@ -93,14 +93,12 @@ document.addEventListener("DOMContentLoaded", function () {
     function redirigir(ir) {
       let redirigir = "";
       redirigir += `
-          <div class="modal" id="${ir.id}" tabindex="-1">
-              <div class="modal-dialog">
-                  <div class="modal-content">
+          <div class="modal" id="${ir.id}" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+              <div class="modal-dialog modal-dialog-centered">
+                  <div class="modal-content modalRedirigir">
                       <div class="modal-body">
                           ${ir.texto}
-                      </div>
-                      <div class="modal-footer">
-                          <button type="button" id="${ir.id2}" class="btn btn-primary">Aceptar</button>
+                          <div class="boton_aceptar"><button type="button" id="${ir.id2}" class="btn btn-primary">Aceptar</button></div>
                       </div>
                   </div>
               </div>
@@ -108,5 +106,32 @@ document.addEventListener("DOMContentLoaded", function () {
       `;
       document.body.insertAdjacentHTML('beforeend', redirigir);
   };
+
+  
+  function salir() {
+    let salir = "";
+    salir += `
+                <div class="modal fade" id="exitModal" aria-labelledby="exitModalLabel" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-hidden="true""
+                    aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered">
+                        <div class="salir modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exitModalLabel">¿Estás seguro que quieres salir?</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                    aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <p>¿Quieres abandonar la misión espacial?</p>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-no" data-bs-dismiss="modal">No</button>
+                                <a href="../../../../index.html"><button type="button" class="btn btn-yes">Sí</button></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+    `;
+    document.body.insertAdjacentHTML('beforeend', salir);
+};
   
 });

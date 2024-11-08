@@ -128,11 +128,13 @@
     margin-left: 1%;
     box-shadow: 0 0 20px #000, 0 0 10px #fff;
 }
+
 .green-circle {
     background-color: rgb(72, 255, 72);
     animation: blinkGreen 4s infinite;
     box-shadow: 1px, 1px, 40px #fff, 0 0 30px #00ff15;
 }
+
 .red-circle {
     background-color: rgb(255, 87, 87);
     animation: blinkGreen 4s infinite;
@@ -141,6 +143,7 @@
     box-shadow: 0 0 40px #fff, 0 0 30px #ff0303;
 
 }
+
 .blue-circle {
     background-color: rgb(76, 76, 255);
     animation: blinkGreen 4s infinite;
@@ -149,6 +152,7 @@
     box-shadow: 0 0 40px #fff, 0 0 30px #001aff;
 
 }
+
 @keyframes blinkGreen {
 
     0%,
@@ -161,27 +165,28 @@
         opacity: 1;
     }
 }
+
 .circuloos {
     display: flex;
     justify-content: center;
-    padding-top: 2%;
 }
-.loguito{
+
+.loguito {
     transition: transform 0.3s;
     animation: pulse 2s infinite;
 }
 
 @keyframes pulse {
 
-0% {
-    transform: scale(1);
-}
+    0% {
+        transform: scale(1);
+    }
 
-50% {
-    transform: scale(1.1);
-}
+    50% {
+        transform: scale(1.1);
+    }
 
-100% {
-    transform: scale(1);
-}
+    100% {
+        transform: scale(1);
+    }
 }

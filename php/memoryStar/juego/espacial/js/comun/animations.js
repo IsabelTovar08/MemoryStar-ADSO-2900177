@@ -60,7 +60,7 @@ export class Personaje {
     }
 
     if (this.keys.up.isDown && this.jugador.body.touching.down) {
-      this.jugador.setVelocityY(-350);
+      this.jugador.setVelocityY(-380);
       this.jugador.anims.play('mario-jump', true);
     }
 

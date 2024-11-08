@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Juego Dulces</title>
+  <script src="../../super-midu-bros-main/phaser.min.js"></script>
+  <script type="module" src="pixel.js"></script>
+  <link rel="stylesheet" href="../../bootstrap/css/bootstrap.css">
+  <link rel="stylesheet" href="../../bootstrap/js/bootstrap.js">
+  <link rel="stylesheet" href="../../css/estilos.css">
+  <link rel="stylesheet" href="../../../../css/salir/salir.css">
+  <link rel="stylesheet" href="../../../../css/nav/barrasSuperior.css">
+
+  <style>
+    body {
+      display: grid;
+      height: 100vh;
+      width: 100vh;
+      background: #02112c;
+      /* justify-content: center; */
+      overflow: hidden;
+    }
+
+    #game {
+      background-color: antiquewhite;
+      position: relative;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="resources-bar">
+    <div class="resources-group">
+      <div class="resource blue-resource" id="puntos-container">
+        <div class="icon blue-potion"><img src="img/imagenesCabeza/estrella.png" alt="" width="20"></div>
+        <div id="timer" class="tiempo count">00:00:00</div>
+      </div>
+    </div>
+
+    <div class="resources-group">
+      <div class="resource gold-resource" id="puntos-container">
+        <div class="icon coins"><img src="img/imagenesCabeza/estrella.png" alt="" width="20"></div>
+        <span class="count" id="puntos">01300</span>
+      </div>
+      <div class="resource red-resource" id="diamantes-container">
+        <div class="icon heart"><img src="img/imagenesCabeza/diamante.png" alt="" width="20"></div>
+        <span class="count" id="diamantes">02</span>
+      </div>
+     
+    </div>
+    <div class="ronda-container">
+      <h1 class="ronda" id="ronda">Ronda 1</h1>
+    </div>
+  </div>
+  <script src="../../bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="../../js/comun/modales.js"></script>
+</body>
+
+</html>

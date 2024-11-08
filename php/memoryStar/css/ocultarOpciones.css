@@ -134,7 +134,7 @@ input[type="radio"] {
     }
 }
 
-.quimica {
+.Quimilab {
     .tarjetaOpcion {
         background-color: #c5ffc5;
 
@@ -145,7 +145,7 @@ input[type="radio"] {
     }
 }
 
-.habitacion {
+.MagicRoom {
     .tarjetaOpcion {
         background-color: #c5d5ff;
 
@@ -154,20 +154,20 @@ input[type="radio"] {
     .romboide {
         background-color: #007BFF;
     }
-}
+} 
 
-.oficina {
+.Ofimundo {
     .tarjetaOpcion {
         background-color: #b9b9b9;
 
     }
-
+ 
     .romboide {
         background-color: #7D7D7D;
     }
 }
 
-.biblioteca {
+.Bookify {
     .tarjetaOpcion {
         background-color: #f3d2b4;
 
@@ -178,7 +178,7 @@ input[type="radio"] {
     }
 }
 
-.facil {
+.basico {
     .tarjetaOpcion {
         background-color: #b6f3b4;
 
@@ -189,7 +189,7 @@ input[type="radio"] {
     }
 }
 
-.medio {
+.Desafiante {
     .tarjetaOpcion {
         background-color: #f3edb4;
 
@@ -200,7 +200,7 @@ input[type="radio"] {
     }
 }
 
-.dificil {
+.Pro {
     .tarjetaOpcion {
         background-color: #f3beb4;
 
@@ -210,7 +210,7 @@ input[type="radio"] {
         background-color: #FF5252;
     }
 }
-.nave{
+.arma{
     .tarjetaOpcion {
         background-color: #f3beb4;
 
@@ -221,7 +221,7 @@ input[type="radio"] {
         background-color: #da0641;
     }
 }
-.arma{
+.derrota{
     .tarjetaOpcion {
         background-color: #b9b9b9;
 

@@ -1,0 +1,95 @@
+/* General del Modal */
+.salir.modal-content {
+    background-color: #131d53;
+    color: #e0e0e0;
+    border-radius: 10px;
+    font-family: 'Orbitron', sans-serif;
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.2); /* Efecto de "flotación" */
+    transform: scale(0.8); /* Empieza más pequeño */
+    opacity: 0; /* Empieza invisible */
+  outline: 8px solid #6340ff;
+    animation: zoomIn 0.4s forwards !important; /* Animación de entrada */ 
+}
+
+/* Animación de entrada */
+@keyframes zoomIn {
+    to {
+        transform: scale(1);
+        opacity: 1; 
+    }
+}
+
+/* Efecto hover en el modal */
+.salir.modal-content:hover {
+    box-shadow: 0 0 15px rgba(0, 255, 255, 0.7), 0 0 25px #ff0000;
+    transform: scale(1.05); /* Leve aumento de tamaño */
+    transition: all 0.3s ease; /* Transición suave */
+    border: 2px solid #ff4d4d;
+
+}
+
+.salir .modal-header {
+    border-bottom: none;
+}
+
+.salir .modal-title {
+    color: #ff4d4d;
+    font-size: 1.25rem;
+    text-shadow: 0 0 5px #ff4d4d; /* Resplandor en el título */
+}
+
+.salir .modal-body {
+    text-align: center;
+    font-size: 1.1rem;
+}
+
+.salir .modal-footer {
+    justify-content: center;
+    border-top: none;
+}
+
+/* Botón de cerrar personalizado */
+.btn-close {
+    background: transparent; /* Fondo transparente */
+    border: none; /* Sin borde */
+    color: #ff4d4d; /* Color visible */
+    font-size: 1.5rem; /* Tamaño mayor */
+    margin-left: auto; /* Alinear a la derecha */
+}
+
+/* Efecto hover para el botón de cerrar */
+.btn-close:hover {
+    color: #ff6666; /* Cambiar a un tono más claro al pasar el mouse */
+}
+
+/* Botones personalizados */
+.btn-no, .btn-yes {
+    font-family: 'Orbitron', sans-serif;
+    color: #ffffff;
+    border: none;
+    padding: 0.5rem 1.5rem;
+    transition: all 0.3s ease;
+}
+
+.btn-no {
+    background-color: #ff4d4d;
+    box-shadow: 0 0 10px rgba(255, 77, 77, 0.5); /* Resplandor rojo */
+}
+
+.btn-yes {
+    background-color: #00ff80;
+    box-shadow: 0 0 10px rgba(0, 255, 128, 0.5); /* Resplandor verde */
+}
+
+/* Efecto hover para los botones */
+.btn-no:hover {
+    background-color: #ff6666;
+    box-shadow: 0 0 15px rgba(255, 102, 102, 0.7); /* Aumenta el resplandor */
+    transform: scale(1.1); /* Aumenta ligeramente el tamaño */
+}
+
+.btn-yes:hover {
+    background-color: #00e673;
+    box-shadow: 0 0 15px rgba(0, 230, 115, 0.7); /* Aumenta el resplandor */
+    transform: scale(1.1); /* Aumenta ligeramente el tamaño */
+}
