@@ -9,13 +9,15 @@
     <link rel="stylesheet" href="modales/modales/css/estilosAyuda.css">
     <link rel="stylesheet" href="css/animaciones/animacionesInicio.css">
     <link rel="stylesheet" href="css/animaciones/animacion.css">
-
+    <link rel="stylesheet" href="css/estiloHistorico.css">
     <link rel="stylesheet" href="modales/tienda/css/estiloTienda.css">
     <link rel="stylesheet" href="modales/modales/css/estiloTablaPuntuacion.css">
     <link rel="stylesheet" href="modales/modales/css/estiloSeguirjugando.css">
     <link rel="stylesheet" href="css/nav/nav.css">
+    <link rel="stylesheet" href="css/nav/barrasSuperior.css">
     <!-- <link rel="stylesheet" href="css/estilosPerfil.css"> -->
     <title>MemoryStart ¡Pon a prueba tu memoria!</title>
+    <script defer src="js/aparecerTablas.js"></script>
     <link rel="shortcut icon" href="img/iconos/segundoMemory.png">
 </head>
 
@@ -25,33 +27,31 @@
             window.location.href = 'procesos/registrar/cerrar.php';
         }
     </script>
-    <!-- Modal -->
-    <div class="modal fade" id="modalInicio" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
-        aria-labelledby="staticBackdropLabel" aria-hidden="true">
-        <div class="modal-dialog modal-xl">
-            <div class="modal-content fondo">
-                <div class="modal-body container-fluid">
-                    <div class="contenInicio" id="">
-                        <img id="" src="img/iconos/nuevoMemory.png" alt="Ejemplo de Imagen" class="logo imagen">
-                        <div class="tarjeta">
-                            <h1>¡Bienvenido a <br>
-                                MemoryStar!</h1>
-                            <h5> Para tener una mejor experiencia de juego, inicia sesión o regístrate, ¡Es gratis!</h5>
-                            <div class="botones">
-                                <a href="login.html"><button class="btn btn-primary">Iniciar Sesión</button></a>
-                                <a href=""><button class="btn btn-primary">Registrarse</button></a>
-                            </div>
-                            <a href="index.html" data-bs-dismiss="modal">Continuar como invitado</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+
     <div class="container-fuid" id="fluid">
-     
+
         <div class="animacion" id="loader">
             <span class="loader"></span>
+        </div>
+        <div class="resources-bar">
+            <div class="resources-group">
+
+                <div class="resource blue-resource">
+                    <div class="icon blue-potion">⚡</div>
+                    <span class="count">09</span>
+                </div>
+            </div>
+
+            <div class="resources-group">
+                <div class="resource gold-resource">
+                    <div class="icon coins"><img src="img/imagenesCabeza/estrella.png" alt="" width="20"></div>
+                    <span class="count">01300</span>
+                </div>
+                <div class="resource red-resource">
+                    <div class="icon heart"><img src="img/imagenesCabeza/diamante.png" alt="" width="20"></div>
+                    <span class="count">02</span>
+                </div>
+            </div>
         </div>
         <div class="circuloos">
             <div class="circle green-circle"></div>
@@ -65,9 +65,9 @@
             <div class="circulo circulo-derecha"></div>
         </div>
         <div id="contenedor">
-          
+
             <div id="nombre"></div>
-            
+
 
             <div id="contenido">
                 <img src="img/iconos/nuevoMemory.png" alt="logoMemory" class="logoInicio loguito">
@@ -77,19 +77,20 @@
             </div>
 
             <div class="robot">
-                    <div class="burbuja_texto">
-                        <button type="button" class="btn-close cerrarMensaje"></button>
-                        <div id="texto"></div>
-                        <a href="">Jugar con amigos</a><br>
-                        <a href="" data-bs-toggle="modal" data-bs-target="#exampleModal-ayuda">¿Cómo jugar?</a><br>
-                        <a href="login.html">Iniciar Sesión</a>
-                    </div>
+                <div class="burbuja_texto">
+                    <button type="button" class="btn-close cerrarMensaje"></button>
+                    <div id="texto"></div>
+                    <a href="">Jugar con amigos</a><br>
+                    <a href="" data-bs-toggle="modal" data-bs-target="#exampleModal-ayuda">¿Cómo jugar?</a><br>
+                    <a href="login.html">Iniciar Sesión</a>
+                </div>
                 <style>
                     /* Estilos para la imagen */
                     .imagenV {
-                      transition: transform 1s; /* Transición de movimiento vertical */
+                        transition: transform 1s;
+                        /* Transición de movimiento vertical */
                     }
-                  </style>
+                </style>
                 <img src="img/iconos/2.png" alt="" class="mostrarMensaje imagenV">
             </div>
 
@@ -108,7 +109,7 @@
         <script src="js/perfil/fotosperfil.js"></script>
         <script src="js/nabar/nabar.js"></script>
         <script src="js/session.js"></script>
-        
+
         <script type="module" src="sonidos/sonidos.js"></script>
         <script type="module" src="sonidos/eventosSonidos.js"></script>
 </body>

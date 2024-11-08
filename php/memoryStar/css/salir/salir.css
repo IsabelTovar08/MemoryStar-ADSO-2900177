@@ -8,14 +8,14 @@
     transform: scale(0.8); /* Empieza más pequeño */
     opacity: 0; /* Empieza invisible */
   outline: 8px solid #6340ff;
-    animation: zoomIn 0.4s forwards; /* Animación de entrada */
+    animation: zoomIn 0.4s forwards !important; /* Animación de entrada */ 
 }
 
 /* Animación de entrada */
 @keyframes zoomIn {
     to {
-        transform: scale(1); /* Escala completa */
-        opacity: 1; /* Totalmente visible */
+        transform: scale(1);
+        opacity: 1; 
     }
 }
 

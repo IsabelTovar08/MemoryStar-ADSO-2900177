@@ -61,42 +61,96 @@ var modalHTML = `
             </div>
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
 
-            <div class="modal-body">
-                <div class="tabla">
-                    <div class="col-10 row espacioInicioTabla">
-                        <div class="col-6">
-                            <span>Últimas partidas</span>
-                        </div>
-                        <div class="col-3">
-                            <span>Tiempo</span>
-                        </div>
-                        <div class="col-3">
-                            <span>Puntos</span>
-                        </div>
-                    </div>
-                    <div class="col-10 row espaciosTabla">
-                        <div class="col-6">
-                            <span>Partida 009</span>
-                        </div>
-                        <div class="col-3">
-                            <span>00:00</span>
-                        </div>
-                        <div class="col-3 puntos">
-                            <span>000</span>
-                        </div>
-                    </div>
-                    <div class="col-10 row espaciosTabla">
-                        <div class="col-6">
-                            <span>Partida 008</span>
-                        </div>
-                        <div class="col-3">
-                            <span>00:00</span>
-                        </div>
-                        <div class="col-3 puntos">
-                            <span>000</span>
-                        </div>
-                    </div>
+            <div class="historio-modo">
+                <div class="historico-solo">
+                    solo
                 </div>
+                <div class="historico-multi">
+                    multi
+                </div>
+            </div>
+            <div class="modal-body">
+                <table class="Tabla-cuerpo">
+                <thead>
+                    <tr class="encabezado-header">
+                        <th> Últimas partidas</th>
+                        <th> Tiempo</th>
+                        <th> Puntos</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Partida 009</td>
+                        <td>00:00</td>
+                        <td>000</td>
+                    </tr>
+                    <tr>
+                        <td>Partida 009</td>
+                        <td>00:00</td>
+                        <td>000</td>
+                    </tr>
+                    <tr>
+                        <td>Partida 009</td>
+                        <td>00:00</td>
+                        <td>000</td>
+                    </tr>
+                    <tr>
+                        <td>Partida 009</td>
+                        <td>00:00</td>
+                        <td>000</td>
+                    </tr>
+                    <tr>
+                        <td>Partida 009</td>
+                        <td>00:00</td>
+                        <td>000</td>
+                    </tr>
+                    
+                </tbody>
+                </table>
+
+                <table class="Tabla-cuerpo">
+                <thead>
+                    <tr class="encabezado-header">
+                        <th> Últimas partidas</th>
+                        <th> Tiempo</th>
+                        <th> Puntos</th>
+                        <th> posicion</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Partida 009</td>
+                        <td>00:00</td>
+                        <td>000</td>
+                        <td>3</td>
+                    </tr>
+                    <tr>
+                        <td>Partida 009</td>
+                        <td>00:00</td>
+                        <td>000</td>
+                        <td>1</td>
+                    </tr>
+                    <tr>
+                        <td>Partida 009</td>
+                        <td>00:00</td>
+                        <td>000</td>
+                        <td>5</td>
+                    </tr>
+                    <tr>
+                        <td>Partida 009</td>
+                        <td>00:00</td>
+                        <td>000</td>
+                        <td>7</td>
+                    </tr>
+                    <tr>
+                        <td>Partida 009</td>
+                        <td>00:00</td>
+                        <td>000</td>
+                        <td>4</td>
+                    </tr>
+                    
+                </tbody>
+                </table>
             </div>
             <div class="">
                 <button type="button" class="btn" data-bs-dismiss="modal">Cerrar</button>

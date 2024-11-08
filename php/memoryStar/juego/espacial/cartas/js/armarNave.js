@@ -27,37 +27,55 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   
     // verificar
+    const loader = document.getElementById("loader");
+    const mainContent = document.getElementById("main-content");
+    const toastMessage = document.getElementById("toastMessage");
+    
     btnVeri.addEventListener("click", function () {
       if (!ordenCorrect.length) {
         alert("El orden correcto no se ha cargado. Inténtalo de nuevo.");
         return;
       }
-  
-      let aciertos = 0;
-      ordenActual = Sortable.get(lista).toArray();
-      const cuadros = document.querySelectorAll(".cuadro");
-      let correcto = true;
-  
-      ordenActual.forEach((id, index) => {
-        const cuadro = cuadros[index];
-        const idEsperado = ordenCorrect[index]; // El valor correcto para esta posición
-  
-        if (id == idEsperado) { // Compara `id` con `idEsperado`
-          aciertos += 1;
-          cuadro.classList.remove("mal");
-          cuadro.classList.add("bien"); // Añade una clase para los aciertos si deseas
+    
+      loader.style.display = "block"; // Mostrar la animación de carga
+      mainContent.classList.add("blur"); // Desenfocar el fondo
+    
+      setTimeout(() => {
+        let aciertos = 0;
+        ordenActual = Sortable.get(lista).toArray();
+        const cuadros = document.querySelectorAll(".cuadro");
+        let correcto = true;
+    
+        ordenActual.forEach((id, index) => {
+          const cuadro = cuadros[index];
+          const idEsperado = ordenCorrect[index];
+    
+          if (id == idEsperado) {
+            aciertos += 1;
+            cuadro.classList.remove("mal");
+            cuadro.classList.add("bien");
+          } else {
+            cuadro.classList.add("mal");
+            cuadro.classList.remove("bien");
+            correcto = false;
+          }
+        });
+    
+        loader.style.display = "none"; // Ocultar la animación de carga
+        mainContent.classList.remove("blur"); // Quitar el desenfoque del fondo
+    
+        // Configurar el mensaje de resultado en el toast
+        if (correcto) {
+          toastMessage.innerHTML = "¡Correcto! Has acertado en todas las posiciones.";
         } else {
-          cuadro.classList.add("mal");
-          cuadro.classList.remove("bien");
-          correcto = false;
+          toastMessage.innerHTML = `Has acertado en ${aciertos} de ${ordenCorrect.length} posiciones.`;
         }
-      });
-  
-      if (correcto) {
-        alert("¡Correcto! Has acertado en todas las posiciones.");
-      } else {
-        alert(`Has acertado en ${aciertos} de ${ordenCorrect.length} posiciones.`);
-      }
+    
+        // Mostrar el toast
+        const resultadoToast = new bootstrap.Toast(document.getElementById("resultadoToast"));
+        resultadoToast.show();
+      }, 500); // Tiempo simulado para la verificación
     });
+    
   });
   
