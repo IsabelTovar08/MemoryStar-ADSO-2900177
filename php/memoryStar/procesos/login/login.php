@@ -7,7 +7,7 @@ class sesion extends usuario {
 
     public function session() {
         $conexion = new conexion();
-        $this->sqlSesion = "SELECT id_usuario, nombre_usuario FROM usuario WHERE nombre_usuario = :nombre_usuario
+        $this->sqlSesion = "SELECT * FROM usuario WHERE nombre_usuario = :nombre_usuario
          AND clave = :clave";
 
         $valores = [
