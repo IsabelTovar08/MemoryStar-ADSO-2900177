@@ -395,6 +395,7 @@ function configuracionJuego(juegoSeleccionado, tematica, dificultad) {
     "idJuego": juegoSeleccionado,
     "idTematica": tematica,
     "idDificultad": dificultad,
+    "idModo": 1
   };
   
   console.log("Configuración final:", config);
