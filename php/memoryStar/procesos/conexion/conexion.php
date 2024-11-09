@@ -44,6 +44,20 @@ class conexion {
         }
 
 
+        public function obtenerUltimoIdConfiguracion() {
+            $sql = "SELECT id_configuracion_juego FROM configuracionJuego ORDER BY id_configuracion_juego DESC LIMIT 1";
+            $conexion = $this->conectar(); // Conectar a la base de datos
+            $stmt = $conexion->prepare($sql); // Preparar la consulta
+            $stmt->execute(); // Ejecutar la consulta
+        
+            // Obtener el resultado
+            $resultado = $stmt->fetch(PDO::FETCH_ASSOC); // Obtener la fila asociativa
+        
+            return $resultado ? $resultado['id_configuracion_juego'] : null; 
+        }
+        
+
+
     }
 
    

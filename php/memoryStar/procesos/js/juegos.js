@@ -395,6 +395,7 @@ function configuracionJuego(juegoSeleccionado, tematica, dificultad) {
     "idJuego": juegoSeleccionado,
     "idTematica": tematica,
     "idDificultad": dificultad,
+    "idModo": 1
   };
   
   console.log("Configuración final:", config);
@@ -407,7 +408,7 @@ function configuracionJuego(juegoSeleccionado, tematica, dificultad) {
     },
     body: JSON.stringify(config)
   })
-  .then(response => response.json()) 
+  .then(response => response.json())  
   .then(data => {
     console.log("Respuesta del servidor:", data);
     hola();
@@ -420,25 +421,93 @@ function configuracionJuego(juegoSeleccionado, tematica, dificultad) {
   return config;
 }
 
-function hola() {
+function hola(){
   fetch('procesos/configuracion/redireccion.php')
     .then(response => response.json())
     .then(data => {
         console.log(data); // Aquí puedes manejar los datos JSON
-        console.log(data.nombrejuego); // Verifica que data.nombrejuego tenga un valor válido
-        console.log(data.tematicajuego); // Verifica que data.tematicajuego sea el valor esperado
-        console.log(data.nombredificultad); // Verifica que data.nombredificultad sea el valor esperado
+        // Acceder a los valores individuales
+        console.log(data.nombrejuego);
+        console.log(data.tematicajuego);
+        console.log(data.nombredificultad);
 
-        if(data.nombredificultad === null && data.tematicajuego == "arma tu nave") {
-          
 
-          const url = `juego/espacial/cartas/${data.nombrejuego}${data.tematicajuego}.html`;
-          console.log("Redirigiendo a: ", url); // Muestra la URL generada
-          window.location.href = url; // Realiza la redirección
+        if(data.nombredificultad === null){
+          window.location.href =  `${data.nombrejuego}${data.tematicajuego}.html`;
+          console.log(`${data.nombrejuego}${data.tematicajuego}.html`)
+        }else{
+         window.location.href = `juego/juegoOrdenar/${data.nombrejuego}${data.tematicajuego}${data.nombredificultad}.html`;
+        console.log(`${data.nombrejuego}${data.tematicajuego}${data.nombredificultad}.html`)
         }
     })
     .catch(error => console.error('Error al obtener los datos:', error));
+
 }
-// php\memoryStar\juego\espacial\cartas\juegoPixel\planetScapederrota el enemigo.html
+
+
+const multijuga = document.getElementById('jugarMultijugador');
+
+multijuga.addEventListener("click", ()=>{
+  fetch("json/opcionMul.json")
+  .then((response) => response.json())
+  .then((datos) => {
+    multijugador(datos.multi);
+   
+}) 
+.catch((error) => console.error("Error al cargar el JSON:", error));
+})
+
+
+function multijugador(condicion) {
+  let resultadoMostrar = `
+          <a href="configurarJuego.php"><img src="img/iconos/atrasN.png" alt="" class="atras"></a>
+          <div class="bienvenido"><img src="${condicion.logo}" alt="logoMemory" class="segundoLogo"></div>
+          <h1 class="textoEleccion">${condicion.texto}</h1>
+          <div class="contenedorOpciones">
+              <img src="${condicion.unirse}" class="oJuegos zoom" alt="Imagen 1" id="unirseSala">
+              <img src="${condicion.crear}" class="oJuegos zoom" alt="Imagen 2" id="crearSala">
+          </div>
+      `;
+
+  document.getElementById("contenido").innerHTML = resultadoMostrar;
+  document.getElementById("unirseSala").addEventListener("click", peticion);
+  document.getElementById("crearSala").addEventListener("click", crearSala);
+}
+function crearSala() {
+  window.location.href = `crearSala.html`;
+}
+
+
+function peticion(){
+   fetch("json/opcionMul.json") 
+      .then((response) => response.json())
+      .then((datos) => {
+        unirse(datos.multi);
+      })
+      .catch((error) =>
+        console.error("Error al cargar el JSON de temáticas:", error)
+      );
+}
+
+function unirse(unir) {
+  let resultadoMostrar = `
+          <div class="bienvenido"><img src="${unir.logo}" alt="logoMemory" class="segundoLogo"></div>
+              <h1 class="textoEleccion"${unir.textoU}</h1>
+          <div class="unirse">
+              <div class="">
+                  <input class="form-control" id="codigo" required="" type="text" />
+              </div>
+              <img src="${unir.imgU}" alt="" class="play zoom" id="play" width="200">
+          </div>
+      `;
+
+  document.getElementById("contenido").innerHTML = resultadoMostrar;
+  const logo = (document.querySelector(".segundoLogo").style.width = "15vh");
+  const atras = (document.querySelector(".atras").style.width = "8vh");
+}
+window.addEventListener("popstate", (e) => {
+  console.log("Navegación: " + history.state);
+});
+
 
 }); 

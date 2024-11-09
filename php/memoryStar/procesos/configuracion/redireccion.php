@@ -8,11 +8,13 @@ class Redireccion {
     public function redirigir() {
         $conexion = new conexion();
         
-        // Definimos la consulta SQL para obtener el último registro
+
         $this->sqlInsert = "SELECT 
                                 tipojuego.nombre_tipo_juego AS nombreJuego,
                                 tematicajuego.nombre_tematica AS tematicaJuego,
-                                dificultad.nombre_dificultad AS nombreDificultad
+                                dificultad.nombre_dificultad AS nombreDificultad,
+                                modojuego.id_modo_juego AS modoJuego
+
                             FROM 
                                 configuracionjuego
                             FULL JOIN 
@@ -21,6 +23,8 @@ class Redireccion {
                                 tematicajuego ON configuracionjuego.id_tematica = tematicajuego.id_tematica
                             FULL JOIN 
                                 dificultad ON configuracionjuego.id_dificultad = dificultad.id_dificultad
+                            FULL JOIN
+                                modojuego ON configuracionjuego.id_modo_juego = modojuego.id_modo_juego
                             ORDER BY 
                                 configuracionjuego.id_configuracion_juego DESC
                             LIMIT 1;";
