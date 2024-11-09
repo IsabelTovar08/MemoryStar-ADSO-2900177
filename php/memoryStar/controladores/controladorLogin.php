@@ -16,7 +16,7 @@ if (!empty($_POST["btningresar"])) {
             header("location:pingpong.php");
         } else {
             echo "<script>alert('Usuario no existe ');</script>";
-        }
+        } 
         
     }
     

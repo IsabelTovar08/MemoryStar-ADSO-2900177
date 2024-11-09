@@ -1,9 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
 
 :root{
-    --white: #9fe1e4;
-    --black: #2a5d80;
-    --lightBulue: #17a;
+    --white: #f8e2f6;
+    --black: #aa2066;
+    --lightBulue: #aa2066   ;
 }
 
 *{
@@ -23,7 +23,7 @@ body{
    
     
     
-    background-image: url('../img/fondos/fondds.png');
+    background-image: url('../img/fondos/flog.png');
 
 
     display: flex;
@@ -254,7 +254,7 @@ form .linkTxt{
     right: 0;
     width: 850px;
     height: 600px;
-    background: #2a5d80;
+    background: #221c44;
     transform: rotate(10deg) skewY(40deg);
     transform-origin: bottom right;
     transition: 1.5s ease;
@@ -346,11 +346,7 @@ form .linkTxt{
 
 @media (max-width: 968px) and (orientation: landscape) {
 
-    :root{
-        --white: #fff;
-        --black: #ab0b0b; 
-        --lightBulue: #17a;
-    }
+
     
     .wrapper{
         position: relative;
@@ -555,7 +551,7 @@ form .linkTxt{
         right: 0;
         width: 850px;
         height: 600px;
-        background: #000;
+        /* background: #000; */
         transform: rotate(10deg) skewY(40deg);
         transform-origin: bottom right;
         transition: 1.5s ease;

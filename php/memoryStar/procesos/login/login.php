@@ -7,7 +7,7 @@ class sesion extends usuario {
 
     public function session() {
         $conexion = new conexion();
-        $this->sqlSesion = "SELECT * FROM usuario WHERE nombre_usuario = :nombre_usuario
+        $this->sqlSesion = "SELECT id_usuario, nombre_usuario FROM usuario WHERE nombre_usuario = :nombre_usuario
          AND clave = :clave";
 
         $valores = [
@@ -15,16 +15,15 @@ class sesion extends usuario {
             'clave' => $this->getclave(),
         ];
 
-        // login la consulta
+        // Ejecutar la consulta
         $resultado = $conexion->login($this->sqlSesion, $valores);
 
         // Si la consulta fue exitosa y hay resultados
         if ($resultado && count($resultado) > 0) {
-            return true; // Usuario encontrado
+            // Retornamos los datos del usuario
+            return $resultado[0]; // Devuelve el primer usuario encontrado (suponiendo que hay uno solo)
         }
 
         return false; // Usuario no encontrado
     }
 }
-
-

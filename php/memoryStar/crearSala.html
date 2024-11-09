@@ -69,7 +69,7 @@
                         <!-- <div class="seleccion-resultado" id="resultado"></div> -->
                         <div class="tarjetas-container confiSala">
                             <div class="option capacidad">
-                                <input type="number" min="1" max="25" oninput="validity.valid||(value='');">
+                                <input type="number" min="1" max="25" oninput="validity.valid||(value='');" id="capacidadSala">
                                 <div class="romboide">
                                     <h6>Capacidad máxima</h6>
                                 </div>
@@ -79,7 +79,7 @@
                             <div class="option nombreSala">
                                 <input type="text" pattern="[A-Za-z\s]+" maxlength="30"
                                     oninput="validity.valid||(value='');"
-                                    title="Solo se permiten letras, máximo 30 caracteres">
+                                    title="Solo se permiten letras, máximo 30 caracteres" id="nombreSala">
                                 <div class="romboide">
                                     <h6>Nombre de sala</h6>
                                 </div>
@@ -139,7 +139,8 @@
     <script src="js/mapa.js"></script>
     <script src="js/visivilidadIconos.js"></script>
     <script src="js/seleccionarAvatar.js"></script>
-    <script src="js/sala/jueSala.js"></script>
+    <!-- <script src="js/sala/jueSala.js"></script> -->
+     <script src="procesos/js/multijugador.js"></script>
     <script src="js/modales.js"></script>
     <script type="module" src="sonidos/sonidos.js"></script>
     <script type="module" src="sonidos/eventosSonidos.js"></script>

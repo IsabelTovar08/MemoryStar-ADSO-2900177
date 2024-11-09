@@ -3,6 +3,7 @@ class configuracionJuego {
     private $idJuego;   
     private $idTematica;
     private $idDificultad;
+    private $idModo;
     public function setidJuego($idJuego){
         $this->idJuego = $idJuego;
     }
@@ -20,5 +21,12 @@ class configuracionJuego {
     }
     public function getidDificultad(){
         return $this->idDificultad;
+    }
+
+    public function setidModo($idModo){
+        $this->idModo = $idModo;
+    }
+    public function getidModo(){
+       return  $this->idModo;
     }
 }

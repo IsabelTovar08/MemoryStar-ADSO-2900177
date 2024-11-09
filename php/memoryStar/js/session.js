@@ -2,11 +2,13 @@ async function obtenerDatosUsuario() {
     try {
         const response = await fetch('procesos/login/obtenerUsuario.php');
         const data = await response.json();
+        console.log( data.usuario);
         if (data.success) {
             const nombreUsuarioElement = document.querySelectorAll('.usuarioPerfill');
             if (nombreUsuarioElement) {
                 nombreUsuarioElement.forEach(elemento => {
                     elemento.innerHTML = data.usuario;
+                    
                 });
             }
         } else {
