@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,9 +10,10 @@
   <link href="../../bootstrap/css/bootstrap.css" rel="stylesheet">
   <script src="../../bootstrap/js/bootstrap.bundle.min.js"></script>
   <link rel="stylesheet" href="../../css/estilos.css">
+  <link rel="stylesheet" href="../../../../modales/modales/css/estiloTablaPuntuacion.css">
   <!-- <link rel="stylesheet" href="../bootstrap/css/bootstrap.css"> -->
   <style>
-   body {
+    body {
       display: grid;
       height: 100vh;
       width: 100vh;
@@ -19,13 +21,16 @@
       /* justify-content: center; */
       overflow: hidden;
     }
-    #game{
+
+    #game {
       background-color: antiquewhite;
     }
   </style>
 </head>
+
 <body>
-  <div class="modal" id="modal" tabindex="-1" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal" id="modal" tabindex="-1" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+    aria-labelledby="staticBackdropLabel" aria-hidden="true">
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
@@ -35,7 +40,8 @@
         <div class="modal-body">
           <p>Compra 1 por solo 1$</p>
           <div class="col row">
-            <div class="col">Diamantes disponibles: </div><div class="col" id="diamantes"></div> 
+            <div class="col">Diamantes disponibles: </div>
+            <div class="col" id="diamantes"></div>
           </div>
           <div id="temporizador" style="font-size: 24px;">5</div>
         </div>
@@ -46,5 +52,48 @@
       </div>
     </div>
   </div>
+
+  <!--Tabla-->
+  <div class="modal fade" id="tablapuntuacionsolo" data-bs-backdrop="static" tabindex="-1"
+    aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-sm modal-dialog-centered">
+      <div class="modal-content contenedorTsolo">
+        <div class="tituloTsolo">Puntuación Ronda</div>
+        <div class="contenedorTsoloInterior">
+          <!-- <div class="contenedor-estrellas">
+                            <img src="../../modales/modales/img/tablas/Star.png" class="star" alt="">
+                            <img src="../../modales/modales/img/tablas/Star.png" class="star" alt="">
+                            <img src="../../modales/modales/img/tablas/Star.png" class="star" alt="">
+                        </div> -->
+
+          <div id="puntosSecu1" class="puntaje-total">
+            0
+          </div>
+
+          <div class="contenedor-puntaje">
+
+            <div id="rubis">+0</div><img src="../../modales/modales/img/tablas/rubipuntaje.png" alt=""
+              class="rubi-puntaje">
+          </div>
+
+          <div class="col-12 row contenedor-info">
+            <div class="col-6"><img src="../../modales/modales/img/tablas/fotouser.png" alt=""
+                style="width: 16px;">Usuario</div>
+            <div class="col-3" id="tiempo1">0</div>
+            <div class="col-3" id="puntosSecu2">0s</div>
+          </div>
+
+        </div>
+
+        <div class="contenedor-botonTsolo">
+          <!-- <button class="botonTsolo">Jugar de nuevo</button> -->
+          <button class="botonTsolo" style="margin-left: 20px;" data-bs-dismiss="modal"
+            aria-label="Close">Aceptar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  
 </body>
+
 </html>
