@@ -420,29 +420,26 @@ function configuracionJuego(juegoSeleccionado, tematica, dificultad) {
   return config;
 }
 
-function hola(){
+function hola() {
   fetch('procesos/configuracion/redireccion.php')
     .then(response => response.json())
     .then(data => {
         console.log(data); // Aquí puedes manejar los datos JSON
-        // Acceder a los valores individuales
-        console.log(data.nombrejuego);
-        console.log(data.tematicajuego);
-        console.log(data.nombredificultad);
+        console.log(data.nombrejuego); // Verifica que data.nombrejuego tenga un valor válido
+        console.log(data.tematicajuego); // Verifica que data.tematicajuego sea el valor esperado
+        console.log(data.nombredificultad); // Verifica que data.nombredificultad sea el valor esperado
 
+        if(data.nombredificultad === null && data.tematicajuego == "arma tu nave") {
+          
 
-        if(data.nombredificultad === null){
-          window.location.href =  `${data.nombrejuego}${data.tematicajuego}.html`;
-          console.log(`${data.nombrejuego}${data.tematicajuego}.html`)
-        }else{
-         window.location.href = `juego/juegoOrdenar/${data.nombrejuego}${data.tematicajuego}${data.nombredificultad}.html`;
-        console.log(`${data.nombrejuego}${data.tematicajuego}${data.nombredificultad}.html`)
+          const url = `juego/espacial/cartas/${data.nombrejuego}${data.tematicajuego}.html`;
+          console.log("Redirigiendo a: ", url); // Muestra la URL generada
+          window.location.href = url; // Realiza la redirección
         }
     })
     .catch(error => console.error('Error al obtener los datos:', error));
-
 }
-
+// php\memoryStar\juego\espacial\cartas\juegoPixel\planetScapederrota el enemigo.html
 
 const multijuga = document.getElementById('jugarMultijugador');
 
