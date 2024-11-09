@@ -1,0 +1,59 @@
+body,
+html {
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+
+#imagenes {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  /* background-image: url('../img/enemigo/fondooo.jpg'); */
+  background-image: url("../img/enemigo/fondooo.jpg");
+  margin: 0;
+  padding: 0;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  font-family: cursive;
+  overflow: hidden;
+  padding: 1%;
+}
+
+.sep {
+  position: absolute;
+  width: 15vh;
+  height: auto;
+  z-index: 10;
+  cursor: pointer;
+  user-select: none; /* Evita la selección */
+  -webkit-user-drag: none;
+}
+
+.titulo-naves {
+  font-size: 5vh;
+  color: #ffffff;
+  background: linear-gradient(135deg, #000020, #001a4d);
+  border: 4px solid #ffffff;
+  border-radius: 20px;
+  padding: 0.5rem 1rem;
+  text-shadow: 3px 3px 8px rgba(95, 230, 237, 0.8);
+  letter-spacing: 0.1rem;
+  transition: color 0.3s ease, text-shadow 0.3s ease;
+  text-transform: uppercase;
+  text-align: center;
+  position: absolute;
+  z-index: 1;
+  left: 20vw;
+}
+
+.mal {
+
+  filter:drop-shadow(0px 0px 20px #ff0000);
+
+}
+.bien {
+ 
+  filter:drop-shadow(0px 0px 20px #5fe6ed);
+}
