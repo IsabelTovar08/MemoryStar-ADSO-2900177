@@ -140,7 +140,9 @@ class MyScene extends Phaser.Scene {
          botonSalir.setScale(0.11).clearTint();
       });
       botonSalir.on('pointerdown', () => {
-         window.location.href = '../../../index.php';
+         // window.location.href = '../../../index.php';
+         var modalOxigeno = new bootstrap.Modal(document.getElementById("exitModal"));
+      modalOxigeno.show();
       });
 
 
@@ -202,6 +204,8 @@ class MyScene extends Phaser.Scene {
          this.instanciaPersonaje.handleMovement();
       }
       this.manejoPuntos.update(time, delta);
+      document.getElementById('puntos').textContent = '01301'; // Ejemplo de actualización
+        document.getElementById('diamantes').textContent = '03';
    }
 }
 

@@ -41,7 +41,7 @@ let tiemposPorRonda = [];
 let botonPresionado = false;
 let intervaloBarra;
 let intervaloTemp;
-let contador = -5;
+let contador = -2;
 let tiempoRestante;
 let idDropzone = [];
 let GAME_CONFIG;
@@ -327,6 +327,14 @@ function mostrarResultadosFinales() {
   modalFinal.setAttribute("data-bs-backdrop", "static");
   modalFinal.setAttribute("data-bs-keyboard", "false");
 
+  modalFinal.className = "modal fade";
+  modalFinal.id = "modalFinal";
+  modalFinal.setAttribute("tabindex", "-1");
+  modalFinal.setAttribute("aria-labelledby", "modalFinalLabel");
+  modalFinal.setAttribute("aria-hidden", "true");
+  modalFinal.setAttribute("data-bs-backdrop", "static");
+  modalFinal.setAttribute("data-bs-keyboard", "false");
+
   modalFinal.innerHTML = `
       <div class="modal-dialog modal-sm modal-dialog-centered">
           <div class="modal-content contenedorTsolo">
@@ -347,9 +355,9 @@ function mostrarResultadosFinales() {
                   </div>
   
                   <div class="col-12 row contenedor-info">
-                      <div class="col-6">
+                      <div class="col-6 usuarioPerfill">
                           <img src="../../modales/modales/img/tablas/fotouser.png" alt="" style="width: 16px;">
-                          Usuario
+                          
                       </div>
                       <div class="col-3">${tiempoPromedio}s</div>
                       <div class="col-3">${puntajeTotal}pts</div>
@@ -379,3 +387,26 @@ window.addEventListener("DOMContentLoaded", function () {
 
   iniciarNuevaRonda();
 });
+
+
+window.addEventListener('beforeunload', (event) => {
+  event.preventDefault();
+  event.returnValue = 'Tus cambios no se han guardado. ¿Estás seguro de que deseas salir?';
+
+  // Añade un breve retraso para la redirección en caso de que el usuario confirme salir
+  setTimeout(() => {
+    window.location.href = '../../index.html';
+  }, 100);
+});
+
+function toggleFullScreen() {
+  if (!document.fullscreenElement) {
+    // Si no está en pantalla completa, solicitar entrar a pantalla completa
+    document.documentElement.requestFullscreen().catch((err) => {
+      console.log(`Error al intentar entrar en pantalla completa: ${err.message}`);
+    });
+  } else {
+    // Si está en pantalla completa, salir de ella
+    document.exitFullscreen();
+  }
+}
