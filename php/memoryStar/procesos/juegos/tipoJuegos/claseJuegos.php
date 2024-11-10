@@ -11,7 +11,7 @@ class TipoJuego {
 
     public function obtenerTiposJuego() {
         $sql = "SELECT * FROM tipoJuego";
-        $resultados = $this->conexion->login($sql, []); 
+        $resultados = $this->conexion->consulta($sql, []); 
 
         $tiposJuego = [];
 

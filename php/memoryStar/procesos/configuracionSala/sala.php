@@ -18,7 +18,7 @@ class Sala{
     public function getCapacidad(){
         return $this->capacidad;
     }
-     public function setcodigoSalaCapacidad($codigoSala){
+     public function setcodigoSala($codigoSala){
         $this->codigoSala = $codigoSala;
     }
     public function getcodigoSala(){

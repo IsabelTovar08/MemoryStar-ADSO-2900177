@@ -30,7 +30,7 @@ class Redireccion {
                             LIMIT 1;";
         
         // Ejecutamos la consulta
-        $resultado = $conexion->login($this->sqlInsert, []);
+        $resultado = $conexion->consulta($this->sqlInsert, []);
         
         // Configuramos la cabecera para JSON
         header('Content-Type: application/json');

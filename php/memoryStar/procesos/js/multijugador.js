@@ -1,15 +1,10 @@
 document.addEventListener("DOMContentLoaded", () => {
 
-  const capacidadSala = document.getElementById('capacidadSala').value;
-  const nombreSala = document.getElementById('nombreSala').value;
- 
     let selectedGameConfig = {
       tipoJuego: null,
       Tematica: null,
       dificultad: null,
-      modo:null,
-      capacidadSala: capacidadSala,
-      nombreSala: nombreSala
+      modo:null      
     };
  
     mostrarConfiguracion();
@@ -370,25 +365,47 @@ document.addEventListener("DOMContentLoaded", () => {
   }
   
   function hola(){
-    fetch('procesos/configuracion/redireccion.php')
-      .then(response => response.json())
-      .then(data => {
-          console.log('uyu', data); // Aquí puedes manejar los datos JSON
-          // Acceder a los valores individuales
-          console.log(data.nombrejuego);
-          console.log(data.tematicajuego);
-          console.log(data.nombredificultad);
-          console.log(data.modojxuego)
+
+    const capacidadSala = document.getElementById('capacidadSala').value;
+    const nombreSala = document.getElementById('nombreSala').value;
+    
+
+    let guardarNumero = [];
+    let numeroAleatorio;
+      for(let iteracion = 0; iteracion < 6; iteracion++) {
+          numeroAleatorio = Math.floor(Math.random() * 10);
+          guardarNumero.push(numeroAleatorio);
+      }
+    let numeroSinComas = guardarNumero.join("");
+    console.log(numeroSinComas)
+
+
+
+    let capacSala ={
+      "capacidad":capacidadSala,
+      "nombreSala": nombreSala,
+      "codigoSala":numeroSinComas
+    }
+
+    console.log(capacSala)
+
+
+    fetch('procesos/configuracionSala/recibirConfiguracionSala.php', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(capacSala)
+    })
+    .then(response => response.json())  
+    .then(data => {
+      console.log("Respuesta del servidor:", data);
+      
   
-          if(data.nombredificultad === null){
-            window.location.href =  `${data.nombrejuego}${data.tematicajuego}.html`;
-            console.log(`${data.nombrejuego}${data.tematicajuego}.html`)
-          }else{
-           window.location.href = `juego/juegoOrdenar/${data.nombrejuego}${data.tematicajuego}${data.nombredificultad}.html`;
-          console.log(`${data.nombrejuego}${data.tematicajuego}${data.nombredificultad}.html`)
-          }
-      })
-      .catch(error => console.error('Error al obtener los datos:', error));
+    }) 
+    .catch(error => {
+      console.error("Error al enviar configuración:", error);
+    });
   
   }
   
