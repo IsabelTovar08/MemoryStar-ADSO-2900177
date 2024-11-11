@@ -78,7 +78,7 @@ class CorreoRecuperacion
     {
         $sql = "SELECT id_usuario FROM usuario WHERE email = :correo";
         $valores = ['correo' => $correo];
-        $resultados = $this->conexion->login($sql, $valores);
+        $resultados = $this->conexion->consulta($sql, $valores);
 
         if (count($resultados) > 0) {
             return $resultados[0]; // Devuelve el primer usuario encontrado
@@ -112,7 +112,7 @@ class CorreoRecuperacion
             $mail->addAddress($correo);
 
             $mail->isHTML(true);
-            $mail->Subject = mb_convert_encoding('Recuperar contraseña', 'UTF-8', 'auto');
+            $mail->Subject = mb_convert_encoding('Recuperar cuenta', 'UTF-8', 'auto');
             $mail->Body = $this->generarCuerpoCorreo($codigo);
             $mail->AltBody = 'Este es el mensaje en texto plano para clientes de correo que no soportan HTML';
 
@@ -132,23 +132,64 @@ class CorreoRecuperacion
             <head>
                 <title>Recuperación de Contraseña</title>
                 <style>
-                    body { font-family: Arial, sans-serif; color: #333; }
-                    .contenedor { padding: 20px; background-color: #f9f9f9; border: 1px solid #ccc; }
-                    h1 { color: #4CAF50; }
-                    p { font-size: 16px; }
-                    .codigo { font-size: 20px; font-weight: bold; color: #FF6347; }
-                    .footer { font-size: 12px; color: #888; }
+                    body {
+                        font-family: Arial, sans-serif;
+                        background-color: #f9f9f9;
+                        margin: 0;
+                        padding: 0;
+                        color: #000 !important;
+                    }
+                    .email-container {
+                        max-width: 600px;
+                        margin: 0 auto;
+                        background-color: #ffffff;
+                        padding: 20px;
+                        border-radius: 8px;
+                        border: 2px solid #000;
+                        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+                    }
+                    .header {
+                        text-align: center;
+                        color: #4CAF50;
+                    }
+                    .content {
+                        text-align: left;
+                        line-height: 1.6;
+                    }
+                    .code {
+                        font-size: 24px;
+                        font-weight: bold;
+                        color: #4CAF50;
+                        text-align: center;
+                        padding: 10px;
+                        border-radius: 5px;
+                        background-color: #f2f2f2;
+                        display: inline-block;
+                        margin: 20px auto;
+                    }
+                    .footer {
+                        text-align: center;
+                        color: #777;
+                        font-size: 12px;
+                        margin-top: 20px;
+                    }
                 </style>
             </head>
             <body>
                 <div class="contenedor">
-                    <h1>Recuperación de Contraseña</h1>
-                    <p>Hola,</p>
-                    <p>Recibimos una solicitud para restablecer tu contraseña. Si no realizaste esta solicitud, ignora este correo.</p>
-                    <p>A continuación te proporcionamos el código de recuperación:</p>
-                    <p class="codigo">' . $codigo . '</p>
-                    <p>Este código es válido solo por 10 minutos. Si no lo usas dentro de este tiempo, tendrás que solicitar uno nuevo.</p>
-                    <p class="footer">Gracias por usar nuestro servicio.</p>
+                    <h1 class="header">Recuperación de Contraseña</h1>
+                    <p>¡Hola, querido usuario!</p>
+                    <p>¿Listo para volver a desafiar tu memoria?</p>
+                    <div class="content">
+                        <p>Hemos recibido una solicitud para restablecer la contraseña de tu cuenta en <strong>Memory Star</strong>. Usa el siguiente código para completar el proceso de recuperación:</p>
+                        <div class="code">' . $codigo . '</div>
+                        <p>Este código es válido solo por 10 minutos. Si no solicitaste este cambio, puedes ignorar este correo.</p>
+                    </div>
+                    <div class="footer">
+                        <p>¡Nos encanta que formes parte de Memory Star!</p>
+                        <p><strong>El equipo de Memory Star</strong></p>
+                        <p><small>Si necesitas ayuda, no dudes en contactarnos en <a href="mailto:soporte@memory-star.com">soporte@memory-star.com</a></small></p>
+                    </div>
                 </div>
             </body>
             </html>';

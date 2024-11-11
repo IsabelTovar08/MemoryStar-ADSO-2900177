@@ -41,9 +41,10 @@ class NuevaContrasena
 
     private function actualizarContrasena()
     {
+        $encriptar_contrasena = password_hash($this->nueva_contrasena, PASSWORD_DEFAULT);
         $sql = "UPDATE usuario SET clave = :nueva WHERE id_usuario = :id_usuario";
         $actualizar = $this->conectar->prepare($sql);
-        $actualizar->execute(['nueva' => $this->nueva_contrasena, 'id_usuario' => $this->usuario]);
+        $actualizar->execute(['nueva' => $encriptar_contrasena, 'id_usuario' => $this->usuario]);
     }
 
     private function eliminarCodigo()

@@ -69,11 +69,15 @@ h2 {
   border-radius: 6px;
   transition: border-color 0.3s;
 }
+.modal input :active{
+  all: unset;
 
+}
 .modal input[type="email"]:focus,
 .modal input[type="text"]:focus,
 .modal input[type="password"]:focus {
-  border-color: #4CAF50;
+  border-color: #5345a0 !important;
+  outline: none;
 }
 
 button {
@@ -90,7 +94,7 @@ button {
 }
 
 button:hover {
-  background-color: #45a049;
+  background-color: #5345a0;
 }
 
 /* Mensajes de éxito y error */
@@ -151,4 +155,15 @@ button:hover {
   all: unset;
   box-shadow: none;
   font-weight: bolder;
+  border: none;
+  outline: none;
+}
+
+.icono_salir{
+  position: absolute;
+  top: 10px; 
+  right: 10px; 
+  font-size: 24px; 
+  color: red; 
+  cursor: pointer;
 }

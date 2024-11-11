@@ -108,15 +108,15 @@
 // }
 
 // // Función para cerrar el modal y limpiar el progreso en localStorage sin recargar la página
-// function closeModal() {
-//   const modal = document.getElementById("modal");
-//   if (modal) {
-//     modal.classList.remove("show");
-//   }
-//   localStorage.removeItem("currentStep"); // Limpiar el progreso en localStorage
-//   localStorage.removeItem("userEmail"); // Limpiar el correo 
-//   resetModal(); // Llama a la función para restablecer el contenido
-// }
+function closeModal() {
+  const modal = document.getElementById("modal");
+  if (modal) {
+    modal.classList.remove("show");
+  }
+  localStorage.removeItem("currentStep"); // Limpiar el progreso en localStorage
+  localStorage.removeItem("userEmail"); // Limpiar el correo 
+  // resetModal(); // Llama a la función para restablecer el contenido
+}
 
 // function resetModal() {
 //   // Reinicia el modal para que vuelva al primer paso sin depender del localStorage

@@ -39,16 +39,16 @@ class ValidarCodigo {
     private function consultarCodigo() {
         $sql = "SELECT id_usuario FROM recuperar_contrasena WHERE codigo = :codigo";
         $valores = ['codigo' => $this->codigo];
-        $resultados = $this->conexion->login($sql, $valores);
+        $resultados = $this->conexion->consulta($sql, $valores);
 
         return count($resultados) > 0 ? $resultados[0]['id_usuario'] : false;
     }
 
     private function consultarValidezCodigo($usuario) {
-        $sql = "SELECT EXTRACT(EPOCH FROM (NOW() - created_at)) / 60 AS minutos_transcurridos 
+        $sql = "SELECT EXTRACT(EPOCH FROM (NOW() - fecha)) / 60 AS minutos_transcurridos 
                 FROM recuperar_contrasena WHERE codigo = :codigo";
         $valores = ['codigo' => $this->codigo];
-        $resultados = $this->conexion->login($sql, $valores);
+        $resultados = $this->conexion->consulta($sql, $valores);
 
         if (!empty($resultados) && $resultados[0]['minutos_transcurridos'] <= 10) {
             $this->respuesta('success', 'Código correcto.', $usuario);
