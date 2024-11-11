@@ -13,7 +13,7 @@ $clave = $data['password'];
 $registro = new Registrar();
 $registro->setNombreUsuario($nombre);
 $registro->setEmailUsuario($email);
-$registro->setclave($clave);
+$registro->setClave($clave);
 
 try {
     $registro->registrar();

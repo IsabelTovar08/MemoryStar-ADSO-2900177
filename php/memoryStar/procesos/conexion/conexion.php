@@ -36,7 +36,7 @@ class conexion {
         }
 
 
-        public function login($sql, $valores){
+        public function consulta($sql, $valores){
             $pdo =$this->conectar();
             $stmt= $pdo->prepare($sql);
             $stmt->execute($valores);

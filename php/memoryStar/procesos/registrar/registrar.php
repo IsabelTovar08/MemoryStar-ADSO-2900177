@@ -19,12 +19,12 @@ class Registrar extends Usuario {
         $valores = [
             ':nombre_usuario' => $this->getNombreUsuario(),
             ':email' => $this->getEmailUsuario(),
-            ':clave' => $this->getclave(),
+            ':clave' => $this->getClave(),
             ':fechar_registro' => $fechaRegistro 
         ];
 
         
-        $conexion->login($this->sqlInsertar, $valores);    
+        $conexion->consulta($this->sqlInsertar, $valores);    
     }
 }
 
