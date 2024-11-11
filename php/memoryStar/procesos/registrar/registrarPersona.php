@@ -2,7 +2,6 @@
 header('Content-Type: application/json');
 
 include('registrar.php');
-include('AutoLogin.php');
 
 $data = json_decode(file_get_contents('php://input'), true);
 
@@ -17,18 +16,10 @@ $registro->setClave($clave);
 
 try {
     $registro->registrar();
-
-    $autoLogin = new AutoLogin();
-    if ($autoLogin->loginn($nombre, $clave)) {
-        echo json_encode([
-            'success' => true,
-            'redirect' => '../../pingpong.html'
-        ]);
-    } else { 
-        echo json_encode([
-            'error' => 'Registro exitoso pero hubo un problema al iniciar sesión'
-        ]);
-    }
+    echo json_encode([
+        'success' => true,
+        'redirect' => 'registroExitoso.html'
+    ]);
 } catch (Exception $e) {
     echo json_encode(['error' => $e->getMessage()]);
 }

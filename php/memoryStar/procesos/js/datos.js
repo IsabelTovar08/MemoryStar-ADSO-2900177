@@ -6,9 +6,7 @@ function registrarUsuario(event) {
     let password = document.getElementById('password').value.trim();
     let mensajeError = '';
     
-    
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    
     const noEspaciosNiComillas = /^[^\s"']+$/;
   
     if (email === '') {
@@ -25,7 +23,6 @@ function registrarUsuario(event) {
         mensajeError += 'El usuario no debe tener espacios ni comillas. ';
     }
   
-   
     if (password === '') {
         mensajeError += 'Falta la contraseña. ';
     } else if (password.length < 8) {
@@ -33,10 +30,15 @@ function registrarUsuario(event) {
     }
   
     if (mensajeError !== '') {
-        document.getElementById('mensajeError').innerText = mensajeError;
+        // Mostrar el error con SweetAlert
+        Swal.fire({
+            icon: 'error',
+            title: '¡Error!',
+            text: mensajeError,
+            confirmButtonText: 'Aceptar'
+        });
     } else {
-        document.getElementById('mensajeError').innerText = '';
-        
+        // Si no hay errores, continuar con el envío de datos
         let datos = {
             "email": email,
             "usuario": usuario,
@@ -59,19 +61,44 @@ function registrarUsuario(event) {
         .then(data => {
             console.log('Respuesta del servidor:', data); 
             if (data.error) {
-                alert(data.error);
-            } else if (data.success && data.redirect) {
-                window.location.href = data.redirect;
+                // Mostrar error con SweetAlert
+                Swal.fire({
+                    icon: 'error',
+                    title: '¡Error!',
+                    text: data.error,
+                    confirmButtonText: 'Aceptar'
+                });
+            } else if (data.success) {
+                // Mostrar éxito con SweetAlert y cambiar al formulario de login
+                Swal.fire({
+                    icon: 'success',
+                    title: '¡Registrado!',
+                    text: 'Te has registrado con éxito.',
+                    confirmButtonText: 'Aceptar'
+                }).then(() => {
+                    // Mueve el formulario al login al activar la clase 'active' en el wrapper
+                    const wrapper = document.querySelector('.wrapper');
+                    wrapper.classList.remove('active');  // Cambia a la vista de login
+                });
             } else {
-                alert('Ocurrió un error inesperado en el servidor');
+                Swal.fire({
+                    icon: 'error',
+                    title: '¡Error inesperado!',
+                    text: 'Ocurrió un error inesperado en el servidor.',
+                    confirmButtonText: 'Aceptar'
+                });
             }
         })
         .catch(error => {
             console.error('Error:', error);
-            alert('Ocurrió un error durante el proceso: ' + error.message);
+            Swal.fire({
+                icon: 'error',
+                title: '¡Error!',
+                text: 'Ocurrió un error durante el proceso: ' + error.message,
+                confirmButtonText: 'Aceptar'
+            });
         });
     }
     
     return false;
-  }
-  
+}

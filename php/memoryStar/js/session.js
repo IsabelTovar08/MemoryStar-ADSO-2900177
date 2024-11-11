@@ -5,7 +5,7 @@ async function obtenerDatosUsuario() {
         console.log( data.usuario);
         console.log(data)
         if (data.success) {
-            const nombreUsuarioElement = document.querySelectorAll('.usuarioPerfill');
+            const nombreUsuarioElement = document.querySelectorAll('.usuarioPerfill, .nombre');
             if (nombreUsuarioElement) {
                 nombreUsuarioElement.forEach(elemento => {
                     elemento.innerHTML = data.usuario;

@@ -57,6 +57,16 @@ class conexion {
         }
         
 
+        public function ejecutarInsert($sql, $valores) {
+            $pdo = $this->conectar();
+            if (!$pdo) return false;
+    
+            $stmt = $pdo->prepare($sql);
+            $stmt->execute($valores);
+            return $stmt->fetch(PDO::FETCH_ASSOC);
+        }
+    
+       
 
     }
 

@@ -29,7 +29,7 @@ var modalHTML = `
 <div class="apartado-derecho">
     <ul class="nav justify-content-end">
         <li class="nav-item">
-            <span class="nombre">Usuario</span>
+            <span class="nombre"></span>
         </li>
         <li class="nav-item usuario">
             <img src="img/iconos/usuario.png" id="profileImage2" alt="user" class="derecho iconos efectosIconos" data-bs-toggle="offcanvas" data-bs-target="#perfil" aria-controls="offcanvasRight">
@@ -385,23 +385,19 @@ var modalHTML = `
         <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
     </div>
     <div class="offcanvas-body">
-        <form action="pago.php" method="post">
+          <form id="profileForm" novalidate>
             <h1>Editar Perfil</h1>
-            <div class="col">
-                <label for="exampleInputEmail1" class="form-label">Nombre</label>
-                <input type="text" class="form-control labelPerfil" id="txtNombre" name="txtNombre" required>
+            <div class="mb-3">
+                <label for="txtNombreP" class="form-label">Nombre</label>
+                <input type="text" class="form-control labelPerfil" id="txtNombreP" name="txtNombre" required>
             </div>
-            <div class="col">
-                <label for="exampleInputEmail1" class="form-label">Apellido</label>
-                <input type="text" class="form-control labelPerfil" id="txtApellido" name="txtApellido" required>
+            <div class="mb-3">
+                <label for="txtApellidoP" class="form-label">Apellido</label>
+                <input type="text" class="form-control labelPerfil" id="txtApellidoP" name="txtApellido" required>
             </div>
-            <div class="col">
-                <label for="exampleInputEmail1" class="form-label">Email</label>
-                <input type="email" class="form-control labelPerfil" id="txtEmail" name="txtEmail" required>
-            </div>
-            <div class="col">
-                <label for="exampleInputEmail1" class="form-label">Teléfono</label>
-                <input type="number" class="form-control labelPerfil" id="txtTelefono" name="txtTelefono" required>
+            <div class="mb-3">
+                <label for="txtTelefonoP" class="form-label">Teléfono</label>
+                <input type="number" class="form-control labelPerfil" id="txtTelefonoP" name="txtTelefono" required>
             </div>
             <button type="submit" class="btn btn-primary">Enviar</button>
         </form>
@@ -412,63 +408,63 @@ var modalHTML = `
 <div class="offcanvas offcanvas-end" tabindex="-1" id="perfil" aria-labelledby="offcanvasRightLabel">
     <div class="cardDos">
         <div class="card__img">
-        <img src="img/fondos/perfil3.jpg" id="profileImage2" alt="">
+            <img src="img/fondos/perfil3.jpg" id="profileImage2" alt="">
         </div>
         <div class="card__avatar fotoPerfil">
             <img src="#" id="profileImage2" alt="Foto de perfil">
             <input type="file" id="fileInput" accept="image/*" style="display: none;">
         </div>
-        <div class="card__title   usuarioPerfill " ></div>
+        <div class="card__title usuarioPerfill"></div>
         <div class="card__subtitle">Web Development</div>
     </div>
     <div class="offcanvas-body">
-        <div class="cardDos">   
-
+        <div class="cardDos">
             <h5 class="offcanvas-title perfil" id="offcanvasRightLabel">1.565 Puntos</h5>
         </div>
         <div class="rangosObtenidos">
-            <img src="modales/modales/img/rangos/rangoBloqueadoo.png" alt="" class="" width="50">
-            <img src="modales/modales/img/rangos/rangoBloqueadoo.png" alt="" class="" width="50">
-            <img src="modales/modales/img/rangos/rangoBloqueadoo.png" alt="" class="" width="50">
-            <img src="modales/modales/img/rangos/rangoBloqueadoo.png" alt="" class="" width="50">
-            <img src="modales/modales/img/rangos/rangoBloqueadoo.png" alt="" class="" width="50">
+            <img src="modales/modales/img/rangos/rangoBloqueadoo.png" alt="" width="50">
+            <img src="modales/modales/img/rangos/rangoBloqueadoo.png" alt="" width="50">
+            <img src="modales/modales/img/rangos/rangoBloqueadoo.png" alt="" width="50">
+            <img src="modales/modales/img/rangos/rangoBloqueadoo.png" alt="" width="50">
+            <img src="modales/modales/img/rangos/rangoBloqueadoo.png" alt="" width="50">
         </div>
         <br>
-        <h5 class="offcanvas-title perfil" id="offcanvasRightLabel">Tus iconos de de perfil:</h5>
+        <h5 class="offcanvas-title perfil" id="offcanvasRightLabel">Tus iconos de perfil:</h5>
         <br>
         <div class="modal-profile-items row"></div>
         <br>
 
         <div class="col-12 row">
-            <div class="col-6 ">
-                <label for="exampleInputEmail1" class="form-label">Nombre</label>
-                <div type="email" class="form-control labelPerfil">Usuario <div type="button" class="editar" data-bs-toggle="offcanvas" data-bs-target="#editarPerfil" aria-controls="offcanvasBottom" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Editar Perfil"><img src="img/iconos/editar.png" alt="" width="25"></div>
-                </div>
+            <div class="col-6">
+                <label for="nombrePrf" class="form-label">Nombre</label>
+                <div id="nombrePrf" class="form-control labelPerfil"></div>
             </div>
             <div class="col-6">
-                <label for="exampleInputEmail1" class="form-label">Apellido</label>
-                <div type="email" class="form-control labelPerfil">Apellido <div type="button" class="editar" data-bs-toggle="offcanvas" data-bs-target="#editarPerfil" aria-controls="offcanvasBottom" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Editar Perfil"><img src="img/iconos/editar.png" alt="" width="25"></div>
-                </div>
+                <label for="apellidoPrf" class="form-label">Apellido</label>
+                <div id="apellidoPrf" class="form-control labelPerfil"></div>
             </div>
         </div>
+        
         <div class="mb-3">
-            <label for="exampleInputEmail1" class="form-label">Email</label>
-            <div type="email" class="form-control labelPerfil">Email@ejemplo.com <div type="button" class="editar" data-bs-toggle="offcanvas" data-bs-target="#editarPerfil" aria-controls="offcanvasBottom" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Editar Perfil"><img src="img/iconos/editar.png" alt="" width="25"></div>
-            </div>
+            <label for="correoPrf" class="form-label">Email</label>
+            <div id="correoPrf" class="form-control labelPerfil">Email@ejemplo.com</div>
         </div>
-        <div class="col 12 row">
+
+        <div class="col-12 row">
             <div class="col-6">
-                <label for="exampleInputEmail1" class="form-label">Teléfono</label>
-                <div type="email" class="form-control labelPerfil">1234567890 <div type="button" class="editar" data-bs-toggle="offcanvas" data-bs-target="#editarPerfil" aria-controls="offcanvasBottom" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Editar Perfil"><img src="img/iconos/editar.png" alt="" width="25"></div>
-                </div>
+                <label for="numeroTelef" class="form-label">Teléfono</label>
+                <div id="numeroTelef" class="form-control labelPerfil"></div>
             </div>
         </div>
         <br>
-        <button onclick="cerrarSesion()"  class="btn cancelar">
+        
+        <button onclick="cerrarSesion()" class="btn cancelar">
             <div>Cerrar Sesión</div>
         </button>
-        <button class="btn">
-            <div>Eliminar Cuenta</div>
+        
+        <!-- Nuevo botón para editar perfil en lugar de eliminar cuenta -->
+        <button class="btn" data-bs-toggle="offcanvas" data-bs-target="#editarPerfil" aria-controls="offcanvasBottom">
+            <div>Editar Perfil</div>
         </button>
     </div>
 </div>
