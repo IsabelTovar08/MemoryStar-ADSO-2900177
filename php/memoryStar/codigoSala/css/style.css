@@ -1,0 +1,266 @@
+/* style.css */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    background-color: #ffffff;
+    overflow: hidden;
+    background-image: url(fondoMemory.jpeg);
+    background-repeat: no-repeat;
+    background-position: center ;
+    background-size: cover;
+}
+
+.container {
+    background-color: #06a4ee75;
+    /* padding: 2rem; */
+    max-width: 400px;
+    width: 100%;
+    text-align: center;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0);
+    position: relative;
+}
+.borde-luz{
+    position: absolute;
+
+    height: 1%;
+    width: 20%;
+    background-color: #00e3f3;
+    box-shadow: 0px 0px 10px  2px #00e3f3;
+}
+.top{
+    bottom: 100%;
+    width: 0%;
+    animation: border-ancho  2s ease infinite ;
+
+}
+.right{
+    left: 100%;
+    width: .5%;
+    height: 0%;
+    animation: border-alto  2s ease infinite ;
+}
+
+.bottom{
+    width: 0%;
+    animation: border-ancho  2s ease infinite ;
+
+    top: 100%;
+}
+.left{
+    right: 100%;
+    width: .5%;
+    height: 0%;
+    animation: border-alto  2s ease infinite ;
+}
+
+@keyframes border-alto {
+    from{
+        height: 0%;
+    }
+    to{
+        height: 100%;
+    }
+}
+
+@keyframes border-ancho {
+    from{
+        width: 0%;
+    }
+    to{
+        width: 100%;
+    }
+}
+
+
+form {
+    
+    margin: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+label {
+    text-shadow: 0px 0px 10px white;
+    font-size: 1.2rem;
+    color: #ffffff;
+    font-weight: bold;
+}
+
+input[type="number"], input[type="submit"], input[type="button"] {
+    padding: 0.8rem;
+    font-size: 1rem;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+    outline: none;
+    width: 100%;
+    transition: border-color 0.3s;
+    border: none;
+    border-bottom:1px solid #00d7fdaa;
+    box-shadow: 0 3px 10px 5px #0a89ddaa;
+
+}
+
+input[type="button"] {
+    background-color: #f9f9f9;
+}
+
+input[type="button"]:focus, input[type="button"]:hover {
+    border-color: #4cafa7;
+}
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type="number"] {
+  -moz-appearance: textfield;
+  background: none;
+
+}
+input[type="number"]::placeholder{
+    color: white;
+    text-shadow: 0px 0px 10px white;
+
+}
+input[type="submit"] {
+    overflow: hidden;
+    background-color: #03192eaf;
+    box-shadow: 0px 0px 10px 2px #0a89ddbb;
+    text-shadow: 0px 0px 10px white;
+
+    color: white;
+    cursor: pointer;
+    border: none;
+    transform: scale(.5);
+
+    animation: agrandar 3s ease-in-out infinite;
+}
+
+@keyframes agrandar {
+    to{
+        transform: scale(.9);
+    }
+    from{
+        transform: scale(.5);
+
+    }
+
+}
+
+
+input[type="submit"]:hover {
+    background-color: #00d7fdaa;
+    box-shadow: 0px 0px 10px 2px #0a89ddff;
+    text-shadow: 0px 0px 10px white;
+}
+
+
+.capa {
+    z-index: 1000; 
+    backdrop-filter: blur(5px); 
+}
+
+
+.alerta {
+    background-color: #e0f7fa; 
+    color: #004d40;
+    border: 2px solid #00796b;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+    padding: 20px;
+    animation: agrandar 900ms ease infinite;
+}
+
+@keyframes agrandar {
+    0%{
+        transform: scale(1.1); 
+
+    }
+    50%{
+        transform: scale(1); 
+
+    }
+    100%{
+        transform: scale(1.1); 
+
+    }
+}
+.titulo-alerta h2 {
+    color: #004d40; 
+    font-size: 1.6rem;
+    margin-bottom: 10px;
+}
+
+
+.contexto-alerta p {
+    color: #00695c; 
+    font-size: 1rem;
+    text-align: center;
+}
+
+
+.alerta:hover {
+    transform: scale(.8); 
+}
+
+.mensaje{
+    color: red;
+    text-shadow: 0px 0px 10px rgba(119, 119, 119, 0.459);
+}
+
+
+.puerta-arriba,.puerta-abajo{
+    position: absolute;
+    width: 100vw;
+    height: 50vh;
+}
+.puerta-arriba{
+    top: 0%;
+    background-color: rgba(3, 30, 83, 0.774);
+
+    z-index: 1;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+}
+
+
+
+.puerta-abajo{
+    bottom: 0%;
+    background-color: rgba(3, 30, 83, 0.774);
+
+    z-index: 1;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+}
+.img-1{
+    background-image: url(segundoMemory.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: top;
+    width: 20%;
+    height: 44%;
+
+}
+.img-2{
+    background-image: url(segundoMemory.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: bottom;
+    width: 20%;
+    height: 32%;
+
+}
