@@ -12,7 +12,7 @@ class tematicaEspacial {
 
     public function obtenertematicaEspacial() {
         $sql = "SELECT * FROM tematicaJuego WHERE id_tematica = 1 OR id_tematica = 2";
-        $resultados = $this->conexion->login($sql, []); 
+        $resultados = $this->conexion->consulta($sql, []); 
 
         $tematicaEspacial = [];
 

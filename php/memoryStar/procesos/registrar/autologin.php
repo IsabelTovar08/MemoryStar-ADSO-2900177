@@ -18,7 +18,7 @@ class AutoLogin extends Usuario
             ':clave' => $clave
         ];
 
-        $resultado = $conexion->login($this->sqlLogin, $valores);
+        $resultado = $conexion->consulta($this->sqlLogin, $valores);
 
         if ($resultado && count($resultado) > 0) {
             // Iniciar sesión
