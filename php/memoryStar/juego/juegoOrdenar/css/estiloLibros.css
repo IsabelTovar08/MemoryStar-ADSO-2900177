@@ -102,7 +102,7 @@ body {
 .contenedor-estante{
   position: relative;
   width: 100%; /* La imagen ocupará el 100% del contenedor padre */
-  max-width: 750px; /* Limitar el tamaño máximo en pantallas grandes */
+   /* Limitar el tamaño máximo en pantallas grandes */
   height: auto;
   margin: 0 auto;
 }

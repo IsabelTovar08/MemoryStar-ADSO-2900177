@@ -78,7 +78,7 @@
 
     <!-- Modal -->
 
-    <div class="modal-content" id="staticBackdrop">
+    <!-- <div class="modal-content" id="staticBackdrop">
         <div class="modal-header">
             <h1 class="modal-title fs-5" id="staticBackdropLabel">Modal title</h1>
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
@@ -92,7 +92,59 @@
             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
             <button type="button" class="btn btn-primary" id="siguiente">Understood</button>
         </div>
+    </div> -->
+
+    <div class="modal fade" id="staticBackdrop" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true"
+        data-bs-backdrop="static" data-bs-keyboard="false">
+        <div class="modal-dialog modal-sm modal-dialog-centered">
+            <div class="modal-content contenedorTsolo">
+                <div class="tituloTsolo">¡Juego Completado!</div>
+                <div class="contenedorTsoloInterior">
+                    <div class="contenedor-estrellas">
+                        <img src="modales/modales/img/tablas/Star.png" class="star" alt="">
+                        <img src="modales/modales/img/tablas/Star.png" class="star" alt="">
+                        <img src="modales/modales/img/tablas/Star.png" class="star" alt="">
+                    </div>
+                    <div class="puntaje-total" id="puntosFin">
+                        <!-- Aquí se debe insertar el valor de 'puntajeTotal' -->
+                        0
+                    </div>
+                    <div class="contenedor-puntaje" id="tiempoFin">
+                        Tiempo:
+                        <!-- Aquí se debe insertar el valor de 'tiempoPromedio' -->
+                        0s
+                    </div>
+                    <div class="contenedor-puntaje">
+                        <div id="diamantesFin"></div><img src="modales/modales/img/tablas/rubipuntaje.png"
+                            style="width: 4vh;height: auto;">
+                    </div>
+                    <!-- <div class="col-12 row contenedor-info">
+                        <div class="col-6 usuarioPerfill">
+                            <img src="modales/modales/img/tablas/fotouser.png" alt="" style="width: 16px;">
+                        </div>
+                        <div class="col-3" id="tiempoFin">
+                            0s
+                        </div>
+                        <div class="col-3" id="puntosFin">
+                            
+                            0pts
+                        </div>
+                    </div> -->
+                </div>
+                <div class="contenedor-botonTsolo">
+                    <button class="botonTsolo" id="siguiente" style="margin-left: 20px;">
+                        Siguiente
+                    </button>
+                </div>
+            </div>
+        </div>
     </div>
+
+
+
+
+
+
     <nav class="nav flex-column apartado-iconos">
         <img id="controlMusica" src="img/iconos/musicaApagada.png" alt="Reproducir" class="iconos efectosIconos">
         <img src="img/iconos/ajustesN.png" alt="Ajustes" class="iconos efectosIconos" data-bs-toggle="collapse"
