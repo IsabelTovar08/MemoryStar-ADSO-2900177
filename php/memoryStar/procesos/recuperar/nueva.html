@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Actualizar Contraseña</title>
+    <link rel="stylesheet" href="assets/css/estilos.css">
+</head>
+<body>
+    <div class="container">
+        <h2>Actualizar Contraseña</h2>
+        <form action="proceso/enviar_email.php/nueva.php" method="POST" id="updateForm">
+            <label for="codigo">Código de Recuperación:</label>
+            <input type="text" id="codigo" name="codigo" required>
+            
+            <label for="password">Nueva Contraseña:</label>
+            <input type="password" id="nuevaContrasena" name="nuevaContrasena" required>
+            
+            <button type="submit">Actualizar Contraseña</button>
+        </form>
+        <p id="message"></p> <!-- Aquí se mostrará el mensaje -->
+    </div>
+
+    <script>
+        // Función para obtener mensajes de la URL y mostrarlos en el HTML
+        document.addEventListener("DOMContentLoaded", function() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const message = urlParams.get('message');
+            const messageElement = document.getElementById('message');
+            
+            if (message) {
+                messageElement.textContent = message;
+                messageElement.style.color = message.includes('exitosamente') ? 'green' : 'red';
+            }
+        });
+    </script>
+</body>
+</html>

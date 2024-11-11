@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,39 +12,47 @@
     <!--Custom CSS-->
     <!-- <link rel="stylesheet" href="style.css">  -->
     <link rel="stylesheet" href="../../css/log.css" />
+    <link rel="stylesheet" href="../../css/recuperar.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+    <!-- <link rel="stylesheet" href="../../bootstrap/css/bootstrap.css" /> -->
+
+
 
 </head>
+
 <body>
-    
+
     <div class="wrapper">
 
         <span class="rotate-bg"></span>
         <span class="rotate-bg2"></span>
 
-        <div class="form-box login"  >
+        <div class="form-box login">
 
-            <h2 class="title animation" style="--i:0; --j:21">Login</h2>
+            <h2 class="title animation" style="--i:0; --j:21">Iniciar Sesión</h2>
 
-            <form  novalidate onsubmit="return iniciarSesion(event)">
+            <form novalidate onsubmit="return iniciarSesion(event)">
 
                 <div class="input-box animation" style="--i:1; --j:22">
                     <input type="text" id="username2" required>
-                    <label for="">Username</label>
+                    <label for="">Usuario</label>
                     <i class='bx bxs-user'></i>
                 </div>
 
                 <div class="input-box animation" style="--i:2; --j:23">
                     <input type="password" id="password2" required>
-                    <label for="">Password</label>
+                    <label for="">Contraseña</label>
                     <i class='bx bxs-lock-alt'></i>
                 </div>
+                <div class="recuperar" onclick="openModal()">¿Olvidaste tu contraseña?</div>
 
-                <button type="submit"  id="ingresar" class="btn animation  boton" >Login</button>
+                <button type="submit" id="ingresar" class="btn animation  boton">Acceder</button>
 
                 <div class="linkTxt animation" style="--i:5; --j:25">
-                    <p>Don't have an account? <a href="#" class="register-link">Sign Up</a></p>
+                    <p>¿No tienes una cuenta? <a href="#" class="register-link">Registrar</a></p>
                 </div>
-                
+
             </form>
             <div id="mensajeError" style="color:red;"></div>
         </div>
@@ -54,14 +63,14 @@
         </div>
 
 
-        <div class="form-box register" >
+        <div class="form-box register">
 
             <h2 class="title animation" style="--i:17; --j:0">Sign Up</h2>
 
             <form novalidate onsubmit="return registrarUsuario(event)">
 
                 <div class="input-box animation" style="--i:18; --j:1">
-                    <input type="text"  id="username" required>
+                    <input type="text" id="username" required>
                     <label for="">Username</label>
                     <i class='bx bxs-user'></i>
                 </div>
@@ -69,21 +78,21 @@
                 <div class="input-box animation" style="--i:19; --j:2">
                     <input type="email" id="email" required>
                     <label for="">Email</label>
-                    <i class='bx bxs-envelope' ></i>
+                    <i class='bx bxs-envelope'></i>
                 </div>
 
                 <div class="input-box animation" style="--i:20; --j:3">
                     <input type="password" id="password" required>
                     <label for="">Password</label>
-                    <i class='bx bxs-lock-alt' ></i>
+                    <i class='bx bxs-lock-alt'></i>
                 </div>
 
-                <button type="submit" id="registrar" class="btn animation  boton" >Sign Up</button>
+                <button type="submit" id="registrar" class="btn animation  boton">Sign Up</button>
 
                 <div class="linkTxt animation" style="--i:22; --j:5">
                     <p>Already have an account? <a href="#" class="login-link">Login</a></p>
                 </div>
-                
+
             </form>
             <div id="mensajeError" style="color:red;"></div>
         </div>
@@ -96,22 +105,92 @@
 
     </div>
 
+    <div class="modal" id="modal">
+        <div class="modal-content">
+            <!-- Paso 1: Ingresar el email -->
+            <form action="" id="buscar_email" method="post">
+                <div id="step1" class="modal-step active">
+                    <h2>Recuperar Contraseña</h2>
+                    <p>Introduce tu correo electrónico</p>
+                    <input type="email" id="emailRecuperar" name="emailRecuperar" placeholder="Correo electrónico">
+                    <button type="submit">Enviar Código</button>
+                    <button onclick="closeModal()">Cancelar</button>
+                    <p class="error" id="emailError"></p>
+                </div>
+            </form>
+
+            <!-- Nuevo Paso: Confirmar el correo ingresado -->
+            <div id="stepConfirmEmail" class="modal-step">
+                <h2>Confirmar Correo</h2>
+                <p>¿Es correcto este correo?</p>
+                <div id="confirmEmailText"></div>
+                <button onclick="confirmEmail()">Confirmar</button>
+                <button onclick="goToStep(1)">Cancelar</button>
+            </div>
+
+            <!-- Paso 2: Validar el código enviado -->
+            <form action="" id="confirmar_codigo" method="post">
+                <div id="step2" class="modal-step">
+                    <h2>Recuperar Contraseña</h2>
+                    <i class="fas fa-check-circle success-icon"></i>
+                    <p>Se ha enviado un código a tu correo</p>
+                    <input type="text" id="confirma_email" name="confirma_email" class="inputEmail" readonly>
+                    <input type="text" id="codigo" name="codigo" placeholder="Ingresa el código">
+                    <button type="submit">Validar Código</button>
+                    <p class="error" id="codeError"><i class="fas fa-times-circle"></i> El código es incorrecto</p>
+                    <button onclick="closeModal()">Cancelar</button>
+                    <p class="error" id="emailError"></p>
+
+                </div>
+            </form>
+
+            <!-- Paso 3: Ingresar la nueva contraseña -->
+            <form action="" id="nueva_contrasena" method="post">
+                <div id="step3" class="modal-step">
+                    <h2>Recuperar Contraseña</h2>
+                    <p>Introduce tu nueva contraseña</p>
+                    <input type="password" id="new_password" name="new_password" placeholder="Nueva contraseña">
+                    <input type="password" id="confirmPassword" name="confirmPassword" placeholder="Confirma tu nueva contraseña">
+                    <button type="submit" >Cambiar Contraseña</button>
+                    <p class="error" id="passwordError"><i class="fas fa-times-circle"></i> Las contraseñas no coinciden
+                        o
+                        están vacías</p>
+                    <p class="error" id="emailError"></p>
+                    <p class="error" id="passwordError"><i class="fas fa-times-circle"></i> Las contraseñas no coinciden o están vacías</p>
+                </div>
+            </form>
+
+            <!-- Paso 4: Confirmación de cuenta recuperada -->
+            <div id="step4" class="modal-step">
+                <h2>Cuenta Recuperada</h2>
+                <i class="fas fa-check-circle success-icon"></i>
+                <p>Tu cuenta ha sido recuperada exitosamente. Ahora puedes iniciar sesión con tu nueva contraseña.</p>
+                <button onclick="closeModal()">Aceptar</button>
+                <p class="error" id="emailError"></p>
+            </div>
+            <p class="error" id="emailError"></p>
+
+        </div>
+    </div>
+
 
     <script>
-
         const wrapper = document.querySelector('.wrapper')
-const registerLink = document.querySelector('.register-link')
-const loginLink = document.querySelector('.login-link')
+        const registerLink = document.querySelector('.register-link')
+        const loginLink = document.querySelector('.login-link')
 
-registerLink.onclick = () => {
-    wrapper.classList.add('active')
-}
+        registerLink.onclick = () => {
+            wrapper.classList.add('active')
+        }
 
-loginLink.onclick = () => {
-    wrapper.classList.remove('active')
-}
+        loginLink.onclick = () => {
+            wrapper.classList.remove('active')
+        }
     </script>
+    <script src="../recuperar/js/envio.js"></script>
+    <script src="../recuperar/js/script.js"></script>
     <script src="../js/datos.js"></script>
     <script src="../js/login.js"></script>
 </body>
+
 </html>

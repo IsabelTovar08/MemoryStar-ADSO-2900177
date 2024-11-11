@@ -1,0 +1,18 @@
+{
+    "errores": {
+        "correo_vacio": {
+            "codigo": 1,
+            "mensaje": "El correo electrónico no puede estar vacío."
+        },
+        "usuario_no_encontrado": {
+            "codigo": 2,
+            "mensaje": "Correo no registrado."
+        }
+    },
+    "exitos": {
+        "correo_enviado": {
+            "codigo": 3,
+            "mensaje": "Correo enviado correctamente. Revisa tu bandeja de entrada."
+        }
+    }
+}

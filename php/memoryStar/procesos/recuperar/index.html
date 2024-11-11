@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recuperar Contraseña</title>
+    <link rel="stylesheet" href="assets/css/estilos.css">
+</head>
+<body>
+    <div class="contenedor">
+        <h2>Recuperar Contraseña</h2>
+        <form action="proceso/enviar_email.php/email.php" method="POST" id="formularioRecuperacion">
+            <label for="correo">Correo Electrónico:</label>
+            <input type="email" id="correo" name="correo" required>
+            <button type="submit">Enviar Código de Recuperación</button>
+        </form>
+        <p id="mensaje"></p> <!-- Aquí se mostrará el mensaje -->
+    </div>
+
+    <script>
+        // Función para obtener mensajes de la URL y mostrarlos en el HTML
+        document.addEventListener("DOMContentLoaded", function() {
+            const parametrosUrl = new URLSearchParams(window.location.search);
+            const mensaje = parametrosUrl.get('mensaje');
+            const elementoMensaje = document.getElementById('mensaje');
+            
+            if (mensaje) {
+                elementoMensaje.textContent = mensaje;
+                elementoMensaje.style.color = mensaje.includes('exitosamente') ? 'green' : 'red';
+            }
+        });
+    </script>
+</body>
+</html>
