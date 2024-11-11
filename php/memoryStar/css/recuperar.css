@@ -1,0 +1,169 @@
+/* Estilos generales */
+* {
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #f0f2f5;
+  margin: 0;
+}
+
+/* Estilos del modal */
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+  color: #000;
+}
+
+.modal.show {
+  opacity: 1;
+  pointer-events: all;
+}
+
+.modal-content {
+  background: #fff;
+  padding: 20px;
+  width: 90%;
+  max-width: 400px;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  text-align: center;
+  position: relative;
+  transform: scale(0.8);
+  transition: transform 0.3s ease;
+}
+
+.modal.show .modal-content {
+  transform: scale(1);
+}
+
+h2 {
+  color: #333;
+  margin-bottom: 1em;
+  font-size: 24px;
+}
+
+/* Estilos de los .modal inputs y botones */
+.modal input[type="email"],
+.modal input[type="text"],
+.modal input[type="password"] {
+  width: 100%;
+  padding: 12px;
+  margin: 10px 0;
+  border: 2px solid #ddd;
+  border-radius: 6px;
+  transition: border-color 0.3s;
+}
+.modal input :active{
+  all: unset;
+
+}
+.modal input[type="email"]:focus,
+.modal input[type="text"]:focus,
+.modal input[type="password"]:focus {
+  border-color: #5345a0 !important;
+  outline: none;
+}
+
+button {
+  background-color: #4CAF50;
+  color: white;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s;
+  width: 100%;
+  margin-top: 10px;
+}
+
+button:hover {
+  background-color: #5345a0;
+}
+
+/* Mensajes de éxito y error */
+.success-icon {
+  color: #4CAF50;
+  font-size: 30px;
+  margin-right: 5px;
+}
+
+.error {
+  color: #D32F2F;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 10px;
+}
+
+.error i {
+  margin-right: 5px;
+}
+
+/* Indicadores de éxito/error en el borde */
+.modal input.success {
+  border-color: #4CAF50;
+}
+
+.modal input.error {
+  border-color: #D32F2F;
+}
+
+/* Estilos para ocultar/mostrar pasos */
+.modal-step {
+  display: none;
+}
+
+.modal-step.active {
+  display: block;
+}
+
+#emailError {
+  display: none;
+}
+
+#passwordError {
+  display: none;
+}
+
+#codeError {
+  display: none;
+}
+
+#confirmEmailText {
+  display: block;
+}
+
+.inputEmail {
+  all: unset;
+  box-shadow: none;
+  font-weight: bolder;
+  border: none;
+  outline: none;
+}
+
+.icono_salir{
+  position: absolute;
+  top: 10px; 
+  right: 10px; 
+  font-size: 24px; 
+  color: red; 
+  cursor: pointer;
+}
