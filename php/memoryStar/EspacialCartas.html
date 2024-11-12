@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="juego/espacial/cartas/css/estilosCartas.css">
     <link rel="stylesheet" href="bootstrap/css/bootstrap.css">
     <link rel="stylesheet" href="css/animaciones/animacion.css">
-    <link rel="stylesheet" href="modales/modales/css/estiloTablaPuntuacion.css">
+    <link rel="stylesheet" href="juego/espacial/cartas/css/tablaCartas.css">
     <link rel="stylesheet" href="modales/modales/css/estiloSeguirjugando.css">
     <link rel="stylesheet" href="css/salir/salir.css">
 
@@ -78,7 +78,7 @@
 
     <!-- Modal -->
 
-    <div class="modal-content" id="staticBackdrop">
+    <!-- <div class="modal-content" id="staticBackdrop">
         <div class="modal-header">
             <h1 class="modal-title fs-5" id="staticBackdropLabel">Modal title</h1>
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
@@ -92,7 +92,58 @@
             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
             <button type="button" class="btn btn-primary" id="siguiente">Understood</button>
         </div>
+    </div> -->
+
+    <div class="modal fade" id="staticBackdrop" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true"
+        data-bs-backdrop="static" data-bs-keyboard="false">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content contenedorTsolo">
+                <div class="tituloTsolo">¡Juego Completado!</div>
+                <div class="contenedorTsoloInterior">
+                    <div class="contenedor-estrellas">
+                        <img src="modales/modales/img/tablas/Star.png" class="star" alt="">
+                        <img src="modales/modales/img/tablas/Star.png" class="star" alt="">
+                        <img src="modales/modales/img/tablas/Star.png" class="star" alt="">
+                    </div>
+                    <div class="puntaje-total" id="puntosFin">
+                        <!-- Aquí se debe insertar el valor de 'puntajeTotal' -->
+                        0
+                    </div>
+                    <div class="contenedor-puntaje" id="tiempoFin">
+                        Tiempo:
+                        <!-- Aquí se debe insertar el valor de 'tiempoPromedio' -->
+                        0s
+                    </div>
+                    <div class="contenedor-puntaje">
+                        <div id="diamantesFin"></div>
+                    </div>
+                    <!-- <div class="col-12 row contenedor-info">
+                        <div class="col-6 usuarioPerfill">
+                            <img src="modales/modales/img/tablas/fotouser.png" alt="" style="width: 16px;">
+                        </div>
+                        <div class="col-3" id="tiempoFin">
+                            0s
+                        </div>
+                        <div class="col-3" id="puntosFin">
+                            
+                            0pts
+                        </div>
+                    </div> -->
+                </div>
+                <div class="contenedor-botonTsolo">
+                    <button class="botonTsolo" id="siguiente" style="margin-left: 20px;">
+                        Siguiente
+                    </button>
+                </div>
+            </div>
+        </div>
     </div>
+
+
+
+
+
+
     <nav class="nav flex-column apartado-iconos">
         <img id="controlMusica" src="img/iconos/musicaApagada.png" alt="Reproducir" class="iconos efectosIconos">
         <img src="img/iconos/ajustesN.png" alt="Ajustes" class="iconos efectosIconos" data-bs-toggle="collapse"
@@ -127,6 +178,8 @@
                         <div class="icon blue-potion"><img src="img/imagenesCabeza/estrella.png" alt="" width="20"></div>
                         <div id="timer" class="tiempo">00:00:00</div>
                     </div>
+                    <div id="tiempo"> 00:20</div>
+                    
                 </div>
 
                 <div class="resources-group">
@@ -180,27 +233,27 @@
 
             <div class="contenerdorImagen">
                 <div class="contenedorCartas">
-                    <div class="carta" data-id="paloma">
+                    <div class="carta" data-id="nave2">
                         <div class="cara reverso">
-                            <img src="juego/espacial/cartas/img/paloma.png
+                            <img src="juego/espacial/cartas/img/nave2.png
                                 " class="imagen">
                         </div>
                         <div class="cara frente">
                             <img src="juego/espacial/cartas/img/reverso.png" class="imagen" alt="Reverso">
                         </div>
                     </div>
-                    <div class="carta" data-id="llamita">
+                    <div class="carta" data-id="planeta1">
                         <div class="cara reverso">
-                            <img src="juego/espacial/cartas/img/llamita.png
+                            <img src="juego/espacial/cartas/img/planeta1.png
                                 " class="imagen">
                         </div>
                         <div class="cara frente">
                             <img src="juego/espacial/cartas/img/reverso.png" class="imagen" alt="Reverso">
                         </div>
                     </div>
-                    <div class="carta" data-id="perro">
+                    <div class="carta" data-id="planeta2">
                         <div class="cara reverso">
-                            <img src="juego/espacial/cartas/img/perro.png" class="imagen">
+                            <img src="juego/espacial/cartas/img/planeta2.png" class="imagen">
                         </div>
                         <div class="cara frente">
                             <img src="juego/espacial/cartas/img/reverso.png" class="imagen" alt="Reverso">
@@ -208,18 +261,18 @@
                     </div>
 
 
-                    <div class="carta" data-id="pollo">
+                    <div class="carta" data-id="lunita">
                         <div class="cara reverso">
-                            <img src="juego/espacial/cartas/img/pollo.png" class="imagen">
+                            <img src="juego/espacial/cartas/img/lunita.png" class="imagen">
                         </div>
                         <div class="cara frente">
                             <img src="juego/espacial/cartas/img/reverso.png" class="imagen" alt="Reverso">
                         </div>
                     </div>
 
-                    <div class="carta" data-id="paloma">
+                    <div class="carta" data-id="nave2">
                         <div class="cara reverso">
-                            <img src="juego/espacial/cartas/img/paloma.png
+                            <img src="juego/espacial/cartas/img/nave2.png
                             " class="imagen">
                         </div>
                         <div class="cara frente">
@@ -227,26 +280,26 @@
                         </div>
                     </div>
 
-                    <div class="carta" data-id="llamita">
+                    <div class="carta" data-id="planeta1">
                         <div class="cara reverso">
-                            <img src="juego/espacial/cartas/img/llamita.png
+                            <img src="juego/espacial/cartas/img/planeta1.png
                             " class="imagen">
                         </div>
                         <div class="cara frente">
                             <img src="juego/espacial/cartas/img/reverso.png" class="imagen" alt="Reverso">
                         </div>
                     </div>
-                    <div class="carta" data-id="perro">
+                    <div class="carta" data-id="planeta2">
                         <div class="cara reverso">
-                            <img src="juego/espacial/cartas/img/perro.png" class="imagen">
+                            <img src="juego/espacial/cartas/img/planeta2.png" class="imagen">
                         </div>
                         <div class="cara frente">
                             <img src="juego/espacial/cartas/img/reverso.png" class="imagen" alt="Reverso">
                         </div>
                     </div>
-                    <div class="carta" data-id="pollo">
+                    <div class="carta" data-id="lunita">
                         <div class="cara reverso">
-                            <img src="juego/espacial/cartas/img/pollo.png" class="imagen">
+                            <img src="juego/espacial/cartas/img/lunita.png" class="imagen">
                         </div>
                         <div class="cara frente">
                             <img src="juego/espacial/cartas/img/reverso.png" class="imagen" alt="Reverso">

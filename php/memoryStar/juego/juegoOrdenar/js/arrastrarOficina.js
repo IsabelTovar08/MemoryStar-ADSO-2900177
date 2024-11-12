@@ -37,11 +37,12 @@ function getGameConfig() {
 
 let rondaActual = 1;
 let puntajeTotal = 0;
+let totalRubis = 0;
 let tiemposPorRonda = [];
 let botonPresionado = false;
 let intervaloBarra;
 let intervaloTemp;
-let contador = -5;
+let contador = -2;
 let tiempoRestante;
 let idDropzone = [];
 let GAME_CONFIG;
@@ -161,7 +162,14 @@ function iniciarTemp() {
     contador++;
     if (contador >= 0) {
       document.getElementById("verificarBtn").disabled = false;
-      document.getElementById("temp").innerHTML = `TIEMPO: ${contador}s`;
+
+      // Formatear contador a mm:ss
+      const minutos = Math.floor(contador / 60);
+      const segundos = contador % 60;
+      const formatoTiempo = `${minutos < 10 ? '0' : ''}${minutos}:${segundos < 10 ? '0' : ''}${segundos}`;
+
+      document.getElementById("temp").innerHTML = `${formatoTiempo}`;
+      
       if (!intervaloBarra) {
         iniciarBarra();
       }
@@ -170,6 +178,7 @@ function iniciarTemp() {
     }
   }, 1000);
 }
+
 
 function iniciarBarra() {
   const barraRegresiva = document.getElementById("countdown-bar");
@@ -206,6 +215,11 @@ function verificarPosicion() {
   const objetos = document.querySelectorAll(".arrastrable");
   let aciertos = 0;
   botonPresionado = true;
+  let aciertos2 = 0;
+  let desaciertos = 0;
+
+  // Detener los temporizadores inmediatamente
+  limpiarIntervalos();
 
   objetos.forEach((objeto, index) => {
     const dropzoneEsperada = `drop-objeto${index + 1}`;
@@ -213,33 +227,45 @@ function verificarPosicion() {
 
     if (dropzoneActual === dropzoneEsperada) {
       aciertos += 100;
+    } else {
+      desaciertos += 1;
     }
   });
 
   puntajeTotal += aciertos;
   tiemposPorRonda.push(contador);
 
-  mostrarResultadosRonda(aciertos);
+  mostrarResultadosRonda(aciertos, desaciertos);
 }
 
 function finalizarRonda() {
   botonPresionado = true;
+  
+  limpiarIntervalos();
   verificarPosicion();
 }
 
 // mostrar rexultados
-function mostrarResultadosRonda(aciertos) {
+function mostrarResultadosRonda(aciertos, desaciertos) {
+  // Asegurarnos que los temporizadores estén detenidos
+  limpiarIntervalos();
+  
   const objetosTotales = getObjetosParaRonda();
   const puntajePerfecto = objetosTotales * 100;
+  
+  let rubis = 0;
 
-  document.getElementById("puntosSecu1").innerHTML = aciertos;
-  document.getElementById("puntosSecu2").innerHTML = puntajeTotal;
-  document.getElementById("tiempo1").innerHTML = `${contador}s`;
+  document.getElementById("puntosSecu1").innerHTML = `${aciertos}pts`;
+  document.getElementById("puntosSecu2").innerHTML = `${puntajeTotal}pts`;
+  document.getElementById("tiempo1").innerHTML = `00:${contador<10?'0':''}${contador}`;
+  document.getElementById("aciertos").innerHTML = `Aciertos:${aciertos / 100}`;
+  document.getElementById("desaciertos").innerHTML = `Fallos:${desaciertos}`;
 
-  if (contador <= 5 && aciertos === puntajePerfecto) {
-    let rubis = 5;
-    document.getElementById("rubis").innerHTML = `+${rubis}`;
+  if (aciertos === puntajePerfecto) {
+    rubis = 5;
   }
+  document.getElementById("rubis").innerHTML = `+${rubis}`;
+  totalRubis += rubis;
 
   const modal = new bootstrap.Modal(
     document.getElementById("tablapuntuacionsolo")
@@ -314,11 +340,21 @@ function iniciarNuevaRonda() {
 
 // resultadp final
 function mostrarResultadosFinales() {
+  limpiarIntervalos();
+  
   const tiempoPromedio = (
     tiemposPorRonda.reduce((a, b) => a + b, 0) / tiemposPorRonda.length
   ).toFixed(1);
 
   const modalFinal = document.createElement("div");
+  modalFinal.className = "modal fade";
+  modalFinal.id = "modalFinal";
+  modalFinal.setAttribute("tabindex", "-1");
+  modalFinal.setAttribute("aria-labelledby", "modalFinalLabel");
+  modalFinal.setAttribute("aria-hidden", "true");
+  modalFinal.setAttribute("data-bs-backdrop", "static");
+  modalFinal.setAttribute("data-bs-keyboard", "false");
+
   modalFinal.className = "modal fade";
   modalFinal.id = "modalFinal";
   modalFinal.setAttribute("tabindex", "-1");
@@ -343,7 +379,12 @@ function mostrarResultadosFinales() {
   
                   <div class="contenedor-puntaje">
                       Tiempo Promedio:
-                      ${tiempoPromedio}s
+                      00:${tiempoPromedio<10?'0':''}${tiempoPromedio}
+                  </div>
+                  <div class="contenedor-rubi">
+                            <div>${totalRubis}</div>
+                            <img src="../../modales/modales/img/tablas/rubipuntaje.png"
+                                style="width: 4vh; height: auto;">
                   </div>
   
                   <div class="col-12 row contenedor-info">
@@ -351,7 +392,7 @@ function mostrarResultadosFinales() {
                           <img src="../../modales/modales/img/tablas/fotouser.png" alt="" style="width: 16px;">
                           
                       </div>
-                      <div class="col-3">${tiempoPromedio}s</div>
+                      <div class="col-3">00:${tiempoPromedio<10?'0':''}${tiempoPromedio}</div>
                       <div class="col-3">${puntajeTotal}pts</div>
                   </div>
               </div>

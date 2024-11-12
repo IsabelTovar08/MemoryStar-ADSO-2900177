@@ -9,81 +9,84 @@
     <link rel="stylesheet" href="../bootstrap/css/bootstrap.css">
     <link rel="stylesheet" href="css/armarNave.css">
     <link rel="stylesheet" href="../../../css/nav/nav.css">
+    <link rel="stylesheet" href="css/tablaNave.css">
 
 </head>
 
-<body>
 
-    <body style="background-image: url('../../../img/fondos/nuevoFondoS.png');">
-        <nav class="nav flex-column apartado-iconos">
-            <img id="controlMusica" src="../../../img/iconos/musicaApagada.png" alt="Reproducir"
-                class="iconos efectosIconos">
-            <img src="../../../img/iconos/ajustesN.png" alt="Ajustes" class="iconos efectosIconos"
-                data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false"
-                aria-controls="collapseExample">
-            <div class="collapse" id="collapseExample" style="width: 500%;">
-                <div class="card card-body color">
-                    <div class="col-12 row">
-                        <div class="col-5">Música</div>
-                        <div class="col-6"><input type="range" class="secondary" id="volumenMusica" min="0" max="1"
-                                step="0.1" value="1"></div>
-                    </div>
-                    <div class="col-12 row">
-                        <div class="col-5">Sonido</div>
-                        <div class="col-6"><input type="range" id="volumenSonido" min="0" max="1" step="0.1" value="1">
-                        </div>
-                    </div>
-                    <button id="botonSilencio" class="btn btn-primary">Silenciar</button>
+
+<body style="background-image: url('../../../img/fondos/nuevoFondoS.png');">
+    <nav class="nav flex-column apartado-iconos">
+        <img id="controlMusica" src="../../../img/iconos/musicaApagada.png" alt="Reproducir"
+            class="iconos efectosIconos">
+        <img src="../../../img/iconos/ajustesN.png" alt="Ajustes" class="iconos efectosIconos" data-bs-toggle="collapse"
+            data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+        <div class="collapse" id="collapseExample" style="width: 500%;">
+            <div class="card card-body color">
+                <div class="col-12 row">
+                    <div class="col-5">Música</div>
+                    <div class="col-6"><input type="range" class="secondary" id="volumenMusica" min="0" max="1"
+                            step="0.1" value="1"></div>
                 </div>
-        </nav>
-
-
-      <div class="nave" id="main-content">
-            <h1 class="titulo-nave">Arma la nave</h1>
-            <div class="holis">
-                <div class="contenedor-armar">
-                    <img src="img/nave.png" alt="">
+                <div class="col-12 row">
+                    <div class="col-5">Sonido</div>
+                    <div class="col-6"><input type="range" id="volumenSonido" min="0" max="1" step="0.1" value="1">
+                    </div>
                 </div>
+                <button id="botonSilencio" class="btn btn-primary">Silenciar</button>
+            </div>
+    </nav>
 
-                <div class="contenedor-nave" id="lista1">
-                    <div class="cuadro" data-id="0">
-                        CABINA
-                    </div>
-                    <div class="cuadro" data-id="1">
-                        DORSAL
-                    </div>
-                    <div class="cuadro" data-id="2">
-                        PROPULSOR
-                    </div>
-                    <div class="cuadro" data-id="3">
-                        ALAS
-                    </div>
 
-                </div>
-                <button id="verificar">VERIFICAR</button>
+    <div class="nave" id="main-content">
+        <div id="tiempo">00:15</div>
+        <h1 class="titulo-nave">Arma la nave</h1>
+        <div class="holis">
+            <div class="contenedor-armar">
+                <img src="img/nave.png" alt="">
             </div>
 
+            <div class="contenedor-nave" id="lista1">
+                <div class="cuadro" data-id="0">
+                    CABINA
+                </div>
+                <div class="cuadro" data-id="1">
+                    DORSAL
+                </div>
+                <div class="cuadro" data-id="2">
+                    PROPULSOR
+                </div>
+                <div class="cuadro" data-id="3">
+                    ALAS
+                </div>
+
+            </div>
+            <button id="verificar">VERIFICAR</button>
         </div>
-        <div id="loader" class="loader" style="display: none;"></div>
-        <!-- Modal de Bootstrap -->
-        <div class=" position-fixed top-0 start-50 translate-middle-x p-3" style="z-index: 1050;">
-            <div class="toast align-items-center text-white bg-dark border-0 w-100" id="resultadoToast" role="alert" aria-live="assertive" aria-atomic="true">
-              <div class="d-flex">
+
+    </div>
+    <div id="loader" class="loader" style="display: none;"></div>
+    <!-- Modal de Bootstrap -->
+    <div class=" position-fixed top-0 start-50 translate-middle-x p-3" style="z-index: 1050;">
+        <div class="toast align-items-center text-white bg-dark border-0 w-100" id="resultadoToast" role="alert"
+            aria-live="assertive" aria-atomic="true">
+            <div class="d-flex">
                 <div id="toastMessage" class="toast-body text-center fw-bold">
-                  <!-- El mensaje dinámico se insertará aquí -->
+                    <!-- El mensaje dinámico se insertará aquí -->
                 </div>
-                <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
-              </div>
+                <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast"
+                    aria-label="Close"></button>
             </div>
-          </div>
+        </div>
+    </div>
 
 
 
-        <script src="js/Sortable.min.js"></script>
-        <script src="js/armarNave.js"></script>
-        <script src="../bootstrap/js/bootstrap.js"></script>
-        <script src="js/cartas.js"></script>
+    <script src="js/Sortable.min.js"></script>
+    <script src="js/armarNave.js"></script>
+    <script src="../bootstrap/js/bootstrap.js"></script>
+    <script src="js/cartas.js"></script>
 
-    </body>
+</body>
 
 </html>
