@@ -215,18 +215,13 @@ body {
 }
 /* Estilo para las dropzones cuando un objeto está sobre ellas */
 .dropzone-highlight {
-  background-color: rgba(
-    0,
-    255,
-    0,
-    0.5
-  ); /* Color de fondo verde cuando hay un objeto sobre la dropzone */
+  background-color: rgba(0, 242, 255, 0.5); /* Color de fondo verde cuando hay un objeto sobre la dropzone */
 }
 
 /* Clase para indicar que el objeto puede ser soltado */
-.can-drop {
-  border: 2px solid #00ff00; /* Bordes verdes cuando el objeto puede ser soltado */
-}
+/* .can-drop {
+  border: 2px solid #00ff00; 
+} */
 
 .dropzone-highlight-temp {
   background-color: rgba(
@@ -236,6 +231,12 @@ body {
     0.5
   ); /* Color amarillo semitransparente */
   border: 2px solid #ff0000; /* Borde rojo para resaltar */
+}
+.bien{
+  border: 2px solid #33ff00;
+}
+.mal{
+  border: 2px solid #ff0000;
 }
 
 @media only screen and (max-width: 1024px) and (orientation: landscape) {

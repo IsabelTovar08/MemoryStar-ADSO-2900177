@@ -41,6 +41,7 @@ const todosLosLibros = [
 // Variables globales para el control de rondas
 let rondaActual = 1;
 let puntajeTotal = 0;
+let totalRubis = 0;
 let sortable;
 let ordenCorrecto;
 let intervaloBarra = null;
@@ -235,10 +236,18 @@ function finalizarRonda() {
   let ordenActual = Sortable.get(libros).toArray();
   let ordenActualConComillas = ordenActual.map((id) => `'${id}'`);
   let aciertosRonda = 0;
+  let desaciertos = 0;
+  let rubis = 0;
 
   ordenActualConComillas.forEach((id, index) => {
     if (id === ordenCorrecto[index]) {
       aciertosRonda = aciertosRonda + 100;
+      // ordenActualConComillas.classList.add="bien"
+      // ordenActualConComillas.classList.remove="mal"
+    } else {
+      desaciertos = desaciertos + 1;
+      // ordenActualConComillas.classList.remove="bien"
+      // ordenActualConComillas.classList.add="mal"
     }
   });
 
@@ -248,20 +257,22 @@ function finalizarRonda() {
   tiemposPorRonda.push(contador);
 
   document.getElementById("tiempo1").innerHTML = `${contador}s`;
-  document.getElementById("puntosSecu1").innerHTML = aciertosRonda;
-  document.getElementById("puntosSecu2").innerHTML = puntajeTotal;
+  document.getElementById("puntosSecu1").innerHTML = `${aciertosRonda}pts`;
+  document.getElementById("puntosSecu2").innerHTML = `${puntajeTotal}pts`;
+  document.getElementById("aciertos").innerHTML = `Aciertos:${
+    aciertosRonda / 100
+  }`;
+  document.getElementById("desaciertos").innerHTML = `Fallos:${desaciertos}`;
 
-  if (
-    contador <= configuracionNivel.tiempoRonda / 2 &&
-    aciertosRonda === ordenCorrecto.length * 100
-  ) {
-    let rubis = window.location.pathname.includes("Dificil")
+  if (aciertosRonda === ordenCorrecto.length * 100) {
+    rubis = window.location.pathname.includes("Dificil")
       ? 15
       : window.location.pathname.includes("Medio")
       ? 10
       : 5;
-    document.getElementById("rubis").innerHTML = `+${rubis}`;
   }
+  totalRubis += rubis;
+  document.getElementById("rubis").innerHTML = `+${rubis}`;
 
   const modal = new bootstrap.Modal(
     document.getElementById("tablapuntuacionsolo")
@@ -364,6 +375,11 @@ function mostrarResultadosFinales() {
                   <div class="contenedor-puntaje">
                       Tiempo Promedio:
                       ${tiempoPromedio}s
+                  </div>
+                  <div class="contenedor-rubi">
+                            <div>${totalRubis}</div>
+                            <img src="../../modales/modales/img/tablas/rubipuntaje.png"
+                                style="width: 4vh; height: auto;">
                   </div>
   
                   <div class="col-12 row contenedor-info">

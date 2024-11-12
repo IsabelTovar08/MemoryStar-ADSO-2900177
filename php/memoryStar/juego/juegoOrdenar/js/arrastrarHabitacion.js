@@ -37,6 +37,7 @@ function getGameConfig() {
 
 let rondaActual = 1;
 let puntajeTotal = 0;
+let totalRubis = 0;
 let tiemposPorRonda = [];
 let botonPresionado = false;
 let intervaloBarra;
@@ -206,6 +207,8 @@ function verificarPosicion() {
   const objetos = document.querySelectorAll(".arrastrable");
   let aciertos = 0;
   botonPresionado = true;
+  let aciertos2 = 0;
+  let desaciertos = 0 
 
   objetos.forEach((objeto, index) => {
     const dropzoneEsperada = `drop-objeto${index + 1}`;
@@ -213,13 +216,15 @@ function verificarPosicion() {
 
     if (dropzoneActual === dropzoneEsperada) {
       aciertos += 100;
+    }else{
+      desaciertos += 1
     }
   });
 
   puntajeTotal += aciertos;
   tiemposPorRonda.push(contador);
 
-  mostrarResultadosRonda(aciertos);
+  mostrarResultadosRonda(aciertos,desaciertos);
 }
 
 function finalizarRonda() {
@@ -228,18 +233,23 @@ function finalizarRonda() {
 }
 
 // mostrar rexultados
-function mostrarResultadosRonda(aciertos) {
+function mostrarResultadosRonda(aciertos,desaciertos) {
   const objetosTotales = getObjetosParaRonda();
   const puntajePerfecto = objetosTotales * 100;
+  
+  let rubis = 0;
 
-  document.getElementById("puntosSecu1").innerHTML = aciertos;
-  document.getElementById("puntosSecu2").innerHTML = puntajeTotal;
+  document.getElementById("puntosSecu1").innerHTML =`${aciertos}pts`;
+  document.getElementById("puntosSecu2").innerHTML = `${puntajeTotal}pts`;
   document.getElementById("tiempo1").innerHTML = `${contador}s`;
+  document.getElementById("aciertos").innerHTML = `Aciertos:${aciertos / 100}`;
+  document.getElementById("desaciertos").innerHTML = `Fallos:${desaciertos}`;
 
-  if (contador <= 5 && aciertos === puntajePerfecto) {
-    let rubis = 5;
-    document.getElementById("rubis").innerHTML = `+${rubis}`;
+  if (aciertos === puntajePerfecto) {
+    rubis = 5;
   }
+  document.getElementById("rubis").innerHTML = `+${rubis}`;
+  totalRubis += rubis;
 
   const modal = new bootstrap.Modal(
     document.getElementById("tablapuntuacionsolo")
@@ -253,6 +263,7 @@ function mostrarResultadosRonda(aciertos) {
         rondaActual++;
         iniciarNuevaRonda();
       } else {
+        console.log("acabo")
         mostrarResultadosFinales();
       }
     },
@@ -353,6 +364,11 @@ function mostrarResultadosFinales() {
                       Tiempo Promedio:
                       ${tiempoPromedio}s
                   </div>
+                  <div class="contenedor-rubi">
+                            <div>${totalRubis}</div>
+                            <img src="../../modales/modales/img/tablas/rubipuntaje.png"
+                                style="width: 4vh; height: auto;">
+                  </div>
   
                   <div class="col-12 row contenedor-info">
                       <div class="col-6 usuarioPerfill">
@@ -389,24 +405,24 @@ window.addEventListener("DOMContentLoaded", function () {
 });
 
 
-window.addEventListener('beforeunload', (event) => {
-  event.preventDefault();
-  event.returnValue = 'Tus cambios no se han guardado. ¿Estás seguro de que deseas salir?';
+// window.addEventListener('beforeunload', (event) => {
+//   event.preventDefault();
+//   event.returnValue = 'Tus cambios no se han guardado. ¿Estás seguro de que deseas salir?';
 
-  // Añade un breve retraso para la redirección en caso de que el usuario confirme salir
-  setTimeout(() => {
-    window.location.href = '../../index.html';
-  }, 100);
-});
+//   // Añade un breve retraso para la redirección en caso de que el usuario confirme salir
+//   setTimeout(() => {
+//     window.location.href = '../../index.html';
+//   }, 100);
+// });
 
-function toggleFullScreen() {
-  if (!document.fullscreenElement) {
-    // Si no está en pantalla completa, solicitar entrar a pantalla completa
-    document.documentElement.requestFullscreen().catch((err) => {
-      console.log(`Error al intentar entrar en pantalla completa: ${err.message}`);
-    });
-  } else {
-    // Si está en pantalla completa, salir de ella
-    document.exitFullscreen();
-  }
-}
+// function toggleFullScreen() {
+//   if (!document.fullscreenElement) {
+//     // Si no está en pantalla completa, solicitar entrar a pantalla completa
+//     document.documentElement.requestFullscreen().catch((err) => {
+//       console.log(`Error al intentar entrar en pantalla completa: ${err.message}`);
+//     });
+//   } else {
+//     // Si está en pantalla completa, salir de ella
+//     document.exitFullscreen();
+//   }
+// }

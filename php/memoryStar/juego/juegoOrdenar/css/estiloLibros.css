@@ -79,12 +79,12 @@ body {
 #contenedor-secuInt {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
+  
+  
   vertical-align: middle;
-  margin-top: 10vh;
-  margin: 0 auto;
-  width: 100%;
+  /* margin-top: 15vh; */
+   margin: 0 auto;
+  width: 70%;
 }
 .textoArrastrar {
   top: 1%;
@@ -105,6 +105,7 @@ body {
    /* Limitar el tamaño máximo en pantallas grandes */
   height: auto;
   margin: 0 auto;
+  margin-top: 15vh;
 }
 
 .estanteImg{
@@ -160,6 +161,12 @@ body {
 
 .libro.inicio {
   animation: aparecerDesdeIzquierda 1s ease-out forwards;
+}
+.bien{
+  border: 2px solid #33ff00;
+}
+.mal{
+  border: 2px solid #ff0000;
 }
 
 @media (max-height: 450px) {
