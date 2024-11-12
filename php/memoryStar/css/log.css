@@ -61,7 +61,13 @@ body{
     height: 30vh;
     width: 30vh;
 }
+.recuperar{
+    color: var(--black);
+    cursor: pointer;
+    float: right;
+    margin-bottom: 5%;
 
+}
 .wrapper .form-box{
     position: absolute;
     top: 0;
