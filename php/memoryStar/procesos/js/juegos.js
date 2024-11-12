@@ -499,6 +499,8 @@ function unirse(unir) {
               </div>
               <img src="${unir.imgU}" alt="" class="play zoom" id="play" width="200">
           </div>
+
+          
       `;
 
   document.getElementById("contenido").innerHTML = resultadoMostrar;

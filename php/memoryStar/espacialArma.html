@@ -7,6 +7,7 @@
     <title>Document</title>
     <link rel="stylesheet" href="bootstrap/css/bootstrap.css">
     <link rel="stylesheet" href="juego/espacial/armas/css/armarArma.css">
+    <link rel="stylesheet" href="juego/espacial/cartas/css/tablaNave.css">
 </head>
 
 <body>
@@ -104,12 +105,15 @@
                 </button>
             </div>
     </div>
+    
     <!-- Modal -->
     <div class="modal fade" id="armarArma" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
 
         <div class="modal-dialog">
             <div class="modal-content">
+                <div id="tiempo"> 00:20</div>
                 <h1 class="titulo-arma" id="exampleModalLabel">Construye el arma</h1>
+                
                 <div class="modal-body holis">
 
                     <div class="contenedor-imagen">
@@ -127,8 +131,9 @@
                     <div class="contenedor-arma">
                         <img src="juego/espacial/armas/img/boquilla.png" class="objeto1 arrastrable " data-id="1">
                         <img src="juego/espacial/armas/img/cargador.png" class="objeto2 arrastrable " data-id="2">
-                        <img src="juego/espacial/armas/img/cuerpo.png" class="objeto3 arrastrable " data-id="3">
+                        
                         <img src="juego/espacial/armas/img/culata.png" class="objeto4 arrastrable " data-id="4">
+                        <img src="juego/espacial/armas/img/cuerpo.png" class="objeto3 arrastrable " data-id="3">
                         <img src="juego/espacial/armas/img/mira.png" class="objeto5 arrastrable " data-id="5">
                     </div>
                     <button id="verificar">VERIFICAR</button>

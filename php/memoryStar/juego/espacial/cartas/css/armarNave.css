@@ -49,6 +49,40 @@ display: flex;
 .titulo-nave:hover {
   color: #ffffff;
   text-shadow: 5px 5px 15px rgb(46, 255, 252);
+
+}
+
+#tiempo {
+  top: 5%;
+  right: 5%;
+  background: linear-gradient(to bottom, rgba(135, 206, 235, 0.8), rgba(30, 144, 255, 0.5));
+  font-family: 'Arial', sans-serif;
+  font-size: 5vh;
+  position: absolute;
+  color: #ffffff;
+  
+  overflow: hidden;
+  padding: 0.3rem 1rem;
+  border-radius: 20px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+  
+}
+
+#tiempo::before {
+  content: "⏱";
+  
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(to right, transparent, rgba(255, 255, 255, 0.5), transparent);
+  animation: shine 2s ease-in-out infinite;
+  
+}
+@media(max-height:456px){
+  #tiempo{
+    padding: 0.1rem 0.5rem;
+  }
 }
 
 .contenedor-armar img {

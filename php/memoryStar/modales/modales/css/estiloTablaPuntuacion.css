@@ -1,8 +1,6 @@
 .contenedorTsolo {
   position: relative;
   display: flex;
-  width: 90%;
-  height: auto;
   border: 3px solid #ff6b6b;
   border-radius: 15px;
   background: #2c2c54;
@@ -20,7 +18,7 @@
 }
 
 .tituloTsolo {
-  font-size: 2.5vh;
+  font-size: 2vh;
   font-weight: bold;
   font-family: "Roboto", sans-serif;
   background: #ff6b6b;
@@ -94,6 +92,19 @@
 
 .contenedor-puntaje {
   display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-size: 3.8vh;
+  font-weight: bold;
+  color: #4ecdc4;
+  font-family: "Roboto", sans-serif;
+  text-shadow: 0 0 10px rgba(78, 205, 196, 0.5);
+  text-align: center;
+}
+.contenedor-rubi {
+  display: flex;
+  
   justify-content: center;
   align-items: center;
   font-size: 3.8vh;
@@ -110,11 +121,7 @@
   filter: drop-shadow(0 0 5px #4ecdc4);
 }
 
-.rubi-puntaje {
-  width: 25px;
-  height: 25px;
-  filter: drop-shadow(0 0 5px #ff6b6b);
-}
+
 
 .puntaje-total {
   margin-top: 20px;
@@ -150,7 +157,7 @@
 
 .botonTsolo {
   font-family: "Roboto", sans-serif;
-  font-size: 140%;
+  font-size: 2vh;
   color: #ffffff;
   background: #4ecdc4;
   box-shadow: 0 0 20px rgba(78, 205, 196, 0.5);
@@ -173,19 +180,14 @@
   background: #ff6b6b;
 }
 
-@media (max-width: 576px) {
-  .contenedorTsolo {
-    width: 85%;
-  }
+@media (max-height: 450px) {
+  
 
   .tituloTsolo {
-    left: 25%;
-    font-size: 3vh;
+    font-size: 2.5vh;
   }
 
-  .contenedor-botonTsolo {
-    left: 15%;
-  }
+  
 }
 
 /*ESTILOS TABLA MUltijugador

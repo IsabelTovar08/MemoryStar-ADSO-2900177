@@ -492,46 +492,115 @@ var modalHTML = `
 
 
 
-<!-- Modal -->
-<div class="modal fade" id="Mapa" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-    <div class="modal-dialog ">
-        <div class="modal-content cuerpoMapa ">
-            <div class="modal-header">
-                <h1 class="modal-title fs-5  tituloMapa" id="staticBackdropLabel">MAPA DE RECOMPENSAS</h1>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- Modal  mapa-->
+<div class="modal fade" id="Mapa" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg card moveer">
+        <div class="modal-content color-mapa">
+            <div class="tithe titulo">
+                <h1 class="fs-5" id="exampleModalLabel">MAPA DE RECOMPENSAS</h1>
             </div>
-            <div class="modal-body ">
-                <div class="containerMapa">
-                    <div class="barra-containerMapa">
-                        <div class="barra-progreso" id="barra-progreso"></div>
-                    </div>
-                    <div class="recompensa primera">
-                        <img src="img/rangos/rangoBloqueadoo.png" alt="" class="imagenMapa rango">
-                    </div>
-                    <div class="recompensa segunda">
-                        <img src="img/rangos/rangoBloqueadoo.png" alt="" class="imagenMapa rango">
-                    </div>
-                    <div class="recompensa tercera">
-                        <img src="img/rangos/rangoBloqueadoo.png" alt="" class="imagenMapa rango">
-                    </div>
-                    <div class="recompensa cuarta">
-                        <img src="img/rangos/rangoBloqueadoo.png" alt="" class="imagenMapa rango">
-                    </div>
-                    <div class="recompensa quinta">
-                        <img src="img/rangos/rangoBloqueadoo.png" alt="" class="imagenMapa rango">
-                    </div>
-
-                </div>
-
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            <div class="modal-body">
+                <table class="tabla-historial-global">
+                <thead>
+                    <tr>
+                        <th>Posición</th>
+                        <th>Nombre de Usuario</th>
+                        <th>Puntaje Total</th>
+                        <th>Mejor Puntaje</th>
+                        <th>Nivel Alcanzado</th>
+                        <th>Fecha</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <td>1</td>
+                        <td>EstrellaGaláctica</td>
+                        <td>5000</td>
+                        <td>300</td>
+                        <td>25</td>
+                        <td>2024-11-11</td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>LuzNebulosa</td>
+                        <td>4800</td>
+                        <td>290</td>
+                        <td>23</td>
+                        <td>2024-11-10</td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>LuzNebulosa</td>
+                        <td>4800</td>
+                        <td>290</td>
+                        <td>23</td>
+                        <td>2024-11-10</td>
+                    </tr>
+                     <tr>
+                        <td>2</td>
+                        <td>LuzNebulosa</td>
+                        <td>4800</td>
+                        <td>290</td>
+                        <td>23</td>
+                        <td>2024-11-10</td>
+                    </tr>
+                     <tr>
+                        <td>2</td>
+                        <td>LuzNebulosa</td>
+                        <td>4800</td>
+                        <td>290</td>
+                        <td>23</td>
+                        <td>2024-11-10</td>
+                    </tr>
+                     <tr>
+                        <td>2</td>
+                        <td>LuzNebulosa</td>
+                        <td>4800</td>
+                        <td>290</td>
+                        <td>23</td>
+                        <td>2024-11-10</td>
+                    </tr>
+                </tbody>
+                </table>
                 <form onsubmit="return operaciones()">
                     <label for="txtnumero1" class="tituloMapa">Ingresa tu puntuación:</label>
                     <input type="number" id="txtnumero1">
                     <button type="submit">Enviar</button>
                 </form>
             </div>
+            <div class="">
+                <button type="button" class="btn" data-bs-dismiss="modal">Cerrar</button>
+            </div>
         </div>
     </div>
 </div>
+
+
 
 <!-- Modal tienda -->
 <div class="modal fade" id="exampleModal-tienda" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">

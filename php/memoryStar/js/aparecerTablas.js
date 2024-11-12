@@ -6,7 +6,7 @@ const bottomHistoricoMulti = document.querySelector('.historico-multi')
 
 
 bottomHistoricoSolo.addEventListener('click',()=>{
-    bottomHistoricoSolo.style.background = "rgb(43, 7, 247)"
+    bottomHistoricoSolo.style.background = "rgb(147, 105, 226)"
     bottomHistoricoSolo.style.color = "white"
     bottomHistoricoMulti.style.background = "white"
     bottomHistoricoMulti.style.color = "black"
@@ -20,7 +20,7 @@ bottomHistoricoSolo.addEventListener('click',()=>{
 })
 
 bottomHistoricoMulti.addEventListener('click',()=>{
-    bottomHistoricoMulti.style.background = "rgb(43, 7, 247)"
+    bottomHistoricoMulti.style.background = "rgb(147, 105, 226)"
     bottomHistoricoMulti.style.color = "white"
     bottomHistoricoSolo.style.background = "white"
     bottomHistoricoSolo.style.color = "black"
