@@ -1201,10 +1201,7 @@ h1 {
     position: relative;
   }
   
-  .tabla-historial-global td:hover {
-    color: #4e3b7f;
-    transform: scale(.9);
-  }
+    
   
   .tabla-historial-global tbody tr{
     animation: blink 3s infinite;
