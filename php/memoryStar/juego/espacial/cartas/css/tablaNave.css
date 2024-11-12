@@ -7,9 +7,7 @@
   box-shadow: 0px 0px 25px rgba(255, 107, 107, 0.4);
   align-items: center;
 }
-.holaa{
-  z-index: 10;
-}
+
 .contenedorTsoloInterior {
   position: relative;
   width: 90%;
@@ -104,6 +102,18 @@
   text-shadow: 0 0 10px rgba(78, 205, 196, 0.5);
   text-align: center;
 }
+.contenedor-rubi {
+  display: flex;
+  
+  justify-content: center;
+  align-items: center;
+  font-size: 3.8vh;
+  font-weight: bold;
+  color: #4ecdc4;
+  font-family: "Roboto", sans-serif;
+  text-shadow: 0 0 10px rgba(78, 205, 196, 0.5);
+  text-align: center;
+}
 
 .estrella-puntaje {
   width: 35px;
@@ -111,10 +121,7 @@
   filter: drop-shadow(0 0 5px #4ecdc4);
 }
 
-.rubiss{
-  
-  flex-wrap: nowrap;
-}
+
 
 .puntaje-total {
   margin-top: 20px;

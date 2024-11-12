@@ -7,10 +7,48 @@ body {
 .tiempo {
   position: absolute;
   top: 5%;
-  left: 80%;
-  color: white;
-  font-size: 5vh;
-  z-index: 1;
+  right: 5%; /* Cambiado de left: 80% para mejor responsividad */
+  color: #ffffff;
+  font-size: 2rem;
+  font-family: 'Arial', sans-serif;
+  background: linear-gradient(135deg, #2193b0, #6dd5ed);
+  padding: 15px 25px;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  backdrop-filter: blur(5px);
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* Efecto hover */
+.tiempo:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
+}
+
+/* Estilo para el texto "TIEMPO:" */
+.tiempo::before {
+  content: "⏱";
+  font-size: 1.8rem;
+  margin-right: 8px;
+}
+
+/* Medias queries para responsividad */
+@media (max-width: 768px) {
+  .tiempo {
+    font-size: 1rem;
+    padding: 10px 20px;
+  }
+}
+
+@media (max-height: 480px) {
+  .tiempo {
+    font-size: 1rem;
+    padding: 8px 15px;
+  }
 }
 .puntos {
   position: absolute;
@@ -22,31 +60,78 @@ body {
 }
 
 .countdown-container {
-  position: absolute; /* Mantener el contenedor relativo */
+  position: absolute;
   top: 6%;
   left: 4%;
   width: 20%;
   height: 5%;
-  border: 2px solid #007BFF;
-  border-radius: 5px;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(5px);
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
   overflow: hidden;
 }
 
+/* Barra de progreso */
 .countdown-bar {
-  position: absolute; /* Cambiar a posición absoluta */
+  position: absolute;
   height: 100%;
   width: 100%;
-  background-color: #007BFF;
+  background: linear-gradient(
+    90deg,
+    #4481eb 0%,
+    #04befe 100%
+  );
   transition: width 1s linear;
+  box-shadow: 0 0 15px rgba(68, 129, 235, 0.4);
 }
 
+/* Efecto de brillo en la barra */
+.countdown-bar::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.2),
+    transparent
+  );
+  animation: shine 2s infinite;
+}
+
+/* Texto del contador */
 .countdown-text {
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  font-size: 3vh;
+  font-size: 2.5vh;
+  font-weight: 600;
   color: white;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+  font-family: 'Arial', sans-serif;
+  letter-spacing: 0.5px;
+}
+
+/* Animación del efecto de brillo */
+@keyframes shine {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+/* Estados de la barra */
+.countdown-bar[style*="width: 100%"] {
+  background: linear-gradient(90deg, #43e97b 0%, #38f9d7 100%);
 }
 #verificarBtn {
   position: absolute;

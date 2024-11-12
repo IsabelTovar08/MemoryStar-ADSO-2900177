@@ -188,7 +188,13 @@ function iniciarTemp() {
     contador++;
     if (contador >= 0) {
       document.getElementById("verificarBtn").disabled = false;
-      document.getElementById("temp").innerHTML = `TIEMPO: ${contador}s`;
+
+      // Formatear contador a mm:ss
+      const minutos = Math.floor(contador / 60);
+      const segundos = contador % 60;
+      const formatoTiempo = `${minutos < 10 ? '0' : ''}${minutos}:${segundos < 10 ? '0' : ''}${segundos}`;
+
+      document.getElementById("temp").innerHTML = `${formatoTiempo}`;
       if (!intervaloBarra) {
         iniciarBarra();
       }
@@ -256,7 +262,7 @@ function finalizarRonda() {
   // Guardar el tiempo de la ronda actual
   tiemposPorRonda.push(contador);
 
-  document.getElementById("tiempo1").innerHTML = `${contador}s`;
+  document.getElementById("tiempo1").innerHTML = `00:${contador<10?'0':''}${contador}`;
   document.getElementById("puntosSecu1").innerHTML = `${aciertosRonda}pts`;
   document.getElementById("puntosSecu2").innerHTML = `${puntajeTotal}pts`;
   document.getElementById("aciertos").innerHTML = `Aciertos:${
@@ -374,7 +380,7 @@ function mostrarResultadosFinales() {
   
                   <div class="contenedor-puntaje">
                       Tiempo Promedio:
-                      ${tiempoPromedio}s
+                      00:${tiempoPromedio<10?'0':''}${tiempoPromedio}
                   </div>
                   <div class="contenedor-rubi">
                             <div>${totalRubis}</div>
@@ -387,7 +393,7 @@ function mostrarResultadosFinales() {
                           <img src="../../modales/modales/img/tablas/fotouser.png" alt="" style="width: 16px;">
                           
                       </div>
-                      <div class="col-3">${tiempoPromedio}s</div>
+                      <div class="col-3">00:${tiempoPromedio<10?'0':''}${tiempoPromedio}</div>
                       <div class="col-3">${puntajeTotal}pts</div>
                   </div>
               </div>

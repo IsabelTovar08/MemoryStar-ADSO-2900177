@@ -32,7 +32,7 @@ export class JuegoCartas {
     this.insertarPuntos = document.getElementById("puntosFin");
     this.insertarDiamantes = document.getElementById("diamantesFin");
     this.insertarTiempo = document.getElementById("tiempoFin");
-
+    this.tiempo = document.getElementById("tiempo");
     this.siguiente = document.getElementById("siguiente");
 
     this.puntoss = 0;
@@ -69,6 +69,9 @@ export class JuegoCartas {
     document.getElementById("timer").textContent = this.formatTime(
       this.seconds
     );
+  }
+  iniciarTemp(){
+    
   }
 
   formatTime(totalSeconds) {
@@ -177,11 +180,12 @@ export class JuegoCartas {
     var modal = new bootstrap.Modal(document.getElementById("staticBackdrop"));
     modal.show();
     this.siguiente.addEventListener("click", () => {
-      window.location.href = "./juego/espacial/cartas/juegoPixel/index.html";
+      window.location.href = "./juego/espacial/cartas/juegoPixel/planetScapearma tu nave.html";
     });
     // this.segundaRonda.style.display = 'flex';
     this.insertarPuntos.textContent = this.puntoss;
-    this.insertarDiamantes.textContent = this.diamantess;
+    this.insertarDiamantes.innerHTML = `${this.diamantess}<img src="modales/modales/img/tablas/rubipuntaje.png"
+                            style="width: 4vh;height: auto;">`;
     this.insertarTiempo.textContent = this.formatTime(this.seconds);
   }
   animarIncremento(elemento, container, texto) {
