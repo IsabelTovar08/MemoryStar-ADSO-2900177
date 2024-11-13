@@ -5,7 +5,7 @@
     width: 100%;
     padding: 0% 2% 0% 0%;
 }
-.historico-solo{
+.historico-solo{  
     height: 100%;
     width: 10%;
     display: flex;
@@ -24,7 +24,6 @@
     justify-content: center ;
     align-items: center ;
     background-color: white;
-
     border-top-right-radius: 10vh;
     border-bottom-right-radius:10vh;
  
@@ -33,16 +32,22 @@
     width: 100%;
     border-collapse: collapse;
     font-family: Arial, sans-serif;
-    background-color: #f8f9fa;
+    background: rgb(149, 182, 197);
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     border-radius: 8px;
     overflow: hidden;
     display:inline-table;
-
+    color:rgb(255, 255, 255) ;
+    text-shadow: 0px 0px 2px rgb(105, 105, 105);
+    box-shadow: 0px 0px 5px white;
 }
+
 .Tabla-cuerpo:nth-child(2){
     display:none;
-    
+}
+thead{
+  border-bottom: 2px solid white;
+  box-shadow: 0px 0px 2px  white;
 }
   
   .Tabla-cuerpo th,
@@ -54,25 +59,38 @@
   }
   
   .encabezado-header {
-    background-color: #dee2e6;
+    background-color: #0383d8;
     font-weight: bold;
-    color: #495057;
   }
   
-  .Tabla-cuerpo tr:nth-child(even) {
-    background-color: #f1f3f5;
-  }
-  
+
   .Tabla-cuerpo tbody tr:hover {
     background-color: #e9ecef;
     transform: scale(1.02);
     transition: transform 0.2s ease-in-out;
+    transition: background-position 0.5s ease-in-out;
+
+  }
+  .Tabla-cuerpo tbody tr:nth-child(1n) {
+    background-color: #68a5fffd;
+    transform: scale(1.02);
+    transition: transform 0.2s ease-in-out;
+    transition: background-position 0.5s ease-in-out;
+  }
+
+  @keyframes moverColor {
+    0% {
+      background-position: 0 0;
+    }
+    100% {
+      background-position: -100% 0;
+    }
   }
   
   .Tabla-cuerpo th, .Tabla-cuerpo td {
     position: relative;
   }
-  
+
   .Tabla-cuerpo tbody tr td {
     position: relative;
     overflow: hidden;
@@ -93,4 +111,6 @@
   .Tabla-cuerpo tbody tr:hover td::before {
     left: 0;
   }
+
+
   
