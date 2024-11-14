@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ingresar código</title>
+    <link rel="stylesheet" href="style.css">
+    <script  src="js.js" defer></script>
+</head>
+<body>
+    <div class="puerta-arriba">
+            <div class="img-1"></div>
+    </div>
+    <div class="container">
+   
+        <div class="top borde-luz"></div>
+        <div class="right borde-luz"></div>
+        <div class="bottom borde-luz"></div>
+        <div class="left borde-luz"></div>
+        <form action="" onsubmit="numero(event)">
+            <label for="codigo">Código de la sala</label>
+            <input type="number" value="" id="codigo" placeholder="Código" maxlength="6" minlength="1" oninput="validity.valid || (value='');">
+            <input type="submit" value="Enviar">
+            <p class="mensaje"></p>
+        </form>
+    </div>
+    <div class="puerta-abajo">
+        <div class="img-2"></div>
+
+    </div>
+</body>
+</html>

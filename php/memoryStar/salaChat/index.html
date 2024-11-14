@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modo Espera...</title>
+    <!-- <script src="js/javascript.js"></script> -->
+    <link rel="stylesheet" href="../../2024/jueves-/formulario/bootstrap/css/bootstrap.css">
+    <!-- <link rel="stylesheet" href="fontawesome/css/fontawesome.css">  -->
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/styleSala.css">
+
+    
+    <!-- <link rel="stylesheet" href="QR/style.css"> -->
+    <script defer src="QR/QR-libreria.js"></script>
+    <script defer src="QR/javascrip.js"></script>
+
+    <!-- <script src="fontawesome/js/all.js"></script>
+    <script src="bootstrap/js/bootstrap.js"></script> -->
+
+</head>
+
+<body>
+    
+
+    <div class="color-fondo">
+
+    </div>
+    <div class="linea-con-texto">
+        <span>Sala de espera</span>
+    </div>
+    <div class="lengua-Salida" >
+        <div class="salida-Texto" onclick="salirSala()">
+            <b>salir</b>
+        </div>
+        <div class="salida-img" onclick="salirLeguna()">
+            <b>></b>
+        </div>
+        
+    </div>
+
+    <div class="contenedor">
+        <div class="congijuraJuego">
+            <div class="contenedor-apartado">
+                <div class="conte-apartado">
+                    <div class="tipo-juego">
+                        <b>Tipo de juego</b>
+                    </div>
+                    <div class="tematica">
+                        <b>Temát</b>ica
+                    </div>
+                    <div class="nivel">
+                        <b>Nivel</b>
+                    </div>
+                </div>
+
+            </div>
+            <div class="curved-button">
+                <div class="conte-footer-titulo">
+                    <h3 class="footer-titulo">titulo</h3>
+                </div>
+                <div class="conte-footer-img">
+                    <img src="img/descarga__1_-removebg-preview.png" alt="imagenes">
+                </div>
+            </div>
+        </div>
+        <div class="usuarios-linea">
+            <div class="borte-linea">
+
+                <div class="header-linea">
+                    <div class="conte-left">
+
+                        <h2><span class="numero-usuario">13</span>/20</h2>
+                        <i class="fa-solid fa-people-group fa-2xl"></i>
+                        <button class="invitar"  data-bs-toggle="modal" data-bs-target="#staticBackdrop">compartir</button>
+                    </div>
+                </div>
+                <div class="body-linea" id="usuarios">
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- footter -->
+  <div id="notifications-container">
+  <!-- <div id="" class="user-notification">
+    <span class="notification-text">edrgyrtgyt</span>
+        <button class="close-notification">×</button>
+  </div> -->
+
+  </div>
+
+    <!-- <button class="botton-iniciar" onclick="comienzaEn()">Iniciar</button> -->
+    <div class="chat" id="chat">
+      <div class="encabezado" ><strong>Chat</strong></div>
+      <div class="messages" id="messages"></div>
+      <div class="send-message">
+        <input type="text" class="message" id="message">
+        <button class="send" type="button" id="send" disabled><img src="enviar.png" alt="" width="25"></button>
+      </div>
+      <span id="salir" onclick="mostrarChat()" class="salir">X</span> <!-- Círculo de notificación -->
+  
+    </div>
+    <button onclick="mostrarChat()" class="botonChat">
+      <img src="chat.png" alt="" width="60">
+      <span id="notification" class="notification"></span> <!-- Círculo de notificación -->
+    </button>
+  
+  
+    <script src="js/socket.js"></script>
+    <script src="js/mostrarChat.js"></script>
+    <script src="../bootstrap/js/bootstrap.js"></script>
+
+
+  
+  <!-- Modal -->
+  <!-- <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="staticBackdropLabel">Compartir</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+            <div class="contenedor-QR">    
+                <div id="QR"></div>
+                <div class="ponerCodigo">
+                    <div class="conte-codigo"><h2 class="codigo"></h2></div>
+                    <button class="botto-copiar">copiar</button>
+                </div>
+            </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">cerrar</button>
+        </div>
+      </div>
+    </div>
+  </div> -->
+
+  <script src="js/fecht.js"></script>
+  <!-- <script src="../bootstrap/js/bootstrap.js"></script> -->
+  
+</body>
+
+</html>

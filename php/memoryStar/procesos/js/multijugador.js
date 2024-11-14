@@ -389,7 +389,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
     console.log(capacSala)
 
-
     fetch('procesos/configuracionSala/recibirConfiguracionSala.php', {
       method: 'POST',
       headers: {

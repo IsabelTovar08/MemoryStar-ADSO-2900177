@@ -96,12 +96,25 @@ export class partesNave {
                     }, 1000);
 
                     // Modal de redirección después de recolectar todo
-                    setTimeout(() => {
+                    
+                        // Mostrar el modal
                         const modal = new bootstrap.Modal(document.getElementById('modalRedireccion'));
                         modal.show();
+                    
+                        // Pausar la escena después de un breve retardo para asegurar que el modal se muestra completamente
+                       
+                    
+                        // Configurar el botón de redirección
                         const boton = document.getElementById('aceptarRedireccion');
-                        boton.addEventListener('click', this.redirigir);
-                    }, 3000);
+                        boton.addEventListener('click', () => {
+                            this.redirigir(); // Redirigir o realizar cualquier acción necesaria
+                            this.scene.resume(); // Reanudar la escena si es necesario después de redirigir
+                        });
+                
+                    
+                    
+                    
+                    
                 }
             }
         });

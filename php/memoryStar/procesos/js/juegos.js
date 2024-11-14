@@ -63,9 +63,7 @@ document.addEventListener("DOMContentLoaded", () => {
               <span class="visually-hidden">Next</span>
           </button>
       </div>
-      <div class="boton-avatar">
-          <button class="btn" onclick="seleccionarImagen()">Seleccionar</button>
-      </div>
+     
       </div>
       <div class="col-7 sala" id="juego">
     `;
@@ -479,14 +477,8 @@ function crearSala() {
 
 
 function peticion(){
-   fetch("json/opcionMul.json") 
-      .then((response) => response.json())
-      .then((datos) => {
-        unirse(datos.multi);
-      })
-      .catch((error) =>
-        console.error("Error al cargar el JSON de temáticas:", error)
-      );
+  window.location.href = `unirse_sala/index.html`;
+  
 }
 
 function unirse(unir) {
