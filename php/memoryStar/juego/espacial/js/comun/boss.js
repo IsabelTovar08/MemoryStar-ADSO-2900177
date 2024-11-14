@@ -28,6 +28,7 @@ export class Boss {
       .setCollideWorldBounds(true);
 
     this.boss.body.setAllowGravity(false);
+    console.log(spriteAleatorio)
 
     this.boss.health = this.maxHealth; // Vida inicial del boss
     this.crearBarraDeVida(); // Crear la barra de vida

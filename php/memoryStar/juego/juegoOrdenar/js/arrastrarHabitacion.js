@@ -407,7 +407,87 @@ function mostrarResultadosFinales() {
   `;
 
   document.body.appendChild(modalFinal);
-  new bootstrap.Modal(modalFinal, { backdrop: "static" }).show();
+  new bootstrap.Modal(modalFinal).show();
+  
+
+  enviarPuntuacion(puntajeTotal,tiempoPromedio,totalRubis);
+  obtenerDatosUsuario();
+
+}
+
+async function obtenerDatosUsuario() {
+  const rutas = [
+      'procesos/login/obtenerUsuario.php',
+      '../procesos/login/obtenerUsuario.php',
+      '../../procesos/login/obtenerUsuario.php',
+      '../../../procesos/login/obtenerUsuario.php',
+      // Añade más rutas si es necesario
+  ];
+  
+  let datosUsuario = null;
+  
+  for (let ruta of rutas) {
+      try {
+          const response = await fetch(ruta);
+          if (response.ok) {
+              const data = await response.json();
+              if (data.success) {
+                  datosUsuario = data;
+                  break; // Salir del bucle si la solicitud fue exitosa
+              }
+          }
+      } catch (error) {
+          console.error(`Error al obtener los datos del usuario desde ${ruta}:`, error);
+      }
+  }
+  
+  if (datosUsuario) {
+      const nombreUsuarioElement = document.querySelectorAll('.usuarioPerfill');
+      nombreUsuarioElement.forEach(elemento => {
+          elemento.
+          innerHTML = datosUsuario.usuario;
+      });
+  } else {    
+      window.location.href = 'antesLogin.html';
+  }
+}
+
+
+function enviarPuntuacion(puntajeTotal,tiempoPromedio,totalRubis ){
+  let arrPuntos = {
+    "puntajeTotal":puntajeTotal,
+    "tiempoPromedio":tiempoPromedio,
+    "totalRubis":totalRubis,
+  }
+
+
+  console.log(arrPuntos);
+
+    //   fetch('../login/sesionPersona.php xd', { //direccion del php de la cosulta bro 
+    //     method: 'POST',
+    //     headers: {
+    //         'Content-Type': 'application/json',
+    //     },
+    //     body: JSON.stringify(arrPuntos)
+    // })
+    // .then(response => {
+    //     if (!response.ok) {
+    //         throw new Error('Error en la respuesta del servidor');
+    //     }
+    //     return response.json();
+    // })
+    // .then(data => {
+    //     if (data.error) {
+    //         alert(data.error);
+    //     } else {  
+    //         // window.location.href = '../../pingpong.html'; 
+    //     }
+    // })
+    // .catch(error => {
+    //     console.error('Error:', error);
+    //     alert('Ocurrió un error al evniar la puntuación: ' + error.message);
+    // });
+   
 }
 
 // reiniciar juego
