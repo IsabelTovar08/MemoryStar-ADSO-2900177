@@ -60,7 +60,7 @@ var modalHTML = `
                 <h1 class="fs-5" id="exampleModalLabel">Histórico</h1>
             </div>
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-
+            
             <div class="historio-modo">
                 <div class="historico-solo">
                     solo
@@ -69,6 +69,9 @@ var modalHTML = `
                     multi
                 </div>
             </div>
+                
+                
+
             <div class="modal-body">
                 <table class="Tabla-cuerpo">
                 <thead>
@@ -78,7 +81,7 @@ var modalHTML = `
                         <th> Puntos</th>
                     </tr>
                 </thead>
-                <tbody>
+                <tbody> 
                     <tr>
                         <td>Partida 009</td>
                         <td>00:00</td>
@@ -104,7 +107,6 @@ var modalHTML = `
                         <td>00:00</td>
                         <td>000</td>
                     </tr>
-                    
                 </tbody>
                 </table>
 
@@ -553,43 +555,12 @@ var modalHTML = `
                         <td>23</td>
                         <td>2024-11-10</td>
                     </tr>
-                    <tr>
-                        <td>2</td>
-                        <td>LuzNebulosa</td>
-                        <td>4800</td>
-                        <td>290</td>
-                        <td>23</td>
-                        <td>2024-11-10</td>
-                    </tr>
-                     <tr>
-                        <td>2</td>
-                        <td>LuzNebulosa</td>
-                        <td>4800</td>
-                        <td>290</td>
-                        <td>23</td>
-                        <td>2024-11-10</td>
-                    </tr>
-                     <tr>
-                        <td>2</td>
-                        <td>LuzNebulosa</td>
-                        <td>4800</td>
-                        <td>290</td>
-                        <td>23</td>
-                        <td>2024-11-10</td>
-                    </tr>
-                     <tr>
-                        <td>2</td>
-                        <td>LuzNebulosa</td>
-                        <td>4800</td>
-                        <td>290</td>
-                        <td>23</td>
-                        <td>2024-11-10</td>
-                    </tr>
+      
                 </tbody>
                 </table>
                 <form onsubmit="return operaciones()">
                     <label for="txtnumero1" class="tituloMapa">Ingresa tu puntuación:</label>
-                    <input type="number" id="txtnumero1">
+                    <input type="number" id="txtnumero1"  oninput="validity.valid || (value='');">
                     <button type="submit">Enviar</button>
                 </form>
             </div>
@@ -599,7 +570,7 @@ var modalHTML = `
         </div>
     </div>
 </div>
-
+    
 
 
 <!-- Modal tienda -->

@@ -1,4 +1,5 @@
-// Configuración de niveles
+// import { obtenerDatosUsuario } from '../../../js/session.js';// Configuración de niveles
+
 const NIVELES = {
   "MemorixBookifybasico.html": {
     librosIniciales: 4,
@@ -192,7 +193,9 @@ function iniciarTemp() {
       // Formatear contador a mm:ss
       const minutos = Math.floor(contador / 60);
       const segundos = contador % 60;
-      const formatoTiempo = `${minutos < 10 ? '0' : ''}${minutos}:${segundos < 10 ? '0' : ''}${segundos}`;
+      const formatoTiempo = `${minutos < 10 ? "0" : ""}${minutos}:${
+        segundos < 10 ? "0" : ""
+      }${segundos}`;
 
       document.getElementById("temp").innerHTML = `${formatoTiempo}`;
       if (!intervaloBarra) {
@@ -262,7 +265,9 @@ function finalizarRonda() {
   // Guardar el tiempo de la ronda actual
   tiemposPorRonda.push(contador);
 
-  document.getElementById("tiempo1").innerHTML = `00:${contador<10?'0':''}${contador}`;
+  document.getElementById("tiempo1").innerHTML = `00:${
+    contador < 10 ? "0" : ""
+  }${contador}`;
   document.getElementById("puntosSecu1").innerHTML = `${aciertosRonda}pts`;
   document.getElementById("puntosSecu2").innerHTML = `${puntajeTotal}pts`;
   document.getElementById("aciertos").innerHTML = `Aciertos:${
@@ -380,7 +385,7 @@ function mostrarResultadosFinales() {
   
                   <div class="contenedor-puntaje">
                       Tiempo Promedio:
-                      00:${tiempoPromedio<10?'0':''}${tiempoPromedio}
+                      00:${tiempoPromedio < 10 ? "0" : ""}${tiempoPromedio}
                   </div>
                   <div class="contenedor-rubi">
                             <div>${totalRubis}</div>
@@ -393,7 +398,9 @@ function mostrarResultadosFinales() {
                           <img src="../../modales/modales/img/tablas/fotouser.png" alt="" style="width: 16px;">
                           
                       </div>
-                      <div class="col-3">00:${tiempoPromedio<10?'0':''}${tiempoPromedio}</div>
+                      <div class="col-3">00:${
+                        tiempoPromedio < 10 ? "0" : ""
+                      }${tiempoPromedio}</div>
                       <div class="col-3">${puntajeTotal}pts</div>
                   </div>
               </div>
@@ -409,6 +416,86 @@ function mostrarResultadosFinales() {
 
   document.body.appendChild(modalFinal);
   new bootstrap.Modal(modalFinal).show();
+
+  enviarPuntuacion(puntajeTotal, tiempoPromedio, totalRubis);
+  obtenerDatosUsuario();
+}
+
+async function obtenerDatosUsuario() {
+  const rutas = [
+    "procesos/login/obtenerUsuario.php",
+    "../procesos/login/obtenerUsuario.php",
+    "../../procesos/login/obtenerUsuario.php",
+    "../../../procesos/login/obtenerUsuario.php",
+    // Añade más rutas si es necesario
+  ];
+
+  let datosUsuario = null;
+
+  for (let ruta of rutas) {
+    try {
+      const response = await fetch(ruta);
+      if (response.ok) {
+        const data = await response.json();
+        if (data.success) {
+          datosUsuario = data;
+          break; // Salir del bucle si la solicitud fue exitosa
+        }
+      }
+    } catch (error) {
+      console.error(
+        `Error al obtener los datos del usuario desde ${ruta}:`,
+        error
+      );
+    }
+  }
+
+  if (datosUsuario) {
+    const nombreUsuarioElement = document.querySelectorAll(".usuarioPerfill");
+    nombreUsuarioElement.forEach((elemento) => {
+      elemento.innerHTML = datosUsuario.usuario;
+    });
+  } else {
+    window.location.href = "antesLogin.html";
+  }
+}
+
+function enviarPuntuacion(puntajeTotal, tiempoPromedio, totalRubis) {
+  const arrPuntos = {
+      puntajeTotal: puntajeTotal,
+      tiempoPromedio: tiempoPromedio,
+      totalRubis: totalRubis,
+  };
+
+  console.log('Enviando datos:', arrPuntos);
+
+  fetch("../../procesos/puntuacion/recibirPuntuacion.php", {
+      method: "POST",
+      headers: {
+          "Content-Type": "application/json",
+      },
+      body: JSON.stringify(arrPuntos),
+  })
+  .then(response => {
+      if (!response.ok) {
+          return response.json().then(err => Promise.reject(err));
+      }
+      return response.json();
+  })
+  .then(data => {
+      console.log('Respuesta recibida:', data);
+      if (data.success) {
+          console.log('Datos procesados correctamente:', data.datos);
+          // Aquí puedes hacer algo con la respuesta exitosa
+      } else {
+          alert(data.mensaje || 'Error al procesar los datos');
+      }
+  })
+  .catch(error => {
+      console.error("Error:", error);
+      alert("Ocurrió un error al enviar la puntuación: " + 
+            (error.mensaje || error.message || 'Error desconocido'));
+  });
 }
 
 // Función para reiniciar el juego
