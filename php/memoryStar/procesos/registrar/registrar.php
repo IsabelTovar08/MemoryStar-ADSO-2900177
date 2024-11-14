@@ -20,7 +20,7 @@ class Registrar extends Usuario {
             ':nombre_usuario' => $this->getNombreUsuario(),
             ':email' => $this->getEmailUsuario(),
             ':clave' => $this->getClave(),
-            ':fechar_registro' => $fechaRegistro
+            ':fechar_registro' => $fechaRegistro 
         ];
         
         
