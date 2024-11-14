@@ -21,6 +21,8 @@ export function createPlatforms(scene) {
     { x: 600, y: scene.scale.height - 400, scale: 0.1 },
     { x: 850, y: scene.scale.height - 402, scale: 0.1 },
     { x: 150, y: scene.scale.height - 402, scale: 0.1 },
+    { x: 50, y: scene.scale.height - 100, scale: 0.1 },
+
   ];
 
   platformPositions.forEach(pos => {
