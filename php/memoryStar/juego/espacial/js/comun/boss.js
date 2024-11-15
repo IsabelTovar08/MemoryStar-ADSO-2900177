@@ -86,7 +86,12 @@ export class Boss {
       this.boss.disableBody(true, true); // Destruir el boss cuando su vida llegue a 0
       this.bossHealthBar.destroy(); // Destruir la barra de vida
       this.scene.add.text(300, this.scene.scale.height - 500, "¡FELICIDADES, DERROTASTE AL ENEMIGO!", { fontSize: "60px", fill: "#fff", stroke: "#000", strokeThickness: 3 });
-      window.location.href=("../../../../juego/espacial/armas/enemigo.html")
+      
+        setTimeout(() => {
+          window.location.href=("../../../../juego/espacial/armas/enemigo.html")
+        }, 2000);
+      
+      
 
   }
 }

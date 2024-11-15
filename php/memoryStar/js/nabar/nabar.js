@@ -65,7 +65,7 @@ var modalHTML = `
                 <div class="historico-multi">multi</div>
             </div>
                 
-            <div class="modal-body">
+            <div class="modal-body tam">
                 <table class="Tabla-cuerpo">
                     <thead>
                         <tr class="encabezado-header">
