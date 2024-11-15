@@ -1,37 +1,63 @@
-#exampleModal-ayuda .modal-dialog{
-    width: 90%;
-    
-    margin: auto;
-}
-
-.titulo-ayuda{
-    font-size: 20px !important; /* Tamaño de la fuente */
+/* dialog */
+.princ {
+    width: 90vh;
+  }
+  
+  /* modal-content */
+  .sec {
+    background-color: #aab8e4; /* Fondo turquesa claro */
+    border-radius: 20px;
+    border: 4px solid #080808; /* Borde verde azulado */
+    box-shadow: 0 4px 40px rgb(2, 2, 2); /* Sombra de color verde azulado */
+  }
+  
+  .titulo-ayuda {
+    font-size: 3vh; /* Tamaño de la fuente responsivo */
     font-weight: bold; /* Texto en negrita */
-    color: black; /* Color del texto */
-    background-color: white; /* Fondo  */
-    border: 3px solid #000000; /* Borde azul oscuro */
+    color: #2c3e50; /* Azul oscuro para el texto */
+    background-color: #ecf0f1; /* Fondo gris claro */
+    border: 3px solid #2980b9; /* Borde azul vibrante */
     border-radius: 20px; /* Esquinas redondeadas */
-    padding: 10px 20px; /* Espaciado interno */
-    text-align: center; /* Centra el texto*/
+    padding: 0.5rem 1rem; /* Espaciado interno más amplio */
+    text-align: center; /* Centra el texto */
     margin: 0 auto;
-    
-}
-
-.salir-ayuda{
-    height: 50px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra suave para darle profundidad */
+    transition: transform 0.3s ease, background-color 0.3s ease; /* Transición para interacciones */
+  }
+  
+  .titulo-ayuda:hover {
+    background-color: #dcdde1; /* Cambio de color de fondo al pasar el mouse */
+    transform: scale(1.05); /* Ligero aumento de tamaño */
+    color: #8e44ad; /* Cambia el color del texto al pasar el mouse */
+  }
+  
+  .titulo-ayuda:active {
+    transform: scale(1); /* Vuelve al tamaño normal al hacer clic */
+    background-color: #b3cce6; /* Fondo azul claro al hacer clic */
+  }
+  
+  .salir-ayuda {
+    width: 10vh;
+    height: auto;
     position: absolute;
-    margin-top: -70px;
-    left: 93%;
-    
-
-}
-
-.atras-ayuda{
+    right: 2%;
+    background-color: #e74c3c; /* Fondo rojo vivo */
+    border: 2px solid #c0392b; /* Borde rojo oscuro */
+    border-radius: 50%; /* Botón redondo */
+    transition: transform 0.3s ease, background-color 0.3s ease; /* Transición de transform */
+  }
+  
+  .salir-ayuda:hover {
+    background-color: #f1948a; /* Fondo rosado al pasar el mouse */
+    transform: scale(1.1); /* Aumenta el tamaño al pasar el mouse */
+  }
+  
+  .atras-ayuda {
     font-size: 18px;
     font-weight: bold;
-    color: #ffff;
-    background-color: red;
-    border: 2px solid #000000;
+    color: #ffffff;
+    background-color: #e67e22; /* Fondo naranja */
+    border: 2px solid #d35400; /* Borde naranja oscuro */
     border-radius: 10px;
     padding: 5px 10px;
     text-align: center;
@@ -39,104 +65,71 @@
     margin-left: 10px;
     margin-bottom: 10px;
     height: 40px;
-
-}
-
-.imgAyuda{
+    box-shadow: 0 2px 5px rgba(243, 156, 18, 0.5); /* Sombra naranja */
+    transition: background-color 0.3s ease, transform 0.3s ease; /* Transición de color y transform */
+  }
+  
+  .atras-ayuda:hover {
+    background-color: #f39c12; /* Fondo naranja claro al pasar el mouse */
+    transform: scale(1.05); /* Aumenta ligeramente al pasar el mouse */
+  }
+  
+  .imgAyuda {
     height: 35%;
     width: 35%;
-}
-
-.imgAyuda2{
+    border: 2px solid #8e44ad; /* Borde morado */
+    border-radius: 10px; /* Esquinas redondeadas */
+    box-shadow: 0 4px 8px rgba(142, 68, 173, 0.3); /* Sombra morada */
+    transition: transform 0.3s ease;
+  }
+  
+  .imgAyuda:hover {
+    transform: scale(1.05); /* Aumenta ligeramente al pasar el mouse */
+    border-color: #9b59b6; /* Cambia el color del borde al pasar el mouse */
+  }
+  
+  .imgAyuda2 {
     margin-top: 10px;
     width: 120px;
     height: 175px;
     justify-content: center;
     align-items: center;
     border-radius: 10px;
-}
-
-.imgAyuda:hover{
-    transform: scale(1.05);
-}
-
-.fondo-ayuda {
-    background-color: #704fa0;
-    border: 10px solid #d1d1d1;
-    border-radius: 40px ;
-    position: relative;
-}
-.texto{
+    border: 2px solid #3498db; /* Borde azul */
+    box-shadow: 0 4px 8px rgba(52, 152, 219, 0.3); /* Sombra azul */
+  }
+  
+  .texto {
+    text-align: center;
     flex-wrap: wrap;
-    font-size: 16px ;
-    font-family: Arial, Helvetica, sans-serif ;
-    color: #ffff;
-    -webkit-text-stroke-width: 0.1px;
-  -webkit-text-stroke-color: black;
-}
-
-#exampleModal-ayuda .modal-body{
+    font-size: 3.5vh;
+    line-height: 4vh;
+    font-family: 'Trebuchet MS', Arial, Helvetica, sans-serif;
+    color: #ffffff;
+    text-shadow: 1px 1px 2px #2c3e50; /* Sombra de texto para mayor contraste */
+  }
+  
+  /* modal-body */
+  .bod {
     display: flex;
     justify-content: center;
     flex-direction: column;
     flex-wrap: wrap;
     gap: 10px;
-}
-
-.contenedor-imgAyuda{
-    
+  }
+  
+  .contenedor-imgAyuda {
     display: flex;
     justify-content: center; /* Centra las imágenes horizontalmente */
-    
-    
-}
-
-@media (max-width:576px){
-
-    #exampleModal-ayuda .modal-dialog{
-        width: 90%;
-        
-        margin: auto;
+    gap: 2vh;
+  }
+  
+  @media (max-height: 450px) {
+    .titulo-ayuda {
+      font-size: 4vh;
     }
-    #exampleModal-ayuda2 .modal-dialog{
-        width: 90%;
-        
-        margin: auto;
+    .salir-ayuda{
+      width: 15vh;
     }
-    #exampleModal-ayuda3 .modal-dialog{
-        width: 90%;
-        
-        margin: auto;
-    }
-    #exampleModal-ayuda4 .modal-dialog{
-        width: 90%;
-        
-        margin: auto;
-    }
-
-    
-
-    .titulo-ayuda{
-        font-size: 20px;
-      
-        
-    }
-
-    .texto{
-        font-size: 15px;
-    }
-
-    
-
-    
-   .imgAyuda2{
-        width: 100px;
-        height: 150px;
-   }
-   .atras-ayuda{
-    font-size: 15px;
-   }
-}
-
-
-
+  }
+  

@@ -433,10 +433,10 @@ function hola(){
 
         if(data.nombredificultad === null){
           if(data.tematicajuego === 'arma tu nave' ){
-            window.location.href =  `juego/espacial/cartas/juegoPixel/${data.nombrejuego}${data.tematicajuego}.html`;
+            window.location.href =  `espacialCartas.html`;
             console.log(`${data.nombrejuego}${data.tematicajuego}.html`)
           }else{
-            window.location.href =  `juego/espacial/armas/juegoDulces/${data.nombrejuego}${data.tematicajuego}.html`;
+            window.location.href =  `espacialArma.html`;
             console.log(`${data.nombrejuego}${data.tematicajuego}.html`)
           }
         }else{

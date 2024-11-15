@@ -406,7 +406,7 @@ function mostrarResultadosFinales() {
               </div>
   
               <div class="contenedor-botonTsolo">
-                  <button class="botonTsolo" onclick="salir()" style="margin-left: 20px;">
+                  <button class="botonTsolo" onclick="redirigir()" style="margin-left: 20px;">
                       Salir
                   </button>
               </div>
@@ -419,6 +419,9 @@ function mostrarResultadosFinales() {
 
   enviarPuntuacion(puntajeTotal, tiempoPromedio, totalRubis);
   obtenerDatosUsuario();
+}
+function redirigir(){
+  window.location.href=("../../index.html");
 }
 
 async function obtenerDatosUsuario() {
@@ -456,7 +459,7 @@ async function obtenerDatosUsuario() {
       elemento.innerHTML = datosUsuario.usuario;
     });
   } else {
-   
+    window.location.href = "../../antesLogin.html";
   }
 }
 

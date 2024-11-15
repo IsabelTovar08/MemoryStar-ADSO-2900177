@@ -1,13 +1,23 @@
+function redirigir() {
+  setTimeout(() => {
+    window.location.href =
+      "juego/espacial/armas/juegoDulces/planetScapederrota el enemigo.html";
+  }, 2000);
+}
+
 document.addEventListener("DOMContentLoaded", function () {
   let tiempo = document.getElementById("tiempo");
   let duracion = 20;
-  console.log('lol')
+  let timerInterval;
+  let puntuacion = 0;
+  let rubis = 0;
+  let contador = 0;
 
   const modalElement = document.getElementById("armarArma");
-  modalElement.addEventListener('shown.bs.modal', function () {
-    tempo(duracion, tiempo);
+  modalElement.addEventListener("shown.bs.modal", function () {
+    timerInterval = tempo(duracion, tiempo);
   });
-  
+
   interact(".arrastrable").draggable({
     listeners: {
       start(event) {
@@ -28,7 +38,6 @@ document.addEventListener("DOMContentLoaded", function () {
     },
   });
 
-  //DROP
   interact(".dropzone").dropzone({
     accept: ".arrastrable",
     overlap: 0.1,
@@ -38,16 +47,12 @@ document.addEventListener("DOMContentLoaded", function () {
     ondragenter: function (event) {
       const dropzoneElement = event.target;
       const draggableElement = event.relatedTarget;
-
-      //   dropzoneElement.classList.add("dropzone-highlight");
-      //   draggableElement.classList.add("can-drop");
     },
     ondragleave: function (event) {
       event.target.classList.remove("dropzone-highlight");
       event.relatedTarget.classList.remove("can-drop");
     },
     ondrop: function (event) {
-      // VER EN Q DROPZONE CAYO
       event.relatedTarget.setAttribute(
         "data-dropped",
         event.target.getAttribute("data-id")
@@ -64,7 +69,6 @@ document.addEventListener("DOMContentLoaded", function () {
   btnVerificar.addEventListener("click", function () {
     const objetos = document.querySelectorAll(".arrastrable");
     let correcto = true;
-    intervalo=null
 
     objetos.forEach((objeto) => {
       const objetoId = objeto.getAttribute("data-id");
@@ -72,40 +76,51 @@ document.addEventListener("DOMContentLoaded", function () {
 
       if (objetoId !== dropzoneId) {
         correcto = false;
-        console.log(`El objeto ${objetoId} está en la dropzone incorrecta.`);
-        // Cambiar el estilo si es incorrecto
         objeto.classList.add("incorrecto");
       } else {
-        console.log(`El objeto ${objetoId} está en la dropzone correcta.`);
-        // Cambiar el estilo si es correcto
         objeto.classList.remove("incorrecto");
         objeto.classList.add("correcto");
       }
     });
 
     if (correcto) {
-      console.log("Todos los objetos están en las dropzones correctas.");
-      window.location.href = "juego/espacial/armas/juegoDulces/index.html";
+      clearInterval(timerInterval);
+      calcularRecompensas();
+      mostrarTabla();
+    }
+  });
+
+  function calcularRecompensas() {
+    let tiempoTranscurrido =
+      20 - parseInt(tiempo.textContent.trim().split(":")[1]);
+
+    if (tiempoTranscurrido <= 7) {
+      puntuacion = 200;
+      rubis = 1;
+    } else if (tiempoTranscurrido <= 14) {
+      puntuacion = 150;
     } else {
-      console.log("Algunos objetos no están en las dropzones correctas.");
+      puntuacion = 100;
     }
 
-  });
-  
-
+    contador = tiempoTranscurrido;
+  }
 
   function tempo(pduracion, elemento) {
     let duracion = pduracion;
     const intervalo = setInterval(() => {
-      elemento.innerHTML =
-        ` 00:${duracion < 10 ? "0" : ""}${duracion}`;
+      elemento.innerHTML = ` 00:${duracion < 10 ? "0" : ""}${duracion}`;
       duracion--;
       if (duracion <= 0) {
         clearInterval(intervalo);
         elemento.innerHTML = `¡Tiempo!`;
+        puntuacion = 0;
+        rubis = 0;
+        contador = 20;
         mostrarTabla();
       }
     }, 1000);
+    return intervalo;
   }
   
 
@@ -119,58 +134,50 @@ document.addEventListener("DOMContentLoaded", function () {
     modalFinal.setAttribute("data-bs-backdrop", "static");
     modalFinal.setAttribute("data-bs-keyboard", "false");
 
-    modalFinal.className = "modal fade";
-    modalFinal.id = "modalFinal";
-    modalFinal.setAttribute("tabindex", "-1");
-    modalFinal.setAttribute("aria-labelledby", "modalFinalLabel");
-    modalFinal.setAttribute("aria-hidden", "true");
-    modalFinal.setAttribute("data-bs-backdrop", "static");
-    modalFinal.setAttribute("data-bs-keyboard", "false");
-
     modalFinal.innerHTML = `
       <div class="modal-dialog modal-sm modal-dialog-centered">
-      <div class="modal-content contenedorTsolo">
+        <div class="modal-content contenedorTsolo">
           <div class="tituloTsolo">¡Juego Completado!</div>
           <div class="contenedorTsoloInterior">
-          <div class="contenedor-estrellas">
-                        <img src="modales/modales/img/tablas/Star.png" class="star" alt="">
-                        <img src="modales/modales/img/tablas/Star.png" class="star" alt="">
-                        <img src="modales/modales/img/tablas/Star.png" class="star" alt="">
-                    </div>
-              <div class="puntaje-total">
-                  ${"puntajeTotal"}
-              </div>
+            <div class="contenedor-estrellas">
+              <img src="modales/modales/img/tablas/Star.png" class="star" alt="">
+              <img src="modales/modales/img/tablas/Star.png" class="star" alt="">
+              <img src="modales/modales/img/tablas/Star.png" class="star" alt="">
+            </div>
+            <div class="puntaje-total">
+              ${puntuacion}
+            </div>
 
-              <div class="contenedor-puntaje">
-                  Tiempo Promedio:
-                  ${"tiempoPromedio"}s
-              </div>
-              <div class="contenedor-rubi">
-                        <div>${"totalRubis"}</div>
-                        <img src="modales/modales/img/tablas/rubipuntaje.png"
-                            style="width: 4vh; height: auto;">
-              </div>
+            <div class="contenedor-puntaje">
+              Tiempo:
+              ${contador}s
+            </div>
+            <div class="contenedor-rubi">
+              <div>${rubis}</div>
+              <img src="modales/modales/img/tablas/rubipuntaje.png"
+                  style="width: 4vh; height: auto;">
+            </div>
 
-              <div class="col-12 row contenedor-info">
-                  <div class="col-6 usuarioPerfill">
-                      <img src="modales/modales/img/tablas/fotouser.png" alt="" style="width: 16px;">
-                      
-                  </div>
-                  <div class="col-3">${"tiempoPromedio"}s</div>
-                  <div class="col-3">${"puntajeTotal"}pts</div>
+            <div class="col-12 row contenedor-info">
+              <div class="col-6 usuarioPerfill">
+                <img src="modales/modales/img/tablas/fotouser.png" alt="" style="width: 16px;">
               </div>
+              <div class="col-3">${contador}s</div>
+              <div class="col-3">${puntuacion}pts</div>
+            </div>
           </div>
 
           <div class="contenedor-botonTsolo">
-              <button class="botonTsolo" onclick="salir()" style="margin-left: 20px;">
-                  Salir
-              </button>
+            <button class="botonTsolo" onclick="redirigir()">
+              Siguiente
+            </button>
           </div>
+        </div>
       </div>
-  </div>
-  `;
+    `;
 
     document.body.appendChild(modalFinal);
     new bootstrap.Modal(modalFinal, { backdrop: "static" }).show();
   }
+  
 });

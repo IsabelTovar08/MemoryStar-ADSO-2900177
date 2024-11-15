@@ -17,9 +17,12 @@ class MyScene extends Phaser.Scene {
   preload() {
     this.load.image("star", "../../super-midu-bros-main/planetas/estrella.png");
     this.load.spritesheet("mario","../../img/vacaUltima.png", { frameWidth: 365, frameHeight: 412 });
-    this.load.image("boss1", "../../img/enemigo.png");
-    this.load.image("boss2", "imgDulces/pCaramel.png");
-    this.load.image("boss3", "imgDulces/caramelo.png");
+    this.load.image("boss1", "../img/enemigo/1.png");
+    this.load.image("boss2", "../img/enemigo/2.png");
+    this.load.image("boss3", "../img/enemigo/3.png");
+    this.load.image("boss4", "../img/enemigo/4.png");
+    this.load.image("boss5", "../img/enemigo/5.png");
+    this.load.image("boss6", "../img/enemigo/6.png");
 
     this.load.audio('sonido', '../../sonidos/recolectar.mp3');
     this.load.audio('coin', '../../sonidos/coin.mp3');
