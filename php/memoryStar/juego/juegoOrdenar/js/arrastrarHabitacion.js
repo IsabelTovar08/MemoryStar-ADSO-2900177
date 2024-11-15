@@ -410,86 +410,86 @@ function mostrarResultadosFinales() {
   new bootstrap.Modal(modalFinal).show();
   
 
-  enviarPuntuacion(puntajeTotal,tiempoPromedio,totalRubis);
+  enviarPuntuacion(puntajeTotal, tiempoPromedio, totalRubis);
   obtenerDatosUsuario();
-
 }
 
 async function obtenerDatosUsuario() {
   const rutas = [
-      'procesos/login/obtenerUsuario.php',
-      '../procesos/login/obtenerUsuario.php',
-      '../../procesos/login/obtenerUsuario.php',
-      '../../../procesos/login/obtenerUsuario.php',
-      // Añade más rutas si es necesario
+    "procesos/login/obtenerUsuario.php",
+    "../procesos/login/obtenerUsuario.php",
+    "../../procesos/login/obtenerUsuario.php",
+    "../../../procesos/login/obtenerUsuario.php",
+    // Añade más rutas si es necesario
   ];
-  
+
   let datosUsuario = null;
-  
+
   for (let ruta of rutas) {
-      try {
-          const response = await fetch(ruta);
-          if (response.ok) {
-              const data = await response.json();
-              if (data.success) {
-                  datosUsuario = data;
-                  break; // Salir del bucle si la solicitud fue exitosa
-              }
-          }
-      } catch (error) {
-          console.error(`Error al obtener los datos del usuario desde ${ruta}:`, error);
+    try {
+      const response = await fetch(ruta);
+      if (response.ok) {
+        const data = await response.json();
+        if (data.success) {
+          datosUsuario = data;
+          break; // Salir del bucle si la solicitud fue exitosa
+        }
       }
+    } catch (error) {
+      console.error(
+        `Error al obtener los datos del usuario desde ${ruta}:`,
+        error
+      );
+    }
   }
-  
+
   if (datosUsuario) {
-      const nombreUsuarioElement = document.querySelectorAll('.usuarioPerfill');
-      nombreUsuarioElement.forEach(elemento => {
-          elemento.
-          innerHTML = datosUsuario.usuario;
-      });
-  } else {    
-      window.location.href = 'antesLogin.html';
+    const nombreUsuarioElement = document.querySelectorAll(".usuarioPerfill");
+    nombreUsuarioElement.forEach((elemento) => {
+      elemento.innerHTML = datosUsuario.usuario;
+    });
+  } else {
+    window.location.href = "antesLogin.html";
   }
 }
 
+function enviarPuntuacion(puntajeTotal, tiempoPromedio, totalRubis) {
+  const arrPuntos = {
+      puntajeTotal: puntajeTotal,
+      tiempoPromedio: tiempoPromedio,
+      totalRubis: totalRubis,
+  };
 
-function enviarPuntuacion(puntajeTotal,tiempoPromedio,totalRubis ){
-  let arrPuntos = {
-    "puntajeTotal":puntajeTotal,
-    "tiempoPromedio":tiempoPromedio,
-    "totalRubis":totalRubis,
-  }
+  console.log('Enviando datos:', arrPuntos);
 
-
-  console.log(arrPuntos);
-
-    //   fetch('../login/sesionPersona.php xd', { //direccion del php de la cosulta bro 
-    //     method: 'POST',
-    //     headers: {
-    //         'Content-Type': 'application/json',
-    //     },
-    //     body: JSON.stringify(arrPuntos)
-    // })
-    // .then(response => {
-    //     if (!response.ok) {
-    //         throw new Error('Error en la respuesta del servidor');
-    //     }
-    //     return response.json();
-    // })
-    // .then(data => {
-    //     if (data.error) {
-    //         alert(data.error);
-    //     } else {  
-    //         // window.location.href = '../../pingpong.html'; 
-    //     }
-    // })
-    // .catch(error => {
-    //     console.error('Error:', error);
-    //     alert('Ocurrió un error al evniar la puntuación: ' + error.message);
-    // });
-   
+  fetch("../../procesos/puntuacion/recibirPuntuacion.php", {
+      method: "POST",
+      headers: {
+          "Content-Type": "application/json",
+      },
+      body: JSON.stringify(arrPuntos), 
+  })
+  .then(response => {
+      if (!response.ok) {
+          return response.json().then(err => Promise.reject(err));
+      }
+      return response.json();
+  })
+  .then(data => {
+      console.log('Respuesta recibida:', data);
+      if (data.success) {
+          console.log('Datos procesados correctamente:', data.datos);
+          // Aquí puedes hacer algo con la respuesta exitosa
+      } else {
+          alert(data.mensaje || 'Error al procesar los datos');
+      }
+  })
+  .catch(error => {
+      console.error("Error:", error);
+      alert("Ocurrió un error al enviar la puntuación: " + 
+            (error.mensaje || error.message || 'Error desconocido'));
+  });
 }
-
 // reiniciar juego
 window.addEventListener("DOMContentLoaded", function () {
   GAME_CONFIG = getGameConfig();

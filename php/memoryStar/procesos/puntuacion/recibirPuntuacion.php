@@ -1,4 +1,7 @@
 <?php
+session_start();
+
+require 'registropuntuacion.php';
 header('Content-Type: application/json');
 
 $data = json_decode(file_get_contents('php://input'), true);
@@ -8,6 +11,17 @@ if ($data) {
     $puntajeTotal = $data['puntajeTotal'];
     $tiempoPromedio = $data['tiempoPromedio'];
     $totalRubis = $data['totalRubis'];
+
+    $usuarioId = isset($_SESSION['id_usuario']) ? $_SESSION['id_usuario'] : null;
+
+
+
+    $registrar = new Registropuntuacion();
+    $registrar->setpuntos($puntajeTotal);
+    $registrar->settiempo($tiempoPromedio); 
+    $registrar->setdiamantes($totalRubis);
+    $registrar->setusuario($usuarioId);
+    $registrar->registrarpuntos();
     
     // Guarda los valores en variables si necesitas procesarlos
     
@@ -18,7 +32,8 @@ if ($data) {
         'datos' => [
             'puntajeTotal' => $puntajeTotal,
             'tiempoPromedio' => $tiempoPromedio,
-            'totalRubis' => $totalRubis
+            'totalRubis' => $totalRubis,
+            'usuairo' => $usuarioId
         ]
     ]);
 } else {

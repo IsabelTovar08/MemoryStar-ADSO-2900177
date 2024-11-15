@@ -52,7 +52,6 @@ var modalHTML = `
     </ul>
 </div>
 
-<!-- Modal Histórico-->
 <div class="modal fade" id="hisorico" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg card moveer">
         <div class="modal-content coloor">
@@ -62,104 +61,33 @@ var modalHTML = `
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             
             <div class="historio-modo">
-                <div class="historico-solo">
-                    solo
-                </div>
-                <div class="historico-multi">
-                    multi
-                </div>
+                <div class="historico-solo">solo</div>
+                <div class="historico-multi">multi</div>
             </div>
                 
-                
-
             <div class="modal-body">
                 <table class="Tabla-cuerpo">
-                <thead>
-                    <tr class="encabezado-header">
-                        <th> Últimas partidas</th>
-                        <th> Tiempo</th>
-                        <th> Puntos</th>
-                    </tr>
-                </thead>
-                <tbody> 
-                    <tr>
-                        <td>Partida 009</td>
-                        <td>00:00</td>
-                        <td>000</td>
-                    </tr>
-                    <tr>
-                        <td>Partida 009</td>
-                        <td>00:00</td>
-                        <td>000</td>
-                    </tr>
-                    <tr>
-                        <td>Partida 009</td>
-                        <td>00:00</td>
-                        <td>000</td>
-                    </tr>
-                    <tr>
-                        <td>Partida 009</td>
-                        <td>00:00</td>
-                        <td>000</td>
-                    </tr>
-                    <tr>
-                        <td>Partida 009</td>
-                        <td>00:00</td>
-                        <td>000</td>
-                    </tr>
-                </tbody>
-                </table>
-
-                <table class="Tabla-cuerpo">
-                <thead>
-                    <tr class="encabezado-header">
-                        <th> Últimas partidas</th>
-                        <th> Tiempo</th>
-                        <th> Puntos</th>
-                        <th> posicion</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>Partida 009</td>
-                        <td>00:00</td>
-                        <td>000</td>
-                        <td>3</td>
-                    </tr>
-                    <tr>
-                        <td>Partida 009</td>
-                        <td>00:00</td>
-                        <td>000</td>
-                        <td>1</td>
-                    </tr>
-                    <tr>
-                        <td>Partida 009</td>
-                        <td>00:00</td>
-                        <td>000</td>
-                        <td>5</td>
-                    </tr>
-                    <tr>
-                        <td>Partida 009</td>
-                        <td>00:00</td>
-                        <td>000</td>
-                        <td>7</td>
-                    </tr>
-                    <tr>
-                        <td>Partida 009</td>
-                        <td>00:00</td>
-                        <td>000</td>
-                        <td>4</td>
-                    </tr>
-                    
-                </tbody>
+                    <thead>
+                        <tr class="encabezado-header">
+                            <th>Últimas partidas</th>
+                            <th>Diamantes</th>
+                            <th>Puntos</th>
+                            <th>Tiempo</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- Las filas se añadirán aquí dinámicamente -->
+                    </tbody>
                 </table>
             </div>
-            <div class="">
+            <div>
                 <button type="button" class="btn" data-bs-dismiss="modal">Cerrar</button>
             </div>
         </div>
     </div>
 </div>
+
+
 
 
 <!-- Modal ayuda -->
