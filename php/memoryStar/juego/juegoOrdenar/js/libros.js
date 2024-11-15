@@ -474,7 +474,7 @@ function enviarPuntuacion(puntajeTotal, tiempoPromedio, totalRubis) {
       headers: {
           "Content-Type": "application/json",
       },
-      body: JSON.stringify(arrPuntos),
+      body: JSON.stringify(arrPuntos), 
   })
   .then(response => {
       if (!response.ok) {

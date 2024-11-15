@@ -429,14 +429,20 @@ function hola(){
         console.log(data.tematicajuego);
         console.log(data.nombredificultad);
 
-
         if(data.nombredificultad === null){
-          window.location.href =  `${data.nombrejuego}${data.tematicajuego}.html`;
-          console.log(`${data.nombrejuego}${data.tematicajuego}.html`)
+          if(data.tematicajuego === 'arma tu nave' ){
+            window.location.href =  `espacialCartas.html`;
+            console.log(`${data.nombrejuego}${data.tematicajuego}.html`)
+          }else{
+            window.location.href =  `espacialArma.html`;
+            console.log(`${data.nombrejuego}${data.tematicajuego}.html`)
+          }
         }else{
-         window.location.href = `juego/juegoOrdenar/${data.nombrejuego}${data.tematicajuego}${data.nombredificultad}.html`;
-        console.log(`${data.nombrejuego}${data.tematicajuego}${data.nombredificultad}.html`)
+          window.location.href = `juego/juegoOrdenar/${data.nombrejuego}${data.tematicajuego}${data.nombredificultad}.html`;
+         console.log(`${data.nombrejuego}${data.tematicajuego}${data.nombredificultad}.html`)
+
         }
+
     })
     .catch(error => console.error('Error al obtener los datos:', error));
 

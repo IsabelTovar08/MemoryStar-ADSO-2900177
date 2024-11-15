@@ -1,10 +1,15 @@
 document.addEventListener("DOMContentLoaded", function () {
   const btnVeri = document.getElementById("verificar");
-  let ordenCorrect = []; // Declarar en un ámbito global para acceso en todas las funciones
+  let ordenCorrect = []; 
   let tiempo = document.getElementById("tiempo");
   let duracion = 15;
+  let timerInterval;
+  let puntuacion = 0;
+  let rubis = 0;
+  let contador = 0;
+  
+  timerInterval = tempo(duracion,tiempo);
 
-  // Recuperar `ordenDef` del servidor
   fetch("php/almacenar_orden.php")
     .then((response) => response.json())
     .then((data) => {
@@ -13,8 +18,6 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
   let ordenActual;
-  console.log("Holaaaaaaa");
-
   const lista = document.getElementById("lista1");
   Sortable.create(lista, {
     animation: 250,
@@ -28,7 +31,6 @@ document.addEventListener("DOMContentLoaded", function () {
     },
   });
 
-  // verificar
   const loader = document.getElementById("loader");
   const mainContent = document.getElementById("main-content");
   const toastMessage = document.getElementById("toastMessage");
@@ -39,8 +41,8 @@ document.addEventListener("DOMContentLoaded", function () {
       return;
     }
 
-    loader.style.display = "block"; // Mostrar la animación de carga
-    mainContent.classList.add("blur"); // Desenfocar el fondo
+    loader.style.display = "block";
+    mainContent.classList.add("blur");
 
     setTimeout(() => {
       let aciertos = 0;
@@ -63,24 +65,39 @@ document.addEventListener("DOMContentLoaded", function () {
         }
       });
 
-      loader.style.display = "none"; // Ocultar la animación de carga
-      mainContent.classList.remove("blur"); // Quitar el desenfoque del fondo
+      loader.style.display = "none";
+      mainContent.classList.remove("blur");
 
-      // Configurar el mensaje de resultado en el toast
       if (correcto) {
-        toastMessage.innerHTML =
-          "¡Correcto! Has acertado en todas las posiciones.";
+        toastMessage.innerHTML = "¡Correcto! Has acertado en todas las posiciones.";
+        clearInterval(timerInterval);
+        calcularRecompensas();
+        mostrarTabla();
       } else {
         toastMessage.innerHTML = `Has acertado en ${aciertos} de ${ordenCorrect.length} posiciones.`;
       }
 
-      // Mostrar el toast
       const resultadoToast = new bootstrap.Toast(
         document.getElementById("resultadoToast")
       );
       resultadoToast.show();
-    }, 500); // Tiempo simulado para la verificación
+    }, 500);
   });
+
+  function calcularRecompensas() {
+    let tiempoTranscurrido = 15 - parseInt(tiempo.textContent.trim().split(':')[1]);
+    
+    if (tiempoTranscurrido <= 5) {
+        puntuacion = 200;
+        rubis = 1;
+    } else if (tiempoTranscurrido <= 10) {
+        puntuacion = 150;
+    } else {
+        puntuacion = 100;
+    }
+    
+    contador = tiempoTranscurrido;
+  }
 
   function tempo(pduracion,elemento) {
     let duracion = pduracion;
@@ -90,22 +107,17 @@ document.addEventListener("DOMContentLoaded", function () {
       if(duracion <= 0){
         clearInterval(intervalo)
         elemento.innerHTML = `¡Tiempo!`
-        mostrarTabla()
+        puntuacion = 0;
+        rubis = 0;
+        contador = 5;
+        mostrarTabla();
       }
     },1000);
+    return intervalo;
   }
-  tempo(duracion,tiempo);
 
   function mostrarTabla() {
     const modalFinal = document.createElement("div");
-    modalFinal.className = "modal fade";
-    modalFinal.id = "modalFinal";
-    modalFinal.setAttribute("tabindex", "-1");
-    modalFinal.setAttribute("aria-labelledby", "modalFinalLabel");
-    modalFinal.setAttribute("aria-hidden", "true");
-    modalFinal.setAttribute("data-bs-backdrop", "static");
-    modalFinal.setAttribute("data-bs-keyboard", "false");
-
     modalFinal.className = "modal fade";
     modalFinal.id = "modalFinal";
     modalFinal.setAttribute("tabindex", "-1");
@@ -125,27 +137,25 @@ document.addEventListener("DOMContentLoaded", function () {
                               <img src="../../../modales/modales/img/tablas/Star.png" class="star" alt="">
                           </div>
                     <div class="puntaje-total">
-                        ${"puntajeTotal"}
+                        ${puntuacion}
                     </div>
     
                     <div class="contenedor-puntaje">
-                        Tiempo Promedio:
-                        ${"tiempoPromedio"}s
+                        Tiempo:
+                        ${contador}s
                     </div>
                     <div class="contenedor-rubi">
-                              <div>${"totalRubis"}</div>
+                              <div>${rubis}</div>
                               <img src="../../../modales/modales/img/tablas/rubipuntaje.png"
                                   style="width: 4vh; height: auto;">
                     </div>
-    
                     <div class="col-12 row contenedor-info">
-                        <div class="col-6 usuarioPerfill">
-                            <img src="../../modales/modales/img/tablas/fotouser.png" alt="" style="width: 16px;">
-                            
-                        </div>
-                        <div class="col-3">${"tiempoPromedio"}s</div>
-                        <div class="col-3">${"puntajeTotal"}pts</div>
-                    </div>
+                      <div class="col-6 usuarioPerfill">
+                          <img src="../../../modales/modales/img/tablas/fotouser.png" alt="" style="width: 16px;">
+                      </div>
+                      <div class="col-3">${contador}s</div>
+                      <div class="col-3">${puntuacion}pts</div>
+                  </div>
                 </div>
     
                 <div class="contenedor-botonTsolo">

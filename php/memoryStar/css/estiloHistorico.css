@@ -41,6 +41,37 @@
     text-shadow: 0px 0px 2px rgb(105, 105, 105);
     box-shadow: 0px 0px 5px white;
 }
+.tam{
+  height: 49vh;
+  overflow: auto;
+  
+}
+/* Estilo para navegadores basados en Webkit (Chrome, Safari, Edge) */
+.tam::-webkit-scrollbar {
+  width: 12px; /* Ancho de la barra de desplazamiento */
+}
+
+.tam::-webkit-scrollbar-thumb {
+  background: linear-gradient(135deg, #ff9a9e, #fad0c4, #fad0c4, #fbc2eb);
+  border-radius: 6px; /* Bordes redondeados */
+  border: 2px solid #ffffff; /* Borde blanco alrededor del thumb */
+}
+
+.tam::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(135deg, #fbc2eb, #a6c1ee);
+}
+
+.tam::-webkit-scrollbar-track {
+  background: linear-gradient(135deg, #fdfbfb, #ebedee);
+  border-radius: 6px;
+}
+
+/* Estilo para Firefox */
+.tam {
+  scrollbar-width: thin;
+  scrollbar-color: #fbc2eb #fdfbfb; /* thumb color / track color */
+}
+
 
 .Tabla-cuerpo:nth-child(2){
     display:none;

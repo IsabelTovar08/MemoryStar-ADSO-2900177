@@ -45,11 +45,11 @@
             <div class="resources-group">
                 <div class="resource gold-resource">
                     <div class="icon coins"><img src="img/imagenesCabeza/estrella.png" alt="" width="20"></div>
-                    <span class="count">01300</span>
+                    <span class="count" id="puntosAcumulados"></span>
                 </div>
                 <div class="resource red-resource">
                     <div class="icon heart"><img src="img/imagenesCabeza/diamante.png" alt="" width="20"></div>
-                    <span class="count">02</span>
+                    <span class="count" id="diamantesAcumulados"></span>
                 </div>
             </div>
         </div>
@@ -96,9 +96,65 @@
 
         </div>
         
-   
+        
         <script src="js/session.js"></script>
         <script src="js/pantalla.js"></script>
+        
+
+        <script>
+            function actualizarDatosUsuario() {
+                fetch("procesos/puntuacion/obtenerdatosusuario.php")
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        document.getElementById('puntosAcumulados').textContent =  data.datos.puntosacumulados;
+                        document.getElementById('diamantesAcumulados').textContent =  data.datos.diamantes;
+                    }
+                })
+                .catch(error => console.error("Error:", error));
+            }
+            
+            // Actualizar al cargar la página
+            actualizarDatosUsuario();
+            
+            // Actualizar después de registrar nueva puntuación
+            function enviarPuntuacion(puntajeTotal, tiempoPromedio, totalRubis) {
+                const arrPuntos = {
+                    puntajeTotal: puntajeTotal,
+                    tiempoPromedio: tiempoPromedio,
+                    totalRubis: totalRubis,
+                };
+            
+                fetch("../../procesos/puntuacion/recibirPuntuacion.php", {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json",
+                    },
+                    body: JSON.stringify(arrPuntos),
+                })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        console.log('Datos procesados correctamente:', data.datos);
+                        // Actualizar los divs después de registrar nueva puntuación
+                        actualizarDatosUsuario();
+                    } else {
+                        alert(data.mensaje || 'Error al procesar los datos');
+                    }
+                })
+                .catch(error => {
+                    console.error("Error:", error);
+                });
+            }
+            </script>
+
+
+           
+                
+
+
+
+
         <!-- <script src="js/playJson.js"></script> -->
         <script src="js/inicio/movimiento.js"></script>
         <script src="modales/modales/js/overlayModal.js"></script>
@@ -108,6 +164,9 @@
         <script src="modales/tienda/js/comprat.js"></script>
         <script src="js/perfil/fotosperfil.js"></script>
         <script src="js/nabar/nabar.js"></script>
+        <script src="js/historico.js"></script>
+        <script src="procesos/perfil/js/datosPerfil.js"></script>
+        <script src="procesos/perfil/js/mostrar.js"></script>
         <script src="js/session.js"></script>
 
         <script type="module" src="sonidos/sonidos.js"></script>
@@ -115,3 +174,4 @@
 </body>
 
 </html>
+

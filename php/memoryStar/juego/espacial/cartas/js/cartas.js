@@ -39,6 +39,9 @@ export class JuegoCartas {
     this.diamantess = 0;
     this.seconds = 0;
     this.timerInterval;
+    this.duracion = 20;
+    this.elemento = document.getElementById("tiempo");
+    this.cosoTiempo;
 
     this.init();
   }
@@ -52,6 +55,7 @@ export class JuegoCartas {
     this.mezclarCartas();
     this.inicializarJuego();
     this.startTimer();
+    this.iniciarTemp();
   }
 
   stopTimer() {
@@ -70,8 +74,24 @@ export class JuegoCartas {
       this.seconds
     );
   }
-  iniciarTemp(){
-    
+
+  pararTemp() {
+    clearInterval(this.cosoTiempo);
+    this.cosoTiempo = null;
+  }
+  iniciarTemp() {
+    if (!this.cosoTiempo) {
+      this.cosoTiempo = setInterval(() => this.subirTemp(), 1000);
+    }
+  }
+  subirTemp() {
+    this.duracion--;
+    document.getElementById("tiempo").textContent = this.formatTime(
+      this.duracion
+    );
+    if (this.duracion <= 0) {
+      this.mostrar();
+    }
   }
 
   formatTime(totalSeconds) {
@@ -177,10 +197,12 @@ export class JuegoCartas {
   }
   mostrar() {
     this.stopTimer();
+    this.pararTemp();
     var modal = new bootstrap.Modal(document.getElementById("staticBackdrop"));
     modal.show();
     this.siguiente.addEventListener("click", () => {
-      window.location.href = "./juego/espacial/cartas/juegoPixel/planetScapearma tu nave.html";
+      window.location.href =
+        "./juego/espacial/cartas/juegoPixel/planetScapearma tu nave.html";
     });
     // this.segundaRonda.style.display = 'flex';
     this.insertarPuntos.textContent = this.puntoss;
