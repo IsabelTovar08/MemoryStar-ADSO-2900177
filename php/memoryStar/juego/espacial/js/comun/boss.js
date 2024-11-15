@@ -17,7 +17,7 @@ export class Boss {
 
   crearBoss(x, y) {
     // Lista de posibles sprites para el jefe
-    const spritesBoss = ["boss1", "boss2", "boss3"]; // Cambia los nombres según tus sprites disponibles
+    const spritesBoss = ["boss1", "boss2", "boss3","boss4","boss5","boss6"]; // Cambia los nombres según tus sprites disponibles
 
     // Selecciona un sprite aleatorio de la lista
     const spriteAleatorio = spritesBoss[Math.floor(Math.random() * spritesBoss.length)];
@@ -28,7 +28,17 @@ export class Boss {
       .setCollideWorldBounds(true);
 
     this.boss.body.setAllowGravity(false);
+
     console.log(spriteAleatorio)
+    fetch("..//php/almacenar_enemigo.php", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ boss: spriteAleatorio }),
+    })
+      .then((response) => response.json())
+      .then((data) => console.log(data.status));
 
     this.boss.health = this.maxHealth; // Vida inicial del boss
     this.crearBarraDeVida(); // Crear la barra de vida
@@ -76,7 +86,7 @@ export class Boss {
       this.boss.disableBody(true, true); // Destruir el boss cuando su vida llegue a 0
       this.bossHealthBar.destroy(); // Destruir la barra de vida
       this.scene.add.text(300, this.scene.scale.height - 500, "¡FELICIDADES, DERROTASTE AL ENEMIGO!", { fontSize: "60px", fill: "#fff", stroke: "#000", strokeThickness: 3 });
-
+      window.location.href=("../../../../juego/espacial/armas/enemigo.html")
 
   }
 }

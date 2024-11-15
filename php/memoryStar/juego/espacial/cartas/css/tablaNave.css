@@ -1,13 +1,17 @@
 .contenedorTsolo {
   position: relative;
-  display: flex;
+  
   border: 3px solid #ff6b6b;
   border-radius: 15px;
   background: #2c2c54;
   box-shadow: 0px 0px 25px rgba(255, 107, 107, 0.4);
   align-items: center;
+  width: 40vh;
+  margin: 0 auto;
 }
-
+.holaa{
+  z-index: 10;
+}
 .contenedorTsoloInterior {
   position: relative;
   width: 90%;
@@ -121,7 +125,10 @@
   filter: drop-shadow(0 0 5px #4ecdc4);
 }
 
-
+.rubiss{
+  
+  flex-wrap: nowrap;
+}
 
 .puntaje-total {
   margin-top: 20px;
@@ -162,7 +169,7 @@
   background: #4ecdc4;
   box-shadow: 0 0 20px rgba(78, 205, 196, 0.5);
   border-radius: 25px;
-  padding: 10px 25px;
+  padding: 0.5rem 1rem;
   text-align: center;
   width: 100%;
   height: auto;
@@ -181,11 +188,11 @@
 }
 
 @media (max-height: 450px) {
-  
-
-  .tituloTsolo {
-    font-size: 2.5vh;
+  .botonTsolo {
+    padding: 0.2rem 1rem;
   }
+
+  
 
   
 }

@@ -173,10 +173,10 @@
 
 .loguito {
     transition: transform 0.3s;
-    animation: pulse 2s infinite;
+    animation: pulse2 2s infinite;
 }
 
-@keyframes pulse {
+@keyframes pulse2 {
 
     0% {
         transform: scale(1);
