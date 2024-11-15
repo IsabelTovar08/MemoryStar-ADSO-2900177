@@ -456,7 +456,7 @@ async function obtenerDatosUsuario() {
       elemento.innerHTML = datosUsuario.usuario;
     });
   } else {
-    window.location.href = "antesLogin.html";
+   
   }
 }
 

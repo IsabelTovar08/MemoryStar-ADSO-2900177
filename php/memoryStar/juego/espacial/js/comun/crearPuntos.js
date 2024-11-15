@@ -33,7 +33,7 @@ export class ManejarPuntos {
   obtenerDatos() {
     return {
       diamantes: this.diamantes,
-      puntuacion: this.puntos,
+      puntos: this.puntos,
       tiempo: this.tiempo,
     };
   }
@@ -44,7 +44,22 @@ export class ManejarPuntos {
     this.puntosText.setText(+ this.puntos);
     this.diamantesText.setText(+ this.diamantes);
     const datos = this.obtenerDatos();
-    console.log(JSON.stringify(datos));
+    console.log(datos);
+
+
+    fetch('../../../../procesos/puntuacionmario/datos.php', {
+      method: 'POST',
+      headers: {
+          'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(datos)
+  })
+  .then(response => response.json())
+  .then(data => console.log(data.mensaje)) // Confirmación en consola
+  .catch(error => console.error('Error al enviar datos:', error));
+
+
+
   }
 
   resetearTiempo() {
