@@ -48,16 +48,19 @@ class Chat implements MessageComponentInterface
             case 'joinRoom':
                 $this->handleJoinRoom($from, $data);
                 break;
-            
+
             case 'chat':
                 $this->handleChat($from, $data);
                 break;
             case 'endChat':
                 $this->handleEndChat($from);
                 break;
-                case 'startGame':
-                    $this->handleStartGame($from);
-                    break;
+            case 'startGame':
+                $this->handleStartGame($from, $data);
+                break;
+            case 'updateScore':
+                $this->handleUpdateScore($from, $data);
+                break;
         }
     }
 
@@ -65,56 +68,63 @@ class Chat implements MessageComponentInterface
     {
         $userName = isset($conn->userName) ? $conn->userName : $data['userName'];
         $userId = isset($conn->userId) ? $conn->userId : 'ID Desconocido';
-    
+
         echo "Nombre de usuario: $userName, ID de usuario: $userId\n";
-    
+
         if (!isset($conn->roomCode)) {
             return;
         }
-    
+
         $roomCode = $conn->roomCode;
-    
+
         // Si no se ha inicializado el contador de usuarios para la sala, se establece en 0
         if (!isset($this->rooms[$roomCode]['userCount'])) {
             $this->rooms[$roomCode]['userCount'] = 0;
         }
-    
+
         // Incrementa el contador de usuarios al agregar un nuevo usuario
         $this->rooms[$roomCode]['userCount']++;
-    
+
         $isAdmin = $this->rooms[$roomCode]['host'] === $conn;
         $messageText = $isAdmin
             ? "{$userName} (Administrador) se ha unido al chat"
             : "{$userName} se ha unido al chat";
-    
+
         $newConnection = [
             'type' => 'newConnection',
             'user' => $userName,
             'isAdmin' => $isAdmin,
             'message' => $messageText,
             'state' => 'Conectado',
+            'score' => 0,
             'userCount' => $this->rooms[$roomCode]['userCount']  // Incluye el número de usuarios conectados
         ];
-    
+
+        $conn->send(json_encode([
+            'type' => 'userData',
+            'userName' => $userName,
+            // 'userId' => $userId,
+            'score' => 0,
+        ]));
         // Emite el mensaje con el número de usuarios actualizados
         $this->broadcastToRoom($roomCode, $newConnection);
-    
+
         // Guarda en el historial de la sala
         $this->rooms[$roomCode]['history'][] = $newConnection;
-    
+
         echo "Usuarios conectados en la sala '{$roomCode}': " . $this->rooms[$roomCode]['userCount'] . "\n";
     }
-    
+
     private function handleCreateRoom($conn, $data)
     {
         $userName = isset($data['usuario']) ? $data['usuario'] : 'Invitado';
         $userId = isset($data['id_usuario']) ? $data['id_usuario'] : 'ID Desconocido';
         $roomName = isset($data['roomName']) ? $data['roomName'] : 'Sala sin nombre';
-        $roomCapacity = isset($data['roomCapacity']) ? (int)$data['roomCapacity'] : 10; // Capacidad predeterminada si no se proporciona
-    
+        $roomCapacity = isset($data['roomCapacity']) ? (int) $data['roomCapacity'] : 10; // Capacidad predeterminada si no se proporciona
+
         echo "Nombre de usuario: $userName, ID de usuario: $userId\n";
         echo "Nombre de la sala: $roomName, Capacidad de la sala: $roomCapacity\n";
-    
+
         $roomCode = $this->generateRoomCode();
         $this->rooms[$roomCode] = [
             'host' => $conn,
@@ -122,11 +132,12 @@ class Chat implements MessageComponentInterface
             'history' => [],
             'name' => $roomName,            // Almacena el nombre de la sala
             'capacity' => $roomCapacity,     // Almacena la capacidad de la sala
+            'scores' => [],
         ];
-    
+
         $this->rooms[$roomCode]['clients']->attach($conn);
         $conn->roomCode = $roomCode;
-    
+
         // Notificar al creador de la sala que es el host y enviarle el código de la sala, nombre y capacidad
         $conn->send(json_encode([
             'type' => 'roomCreated',
@@ -138,11 +149,11 @@ class Chat implements MessageComponentInterface
         ]));
         echo $roomName;
     }
-    
+
 
     private function handleJoinRoom($conn, $data)
     {
-        $roomCode = $data['roomCode'];
+        $roomCode = $conn->roomCode;
 
         if (!isset($this->rooms[$roomCode])) {
             $conn->send(json_encode([
@@ -169,16 +180,81 @@ class Chat implements MessageComponentInterface
     }
 
 
-
-    private function handleStartGame($from)
+    private function handleStartGame($from, $data)
     {
-        $data = [
-            'type' => 'gameStarted',
-            'message' => "El juego ha comenzado. Redirigiendo al juego."
+        // Verificar que 'roomCode' esté presente en los datos
+        if (!isset($data['roomCode'])) {
+            echo "Error: 'roomCode' no encontrado\n";
+            return; // Salir si no hay roomCode
+        }
+    
+        $roomCode = $data['roomCode'];
+    
+        // Verificar si la sala existe
+        if (!isset($this->rooms[$roomCode])) {
+            return;
+        }
+    
+        $roomData = $this->rooms[$roomCode];
+    
+        // Preparar la información que se va a enviar
+        $gameData = [
+            'type' => 'gameData',
+            'roomName' => $roomData['name'],  // Nombre de la sala
+            'roomCapacity' => $roomData['capacity'],  // Capacidad de la sala
+            'scores' => [],  // Aquí puedes agregar los puntajes de los usuarios
+            'users' => []  // Aquí puedes agregar la lista de usuarios
         ];
-        // $this->broadcastToRoom($from, $data);
-        $this->broadcastToRoom($from->roomCode, ['type' => 'gameStarted']);
+    
+        // Recorrer los usuarios y obtener la información necesaria (ejemplo: nombre de usuario y puntaje)
+        foreach ($roomData['clients'] as $userConn) {
+            // Suponiendo que cada conexión tiene un campo 'user' que es el nombre de usuario
+            $userName = isset($userConn->user) ? $userConn->user : 'Desconocido';
+            $userScore = isset($this->rooms[$roomCode]['scores'][$userName]) ? $this->rooms[$roomCode]['scores'][$userName] : 0;
+    
+            // Añadir la información del usuario al arreglo
+            $gameData['users'][] = [
+                'user' => $userName,
+                'score' => $userScore
+            ];
+    
+            // Añadir los puntajes de cada usuario al arreglo de puntajes
+            $gameData['scores'][] = [
+                'user' => $userName,
+                'score' => $userScore
+            ];
+        }
+    
+        // Enviar la información a todos los usuarios de la sala
+        $this->broadcastToRoom($roomCode, $gameData);
+    
+        // Enviar el mensaje de inicio del juego a todos los usuarios
+        $this->broadcastToRoom($roomCode, ['type' => 'gameStarted']);
+    }
+    
 
+
+
+
+
+ private function handleUpdateScore($from, $data)
+    {
+        $roomCode = $from->roomCode;
+        $userName = isset($from->userName) ? $from->userName : 'Usuario';
+
+        if (!isset($this->rooms[$roomCode]) || !isset($this->rooms[$roomCode]['scores'][$userName])) {
+            return;
+        }
+
+        // Actualizar la puntuación del usuario con la variable recibida desde el juego
+        $newScore = isset($data['score']) ? (int)$data['score'] : 0;
+        $this->rooms[$roomCode]['scores'][$userName] = $newScore;
+
+        // Enviar la lista de puntuaciones actualizada a todos los jugadores de la sala
+        $this->broadcastToRoom($roomCode, [
+            'type' => 'scoreUpdate',
+            'scores' => $this->rooms[$roomCode]['scores']
+        ]);
     }
     private function handleChat($from, $data)
     {
@@ -212,7 +288,7 @@ class Chat implements MessageComponentInterface
         unset($this->rooms[$from->roomCode]);
     }
 
-    
+
     public function onClose(ConnectionInterface $conn)
     {
         $this->clients->detach($conn);

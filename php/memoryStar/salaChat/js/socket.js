@@ -8,6 +8,7 @@ let notificationsContainer = document.getElementById('usuarios');
 let abandono = document.getElementById('notifications-container');
 const chat = document.getElementById('chat');
 const notification = document.getElementById('notification');
+ let jugadores = [];
 // const boton_unirse = document.getElementById('unirse');
 
 // Crear los botones de sala
@@ -83,7 +84,7 @@ function startGame() {
 joinRoomButton.addEventListener('click', () => {
     userName = prompt("Por favor, ingresa tu nombre:");
     if (userName) {
-        const code = document.getElementById('codigo');
+        const code = prompt("Ingresa el código de la sala:");
         if (code) {
             socket.send(JSON.stringify({
                 type: 'joinRoom',
@@ -92,11 +93,7 @@ joinRoomButton.addEventListener('click', () => {
         }
     }
 });
-endChatButton.addEventListener('click', () => {
-    socket.send(JSON.stringify({ type: 'startGame' }));
-    // startGame();
 
-});
 
 function initializeSocket() {
     socket = new WebSocket("ws://localhost:8080");
@@ -158,6 +155,12 @@ function initializeSocket() {
                     historial(notification.user, notification.message, notification.isAdmin, notification.state);
                 });
                 break;
+                // else if (data.type === 'playerList') {
+                //     jugadores = data.jugadores;  // Actualizamos la lista de jugadores
+                // } else if (data.type === 'gameStarted') {
+                //     // Redirigimos al juego con los nombres de los jugadores en la URL
+                //     const jugadoresString = encodeURIComponent(JSON.stringify(jugadores));
+                //     window.location.href = `juego.html?modo=multijugador&jugadores=${jugadoresString}`;
             case 'gameStarted':
                     // Redirige al juego con WebSocket activo
                     juegoIniciado = true;
@@ -194,6 +197,8 @@ function handleRoomCreated(data) {
     console.log(data)
     const nombre_sala = document.getElementById('nombre_sala');
     nombre_sala.textContent = data.roomName;
+    const codigo_sala = document.getElementById('codigo_sala');
+    codigo_sala.textContent = data.roomCode;
     const capacidad_sala = document.querySelector('.maximo');
     capacidad_sala.textContent = `/${data.roomCapacity}`;
     createRoomButton.style.display = 'none';
@@ -201,7 +206,14 @@ function handleRoomCreated(data) {
 
 
 }
+endChatButton.addEventListener('click', () => {
+    socket.send(JSON.stringify({
+         type: 'startGame', 
+         roomCode: roomCode}));
+        //  console.log(roomCode)
+    // startGame();
 
+});
 function handleRoomJoined(data) {
     roomCode = data.roomCode;
     alert(`Te has unido a la sala ${roomCode}`);
@@ -209,15 +221,14 @@ function handleRoomJoined(data) {
         type: 'setUserName',
         userName: userName
     }));
-    console.log(data)
     createRoomButton.style.display = 'none';
     joinRoomButton.style.display = 'none';
 }
 
-function handleChatEnded() {
-    alert("El chat ha finalizado.");
-    window.location.href = "../juego/espacial/cartas/juegoPixel/index.html";
-}
+// function handleChatEnded() {
+//     alert("El chat ha finalizado.");
+//     window.location.href = "../juego/espacial/cartas/juegoPixel/index.html";
+// }
 
 
 // ... (mantener las funciones existentes de manejo de mensajes y notificaciones) ...
