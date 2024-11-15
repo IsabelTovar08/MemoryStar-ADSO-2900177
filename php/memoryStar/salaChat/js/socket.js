@@ -18,7 +18,7 @@ joinRoomButton.innerText = "Unirse a Sala";
 joinRoomButton.classList.add('button-room');
 
 const endChatButton = document.createElement('button');
-endChatButton.innerText = "Finalizar Chat";
+endChatButton.innerText = "Iniciar";
 endChatButton.classList.add('botton-iniciar');
 endChatButton.style.display = "none";
 
@@ -154,8 +154,8 @@ function handleRoomJoined(data) {
 }
 
 function handleChatEnded() {
-    alert("El chat ha finalizado.");
-    window.location.href = "../juego/espacial/cartas/juegoPixel/index.html";
+    alert("El juego va a iniciar.");
+    window.location.href = "../juego/juegoOrdenar/MemorixBookifyDesafiante.html";
 }
 
 
