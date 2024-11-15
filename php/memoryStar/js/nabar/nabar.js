@@ -162,8 +162,38 @@ var modalHTML = `
 
 <!-- Modal ayuda -->
 <div class="modal fade" id="exampleModal-ayuda" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog card moover coloor">
-        <div class="modal-content coloor">
+  <div class="modal-dialog princ">
+    <div class="modal-content sec">
+      <div class="modal-header">
+        <h5 class="modal-title titulo-ayuda" id="exampleModalLabel">¿Como Jugar?</h5>
+        <img src="img/iconos/botonSalir.png" alt="salir" class="btn salir-ayuda" data-bs-dismiss="modal" aria-label="Close">
+        
+      </div>
+      <div class="modal-body bod">
+        <div class="texto">
+            Aqui puedes obtener informacion de como jugar
+        </div>
+        <div class="contenedor-imgAyuda">
+            <img src="img/iconos/planetScape.png" alt="cartas" id="goToModal2" class="imgAyuda btn">
+            <img src="img/iconos/Memorix.png" alt="secuencia" id="goToModal3" class="imgAyuda btn">
+                    
+
+
+        </div>
+
+      </div>
+      
+    </div>
+  </div>
+</div>
+
+
+
+
+
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
             <div class="modal-header">
 
                 <h1 class="titulo-ayuda">¿Cómo Jugar?</h1>
@@ -183,10 +213,7 @@ var modalHTML = `
 
                 <div class="contenedor-imgAyuda">
 
-                    <img src="img/iconos/uu.png" alt="cartas" id="goToModal2" class="imgAyuda btn">
-
-
-                    <img src="img/iconos/secuencias.png" alt="secuencia" id="goToModal3" class="imgAyuda btn">
+                    
 
 
                     
