@@ -98,7 +98,7 @@ joinRoomButton.addEventListener('click', () => {
 
 
 function initializeSocket() {
-    socket = new WebSocket("ws://localhost:8080");
+    socket = new WebSocket("ws://192.168.101.71:8080");
 
     socket.onopen = () => {
         console.log("Conectado al WebSocket");

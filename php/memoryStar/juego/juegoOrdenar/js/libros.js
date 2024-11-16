@@ -285,6 +285,8 @@ function finalizarRonda() {
   totalRubis += rubis;
   document.getElementById("rubis").innerHTML = `+${rubis}`;
 
+  document.getElementById("nRonda").innerHTML= `PUNTUACION RONDA ${rondaActual}`;
+
   const modal = new bootstrap.Modal(
     document.getElementById("tablapuntuacionsolo")
   );
@@ -406,7 +408,7 @@ function mostrarResultadosFinales() {
               </div>
   
               <div class="contenedor-botonTsolo">
-                  <button class="botonTsolo" onclick="redirigir()" style="margin-left: 20px;">
+                  <button class="botonTsolo" onclick="redirigir()">
                       Salir
                   </button>
               </div>
@@ -417,8 +419,8 @@ function mostrarResultadosFinales() {
   document.body.appendChild(modalFinal);
   new bootstrap.Modal(modalFinal).show();
 
-  // enviarPuntuacion(puntajeTotal, tiempoPromedio, totalRubis);
-  // obtenerDatosUsuario();
+  enviarPuntuacion(puntajeTotal, tiempoPromedio, totalRubis);
+  obtenerDatosUsuario();
 }
 function redirigir(){
   setTimeout(() => {
