@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Modo Espera...</title>
     <!-- <script src="js/javascript.js"></script> -->
-    <link rel="stylesheet" href="../../2024/jueves-/formulario/bootstrap/css/bootstrap.css">
+    <link rel="stylesheet" href="../bootstrap/css/bootstrap.css">
     <!-- <link rel="stylesheet" href="fontawesome/css/fontawesome.css">  -->
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/styleSala.css">
@@ -27,7 +27,7 @@
     <div class="color-fondo">
 
     </div>
-    <div class="linea-con-texto">
+    <div class="linea-con-texto" id="nombre_sala">
         <span>Sala de espera</span>
     </div>
     <div class="lengua-Salida" >
@@ -45,7 +45,7 @@
             <div class="contenedor-apartado">
                 <div class="conte-apartado">
                     <div class="tipo-juego">
-                        <b>Tipo de juego</b>
+                        <div id="codigo_sala"></div>
                     </div>
                     <div class="tematica">
                         <b>Temát</b>ica
@@ -71,7 +71,7 @@
                 <div class="header-linea">
                     <div class="conte-left">
 
-                        <h2><span class="numero-usuario">13</span>/20</h2>
+                        <h2><span class="numero-usuario"></span><span class="maximo"></span></h2>
                         <i class="fa-solid fa-people-group fa-2xl"></i>
                         <button class="invitar"  data-bs-toggle="modal" data-bs-target="#staticBackdrop">compartir</button>
                     </div>
@@ -106,11 +106,13 @@
       <img src="chat.png" alt="" width="60">
       <span id="notification" class="notification"></span> <!-- Círculo de notificación -->
     </button>
-  
+    <script src="../js/session.js"></script>
   
     <script src="js/socket.js"></script>
+
     <script src="js/mostrarChat.js"></script>
     <script src="../bootstrap/js/bootstrap.js"></script>
+   
 
 
   

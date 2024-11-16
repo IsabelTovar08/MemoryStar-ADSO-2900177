@@ -1,12 +1,17 @@
 let socket;
 let userName;
 let roomCode;
+let nombreSala;
+let capacidadSala;
+let juegoIniciado = false;
 let notificationsContainer = document.getElementById('usuarios');
 let abandono = document.getElementById('notifications-container');
 const chat = document.getElementById('chat');
 const notification = document.getElementById('notification');
 const audio = new Audio('notificacion.mp3');
 const audioChat = new Audio('chat.mp3');
+ let jugadores = [];
+// const boton_unirse = document.getElementById('unirse');
 
 // Crear los botones de sala
 const createRoomButton = document.createElement('button');
@@ -18,7 +23,7 @@ joinRoomButton.innerText = "Unirse a Sala";
 joinRoomButton.classList.add('button-room');
 
 const endChatButton = document.createElement('button');
-endChatButton.innerText = "Iniciar";
+endChatButton.innerText = "Iniciar Chat";
 endChatButton.classList.add('botton-iniciar');
 endChatButton.style.display = "none";
 
@@ -30,13 +35,53 @@ buttonContainer.appendChild(joinRoomButton);
 buttonContainer.appendChild(endChatButton);
 document.body.insertBefore(buttonContainer, document.body.firstChild);
 
+
+async function obtenerDatosUsuario(callback) {
+    try {
+        const response = await fetch('../procesos/login/obtenerUsuario.php');
+        if (response.ok) {
+            const data = await response.json();
+            if (data.success) {
+                callback(data);  // Llamada al callback con los datos obtenidos
+            }
+        }
+    } catch (error) {
+        console.error("Error al obtener los datos del usuario:", error);
+    }
+}
+
+
+
+
 // Event Listeners para los botones
 createRoomButton.addEventListener('click', () => {
-    userName = prompt("Por favor, ingresa tu nombre:");
-    if (userName) {
-        socket.send(JSON.stringify({ type: 'createRoom' }));
-    }
+    obtenerDatosUsuario((data) => {
+        // Solicita el nombre y la capacidad de la sala
+        const nombreSala = prompt("Ingresa el nombre de la sala:");
+        const capacidadSala = prompt("Ingresa la capacidad de la sala:");
+
+        if (nombreSala && capacidadSala) {
+            // Envía todos los datos necesarios en el evento de creación de sala
+            socket.send(JSON.stringify({
+                type: 'createRoom',
+                usuario: data.usuario,
+                id_usuario: data.id_usuario,
+                roomName: nombreSala,
+                roomCapacity: capacidadSala // Enviar la capacidad de la sala
+            }));
+
+        } else {
+            alert("Por favor, ingresa el nombre y la capacidad de la sala.");
+        }
+    });
 });
+function startGame() {
+    socket.send(JSON.stringify({
+        type: 'redirectToGame',
+        usuario: userName,
+        url: '../../juego/juegoOrdenar/MemorixBookifyDesafiante.html'
+    }));
+}
 
 joinRoomButton.addEventListener('click', () => {
     userName = prompt("Por favor, ingresa tu nombre:");
@@ -51,9 +96,6 @@ joinRoomButton.addEventListener('click', () => {
     }
 });
 
-endChatButton.addEventListener('click', () => {
-    socket.send(JSON.stringify({ type: 'endChat' }));
-});
 
 function initializeSocket() {
     socket = new WebSocket("ws://localhost:8080");
@@ -100,6 +142,7 @@ function initializeSocket() {
                 break;
             case 'newConnection':
                 createUserNotification(data);
+                console.log(data)
                 notificacionNuevo(data.message);
                 break;
             case 'disconnection':
@@ -114,6 +157,16 @@ function initializeSocket() {
                     historial(notification.user, notification.message, notification.isAdmin, notification.state);
                 });
                 break;
+                // else if (data.type === 'playerList') {
+                //     jugadores = data.jugadores;  // Actualizamos la lista de jugadores
+                // } else if (data.type === 'gameStarted') {
+                //     // Redirigimos al juego con los nombres de los jugadores en la URL
+                //     const jugadoresString = encodeURIComponent(JSON.stringify(jugadores));
+                //     window.location.href = `juego.html?modo=multijugador&jugadores=${jugadoresString}`;
+            case 'gameStarted':
+                    // Redirige al juego con WebSocket activo
+                    juegoIniciado = true;
+                    window.location.href = '../juego/juegoOrdenar/MemorixBookifyDesafiante.html?modo=multijugador';
         }
     };
 
@@ -129,19 +182,40 @@ function initializeSocket() {
 }
 
 function handleRoomCreated(data) {
+
     roomCode = data.roomCode;
     alert(`Sala creada! Código: ${roomCode}`);
     if (data.isHost) {
         endChatButton.style.display = "block";
     }
-    socket.send(JSON.stringify({
-        type: 'setUserName',
-        userName: userName
-    }));
+    obtenerDatosUsuario((data) => {
+        socket.send(JSON.stringify({
+            type: 'setUserName',
+            usuario: data.usuario,
+            id_usuario: data.id_usuario
+
+        }));
+    });
+    console.log(data)
+    const nombre_sala = document.getElementById('nombre_sala');
+    nombre_sala.textContent = data.roomName;
+    const codigo_sala = document.getElementById('codigo_sala');
+    codigo_sala.textContent = data.roomCode;
+    const capacidad_sala = document.querySelector('.maximo');
+    capacidad_sala.textContent = `/${data.roomCapacity}`;
     createRoomButton.style.display = 'none';
     joinRoomButton.style.display = 'none';
-}
 
+
+}
+endChatButton.addEventListener('click', () => {
+    socket.send(JSON.stringify({
+         type: 'startGame', 
+         roomCode: roomCode}));
+         console.log(roomCode)
+    // startGame();
+
+});
 function handleRoomJoined(data) {
     roomCode = data.roomCode;
     alert(`Te has unido a la sala ${roomCode}`);
@@ -153,10 +227,10 @@ function handleRoomJoined(data) {
     joinRoomButton.style.display = 'none';
 }
 
-function handleChatEnded() {
-    alert("El juego va a iniciar.");
-    window.location.href = "../juego/juegoOrdenar/MemorixBookifyDesafiante.html";
-}
+// function handleChatEnded() {
+//     alert("El chat ha finalizado.");
+//     window.location.href = "../juego/espacial/cartas/juegoPixel/index.html";
+// }
 
 
 // ... (mantener las funciones existentes de manejo de mensajes y notificaciones) ...
@@ -177,6 +251,8 @@ document.getElementById('messages').addEventListener('click', (event) => {
 
 // Funciones adicionales para el manejo de notificaciones de usuarios y mensajes
 function createUserNotification(data) {
+    const numero = document.querySelector('.numero-usuario');
+    numero.textContent = data.userCount;
     const connectionDiv = document.createElement('div');
     connectionDiv.classList.add('contenedor-usuario');
     connectionDiv.setAttribute('data-username', data.user); // Añadir identificador único
@@ -200,7 +276,7 @@ function createUserNotification(data) {
                 </div>
                 <div class="conte-diamante-img">
                     <div class="diamante">
-                        <img src="img" alt="">
+                        <img src="../img/iconos/segundoMemory.png" alt="" width="20">
                     </div>
                 </div>
             </div>
@@ -265,7 +341,7 @@ function historial(user, message, isAdmin, state) {
                 </div>
                 <div class="conte-diamante-img">
                     <div class="diamante">
-                        <img src="img" alt="">
+                        <img src="../img/iconos/segundoMemory.png" alt="" width="20">
                     </div>
                 </div>
             </div>
@@ -304,18 +380,18 @@ document.getElementById('message').addEventListener('keypress', (event) => {
 // Enviar mensaje al hacer clic en el botón "Send"
 document.getElementById('messages').addEventListener('click', function () {
 
-        // Crear una nueva instancia de SpeechSynthesisUtterance
-        const mensaje = new SpeechSynthesisUtterance(texto);
+    // Crear una nueva instancia de SpeechSynthesisUtterance
+    const mensaje = new SpeechSynthesisUtterance(texto);
 
-        // Opciones de la voz (puedes personalizarla)
-        mensaje.lang = 'es-ES'; // Establecer idioma
-        mensaje.rate = 1; // Velocidad de la voz
-        mensaje.pitch = 1; // Tono de la voz
-        mensaje.volume = 1; // Volumen
+    // Opciones de la voz (puedes personalizarla)
+    mensaje.lang = 'es-ES'; // Establecer idioma
+    mensaje.rate = 1; // Velocidad de la voz
+    mensaje.pitch = 1; // Tono de la voz
+    mensaje.volume = 1; // Volumen
 
-        // Reproducir el mensaje
-        speechSynthesis.speak(mensaje);
-    
+    // Reproducir el mensaje
+    speechSynthesis.speak(mensaje);
+
 
 });
 function scrollToBottom() {
