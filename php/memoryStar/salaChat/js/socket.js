@@ -8,6 +8,8 @@ let notificationsContainer = document.getElementById('usuarios');
 let abandono = document.getElementById('notifications-container');
 const chat = document.getElementById('chat');
 const notification = document.getElementById('notification');
+const audio = new Audio('notificacion.mp3');
+const audioChat = new Audio('chat.mp3');
  let jugadores = [];
 // const boton_unirse = document.getElementById('unirse');
 
@@ -210,7 +212,7 @@ endChatButton.addEventListener('click', () => {
     socket.send(JSON.stringify({
          type: 'startGame', 
          roomCode: roomCode}));
-        //  console.log(roomCode)
+         console.log(roomCode)
     // startGame();
 
 });

@@ -153,8 +153,8 @@ class Chat implements MessageComponentInterface
 
     private function handleJoinRoom($conn, $data)
     {
-        $roomCode = $conn->roomCode;
-
+        $roomCode = $data['roomCode'];
+        
         if (!isset($this->rooms[$roomCode])) {
             $conn->send(json_encode([
                 'type' => 'error',
