@@ -417,12 +417,12 @@ function mostrarResultadosFinales() {
   document.body.appendChild(modalFinal);
   new bootstrap.Modal(modalFinal).show();
 
-  enviarPuntuacion(puntajeTotal, tiempoPromedio, totalRubis);
-  obtenerDatosUsuario();
+  // enviarPuntuacion(puntajeTotal, tiempoPromedio, totalRubis);
+  // obtenerDatosUsuario();
 }
 function redirigir(){
   setTimeout(() => {
-    window.location.href=("../../index.html")
+    window.location.href=("../../antesLogin.html")
   }, 2000);
 }
 
@@ -460,8 +460,6 @@ async function obtenerDatosUsuario() {
     nombreUsuarioElement.forEach((elemento) => {
       elemento.innerHTML = datosUsuario.usuario;
     });
-  } else {
-    window.location.href = "../../antesLogin.html";
   }
 }
 
