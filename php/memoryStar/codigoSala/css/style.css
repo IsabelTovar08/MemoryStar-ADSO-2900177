@@ -300,8 +300,8 @@ input[type="submit"]:hover {
 }
 
 .unimer-sala{
-    background-color: #03192eaf;
-    color: white;
+    background: #00e3f3;
+    color: black;
     height: 100%;
     width: 50%;
     display: flex;
@@ -312,8 +312,9 @@ input[type="submit"]:hover {
 }
 
 .crear-sala{
-    background: #00e3f3;
-    color:  black;
+    background-color: #03192eaf;
+    
+    color:  white;
     height: 100%;
     text-align: center;
     width: 50%;
