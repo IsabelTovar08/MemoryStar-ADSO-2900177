@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ingresar código</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- <link rel="stylesheet" href="../bootstrap/css/bootstrap.css"> -->
+    <script src="js.js" defer></script>
+</head>
+
+<body>
+    <div class="puerta-arriba">
+        <div class="img-1"></div>
+    </div>
+    <div class="container">
+
+        <div class="top borde-luz"></div>
+        <div class="right borde-luz"></div>
+        <div class="bottom borde-luz"></div>
+        <div class="left borde-luz"></div>
+        <!-- onsubmit="numero(event)" -->
+        <form action="" id="unirseSalaForm">
+            <label for="codigo">Código de la sala</label>
+            <input type="number" value="" id="codigo" placeholder="Código" maxlength="6" minlength="1"
+                oninput="validity.valid || (value='');">
+            <input type="text" value="" id="nombre" placeholder="Nombre" class="form-control">
+
+            <button id="unirse" value="Enviar">Enviar</button>
+            <p class="mensaje"></p>
+        </form>
+    </div>
+    <div class="puerta-abajo">
+        <div class="img-2"></div>
+
+    </div>
+    <script>
+        // Asumiendo que socket está definido y que boton_unirse es el botón que activa el evento
+        boton_unirse.addEventListener('click', () => {
+            const userName = prompt("Por favor, ingresa tu nombre:");
+            if (userName) {
+                const codeElement = document.getElementById('codigo');
+                const roomCode = codeElement ? codeElement.value.toUpperCase() : null;
+
+                // Enviar datos a server.php como JSON
+                fetch('salaChat/server/server.php', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        type: 'joinRoom',
+                        roomCode: roomCode
+                    })
+                })
+                    .then(response => response.json())
+                    .then(data => {
+                        console.log('Respuesta del servidor:', data);
+                    })
+                    .catch(error => {
+                        console.error('Error al enviar datos:', error);
+                    });
+            }
+        });
+
+    </script>
+    <script src="../js/session.js"></script>
+
+    <script src="../salaChat/js/socket.js"></script>
+</body>
+
+</html>
