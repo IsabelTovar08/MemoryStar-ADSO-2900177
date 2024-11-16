@@ -474,7 +474,7 @@ var modalHTML = `
 
 
 
-<!-- Modal  mapa-->
+<!-- Modal  mapa, los estilo estaba en estilosInicio.css-->
 <div class="modal fade" id="Mapa" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg card moveer">
         <div class="modal-content color-mapa">
@@ -482,36 +482,38 @@ var modalHTML = `
                 <h1 class="fs-5" id="exampleModalLabel">MAPA DE RECOMPENSAS</h1>
             </div>
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            <div class="modal-body">
+            <div class="modal-body container-tabla-recompensa">
                 <table class="tabla-historial-global">
-                <thead>
-                    <tr>
-                        <th>Posición</th>
-                        <th>Nombre de Usuario</th>
-                        <th>Puntaje Total</th>
-                        <th>Mejor Puntaje</th>
-                        <th>Nivel Alcanzado</th>
-                        <th>Fecha</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <td>1</td>
-                        <td>EstrellaGaláctica</td>
-                        <td>5000</td>
-                        <td>300</td>
-                        <td>25</td>
-                        <td>2024-11-11</td>
-                    </tr>
-                    <tr>
-                        <td>2</td>
-                        <td>LuzNebulosa</td>
-                        <td>4800</td>
-                        <td>290</td>
-                        <td>23</td>
-                        <td>2024-11-10</td>
-                    </tr>
-      
-                </tbody>
+                    <thead class="mapa-cabeza">
+                        <tr>
+                            <th>Posición</th>
+                            <th>Nombre de Usuario</th>
+                            <th>Puntaje Total</th>
+                            <th>Mejor Puntaje</th>
+                            <th>Nivel Alcanzado</th>
+                            <th>Fecha de Inicio</th>
+                        </tr>
+                    </thead>
+                    <tbody class="cuerpo-tabla-historial">
+                        <tr>
+                            <td>1</td>
+                            <td>EstrellaGaláctica</td>
+                            <td>5000</td>
+                            <td>300</td>
+                            <td>25</td>
+                            <td>2024-11-11</td>
+                        </tr>
+                        <tr>
+                            <td>1</td>
+                            <td>EstrellaGaláctica</td>
+                            <td>5000</td>
+                            <td>300</td>
+                            <td>25</td>
+                            <td>2024-11-11</td>
+                        </tr>
+
+        
+                    </tbody>
                 </table>
                 <form onsubmit="return operaciones()">
                     <label for="txtnumero1" class="tituloMapa">Ingresa tu puntuación:</label>
