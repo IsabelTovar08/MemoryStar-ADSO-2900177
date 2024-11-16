@@ -34,6 +34,7 @@ export class JuegoCartas {
     this.insertarTiempo = document.getElementById("tiempoFin");
     this.tiempo = document.getElementById("tiempo");
     this.siguiente = document.getElementById("siguiente");
+    this.perdio = document.getElementById("perdiste")
 
     this.puntoss = 0;
     this.diamantess = 0;
@@ -90,7 +91,7 @@ export class JuegoCartas {
       this.duracion
     );
     if (this.duracion <= 0) {
-      this.mostrar();
+      this.perdiste();
     }
   }
 
@@ -194,6 +195,17 @@ export class JuegoCartas {
       this.diamantesContainer,
       `+${this.diamantesSumar}`
     );
+  }
+
+  perdiste(){
+    this.stopTimer();
+    this.pararTemp();
+    var modal = new bootstrap.Modal(document.getElementById("perdioo"));
+    modal.show();
+    this.perdio.addEventListener("click", () => {
+      window.location.href =
+        "index.html";
+    });
   }
   mostrar() {
     this.stopTimer();

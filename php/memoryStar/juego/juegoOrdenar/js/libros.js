@@ -285,6 +285,8 @@ function finalizarRonda() {
   totalRubis += rubis;
   document.getElementById("rubis").innerHTML = `+${rubis}`;
 
+  document.getElementById("nRonda").innerHTML= `PUNTUACION RONDA ${rondaActual}`;
+
   const modal = new bootstrap.Modal(
     document.getElementById("tablapuntuacionsolo")
   );
@@ -406,7 +408,7 @@ function mostrarResultadosFinales() {
               </div>
   
               <div class="contenedor-botonTsolo">
-                  <button class="botonTsolo" onclick="redirigir()" style="margin-left: 20px;">
+                  <button class="botonTsolo" onclick="redirigir()">
                       Salir
                   </button>
               </div>
@@ -422,7 +424,7 @@ function mostrarResultadosFinales() {
 }
 function redirigir(){
   setTimeout(() => {
-    window.location.href=("../../index.html")
+    window.location.href=("../../antesLogin.html")
   }, 2000);
 }
 
@@ -460,8 +462,6 @@ async function obtenerDatosUsuario() {
     nombreUsuarioElement.forEach((elemento) => {
       elemento.innerHTML = datosUsuario.usuario;
     });
-  } else {
-    window.location.href = "../../antesLogin.html";
   }
 }
 

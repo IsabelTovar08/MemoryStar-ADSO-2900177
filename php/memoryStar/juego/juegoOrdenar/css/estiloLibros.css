@@ -139,10 +139,10 @@ body {
   left: 45%;
   z-index: 10;
 
-  background: linear-gradient(to bottom, #67c5d4, #688e90);
-  border: 3px solid #ffff;
+  background: linear-gradient(to bottom, #4a90e2, #357ab7);
+  border: 3px solid #ffffff;
   border-radius: 25px;
-  color: white;
+  color: #f1f1f1;
   font-size: 4vh;
   font-family: "Roboto", Arial, sans-serif;
   font-weight: bold;
@@ -156,10 +156,11 @@ body {
 }
 
 #verificarBtn:hover {
-  background: linear-gradient(to bottom, #688e90, #67c5d4);
+  background: linear-gradient(to bottom, #357ab7, #4a90e2);
   transform: translateY(-3px);
   box-shadow: 0 12px 20px rgba(0, 0, 0, 0.4);
 }
+
 
 #contenedor-secuInt {
   display: flex;
