@@ -112,10 +112,10 @@ let html =``;
 contendedorCrearSala.addEventListener('click',()=>{
     const caja = document.querySelector('.caja')
 
-    contendedorCrearSala.style.background = ' #03192eaf'
-    contendedorCrearSala.style.color = 'white'
-    contenedorUnirseSala.style.background = '#00e3f3'
-    contenedorUnirseSala.style.color = 'black'
+    contendedorCrearSala.style.background = '#00e3f3 '
+    contendedorCrearSala.style.color = 'black '
+    contenedorUnirseSala.style.background = ' #03192eaf'
+    contenedorUnirseSala.style.color = 'white'
     html =`
         <h2>Crear sala</h2>
             <label for="nombre">Nombre de la sala</label>
@@ -130,10 +130,10 @@ contendedorCrearSala.addEventListener('click',()=>{
 contenedorUnirseSala.addEventListener('click',()=>{
     const caja = document.querySelector('.caja')
 
-    contenedorUnirseSala.style.background = ' #03192eaf'
-    contenedorUnirseSala.style.color = 'white'
-    contendedorCrearSala.style.background = '#00e3f3'
-    contendedorCrearSala.style.color = 'black'
+    contenedorUnirseSala.style.background = ' #00e3f3'
+    contenedorUnirseSala.style.color = 'black'
+    contendedorCrearSala.style.background = ' #03192eaf'
+    contendedorCrearSala.style.color = ' white'
     html =`
     <label for="codigo">Código de la sala</label>
             <input type="number" value="" id="codigo" placeholder="Código" maxlength="6" minlength="1" oninput="validity.valid || (value='');">
