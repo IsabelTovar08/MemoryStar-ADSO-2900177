@@ -421,7 +421,9 @@ function mostrarResultadosFinales() {
   obtenerDatosUsuario();
 }
 function redirigir(){
-  window.location.href=("../../index.html");
+  setTimeout(() => {
+    window.location.href=("../../index.html")
+  }, 2000);
 }
 
 async function obtenerDatosUsuario() {

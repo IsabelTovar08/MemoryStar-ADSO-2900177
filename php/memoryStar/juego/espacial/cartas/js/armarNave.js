@@ -1,3 +1,8 @@
+function redirigir(){
+  setTimeout(() => {
+    window.location.href=("../../../index.html")
+  }, 2000);
+}
 document.addEventListener("DOMContentLoaded", function () {
   const btnVeri = document.getElementById("verificar");
   let ordenCorrect = []; 
@@ -159,7 +164,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 </div>
     
                 <div class="contenedor-botonTsolo">
-                    <button class="botonTsolo" onclick="salir()" style="margin-left: 20px;">
+                    <button class="botonTsolo" onclick="redirigir()" style="margin-left: 20px;">
                         Salir
                     </button>
                 </div>
