@@ -12,61 +12,58 @@
     <link rel="stylesheet" href="../css/estiloTienda.css"> -->
     <link rel="stylesheet" href="../../modales/modales/css/estiloTablaPuntuacion.css">
     <link rel="stylesheet" href="../../modales/modales/css/estiloSeguirJugando.css">
-    <link rel="stylesheet" href="../css/animacion.css">
+    <!-- <link rel="stylesheet" href="../css/animacion.css"> -->
 </head>
 
 <body>
 
 
-    <!-- modal -->
     <div class="modal fade" id="tablapuntuacionsolo" data-bs-backdrop="static" tabindex="-1"
-            aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog modal-sm modal-dialog-centered">
-                <div class="modal-content contenedorTsolo">
-                    <div class="tituloTsolo">Puntuación Ronda</div>
-                    <div class="contenedorTsoloInterior">
-                        <!-- <div class="contenedor-estrellas">
-                            <img src="../../modales/modales/img/tablas/Star.png" class="star" alt="">
-                            <img src="../../modales/modales/img/tablas/Star.png" class="star" alt="">
-                            <img src="../../modales/modales/img/tablas/Star.png" class="star" alt="">
-                        </div> -->
+        aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-sm modal-dialog-centered">
+            <div class="modal-content contenedorTsolo">
+                <div class="tituloTsolo" id="nRonda">Puntuación Ronda</div>
+                <div class="contenedorTsoloInterior">
+                    <!-- <div class="contenedor-estrellas">
+               <img src="../../modales/modales/img/tablas/Star.png" class="star" alt="">
+               <img src="../../modales/modales/img/tablas/Star.png" class="star" alt="">
+               <img src="../../modales/modales/img/tablas/Star.png" class="star" alt="">
+           </div> -->
 
-                        <div id="puntosSecu1" class="puntaje-total">
+                    <div id="puntosSecu1" class="puntaje-total">
+                        0
+                    </div>
+
+                    <div class="contenedor-puntaje">
+                        <div id="aciertos">
+                            0
+                        </div>
+                        <div id="desaciertos">
                             0
                         </div>
 
-                        <div class="contenedor-puntaje">
-                            <div id="aciertos">
-                                0
-                            </div>
-                            <div id="desaciertos">
-                                0
-                            </div>
-                            
-                        </div>
-                        <div class="contenedor-rubi">
-                            <div id="rubis">+0</div>
-                            <img src="../../modales/modales/img/tablas/rubipuntaje.png"
-                                style="width: 4vh; height: auto;">
-                        </div>
-
-                        <div class="col-12 row contenedor-info">
-                            <div class="col-6 usuarioPerfill"><img src="../../modales/modales/img/tablas/fotouser.png"
-                                    alt="" style="width: 16px;"></div>
-                            <div class="col-3" id="tiempo1">0</div>
-                            <div class="col-3" id="puntosSecu2">0</div>
-                        </div>
-
+                    </div>
+                    <div class="contenedor-rubi">
+                        <div id="rubis">+0</div>
+                        <img src="../../modales/modales/img/tablas/rubipuntaje.png" style="width: 4vh; height: auto;">
                     </div>
 
-                    <div class="contenedor-botonTsolo">
-                        <!-- <button class="botonTsolo">Jugar de nuevo</button> -->
-                        <button class="botonTsolo" style="margin-left: 20px;" data-bs-dismiss="modal"
-                            aria-label="Close">Aceptar</button>
+                    <div class="col-12 row contenedor-info">
+                        <div class="col-6 usuarioPerfill"><img src="../../modales/modales/img/tablas/fotouser.png"
+                                alt="" style="width: 16px;"></div>
+                        <div class="col-3" id="tiempo1">0</div>
+                        <div class="col-3" id="puntosSecu2">0</div>
                     </div>
+
+                </div>
+
+                <div class="contenedor-botonTsolo">
+                    <!-- <button class="botonTsolo">Jugar de nuevo</button> -->
+                    <button class="botonTsolo" data-bs-dismiss="modal" aria-label="Close">Aceptar</button>
                 </div>
             </div>
         </div>
+    </div>
     <!-- juego -->
     <div class="contenedor-arrastrar" id="estructura">
         <h1 class="textoArrastrar">Pon los objetos en su lugar</h1>
@@ -116,13 +113,13 @@
     <script src="../../js/session.js"></script>
     <script src="js/interactJS.js"></script>
     <script src="js/arrastrarOficina.js"></script>
-    <script src="../js/movimiento.js"></script>
-    <script src="../js/overlayModal.js"></script>
+    <!-- <script src="../js/movimiento.js"></script>
+    <script src="../js/overlayModal.js"></script> -->
     <script src="../../bootstrap/js/bootstrap.js"></script>
-    <script src="../js/sonidos.js"></script>
+    <!-- <script src="../js/sonidos.js"></script>
     <script src="../js/perfil.js"></script>
     <script src="../js/mapa.js"></script>
-    <script src="../../modales/modales/js/barra.js"></script>
+    <script src="../../modales/modales/js/barra.js"></script> -->
 </body>
 
 </html>

@@ -98,7 +98,7 @@
         data-bs-backdrop="static" data-bs-keyboard="false">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content contenedorTsolo">
-                <div class="tituloTsolo">¡Juego Completado!</div>
+                <div class="tituloTsolo">¡Ronda Completada!</div>
                 <div class="contenedorTsoloInterior">
                     <div class="contenedor-estrellas">
                         <img src="modales/modales/img/tablas/Star.png" class="star" alt="">
@@ -131,7 +131,51 @@
                     </div> -->
                 </div>
                 <div class="contenedor-botonTsolo">
-                    <button class="botonTsolo" id="siguiente" style="margin-left: 20px;">
+                    <button class="botonTsolo" id="siguiente">
+                        Siguiente
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="perdioo" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true"
+        data-bs-backdrop="static" data-bs-keyboard="false">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content contenedorTsolo">
+                <div class="tituloTsolo">¡Perdiste!</div>
+                <div class="contenedorTsoloInterior">
+                    <div class="contenedor-estrellas">
+                        <img src="modales/modales/img/tablas/perdio.png" class="x" alt="">
+                        <img src="modales/modales/img/tablas/perdio.png" class="x" alt="">
+                        <img src="modales/modales/img/tablas/perdio.png" class="x" alt="">
+                    </div>
+                    <div class="puntaje-total">
+                        0pts
+                    </div>
+                    <div class="contenedor-puntaje" id="tiempoFin">
+                        Tiempo:
+                        <!-- Aquí se debe insertar el valor de 'tiempoPromedio' -->
+                        20s
+                    </div>
+                    <div class="contenedor-puntaje">
+                        <div id="diamantesFin"></div>
+                    </div>
+                    <!-- <div class="col-12 row contenedor-info">
+                        <div class="col-6 usuarioPerfill">
+                            <img src="modales/modales/img/tablas/fotouser.png" alt="" style="width: 16px;">
+                        </div>
+                        <div class="col-3" id="tiempoFin">
+                            0s
+                        </div>
+                        <div class="col-3" id="puntosFin">
+                            
+                            0pts
+                        </div>
+                    </div> -->
+                </div>
+                <div class="contenedor-botonTsolo">
+                    <button class="botonTsolo" id="perdiste">
                         Siguiente
                     </button>
                 </div>

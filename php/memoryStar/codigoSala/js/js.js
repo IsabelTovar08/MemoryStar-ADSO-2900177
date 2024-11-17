@@ -106,20 +106,40 @@ puertoBottom.style.transition = 'all 3.5s ease'
 },2000)
 
 
+const contenedorUnirseSala = document.querySelector('.unimer-sala')
+const contendedorCrearSala = document.querySelector('.crear-sala')
+let html =``;
+contendedorCrearSala.addEventListener('click',()=>{
+    const caja = document.querySelector('.caja')
+
+    contendedorCrearSala.style.background = '#00e3f3 '
+    contendedorCrearSala.style.color = 'black '
+    contenedorUnirseSala.style.background = ' #03192eaf'
+    contenedorUnirseSala.style.color = 'white'
+    html =`
+        <h2>Crear sala</h2>
+            <label for="nombre">Nombre de la sala</label>
+            <input type="text" id="nombre" placeholder="Nombre">
+            <label for="cantidad">Cantidad de persona</label>
+            <input type="number" id="cantidad" placeholder="Cantidad">
+            <input type="submit" value="Crear sala">
+        `
+        caja.innerHTML = html;
+})
+
+contenedorUnirseSala.addEventListener('click',()=>{
+    const caja = document.querySelector('.caja')
+
+    contenedorUnirseSala.style.background = ' #00e3f3'
+    contenedorUnirseSala.style.color = 'black'
+    contendedorCrearSala.style.background = ' #03192eaf'
+    contendedorCrearSala.style.color = ' white'
+    html =`
+    <label for="codigo">Código de la sala</label>
+            <input type="number" value="" id="codigo" placeholder="Código" maxlength="6" minlength="1" oninput="validity.valid || (value='');">
+            <input type="submit" value="Enviar">
+            <p class="mensaje"></p>`
+    caja.innerHTML = html;
+})
 
 
-
-// medidas de los elemento
-
-
-// const elemeneTop = document.querySelector('.top')
-// const elemeneRight = document.querySelector('.right')
-// const elemeneBottom = document.querySelector('.bottom')
-// const elemeneLeft = document.querySelector('.left')
-
-
-// const valor = []
-// valor.push(elemeneTop.offsetWidth)
-// valor.push(elemeneRight.offsetHeight)
-// valor.push(elemeneBottom.offsetWidth)
-// valor.push(elemeneLeft.offsetHeight)

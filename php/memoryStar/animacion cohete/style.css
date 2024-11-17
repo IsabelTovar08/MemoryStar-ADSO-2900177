@@ -1,0 +1,419 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    background: #171717;
+    overflow: none;
+}
+.container{
+    background:linear-gradient(#051327,#000) ;
+    position: fixed;
+    inset: 0;
+}
+.estrellas{
+    width: var(--side);
+    height: var(--side);
+    background: #fff;
+    box-shadow:  var(--capaEspacio);
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 75%;
+    animation: moverEstrellas var(--duracion) linear infinite;
+}
+@keyframes moverEstrellas {
+    from{
+        transform: translateY(0vh);
+    }
+    to{
+
+        transform: translateY(-100vh);
+    }
+    
+}
+
+@keyframes girar{
+    to{
+        transform: rotate(0deg);
+    }
+    from{
+        transform: rotate(360deg);
+
+    }
+}
+.container-planeta{
+    background: url(tierra-removebg-preview.png);
+}
+.container-cohete{
+    background: url(cohete-19-unscreen.gif);
+}
+
+@media (min-width:701px) and (max-width:800px){
+    .container-planeta{
+        position: absolute;
+        top: 2vh;
+        right: 6vw;
+        width: 20vw;
+        height: 30vh;
+        background-position: center;
+        background-size: cover;
+        background-repeat: no-repeat;
+        border-radius: 20vh;
+        animation: girar-planeta 1.5s ease infinite;
+        
+    }
+    .container-cohete{
+        position: absolute;
+       
+        background-position: center;
+        background-size: cover;
+        background-repeat: no-repeat;
+        top: 4vh;
+        right: 12vw;
+        width: 7vw;
+        height: 14vh;
+        animation: volar 5s cubic-bezier(0.445, 0.05, 0.55, 0.95);
+        z-index: 1;
+        border-radius: 20vh;
+    }
+    @keyframes volar {
+        0%{
+           transform: translate(-900px,500px) rotate(20deg);
+           width: 9vw;
+           height: 18vh;
+        }
+        20%{
+            transform: translate(-1300px,-10px) rotate(50deg);
+            width: 8vw;
+            height: 16vh;
+        }
+        35%{
+           transform: translate(-650px,0px) rotate(90deg);
+           width: 8vw;
+           height: 16vh;
+        }
+        60%{
+           transform: translate(-200px,300px) rotate(40deg);
+           width: 7vw;
+           height: 14vh;
+        }
+        80%{
+            transform: translate(-700px,600px) rotate(20deg);
+            width: 6vw;
+            height: 10vh;
+        }
+        100%{
+           transform: translate(0px,0px) rotate(0deg);
+           width: 7vw;
+           height: 14vh;
+        }
+       }
+}
+
+@media (min-width:801px) and (max-width:900px){
+    .container-planeta{
+        position: absolute;
+        top: 2vh;
+        right: 6vw;
+        width: 22vw;
+        height: 32vh;
+        background-position:  center;
+        background-size: cover;
+        background-repeat: no-repeat;
+        border-radius: 20vh;
+        animation: girar-planeta 1.5s ease infinite;
+        
+    }
+    .container-cohete{
+        position: absolute;
+      
+        background-position: center;
+        background-size: cover;
+        background-repeat: no-repeat;
+        top: 4vh;
+        right: 12vw;
+        width: 5vw;
+        height: 8vh;
+        animation: volar 5s cubic-bezier(0.445, 0.05, 0.55, 0.95);
+        z-index: 1;
+        border-radius: 20vh;
+    }
+    @keyframes volar {
+        0%{
+           transform: translate(-900px,500px)  rotate(20deg);
+           width: 8vw;
+           height: 14.5vh;
+        }
+        20%{
+            transform: translate(-1300px,-10px) rotate(50deg);
+            width:7vw;
+            height: 12.5vh;
+        }
+        35%{
+           transform: translate(-650px,0px) rotate(90deg);
+           width:7vw;
+           height: 12.5vh;
+        }
+        60%{
+           transform: translate(-200px,300px) rotate(40deg);
+           width: 6vw;
+           height: 10vh;
+        }
+        80%{
+            transform: translate(-700px,600px) rotate(20deg);
+            width: 6vw;
+            height: 10vh;
+        }
+        100%{
+           transform: translate(0px,0px) rotate(0deg);
+           width: 5vw;
+           height: 9vh;
+        }
+       }
+}
+
+@media (min-width:901px) and (max-width:1399px){
+    .container-planeta{
+        position: absolute;
+
+        background-position: center;
+        background-size: cover;
+        background-repeat: no-repeat;
+        top: 2vh;
+        right: 6vw;
+        width: 20.5vw;
+        height: 28vh;
+        background-position:  center;
+        background-size: cover;
+        background-repeat: no-repeat;
+        border-radius: 20vh;
+        animation: girar-planeta 1.5s ease infinite;
+        
+    }
+    .container-cohete{
+        position: absolute;
+
+        background-position: center;
+        background-size: cover;
+        background-repeat: no-repeat;
+        top: 4vh;
+        right: 12vw;
+        width: 5vw;
+        height: 8vh;
+        animation: volar 5s cubic-bezier(0.445, 0.05, 0.55, 0.95);
+        z-index: 1;
+        border-radius: 20vh;
+    }
+    @keyframes volar {
+        0%{
+           transform: translate(-900px,500px) rotate(20deg);
+           width: 8vw;
+           height: 14vh;
+        }
+        20%{
+            transform: translate(-1300px,-10px) rotate(50deg);
+            width: 7vw;
+            height: 12vh;
+        }
+        35%{
+           transform: translate(-650px,0px) rotate(90deg);
+           width: 7vw;
+           height: 12vh;
+        }
+        60%{
+           transform: translate(-200px,300px) rotate(40deg);
+           width: 6vw;
+           height: 10vh;
+        }
+        80%{
+            transform: translate(-700px,600px) rotate(20deg);
+            width: 6vw;
+            height: 12vh;
+        }
+        100%{
+           transform: translate(0px,0px) rotate(0deg);
+          
+           width: 5vw;
+           height: 8vh;
+        }
+       }
+}
+
+@media (min-width:1400px){
+    .container-planeta{
+        position: absolute;
+        top: 2vh;
+        right: 6vw;
+        width: 19vw;
+        height: 28vh;
+        background-position:  center;
+        background-size: cover;
+        background-repeat: no-repeat;
+        border-radius: 20vh;
+        animation: girar-planeta 1.5s ease infinite;
+        
+    }
+    .container-cohete{
+        position: absolute;
+   
+        background-position: center;
+        background-size: cover;
+        background-repeat: no-repeat;
+        top: 8vh;
+        right: 12vw;
+        width: 5vw;
+        height: 10vh;
+        animation: volar 5s cubic-bezier(0.445, 0.05, 0.55, 0.95);
+        z-index: 1;
+        border-radius: 20vh;
+    }
+    @keyframes volar {
+        0%{
+           transform: translate(-1900px,850px) rotate(20deg);
+           width: 8vw;
+           height: 16vh;
+        }
+        20%{
+            transform: translate(-1300px,-10px) rotate(50deg);
+            width: 7vw;
+            height: 14vh;
+        }
+        35%{
+           transform: translate(-1300px,-10px) rotate(90deg);
+           width: 7vw;
+           height: 14vh;
+        }
+        60%{
+           transform: translate(-700px,600px) rotate(40deg);
+           width: 6vw;
+           height: 12vh;
+        }
+
+        80%{
+            transform: translate(-700px,600px) rotate(20deg);
+            width: 6vw;
+            height: 12vh;
+        }
+        100%{
+           transform: translate(0px,0px) rotate(0deg);
+           width: 5vw;
+           height: 10vh;
+        }
+       }
+}
+
+@media (max-width:700px){
+    .container-planeta{
+        position: absolute;
+        top: 2vh;
+        right: 4vw;
+        width: 20vw;
+        height: 27vh;
+        background-position:  center;
+        background-size: cover;
+        background-repeat: no-repeat;
+        border-radius: 20vh;
+        animation: girar-planeta 1.5s ease infinite;
+        
+    }
+    .container-cohete{
+        position: absolute;
+   
+        background-position: center;
+        background-size: cover;
+        background-repeat: no-repeat;
+        top: 4%;
+        right: 11%;
+        width: 5vw;
+        height: 9vh;
+        border-radius: 20vh;
+        animation: volar 5s cubic-bezier(0.445, 0.05, 0.55, 0.95) ;
+        z-index: 1;
+        transform: translate(0px,0px);
+        
+    }
+    @keyframes volar {
+        0%{
+           transform: translate(-650px,300px) rotate(20deg);
+           width: 9vw;
+           height: 15vh;
+        }
+        20%{
+            transform: translate(-1300px,-10px) rotate(50deg);
+            width: 7vw;
+            height: 13vh;
+        }
+        35%{
+           transform: translate(-450px,-10px) rotate(90deg);
+           width: 7vw;
+           height: 13vh;
+        }
+        60%{
+           transform: translate(-200px,300px) rotate(40deg);
+           width: 6vw;
+           height: 11vh;
+        }
+        80%{
+            transform: translate(-700px,600px) rotate(20deg);
+            width: 6vw;
+            height: 11vh;
+        }
+        100%{
+           transform: translate(0px,0px) rotate(0deg);
+          
+           width: 5vw;
+           height: 9vh;
+        }
+       }
+}
+
+
+
+@keyframes girar-planeta{
+    to{
+        transform:  scale(1) rotate(15deg);
+
+    }
+    50%{
+        transform: scale(1.2) rotate(0deg);
+
+    }
+    from{
+        transform: scale(1) rotate(15deg);
+
+    }
+}
+
+.color{
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgb(255, 255, 255);
+    animation: cambio-color 1s ;
+    z-index: 2;
+}
+@keyframes cambio-color {
+    0%{
+        background-color: rgba(255, 255, 255, 0);
+    }
+    25%{
+        background-color: rgba(255, 255, 255, 0.288);
+    }
+    50%{
+        background-color: rgba(255, 255, 255, 0.473);
+    }
+    75%{
+        background-color: rgba(255, 255, 255, 0.74);
+    }
+    100%{
+        background-color: rgb(255, 255, 255);
+    }
+}
