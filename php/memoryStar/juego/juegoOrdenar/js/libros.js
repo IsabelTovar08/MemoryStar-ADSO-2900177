@@ -424,7 +424,7 @@ function mostrarResultadosFinales() {
 }
 function redirigir(){
   setTimeout(() => {
-    window.location.href=("../../antesLogin.html")
+    window.location.href=("../../index.html")
   }, 2000);
 }
 
