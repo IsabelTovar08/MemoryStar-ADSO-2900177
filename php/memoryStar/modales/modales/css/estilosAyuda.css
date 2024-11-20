@@ -41,14 +41,14 @@
     height: auto;
     position: absolute;
     right: 2%;
-    background-color: #e74c3c; /* Fondo rojo vivo */
+    background-color: #ff0202; /* Fondo rojo vivo */
     border: 2px solid #c0392b; /* Borde rojo oscuro */
     border-radius: 50%; /* Botón redondo */
     transition: transform 0.3s ease, background-color 0.3s ease; /* Transición de transform */
   }
   
   .salir-ayuda:hover {
-    background-color: #f1948a; /* Fondo rosado al pasar el mouse */
+    background-color: #ff0202; /* Fondo rosado al pasar el mouse */
     transform: scale(1.1); /* Aumenta el tamaño al pasar el mouse */
   }
   
@@ -109,6 +109,15 @@
     text-shadow: 1px 1px 2px #2c3e50; /* Sombra de texto para mayor contraste */
   }
   
+  .textoEx {
+    /* text-align: center; */
+    flex-wrap: wrap;
+    font-size: 3vh;
+    line-height: 3vh;
+    font-family: 'Trebuchet MS', Arial, Helvetica, sans-serif;
+    color: #ffffff;
+    text-shadow: 1px 1px 2px #2c3e50; /* Sombra de texto para mayor contraste */
+  }
   /* modal-body */
   .bod {
     display: flex;
