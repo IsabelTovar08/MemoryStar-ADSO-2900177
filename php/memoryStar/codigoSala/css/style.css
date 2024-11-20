@@ -95,8 +95,12 @@ label {
     color: #ffffff;
     font-weight: bold;
 }
-
-input[type="number"], input[type="submit"], input[type="button"] {
+input[type="number"],input[type="text"],h2{
+    color: white;
+    text-shadow: 0px 0px 4px white;
+    margin: 2.5%;
+}
+input[type="number"],input[type="text"], input[type="submit"], input[type="button"] {
     padding: 0.8rem;
     font-size: 1rem;
     border-radius: 4px;
@@ -117,18 +121,18 @@ input[type="button"] {
 input[type="button"]:focus, input[type="button"]:hover {
     border-color: #4cafa7;
 }
-input[type="number"]::-webkit-outer-spin-button,
-input[type="number"]::-webkit-inner-spin-button {
+input[type="number"]::-webkit-outer-spin-button,input[type="text"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button ,input[type="text"]::-webkit-inner-spin-button {
   -webkit-appearance: none;
   margin: 0;
 }
 
-input[type="number"] {
+input[type="number"],input[type="text"] {
   -moz-appearance: textfield;
   background: none;
 
 }
-input[type="number"]::placeholder{
+input[type="number"]::placeholder,input[type="text"]::placeholder{
     color: white;
     text-shadow: 0px 0px 10px white;
 
@@ -274,4 +278,48 @@ input[type="submit"]:hover {
 .atras:hover{
     transition: all 1s ease;
     width: 60px;
+}
+.container-modo-sala{
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    height: 4vh;
+    font-size: .8rem;
+
+}
+.contenedor-sala{
+    border-radius: 10vh;
+  
+    display: flex;
+    height: 100%;
+    justify-content: flex-end;
+    align-items: center;
+    overflow: hidden;
+    box-shadow: 0px 0px 10px #00e3f3;
+    
+}
+
+.unimer-sala{
+    background: #00e3f3;
+    color: black;
+    height: 100%;
+    width: 50%;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+
+}
+
+.crear-sala{
+    background-color: #03192eaf;
+    
+    color:  white;
+    height: 100%;
+    text-align: center;
+    width: 50%;
+    display: flex;
+    justify-content: center;
+
+    align-items: center;
 }
