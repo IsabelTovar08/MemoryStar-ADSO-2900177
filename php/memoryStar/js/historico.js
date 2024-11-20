@@ -12,19 +12,21 @@ function cargarHistorico() {
             }
 
             if (data.length === 0) {
-                tbody.innerHTML = `<tr><td colspan="4">No hay datos disponibles</td></tr>`;
+                tbody.innerHTML = `<tr><td colspan="4">No hay partidas jugadas </td></tr>`;
                 return;
             }
-            
-            // Crear una fila para cada partida
-            data.forEach(partida => {
+ 
+            data.forEach((partida, index) => {
                 const fila = document.createElement('tr');
                 
+                // La partida más antigua será "Partida 1", la más reciente será la última
+                const numeroPartida = index + 1;
+                
                 fila.innerHTML = `
-                    <td>${partida.partida}</td>
+                    <td>Partida ${numeroPartida}</td>
                     <td>${partida.diamantes}</td>
                     <td>${partida.puntos}</td>
-                    <td>${partida.tiempo}</td>
+                    <td>${partida.tiempo} sg</td>
                 `;
                 
                 tbody.appendChild(fila);
