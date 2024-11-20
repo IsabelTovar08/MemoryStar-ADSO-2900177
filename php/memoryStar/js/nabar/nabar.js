@@ -479,7 +479,7 @@ var modalHTML = `
     <div class="modal-dialog modal-lg card moveer">
         <div class="modal-content color-mapa">
             <div class="tithe titulo">
-                <h1 class="fs-5" id="exampleModalLabel">MAPA DE RECOMPENSAS</h1>
+                <h1 class="fs-5" id="exampleModalLabel">RANKING MEMORYSTAR</h1>
             </div>
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             <div class="modal-body container-tabla-recompensa">
@@ -489,37 +489,18 @@ var modalHTML = `
                             <th>Posición</th>
                             <th>Nombre de Usuario</th>
                             <th>Puntaje Total</th>
-                            <th>Mejor Puntaje</th>
+                            <th>Diamantes</th>
                             <th>Nivel Alcanzado</th>
                             <th>Fecha de Inicio</th>
                         </tr>
                     </thead>
                     <tbody class="cuerpo-tabla-historial">
-                        <tr>
-                            <td>1</td>
-                            <td>EstrellaGaláctica</td>
-                            <td>5000</td>
-                            <td>300</td>
-                            <td>25</td>
-                            <td>2024-11-11</td>
-                        </tr>
-                        <tr>
-                            <td>1</td>
-                            <td>EstrellaGaláctica</td>
-                            <td>5000</td>
-                            <td>300</td>
-                            <td>25</td>
-                            <td>2024-11-11</td>
-                        </tr>
+                      
 
         
                     </tbody>
                 </table>
-                <form onsubmit="return operaciones()">
-                    <label for="txtnumero1" class="tituloMapa">Ingresa tu puntuación:</label>
-                    <input type="number" id="txtnumero1"  oninput="validity.valid || (value='');">
-                    <button type="submit">Enviar</button>
-                </form>
+                
             </div>
             <div class="">
                 <button type="button" class="btn" data-bs-dismiss="modal">Cerrar</button>

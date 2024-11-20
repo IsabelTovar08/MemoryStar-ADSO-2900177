@@ -5,7 +5,7 @@ require '../conexion/conexion.php';
 header('Content-Type: application/json');
 
 $conexion = new conexion();
-$sql = "SELECT puntosacumulados, diamantes FROM usuario WHERE id_usuario = :id";
+$sql = "SELECT puntosacumulados, diamantes, nivel FROM usuario WHERE id_usuario = :id";
 $valores = [':id' => $_SESSION['id_usuario']];
 
 $resultado = $conexion->consulta($sql, $valores);
