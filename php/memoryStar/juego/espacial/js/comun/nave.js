@@ -100,6 +100,8 @@ export class partesNave {
                         // Mostrar el modal
                         const modal = new bootstrap.Modal(document.getElementById('modalRedireccion'));
                         modal.show();
+
+                        
                     
                         // Pausar la escena después de un breve retardo para asegurar que el modal se muestra completamente
                        

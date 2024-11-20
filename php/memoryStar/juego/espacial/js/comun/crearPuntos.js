@@ -1,3 +1,6 @@
+
+export let datosJuego = null;
+
 export class ManejarPuntos {
   constructor(scene) {
     this.scene = scene;
@@ -41,26 +44,28 @@ export class ManejarPuntos {
   aumentarPuntos() {
     this.puntos += 10;
     this.diamantes += 1;
-    this.puntosText.setText(+ this.puntos);
-    this.diamantesText.setText(+ this.diamantes);
-    const datos = this.obtenerDatos();
-    console.log(datos);
+    this.puntosText.setText(this.puntos);
+    this.diamantesText.setText(this.diamantes);
 
+    const datosJuego = this.obtenerDatos();
+    
+    fetch('../../js/comun/pr.php', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(datosJuego)
+    })
+    .then(response => response.json())
+    .then(data => {
+        console.log(data.mensaje);  // Print server response
+    })
+    .catch(error => {
+        console.error('Error al enviar datos:', error);
+    });
 
-    fetch('../../../../procesos/puntuacionmario/datos.php', {
-      method: 'POST',
-      headers: {
-          'Content-Type': 'application/json'
-      },
-      body: JSON.stringify(datos)
-  })
-  .then(response => response.json())
-  .then(data => console.log(data.mensaje)) // Confirmación en consola
-  .catch(error => console.error('Error al enviar datos:', error));
-
-
-
-  }
+    return datosJuego;
+}
 
   resetearTiempo() {
     this.tiempo = 25;
@@ -270,3 +275,6 @@ export class ManejarPuntos {
   }
 
 }
+
+
+
