@@ -38,6 +38,7 @@ export class ManejarPuntos {
       diamantes: this.diamantes,
       puntos: this.puntos,
       tiempo: this.tiempo,
+      archivo: 2
     };
   }
 
@@ -49,20 +50,20 @@ export class ManejarPuntos {
 
     const datosJuego = this.obtenerDatos();
     
-    fetch('../../js/comun/pr.php', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(datosJuego)
-    })
-    .then(response => response.json())
-    .then(data => {
-        console.log(data.mensaje);  // Print server response
-    })
-    .catch(error => {
-        console.error('Error al enviar datos:', error);
-    });
+    // fetch('../../js/comun/pr.php', {
+    //     method: 'POST',
+    //     headers: {
+    //         'Content-Type': 'application/json'
+    //     },
+    //     body: JSON.stringify(datosJuego)
+    // })
+    // .then(response => response.json())
+    // .then(data => {
+    //     console.log(data.mensaje);  // Print server response
+    // })
+    // .catch(error => {
+    //     console.error('Error al enviar datos:', error);
+    // });
 
     return datosJuego;
 }

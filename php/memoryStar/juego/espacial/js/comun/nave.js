@@ -10,6 +10,7 @@ export class partesNave {
         this.initGraphics();
         this.addPartesNave();
         this.adjustForMobile();
+        // this.manejarPuntos = new ManejarPuntos(this);
     }
 
     // Métodos de la clase
@@ -123,6 +124,25 @@ export class partesNave {
     }
 
     redirigir() {
-        window.location.href = "../pruebaNave.html";
+        //Obtener datos del juego de la escena
+        const datosJuego = this.scene.manejoPuntos.obtenerDatos();
+        
+        fetch('../../../../procesos/puntuacionmario/datos.php', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(datosJuego)
+        })
+        .then(response => response.json())
+        .then(data => {
+            console.log(data.mensaje);
+            console.log('envidado 2')
+            window.location.href = "../pruebaNave.html";
+        })
+        .catch(error => {
+            console.error('Error al enviar datos:', error);
+            window.location.href = "../pruebaNave.html";
+        });
     }
 }
