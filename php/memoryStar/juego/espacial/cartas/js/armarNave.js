@@ -172,7 +172,40 @@ document.addEventListener("DOMContentLoaded", function () {
         </div>
     `;
 
+
+    puntosfinal(puntuacion,rubis,contador);
+
     document.body.appendChild(modalFinal);
     new bootstrap.Modal(modalFinal, { backdrop: "static" }).show();
+
+
+
   }
 });
+
+
+
+function puntosfinal( puntuacion, rubis,contador){
+  const datosJuego = {
+    puntos:puntuacion ,
+    diamantes: rubis,
+    tiempo: contador,
+    archivo: 3
+};
+    fetch('../../../procesos/puntuacionmario/datos.php', {
+      method: 'POST',
+      headers: {
+          'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(datosJuego)
+  })
+  .then(response => response.json())
+  .then(data => {
+      console.log(data.mensaje);
+      console.log('enviado 3')
+  })
+  .catch(error => {
+      console.error('Error al enviar datos:', error);
+      
+  });
+}

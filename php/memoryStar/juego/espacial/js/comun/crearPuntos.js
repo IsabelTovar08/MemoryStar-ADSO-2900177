@@ -38,6 +38,7 @@ export class ManejarPuntos {
       diamantes: this.diamantes,
       puntos: this.puntos,
       tiempo: this.tiempo,
+      archivo: 2
     };
   }
 

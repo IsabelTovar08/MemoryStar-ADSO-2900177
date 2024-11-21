@@ -127,7 +127,7 @@ export class partesNave {
         //Obtener datos del juego de la escena
         const datosJuego = this.scene.manejoPuntos.obtenerDatos();
         
-        fetch('../../js/comun/pr.php', {
+        fetch('../../../../procesos/puntuacionmario/datos.php', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -137,6 +137,7 @@ export class partesNave {
         .then(response => response.json())
         .then(data => {
             console.log(data.mensaje);
+            console.log('envidado 2')
             window.location.href = "../pruebaNave.html";
         })
         .catch(error => {
