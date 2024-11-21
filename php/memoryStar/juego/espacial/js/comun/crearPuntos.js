@@ -49,20 +49,20 @@ export class ManejarPuntos {
 
     const datosJuego = this.obtenerDatos();
     
-    fetch('../../js/comun/pr.php', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(datosJuego)
-    })
-    .then(response => response.json())
-    .then(data => {
-        console.log(data.mensaje);  // Print server response
-    })
-    .catch(error => {
-        console.error('Error al enviar datos:', error);
-    });
+    // fetch('../../js/comun/pr.php', {
+    //     method: 'POST',
+    //     headers: {
+    //         'Content-Type': 'application/json'
+    //     },
+    //     body: JSON.stringify(datosJuego)
+    // })
+    // .then(response => response.json())
+    // .then(data => {
+    //     console.log(data.mensaje);  // Print server response
+    // })
+    // .catch(error => {
+    //     console.error('Error al enviar datos:', error);
+    // });
 
     return datosJuego;
 }
