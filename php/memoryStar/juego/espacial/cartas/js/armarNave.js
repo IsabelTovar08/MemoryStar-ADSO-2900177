@@ -1,3 +1,8 @@
+function redirigir(){
+  setTimeout(() => {
+    window.location.href=("../../../index.html")
+  }, 2000);
+}
 document.addEventListener("DOMContentLoaded", function () {
   const btnVeri = document.getElementById("verificar");
   let ordenCorrect = []; 
@@ -159,7 +164,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 </div>
     
                 <div class="contenedor-botonTsolo">
-                    <button class="botonTsolo" onclick="salir()" style="margin-left: 20px;">
+                    <button class="botonTsolo" onclick="redirigir()" style="margin-left: 20px;">
                         Salir
                     </button>
                 </div>
@@ -167,7 +172,40 @@ document.addEventListener("DOMContentLoaded", function () {
         </div>
     `;
 
+
+    puntosfinal(puntuacion,rubis,contador);
+
     document.body.appendChild(modalFinal);
     new bootstrap.Modal(modalFinal, { backdrop: "static" }).show();
+
+
+
   }
 });
+
+
+
+function puntosfinal( puntuacion, rubis,contador){
+  const datosJuego = {
+    puntos:puntuacion ,
+    diamantes: rubis,
+    tiempo: contador,
+    archivo: 3
+};
+    fetch('../../../procesos/puntuacionmario/datos.php', {
+      method: 'POST',
+      headers: {
+          'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(datosJuego)
+  })
+  .then(response => response.json())
+  .then(data => {
+      console.log(data.mensaje);
+      console.log('enviado 3')
+  })
+  .catch(error => {
+      console.error('Error al enviar datos:', error);
+      
+  });
+}

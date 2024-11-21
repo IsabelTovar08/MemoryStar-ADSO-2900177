@@ -13,11 +13,12 @@ $conexion = new Conexion();
 $usuario_id = $_SESSION['id_usuario'];
 
 try {
-    $sql = "SELECT CONCAT('Partida ', ROW_NUMBER() OVER (ORDER BY idpuntos DESC)) AS partida,
-                   tiempo, puntos, diamantes
-            FROM puntos 
-            WHERE usuario_id = :id 
-            ORDER BY idpuntos DESC";
+    $sql = "SELECT CONCAT('Partida ', RANK() OVER (ORDER BY idpuntos ASC)) AS partida,
+               tiempo, puntos, diamantes
+        FROM puntos 
+        WHERE usuario_id = :id 
+        ORDER BY idpuntos ASC";
+
     
     $valores = [':id' => $usuario_id];
     $resultado = $conexion->consulta($sql, $valores);

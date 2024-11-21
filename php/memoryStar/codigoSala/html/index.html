@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ingresar código</title>
-    <link rel="stylesheet" href="../css/style.css">
     <script  src="../js/js.js" defer></script>
+    <link rel="stylesheet" href="../css/style.css">
 </head>
 <body>
     <div class="regresar">
@@ -13,25 +13,40 @@
     </div>
 
 
-    <div class="puerta-arriba">
+    <!-- <div class="puerta-arriba">
             <div class="img-1"></div>
-    </div>
+    </div> -->
     <div class="container">
    
         <div class="top borde-luz"></div>
         <div class="right borde-luz"></div>
         <div class="bottom borde-luz"></div>
         <div class="left borde-luz"></div>
-        <form action="" onsubmit="numero(event)">
+        <form action="" onsubmit="numero(event)" class="formulario">
+        <div class="container-modo-sala">
+            <div class="contenedor-sala" >
+                
+                <div class="unimer-sala" >
+                    <b>unirme a sala</b>
+                </div>
+                <div class="crear-sala" >
+                    <b>crear sala</b>
+                </div>
+            </div>
+        </div>
+        <div  class="caja ">
+
             <label for="codigo">Código de la sala</label>
             <input type="number" value="" id="codigo" placeholder="Código" maxlength="6" minlength="1" oninput="validity.valid || (value='');">
             <input type="submit" value="Enviar">
             <p class="mensaje"></p>
+        </div>
+        
         </form>
     </div>
-    <div class="puerta-abajo">
+    <!-- <div class="puerta-abajo">
         <div class="img-2"></div>
 
-    </div>
+    </div> -->
 </body>
 </html>

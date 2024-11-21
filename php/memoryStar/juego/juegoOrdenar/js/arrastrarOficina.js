@@ -260,6 +260,7 @@ function mostrarResultadosRonda(aciertos, desaciertos) {
   document.getElementById("tiempo1").innerHTML = `00:${contador<10?'0':''}${contador}`;
   document.getElementById("aciertos").innerHTML = `Aciertos:${aciertos / 100}`;
   document.getElementById("desaciertos").innerHTML = `Fallos:${desaciertos}`;
+  document.getElementById("nRonda").innerHTML= `PUNTUACION RONDA ${rondaActual}`;
 
   if (aciertos === puntajePerfecto) {
     rubis = 5;
@@ -398,7 +399,7 @@ function mostrarResultadosFinales() {
               </div>
   
               <div class="contenedor-botonTsolo">
-                  <button class="botonTsolo" onclick="salir()" style="margin-left: 20px;">
+                  <button class="botonTsolo" onclick="redirigir()">
                       Salir
                   </button>
               </div>
@@ -412,6 +413,11 @@ function mostrarResultadosFinales() {
 
   enviarPuntuacion(puntajeTotal, tiempoPromedio, totalRubis);
   obtenerDatosUsuario();
+}
+function redirigir(){
+  setTimeout(() => {
+    window.location.href=("../../index.html")
+  }, 2000);
 }
 
 async function obtenerDatosUsuario() {

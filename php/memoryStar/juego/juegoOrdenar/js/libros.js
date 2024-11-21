@@ -287,6 +287,8 @@ function finalizarRonda() {
   totalRubis += rubis;
   document.getElementById("rubis").innerHTML = `+${rubis}`;
 
+  document.getElementById("nRonda").innerHTML= `PUNTUACION RONDA ${rondaActual}`;
+
   const modal = new bootstrap.Modal(
     document.getElementById("tablapuntuacionsolo")
   );
@@ -412,7 +414,11 @@ function mostrarResultadosFinales() {
               </div>
   
               <div class="contenedor-botonTsolo">
+<<<<<<< HEAD
                   <button class="botonTsolo" style="margin-left: 20px;">
+=======
+                  <button class="botonTsolo" onclick="redirigir()">
+>>>>>>> 889677925b9da4341f41c3c5adda0d7c5fe63e60
                       Salir
                   </button>
               </div>
@@ -426,10 +432,97 @@ function mostrarResultadosFinales() {
   enviarPuntuacion(puntajeTotal, tiempoPromedio, totalRubis);
   // obtenerDatosUsuario();
 }
+<<<<<<< HEAD
 function redirigir() {
   window.location.href = ("../../index.html");
 }
 
+=======
+function redirigir(){
+  setTimeout(() => {
+    window.location.href=("../../antesLogin.html")
+  }, 2000);
+}
+
+async function obtenerDatosUsuario() {
+  const rutas = [
+    "procesos/login/obtenerUsuario.php",
+    "../procesos/login/obtenerUsuario.php",
+    "../../procesos/login/obtenerUsuario.php",
+    "../../../procesos/login/obtenerUsuario.php",
+    // Añade más rutas si es necesario
+  ];
+
+  let datosUsuario = null;
+
+  for (let ruta of rutas) {
+    try {
+      const response = await fetch(ruta);
+      if (response.ok) {
+        const data = await response.json();
+        if (data.success) {
+          datosUsuario = data;
+          break; // Salir del bucle si la solicitud fue exitosa
+        }
+      }
+    } catch (error) {
+      console.error(
+        `Error al obtener los datos del usuario desde ${ruta}:`,
+        error
+      );
+    }
+  }
+
+  if (datosUsuario) {
+    const nombreUsuarioElement = document.querySelectorAll(".usuarioPerfill");
+    nombreUsuarioElement.forEach((elemento) => {
+      elemento.innerHTML = datosUsuario.usuario;
+    });
+  }
+}
+
+function enviarPuntuacion(puntajeTotal, tiempoPromedio, totalRubis) {
+  const arrPuntos = {
+      puntajeTotal: puntajeTotal,
+      tiempoPromedio: tiempoPromedio,
+      totalRubis: totalRubis,
+  };
+
+  console.log('Enviando datos:', arrPuntos);
+
+  fetch("../../procesos/puntuacion/recibirPuntuacion.php", {
+      method: "POST",
+      headers: {
+          "Content-Type": "application/json",
+      },
+      body: JSON.stringify(arrPuntos), 
+  })
+  .then(response => {
+      if (!response.ok) {
+          return response.json().then(err => Promise.reject(err));
+      }
+      return response.json();
+  })
+  .then(data => {
+      console.log('Respuesta recibida:', data);
+      if (data.success) {
+          console.log('Datos procesados correctamente:', data.datos);
+          // Aquí puedes hacer algo con la respuesta exitosa
+      } else {
+          alert(data.mensaje || 'Error al procesar los datos');
+      }
+  })
+  .catch(error => {
+      console.error("Error:", error);
+      alert("Ocurrió un error al enviar la puntuación: " + 
+            (error.mensaje || error.message || 'Error desconocido'));
+  });
+}
+
+// Función para reiniciar el juego
+function salir() {}
+
+>>>>>>> 889677925b9da4341f41c3c5adda0d7c5fe63e60
 // Inicialización del juego
 window.addEventListener("DOMContentLoaded", () => {
   detectarNivel();

@@ -1,3 +1,6 @@
+
+export let datosJuego = null;
+
 export class ManejarPuntos {
   constructor(scene) {
     this.scene = scene;
@@ -33,19 +36,37 @@ export class ManejarPuntos {
   obtenerDatos() {
     return {
       diamantes: this.diamantes,
-      puntuacion: this.puntos,
+      puntos: this.puntos,
       tiempo: this.tiempo,
+      archivo: 2
     };
   }
 
   aumentarPuntos() {
     this.puntos += 10;
     this.diamantes += 1;
-    this.puntosText.setText(+ this.puntos);
-    this.diamantesText.setText(+ this.diamantes);
-    const datos = this.obtenerDatos();
-    console.log(JSON.stringify(datos));
-  }
+    this.puntosText.setText(this.puntos);
+    this.diamantesText.setText(this.diamantes);
+
+    const datosJuego = this.obtenerDatos();
+    
+    // fetch('../../js/comun/pr.php', {
+    //     method: 'POST',
+    //     headers: {
+    //         'Content-Type': 'application/json'
+    //     },
+    //     body: JSON.stringify(datosJuego)
+    // })
+    // .then(response => response.json())
+    // .then(data => {
+    //     console.log(data.mensaje);  // Print server response
+    // })
+    // .catch(error => {
+    //     console.error('Error al enviar datos:', error);
+    // });
+
+    return datosJuego;
+}
 
   resetearTiempo() {
     this.tiempo = 25;
@@ -255,3 +276,6 @@ export class ManejarPuntos {
   }
 
 }
+
+
+
