@@ -52,7 +52,7 @@ var modalHTML = `
     </ul>
     <ul class="nav justify-content-end">
         <li class="nav-item usuario">
-            <img src="img/iconos/pCompleta2.png" alt="user" class="derecho iconos efectosIconos pantalla" id="pCompleta">
+            <img src="img/iconos/pCompleta3.png" alt="user" class="derecho iconos efectosIconos" id="pCompleta">
         </li>
     </ul>
 </div>

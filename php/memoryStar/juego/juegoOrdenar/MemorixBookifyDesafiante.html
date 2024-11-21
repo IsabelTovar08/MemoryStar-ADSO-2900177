@@ -23,6 +23,13 @@
 
 <body style="background-image: url('img/fondoLibro.png');">
     <div class="container-fuid">
+        <img src="../../img/iconos/pCompleta3.png" alt="pp" id="pCompleta" style="position: absolute;
+        width: 10vh;
+        height: auto;
+        top: 40%;
+        right: 1%;
+        ">
+
         <h1>Bienvenido al Juego</h1>
         <div id="scoreboard">
             <h3>Puntuaciones</h3>
@@ -129,6 +136,7 @@
     </script> -->
     <script src="js/libros.js"></script>
     <script src="../../js/session.js"></script>
+    <script src="../../js/pantalla.js"></script>
     
     <script src="js/Sortable.min.js"></script>
     <script src="../../bootstrap/js/bootstrap.js"></script>
@@ -143,6 +151,16 @@
     <script src="../js/comprat.js"></script>
     <script src="../js/fotosperfil.js"></script> -->
     <script src="js/socket/socket.js"></script>
+    <script>
+        window.addEventListener('beforeunload', (event) => {
+            // Evita el comportamiento predeterminado
+            event.preventDefault();
+
+            // Establece un mensaje de advertencia
+            event.returnValue = '¿Estás seguro de que deseas salir de esta página?';
+        });
+
+    </script>
 
 
 

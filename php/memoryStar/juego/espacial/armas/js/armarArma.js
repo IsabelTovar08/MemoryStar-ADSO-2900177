@@ -13,10 +13,7 @@ document.addEventListener("DOMContentLoaded", function () {
   let rubis = 0;
   let contador = 0;
 
-  const modalElement = document.getElementById("armarArma");
-  modalElement.addEventListener("shown.bs.modal", function () {
-    timerInterval = tempo(duracion, tiempo);
-  });
+  timerInterval = tempo(duracion,tiempo)
 
   interact(".arrastrable").draggable({
     listeners: {
@@ -105,7 +102,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     contador = tiempoTranscurrido;
   }
-
+  const perdio = document.getElementById("perdiste")
   function tempo(pduracion, elemento) {
     let duracion = pduracion;
     const intervalo = setInterval(() => {
@@ -117,7 +114,14 @@ document.addEventListener("DOMContentLoaded", function () {
         puntuacion = 0;
         rubis = 0;
         contador = 20;
-        mostrarTabla();
+
+
+        var perdistee = new bootstrap.Modal(document.getElementById("perdioo"));
+        perdistee.show();
+        perdio.addEventListener("click", () => {
+          window.location.href =
+            "index.html";
+        });
       }
     }, 1000);
     return intervalo;

@@ -692,6 +692,7 @@ h1 {
   bottom: 0;
   width: 25%;
   margin-bottom: 2%;
+  z-index: -1;
 }
 
 .robot img {
@@ -1287,9 +1288,9 @@ form button:hover {
   background-color: #7c4dff; /* Morado más claro */
 }
 
-/* @media (min-height: 450px) {
-  .pantalla {
-    display: none;
-    z-index: 10;
-  }
-} */
+  /* @media (min-height: 450px) {
+    .pantalla {
+      display: none;
+      z-index: 10;
+    }
+  } */
