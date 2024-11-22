@@ -171,27 +171,27 @@ class MyScene extends Phaser.Scene {
       this.instanciaPartesNave.recolectarObjeto(this.object4, this.instanciaPartesNave.object4Collected, "modalObjeto4", this.instanciaPartesNave.cubierta, () => { this.instanciaPartesNave.object4Collected = true; });
 
       // ../../espacial/index.html
-      const datos = this.manejoPuntos.obtenerDatos();
-      const datosJSON = JSON.stringify(datos);
+      // const datos = this.manejarPuntos.obtenerDatos();
+      // const datosJSON = JSON.stringify(datos);
 
-      // Puedes usar este JSON según necesites
-      console.log(datosJSON);
+      // // Puedes usar este JSON según necesites
+      // console.log('ptr',datosJSON);
 
-      fetch("../libreria/espacial.php", {
-         method: "POST",
-         headers: {
-            "Content-Type": "application/json",
-         },
-         body: datosJSON,
-      })
-         .then((response) => {
-            if (!response.ok) {
-               throw new Error("Network response was not ok " + response.statusText);
-            }
-            return response.json();
-         })
-         .then((data) => console.log(data))
-         .catch((error) => console.error("Error:", error));
+      // fetch("../libreria/espacial.php", {
+      //    method: "POST",
+      //    headers: {
+      //       "Content-Type": "application/json",
+      //    },
+      //    body: datosJSON,
+      // })
+      //    .then((response) => {
+      //       if (!response.ok) {
+      //          throw new Error("Network response was not ok " + response.statusText);
+      //       }
+      //       return response.json();
+      //    })
+      //    .then((data) => console.log(data))
+      //    .catch((error) => console.error("Error:", error));
 
 
       this.physics.world.setBounds(0, config.height - 1500, 1850, 1500);

@@ -1,19 +1,17 @@
 let socket;
 let userName;
-let roomCode;
+let codigoSala;
 let nombreSala;
 let capacidadSala;
-let juegoIniciado = false;
+let id_de_usuario;
 let notificationsContainer = document.getElementById('usuarios');
 let abandono = document.getElementById('notifications-container');
 const chat = document.getElementById('chat');
 const notification = document.getElementById('notification');
 const audio = new Audio('notificacion.mp3');
 const audioChat = new Audio('chat.mp3');
- let jugadores = [];
-// const boton_unirse = document.getElementById('unirse');
+let jugadores = [];
 
-// Crear los botones de sala
 const createRoomButton = document.createElement('button');
 createRoomButton.innerText = "Crear Sala";
 createRoomButton.classList.add('button-room');
@@ -36,64 +34,67 @@ buttonContainer.appendChild(endChatButton);
 document.body.insertBefore(buttonContainer, document.body.firstChild);
 
 
-async function obtenerDatosUsuario(callback) {
+async function obtenerDatosUsuario(callback, manejarError) {
     try {
         const response = await fetch('../procesos/login/obtenerUsuario.php');
         if (response.ok) {
             const data = await response.json();
-            if (data.success) {
-                callback(data);  // Llamada al callback con los datos obtenidos
+            if (data.success && data.usuario) {
+                callback(data); // Llama al callback con los datos obtenidos
+            } else {
+                manejarError(); // Llama al manejador de errores
             }
+        } else {
+            console.log(`Error al obtener datos del servidor: Código ${response.status}`);
         }
     } catch (error) {
-        console.error("Error al obtener los datos del usuario:", error);
+        console.log(`Error al obtener datos del usuario: ${error.message}`);
     }
 }
 
-
-
-
-// Event Listeners para los botones
 createRoomButton.addEventListener('click', () => {
-    obtenerDatosUsuario((data) => {
-        // Solicita el nombre y la capacidad de la sala
-        const nombreSala = prompt("Ingresa el nombre de la sala:");
-        const capacidadSala = prompt("Ingresa la capacidad de la sala:");
+    obtenerDatosUsuario(
+        (data) => {
+            const nombreSala = prompt("Ingresa el nombre de la sala:");
+            const capacidadSala = prompt("Ingresa la capacidad de la sala:");
+            if (nombreSala && capacidadSala) {
+                socket.send(JSON.stringify({
+                    type: 'crearSala',
+                    usuario: data.usuario,
+                    id_usuario: data.id_usuario,
+                    nombreSala: nombreSala,
+                    capacidadSala: capacidadSala
+                }));
 
-        if (nombreSala && capacidadSala) {
-            // Envía todos los datos necesarios en el evento de creación de sala
-            socket.send(JSON.stringify({
-                type: 'createRoom',
-                usuario: data.usuario,
-                id_usuario: data.id_usuario,
-                roomName: nombreSala,
-                roomCapacity: capacidadSala // Enviar la capacidad de la sala
-            }));
-
-        } else {
-            alert("Por favor, ingresa el nombre y la capacidad de la sala.");
+            } else {
+                alert("Por favor, ingresa el nombre y la capacidad de la sala.");
+            }
+        },
+        () => {
+            alert("Debes iniciar sesión para continuar."); // Acción personalizada
         }
-    });
+    );
 });
-function startGame() {
-    socket.send(JSON.stringify({
-        type: 'redirectToGame',
-        usuario: userName,
-        url: '../../juego/juegoOrdenar/MemorixBookifyDesafiante.html'
-    }));
-}
+
 
 joinRoomButton.addEventListener('click', () => {
-    userName = prompt("Por favor, ingresa tu nombre:");
-    if (userName) {
-        const code = prompt("Ingresa el código de la sala:");
-        if (code) {
-            socket.send(JSON.stringify({
-                type: 'joinRoom',
-                roomCode: code.toUpperCase()
-            }));
+    obtenerDatosUsuario(
+        (data) => {
+            const code = prompt("Ingresa el código de la sala:");
+            if (code) {
+                socket.send(JSON.stringify({
+                    type: 'unirseSala',
+                    codigoSala: code.toUpperCase(),
+                    id_usuario: data.id_usuario
+                }));
+            } else {
+                alert("Por favor, ingresa el código de la sala.");
+            }
+        },
+        () => {
+            alert("Debes iniciar sesión para continuar."); // Acción personalizada
         }
-    }
+    );
 });
 
 
@@ -110,11 +111,11 @@ function initializeSocket() {
         let data = JSON.parse(event.data);
 
         switch (data.type) {
-            case 'roomCreated':
-                handleRoomCreated(data);
+            case 'salaCreada':
+                handlecrearSala(data);
                 console.log(data)
                 break;
-            case 'roomJoined':
+            case 'unionExitosa':
                 handleRoomJoined(data);
                 console.log(data)
                 break;
@@ -151,22 +152,19 @@ function initializeSocket() {
             case 'chatEnded':
                 handleChatEnded();
                 break;
-            case 'history':
-                console.log(data.history)
-                data.history.forEach(notification => {
-                    historial(notification.user, notification.message, notification.isAdmin, notification.state);
+            case 'historial':
+                data.historial.forEach(notification => {
+                    historial(notification.usuario, notification.message, notification.isAdmin, notification.estado, notification.idUsuario);
                 });
                 break;
-                // else if (data.type === 'playerList') {
-                //     jugadores = data.jugadores;  // Actualizamos la lista de jugadores
-                // } else if (data.type === 'gameStarted') {
-                //     // Redirigimos al juego con los nombres de los jugadores en la URL
-                //     const jugadoresString = encodeURIComponent(JSON.stringify(jugadores));
-                //     window.location.href = `juego.html?modo=multijugador&jugadores=${jugadoresString}`;
-            case 'gameStarted':
-                    // Redirige al juego con WebSocket activo
-                    juegoIniciado = true;
-                    window.location.href = '../juego/juegoOrdenar/MemorixBookifyDesafiante.html?modo=multijugador';
+            case 'startGame':
+                sessionStorage.setItem('gameData', JSON.stringify(data));
+                sessionStorage.setItem('codigoSala', codigoSala); // Guarda el código de la sala
+                // sessionStorage.setItem('nombreUsuario', nombreUsuario);
+                console.log(data)
+                document.cookie = `idUsuario=${encodeURIComponent(id_de_usuario)}; path=/`;
+                window.location.href = `../juego/juegoOrdenar/MemorixBookifyDesafiante.html?modo=multijugador&codigo=${codigoSala}`;
+                break;
         }
     };
 
@@ -181,81 +179,67 @@ function initializeSocket() {
     };
 }
 
-function handleRoomCreated(data) {
-
-    roomCode = data.roomCode;
-    alert(`Sala creada! Código: ${roomCode}`);
-    if (data.isHost) {
+function handlecrearSala(data) {
+    codigoSala = data.codigoSala;
+    alert(`Sala creada! Código: ${codigoSala}`);
+    if (data.esAnfitrion) {
         endChatButton.style.display = "block";
     }
-    obtenerDatosUsuario((data) => {
-        socket.send(JSON.stringify({
-            type: 'setUserName',
-            usuario: data.usuario,
-            id_usuario: data.id_usuario
-
-        }));
-    });
+    obtenerUsuario(data);
     console.log(data)
     const nombre_sala = document.getElementById('nombre_sala');
-    nombre_sala.textContent = data.roomName;
+    nombre_sala.textContent = data.nombreSala;
     const codigo_sala = document.getElementById('codigo_sala');
-    codigo_sala.textContent = data.roomCode;
+    codigo_sala.textContent = data.codigoSala;
     const capacidad_sala = document.querySelector('.maximo');
-    capacidad_sala.textContent = `/${data.roomCapacity}`;
+    capacidad_sala.textContent = `/${data.capacidadSala}`;
     createRoomButton.style.display = 'none';
     joinRoomButton.style.display = 'none';
 
 
 }
-endChatButton.addEventListener('click', () => {
-    socket.send(JSON.stringify({
-         type: 'startGame', 
-         roomCode: roomCode}));
-         console.log(roomCode)
-    // startGame();
 
-});
-function handleRoomJoined(data) {
-    roomCode = data.roomCode;
-    alert(`Te has unido a la sala ${roomCode}`);
+function obtenerUsuario(data) {
     socket.send(JSON.stringify({
-        type: 'setUserName',
-        userName: userName
+        type: 'manejoUnion',
+        usuario: data.usuario,
+        id_usuario: data.id_usuario
+
     }));
-    createRoomButton.style.display = 'none';
-    joinRoomButton.style.display = 'none';
+}
+function handleRoomJoined(data) {
+    codigoSala = data.codigoSala;
+
+    obtenerDatosUsuario((data) => {
+            alert(`Te has unido a la sala ${codigoSala}`);
+            // socket.send(JSON.stringify({
+            //     type: 'manejoUnion',
+            //     usuario: userName
+            // }));
+            obtenerUsuario(data);
+            createRoomButton.style.display = 'none';
+            joinRoomButton.style.display = 'none';
+        },
+        () => {
+            alert("Por favor inicia sesión para continuar.")
+
+        }
+    );
 }
 
-// function handleChatEnded() {
-//     alert("El chat ha finalizado.");
-//     window.location.href = "../juego/espacial/cartas/juegoPixel/index.html";
-// }
-
-
-// ... (mantener las funciones existentes de manejo de mensajes y notificaciones) ...
-
-function leerMensaje(texto) {
-    console.log("Leyendo mensaje:", texto); // Verificar si esta línea se ejecuta
-    const mensaje = new SpeechSynthesisUtterance(texto); // Crear un objeto SpeechSynthesisUtterance con el texto
-    window.speechSynthesis.speak(mensaje); // Leer el texto
-}
-
-// Asegúrate de que el evento se está configurando correctamente
-document.getElementById('messages').addEventListener('click', (event) => {
-    console.log("Elemento clickeado:", event.target); // Verifica qué elemento ha sido clickeado
-    if (event.target && event.target.classList.contains('me') || event.target.classList.contains('other')) {
-        leerMensaje(event.target.innerText);  // Leer el mensaje al hacer clic en él
-    }
-});
-
-// Funciones adicionales para el manejo de notificaciones de usuarios y mensajes
 function createUserNotification(data) {
+    const name = document.getElementById('name');
+    name.textContent = data.usuario;
+    // Si ya existe un 'idUsuario' en el localStorage, no lo sobreescribimos.
+    if (!localStorage.getItem("idUsuario")) {
+        localStorage.setItem("idUsuario", data.idUsuario); // Guardar el idUsuario solo si no está guardado
+    }
+
     const numero = document.querySelector('.numero-usuario');
-    numero.textContent = data.userCount;
+    numero.textContent = data.contadorUsuarios;
     const connectionDiv = document.createElement('div');
     connectionDiv.classList.add('contenedor-usuario');
-    connectionDiv.setAttribute('data-username', data.user); // Añadir identificador único
+    connectionDiv.setAttribute('data-username', data.usuario); // Añadir identificador único
     const roleText = data.isAdmin ? "<span style='font-weight: bold;'>(Administrador)</span>" : "";
 
     connectionDiv.innerHTML = `
@@ -268,10 +252,11 @@ function createUserNotification(data) {
             <div class="contexto-usuario">
                 <div style="font-size: .8em;">
                     <div class="nombre">
-                        <h2>${data.user}</h2>
+                        <h2>${data.usuario}</h2>
                     </div>
                     <div class="descripcion">
-                        <h6>${roleText} ${data.state}</h6>
+                        <h6>${roleText} ${data.estado}</h6>
+                        <h6 id="id_user">${data.idUsuario}</h6>
                     </div>
                 </div>
                 <div class="conte-diamante-img">
@@ -280,10 +265,26 @@ function createUserNotification(data) {
                     </div>
                 </div>
             </div>
-        </div>`
-        ;
+        </div>`;
+
+    // Agregar la notificación al contenedor
     notificationsContainer.appendChild(connectionDiv);
 }
+
+endChatButton.addEventListener('click', () => {
+    // Recuperar el idUsuario desde localStorage antes de enviarlo
+    const idUsuario = localStorage.getItem('idUsuario'); // Obtenerlo de localStorage
+
+    // Enviar la solicitud con el idUsuario correcto
+    socket.send(JSON.stringify({
+        type: 'iniciarjuego',
+        codigoSala: codigoSala,
+        id_user: idUsuario // Usar el idUsuario desde localStorage
+    }));
+
+    console.log(codigoSala);
+    // startGame();
+});
 
 function notificacionNuevo(message) {
     const connectionDiv = document.createElement('div');
@@ -318,10 +319,12 @@ function usuarioAbandono(data) {
     abandono.appendChild(disconnectionDiv);
 }
 
-function historial(user, message, isAdmin, state) {
+function historial(usuario, message, isAdmin, estado, idUsuario) {
     const connectionDiv = document.createElement('div');
     connectionDiv.classList.add('contenedor-usuario');
     const roleText = isAdmin ? "<span style='font-weight: bold;'>(Administrador)</span>" : "";
+    // console.log(data)
+
 
     connectionDiv.innerHTML = `
         <div class="usuario">
@@ -333,10 +336,11 @@ function historial(user, message, isAdmin, state) {
             <div class="contexto-usuario">
                 <div style="font-size: .8em;">
                     <div class="nombre">
-                        <h2>${user}</h2>
+                        <h2>${usuario}</h2>
                     </div>
                     <div class="descripcion">
-                        <h6>${roleText} ${state}</h6>
+                        <h6>${roleText} ${estado}</h6>
+                        <h6>${idUsuario}</h6>
                     </div>
                 </div>
                 <div class="conte-diamante-img">
@@ -350,7 +354,6 @@ function historial(user, message, isAdmin, state) {
     notificationsContainer.appendChild(connectionDiv);
 }
 
-// Función para manejar el envío de mensajes
 function enviarMensaje() {
     let message = document.getElementById('message').value.trim();
     document.getElementById('message').value = '';
@@ -360,39 +363,46 @@ function enviarMensaje() {
         text.classList.add('me');
         text.innerText = message;
         document.getElementById('messages').appendChild(text);
-        socket.send(JSON.stringify({ type: 'chat', message: message, from: userName }));
-        // leerMensaje(message);
+        obtenerDatosUsuario(
+            (data) => {
+                socket.send(JSON.stringify({
+                    type: 'chat',
+                    message: message,
+                    from: data.usuario
+                }));
+            },
+            () => {
+                socket.send(JSON.stringify({
+                    type: 'chat',
+                    message: message,
+                    from: userName
+                }));
+            }
+        );
         scrollToBottom();
     }
+
 }
 
 
 document.getElementById('send').addEventListener('click', () => {
     enviarMensaje();
 });
-// Enviar mensaje al presionar "Enter"
 document.getElementById('message').addEventListener('keypress', (event) => {
     if (event.key === 'Enter') {
-        enviarMensaje();  // Llamar a la función de envío de mensaje
+        enviarMensaje();
     }
 });
 
-// Enviar mensaje al hacer clic en el botón "Send"
 document.getElementById('messages').addEventListener('click', function () {
-
-    // Crear una nueva instancia de SpeechSynthesisUtterance
     const mensaje = new SpeechSynthesisUtterance(texto);
 
-    // Opciones de la voz (puedes personalizarla)
-    mensaje.lang = 'es-ES'; // Establecer idioma
-    mensaje.rate = 1; // Velocidad de la voz
-    mensaje.pitch = 1; // Tono de la voz
-    mensaje.volume = 1; // Volumen
+    mensaje.lang = 'es-ES';
+    mensaje.rate = 1;
+    mensaje.pitch = 1;
+    mensaje.volume = 1;
 
-    // Reproducir el mensaje
     speechSynthesis.speak(mensaje);
-
-
 });
 function scrollToBottom() {
     const messages = document.getElementById('messages');
@@ -401,5 +411,4 @@ function scrollToBottom() {
     }, 0);
 }
 
-// Inicializar el WebSocket
 initializeSocket();

@@ -25,7 +25,7 @@ async function obtenerDatosUsuario() {
     }
     
     if (datosUsuario) {
-        const nombreUsuarioElement = document.querySelectorAll('.usuarioPerfill');
+        const nombreUsuarioElement = document.querySelectorAll('.usuarioPerfill, .nombre');
         nombreUsuarioElement.forEach(elemento => {
             elemento.
             innerHTML = datosUsuario.usuario;
