@@ -1,0 +1,14 @@
+[
+    {
+        "idUsuario": 30,
+        "usuario": null,
+        "score": 200,
+        "time": 15
+    },
+    {
+        "idUsuario": 32,
+        "usuario": null,
+        "score": 100,
+        "time": 15
+    }
+]

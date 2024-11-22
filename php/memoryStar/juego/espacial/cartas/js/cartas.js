@@ -210,18 +210,46 @@ export class JuegoCartas {
   mostrar() {
     this.stopTimer();
     this.pararTemp();
-    var modal = new bootstrap.Modal(document.getElementById("staticBackdrop"));
-    modal.show();
-    this.siguiente.addEventListener("click", () => {
-      window.location.href =
-        "./juego/espacial/cartas/juegoPixel/planetScapearma tu nave.html";
-    });
-    // this.segundaRonda.style.display = 'flex';
-    this.insertarPuntos.textContent = this.puntoss;
-    this.insertarDiamantes.innerHTML = `${this.diamantess}<img src="modales/modales/img/tablas/rubipuntaje.png"
-                            style="width: 4vh;height: auto;">`;
-    this.insertarTiempo.textContent = this.formatTime(this.seconds);
-  }
+
+    // Datos a enviar
+    const datosJuego = {
+        puntos: this.puntoss,
+        diamantes: this.diamantess,
+        tiempo: this.seconds,
+        archivo: 1
+    };
+
+    // Enviar datos al servidor
+    fetch("procesos/puntuacionmario/datos.php", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify(datosJuego),
+    })
+        .then((response) => response.json())
+        .then((data) => {
+            console.log("Datos  1 enviados exitosamente:", data);
+
+            // Redirigir después de enviar los datos
+            var modal = new bootstrap.Modal(document.getElementById("staticBackdrop"));
+            modal.show();
+            this.siguiente.addEventListener("click", () => {
+                window.location.href =
+                    "./juego/espacial/cartas/juegoPixel/planetScapearma tu nave.html";
+            });
+
+            // Actualizar el modal con datos finales
+            this.insertarPuntos.textContent = this.puntoss;
+            this.insertarDiamantes.innerHTML = `${this.diamantess}<img src="modales/modales/img/tablas/rubipuntaje.png"
+                                style="width: 4vh;height: auto;">`;
+            this.insertarTiempo.textContent = this.formatTime(this.seconds);
+        })
+        .catch((error) => {
+            console.error("Error al enviar los datos:", error);
+        });
+}
+
   animarIncremento(elemento, container, texto) {
     const sumaTexto = document.createElement("span");
     sumaTexto.textContent = texto;

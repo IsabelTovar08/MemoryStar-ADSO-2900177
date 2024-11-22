@@ -50,6 +50,11 @@ var modalHTML = `
             <img src="img/iconos/tiendaN.png" alt="user" class="derecho iconos efectosIconos" data-bs-toggle="modal" data-bs-target="#exampleModal-tienda">
         </li>
     </ul>
+    <ul class="nav justify-content-end">
+        <li class="nav-item usuario">
+            <img src="img/iconos/pCompleta2.png" alt="user" class="derecho iconos efectosIconos pantalla" id="pCompleta">
+        </li>
+    </ul>
 </div>
 
 <div class="modal fade" id="hisorico" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -121,97 +126,66 @@ var modalHTML = `
 
 
 
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
 
-                <h1 class="titulo-ayuda">¿Cómo Jugar?</h1>
-
-
-                <img src="img/iconos/botonSalir.png" alt="salir" class="btn salir-ayuda" data-bs-dismiss="modal" aria-label="Close">
-
-
-
-            </div>
-            <div class="modal-body">
-                <div class="texto">
-                    Aquí puedes encontrar ayuda sobre cómo jugar nuestros modos de juego. <br>
-                    Selecciona el modo en el cual necesitas ayuda.
-                </div>
-
-
-                <div class="contenedor-imgAyuda">
-
-                    
-
-
-                    
-
-                </div>
-
-            </div>
-
-        </div>
-    </div>
-</div>
 
 <!-- Modal ayuda CARTAS 2 -->
-<div class="modal fade" id="exampleModal-ayuda2" tabindex="-1" aria-labelledby="exampleModalLabel2" aria-hidden="true">
-    <div class="modal-dialog card moover coloor">
-        <div class="modal-content coloor">
-            <div class="modal-header">
+<div class="modal fade" id="exampleModal-ayuda2" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog princ">
+    <div class="modal-content sec">
+      <div class="modal-header">
+        <h5 class="modal-title titulo-ayuda" id="exampleModalLabel">¿Como Jugar PlanetScape?</h5>
+        <img src="img/iconos/botonSalir.png" alt="salir" class="btn salir-ayuda" data-bs-dismiss="modal" aria-label="Close">
+        
+      </div>
+      <div class="modal-body bod">
+        <div class="textoEx">
+            Aqui puedes obtener informacion de como jugar
+        </div>
+        <div class="contenedor-imgAyuda">
+            
+                    
 
-
-                <h1 class=" titulo-ayuda">¿Cómo Jugar Cartas?</h1>
-
-            </div>
-            <div class="modal-body">
-
-                <div class="texto">
-                    1. Se te presentará un tablero con varias cartas boca abajo. <br>
-                    2. Elige dos cartas para voltear. Si coinciden, se quedan boca arriba; si no, se vuelven a voltear. <br>
-                    3. Intenta recordar la ubicación de las cartas a medida que juegas. <br>
-                    4. Sigue volteando cartas hasta encontrar todas las parejas. <br>
-                    5. El juego puede tener un límite de tiempo o un número máximo de intentos. <br>
-                    6. Encuentra todas las parejas de cartas en el menor tiempo o con la menor cantidad de intentos posible.
-                </div>
-                <div class="d-flex justify-content-center align-items-center">
-                    <img src="img/ayuda/ayudaCarta.png" class="imgAyuda2">
-                </div>
-
-            </div>
-            <div alt="salir" class="btn atras-ayuda" id="salir1">Atras</div>
 
         </div>
+        <div alt="salir" class="btn atras-ayuda" id="salir1">Atras</div>
+      </div>
+      
     </div>
+  </div>
 </div>
 
 <!-- Modal ayuda SECUENCIA 3 -->
-<div class="modal fade" id="exampleModal-ayuda3" tabindex="-1" aria-labelledby="exampleModalLabel3" aria-hidden="true">
-    <div class="modal-dialog  card moover">
-        <div class="modal-content coloor">
-            <div class="modal-header">
-
-                <h1 class=" titulo-ayuda">¿Cómo Jugar Secuencia?</h1>
-
-            </div>
-            <div class="modal-body">
-                <div class="texto">
-                    1. Memoriza la secuencia: Observa una secuencia de objetos que aparecerá por unos segundos.<br>
-                    2. Reordena la secuencia: Después de desaparecer, la secuencia volverá desordenada. Reordénala correctamente.<br>
-                    3. Tiempo límite: Tienes un tiempo limitado para completar el reordenamiento.<br>
-                    4. Puntos: Ganas puntos por ordenar correctamente y más si lo haces rápido.<br>
-                </div>
-
-                <div class="d-flex justify-content-center align-items-center">
-                    <img src="img/ayuda/ayudaSecu.png" class="imgAyuda2">
-                </div>
-            </div>
-            <div alt="salir" class="btn atras-ayuda" id="salir2">Atras</div>
+<div class="modal fade" id="exampleModal-ayuda3" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog princ">
+    <div class="modal-content sec">
+      <div class="modal-header">
+        <h5 class="modal-title titulo-ayuda" id="exampleModalLabel">¿Como Jugar Memorix?</h5>
+        <img src="img/iconos/botonSalir.png" alt="salir" class="btn salir-ayuda" data-bs-dismiss="modal" aria-label="Close">
+        
+      </div>
+      <div class="modal-body bod">
+        <div class="textoEx">
+            1. Memoriza la secuencia: Observa una secuencia de objetos que aparecerá por unos segundos.<br>
+            2. Reordena la secuencia: Después de desaparecer, la secuencia volverá desordenada. Reordénala correctamente.<br>
+            3. Tiempo límite: Tienes un tiempo limitado para completar el reordenamiento.<br>
+            4. Puntos: Ganas puntos por ordenar correctamente y más si lo haces rápido.<br>
         </div>
+        <div class="contenedor-imgAyuda">
+            
+                    
+
+
+        </div>
+        <div alt="salir" class="btn atras-ayuda" id="salir2">Atras</div>
+      </div>
+      
     </div>
+  </div>
 </div>
+
+
+
+
 
 <!-- Modal ayuda ASOCIACION 4 -->
 <div class="modal fade" id="exampleModal-ayuda4" tabindex="-1" aria-labelledby="exampleModalLabel4" aria-hidden="true">
@@ -479,7 +453,7 @@ var modalHTML = `
     <div class="modal-dialog modal-lg card moveer">
         <div class="modal-content color-mapa">
             <div class="tithe titulo">
-                <h1 class="fs-5" id="exampleModalLabel">MAPA DE RECOMPENSAS</h1>
+                <h1 class="fs-5" id="exampleModalLabel">RANKING MEMORYSTAR</h1>
             </div>
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             <div class="modal-body container-tabla-recompensa">
@@ -489,37 +463,18 @@ var modalHTML = `
                             <th>Posición</th>
                             <th>Nombre de Usuario</th>
                             <th>Puntaje Total</th>
-                            <th>Mejor Puntaje</th>
+                            <th>Diamantes</th>
                             <th>Nivel Alcanzado</th>
                             <th>Fecha de Inicio</th>
                         </tr>
                     </thead>
                     <tbody class="cuerpo-tabla-historial">
-                        <tr>
-                            <td>1</td>
-                            <td>EstrellaGaláctica</td>
-                            <td>5000</td>
-                            <td>300</td>
-                            <td>25</td>
-                            <td>2024-11-11</td>
-                        </tr>
-                        <tr>
-                            <td>1</td>
-                            <td>EstrellaGaláctica</td>
-                            <td>5000</td>
-                            <td>300</td>
-                            <td>25</td>
-                            <td>2024-11-11</td>
-                        </tr>
+                      
 
         
                     </tbody>
                 </table>
-                <form onsubmit="return operaciones()">
-                    <label for="txtnumero1" class="tituloMapa">Ingresa tu puntuación:</label>
-                    <input type="number" id="txtnumero1"  oninput="validity.valid || (value='');">
-                    <button type="submit">Enviar</button>
-                </form>
+                
             </div>
             <div class="">
                 <button type="button" class="btn" data-bs-dismiss="modal">Cerrar</button>
