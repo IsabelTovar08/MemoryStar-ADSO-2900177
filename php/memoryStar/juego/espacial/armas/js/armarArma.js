@@ -1,7 +1,7 @@
 function redirigir() {
   setTimeout(() => {
     window.location.href =
-      "juego/espacial/armas/juegoDulces/planetScapederrota el enemigo.html";
+      "aCohete/animacion3.html";
   }, 2000);
 }
 
