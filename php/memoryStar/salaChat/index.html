@@ -1,45 +1,202 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ingresar código</title>
-    <script  src="../js/js.js" defer></script>
-    <link rel="stylesheet" href="../css/style.css">
+    <script src="../codigoSala/js/js.js" defer></script>
+    <link id="estiloCrear" rel="stylesheet" href="css/unirse.css">
+    <link id="estiloBootstrap" rel="stylesheet" href="../bootstrap/css/bootstrap.css" disabled>
+    <link id="estiloChat" rel="stylesheet" href="css/style.css" disabled>
+    <link id="estiloEspera" rel="stylesheet" href="css/styleSala.css" disabled>
+
+
 </head>
+
 <body>
     <div class="regresar">
         <img src="../../img/iconos/atrasN.png" alt="" width="50" class="atras">
     </div>
+
+    <!-- Formularios para crear o unirse a sala -->
     <div class="container">
         <div class="top borde-luz"></div>
         <div class="right borde-luz"></div>
         <div class="bottom borde-luz"></div>
         <div class="left borde-luz"></div>
-        <form action="" onsubmit="numero(event)" class="formulario">
-        <div class="container-modo-sala">
-            <div class="contenedor-sala" >
-                <div class="unimer-sala" >
-                    <b>unirme a sala</b>
+        <div action="" onsubmit="numero(event)" class="formulario">
+            <div class="container-modo-sala">
+                <div class="contenedor-sala">
+                    <div class="unimer-sala">
+                        <b>unirme a sala</b>
+                    </div>
+                    <div class="crear-sala">
+                        <b>crear sala</b>
+                    </div>
                 </div>
-                <div class="crear-sala" >
-                    <b>crear sala</b>
+            </div>
+            <div class="caja ">
+                <div class="caja-unirme">
+                    <form id="form-unirse-sala">
+                        <label for="codigo">Código de la sala</label>
+                        <input type="text" value="" id="codigo" placeholder="Código" maxlength="6" minlength="1"
+                               oninput="validity.valid || (value='');">
+                        <p class="mensaje"></p>
+                        <input type="submit" value="Unirse">
+                    </form>
+                </div>
+                
+                <div class="caja-crear">
+                    <h2>Crear sala</h2>
+                    <form id="form-crear-sala">
+                        <label for="nombre">Nombre de la sala</label>
+                        <input type="text" id="nombre" placeholder="Nombre" required>
+
+                        <label for="cantidad">Juego</label>
+                        <div class="tarjetas-container">
+                            <div class="biblioteca">
+                                <h1>Temática</h1>
+                                <div class="option">
+                                    <input type="radio" name="juegoOrdenar" id="ordenarBiblioteca" checked
+                                        value="Bookify">
+                                    <label class="tarjetaOpcion" for="ordenarBiblioteca">
+                                        <img src="../img/iconos/libros.png" alt="">
+                                    </label>
+                                    <div class="romboide">
+                                        <h6>Bookify</h6>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="dificultades">
+                                <h1>Dificultad</h1>
+                                <div class="option facil">
+                                    <input type="radio" name="nivel" id="nivelFacil" value="basico">
+                                    <div class="romboide">
+                                        <label for="nivelFacil">
+                                            <h6>Básico</h6>
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="option medio">
+                                    <input type="radio" name="nivel" id="nivelMedio" value="Desafiante">
+                                    <div class="romboide">
+                                        <label for="nivelMedio">
+                                            <h6>Desafiante</h6>
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="option dificil">
+                                    <input type="radio" name="nivel" id="nivelDificil" value="Pro">
+                                    <div class="romboide">
+                                        <label for="nivelDificil">
+                                            <h6>Pro</h6>
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <input type="submit" value="Crear sala">
+                    </form>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Sala de espera -->
+
+    <div class="contenedor">
+        <div class="linea-con-texto" id="nombre_sala">
+            <span>Sala de espera</span>
+        </div>
+        <div class="congijuraJuego">
+            <div class="contenedor-apartado">
+                <div class="conte-apartado">
+                    <div class="tipo-juego" id="codigo_sala">
+                        <!-- <div id="codigo_sala"></div> -->
+                    </div>
+                    <div class="tematica" id="tematica"><b>Temát</b>ica</div>
+                    <div class="nivel" id="dificultad"> <b>Nivel</b></div>
+                </div>
+            </div>
+            <div class="curved-button">
+                <div class="conte-footer-titulo">
+                    <h3 class="footer-titulo">Multijugador</h3>
+                </div>
+                <div class="conte-footer-img">
+                    <img src="img/descarga__1_-removebg-preview.png" alt="imagenes">
                 </div>
             </div>
         </div>
-        <div  class="caja ">
-
-            <label for="codigo">Código de la sala</label>
-            <input type="number" value="" id="codigo" placeholder="Código" maxlength="6" minlength="1" oninput="validity.valid || (value='');">
-            <input type="submit" value="Enviar">
-            <p class="mensaje"></p>
+        <div class="usuarios-linea">
+            <div class="borte-linea">
+                <div class="header-linea">
+                    <div class="conte-left">
+                        <h2><span class="numero-usuario"></span><span class="maximo"></span></h2>
+                        <i class="fa-solid fa-people-group fa-2xl"></i>
+                        <button class="invitar" data-bs-toggle="modal"
+                            data-bs-target="#staticBackdrop">compartir</button>
+                        <div id="name"></div>
+                    </div>
+                </div>
+                <div class="body-linea" id="usuarios"></div>
+            </div>
         </div>
-        
-        </form>
     </div>
-    <!-- <div class="puerta-abajo">
-        <div class="img-2"></div>
+    <div id="notifications-container">
+    </div>
 
-    </div> -->
+    <!-- Chat -->
+    <div class="chat" id="chat">
+        <div class="encabezado"><strong>Chat</strong></div>
+        <div class="messages" id="messages"></div>
+        <div class="send-message">
+            <input type="text" class="message" id="message">
+            <button class="send" type="button" id="send" disabled><img src="enviar.png" alt="" width="25"></button>
+        </div>
+        <span id="salir" onclick="mostrarChat()" class="salir">X</span>
+    </div>
+    <button onclick="mostrarChat()" class="botonChat">
+        <img src="chat.png" alt="" width="60">
+        <span id="notification" class="notification"></span>
+    </button>
+
+    <!-- Modal QR-->
+    <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+        aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="staticBackdropLabel">Compartir</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="contenedor-QR">
+                        <div id="QR"></div>
+                        <div class="ponerCodigo">
+                            <div class="conte-codigo">
+                                <h2 id="codigoSalaModal"></h2>
+                            </div>
+                            <button class="botto-copiar">copiar</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">cerrar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="../js/session.js"></script>
+    <script type="module" src="js/socket.js"></script>
+    <script src="js/mostrarChat.js"></script>
+    <script src="../bootstrap/js/bootstrap.js"></script>
+    <script defer src="QR/QR-libreria.js"></script>
+    <script defer src="QR/javascrip.js"></script>
 </body>
+
 </html>

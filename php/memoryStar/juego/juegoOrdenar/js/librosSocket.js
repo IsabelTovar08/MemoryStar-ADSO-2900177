@@ -539,14 +539,6 @@ if (modoJuego === 'multijugador') {
         localStorage.setItem('usuarioEsAdmin', usuarioEsAdmin);
         localStorage.setItem('id_usuario', id_usuario);
 
-        // Actualizar la lista de jugadores
-        scoreList.innerHTML = '';
-        gameData.players.forEach(player => {
-          const listItem = document.createElement('li');
-          listItem.textContent = `${player.usuario}: ${player.score} puntos`;
-          scoreList.appendChild(listItem);
-        });
-
         // Lógica para el botón 'aceptar' basada en usuarioEsAdmin
         if (!usuarioEsAdmin) {
           aceptar.style.display = 'none';

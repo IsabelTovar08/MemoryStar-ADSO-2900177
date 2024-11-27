@@ -13,11 +13,152 @@ body {
     height: 100vh;
     background-color: #ffffff;
     overflow: hidden;
-    background-image: url(../img/fondoMemory.jpeg);
+    background-image: url(../../img/fondos/o.jpg);
     background-repeat: no-repeat;
     background-position: center ;
     background-size: cover;
 }
+
+
+  
+  .tarjetas-container {
+    display: flex;
+    gap: 5vh;
+  }
+  
+  .textoEleccion {
+    width: 100%;
+  }
+  
+  .tarjetaOpcion {
+    width: 13vh;
+    height: 13vh;
+    background-color: #f6ffc5;
+    border-radius: 1vh;
+    box-shadow: 0 4px 8px #00000075, 0 0 30px #ffffff85;
+    transition: transform 0.3s, background-color 0.3s;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    position: relative;
+  }
+  
+  /* Ocultar el input radio */
+  .option input[type="radio"] {
+    display: none;
+  }
+  
+  .option {
+    margin: 2vh;
+    transition: transform 0.3s;
+  }
+  
+  .option:hover {
+    transform: scale(1.03);
+  }
+  
+  /* Estilos para cuando el radio está seleccionado */
+  .option input[type="radio"]:checked + label + .romboide,
+  .option input[type="radio"]:checked + label {
+    transform: scale(1.2);
+    /* Ajusta el valor de scale si lo prefieres más grande o pequeño */
+    transition: transform 0.3s ease;
+    border: 2px solid;
+  }
+  
+  .option input[type="radio"]:checked + label + .romboide {
+    box-shadow: 0 0 10px #000 inset;
+    border: none;
+  
+    h6 {
+      text-shadow: 0 0 5px #000, 0 0 7px #13f1fc;
+    }
+  }
+  
+  .option input[type="radio"]:checked + label {
+    box-shadow: 0 0 20px #fff, 0 0 10px #13f1fc, 0 0 30px #000;
+  }
+  
+  .romboide {
+    margin-top: -1vh;
+    margin-left: -1.5vh;
+
+    width: 16vh;
+    height: 3.5vh;
+    background-color: #ffeb3b;
+    clip-path: polygon(0% 12%, 95% 0%, 100% 88%, 5% 100%);
+    text-align: center;
+    padding: 0.5vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: transform 0.3s, background-color 0.3s, box-shadow 0.3s;
+
+  
+    h6 {
+      transform: rotate(-2.2deg);
+      color: #fff;
+      text-shadow: 0 0 2px #000;
+      margin: 0;
+      font-size: 2.5vh;
+    }
+  }
+  .romboide {
+    width: 16vh;
+    height: 3.5vh;
+    background-color: #ffeb3b;
+    clip-path: polygon(0% 12%, 95% 0%, 100% 88%, 5% 100%);
+    text-align: center;
+    padding: 0.5vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: transform 0.3s, background-color 0.3s, box-shadow 0.3s;
+}
+
+.romboide label {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5vh;
+}
+
+.romboide label img {
+    width: 100%;
+    height: auto;
+    object-fit: fill;
+}
+
+.romboide h6 {
+    transform: rotate(-2.2deg);
+    color: #fff;
+    text-shadow: 0 0 2px #000;
+    margin: 0;
+    font-size: 2.5vh;
+}
+
+/* Estilos para cuando el radio está seleccionado */
+.option input[type="radio"]:checked + .romboide {
+    transform: scale(1.22);
+    background-color: #0071f3;
+    transition: transform 0.3s ease;
+    /* box-shadow: 0 0 20px #fff, 0 0 10px #13f1fc, 0 0 30px #000; */
+}
+
+.option input[type="radio"]:checked + .romboide h6 {
+    text-shadow: 0 0 5px #000, 0 0 7px #13f1fc;
+}
+  .option label img {
+    width: 100%;
+    height: 100%;
+    object-fit: fill;
+  }
 
 .container {
     background-color: #06a4ee75;
@@ -30,7 +171,6 @@ body {
 }
 .borde-luz{
     position: absolute;
-
     height: 1%;
     width: 20%;
     background-color: #00e3f3;
@@ -79,10 +219,20 @@ body {
         width: 100%;
     }
 }
+.contenedor {
+    display: none;
+}
+.chat {
+    display: none;
 
-
-form {
-    
+}
+.botonChat {
+    display: none;
+}
+.modal {
+    display: none;
+}
+.formulario {
     margin: 2rem;
     display: flex;
     flex-direction: column;
