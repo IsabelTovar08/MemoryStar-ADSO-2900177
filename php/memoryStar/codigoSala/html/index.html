@@ -13,9 +13,7 @@
     </div>
 
 
-    <!-- <div class="puerta-arriba">
-            <div class="img-1"></div>
-    </div> -->
+  
     <div class="container">
    
         <div class="top borde-luz"></div>
@@ -35,18 +33,23 @@
             </div>
         </div>
         <div  class="caja ">
-
-            <label for="codigo">Código de la sala</label>
-            <input type="number" value="" id="codigo" placeholder="Código" maxlength="6" minlength="1" oninput="validity.valid || (value='');">
-            <input type="submit" value="Enviar">
-            <p class="mensaje"></p>
+            <div class="caja-unirme">
+                <label for="codigo">Código de la sala</label>
+                <input type="number" value="" id="codigo" placeholder="Código" maxlength="6" minlength="1" oninput="validity.valid || (value='');">
+                <input type="submit" value="Enviar">
+                <p class="mensaje"></p>
+            </div>
+            <div class="caja-crear">
+                <h2>Crear sala</h2>
+                <label for="nombre">Nombre de la sala</label>
+                <input type="text" id="nombre" placeholder="Nombre">
+                <label for="cantidad">Cantidad de persona</label>
+                <input type="number" id="cantidad" placeholder="Cantidad">
+                <input type="submit" value="Crear sala">
+            </div>
         </div>
         
         </form>
     </div>
-    <!-- <div class="puerta-abajo">
-        <div class="img-2"></div>
-
-    </div> -->
 </body>
 </html>
