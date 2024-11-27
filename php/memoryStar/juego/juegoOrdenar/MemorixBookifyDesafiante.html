@@ -23,14 +23,6 @@
 
 <body style="background-image: url('img/fondoLibro.png');">
     <div class="container-fuid">
-        <div id="scoreboard" style="color: white; position: absolute; margin-top: 10%;">
-            <h3>Puntuaciones</h3>
-            
-            <ul id="scoreList">
-                <!-- Lista de puntuaciones se generará aquí -->
-            </ul>
-        </div>
-
         <div class="modal fade" id="tablapuntuacionsolo" data-bs-backdrop="static" tabindex="-1"
             aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog modal-sm modal-dialog-centered">
@@ -106,11 +98,34 @@
         <h1 style="color: white;">mi nombre</h1>
 
     </div>
+    <script>
+        const urlParams = new URLSearchParams(window.location.search);
+        const modoJuego = urlParams.get('modo') || 'un_jugador';
+        const contenedorBoton = document.querySelector('.contenedor-botonTsolo');
+    
+        if (modoJuego === 'multijugador') {
+            // Dinámicamente incluir el script de sesión
+            const script = document.createElement('script');
+            script.src = 'js/librosSocket.js';
+            script.type = 'module';
+            document.head.appendChild(script);
+        } else {
+            const script = document.createElement('script');
+            script.src = 'js/libros.js';
+            document.head.appendChild(script);
+            contenedorBoton.innerHTML = "";
+            contenedorBoton.innerHTML = `
+                <button class="botonTsolo" data-bs-dismiss="modal"
+                            aria-label="Close">Aceptar</button>
+            `;
+        }
+    </script>
+    
 
     <script src="../../js/session.js"></script>
     <script src="js/Sortable.min.js"></script>
 
-    <script type="module" src="js/libros.js"></script>
+    <!-- <script type="module" src="js/libros.js"></script> -->
     <script src="../js/movimiento.js"></script>
     <script src="../js/overlayModal.js"></script>
     <script src="../../bootstrap/js/bootstrap.js"></script>

@@ -8,8 +8,6 @@
     <link rel="stylesheet" href="../bootstrap/css/bootstrap.css">
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/styleSala.css">
-    <script defer src="QR/QR-libreria.js"></script>
-    <script defer src="QR/javascrip.js"></script>
 
 </head>
 
@@ -95,13 +93,7 @@
       <img src="chat.png" alt="" width="60">
       <span id="notification" class="notification"></span> <!-- Círculo de notificación -->
     </button>
-    <script src="../js/session.js"></script>
-  
-    <script type="module" src="js/socket.js"></script>
 
-    <script src="js/mostrarChat.js"></script>
-    <script src="../bootstrap/js/bootstrap.js"></script>
-   
 
 
   
@@ -117,7 +109,7 @@
             <div class="contenedor-QR">    
                 <div id="QR"></div>
                 <div class="ponerCodigo">
-                    <div class="conte-codigo"><h2 class="codigo"></h2></div>
+                    <div class="conte-codigo"><h2 id="codigoSalaModal"></h2></div>
                     <button class="botto-copiar">copiar</button>
                 </div>
             </div>
@@ -129,9 +121,15 @@
     </div>
   </div>
 
-  <script src="js/fecht.js"></script>
   <!-- <script src="../bootstrap/js/bootstrap.js"></script> -->
-  
+  <script src="../js/session.js"></script>
+  <script type="module" src="js/socket.js"></script>
+  <script src="js/mostrarChat.js"></script>
+  <script src="../bootstrap/js/bootstrap.js"></script>
+  <script defer src="QR/QR-libreria.js"></script>
+
+  <script defer src="QR/javascrip.js"></script>
+ 
 </body>
 
 </html>
