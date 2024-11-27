@@ -500,7 +500,9 @@ var modalHTML = `
         </div>
       </div>
       <div class="modal-body texto">
-        Compra artículos especiales para mejorar tu experiencia en el juego. <br><br>
+
+        Compra artículos especiales para mejorar tu experiencia en el juego. <br>
+
         <div class="wooden-sign">
           <p class="sign-text2">Iconos de perfil</p>
           <div class="wooden-sign2">
@@ -515,6 +517,7 @@ var modalHTML = `
       </div>
     </div>
   </div>
+  
   <!-- Contenedor de alerta -->
   <div id="custom-alert" class="custom-alert" style="display:none;">
     <span id="alert-message"></span>
