@@ -57,26 +57,66 @@ class Chat implements MessageComponentInterface
                 ];
                 $this->broadcastToRoom($data['codigoSala'], $dataToSend, $from);
                 break;
-                case 'actualizarJugadores':
-                    $codigoSala = $data['codigoSala']; // Asegúrate de enviar este dato desde el cliente si es necesario.
-                
-                    if (isset($this->salas[$codigoSala])) {
-                        // Preparar el mensaje para los jugadores
-                        $dataToSend = [
-                            'type' => 'actualizarJugadores',
-                            'players' => $data['players']
-                        ];
-                
-                        // Enviar a todos los clientes de la sala
-                        $this->broadcastToRoom($codigoSala, $dataToSend, $from);
-                    }
-                    break;
+            case 'actualizarJugadores':
+                $codigoSala = $data['codigoSala']; // Asegúrate de enviar este dato desde el cliente si es necesario.
+
+                if (isset($this->salas[$codigoSala])) {
+                    // Preparar el mensaje para los jugadores
+                    $dataToSend = [
+                        'type' => 'actualizarJugadores',
+                        'players' => $data['players']
+                    ];
+
+                    // Enviar a todos los clientes de la sala
+                    $this->broadcastToRoom($codigoSala, $dataToSend, $from);
+                }
+                break;
 
             case 'puntajeRonda':
                 $this->actualizarEstadisticas($from, $data);
                 break;
+            case 'ordenEnviado':
+                $codigoSala = $data['codigoSala'];
+                $usuario = $data['usuario'];
+
+                if (isset($this->salas[$codigoSala])) {
+                    // Marcar al usuario como "ronda terminada"
+                    $this->salas[$codigoSala]['finalizados'][] = $usuario;
+
+                    // Verificar si todos los jugadores han terminado
+                    $totalJugadores = count($this->salas[$codigoSala]['clients']);
+                    $jugadoresFinalizados = count($this->salas[$codigoSala]['finalizados']);
+
+                    if ($jugadoresFinalizados === $totalJugadores) {
+                        // Notificar al administrador que todos han terminado
+                        $dataToSend = [
+                            'type' => 'todosFinalizados',
+                            'codigoSala' => $codigoSala
+                        ];
+                        $this->broadcastToRoom($codigoSala, $dataToSend, null);
+
+                        // Reiniciar el estado de "finalizados"
+                        $this->salas[$codigoSala]['finalizados'] = [];
+                    }
+                }
+                break;
             case 'reconectarSala':
                 $this->reconectarSala($from, $data);
+                break;
+            case 'cerrarModal':
+                $codigoSala = $data['codigoSala'] ?? 'default';
+
+                if (isset($this->salas[$codigoSala])) {
+                    foreach ($this->salas[$codigoSala] as $client) {
+                        $dataToSend = [
+                            'type' => 'cerrarModal',
+                        ];
+
+                        // Enviar a todos los clientes de la sala
+                        $this->broadcastToRoom($codigoSala, $dataToSend);
+                    }
+                    echo "Modal cerrado en la sala {$codigoSala}\n";
+                }
                 break;
         }
     }
@@ -301,36 +341,38 @@ class Chat implements MessageComponentInterface
             echo "Datos incompletos proporcionados.";
             return;
         }
-    
+
         $codigoSala = $data['codigoSala'];
         $player = $data['player']; // Trabajar directamente con el jugador
-    
+
         if (!isset($this->salas[$codigoSala])) {
             echo "La sala no existe: $codigoSala";
             return;
         }
-    
+
         // Inicializar historial si no existe
         if (!isset($this->salas[$codigoSala]['historial'])) {
             $this->salas[$codigoSala]['historial'] = [];
         }
         $historial = &$this->salas[$codigoSala]['historial'];
-    
+
         $idUsuario = $player['idUsuario'];
         $score = $player['score'];
         $time = $player['time'];
         $existe = false;
-    
+
         // Actualizar historial
         foreach ($historial as &$historialPlayer) {
             if ($historialPlayer['idUsuario'] === $idUsuario) {
-                $historialPlayer['score'] = $score;
-                $historialPlayer['time'] = $time;
+                // Sumar el nuevo puntaje al existente
+                $historialPlayer['score'] += $score;
+                $historialPlayer['time'] = $time; // Actualizar el tiempo con el más reciente
                 $existe = true;
                 break;
             }
         }
-    
+
+        // Si no existe el usuario, agregarlo al historial
         if (!$existe) {
             $historial[] = [
                 'idUsuario' => $idUsuario,
@@ -338,20 +380,21 @@ class Chat implements MessageComponentInterface
                 'time' => $time,
             ];
         }
-    
+
         // Verificar historial actualizado
         var_dump($this->salas[$codigoSala]['historial']);
-    
+
         // Difundir estadísticas
         $this->broadcastToRoom($codigoSala, [
             'type' => 'actualizarEstadisticas',
             'players' => $this->salas[$codigoSala]['historial']
         ]);
-    
+
         // Guardar historial en archivo
         file_put_contents('historial_sala_' . $codigoSala . '.json', json_encode($this->salas[$codigoSala]['historial'], JSON_PRETTY_PRINT));
     }
-    
+
+
 
 
 

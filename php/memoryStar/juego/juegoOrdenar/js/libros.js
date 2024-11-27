@@ -1,4 +1,11 @@
+let ordenVerificar;
 
+const urlParams = new URLSearchParams(window.location.search);
+const modoJuego = urlParams.get('modo') || 'un_jugador';
+const codigo = urlParams.get('codigo');
+let ws;
+let gameData = null;
+let usuarioEsAdmin = false;
 const NIVELES = {
   "MemorixBookifybasico.html": {
     librosIniciales: 4,
@@ -24,6 +31,10 @@ const contenedorLibros = document.querySelector("#lista");
 const libros = document.getElementById("lista");
 const botonVerificar = document.getElementById("verificarBtn");
 const resultado = document.getElementById("resultado");
+const aceptar = document.querySelector('.botonTsolo');
+const contenedorUsers = document.getElementById('contedor_users');
+
+
 
 // libros total
 const todosLosLibros = [
@@ -63,14 +74,6 @@ function detectarNivel() {
     NIVELES[nombreArchivo] || NIVELES["ordenarBibliotecaFacil.html"];
   tiempoRestante = configuracionNivel.tiempoRonda;
 
-  //   const tituloNivel =
-  //     document.querySelector("h1") || document.createElement("h1");
-  //   tituloNivel.textContent = nombreArchivo.includes("Facil")
-  //     ? "Nivel Fácil"
-  //     : nombreArchivo.includes("Medio")
-  //     ? "Nivel Medio"
-  //     : "Nivel Difícil";
-
   return configuracionNivel;
 }
 
@@ -99,15 +102,17 @@ function mezclarArreglo(arr) {
 
 // Función para mostrar libros en orden
 function mostrarLibrosEnOrden(orden) {
-  libros.innerHTML = "";
-  orden.forEach((id) => {
-    let img = document.createElement("img");
-    let idSinComillas = id.replace(/'/g, "");
-    img.setAttribute("src", `img/librito${idSinComillas}.png`);
-    img.setAttribute("data-id", idSinComillas);
-    img.classList.add("libro", "inicio");
-    libros.appendChild(img);
-  });
+  if (orden) {
+    libros.innerHTML = "";
+    orden.forEach((id) => {
+      let img = document.createElement("img");
+      let idSinComillas = id.replace(/'/g, "");
+      img.setAttribute("src", `img/librito${idSinComillas}.png`);
+      img.setAttribute("data-id", idSinComillas);
+      img.classList.add("libro", "inicio");
+      libros.appendChild(img);
+    });
+  }
 }
 
 // Funciones de Drag and Drop
@@ -148,8 +153,10 @@ function habilitarDrag() {
   });
 }
 
+
 // Función para iniciar una nueva ronda
 function iniciarRonda() {
+  iniciar();
   limpiarIntervalos();
   botonPresionado = false;
 
@@ -168,12 +175,26 @@ function iniciarRonda() {
     idsLibros.push(`'${libro.dataId}'`);
   });
 
-  ordenCorrecto = mezclarArreglo([...idsLibros]);
 
-  sessionStorage.setItem('ordenCorrecto', JSON.stringify(ordenCorrecto));
-  iniciar();
+  const usuarioEsAdmin = JSON.parse(localStorage.getItem('usuarioEsAdmin'));
+  if (usuarioEsAdmin) {
+    ordenCorrecto = mezclarArreglo([...idsLibros]);
 
-  // enviarOrdenCorrecto(ordenCorrecto);
+    sessionStorage.setItem('ordenCorrectoAdmin', JSON.stringify(ordenCorrecto));
+    console.log(ordenCorrecto)
+    console.log("u")
+    // enviarOrdenCorrecto();
+
+  } else {
+    ordenCorrecto = JSON.parse(sessionStorage.getItem('ordenCorrectoAdmin'));
+    console.log(ordenVerificar)
+
+  }
+  // ordenCorrecto =  JSON.parse(sessionStorage.getItem('ordenCorrecto'));
+  console.log(ordenCorrecto)
+  // sessionStorage.removeItem('ordenCorrecto');
+  // iniciar()
+
 
 
   // mostrarLibrosEnOrden(ordenCorrecto);
@@ -235,14 +256,19 @@ function iniciarBarra() {
       textoRegresivo.textContent = "¡Tiempo!";
       barraRegresiva.style.width = "0%";
       if (!botonPresionado) {
-        finalizarRonda(); // Nueva función para manejar el fin de ronda
+        finalizarRonda(ordenVerificar); // Nueva función para manejar el fin de ronda
       }
     }
   }, 1000);
 }
 
 // funcion para finaliar la ronda
-function finalizarRonda() {
+function finalizarRonda(ordenVerificar) {
+  ws.send(JSON.stringify({
+    type: 'ordenEnviado',
+    codigoSala: gameData.gameData.codigoSala,
+    usuario: JSON.parse(localStorage.getItem('id_usuario'))
+  }));
   botonPresionado = true;
   limpiarIntervalos();
 
@@ -253,7 +279,8 @@ function finalizarRonda() {
   let rubis = 0;
 
   ordenActualConComillas.forEach((id, index) => {
-    if (id === ordenCorrecto[index]) {
+
+    if (id === ordenVerificar[index]) {
       aciertosRonda = aciertosRonda + 100;
       // ordenActualConComillas.classList.add="bien"
       // ordenActualConComillas.classList.remove="mal"
@@ -277,7 +304,7 @@ function finalizarRonda() {
     }`;
   document.getElementById("desaciertos").innerHTML = `Fallos:${desaciertos}`;
 
-  if (aciertosRonda === ordenCorrecto.length * 100) {
+  if (aciertosRonda === ordenVerificar.length * 100) {
     rubis = window.location.pathname.includes("Dificil")
       ? 15
       : window.location.pathname.includes("Medio")
@@ -287,7 +314,7 @@ function finalizarRonda() {
   totalRubis += rubis;
   document.getElementById("rubis").innerHTML = `+${rubis}`;
 
-  document.getElementById("nRonda").innerHTML= `PUNTUACION RONDA ${rondaActual}`;
+  document.getElementById("nRonda").innerHTML = `PUNTUACION RONDA ${rondaActual}`;
 
   const modal = new bootstrap.Modal(
     document.getElementById("tablapuntuacionsolo")
@@ -300,6 +327,8 @@ function finalizarRonda() {
       if (rondaActual < 3) {
         rondaActual++;
         iniciarRonda();
+        enviarOrdenCorrecto();
+
       } else {
         mostrarResultadosFinales();
       }
@@ -361,11 +390,10 @@ function calcularTiempoPromedio() {
 }
 
 // Event Listener para el botón verificar
-botonVerificar.addEventListener("click", () => {
-  finalizarRonda();
-});
+
 
 // Función para mostrar resultados finales
+
 function mostrarResultadosFinales() {
   const tiempoPromedio = calcularTiempoPromedio();
   const modalFinal = document.createElement("div");
@@ -378,53 +406,49 @@ function mostrarResultadosFinales() {
   modalFinal.setAttribute("data-bs-keyboard", "false");
 
   modalFinal.innerHTML = `
-      <div class="modal-dialog modal-sm modal-dialog-centered">
-          <div class="modal-content contenedorTsolo">
-              <div class="tituloTsolo">¡Juego Completado!</div>
-              <div class="contenedorTsoloInterior">
-              <div class="contenedor-estrellas">
-                            <img src="../../modales/modales/img/tablas/Star.png" class="star" alt="">
-                            <img src="../../modales/modales/img/tablas/Star.png" class="star" alt="">
-                            <img src="../../modales/modales/img/tablas/Star.png" class="star" alt="">
-                        </div>
-                  <div class="puntaje-total">
-                      ${puntajeTotal}
-                  </div>
-  
-                  <div class="contenedor-puntaje">
-                      Tiempo Promedio:
-                      00:${tiempoPromedio < 10 ? "0" : ""}${tiempoPromedio}
-                  </div>
-                  <div class="contenedor-rubi">
-                            <div>${totalRubis}</div>
-                            <img src="../../modales/modales/img/tablas/rubipuntaje.png"
-                                style="width: 4vh; height: auto;">
-                  </div>
-  
-                  <div class="contedor_users">
-                    <div class="col-12 row contenedor-info">
-                        <div class="col-6 usuarioPerfill">
-                            <img src="../../modales/modales/img/tablas/fotouser.png" alt="" style="width: 16px;">
-                    
-                        </div>
-                        <div class="col-3">00:${tiempoPromedio < 10 ? "0" : ""}${tiempoPromedio}</div>
-                        <div class="col-3">${puntajeTotal}pts</div>
+        <div class="modal-dialog modal-sm modal-dialog-centered">
+            <div class="modal-content contenedorTsolo">
+                <div class="tituloTsolo">¡Juego Completado!</div>
+                <div class="contenedorTsoloInterior">
+                <div class="contenedor-estrellas">
+                              <img src="../../modales/modales/img/tablas/Star.png" class="star" alt="">
+                              <img src="../../modales/modales/img/tablas/Star.png" class="star" alt="">
+                              <img src="../../modales/modales/img/tablas/Star.png" class="star" alt="">
+                          </div>
+                    <div class="puntaje-total">
+                        ${puntajeTotal}
                     </div>
-                  </div>
-              </div>
-  
-              <div class="contenedor-botonTsolo">
-<<<<<<< HEAD
-                  <button class="botonTsolo" style="margin-left: 20px;">
-=======
-                  <button class="botonTsolo" onclick="redirigir()">
->>>>>>> 889677925b9da4341f41c3c5adda0d7c5fe63e60
-                      Salir
-                  </button>
-              </div>
-          </div>
-      </div>
-  `;
+    
+                    <div class="contenedor-puntaje">
+                        Tiempo Promedio:
+                        00:${tiempoPromedio < 10 ? "0" : ""}${tiempoPromedio}
+                    </div>
+                    <div class="contenedor-rubi">
+                              <div>${totalRubis}</div>
+                              <img src="../../modales/modales/img/tablas/rubipuntaje.png"
+                                  style="width: 4vh; height: auto;">
+                    </div>
+    
+                    <div class="contedor_users">
+                      <div class="col-12 row contenedor-info">
+                          <div class="col-6 usuarioPerfill">
+                              <img src="../../modales/modales/img/tablas/fotouser.png" alt="" style="width: 16px;">
+                      
+                          </div>
+                          <div class="col-3">00:${tiempoPromedio < 10 ? "0" : ""}${tiempoPromedio}</div>
+                          <div class="col-3">${puntajeTotal}pts</div>
+                      </div>
+                    </div>
+                </div>
+    
+                <div class="contenedor-botonTsolo">
+                    <button class="botonTsolo" onclick="redirigir()">
+                        Salir
+                    </button>
+                </div>
+            </div>
+        </div>
+    `;
 
   document.body.appendChild(modalFinal);
   new bootstrap.Modal(modalFinal).show();
@@ -432,97 +456,50 @@ function mostrarResultadosFinales() {
   enviarPuntuacion(puntajeTotal, tiempoPromedio, totalRubis);
   // obtenerDatosUsuario();
 }
-<<<<<<< HEAD
 function redirigir() {
   window.location.href = ("../../index.html");
 }
 
-=======
-function redirigir(){
-  setTimeout(() => {
-    window.location.href=("../../antesLogin.html")
-  }, 2000);
-}
-
-async function obtenerDatosUsuario() {
-  const rutas = [
-    "procesos/login/obtenerUsuario.php",
-    "../procesos/login/obtenerUsuario.php",
-    "../../procesos/login/obtenerUsuario.php",
-    "../../../procesos/login/obtenerUsuario.php",
-    // Añade más rutas si es necesario
-  ];
-
-  let datosUsuario = null;
-
-  for (let ruta of rutas) {
-    try {
-      const response = await fetch(ruta);
-      if (response.ok) {
-        const data = await response.json();
-        if (data.success) {
-          datosUsuario = data;
-          break; // Salir del bucle si la solicitud fue exitosa
-        }
-      }
-    } catch (error) {
-      console.error(
-        `Error al obtener los datos del usuario desde ${ruta}:`,
-        error
-      );
-    }
-  }
-
-  if (datosUsuario) {
-    const nombreUsuarioElement = document.querySelectorAll(".usuarioPerfill");
-    nombreUsuarioElement.forEach((elemento) => {
-      elemento.innerHTML = datosUsuario.usuario;
-    });
-  }
-}
-
 function enviarPuntuacion(puntajeTotal, tiempoPromedio, totalRubis) {
   const arrPuntos = {
-      puntajeTotal: puntajeTotal,
-      tiempoPromedio: tiempoPromedio,
-      totalRubis: totalRubis,
+    puntajeTotal: puntajeTotal,
+    tiempoPromedio: tiempoPromedio,
+    totalRubis: totalRubis,
   };
 
   console.log('Enviando datos:', arrPuntos);
 
   fetch("../../procesos/puntuacion/recibirPuntuacion.php", {
-      method: "POST",
-      headers: {
-          "Content-Type": "application/json",
-      },
-      body: JSON.stringify(arrPuntos), 
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(arrPuntos),
   })
-  .then(response => {
+    .then(response => {
       if (!response.ok) {
-          return response.json().then(err => Promise.reject(err));
+        return response.json().then(err => Promise.reject(err));
       }
       return response.json();
-  })
-  .then(data => {
+    })
+    .then(data => {
       console.log('Respuesta recibida:', data);
       if (data.success) {
-          console.log('Datos procesados correctamente:', data.datos);
-          // Aquí puedes hacer algo con la respuesta exitosa
+        console.log('Datos procesados correctamente:', data.datos);
+        // Aquí puedes hacer algo con la respuesta exitosa
       } else {
-          alert(data.mensaje || 'Error al procesar los datos');
+        alert(data.mensaje || 'Error al procesar los datos');
       }
-  })
-  .catch(error => {
+    })
+    .catch(error => {
       console.error("Error:", error);
-      alert("Ocurrió un error al enviar la puntuación: " + 
-            (error.mensaje || error.message || 'Error desconocido'));
-  });
+      alert("Ocurrió un error al enviar la puntuación: " +
+        (error.mensaje || error.message || 'Error desconocido'));
+    });
 }
 
-// Función para reiniciar el juego
-function salir() {}
 
->>>>>>> 889677925b9da4341f41c3c5adda0d7c5fe63e60
+
 // Inicialización del juego
 window.addEventListener("DOMContentLoaded", () => {
   detectarNivel();
@@ -539,13 +516,55 @@ window.addEventListener("DOMContentLoaded", () => {
 
 
 
-// Obtener parámetros de la URL
-const urlParams = new URLSearchParams(window.location.search);
-const modoJuego = urlParams.get('modo') || 'un_jugador';
-const codigo = urlParams.get('codigo');
-let ws;
-let gameData = null;
-let usuarioEsAdmin = false;  // Inicializamos como false
+if (modoJuego === 'multijugador') {
+  // Obtener los datos de la sala desde el sessionStorage
+  gameData = JSON.parse(sessionStorage.getItem('gameData'));
+
+  if (gameData) {
+    console.log('Datos de la sala:', gameData);
+
+    const scoreList = document.getElementById('scoreList');
+    const codigoSala = gameData.gameData.codigoSala;
+
+    obtenerDatosUsuario(
+      (data) => {
+        const id_usuario = data.id_usuario;
+        const usuario = data.usuario;
+        console.log(`Usuario ID: ${id_usuario}, Nombre: ${usuario}`);
+
+        // Verificar si el usuario es admin
+        const adminId = gameData.players.find(player => player.isAdmin)?.idUsuario;
+        usuarioEsAdmin = adminId === id_usuario;
+
+        console.log("Estado de admin:", usuarioEsAdmin);
+        localStorage.setItem('usuarioEsAdmin', usuarioEsAdmin);
+        localStorage.setItem('id_usuario', id_usuario);
+
+        // Actualizar la lista de jugadores
+        scoreList.innerHTML = '';
+        gameData.players.forEach(player => {
+          const listItem = document.createElement('li');
+          listItem.textContent = `${player.usuario}: ${player.score} puntos`;
+          scoreList.appendChild(listItem);
+        });
+
+        // Lógica para el botón 'aceptar' basada en usuarioEsAdmin
+        if (!usuarioEsAdmin) {
+          aceptar.style.display = 'none';
+
+        }
+
+      },
+      () => {
+        console.log("Error al cargar los datos del usuario.");
+      }
+    );
+  }
+
+  console.log("Modo de juego: Multijugador");
+} else {
+  console.log("Modo de juego: Un jugador");
+}
 
 // Función para obtener datos del usuario
 async function obtenerDatosUsuario(callback, manejarError) {
@@ -591,42 +610,67 @@ function iniciar() {
   ws.onmessage = (event) => {
     const data = JSON.parse(event.data);
     switch (data.type) {
-      case 'nuevoOrden':
-        console.log('Orden correcto recibido:', data.orden);
-        mostrarLibrosEnOrden(data.orden); // Actualizar el juego
-        break;
+      // case 'nuevoOrden':
+      //   console.log('Orden correcto recibido:', data.orden);
+      //   mostrarLibrosEnOrden(data.orden); // Actualizar el juego
+      //   sessionStorage.removeItem('ordenCorrecto');
+
+      //   break;
 
       case 'actualizarEstadisticas':
         console.log("Estadisticasdsgfrd")
-        console.log("Estadísticas: ", JSON.stringify(gameData.players));
+        console.log("Estadísticas: ", JSON.stringify(data.players));
+        actualizarEstadisticas(data)
+
 
         break;
 
       case 'ordenCorrecto':
         console.log('Orden correcta recibida:', data.orden);
-        sessionStorage.removeItem('ordenCorrecto');
+        ordenVerificar = data.orden;
+        mostrarLibrosEnOrden(data.orden); // Actualizar el juego}
         break;
 
       case 'error':
         console.error('Error:', data.message);
         break;
       case 'actualizarJugadores':
-        const contenedorUsers = document.getElementById('contedor_users');
         contenedorUsers.innerHTML = '';
 
         // Crear el contenido del contenedor para los jugadores
         data.players.forEach((player, index) => {
-            const contenedor = document.createElement('div');
-            contenedor.className = 'col-12 row contenedor-info';
-            contenedor.innerHTML = `
-                <div class="col-6 usuarioPerfill">
-                    ${index + 1}. <img src="../../modales/modales/img/tablas/fotouser.png" alt="" style="width: 16px;"> ${player.usuario}
-                </div>
-                <div class="col-3">${player.time}s</div>
-                <div class="col-3">${player.score} puntos</div>
-            `;
-            contenedorUsers.appendChild(contenedor);
+          const contenedor = document.createElement('div');
+          contenedor.className = 'col-12 row contenedor-info';
+          contenedor.innerHTML = `
+                  <div class="col-6 usuarioPerfill">
+                      ${index + 1}. <img src="../../modales/modales/img/tablas/fotouser.png" alt="" style="width: 16px;"> ${player.usuario}
+                  </div>
+                  <div class="col-3" id="tiempo1">${player.time}s</div>
+                  <div class="col-3" id="puntosSecu2">${player.score} puntos</div>
+              `;
+          contenedorUsers.appendChild(contenedor);
         });
+        break;
+      case 'cerrarModal':
+        // Cierra el modal visible
+
+        const modalElement = document.querySelector('.modal.show');
+        if (modalElement) {
+          const modalInstance = bootstrap.Modal.getInstance(modalElement);
+          modalInstance.hide();
+          console.log("Modal cerrado por el administrador");
+        }
+        const contenUser = document.getElementById('contedor_users');
+        contenUser.innerHTML = `
+            <div class="col-12 row contenedor-info">
+                                      <div class="col-6 usuarioPerfill"><img src="../../modales/modales/img/tablas/fotouser.png"
+                                              alt="" style="width: 16px;"></div>
+                                      <div class="col-3" id="tiempo1">0</div>
+                                      <div class="col-3" id="puntosSecu2">0s</div>
+                                  </div>
+          `;
+        // iniciar()
+        // enviarOrdenCorrecto();
         break;
     }
   };
@@ -652,11 +696,13 @@ function sendPlayerStatsToServer(score, time) {
           time: time
         }
       }));
-      console.log({player: {
-        idUsuario: id_usuario, // Asume el primer jugador en el array, cambiar si es necesario
-        score: score,
-        time: time
-      }})
+      console.log({
+        player: {
+          idUsuario: id_usuario, // Asume el primer jugador en el array, cambiar si es necesario
+          score: score,
+          time: time
+        }
+      })
 
       console.log("enviado")
     } else {
@@ -669,9 +715,9 @@ function sendPlayerStatsToServer(score, time) {
 
 // Función para enviar el orden correcto al servidor (solo si es admin)
 function enviarOrdenCorrecto() {
-  const ordenCorrecto = JSON.parse(sessionStorage.getItem('ordenCorrecto'));
+  const ordenCorrectoAdmin = JSON.parse(sessionStorage.getItem('ordenCorrectoAdmin'));
 
-  if (!ordenCorrecto) {
+  if (!ordenCorrectoAdmin) {
     console.error('No se encontró el orden correcto en la sesión.');
     return;
   }
@@ -692,10 +738,15 @@ function enviarOrdenCorrecto() {
       ws.send(JSON.stringify({
         type: 'ordenCorrecto',
         codigoSala: gameData.gameData.codigoSala,
-        orden: ordenCorrecto
+        orden: ordenCorrectoAdmin
       }));
+      mostrarLibrosEnOrden(ordenCorrectoAdmin);
+      ordenVerificar = ordenCorrectoAdmin;
+      // sessionStorage.removeItem('ordenCorrecto');
+      sessionStorage.removeItem('ordenCorrectoAdmin');
 
-      console.log('Orden correcto enviado:', ordenCorrecto);
+
+      console.log('Orden correcto enviado:', ordenCorrectoAdmin);
     } else {
       console.error('gameData no está definido');
     }
@@ -706,147 +757,57 @@ function enviarOrdenCorrecto() {
 
 
 // Función para actualizar las estadísticas de los jugadores
-function actualizarEstadisticas() {
-  const aceptar = document.querySelector('.botonTsolo');
-        if (!usuarioEsAdmin) {
-          aceptar.style.display = 'none';
+function actualizarEstadisticas(data) {
+  let estado = 0; // Estado inicial para controlar las acciones
 
-        }
-        aceptar.addEventListener('click', () => {
-          const contenedorUsers = document.getElementById('contedor_users');
-          contenedorUsers.innerHTML = '';
-          gameData.players.forEach((player, index) => {
-            const contenedor = document.createElement('div');
-            contenedor.className = 'col-12 row contenedor-info';
-            contenedor.innerHTML = `
-                            <div class="col-6 usuarioPerfill">
-                                ${index + 1}. <img src="../../modales/modales/img/tablas/fotouser.png" alt="" style="width: 16px;"> ${player.usuario}
-                            </div>
-                            <div class="col-3">${player.time}s</div>
-                            <div class="col-3">${player.score} puntos</div>
-                        `;
-            contenedorUsers.appendChild(contenedor);
-          });
-        })
+  aceptar.addEventListener('click', () => {
+    if (estado === 0) {
+      // Primera acción: Actualizar las estadísticas
+      const contenedorUsers = document.getElementById('contedor_users');
+      contenedorUsers.innerHTML = '';
+      data.players.forEach((player, index) => {
+        const contenedor = document.createElement('div');
+        contenedor.className = 'col-12 row contenedor-info';
+        contenedor.innerHTML = `
+            <div class="col-6 usuarioPerfill">
+              ${index + 1}. <img src="../../modales/modales/img/tablas/fotouser.png" alt="" style="width: 16px;"> ${player.usuario}
+            </div>
+            <div class="col-3" id="tiempo1">${player.time}s</div>
+            <div class="col-3" id="puntosSecu2">${player.score} puntos</div>
+          `;
+        contenedorUsers.appendChild(contenedor);
+      });
+
+      const dataToSend = {
+        type: 'actualizarJugadores',
+        codigoSala: gameData.gameData.codigoSala,
+        players: data.players,
+      };
+
+      ws.send(JSON.stringify(dataToSend)); // Envía los datos
+      console.log('Datos enviados para actualizar jugadores');
+
+      // Cambiar el estado para la siguiente acción
+      estado = 1;
+    } else if (estado === 1) {
+      // Segunda acción: Cerrar el modal
+      const dataToSend = {
+        type: 'cerrarModal',
+        codigoSala: gameData.gameData.codigoSala,
+      };
+
+      ws.send(JSON.stringify(dataToSend)); // Envía el mensaje para cerrar el modal
+      console.log('Mensaje enviado para cerrar el modal');
+
+      // Resetear estado si es necesario o mantenerlo en 1
+      estado = 0; // Opcional: Para reiniciar la secuencia si fuera necesario
+    }
+  });
 }
+
 
 // Verificar si estamos en modo multijugador
-if (modoJuego === 'multijugador') {
-  // Obtener los datos de la sala desde el sessionStorage
-  gameData = JSON.parse(sessionStorage.getItem('gameData'));
 
-  if (gameData) {
-    console.log('Datos de la sala:', gameData);
-
-    const scoreList = document.getElementById('scoreList');
-    const codigoSala = gameData.gameData.codigoSala;
-
-    obtenerDatosUsuario(
-      (data) => {
-        const id_usuario = data.id_usuario;
-        const usuario = data.usuario;
-        console.log(`Usuario ID: ${id_usuario}, Nombre: ${usuario}`);
-
-        // Verificar si el usuario es admin
-        const adminId = gameData.players.find(player => player.isAdmin)?.idUsuario;
-        usuarioEsAdmin = adminId === id_usuario;
-
-        console.log("Estado de admin:", usuarioEsAdmin);
-        localStorage.setItem('usuarioEsAdmin', usuarioEsAdmin);
-        localStorage.setItem('id_usuario', id_usuario);
-
-
-        
-        // Actualizar la lista de jugadores
-        scoreList.innerHTML = '';
-        gameData.players.forEach(player => {
-          const listItem = document.createElement('li');
-          listItem.textContent = `${player.usuario}: ${player.score} puntos`;
-          scoreList.appendChild(listItem);
-        });
-        
-        // Lógica para el botón 'aceptar' basada en usuarioEsAdmin
-        const aceptar = document.querySelector('.botonTsolo');
-        if (!usuarioEsAdmin) {
-          aceptar.style.display = 'none';
-
-        }
-        aceptar.addEventListener('click', () => {
-          const contenedorUsers = document.getElementById('contedor_users');
-          contenedorUsers.innerHTML = '';
-          gameData.players.forEach((player, index) => {
-            const contenedor = document.createElement('div');
-            contenedor.className = 'col-12 row contenedor-info';
-            contenedor.innerHTML = `
-                            <div class="col-6 usuarioPerfill">
-                                ${index + 1}. <img src="../../modales/modales/img/tablas/fotouser.png" alt="" style="width: 16px;"> ${player.usuario}
-                            </div>
-                            <div class="col-3">${player.time}s</div>
-                            <div class="col-3">${player.score} puntos</div>
-                        `;
-            contenedorUsers.appendChild(contenedor);
-          });
-          const dataToSend = {
-            type: 'actualizarJugadores',
-            codigoSala: gameData.gameData.codigoSala,
-            players: gameData.players
-        };
-        ws.send(JSON.stringify(dataToSend));
-        console.log("enviado")
-          const contenedorBoton = document.querySelector('.contenedor-botonTsolo');
-          contenedorBoton.innerHTML = `
-                    <button class="botonTsolo" data-bs-dismiss="modal" aria-label="Close">Aceptar</button>`;
-
-        });
-
-        // Iniciar WebSocket
-        iniciar();
-      },
-      () => {
-        console.log("Error al cargar los datos del usuario.");
-      }
-    );
-  }
-
-  console.log("Modo de juego: Multijugador");
-} else {
-  console.log("Modo de juego: Un jugador");
-}
-
-function enviarPuntuacion(puntajeTotal, tiempoPromedio, totalRubis) {
-  const arrPuntos = {
-    puntajeTotal: puntajeTotal,
-    tiempoPromedio: tiempoPromedio,
-    totalRubis: totalRubis,
-  };
-
-  console.log('Enviando datos:', arrPuntos);
-
-  fetch("../../procesos/puntuacion/recibirPuntuacion.php", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify(arrPuntos),
-  })
-    .then(response => {
-      if (!response.ok) {
-        return response.json().then(err => Promise.reject(err));
-      }
-      return response.json();
-    })
-    .then(data => {
-      console.log('Respuesta recibida:', data);
-      if (data.success) {
-        console.log('Datos procesados correctamente:', data.datos);
-        // Aquí puedes hacer algo con la respuesta exitosa
-      } else {
-        alert(data.mensaje || 'Error al procesar los datos');
-      }
-    })
-    .catch(error => {
-      console.error("Error:", error);
-      alert("Ocurrió un error al enviar la puntuación: " +
-        (error.mensaje || error.message || 'Error desconocido'));
-    });
-}
+botonVerificar.addEventListener("click", () => {
+  finalizarRonda(ordenVerificar);
+});
