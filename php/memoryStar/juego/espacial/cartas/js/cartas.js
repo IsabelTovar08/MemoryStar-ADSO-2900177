@@ -236,7 +236,8 @@ export class JuegoCartas {
             modal.show();
             this.siguiente.addEventListener("click", () => {
                 window.location.href =
-                    "./juego/espacial/cartas/juegoPixel/planetScapearma tu nave.html";
+                  "aCohete/animacion1.html";
+                    //"./juego/espacial/cartas/juegoPixel/planetScapearma tu nave.html";
             });
 
             // Actualizar el modal con datos finales

@@ -52,40 +52,40 @@ function numero(event) {
 }
 
 // Función para mostrar la alerta personalizada 
-function alertaPersonalizada() {
-    let html = `
-    <div class="capa">
-        <div class="alerta">
-            <div class="titulo-alerta">
-                <h2 class="titulo">Sala no encontrada</h2>
-            </div>
-            <div class="contexto-alerta">
-                <p class="contexto">Ingrese de nuevo el código</p>
-            </div>
-        </div>
-    </div>`;
-    return html;
-}
+// function alertaPersonalizada() {
+//     let html = `
+//     <div class="capa">
+//         <div class="alerta">
+//             <div class="titulo-alerta">
+//                 <h2 class="titulo">Sala no encontrada</h2>
+//             </div>
+//             <div class="contexto-alerta">
+//                 <p class="contexto">Ingrese de nuevo el código</p>
+//             </div>
+//         </div>
+//     </div>`;
+//     return html;
+// }
 
-function mostrarAlerta() {
-    const cuerpo = document.querySelector('body');
-    cuerpo.innerHTML = alertaPersonalizada(); 
+// function mostrarAlerta() {
+//     const cuerpo = document.querySelector('body');
+//     cuerpo.innerHTML = alertaPersonalizada(); 
 
-    const capa = document.querySelector('.capa');
+//     const capa = document.querySelector('.capa');
 
-    setTimeout(() => {
-        capa.style.display = 'none'; 
-        cuerpo.innerHTML = `
-        <div class="container">
-            <form action="" onsubmit="numero(event)">
-                <label for="codigo">Código de la sala</label>
-                <input type="text" value="" id="codigo" placeholder="Código" maxlength="6" minlength="1">
-                <input type="submit" value="Enviar">
-            </form>
-            <p class="mensaje"></p>
-        </div>`;
-    }, 3000); // 3 segundos de espera antes de ocultar la alerta
-}
+//     setTimeout(() => {
+//         capa.style.display = 'none'; 
+//         cuerpo.innerHTML = `
+//         <div class="container">
+//             <form action="" onsubmit="numero(event)">
+//                 <label for="codigo">Código de la sala</label>
+//                 <input type="text" value="" id="codigo" placeholder="Código" maxlength="6" minlength="1">
+//                 <input type="submit" value="Enviar">
+//             </form>
+//             <p class="mensaje"></p>
+//         </div>`;
+//     }, 3000); // 3 segundos de espera antes de ocultar la alerta
+// }
 
 
 // animacion de las puertas
@@ -108,38 +108,26 @@ puertoBottom.style.transition = 'all 3.5s ease'
 
 const contenedorUnirseSala = document.querySelector('.unimer-sala')
 const contendedorCrearSala = document.querySelector('.crear-sala')
-let html =``;
+const cajaUnirme = document.querySelector('.caja-unirme')
+const cajaCrear = document.querySelector('.caja-crear') 
 contendedorCrearSala.addEventListener('click',()=>{
-    const caja = document.querySelector('.caja')
 
     contendedorCrearSala.style.background = '#00e3f3 '
     contendedorCrearSala.style.color = 'black '
     contenedorUnirseSala.style.background = ' #03192eaf'
     contenedorUnirseSala.style.color = 'white'
-    html =`
-        <h2>Crear sala</h2>
-            <label for="nombre">Nombre de la sala</label>
-            <input type="text" id="nombre" placeholder="Nombre">
-            <label for="cantidad">Cantidad de persona</label>
-            <input type="number" id="cantidad" placeholder="Cantidad">
-            <input type="submit" value="Crear sala">
-        `
-        caja.innerHTML = html;
+    cajaUnirme.style.display ='none'
+    cajaCrear.style.display = 'inline-block'
 })
 
 contenedorUnirseSala.addEventListener('click',()=>{
-    const caja = document.querySelector('.caja')
 
     contenedorUnirseSala.style.background = ' #00e3f3'
     contenedorUnirseSala.style.color = 'black'
     contendedorCrearSala.style.background = ' #03192eaf'
     contendedorCrearSala.style.color = ' white'
-    html =`
-    <label for="codigo">Código de la sala</label>
-            <input type="number" value="" id="codigo" placeholder="Código" maxlength="6" minlength="1" oninput="validity.valid || (value='');">
-            <input type="submit" value="Enviar">
-            <p class="mensaje"></p>`
-    caja.innerHTML = html;
+    cajaUnirme.style.display ='inline-block '
+    cajaCrear.style.display = 'none'
 })
 
 

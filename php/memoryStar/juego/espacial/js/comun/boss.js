@@ -88,7 +88,8 @@ export class Boss {
       this.scene.add.text(300, this.scene.scale.height - 500, "¡FELICIDADES, DERROTASTE AL ENEMIGO!", { fontSize: "60px", fill: "#fff", stroke: "#000", strokeThickness: 3 });
       
         setTimeout(() => {
-          window.location.href=("../../../../juego/espacial/armas/enemigo.html")
+          window.location.href=("../../../../aCohete/animacion4.html");
+          //("../../../../juego/espacial/armas/enemigo.html")
         }, 2000);
       
       

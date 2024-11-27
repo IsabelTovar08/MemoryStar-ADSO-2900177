@@ -45,6 +45,7 @@ let intervaloTemp;
 let contador = -2;
 let tiempoRestante;
 let idDropzone = [];
+const audioVictory = new Audio("../../sonidos/juego/victoria1.mp3");
 let GAME_CONFIG;
 
 // numero de objetos por ronda
@@ -409,6 +410,10 @@ function mostrarResultadosFinales() {
 
   document.body.appendChild(modalFinal);
   new bootstrap.Modal(modalFinal).show();
+  // Intentar reproducir el sonido
+  audioVictory.play().catch((error) => {
+    console.error("Error al reproducir audio:", error);
+  });
   
 
   enviarPuntuacion(puntajeTotal, tiempoPromedio, totalRubis);

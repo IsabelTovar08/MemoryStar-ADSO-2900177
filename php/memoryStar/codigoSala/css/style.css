@@ -323,3 +323,6 @@ input[type="submit"]:hover {
 
     align-items: center;
 }
+.caja-crear{
+    display: none;
+}

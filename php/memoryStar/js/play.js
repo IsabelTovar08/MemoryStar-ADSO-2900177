@@ -22,7 +22,7 @@ document.addEventListener("DOMContentLoaded", function () {
   // Función para elegir el modo de juego
   function elegirJuego() {
     let resultadoMostrar = `
-                <a href="configurarJuego.php"><img src="img/iconos/atrasN.png" alt="" class="atras"></a>
+                <a href="configurarJuego.html"><img src="img/iconos/atrasN.png" alt="" class="atras"></a>
                 <h1 class="game-title">Configurar Juego</h1>
                 <div class="col row">
                     <div class="col-4 sala">

@@ -11,14 +11,22 @@ body {
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  font-family: cursive;
+  font-family: Arial, Helvetica, sans-serif;
   overflow: hidden;
   
 }
 .modal{
   background-color: #0044ff0a;
 }
-#armarArma .modal-content {
+.contenedorA{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  height: 100vh;
+
+}
+.contenedorb {
   position: relative;
   border-radius: 40px;
   border: 4px solid #00374db4;
@@ -32,9 +40,10 @@ body {
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  height: 75vh;
+    /* height: 75vh; */
   /* width: 65vh; */
-  margin: 0;
+  /* justify-content: center;
+  align-items: center; */
   touch-action: none;
   box-shadow: 0 0 20px #000;
   transition: transform 0.3s;
@@ -76,7 +85,8 @@ body {
 }
 #tiempo {
   top: 20%;
-  background: linear-gradient(to bottom, rgba(135, 206, 235, 0.8), rgba(30, 144, 255, 0.4));
+  right: 2%;
+  background: linear-gradient(to bottom, rgba(2, 74, 102, 0.8), rgba(30, 144, 255, 0.4));
   font-family: 'Arial', sans-serif;
   font-size: 2.5vh;
   position: absolute;
@@ -132,7 +142,7 @@ body {
 .dropzone {
   width: 5vh; /* Ajusta el tamaño de las dropzones según tus objetos */
   height: 5vh;
-  /* border: 2px dashed #fff; */
+  border: 2px dashed #fff;
   position: absolute;
   z-index: 0; /* Para que estén encima de la imagen principal */
 }

@@ -138,11 +138,13 @@ export class partesNave {
         .then(data => {
             console.log(data.mensaje);
             console.log('envidado 2')
-            window.location.href = "../pruebaNave.html";
+            window.location.href = "../../../../aCohete/animacion2.html";
+            //"../pruebaNave.html";
         })
         .catch(error => {
             console.error('Error al enviar datos:', error);
-            window.location.href = "../pruebaNave.html";
+            window.location.href = "../../../../aCohete/animacion2.html";
+            //"../pruebaNave.html";
         });
     }
 }

@@ -25,6 +25,7 @@ const contenedorLibros = document.querySelector("#lista");
 const libros = document.getElementById("lista");
 const botonVerificar = document.getElementById("verificarBtn");
 const resultado = document.getElementById("resultado");
+const audioVictory = new Audio("../../sonidos/juego/victoria1.mp3");
 
 // libros total
 const todosLosLibros = [
@@ -285,7 +286,9 @@ function finalizarRonda() {
   totalRubis += rubis;
   document.getElementById("rubis").innerHTML = `+${rubis}`;
 
-  document.getElementById("nRonda").innerHTML= `PUNTUACION RONDA ${rondaActual}`;
+  document.getElementById(
+    "nRonda"
+  ).innerHTML = `PUNTUACION RONDA ${rondaActual}`;
 
   const modal = new bootstrap.Modal(
     document.getElementById("tablapuntuacionsolo")
@@ -376,24 +379,20 @@ function mostrarResultadosFinales() {
           <div class="modal-content contenedorTsolo">
               <div class="tituloTsolo">¡Juego Completado!</div>
               <div class="contenedorTsoloInterior">
-              <div class="contenedor-estrellas">
-                            <img src="../../modales/modales/img/tablas/Star.png" class="star" alt="">
-                            <img src="../../modales/modales/img/tablas/Star.png" class="star" alt="">
-                            <img src="../../modales/modales/img/tablas/Star.png" class="star" alt="">
-                        </div>
-                  <div class="puntaje-total">
-                      ${puntajeTotal}
+                  <div class="contenedor-estrellas">
+                      <img src="../../modales/modales/img/tablas/Star.png" class="star" alt="">
+                      <img src="../../modales/modales/img/tablas/Star.png" class="star" alt="">
+                      <img src="../../modales/modales/img/tablas/Star.png" class="star" alt="">
                   </div>
-  
+                  <div class="puntaje-total">${puntajeTotal}</div>
                   <div class="contenedor-puntaje">
-                      Tiempo Promedio:
-                      00:${tiempoPromedio < 10 ? "0" : ""}${tiempoPromedio}
+                      Tiempo Promedio: 00:${tiempoPromedio < 10 ? "0" : ""}${tiempoPromedio}
                   </div>
                   <div class="contenedor-rubi">
-                            <div>${totalRubis}</div>
-                            <img src="../../modales/modales/img/tablas/rubipuntaje.png"
-                                style="width: 4vh; height: auto;">
+                      <div>${totalRubis}</div>
+                      <img src="../../modales/modales/img/tablas/rubipuntaje.png" style="width: 4vh; height: auto;">
                   </div>
+<<<<<<< HEAD
   
                   <div class="col-12 row contenedor-info">
                       <div class="col-6 usuarioPerfill">
@@ -403,28 +402,46 @@ function mostrarResultadosFinales() {
                       <div class="col-3">00:${
                         tiempoPromedio < 10 ? "0" : ""
                       }${tiempoPromedio}</div>
+=======
+                  <div class="col-12 row contenedor-info">
+                      <div class="col-6 usuarioPerfill">
+                          <img src="../../modales/modales/img/tablas/fotouser.png" alt="" style="width: 16px;">
+                      </div>
+                      <div class="col-3">00:${tiempoPromedio < 10 ? "0" : ""}${tiempoPromedio}</div>
+>>>>>>> 1256259451bc41943ab78cad5ed8ec217b8fe35b
                       <div class="col-3">${puntajeTotal}pts</div>
                   </div>
               </div>
-  
               <div class="contenedor-botonTsolo">
+<<<<<<< HEAD
                   <button class="botonTsolo" onclick="redirigir()">
                       Salir
                   </button>
+=======
+                  <button class="botonTsolo" onclick="redirigir()">Salir</button>
+>>>>>>> 1256259451bc41943ab78cad5ed8ec217b8fe35b
               </div>
           </div>
       </div>
   `;
 
   document.body.appendChild(modalFinal);
-  new bootstrap.Modal(modalFinal).show();
+
+  const bootstrapModal = new bootstrap.Modal(modalFinal);
+  bootstrapModal.show();
+
+  // Intentar reproducir el sonido
+  audioVictory.play().catch((error) => {
+    console.error("Error al reproducir audio:", error);
+  });
 
   enviarPuntuacion(puntajeTotal, tiempoPromedio, totalRubis);
   obtenerDatosUsuario();
 }
-function redirigir(){
+
+function redirigir() {
   setTimeout(() => {
-    window.location.href=("../../index.html")
+    window.location.href = "../../index.html";
   }, 2000);
 }
 
@@ -467,40 +484,42 @@ async function obtenerDatosUsuario() {
 
 function enviarPuntuacion(puntajeTotal, tiempoPromedio, totalRubis) {
   const arrPuntos = {
-      puntajeTotal: puntajeTotal,
-      tiempoPromedio: tiempoPromedio,
-      totalRubis: totalRubis,
+    puntajeTotal: puntajeTotal,
+    tiempoPromedio: tiempoPromedio,
+    totalRubis: totalRubis,
   };
 
-  console.log('Enviando datos:', arrPuntos);
+  console.log("Enviando datos:", arrPuntos);
 
   fetch("../../procesos/puntuacion/recibirPuntuacion.php", {
-      method: "POST",
-      headers: {
-          "Content-Type": "application/json",
-      },
-      body: JSON.stringify(arrPuntos), 
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(arrPuntos),
   })
-  .then(response => {
+    .then((response) => {
       if (!response.ok) {
-          return response.json().then(err => Promise.reject(err));
+        return response.json().then((err) => Promise.reject(err));
       }
       return response.json();
-  })
-  .then(data => {
-      console.log('Respuesta recibida:', data);
+    })
+    .then((data) => {
+      console.log("Respuesta recibida:", data);
       if (data.success) {
-          console.log('Datos procesados correctamente:', data.datos);
-          // Aquí puedes hacer algo con la respuesta exitosa
+        console.log("Datos procesados correctamente:", data.datos);
+        // Aquí puedes hacer algo con la respuesta exitosa
       } else {
-          alert(data.mensaje || 'Error al procesar los datos');
+        alert(data.mensaje || "Error al procesar los datos");
       }
-  })
-  .catch(error => {
+    })
+    .catch((error) => {
       console.error("Error:", error);
-      alert("Ocurrió un error al enviar la puntuación: " + 
-            (error.mensaje || error.message || 'Error desconocido'));
-  });
+      alert(
+        "Ocurrió un error al enviar la puntuación: " +
+          (error.mensaje || error.message || "Error desconocido")
+      );
+    });
 }
 
 // Función para reiniciar el juego
