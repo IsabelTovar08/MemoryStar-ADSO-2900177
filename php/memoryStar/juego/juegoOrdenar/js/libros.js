@@ -392,34 +392,16 @@ function mostrarResultadosFinales() {
                       <div>${totalRubis}</div>
                       <img src="../../modales/modales/img/tablas/rubipuntaje.png" style="width: 4vh; height: auto;">
                   </div>
-<<<<<<< HEAD
-  
-                  <div class="col-12 row contenedor-info">
-                      <div class="col-6 usuarioPerfill">
-                          <img src="../../modales/modales/img/tablas/fotouser.png" alt="" style="width: 16px;">
-                          
-                      </div>
-                      <div class="col-3">00:${
-                        tiempoPromedio < 10 ? "0" : ""
-                      }${tiempoPromedio}</div>
-=======
                   <div class="col-12 row contenedor-info">
                       <div class="col-6 usuarioPerfill">
                           <img src="../../modales/modales/img/tablas/fotouser.png" alt="" style="width: 16px;">
                       </div>
                       <div class="col-3">00:${tiempoPromedio < 10 ? "0" : ""}${tiempoPromedio}</div>
->>>>>>> 1256259451bc41943ab78cad5ed8ec217b8fe35b
                       <div class="col-3">${puntajeTotal}pts</div>
                   </div>
               </div>
               <div class="contenedor-botonTsolo">
-<<<<<<< HEAD
-                  <button class="botonTsolo" onclick="redirigir()">
-                      Salir
-                  </button>
-=======
                   <button class="botonTsolo" onclick="redirigir()">Salir</button>
->>>>>>> 1256259451bc41943ab78cad5ed8ec217b8fe35b
               </div>
           </div>
       </div>
