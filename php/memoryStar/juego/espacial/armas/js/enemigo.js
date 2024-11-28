@@ -15,6 +15,8 @@ document.addEventListener("DOMContentLoaded", () => {
     let total_tiempo = 0;
     let tiempoTranscurrido = 0; // Nueva variable para controlar el tiempo transcurrido
     let intervaloDeTiempo;
+    const audioVictory = new Audio('../../../sonidos/juego/victoria1.mp3');
+    const audioLoser = new Audio('../../../sonidos/juego/perder1.mp3')
     
     // Iniciamos el temporizador y guardamos la referencia del intervalo
     intervaloDeTiempo = tempo(duracion, tiempo);
@@ -165,7 +167,17 @@ document.addEventListener("DOMContentLoaded", () => {
           puntuacion = 0;
           rubis = 0;
           contador = 15;
-          mostrarTabla();
+
+          var perdistee = new bootstrap.Modal(document.getElementById("perdioo"));
+          perdistee.show();
+          // Intentar reproducir el sonido
+          audioLoser.play().catch((error) => {
+            console.error("Error al reproducir audio:", error);
+          });
+          let perdio = document.getElementById('perdiste')
+          perdio.addEventListener("click", () => {
+            window.location.href = "../../../index.html";
+          });
         }
       }, 1000);
       return intervalo;

@@ -1,19 +1,21 @@
-function redirigir(){
+function redirigir() {
   setTimeout(() => {
-    window.location.href=("../../../index.html")
+    window.location.href = "../../../index.html";
   }, 2000);
 }
 document.addEventListener("DOMContentLoaded", function () {
   const btnVeri = document.getElementById("verificar");
-  let ordenCorrect = []; 
+  let ordenCorrect = [];
   let tiempo = document.getElementById("tiempo");
   let duracion = 15;
   let timerInterval;
   let puntuacion = 0;
   let rubis = 0;
   let contador = 0;
-  
-  timerInterval = tempo(duracion,tiempo);
+  const audioVictory = new Audio("../../../sonidos/juego/victoria1.mp3");
+  const audioLoser = new Audio("../../../sonidos/juego/perder1.mp3");
+
+  timerInterval = tempo(duracion, tiempo);
 
   fetch("php/almacenar_orden.php")
     .then((response) => response.json())
@@ -61,11 +63,15 @@ document.addEventListener("DOMContentLoaded", function () {
 
         if (id == idEsperado) {
           aciertos += 1;
-          cuadro.classList.remove("mal");
           cuadro.classList.add("bien");
+          setTimeout(() => {
+            cuadro.classList.remove("bien");
+          }, 1000);
         } else {
           cuadro.classList.add("mal");
-          cuadro.classList.remove("bien");
+          setTimeout(() => {
+            cuadro.classList.remove("mal");
+          }, 1000);
           correcto = false;
         }
       });
@@ -74,7 +80,8 @@ document.addEventListener("DOMContentLoaded", function () {
       mainContent.classList.remove("blur");
 
       if (correcto) {
-        toastMessage.innerHTML = "¡Correcto! Has acertado en todas las posiciones.";
+        toastMessage.innerHTML =
+          "¡Correcto! Has acertado en todas las posiciones.";
         clearInterval(timerInterval);
         calcularRecompensas();
         mostrarTabla();
@@ -90,34 +97,44 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 
   function calcularRecompensas() {
-    let tiempoTranscurrido = 15 - parseInt(tiempo.textContent.trim().split(':')[1]);
-    
+    let tiempoTranscurrido =
+      15 - parseInt(tiempo.textContent.trim().split(":")[1]);
+
     if (tiempoTranscurrido <= 5) {
-        puntuacion = 200;
-        rubis = 1;
+      puntuacion = 200;
+      rubis = 1;
     } else if (tiempoTranscurrido <= 10) {
-        puntuacion = 150;
+      puntuacion = 150;
     } else {
-        puntuacion = 100;
+      puntuacion = 100;
     }
-    
+
     contador = tiempoTranscurrido;
   }
 
-  function tempo(pduracion,elemento) {
+  function tempo(pduracion, elemento) {
     let duracion = pduracion;
     const intervalo = setInterval(() => {
-      elemento.innerHTML = `00:${duracion<10 ? '0':''}${duracion}`
+      elemento.innerHTML = `00:${duracion < 10 ? "0" : ""}${duracion}`;
       duracion--;
-      if(duracion <= 0){
-        clearInterval(intervalo)
-        elemento.innerHTML = `¡Tiempo!`
+      if (duracion <= 0) {
+        clearInterval(intervalo);
+        elemento.innerHTML = `¡Tiempo!`;
         puntuacion = 0;
         rubis = 0;
         contador = 5;
-        mostrarTabla();
+        var perdistee = new bootstrap.Modal(document.getElementById("perdioo"));
+        perdistee.show();
+        // Intentar reproducir el sonido
+        audioLoser.play().catch((error) => {
+          console.error("Error al reproducir audio:", error);
+        });
+        let perdio = document.getElementById("perdiste");
+        perdio.addEventListener("click", () => {
+          window.location.href = "../../../index.html";
+        });
       }
-    },1000);
+    }, 1000);
     return intervalo;
   }
 
@@ -164,7 +181,8 @@ document.addEventListener("DOMContentLoaded", function () {
                 </div>
     
                 <div class="contenedor-botonTsolo">
-                    <button class="botonTsolo" onclick="redirigir()" style="margin-left: 20px;">
+                    <button class="botonTsolo" onclick="redirigir()"
+                    >
                         Salir
                     </button>
                 </div>
@@ -172,40 +190,33 @@ document.addEventListener("DOMContentLoaded", function () {
         </div>
     `;
 
-
-    puntosfinal(puntuacion,rubis,contador);
+    puntosfinal(puntuacion, rubis, contador);
 
     document.body.appendChild(modalFinal);
     new bootstrap.Modal(modalFinal, { backdrop: "static" }).show();
-
-
-
   }
 });
 
-
-
-function puntosfinal( puntuacion, rubis,contador){
+function puntosfinal(puntuacion, rubis, contador) {
   const datosJuego = {
-    puntos:puntuacion ,
+    puntos: puntuacion,
     diamantes: rubis,
     tiempo: contador,
-    archivo: 3
-};
-    fetch('../../../procesos/puntuacionmario/datos.php', {
-      method: 'POST',
-      headers: {
-          'Content-Type': 'application/json'
-      },
-      body: JSON.stringify(datosJuego)
+    archivo: 3,
+  };
+  fetch("../../../procesos/puntuacionmario/datos.php", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(datosJuego),
   })
-  .then(response => response.json())
-  .then(data => {
+    .then((response) => response.json())
+    .then((data) => {
       console.log(data.mensaje);
-      console.log('enviado 3')
-  })
-  .catch(error => {
-      console.error('Error al enviar datos:', error);
-      
-  });
+      console.log("enviado 3");
+    })
+    .catch((error) => {
+      console.error("Error al enviar datos:", error);
+    });
 }

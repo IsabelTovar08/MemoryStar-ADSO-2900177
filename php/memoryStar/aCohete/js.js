@@ -28,8 +28,4 @@ const div = document.createElement('div')
         generadorEstrellas('2px', ".estrella-2", 200, "15s")
         generadorEstrellas('3px', ".estrella-3", 100, "20s")
 
-        window.onload = function() {
-            setTimeout(function() {
-                window.location.href = '../juego/espacial/cartas/juegoPixel/planetScapearma tu nave.html';
-            }, 6000);
-        }
+       
