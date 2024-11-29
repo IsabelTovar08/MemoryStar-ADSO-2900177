@@ -420,6 +420,7 @@ function mostrarResultadosFinales() {
   enviarPuntuacion(puntajeTotal, tiempoPromedio, totalRubis);
   obtenerDatosUsuario();
 }
+
 function redirigir() {
   setTimeout(() => {
     window.location.href = "../../index.html";

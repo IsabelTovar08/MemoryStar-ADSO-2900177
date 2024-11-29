@@ -57,26 +57,66 @@ class Chat implements MessageComponentInterface
                 ];
                 $this->broadcastToRoom($data['codigoSala'], $dataToSend, $from);
                 break;
-                case 'actualizarJugadores':
-                    $codigoSala = $data['codigoSala']; // Asegúrate de enviar este dato desde el cliente si es necesario.
-                
-                    if (isset($this->salas[$codigoSala])) {
-                        // Preparar el mensaje para los jugadores
-                        $dataToSend = [
-                            'type' => 'actualizarJugadores',
-                            'players' => $data['players']
-                        ];
-                
-                        // Enviar a todos los clientes de la sala
-                        $this->broadcastToRoom($codigoSala, $dataToSend, $from);
-                    }
-                    break;
+            case 'actualizarJugadores':
+                $codigoSala = $data['codigoSala']; // Asegúrate de enviar este dato desde el cliente si es necesario.
+
+                if (isset($this->salas[$codigoSala])) {
+                    // Preparar el mensaje para los jugadores
+                    $dataToSend = [
+                        'type' => 'actualizarJugadores',
+                        'players' => $data['players']
+                    ];
+
+                    // Enviar a todos los clientes de la sala
+                    $this->broadcastToRoom($codigoSala, $dataToSend, $from);
+                }
+                break;
 
             case 'puntajeRonda':
                 $this->actualizarEstadisticas($from, $data);
                 break;
+            case 'ordenEnviado':
+                $codigoSala = $data['codigoSala'];
+                $usuario = $data['usuario'];
+
+                if (isset($this->salas[$codigoSala])) {
+                    // Marcar al usuario como "ronda terminada"
+                    $this->salas[$codigoSala]['finalizados'][] = $usuario;
+
+                    // Verificar si todos los jugadores han terminado
+                    $totalJugadores = count($this->salas[$codigoSala]['clients']);
+                    $jugadoresFinalizados = count($this->salas[$codigoSala]['finalizados']);
+
+                    if ($jugadoresFinalizados === $totalJugadores) {
+                        // Notificar al administrador que todos han terminado
+                        $dataToSend = [
+                            'type' => 'todosFinalizados',
+                            'codigoSala' => $codigoSala
+                        ];
+                        $this->broadcastToRoom($codigoSala, $dataToSend, null);
+
+                        // Reiniciar el estado de "finalizados"
+                        $this->salas[$codigoSala]['finalizados'] = [];
+                    }
+                }
+                break;
             case 'reconectarSala':
                 $this->reconectarSala($from, $data);
+                break;
+            case 'cerrarModal':
+                $codigoSala = $data['codigoSala'] ?? 'default';
+
+                if (isset($this->salas[$codigoSala])) {
+                    foreach ($this->salas[$codigoSala] as $client) {
+                        $dataToSend = [
+                            'type' => 'cerrarModal',
+                        ];
+
+                        // Enviar a todos los clientes de la sala
+                        $this->broadcastToRoom($codigoSala, $dataToSend);
+                    }
+                    echo "Modal cerrado en la sala {$codigoSala}\n";
+                }
                 break;
         }
     }
@@ -125,16 +165,17 @@ class Chat implements MessageComponentInterface
     {
         $userName = isset($data['usuario']) ? $data['usuario'] : 'Invitado';
         $userId = isset($data['id_usuario']) ? $data['id_usuario'] : 'ID Desconocido';
-
+    
         if (!isset($conn->codigoSala)) {
             return;
         }
         $codigoSala = $conn->codigoSala;
-
+    
         if (!isset($this->salas[$codigoSala]['contadorUsuarios'])) {
             $this->salas[$codigoSala]['contadorUsuarios'] = 0;
         }
-
+    
+    
         $usuario = [
             'usuario' => $userName,
             'id_usuario' => $userId,
@@ -142,13 +183,14 @@ class Chat implements MessageComponentInterface
             'time' => 0,
             'isAdmin' => ($this->salas[$codigoSala]['anfitrion'] === $conn)
         ];
-
+    
         $this->salas[$codigoSala]['contadorUsuarios']++;
-
+        $this->salas[$codigoSala]['usuarios'][] = $usuario; // Agregar al usuario a la lista de usuarios
+    
         $messageText = $usuario['isAdmin']
             ? "{$userName} (Administrador) se ha unido al chat"
             : "{$userName} se ha unido al chat";
-
+    
         $newConnection = [
             'type' => 'newConnection',
             'usuario' => $userName,
@@ -158,24 +200,26 @@ class Chat implements MessageComponentInterface
             'contadorUsuarios' => $this->salas[$codigoSala]['contadorUsuarios'],
             'idUsuario' => $userId
         ];
-
+    
         $this->broadcastToRoom($codigoSala, $newConnection);
         $this->salas[$codigoSala]['historial'][] = $newConnection;
         // Guardar el historial en un archivo JSON
         file_put_contents('historial_sala' . $codigoSala . '.json', json_encode($this->salas[$codigoSala]['historial']));
-
-
     }
+    
 
     private function crearSala($conn, $data)
     {
         $userName = isset($data['usuario']) ? $data['usuario'] : 'Invitado';
         $userId = isset($data['id_usuario']) ? $data['id_usuario'] : 'ID Desconocido';
         $nombreSala = isset($data['nombreSala']) ? $data['nombreSala'] : 'Sala sin nombre';
-        $capacidadSala = isset($data['capacidadSala']) ? (int) $data['capacidadSala'] : 10; // Capacidad predeterminada si no se proporciona
+        $tematica = isset($data['tematica']) ? $data['tematica'] : 'Predeterminada';
+        $dificultad = isset($data['dificultad']) ? $data['dificultad'] : 'Predeterminado';
+
 
         echo "Nombre de usuario: $userName, ID de usuario: $userId\n";
-        echo "Nombre de la sala: $nombreSala, Capacidad de la sala: $capacidadSala\n";
+        echo "Nombre de la sala: $nombreSala, \n";
+
 
         $codigoSala = $this->generarCodigoSala();
         $this->salas[$codigoSala] = [
@@ -183,7 +227,9 @@ class Chat implements MessageComponentInterface
             'clients' => new \SplObjectStorage(),
             'historial' => [],
             'nombre' => $nombreSala,
-            'capacidad' => $capacidadSala
+            'tematica' => $tematica,
+            'dificultad' => $dificultad
+
         ];
 
         $this->salas[$codigoSala]['clients']->attach($conn);
@@ -196,7 +242,8 @@ class Chat implements MessageComponentInterface
             'esAnfitrion' => true,
             'usuario' => $userName,
             'nombreSala' => $nombreSala,
-            'capacidadSala' => $capacidadSala,
+            'tematica' => $tematica,
+            'dificultad' => $dificultad,
             'id_usuario' => $userId
 
         ]));
@@ -207,6 +254,7 @@ class Chat implements MessageComponentInterface
     private function unirseSala($conn, $data)
     {
         $codigoSala = $data['codigoSala'];
+        $userId = isset($data['id_usuario']) ? $data['id_usuario'] : 'ID Desconocido'; // Suponiendo que id_usuario está en $data
 
         if (!isset($this->salas[$codigoSala])) {
             $conn->send(json_encode([
@@ -215,6 +263,17 @@ class Chat implements MessageComponentInterface
             ]));
             return;
         }
+        foreach ($this->salas[$codigoSala]['usuarios'] as $usuario) {
+            if ($usuario['id_usuario'] === $userId) {
+                // Si el id_usuario ya existe, notificar al usuario que no puede unirse
+                $conn->send(json_encode([
+                    'type' => 'error',
+                    'message' => 'El usuario ya se encuentra en la sala.'
+                ]));
+                return;
+            }
+        }
+
         $this->salas[$codigoSala]['clients']->attach($conn);
         $conn->codigoSala = $codigoSala;
 
@@ -227,7 +286,10 @@ class Chat implements MessageComponentInterface
         $conn->send(json_encode([
             'type' => 'unionExitosa',
             'codigoSala' => $codigoSala,
-            'esAnfitrion' => false
+            'esAnfitrion' => false,
+            'nombreSala' => $this->salas[$codigoSala]['nombre'],
+            'tematica' => $this->salas[$codigoSala]['tematica'],
+            'dificultad' => $this->salas[$codigoSala]['dificultad']
         ]));
     }
     private function iniciarJuego($from, $data)
@@ -301,36 +363,38 @@ class Chat implements MessageComponentInterface
             echo "Datos incompletos proporcionados.";
             return;
         }
-    
+
         $codigoSala = $data['codigoSala'];
         $player = $data['player']; // Trabajar directamente con el jugador
-    
+
         if (!isset($this->salas[$codigoSala])) {
             echo "La sala no existe: $codigoSala";
             return;
         }
-    
+
         // Inicializar historial si no existe
         if (!isset($this->salas[$codigoSala]['historial'])) {
             $this->salas[$codigoSala]['historial'] = [];
         }
         $historial = &$this->salas[$codigoSala]['historial'];
-    
+
         $idUsuario = $player['idUsuario'];
         $score = $player['score'];
         $time = $player['time'];
         $existe = false;
-    
+
         // Actualizar historial
         foreach ($historial as &$historialPlayer) {
             if ($historialPlayer['idUsuario'] === $idUsuario) {
-                $historialPlayer['score'] = $score;
-                $historialPlayer['time'] = $time;
+                // Sumar el nuevo puntaje al existente
+                $historialPlayer['score'] += $score;
+                $historialPlayer['time'] = $time; // Actualizar el tiempo con el más reciente
                 $existe = true;
                 break;
             }
         }
-    
+
+        // Si no existe el usuario, agregarlo al historial
         if (!$existe) {
             $historial[] = [
                 'idUsuario' => $idUsuario,
@@ -338,20 +402,21 @@ class Chat implements MessageComponentInterface
                 'time' => $time,
             ];
         }
-    
+
         // Verificar historial actualizado
         var_dump($this->salas[$codigoSala]['historial']);
-    
+
         // Difundir estadísticas
         $this->broadcastToRoom($codigoSala, [
             'type' => 'actualizarEstadisticas',
             'players' => $this->salas[$codigoSala]['historial']
         ]);
-    
+
         // Guardar historial en archivo
         file_put_contents('historial_sala_' . $codigoSala . '.json', json_encode($this->salas[$codigoSala]['historial'], JSON_PRETTY_PRINT));
     }
-    
+
+
 
 
 

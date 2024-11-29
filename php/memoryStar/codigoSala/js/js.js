@@ -21,35 +21,32 @@ input.addEventListener('keydown', function(event) {
 
 
 
-function numero(event) {
-    event.preventDefault(); // Para evitar que el formulario recargue la página
+// function numero(event) {
+//     event.preventDefault(); // Para evitar que el formulario recargue la página
 
-    const codigo = document.querySelector('#codigo').value;
+//     const codigo = document.querySelector('#codigo').value;
 
-    const cuerpo = document.querySelector('body');
-    const mensaje = document.querySelector('.mensaje');
-    const numeroEntero = /^[0-9]+$/;
+//     const cuerpo = document.querySelector('body');
+//     const mensaje = document.querySelector('.mensaje');
+//     const numeroEntero = /^[0-9]+$/;
 
-    if (codigo === '') {
-        mensaje.textContent = "Por favor ingresa un código";
-        setTimeout(()=>{
-            mensaje.textContent = ""
-        },1800)
-    }
-    // else if (!numeroEntero.test(codigo)) {
-    //     mensaje.textContent = "Solo se permiten números, ingrese de nuevo el número";
-    //     mostrarAlerta(); // Mostrar alerta personalizada si no es un número válido
-    // }
-    else if (codigo.length< 6) {
-        mensaje.textContent = "El código es demasiado pequeño";
-        setTimeout(()=>{
-            mensaje.textContent = ""
-        },1800)
-    }
-    else {
-        alert("El código es válido");
-    }
-}
+//     if (codigo === '') {
+//         mensaje.textContent = "Por favor ingresa un código";
+//         setTimeout(()=>{
+//             mensaje.textContent = ""
+//         },1800)
+//     }
+//     // else if (!numeroEntero.test(codigo)) {
+//     //     mensaje.textContent = "Solo se permiten números, ingrese de nuevo el número";
+//     //     mostrarAlerta(); // Mostrar alerta personalizada si no es un número válido
+//     // }
+//     else if (codigo.length< 6) {
+//         mensaje.textContent = "El código es demasiado pequeño";
+//         setTimeout(()=>{
+//             mensaje.textContent = ""
+//         },1800)
+//     }
+// }
 
 // Función para mostrar la alerta personalizada 
 // function alertaPersonalizada() {
@@ -90,26 +87,26 @@ function numero(event) {
 
 // animacion de las puertas
 
-const puertoTop = document.querySelector('.puerta-arriba')
-const puertoBottom = document.querySelector('.puerta-abajo')
+// const puertoTop = document.querySelector('.puerta-arriba')
+// const puertoBottom = document.querySelector('.puerta-abajo')
 
 
-setTimeout(()=>{
-puertoTop.style.position = 'absolute'
-puertoTop.style.top = '-100%'
-puertoTop.style.transition = 'all 3.5s ease'
-puertoBottom.style.position = 'absolute'
-puertoBottom.style.bottom = '-100%'
-puertoBottom.style.transition = 'all 3.5s ease'
+// setTimeout(()=>{
+// puertoTop.style.position = 'absolute'
+// puertoTop.style.top = '-100%'
+// puertoTop.style.transition = 'all 3.5s ease'
+// puertoBottom.style.position = 'absolute'
+// puertoBottom.style.bottom = '-100%'
+// puertoBottom.style.transition = 'all 3.5s ease'
 
 
-},2000)
+// },2000)
 
 
-const contenedorUnirseSala = document.querySelector('.unimer-sala')
-const contendedorCrearSala = document.querySelector('.crear-sala')
-const cajaUnirme = document.querySelector('.caja-unirme')
-const cajaCrear = document.querySelector('.caja-crear') 
+// const contenedorUnirseSala = document.querySelector('.unimer-sala')
+// const contendedorCrearSala = document.querySelector('.crear-sala')
+// const cajaUnirme = document.querySelector('.caja-unirme')
+// const cajaCrear = document.querySelector('.caja-crear') 
 contendedorCrearSala.addEventListener('click',()=>{
 
     contendedorCrearSala.style.background = '#00e3f3 '

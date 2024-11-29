@@ -23,18 +23,6 @@
 
 <body style="background-image: url('img/fondoLibro.png');">
     <div class="container-fuid">
-        <div id="scoreboard" style="color: white; position: absolute; margin-top: 10%;">
-            <h3>Puntuaciones</h3>
-            
-            <ul id="scoreList">
-                <!-- Lista de puntuaciones se generará aquí -->
-            </ul>
-        </div>
-<<<<<<< HEAD
-
-=======
-        <!-- modal -->
->>>>>>> 889677925b9da4341f41c3c5adda0d7c5fe63e60
         <div class="modal fade" id="tablapuntuacionsolo" data-bs-backdrop="static" tabindex="-1"
             aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog modal-sm modal-dialog-centered">
@@ -74,12 +62,7 @@
 
                     <div class="contenedor-botonTsolo">
                         <!-- <button class="botonTsolo">Jugar de nuevo</button> -->
-<<<<<<< HEAD
                         <button class="botonTsolo" style="margin-left: 20px;" >Aceptar</button>
-=======
-                        <button class="botonTsolo" data-bs-dismiss="modal"
-                            aria-label="Close">Aceptar</button>
->>>>>>> 889677925b9da4341f41c3c5adda0d7c5fe63e60
                     </div>
                 </div>
             </div>
@@ -94,7 +77,9 @@
 
                 <button id="verificarBtn">Verificar</button>
                 <div class="tiempo" id="temp">00:00</div>
-               
+                <!-- <div class="puntos" id="score">
+                PUNTOS:
+                </div> -->
                 <div class="countdown-container">
                     <div class="countdown-bar" id="countdown-bar"></div>
                     <div class="countdown-text" id="countdown-text">10</div>
@@ -113,48 +98,45 @@
         <h1 style="color: white;">mi nombre</h1>
 
     </div>
-<<<<<<< HEAD
+    <script>
+        const urlParams = new URLSearchParams(window.location.search);
+        const modoJuego = urlParams.get('modo') || 'un_jugador';
+        const contenedorBoton = document.querySelector('.contenedor-botonTsolo');
+    
+        if (modoJuego === 'multijugador') {
+            // Dinámicamente incluir el script de sesión
+            const script = document.createElement('script');
+            script.src = 'js/librosSocket.js';
+            script.type = 'module';
+            document.head.appendChild(script);
+        } else {
+            const script = document.createElement('script');
+            script.src = 'js/libros.js';
+            document.head.appendChild(script);
+            contenedorBoton.innerHTML = "";
+            contenedorBoton.innerHTML = `
+                <button class="botonTsolo" data-bs-dismiss="modal"
+                            aria-label="Close">Aceptar</button>
+            `;
+        }
+    </script>
+    
 
-    <script src="../../js/session.js"></script>
+    <!-- <script src="../../js/session.js"></script> -->
     <script src="js/Sortable.min.js"></script>
 
-    <script type="module" src="js/libros.js"></script>
+    <!-- <script type="module" src="js/libros.js"></script> -->
     <script src="../js/movimiento.js"></script>
     <script src="../js/overlayModal.js"></script>
-=======
-    <!-- <script>
-        function updateScoreOnServer(gameScore) {
-    const message = JSON.stringify({
-        type: 'updateScore',
-        score: gameScore
-    });
-    socket.send(message);
-}
-    </script> -->
-    <script src="js/libros.js"></script>
-    <script src="../../js/session.js"></script>
     <script src="../../js/pantalla.js"></script>
-    
-    <script src="js/Sortable.min.js"></script>
->>>>>>> 889677925b9da4341f41c3c5adda0d7c5fe63e60
     <script src="../../bootstrap/js/bootstrap.js"></script>
-    
-    <!-- <script src="../js/movimiento.js"></script> -->
-    <!-- <script src="../js/overlayModal.js"></script> -->
-    <!-- 
     <script src="../js/sonidos.js"></script>
     <script src="../js/perfil.js"></script>
     <script src="../js/mapa.js"></script>
     <script src="../../modales/modales/js/barra.js"></script>
     <script src="../js/comprat.js"></script>
-<<<<<<< HEAD
     <script src="../js/fotosperfil.js"></script>
     <script type="module" src="js/socket/socket.js"></script>
-=======
-    <script src="../js/fotosperfil.js"></script> -->
-    <script src="js/socket/socket.js"></script>
-
->>>>>>> 889677925b9da4341f41c3c5adda0d7c5fe63e60
 
 
 </body>
