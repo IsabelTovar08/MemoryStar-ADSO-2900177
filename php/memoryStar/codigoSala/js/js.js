@@ -68,7 +68,7 @@ function numero(event) {
 // }
 
 // function mostrarAlerta() {
-//     const cuerpo = document.querySelector('body');
+//     const cuerpo = document.querySelector('body'); 11
 //     cuerpo.innerHTML = alertaPersonalizada(); 
 
 //     const capa = document.querySelector('.capa');
