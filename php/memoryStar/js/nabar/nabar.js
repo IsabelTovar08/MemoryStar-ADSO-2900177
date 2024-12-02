@@ -303,7 +303,7 @@ var modalHTML = `
                 <rect x="0" y="0" fill="url(#b)" width="100%" height="100%"></rect>
             </svg></div>
         <div class="card__avatar fotoPerfil">
-            <img id="profileImage" src="#" alt="Foto de perfil">
+            <img id="profileImage" src="" alt="Foto de perfil">
             <input type="file" id="fileInput" accept="image/*" style="display: none;">
         </div>
         <button class="position-relative translate-middle badge rounded-pill bg-success cosita" onclick="document.getElementById('fileInput').click();">
@@ -341,9 +341,8 @@ var modalHTML = `
         <div class="card__img">
             <img src="img/fondos/perfil3.jpg" id="profileImage2" alt="">
         </div>
-        <div class="card__avatar fotoPerfil">
-            <img src="#" id="profileImage2" alt="Foto de perfil">
-            <input type="file" id="fileInput" accept="image/*" style="display: none;">
+        <div class="card__avatar fotoPerfil1" id="ponerFoto">
+            <img src="" alt="foto de perfil">
         </div>
         <div class="card__title usuarioPerfill"></div>
         <div class="card__subtitle">Web Development</div>
@@ -360,7 +359,17 @@ var modalHTML = `
             <img src="modales/modales/img/rangos/rangoBloqueadoo.png" alt="" width="50">
         </div>
         <br>
-        <h5 class="offcanvas-title perfil" id="offcanvasRightLabel">Tus iconos de perfil:</h5>
+        <div>
+            <h5 class="offcanvas-title perfil" id="offcanvasRightLabel">Tus iconos de perfil:</h5>
+            <div id="productourls">
+            <div id="productourls-table">
+                <div class="productourls-table-contenedor">
+                
+                </div>
+            </div>
+            </div>
+
+        </div>
         <br>
         <div class="modal-profile-items row"></div>
         <br>
@@ -487,39 +496,41 @@ var modalHTML = `
 
 <!-- Modal tienda -->
 <div class="modal fade" id="exampleModal-tienda" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog card moveer">
-    <div class="modal-content fondo-tienda">
-      <div class="modal-header">
-        <div class="col-12 row">
-          <div class="col-10">
-            <h1 class="fs-5 titulo-tienda">Tienda memoryStar</h1>
-          </div>
-          <div class="col-2">
-            <img src="img/iconos/botonSalir.png" alt="salir" class="btn salir-tienda" data-bs-dismiss="modal" aria-label="Close">
-          </div>
-        </div>
-      </div>
-      <div class="modal-body texto">
-        Compra artículos especiales para mejorar tu experiencia en el juego. <br><br>
-        <div class="wooden-sign">
-          <p class="sign-text2">Iconos de perfil</p>
-          <div class="wooden-sign2">
-            <div class="number-item3">
-              <span class="number">diamantes: 500</span>
-              <div class="diamond"></div>
+    <div class="modal-dialog card moveer">
+        <div class="modal-content fondo-tienda">
+            <div class="modal-header">
+                <div class="col-12 row">
+                    <div class="col-10">
+                        <h1 class="fs-5 titulo-tienda">Tienda memoryStar</h1>
+                    </div>
+                        <div class="col-2">
+                            <img src="img/iconos/botonSalir.png" alt="salir" class="btn salir-tienda" data-bs-dismiss="modal" aria-label="Close">
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-body texto">
+                 <p class="descripcion-tienda">Compra artículos especiales para mejorar tu experiencia en el juego. </p>
+                    
+                    <div class="wooden-sign">
+                        <div class="wooden-sign2">
+                            <div class="number-item3">
+                                <span class="sign-text2">Iconos de perfil</span>
+                                <span class="number"><div id="diamond-count"></div> <div class="diamond"></div></span>
+                                
+                            </div>
+                        </div>
+                    </div>
+                    <div class="store-items row"></div>
+                </div>
             </div>
-          </div>
         </div>
-        <hr class="division">
-        <div class="store-items row"></div>
-      </div>
     </div>
-  </div>
   <!-- Contenedor de alerta -->
-  <div id="custom-alert" class="custom-alert" style="display:none;">
+    <div id="custom-alert" class="custom-alert" style="display: none;">
     <span id="alert-message"></span>
     <button id="close-alert" class="btn-close">X</button>
-    </div>
+</div>
+</div>
 </div>
 
 <!-- Modal compra -->

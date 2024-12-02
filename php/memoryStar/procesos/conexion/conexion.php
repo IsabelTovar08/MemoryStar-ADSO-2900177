@@ -12,19 +12,19 @@ class conexion {
         $this->puerto = "5432";
         $this->baseDatos = "corredor";
     }
-    public function conectar (){
-       try{
-        $dsn = "pgsql:host = $this->servidor;port=$this->puerto;dbname=$this->baseDatos";
-        $pdo = new PDO($dsn, $this->usuario, $this->password,[
-            PDO::ATTR_ERRMODE =>PDO::ERRMODE_EXCEPTION,
+   public function conectar () {
+    try {
+        $dsn = "pgsql:host=$this->servidor;port=$this->puerto;dbname=$this->baseDatos";
+        $pdo = new PDO($dsn, $this->usuario, $this->password, [
+            PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
             PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC
         ]);
-            // echo 'conexion exitosa yei';
-       }catch(PDOException $e){
-            echo 'conexion fallida'. $e->getMessage();
-       }
-       return $pdo;
+        return $pdo;
+    } catch (PDOException $e) {
+        echo 'Error de conexión: ' . $e->getMessage();
+        return null; // Devuelve null si no puede conectarse
     }
+}
         
 
         public function ejecutar($sql, $valores) {
@@ -65,6 +65,20 @@ class conexion {
             $stmt->execute($valores);
             return $stmt->fetch(PDO::FETCH_ASSOC);
         }
+        public function productoTienda($sql, $valores) {
+            $pdo = $this->conectar();
+            if (!$pdo) return false;
+        
+            try {
+                $stmt = $pdo->prepare($sql);
+                $stmt->execute($valores);
+                return true; // Consulta exitosa
+            } catch (PDOException $e) {
+                echo "Error en la ejecución de la consulta: " . $e->getMessage(); // Ver errores
+                return false;
+            }
+        }
+        
     
        
 

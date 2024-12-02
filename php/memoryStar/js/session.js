@@ -27,8 +27,7 @@ async function obtenerDatosUsuario() {
     if (datosUsuario) {
         const nombreUsuarioElement = document.querySelectorAll('.usuarioPerfill, .nombre');
         nombreUsuarioElement.forEach(elemento => {
-            elemento.
-            innerHTML = datosUsuario.usuario;
+            elemento.innerHTML = datosUsuario.usuario;
         });
     } else {    
         window.location.href = 'antesLogin.html';
