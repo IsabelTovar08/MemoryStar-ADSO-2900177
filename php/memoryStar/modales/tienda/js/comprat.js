@@ -2,6 +2,7 @@ let userDiamonds = null;
 let userId = null;
 let items = [];
 let unlockedItems = JSON.parse(localStorage.getItem('unlockedItems')) || [];
+
 async function obtenerUsuarioYDiamantes() {
     const response = await fetch('procesos/diamantePersona/Verdiamantes.php');
     const data = await response.json();
@@ -14,6 +15,24 @@ async function obtenerUsuarioYDiamantes() {
         obtenerDatos(userId);
     }
 }
+
+function mostrarAlerta(mensaje, tipo) {
+    const alerta = document.createElement('div');
+    alerta.className = `alerta alerta-${tipo}`;
+    alerta.textContent = mensaje;
+
+    document.body.appendChild(alerta);
+
+    setTimeout(() => {
+        alerta.style.display = 'block';
+    }, 10);
+
+    setTimeout(() => {
+        alerta.style.display = 'none';
+        alerta.remove();  
+    }, 2000);
+}
+
 function obtenerFotoPerfil(idUsuario) {
     fetch('procesos/productoComprados/ponerFoto.php', {
         method: 'POST',
@@ -30,12 +49,14 @@ function obtenerFotoPerfil(idUsuario) {
             }
         });
 }
+
 async function loadItems() {
     const response = await fetch('procesos/tienda/tienda.php');
     const data = await response.json();
     items = data;
     renderItems();
 }
+
 function renderItems() {
     const storeContainer = document.querySelector(".store-items");
     storeContainer.innerHTML = "";
@@ -60,6 +81,7 @@ function renderItems() {
     });
     assignPurchaseEvents();
 }
+
 function assignPurchaseEvents() {
     const buttons = document.querySelectorAll(".bottones-compras");
     buttons.forEach(button => {
@@ -70,6 +92,7 @@ function assignPurchaseEvents() {
         });
     });
 }
+
 async function handlePurchase(itemId, itemPrice, button) {
     if (userDiamonds >= itemPrice) {
         button.disabled = true;
@@ -83,8 +106,12 @@ async function handlePurchase(itemId, itemPrice, button) {
         await actualizarDiamantesServidor(userDiamonds, userId);
         await loadItems();
         obtenerDatos(userId); 
+        mostrarAlerta("Compra realizada con éxito", "success");
+    } else {
+        mostrarAlerta("No tienes suficientes diamantes", "error");  
     }
 }
+
 async function registrarCompra(itemId, id_usuario) {
     const requestBody = { id_usuario, id_tienda: itemId };
     await fetch('procesos/productoComprados/producto.php', {
@@ -93,12 +120,14 @@ async function registrarCompra(itemId, id_usuario) {
         body: JSON.stringify(requestBody),
     });
 }
+
 function actualizarDiamantes() {
     const diamantesElemento = document.getElementById("diamond-count");
     if (diamantesElemento) {
         diamantesElemento.textContent = `Diamantes: ${userDiamonds}`;
     }
 }
+
 async function actualizarDiamantesServidor(userDiamonds, userId) {
     await fetch('procesos/diamantePersona/ActulizarDiamantes.php', {
         method: 'POST',
@@ -106,6 +135,7 @@ async function actualizarDiamantesServidor(userDiamonds, userId) {
         body: JSON.stringify({ id_usuario: userId, diamantes: userDiamonds }),
     });
 }
+
 async function obtenerDatos(idUsuario) {
     const response = await fetch('procesos/productoComprados/consulta.php', {
         method: 'POST',
@@ -123,8 +153,26 @@ async function obtenerDatos(idUsuario) {
                 </div>
             `;
         });
+        agregarEventos();
     }
 }
+
+function agregarEventos() {
+    const perfilesUsuarios = document.querySelectorAll('.perfil_usuario');
+    perfilesUsuarios.forEach(perfil => {
+        perfil.addEventListener('click', () => {
+            const imgElement = perfil.querySelector('img');
+            const urlProducto = imgElement ? imgElement.getAttribute('src') : null;
+            fetch('procesos/productoComprados/guardarProductoUsuario.php', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ idUsuario: userId, urlProducto })
+            }).then(response => response.text())
+                .then(data => obtenerFotoPerfil(userId));
+        });
+    });
+}
+
 document.addEventListener('DOMContentLoaded', () => {
     obtenerUsuarioYDiamantes();
 });
