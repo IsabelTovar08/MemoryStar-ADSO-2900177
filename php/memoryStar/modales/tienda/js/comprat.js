@@ -10,8 +10,6 @@ async function obtenerUsuarioYDiamantes() {
       userId = data.id_usuario;
       userDiamonds = data.diamantes;
       actualizarDiamantes();
-      console.log("ID Usuario:", userId);
-      console.log("Diamantes:", userDiamonds);
       obtenerFotoPerfil(userId);
       loadItems();
       obtenerDatos(userId);
@@ -35,7 +33,6 @@ function obtenerFotoPerfil(idUsuario) {
       try {
         if (data.success) {
           let urlFoto = data.urlfotoperfil.replace(/\\/, '/');  
-          console.log( urlFoto);
           const container = document.getElementById('ponerFoto');
           if (container) {
             container.innerHTML = `
@@ -162,7 +159,6 @@ async function actualizarDiamantesServidor(userDiamonds, userId) {
   }
 }
 async function obtenerDatos(idUsuario) {
-  console.log('ID Usuario:', idUsuario);
   try {
     const response = await fetch('procesos/productoComprados/consulta.php', {
       method: 'POST',
