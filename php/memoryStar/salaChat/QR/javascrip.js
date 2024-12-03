@@ -1,37 +1,29 @@
-const contenedor = document.getElementById('QR')
-let codigo = document.querySelector('.codigo')
-let guardarNumero = [];
-let numeroAleatorio;
-for(let iteracion =0; iteracion<6; iteracion++){
-    numeroAleatorio = Math.floor(Math.random()*10);
-    guardarNumero.push(numeroAleatorio);
+document.addEventListener('DOMContentLoaded', () => {
+    // Este código se ejecuta solo cuando el DOM está completamente cargado
+    const contenedor = document.getElementById('QR');
+    const codigoElement = document.getElementById('codigo_sala'); // Obtén el elemento
+    let codigo = codigoElement ? codigoElement.textContent : ''; // Asegúrate de que no sea nulo
+    
+    // Verifica si el contenido está vacío
+    if (!codigo.trim()) {
+        console.error('El contenido de #codigo_sala está vacío o no se ha cargado aún.');
+        return; // Detenemos el código si el valor está vacío
+    }
 
-}
+    const contendorC = document.getElementById('codigoSalaModal');
+    contendorC.textContent = `kjadcfhkewsi + ${codigo}`;
 
+    // Genera el QR solo si el código no está vacío
+    new QRCode(contenedor, codigo);
 
-let numeroSinComas = guardarNumero.join("")
-
-const abecedarioMayusculas = [];
-const abecedarioMinusculas = [];
-
-new QRCode(contenedor,`${numeroSinComas}`);
-codigo.textContent = numeroSinComas
-
-
-const copiar = document.querySelector('.botto-copiar')
-
-
-// cuando le presiones copiar que se copie el codigo que esta en codigo
-copiar.addEventListener('click', () => {
-    navigator.clipboard.writeText(codigo.textContent)
-    .then(() => {
-        console.log('Texto copiado')
-    })
-    .catch(err => {
-        console.error('No se pudo copiar', err)
-    })
-})  
-
-
-// como hago para que el QR no se cambie si no este como esta 
-
+    const copiar = document.querySelector('.botto-copiar');
+    copiar.addEventListener('click', () => {
+        navigator.clipboard.writeText(codigo)
+            .then(() => {
+                console.log('Texto copiado');
+            })
+            .catch(err => {
+                console.error('No se pudo copiar', err);
+            });
+    });
+});

@@ -15,32 +15,68 @@
 
 
 
-<body style="background-image: url('../../../img/fondos/nuevoFondoS.png');">
-    <nav class="nav flex-column apartado-iconos">
-        <img id="controlMusica" src="../../../img/iconos/musicaApagada.png" alt="Reproducir"
-            class="iconos efectosIconos">
-        <img src="../../../img/iconos/ajustesN.png" alt="Ajustes" class="iconos efectosIconos" data-bs-toggle="collapse"
-            data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
-        <div class="collapse" id="collapseExample" style="width: 500%;">
-            <div class="card card-body color">
-                <div class="col-12 row">
-                    <div class="col-5">Música</div>
-                    <div class="col-6"><input type="range" class="secondary" id="volumenMusica" min="0" max="1"
-                            step="0.1" value="1"></div>
-                </div>
-                <div class="col-12 row">
-                    <div class="col-5">Sonido</div>
-                    <div class="col-6"><input type="range" id="volumenSonido" min="0" max="1" step="0.1" value="1">
+<body style="background-image: url('../../../img/fondos/fondoArma1.jpeg');
+    margin: 0;
+    padding: 0;
+    width: 100vw;
+    height: 100vh;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    font-family: cursive;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+;">
+    
+    <div class="modal fade" id="perdioo" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true"
+        data-bs-backdrop="static" data-bs-keyboard="false">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content contenedorTsolo">
+                <div class="tituloTsolo">¡Perdiste!</div>
+                <div class="contenedorTsoloInterior">
+                    <div class="contenedor-estrellas">
+                        <img src="../../../modales/modales/img/tablas/perdio.png" class="x" alt="">
+                        <img src="../../../modales/modales/img/tablas/perdio.png" class="x" alt="">
+                        <img src="../../../modales/modales/img/tablas/perdio.png" class="x" alt="">
                     </div>
+                    <div class="puntaje-total">
+                        0pts
+                    </div>
+                    <div class="contenedor-puntaje" id="tiempoFin">
+                        Tiempo:
+                        <!-- Aquí se debe insertar el valor de 'tiempoPromedio' -->
+                        20s
+                    </div>
+                    <div class="contenedor-puntaje">
+                        <div id="diamantesFin"></div>
+                    </div>
+                    <!-- <div class="col-12 row contenedor-info">
+                    <div class="col-6 usuarioPerfill">
+                        <img src="modales/modales/img/tablas/fotouser.png" alt="" style="width: 16px;">
+                    </div>
+                    <div class="col-3" id="tiempoFin">
+                        0s
+                    </div>
+                    <div class="col-3" id="puntosFin">
+                        
+                        0pts
+                    </div>
+                </div> -->
                 </div>
-                <button id="botonSilencio" class="btn btn-primary">Silenciar</button>
+                <div class="contenedor-botonTsolo">
+                    <button class="botonTsolo" id="perdiste">
+                        Salir
+                    </button>
+                </div>
             </div>
-    </nav>
-
+        </div>
+    </div>
 
     <div class="nave" id="main-content">
         <div id="tiempo">00:15</div>
-        <h1 class="titulo-nave">Arma la nave</h1>
+        <h1 class="titulo-nave">Ordena las partes de la nave</h1>
         <div class="holis">
             <div class="contenedor-armar">
                 <img src="img/nave.png" alt="">
@@ -81,7 +117,7 @@
     </div>
 
 
-    <script src="../../../js/session.js"></script>
+    <!-- <script src="../../../js/session.js"></script> -->
     <script src="js/Sortable.min.js"></script>
     <script src="js/armarNave.js"></script>
     <script src="../bootstrap/js/bootstrap.js"></script>

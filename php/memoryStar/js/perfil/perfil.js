@@ -12,24 +12,24 @@
 
 
 
-document.getElementById('fileInput').addEventListener('change', function(event) {
-    const file = event.target.files[0];
-    if (file) {
-        const reader = new FileReader();
-        reader.onload = function(e) {
-            const profileImage = document.getElementById('profileImage');
-            profileImage.src = e.target.result;
-            profileImage.style.display = 'block';
-            document.getElementById('removePhotoButton').style.display = 'inline-block';
-        };
-        reader.readAsDataURL(file);
-    }
-});
+// document.getElementById('fileInput').addEventListener('change', function(event) {
+//     const file = event.target.files[0];
+//     if (file) {
+//         const reader = new FileReader();
+//         reader.onload = function(e) {
+//             const profileImage = document.getElementById('profileImage');
+//             profileImage.src = e.target.result;
+//             profileImage.style.display = 'block';
+//             document.getElementById('removePhotoButton').style.display = 'inline-block';
+//         };
+//         reader.readAsDataURL(file);
+//     }
+// });
 
-document.getElementById('removePhotoButton').addEventListener('click', function() {
-    const profileImage = document.getElementById('profileImage');
-    profileImage.src = '#';
-    profileImage.style.display = 'none';
-    this.style.display = 'none';
-    document.getElementById('fileInput').value = ''; // Reset file input
-});
+// document.getElementById('removePhotoButton').addEventListener('click', function() {
+//     const profileImage = document.getElementById('profileImage');
+//     profileImage.src = '#';
+//     profileImage.style.display = 'none';
+//     this.style.display = 'none';
+//     document.getElementById('fileInput').value = ''; // Reset file input
+// });

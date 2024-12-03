@@ -13,7 +13,7 @@ require __DIR__ . '/vendor/autoload.php';
 class Chat implements MessageComponentInterface
 {
     protected $clients;
-    protected $rooms = [];  // Almacena las salas: ['roomCode' => ['host' => conn, 'clients' => [], 'history' => []]]
+    protected $salas = [];  // Almacena las salas: ['codigoSala' => ['anfitrion' => conn, 'clients' => [], 'historial' => []]]
 
     public function __construct()
     {
@@ -29,282 +29,123 @@ class Chat implements MessageComponentInterface
     public function onMessage(ConnectionInterface $from, $msg)
     {
         $data = json_decode($msg, true);
-
         switch ($data['type']) {
-            case 'setUserName':
+            case 'manejoUnion':
                 $from->userName = $data['usuario'];
-                $from->userId = $data['id_usuario'];
-                echo "Usuario conectado: {$from->userName} (ID: {$from->userId})\n";
-                $this->handleSetUserName($from, $data);
+                $this->manejoUnionUsuarios($from, $data);
                 break;
-            case 'createRoom':
-                $from->userName = $data['usuario'];
-                $from->userId = $data['id_usuario'];
-                echo "Usuario conectado: {$from->userName} (ID: {$from->userId})\n";
-                $this->handleCreateRoom($from, $data);
+            case 'crearSala':
+                $this->crearSala($from, $data);
                 break;
-
-
-            case 'joinRoom':
-                $this->handleJoinRoom($from, $data);
+            case 'unirseSala':
+                $this->unirseSala($from, $data);
                 break;
-
             case 'chat':
-                $this->handleChat($from, $data);
+                $this->manejoChat($from, $data);
                 break;
-            case 'endChat':
-                $this->handleEndChat($from);
+            case 'finalizar':
+                $this->finalizarJuego($from);
                 break;
-            case 'startGame':
-                $this->handleStartGame($from, $data);
+            case 'iniciarjuego':
+                $this->iniciarJuego($from, $data);
                 break;
-            case 'updateScore':
-                $this->handleUpdateScore($from, $data);
+            case 'ordenCorrecto':
+                $dataToSend = [
+                    'type' => 'ordenCorrecto',
+                    'codigoSala' => $data['codigoSala'],
+                    'orden' => $data['orden']
+                ];
+                $this->broadcastToRoom($data['codigoSala'], $dataToSend, $from);
+                break;
+            case 'actualizarJugadores':
+                $codigoSala = $data['codigoSala']; // Asegúrate de enviar este dato desde el cliente si es necesario.
+
+                if (isset($this->salas[$codigoSala])) {
+                    // Preparar el mensaje para los jugadores
+                    $dataToSend = [
+                        'type' => 'actualizarJugadores',
+                        'players' => $data['players']
+                    ];
+
+                    // Enviar a todos los clientes de la sala
+                    $this->broadcastToRoom($codigoSala, $dataToSend, $from);
+                }
+                break;
+
+            case 'puntajeRonda':
+                $this->actualizarEstadisticas($from, $data);
+                break;
+            case 'ordenEnviado':
+                $codigoSala = $data['codigoSala'];
+                $usuario = $data['usuario'];
+
+                if (isset($this->salas[$codigoSala])) {
+                    // Marcar al usuario como "ronda terminada"
+                    $this->salas[$codigoSala]['finalizados'][] = $usuario;
+
+                    // Verificar si todos los jugadores han terminado
+                    $totalJugadores = count($this->salas[$codigoSala]['clients']);
+                    $jugadoresFinalizados = count($this->salas[$codigoSala]['finalizados']);
+
+                    if ($jugadoresFinalizados === $totalJugadores) {
+                        // Notificar al administrador que todos han terminado
+                        $dataToSend = [
+                            'type' => 'todosFinalizados',
+                            'codigoSala' => $codigoSala
+                        ];
+                        $this->broadcastToRoom($codigoSala, $dataToSend, null);
+
+                        // Reiniciar el estado de "finalizados"
+                        $this->salas[$codigoSala]['finalizados'] = [];
+                    }
+                }
+                break;
+            case 'reconectarSala':
+                $this->reconectarSala($from, $data);
+                break;
+            case 'cerrarModal':
+                $codigoSala = $data['codigoSala'] ?? 'default';
+
+                if (isset($this->salas[$codigoSala])) {
+                    foreach ($this->salas[$codigoSala] as $client) {
+                        $dataToSend = [
+                            'type' => 'cerrarModal',
+                        ];
+
+                        // Enviar a todos los clientes de la sala
+                        $this->broadcastToRoom($codigoSala, $dataToSend);
+                    }
+                    echo "Modal cerrado en la sala {$codigoSala}\n";
+                }
                 break;
         }
     }
-
-    private function handleSetUserName($conn, $data)
-    {
-        $userName = isset($conn->userName) ? $conn->userName : $data['userName'];
-        $userId = isset($conn->userId) ? $conn->userId : 'ID Desconocido';
-
-        echo "Nombre de usuario: $userName, ID de usuario: $userId\n";
-
-        if (!isset($conn->roomCode)) {
-            return;
-        }
-
-        $roomCode = $conn->roomCode;
-
-        // Si no se ha inicializado el contador de usuarios para la sala, se establece en 0
-        if (!isset($this->rooms[$roomCode]['userCount'])) {
-            $this->rooms[$roomCode]['userCount'] = 0;
-        }
-
-        // Incrementa el contador de usuarios al agregar un nuevo usuario
-        $this->rooms[$roomCode]['userCount']++;
-
-        $isAdmin = $this->rooms[$roomCode]['host'] === $conn;
-        $messageText = $isAdmin
-            ? "{$userName} (Administrador) se ha unido al chat"
-            : "{$userName} se ha unido al chat";
-
-        $newConnection = [
-            'type' => 'newConnection',
-            'user' => $userName,
-            'isAdmin' => $isAdmin,
-            'message' => $messageText,
-            'state' => 'Conectado',
-            'score' => 0,
-            'userCount' => $this->rooms[$roomCode]['userCount']  // Incluye el número de usuarios conectados
-        ];
-
-        $conn->send(json_encode([
-            'type' => 'userData',
-            'userName' => $userName,
-            // 'userId' => $userId,
-            'score' => 0,
-        ]));
-        // Emite el mensaje con el número de usuarios actualizados
-        $this->broadcastToRoom($roomCode, $newConnection);
-
-        // Guarda en el historial de la sala
-        $this->rooms[$roomCode]['history'][] = $newConnection;
-
-        echo "Usuarios conectados en la sala '{$roomCode}': " . $this->rooms[$roomCode]['userCount'] . "\n";
-    }
-
-    private function handleCreateRoom($conn, $data)
-    {
-        $userName = isset($data['usuario']) ? $data['usuario'] : 'Invitado';
-        $userId = isset($data['id_usuario']) ? $data['id_usuario'] : 'ID Desconocido';
-        $roomName = isset($data['roomName']) ? $data['roomName'] : 'Sala sin nombre';
-        $roomCapacity = isset($data['roomCapacity']) ? (int) $data['roomCapacity'] : 10; // Capacidad predeterminada si no se proporciona
-
-        echo "Nombre de usuario: $userName, ID de usuario: $userId\n";
-        echo "Nombre de la sala: $roomName, Capacidad de la sala: $roomCapacity\n";
-
-        $roomCode = $this->generateRoomCode();
-        $this->rooms[$roomCode] = [
-            'host' => $conn,
-            'clients' => new \SplObjectStorage(),
-            'history' => [],
-            'name' => $roomName,            // Almacena el nombre de la sala
-            'capacity' => $roomCapacity,     // Almacena la capacidad de la sala
-            'scores' => [],
-        ];
-
-        $this->rooms[$roomCode]['clients']->attach($conn);
-        $conn->roomCode = $roomCode;
-
-        // Notificar al creador de la sala que es el host y enviarle el código de la sala, nombre y capacidad
-        $conn->send(json_encode([
-            'type' => 'roomCreated',
-            'roomCode' => $roomCode,
-            'isHost' => true,
-            'user' => $userName,
-            'roomName' => $roomName,
-            'roomCapacity' => $roomCapacity
-        ]));
-        echo $roomName;
-    }
-
-
-    private function handleJoinRoom($conn, $data)
-    {
-        $roomCode = $data['roomCode'];
-        
-        if (!isset($this->rooms[$roomCode])) {
-            $conn->send(json_encode([
-                'type' => 'error',
-                'message' => 'La sala no existe'
-            ]));
-            return;
-        }
-        $this->rooms[$roomCode]['clients']->attach($conn);
-        $conn->roomCode = $roomCode;
-
-        // Enviar historial de la sala al nuevo usuario
-        $conn->send(json_encode([
-            'type' => 'history',
-            'history' => $this->rooms[$roomCode]['history']
-        ]));
-
-        // Notificar que se unió exitosamente
-        $conn->send(json_encode([
-            'type' => 'roomJoined',
-            'roomCode' => $roomCode,
-            'isHost' => false
-        ]));
-    }
-
-
-    private function handleStartGame($from, $data)
-    {
-        // Verificar que 'roomCode' esté presente en los datos
-        if (!isset($data['roomCode'])) {
-            echo "Error: 'roomCode' no encontrado\n";
-            return; // Salir si no hay roomCode
-        }
-    
-        $roomCode = $data['roomCode'];
-    
-        // Verificar si la sala existe
-        if (!isset($this->rooms[$roomCode])) {
-            return;
-        }
-    
-        $roomData = $this->rooms[$roomCode];
-    
-        // Preparar la información que se va a enviar
-        $gameData = [
-            'type' => 'gameData',
-            'roomName' => $roomData['name'],  // Nombre de la sala
-            'roomCapacity' => $roomData['capacity'],  // Capacidad de la sala
-            'scores' => [],  // Aquí puedes agregar los puntajes de los usuarios
-            'users' => []  // Aquí puedes agregar la lista de usuarios
-        ];
-    
-        // Recorrer los usuarios y obtener la información necesaria (ejemplo: nombre de usuario y puntaje)
-        foreach ($roomData['clients'] as $userConn) {
-            // Suponiendo que cada conexión tiene un campo 'user' que es el nombre de usuario
-            $userName = isset($userConn->user) ? $userConn->user : 'Desconocido';
-            $userScore = isset($this->rooms[$roomCode]['scores'][$userName]) ? $this->rooms[$roomCode]['scores'][$userName] : 0;
-    
-            // Añadir la información del usuario al arreglo
-            $gameData['users'][] = [
-                'user' => $userName,
-                'score' => $userScore
-            ];
-    
-            // Añadir los puntajes de cada usuario al arreglo de puntajes
-            $gameData['scores'][] = [
-                'user' => $userName,
-                'score' => $userScore
-            ];
-        }
-    
-        // Enviar la información a todos los usuarios de la sala
-        $this->broadcastToRoom($roomCode, $gameData);
-    
-        // Enviar el mensaje de inicio del juego a todos los usuarios
-        $this->broadcastToRoom($roomCode, ['type' => 'gameStarted']);
-    }
-    
-
-
-
-
-
- private function handleUpdateScore($from, $data)
-    {
-        $roomCode = $from->roomCode;
-        $userName = isset($from->userName) ? $from->userName : 'Usuario';
-
-        if (!isset($this->rooms[$roomCode]) || !isset($this->rooms[$roomCode]['scores'][$userName])) {
-            return;
-        }
-
-        // Actualizar la puntuación del usuario con la variable recibida desde el juego
-        $newScore = isset($data['score']) ? (int)$data['score'] : 0;
-        $this->rooms[$roomCode]['scores'][$userName] = $newScore;
-
-        // Enviar la lista de puntuaciones actualizada a todos los jugadores de la sala
-        $this->broadcastToRoom($roomCode, [
-            'type' => 'scoreUpdate',
-            'scores' => $this->rooms[$roomCode]['scores']
-        ]);
-    }
-    private function handleChat($from, $data)
-    {
-        if (!isset($from->roomCode)) {
-            return;
-        }
-
-        $message = [
-            'type' => 'chat',
-            'message' => $data['message'],
-            'from' => isset($from->userName) ? $from->userName : 'Usuario'
-        ];
-
-        $this->broadcastToRoom($from->roomCode, $message, $from);
-    }
-
-    private function handleEndChat($from)
-    {
-        if (!isset($from->roomCode) || $from !== $this->rooms[$from->roomCode]['host']) {
-            return;
-        }
-
-        $this->broadcastToRoom($from->roomCode, ['type' => 'chatEnded']);
-
-        // Cerrar conexiones de todos los clientes en la sala
-        foreach ($this->rooms[$from->roomCode]['clients'] as $client) {
-            $client->close();
-        }
-
-        // Eliminar la sala
-        unset($this->rooms[$from->roomCode]);
-    }
-
 
     public function onClose(ConnectionInterface $conn)
     {
+        // Detach global clients
         $this->clients->detach($conn);
 
-        if (isset($conn->roomCode) && isset($this->rooms[$conn->roomCode])) {
-            $room = $this->rooms[$conn->roomCode];
-            $room['clients']->detach($conn);
+        // Validar que la sala y los datos de la conexión existen
+        if (isset($conn->codigoSala) && isset($this->salas[$conn->codigoSala])) {
+            $room = $this->salas[$conn->codigoSala];
 
-            // Si era el host, cerrar la sala
-            if ($conn === $room['host']) {
-                $this->broadcastToRoom($conn->roomCode, ['type' => 'chatEnded']);
-                unset($this->rooms[$conn->roomCode]);
+            // Validar que 'clients' sea del tipo esperado
+            if ($room['clients'] instanceof SplObjectStorage) {
+                $room['clients']->detach($conn);
+            } else {
+                echo "Error: 'clients' no es un SplObjectStorage\n";
+            }
+
+            // Si es el anfitrión, cerrar la sala
+            if ($conn === $room['anfitrion']) {
+                $this->broadcastToRoom($conn->codigoSala, ['type' => 'chatEnded']);
+                unset($this->salas[$conn->codigoSala]);
             } else {
                 // Notificar a los demás usuarios de la sala
                 $userName = isset($conn->userName) ? $conn->userName : 'Un usuario';
-                $this->broadcastToRoom($conn->roomCode, [
+                echo $userName;
+                $this->broadcastToRoom($conn->codigoSala, [
                     'type' => 'disconnection',
                     'user' => $userName,
                     'message' => "$userName ha abandonado el chat"
@@ -313,30 +154,377 @@ class Chat implements MessageComponentInterface
         }
     }
 
-    public function onError(ConnectionInterface $conn, \Exception $e)
+
+    public function onError(ConnectionInterface $conn, \Exception $e): void
     {
         echo "An error has occurred: {$e->getMessage()}\n";
         $conn->close();
     }
 
-    private function broadcastToRoom($roomCode, $data, $except = null)
+    private function manejoUnionUsuarios($conn, $data)
     {
-        if (!isset($this->rooms[$roomCode])) {
+        $userName = isset($data['usuario']) ? $data['usuario'] : 'Invitado';
+        $userId = isset($data['id_usuario']) ? $data['id_usuario'] : 'ID Desconocido';
+    
+        if (!isset($conn->codigoSala)) {
+            return;
+        }
+        $codigoSala = $conn->codigoSala;
+    
+        if (!isset($this->salas[$codigoSala]['contadorUsuarios'])) {
+            $this->salas[$codigoSala]['contadorUsuarios'] = 0;
+        }
+    
+    
+        $usuario = [
+            'usuario' => $userName,
+            'id_usuario' => $userId,
+            'score' => 0,
+            'time' => 0,
+            'isAdmin' => ($this->salas[$codigoSala]['anfitrion'] === $conn)
+        ];
+    
+        $this->salas[$codigoSala]['contadorUsuarios']++;
+        $this->salas[$codigoSala]['usuarios'][] = $usuario; // Agregar al usuario a la lista de usuarios
+    
+        $messageText = $usuario['isAdmin']
+            ? "{$userName} (Administrador) se ha unido al chat"
+            : "{$userName} se ha unido al chat";
+    
+        $newConnection = [
+            'type' => 'newConnection',
+            'usuario' => $userName,
+            'isAdmin' => $usuario['isAdmin'],
+            'message' => $messageText,
+            'estado' => 'Conectado',
+            'contadorUsuarios' => $this->salas[$codigoSala]['contadorUsuarios'],
+            'idUsuario' => $userId
+        ];
+    
+        $this->broadcastToRoom($codigoSala, $newConnection);
+        $this->salas[$codigoSala]['historial'][] = $newConnection;
+        // Guardar el historial en un archivo JSON
+        file_put_contents('historial_sala' . $codigoSala . '.json', json_encode($this->salas[$codigoSala]['historial']));
+    }
+    
+
+    private function crearSala($conn, $data)
+    {
+        $userName = isset($data['usuario']) ? $data['usuario'] : 'Invitado';
+        $userId = isset($data['id_usuario']) ? $data['id_usuario'] : 'ID Desconocido';
+        $nombreSala = isset($data['nombreSala']) ? $data['nombreSala'] : 'Sala sin nombre';
+        $tematica = isset($data['tematica']) ? $data['tematica'] : 'Predeterminada';
+        $dificultad = isset($data['dificultad']) ? $data['dificultad'] : 'Predeterminado';
+
+
+        echo "Nombre de usuario: $userName, ID de usuario: $userId\n";
+        echo "Nombre de la sala: $nombreSala, \n";
+
+
+        $codigoSala = $this->generarCodigoSala();
+        $this->salas[$codigoSala] = [
+            'anfitrion' => $conn,
+            'clients' => new \SplObjectStorage(),
+            'historial' => [],
+            'nombre' => $nombreSala,
+            'tematica' => $tematica,
+            'dificultad' => $dificultad
+
+        ];
+
+        $this->salas[$codigoSala]['clients']->attach($conn);
+        $conn->codigoSala = $codigoSala;
+
+        // Notificar al creador de la sala que es el anfitrion y enviarle el código de la sala, nombre y capacidad
+        $conn->send(json_encode([
+            'type' => 'salaCreada',
+            'codigoSala' => $codigoSala,
+            'esAnfitrion' => true,
+            'usuario' => $userName,
+            'nombreSala' => $nombreSala,
+            'tematica' => $tematica,
+            'dificultad' => $dificultad,
+            'id_usuario' => $userId
+
+        ]));
+        echo $nombreSala;
+    }
+
+
+    private function unirseSala($conn, $data)
+    {
+        $codigoSala = $data['codigoSala'];
+        $userId = isset($data['id_usuario']) ? $data['id_usuario'] : 'ID Desconocido'; // Suponiendo que id_usuario está en $data
+
+        if (!isset($this->salas[$codigoSala])) {
+            $conn->send(json_encode([
+                'type' => 'error',
+                'message' => 'La sala no existe'
+            ]));
+            return;
+        }
+        foreach ($this->salas[$codigoSala]['usuarios'] as $usuario) {
+            if ($usuario['id_usuario'] === $userId) {
+                // Si el id_usuario ya existe, notificar al usuario que no puede unirse
+                $conn->send(json_encode([
+                    'type' => 'error',
+                    'message' => 'El usuario ya se encuentra en la sala.'
+                ]));
+                return;
+            }
+        }
+
+        $this->salas[$codigoSala]['clients']->attach($conn);
+        $conn->codigoSala = $codigoSala;
+
+        $conn->send(json_encode([
+            'type' => 'historial',
+            'historial' => $this->salas[$codigoSala]['historial']
+        ]));
+
+        // Notificar que se unió exitosamente
+        $conn->send(json_encode([
+            'type' => 'unionExitosa',
+            'codigoSala' => $codigoSala,
+            'esAnfitrion' => false,
+            'nombreSala' => $this->salas[$codigoSala]['nombre'],
+            'tematica' => $this->salas[$codigoSala]['tematica'],
+            'dificultad' => $this->salas[$codigoSala]['dificultad']
+        ]));
+    }
+    private function iniciarJuego($from, $data)
+    {
+        if (!isset($from->codigoSala)) {
+            $from->send(json_encode([
+                'type' => 'error',
+                'message' => 'No estás en ninguna sala para iniciar el juego'
+            ]));
             return;
         }
 
-        foreach ($this->rooms[$roomCode]['clients'] as $client) {
+        $codigoSala = $from->codigoSala;
+
+        if (!isset($this->salas[$codigoSala])) {
+            $from->send(json_encode([
+                'type' => 'error',
+                'message' => 'La sala no existe'
+            ]));
+            return;
+        }
+
+        if ($this->salas[$codigoSala]['anfitrion'] !== $from) {
+            $from->send(json_encode([
+                'type' => 'error',
+                'message' => 'Solo el anfitrión puede iniciar el juego'
+            ]));
+            return;
+        }
+        var_dump($this->salas[$codigoSala]['historial']);
+
+        // Recolecta los jugadores del historial
+        $players = [];
+        foreach ($this->salas[$codigoSala]['historial'] as $usuario) {
+            if (isset($usuario['usuario']) && isset($usuario['idUsuario'])) {
+                $players[] = [
+                    'usuario' => $usuario['usuario'],
+                    'idUsuario' => $usuario['idUsuario'],
+                    'score' => 0,
+                    'time' => 0,
+                    'isAdmin' => $usuario['isAdmin'],
+
+                ];
+            }
+        }
+        // var_dump($usuario['isAdmin']);
+        $sala = $this->salas[$codigoSala]['historial'];
+
+        $mensajeIniciarJuego = [
+            'type' => 'startGame',
+            'players' => $players,
+            // 'idUsuario' => $data['idUsuario'],
+
+            'gameData' => [
+                'codigoSala' => $codigoSala,
+                'settings' => [
+                    'nombre' => $this->salas[$codigoSala]['nombre'],
+                    'capacidad' => $this->salas[$codigoSala]['capacidad']
+                ]
+            ]
+        ];
+
+        $this->broadcastToRoom($codigoSala, $mensajeIniciarJuego);
+        echo "El juego ha comenzado en la sala '{$codigoSala}'\n";
+    }
+
+    private function actualizarEstadisticas($from, $data)
+    {
+        // Validar datos de entrada
+        if (!isset($data['codigoSala']) || !isset($data['player'])) {
+            echo "Datos incompletos proporcionados.";
+            return;
+        }
+
+        $codigoSala = $data['codigoSala'];
+        $player = $data['player']; // Trabajar directamente con el jugador
+
+        if (!isset($this->salas[$codigoSala])) {
+            echo "La sala no existe: $codigoSala";
+            return;
+        }
+
+        // Inicializar historial si no existe
+        if (!isset($this->salas[$codigoSala]['historial'])) {
+            $this->salas[$codigoSala]['historial'] = [];
+        }
+        $historial = &$this->salas[$codigoSala]['historial'];
+
+        $idUsuario = $player['idUsuario'];
+        $score = $player['score'];
+        $time = $player['time'];
+        $existe = false;
+
+        // Actualizar historial
+        foreach ($historial as &$historialPlayer) {
+            if ($historialPlayer['idUsuario'] === $idUsuario) {
+                // Sumar el nuevo puntaje al existente
+                $historialPlayer['score'] += $score;
+                $historialPlayer['time'] = $time; // Actualizar el tiempo con el más reciente
+                $existe = true;
+                break;
+            }
+        }
+
+        // Si no existe el usuario, agregarlo al historial
+        if (!$existe) {
+            $historial[] = [
+                'idUsuario' => $idUsuario,
+                'score' => $score,
+                'time' => $time,
+            ];
+        }
+
+        // Verificar historial actualizado
+        var_dump($this->salas[$codigoSala]['historial']);
+
+        // Difundir estadísticas
+        $this->broadcastToRoom($codigoSala, [
+            'type' => 'actualizarEstadisticas',
+            'players' => $this->salas[$codigoSala]['historial']
+        ]);
+
+        // Guardar historial en archivo
+        file_put_contents('historial_sala_' . $codigoSala . '.json', json_encode($this->salas[$codigoSala]['historial'], JSON_PRETTY_PRINT));
+    }
+
+
+
+
+
+    private function manejoChat($from, $data)
+    {
+        $userName = isset($data['from']) ? $data['from'] : 'Invitado';
+        $userId = isset($data['id_usuario']) ? $data['id_usuario'] : 'ID Desconocido';
+        if (!isset($from->codigoSala)) {
+            return;
+        }
+
+        $message = [
+            'type' => 'chat',
+            'message' => $data['message'],
+            'from' => $userName
+        ];
+
+        $this->broadcastToRoom($from->codigoSala, $message, $from);
+    }
+
+    private function reconectarSala(ConnectionInterface $from, array $data)
+    {
+        $codigoSala = $data['codigoSala'];
+        $players = $data['players'];
+
+        // Si la sala no existe, la crea
+        if (!isset($this->salas[$codigoSala])) {
+            $this->salas[$codigoSala] = [];
+            $this->salas[$codigoSala]['historial'] = [];  // Inicializa historial si no existe
+            $this->salas[$codigoSala]['clients'] = [];    // Inicializa clientes si no existe
+        }
+
+        // Reconecta a los jugadores y los agrega al historial
+        foreach ($players as $player) {
+            $userId = $player['idUsuario'];
+            $usuario = $player['usuario'];
+            $score = $player['score'];
+            $time = $player['time'];
+
+
+            // Verificar si el jugador ya está en el historial de la sala
+            $existeUsuario = false;
+            foreach ($this->salas[$codigoSala]['historial'] as $historialPlayer) {
+                if ($historialPlayer['idUsuario'] === $userId) {
+                    $existeUsuario = true;
+                    break;
+                }
+            }
+            // Si el jugador no está en el historial, agregarlo
+            if (!$existeUsuario) {
+                $this->salas[$codigoSala]['historial'][] = [
+                    'idUsuario' => $userId,
+                    'usuario' => $usuario,
+                    'score' => $score,
+                    'time' => $time
+                ];
+            }
+
+            // Reconectar el jugador actual (agregar la conexión en 'clients')
+            $this->salas[$codigoSala]['clients'][$from->resourceId] = $from;
+            echo "Jugador {$usuario} reconectado a la sala {$codigoSala}\n";
+        }
+
+        // Notificar a todos los jugadores en la sala sobre la reconexión y el historial
+        $this->broadcastToRoom($codigoSala, ['type' => 'historial'], $from);
+    }
+
+    // Función para hacer broadcasting a todos los jugadores de la sala
+
+
+
+    private function finalizarJuego($from)
+    {
+        if (!isset($from->codigoSala) || $from !== $this->salas[$from->codigoSala]['anfitrion']) {
+            return;
+        }
+
+        $this->broadcastToRoom($from->codigoSala, ['type' => 'chatEnded']);
+
+        // Cerrar conexiones de todos los clientes en la sala
+        foreach ($this->salas[$from->codigoSala]['clients'] as $client) {
+            $client->close();
+        }
+
+        // Eliminar la sala
+        unset($this->salas[$from->codigoSala]);
+    }
+
+    private function broadcastToRoom($codigoSala, $data, $except = null)
+    {
+        if (!isset($this->salas[$codigoSala])) {
+            return;
+        }
+
+        foreach ($this->salas[$codigoSala]['clients'] as $client) {
             if ($except !== $client) {
                 $client->send(json_encode($data));
             }
         }
     }
 
-    private function generateRoomCode()
+
+
+    private function generarCodigoSala()
     {
         do {
             $code = strtoupper(substr(md5(uniqid()), 0, 6));
-        } while (isset($this->rooms[$code]));
+        } while (isset($this->salas[$code]));
 
         return $code;
     }

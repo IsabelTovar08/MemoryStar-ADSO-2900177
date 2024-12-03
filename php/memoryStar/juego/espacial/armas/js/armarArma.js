@@ -1,7 +1,6 @@
 function redirigir() {
   setTimeout(() => {
-    window.location.href =
-      "juego/espacial/armas/juegoDulces/planetScapederrota el enemigo.html";
+    window.location.href = "aCohete/animacion3.html";
   }, 2000);
 }
 
@@ -12,11 +11,9 @@ document.addEventListener("DOMContentLoaded", function () {
   let puntuacion = 0;
   let rubis = 0;
   let contador = 0;
+  const audioLoser = new Audio("sonidos/juego/perder1.mp3");
 
-  const modalElement = document.getElementById("armarArma");
-  modalElement.addEventListener("shown.bs.modal", function () {
-    timerInterval = tempo(duracion, tiempo);
-  });
+  timerInterval = tempo(duracion, tiempo);
 
   interact(".arrastrable").draggable({
     listeners: {
@@ -77,6 +74,9 @@ document.addEventListener("DOMContentLoaded", function () {
       if (objetoId !== dropzoneId) {
         correcto = false;
         objeto.classList.add("incorrecto");
+        setTimeout(() => {
+          objeto.classList.remove("incorrecto");
+        }, 2000);
       } else {
         objeto.classList.remove("incorrecto");
         objeto.classList.add("correcto");
@@ -105,7 +105,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     contador = tiempoTranscurrido;
   }
-
+  const perdio = document.getElementById("perdiste");
   function tempo(pduracion, elemento) {
     let duracion = pduracion;
     const intervalo = setInterval(() => {
@@ -117,12 +117,21 @@ document.addEventListener("DOMContentLoaded", function () {
         puntuacion = 0;
         rubis = 0;
         contador = 20;
-        mostrarTabla();
+
+        var perdistee = new bootstrap.Modal(document.getElementById("perdioo"));
+        perdistee.show();
+        // Intentar reproducir el sonido
+        audioLoser.play().catch((error) => {
+          console.error("Error al reproducir audio:", error);
+        });
+
+        perdio.addEventListener("click", () => {
+          window.location.href = "index.html";
+        });
       }
     }, 1000);
     return intervalo;
   }
-  
 
   function mostrarTabla() {
     const modalFinal = document.createElement("div");
@@ -182,8 +191,9 @@ document.addEventListener("DOMContentLoaded", function () {
     
     document.body.appendChild(modalFinal);
     new bootstrap.Modal(modalFinal, { backdrop: "static" }).show();
-  }
+
   
+<<<<<<< HEAD
   function puntos(puntuacion, rubis, contador) {
     const datosJuego = {
       puntos:puntuacion ,
@@ -213,4 +223,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   
 
+=======
+  }
+>>>>>>> main
 });

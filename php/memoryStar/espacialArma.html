@@ -4,16 +4,34 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>MemoryStart ¡Pon a prueba tu memoria!</title>
     <link rel="stylesheet" href="bootstrap/css/bootstrap.css">
     <link rel="stylesheet" href="juego/espacial/armas/css/armarArma.css">
     <link rel="stylesheet" href="juego/espacial/cartas/css/tablaNave.css">
+    <link rel="shortcut icon" href="img/iconos/segundoMemory.png">
 </head>
 
-<body>
+<body style="
+    background-image: url('img/fondos/fondoArma.png');
+    margin: 0;
+    padding: 0;
+    width: 100vw;
+    height: 100vh;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    font-family: Arial, Helvetica, sans-serif;
+    overflow: hidden;
+  ">
+    <img src="img/iconos/pCompleta3.png" alt="pp" id="pCompleta" style="position: absolute;
+        width: 10vh;
+        height: auto;
+        top: 40%;
+        right: 1%;
+        ">
     <!-- Button trigger modal -->
 
-    <div class="contenido">
+    <!-- <div class="contenido">
         <h1 class="game-title">¿LISTO PARA EMPEZAR?</h1>
             <div class="btn-container">
                 <button id="space-btn" name="space-button" type="submit" data-bs-toggle="modal" data-bs-target="#armarArma">
@@ -104,49 +122,99 @@
                     <div style="animation-delay: 3.66012s;" class="shooting-star shooting-star-4"></div>
                 </button>
             </div>
-    </div>
-    
+    </div> -->
+
     <!-- Modal -->
-    <div class="modal fade" id="armarArma" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <!-- <div class="modal fade" id="armarArma" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true"> -->
 
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div id="tiempo"> 00:20</div>
-                <h1 class="titulo-arma" id="exampleModalLabel">Construye el arma</h1>
-                
-                <div class="modal-body holis">
 
-                    <div class="contenedor-imagen">
-                        <img src="juego/espacial/armas/img/contono.png" alt="">
-                        <div class="contenedor-arma" id="lista1">
-
-                            <div class="dropzone posicion1" data-id="1"></div>
-                            <div class="dropzone posicion2" data-id="2"></div>
-                            <div class="dropzone posicion3" data-id="3"></div>
-                            <div class="dropzone posicion4" data-id="4"></div>
-                            <div class="dropzone posicion5" data-id="5"></div>
+    <div class="modal fade" id="perdioo" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true"
+        data-bs-backdrop="static" data-bs-keyboard="false">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content contenedorTsolo">
+                <div class="tituloTsolo">¡Perdiste!</div>
+                <div class="contenedorTsoloInterior">
+                    <div class="contenedor-estrellas">
+                        <img src="modales/modales/img/tablas/perdio.png" class="x" alt="">
+                        <img src="modales/modales/img/tablas/perdio.png" class="x" alt="">
+                        <img src="modales/modales/img/tablas/perdio.png" class="x" alt="">
+                    </div>
+                    <div class="puntaje-total">
+                        0pts
+                    </div>
+                    <div class="contenedor-puntaje" id="tiempoFin">
+                        Tiempo:
+                        <!-- Aquí se debe insertar el valor de 'tiempoPromedio' -->
+                        20s
+                    </div>
+                    <div class="contenedor-puntaje">
+                        <div id="diamantesFin"></div>
+                    </div>
+                    <!-- <div class="col-12 row contenedor-info">
+                        <div class="col-6 usuarioPerfill">
+                            <img src="modales/modales/img/tablas/fotouser.png" alt="" style="width: 16px;">
                         </div>
-                    </div>
-
-                    <div class="contenedor-arma">
-                        <img src="juego/espacial/armas/img/boquilla.png" class="objeto1 arrastrable " data-id="1">
-                        <img src="juego/espacial/armas/img/cargador.png" class="objeto2 arrastrable " data-id="2">
-                        
-                        <img src="juego/espacial/armas/img/culata.png" class="objeto4 arrastrable " data-id="4">
-                        <img src="juego/espacial/armas/img/cuerpo.png" class="objeto3 arrastrable " data-id="3">
-                        <img src="juego/espacial/armas/img/mira.png" class="objeto5 arrastrable " data-id="5">
-                    </div>
-                    <button id="verificar">VERIFICAR</button>
+                        <div class="col-3" id="tiempoFin">
+                            0s
+                        </div>
+                        <div class="col-3" id="puntosFin">
+                            
+                            0pts
+                        </div>
+                    </div> -->
                 </div>
-
+                <div class="contenedor-botonTsolo">
+                    <button class="botonTsolo" id="perdiste">
+                        Salir
+                    </button>
+                </div>
             </div>
         </div>
     </div>
 
 
+
+
+
+    <div class="contenedorA">
+        <div class="contenedorb">
+            <div id="tiempo"> 00:20</div>
+            <h1 class="titulo-arma" id="exampleModalLabel">Construye el arma</h1>
+
+            <div class="holis">
+
+                <div class="contenedor-imagen">
+                    <img src="juego/espacial/armas/img/contono.png" alt="">
+                    <div class="contenedor-arma" id="lista1">
+
+                        <div class="dropzone posicion1" data-id="1"></div>
+                        <div class="dropzone posicion2" data-id="2"></div>
+                        <div class="dropzone posicion3" data-id="3"></div>
+                        <div class="dropzone posicion4" data-id="4"></div>
+                        <div class="dropzone posicion5" data-id="5"></div>
+                    </div>
+                </div>
+
+                <div class="contenedor-arma">
+                    <img src="juego/espacial/armas/img/boquilla.png" class="objeto1 arrastrable " data-id="1">
+                    <img src="juego/espacial/armas/img/cargador.png" class="objeto2 arrastrable " data-id="2">
+
+                    <img src="juego/espacial/armas/img/culata.png" class="objeto4 arrastrable " data-id="4">
+                    <img src="juego/espacial/armas/img/cuerpo.png" class="objeto3 arrastrable " data-id="3">
+                    <img src="juego/espacial/armas/img/mira.png" class="objeto5 arrastrable " data-id="5">
+                </div>
+                <button id="verificar">VERIFICAR</button>
+            </div>
+
+        </div>
+    </div>
+    <!-- </div> -->
+
+     <script src="js/session.js"></script>
     <script src="juego/espacial/armas/js/interactJS.js"></script>
     <script src="juego/espacial/armas/js/armarArma.js"></script>
     <script src="bootstrap/js/bootstrap.js"></script>
+    <script src="js/pantalla.js"></script>
 </body>
 
 </html>

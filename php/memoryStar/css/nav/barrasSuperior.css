@@ -81,4 +81,14 @@
 
 .gold-resource {
     background: linear-gradient(to right, rgba(255, 215, 0, 1), rgba(255, 165, 0, 0.5));
+    width: 10vw;
+}
+
+@media(max-height:450px){
+    .gold-resource{
+        width: 12vw;
+    }
+    .blue-resource{
+        width: 14vw;
+    }
 }

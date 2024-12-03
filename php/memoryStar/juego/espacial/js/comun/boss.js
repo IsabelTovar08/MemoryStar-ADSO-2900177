@@ -87,6 +87,7 @@ export class Boss {
       this.bossHealthBar.destroy(); // Destruir la barra de vida
       this.scene.add.text(300, this.scene.scale.height - 500, "¡FELICIDADES, DERROTASTE AL ENEMIGO!", { fontSize: "60px", fill: "#fff", stroke: "#000", strokeThickness: 3 });
       
+<<<<<<< HEAD
       const modal = new bootstrap.Modal(document.getElementById('modalRedireccion'));
       modal.show();
 
@@ -102,6 +103,13 @@ export class Boss {
           //   window.location.href=("../../../../juego/espacial/armas/enemigo.html")
           // }, 2000);
         
+=======
+        setTimeout(() => {
+          window.location.href=("../../../../aCohete/animacion4.html");
+          //("../../../../juego/espacial/armas/enemigo.html")
+        }, 2000);
+      
+>>>>>>> main
       
 
   }

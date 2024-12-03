@@ -135,6 +135,16 @@
     <script src="../js/perfil.js"></script>
     <script src="../js/mapa.js"></script>
     <script src="../../modales/modales/js/barra.js"></script> -->
+    <script>
+        window.addEventListener('beforeunload', (event) => {
+            // Evita el comportamiento predeterminado
+            event.preventDefault();
+
+            // Establece un mensaje de advertencia
+            event.returnValue = '¿Estás seguro de que deseas salir de esta página?';
+        });
+
+    </script>
 </body>
 
 </html>
