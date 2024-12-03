@@ -61,8 +61,6 @@ class MyScene extends Phaser.Scene {
       this.load.image('estrellaPuntos', '../../img/puntos.png');
       this.load.image('salir', '../../img/salir.png');
       this.load.image('oxigeRecort', '../../img/oxigen.png');
-
-   
       this.load.image("button", "../../img/arriba.png");
       this.load.image("leftButton", "../../img/izqui.png");
       this.load.image("rightButton", "../../img/derecha.png");
@@ -127,10 +125,8 @@ class MyScene extends Phaser.Scene {
       this.iniciarOxigeno = this.manejoPuntos.drawProgressBar();
       this.manejoPuntos.start(1, 0, 650, 10);
 
-      // Se instancia al final para que no interfiera con el diseño
       this.instanciaPartesNave = new partesNave(this);
 
-      // Botón salir
       const botonSalir = this.add.image(config.width - 10, config.height - 10, 'salir').setScale(0.11).setOrigin(1, 1).setScrollFactor(0).setInteractive();
 
       botonSalir.on('pointerover', () => {
@@ -140,7 +136,6 @@ class MyScene extends Phaser.Scene {
          botonSalir.setScale(0.11).clearTint();
       });
       botonSalir.on('pointerdown', () => {
-         // window.location.href = '../../../index.php';
          var modalOxigeno = new bootstrap.Modal(document.getElementById("exitModal"));
       modalOxigeno.show();
       });
@@ -150,7 +145,7 @@ class MyScene extends Phaser.Scene {
       this.manejoRecolectables.configurarColisionOxigeno(this.oxigeno);
       this.manejoRecolectables.configurarColisionMineral(this.corazones);
       // manejarPuntos.configurarColisionSiete(this.siete, "../juegoLava/index.html");
-
+configurarColisionMineral
       // Coliciones entre el personaje y el suelo y los recolectables y el suelo
       this.physics.add.collider(this.instanciaPersonaje.jugador, this.floor);
       this.physics.add.collider(this.corazones, this.floor);
@@ -204,8 +199,7 @@ class MyScene extends Phaser.Scene {
          this.instanciaPersonaje.handleMovement();
       }
       this.manejoPuntos.update(time, delta);
-      document.getElementById('puntos').textContent = '01301'; // Ejemplo de actualización
-        document.getElementById('diamantes').textContent = '03';
+      
    }
 }
 

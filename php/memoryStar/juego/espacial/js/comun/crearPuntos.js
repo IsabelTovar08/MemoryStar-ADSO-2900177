@@ -145,9 +145,12 @@ export class ManejarPuntos {
       fontSize: "60px",
       fill: "#fff",
     });
+    console.log("pausar");
+    
     setTimeout(() => {
       this.scene.instanciaPersonaje.jugador.setVelocityY(-350);
     }, 3000);
+    this.scene.pause();
   }
 
   drawProgressBar() {

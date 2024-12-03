@@ -206,7 +206,6 @@ function handleRoomCreated(data) {
     createRoomButton.style.display = 'none';
     joinRoomButton.style.display = 'none';
 
-
 }
 endChatButton.addEventListener('click', () => {
     socket.send(JSON.stringify({

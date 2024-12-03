@@ -53,10 +53,10 @@ export class partesNave {
             this.nave.setPosition(13, 70);
             this.propulsores.setScale(0.4);
             this.propulsores.setPosition(13, 110);
-            this.cabina.setScale(0.3);
-            this.cabina.setPosition(13, 150);
-            this.cubierta.setScale(0.5);
-            this.cubierta.setPosition(13, 180);
+            this.cabina.setScale(0.3); 
+            this.cabina.setPosition(10, 140);
+            this.cubierta.setScale(0.18);
+            this.cubierta.setPosition(10, 180);
         }
     }
 
@@ -94,14 +94,17 @@ export class partesNave {
                         }).setScrollFactor(0);
                         this.scene.sound.add("victoria", { volume: 0.2 }).play();
                         console.log('sonido de victoria');
+                        
+                        this.scene.pause();
+
                     }, 1000);
 
-                    // Modal de redirección después de recolectar todo
-                    
+                        // Modal de redirección después de recolectar todo
+                   
                         // Mostrar el modal
                         const modal = new bootstrap.Modal(document.getElementById('modalRedireccion'));
                         modal.show();
-
+                        
                         
                     
                         // Pausar la escena después de un breve retardo para asegurar que el modal se muestra completamente
@@ -113,11 +116,6 @@ export class partesNave {
                             this.redirigir(); // Redirigir o realizar cualquier acción necesaria
                             this.scene.resume(); // Reanudar la escena si es necesario después de redirigir
                         });
-                
-                    
-                    
-                    
-                    
                 }
             }
         });

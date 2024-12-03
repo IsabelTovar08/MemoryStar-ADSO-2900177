@@ -3,7 +3,80 @@ function redirigir(){
     window.location.href=("../../../index.html")
   }, 2000);
 }
+
+function mostrarTabla2() {
+  const modalFinal2 = document.createElement("div");
+  modalFinal2.className = "modal fade";
+  modalFinal2.id = "modalFinal2";
+  modalFinal2.setAttribute("tabindex", "-1");
+  modalFinal2.setAttribute("aria-labelledby", "modalFinal2Label");
+  modalFinal2.setAttribute("aria-hidden", "true");
+  modalFinal2.setAttribute("data-bs-backdrop", "static");
+  modalFinal2.setAttribute("data-bs-keyboard", "false");
+
+  modalFinal2.innerHTML = `
+    <div class="modal-dialog modal-sm modal-dialog-centered">
+      <div class="modal-content contenedorTsolo">
+        <div class="tituloTsolo">¡Juego Completado!</div>
+        <div class="contenedorTsoloInterior">
+          <div class="contenedor-estrellas">
+            <img src="modales/modales/img/tablas/Star.png" class="star" alt="">
+            <img src="modales/modales/img/tablas/Star.png" class="star" alt="">
+            <img src="modales/modales/img/tablas/Star.png" class="star" alt="">
+          </div>
+          <div class="puntaje-total">
+            ${puntuacion}
+          </div>
+
+          <div class="contenedor-puntaje">
+            Tiempo:
+            ${contador}s
+          </div>
+          <div class="contenedor-rubi">
+            <div>${rubis}</div>
+            <img src="modales/modales/img/tablas/rubipuntaje.png"
+                style="width: 4vh; height: auto;">
+          </div>
+
+          <div class="col-12 row contenedor-info">
+            <div class="col-6 usuarioPerfill">
+              <img src="modales/modales/img/tablas/fotouser.png" alt="" style="width: 16px;">
+            </div>
+            <div class="col-3">${contador}s</div>
+            <div class="col-3">${puntuacion}pts</div>
+          </div>
+        </div>
+
+        <div class="contenedor-botonTsolo">
+          <button class="botonTsolo" onclick="redirigir()">
+            Siguiente
+          </button>
+        </div>
+      </div>
+    </div>
+  `;
+
+  document.body.appendChild(modalFinal2);
+
+  // Agregamos el evento después de insertar el modal
+  modalFinal2.addEventListener(
+    "hidden.bs.modal",
+    () => {
+      mostrarTabla2();
+    },
+    { once: true }
+  );
+
+  new bootstrap.Modal(modalFinal2, { backdrop: "static" }).show();
+}
+
+
+
 document.addEventListener("DOMContentLoaded", () => {
+
+
+
+
     // variables globales
     const images = document.querySelectorAll(".sep");
     const container = document.getElementById("imagenes");
@@ -215,7 +288,7 @@ document.addEventListener("DOMContentLoaded", () => {
               </div>
   
               <div class="contenedor-botonTsolo">
-                  <button class="botonTsolo" onclick="redirigir()" style="margin-left: 20px;">
+                  <button class="botonTsolo">
                       Salir
                   </button>
               </div>
@@ -223,7 +296,36 @@ document.addEventListener("DOMContentLoaded", () => {
       </div>
       `;
   
+      puntos(puntuacion, rubis, contador );
       document.body.appendChild(modalFinal);
       new bootstrap.Modal(modalFinal, { backdrop: "static" }).show();
     }
+
+      function puntos(puntuacion, rubis, contador) {
+
+          const datosJuego = {
+            puntos:puntuacion ,
+            diamantes: rubis,
+           tiempo: contador,
+            archivo: 3
+        };
+        
+          fetch('../../../procesos/puntuacionmario/datos.php', {
+            method: 'POST',
+            headers: {  
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(datosJuego)
+        })
+        .then(response => response.json())
+        .then(data => {
+            console.log(data.mensaje);
+            console.log('enviado uno armas 3 ')
+        })
+        .catch(error => {
+            console.error('Error al enviar datos:', error);
+            
+        });
+    
+      }
 });

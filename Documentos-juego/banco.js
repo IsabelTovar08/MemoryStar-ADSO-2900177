@@ -14,5 +14,5 @@ for(let i = 0; monto > 0; i++) {
         alert('noo tienes plata bro ');
         break;
     }
-}
+ }
 

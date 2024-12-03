@@ -87,13 +87,49 @@ export class Boss {
       this.bossHealthBar.destroy(); // Destruir la barra de vida
       this.scene.add.text(300, this.scene.scale.height - 500, "¡FELICIDADES, DERROTASTE AL ENEMIGO!", { fontSize: "60px", fill: "#fff", stroke: "#000", strokeThickness: 3 });
       
-        setTimeout(() => {
-          window.location.href=("../../../../juego/espacial/armas/enemigo.html")
-        }, 2000);
-      
+      const modal = new bootstrap.Modal(document.getElementById('modalRedireccion'));
+      modal.show();
+
+        const boton = document.getElementById('aceptarRedireccion');
+        boton.addEventListener('click', () => {
+        this.redirigir(); // Redirigir o realizar cualquier acción necesaria
+        this.scene.resume(); // Reanudar la escena si es necesario después de redirigir
+      });
+      this.scene.pause();   
+
+
+          // setTimeout(() => {
+          //   window.location.href=("../../../../juego/espacial/armas/enemigo.html")
+          // }, 2000);
+        
       
 
   }
+}
+
+
+
+redirigir() {
+  //Obtener datos del juego de la escena
+  const datosJuego = this.scene.manejoPuntos.obtenerDatos();
+  
+  fetch('../../../../procesos/puntuacionmario/datos.php', {
+      method: 'POST',
+      headers: { 
+          'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(datosJuego)
+  })
+  .then(response => response.json())
+  .then(data => {
+      console.log(data.mensaje);
+      console.log('envidado 2 armas enemigo ')
+      window.location.href=("../../../../juego/espacial/armas/enemigo.html")
+  })
+  .catch(error => {
+      console.error('Error al enviar datos:', error);
+      alert("error amigo al enviar la puntuacion ")
+  });
 }
   moverBoss() {
     this.scene.time.addEvent({
