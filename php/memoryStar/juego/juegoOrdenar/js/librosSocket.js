@@ -1,10 +1,129 @@
 let ordenVerificar;
-
-const urlParams = new URLSearchParams(window.location.search);
-const codigo = urlParams.get('codigo');
 let ws;
 let gameData = null;
 let usuarioEsAdmin = false;
+let todosListos;
+let usuarioId;
+let usuarioAdmin;
+// iniciar();
+async function obtenerDatosUsuario(callback, manejarError) {
+  try {
+    const response = await fetch('../../procesos/login/obtenerUsuario.php');
+    if (response.ok) {
+      const data = await response.json();
+      if (data.success && data.usuario) {
+        callback(data);
+      } else {
+        manejarError();
+      }
+    } else {
+      console.log(`Error al obtener datos del servidor: Código ${response.status}`);
+    }
+  } catch (error) {
+    console.log(`Error al obtener datos del usuario: ${error.message}`);
+  }
+}
+// function reconocerAdmin() {
+//   obtenerDatosUsuario(
+//     (data) => {
+//       usuarioId = data.id_usuario;
+//       const usuario = data.usuario;
+//       console.log(`Usuario ID: ${usuarioId}, Nombre: ${usuario}`);
+
+//       // Verificar si el usuario es admin
+//       const adminId = gameData.players.find(player => player.isAdmin)?.idUsuario;
+//       usuarioEsAdmin = adminId === usuarioId;
+
+//       console.log("Estado de admin:", usuarioEsAdmin);
+//       // localStorage.setItem('usuarioEsAdmin', usuarioEsAdmin);
+//       // localStorage.setItem('id_usuario', id_usuario);
+
+//       // Lógica para el botón 'aceptar' basada en usuarioEsAdmin
+//       if (!usuarioEsAdmin) {
+//         aceptar.style.display = 'none';
+
+//       }
+
+//     },
+//     () => {
+//       console.log("Error al cargar los datos del usuario.");
+//     }
+//   );
+// }
+gameData = JSON.parse(sessionStorage.getItem('gameData'));
+function iniciar() {
+  ws = new WebSocket('ws://localhost:8080');
+  ws.onopen = () => {
+    console.log('Conectado al WebSocket en el juego multijugador');
+    if (gameData) {
+      console.log("info" + gameData.gameData)
+      ws.send(JSON.stringify({
+        type: 'reconectarSala',
+        codigoSala: gameData.gameData.codigoSala,
+        players: gameData.players
+      }));
+    } else {
+      console.error('gameData no está disponible en la conexión WebSocket');
+    }
+    console.log(ordenVerificar)
+  };
+  ws.onmessage = (event) => {
+    const data = JSON.parse(event.data);
+    switch (data.type) {
+      case 'actualizarEstadisticas':
+        console.log("Estadisticasdsgfrd")
+        console.log("Estadísticas: ", JSON.stringify(data.players));
+        actualizarEstadisticas(data)
+        break;
+      case 'ordenCorrectoR':
+        console.log('Orden correcta recibida:', data.orden);
+        mostrarLibrosEnOrden(data.orden);
+        ordenVerificar = data.orden;
+        break;
+      case 'error':
+        console.error('Error:', data.message);
+        break;
+      case 'actualizarJugadores':
+        contenedorUsers.innerHTML = '';
+        data.players.forEach((player, index) => {
+          const contenedor = document.createElement('div');
+          contenedor.className = 'col-12 row contenedor-info';
+          contenedor.innerHTML = `
+                  <div class="col-6 usuarioPerfill">
+                      ${index + 1}. <img src="../../modales/modales/img/tablas/fotouser.png" alt="" style="width: 16px;"> ${player.usuario}
+                  </div>
+                  <div class="col-3" id="tiempo1">${player.time}s</div>
+                  <div class="col-3" id="puntosSecu2">${player.score} puntos</div>
+              `; 5
+          contenedorUsers.appendChild(contenedor);
+        });
+        break;
+      case 'cerrarModal':
+        const modalElement = document.querySelector('.modal.show');
+        if (modalElement) {
+          const modalInstance = bootstrap.Modal.getInstance(modalElement);
+          modalInstance.hide();
+          console.log("Modal cerrado por el administrador");
+        }
+        const contenUser = document.getElementById('contedor_users');
+        contenUser.innerHTML = `
+            <div class="col-12 row contenedor-info">
+                                      <div class="col-6 usuarioPerfill"><img src="../../modales/modales/img/tablas/fotouser.png"
+                                              alt="" style="width: 16px;"></div>
+                                      <div class="col-3" id="tiempo1">0</div>
+                                      <div class="col-3" id="puntosSecu2">0s</div>
+                                  </div>
+          `;
+        break;
+      case 'todosFinalizados':
+        console.log('todos:', data);
+        todosListos = true;
+        break;
+    }
+  };
+
+  ws.onclose = () => console.log('Desconectado del WebSocket');
+}
 const NIVELES = {
   "MemorixBookifybasico.html": {
     librosIniciales: 4,
@@ -25,17 +144,12 @@ const NIVELES = {
     tiempoRonda: 15,
   },
 };
-
 const contenedorLibros = document.querySelector("#lista");
 const libros = document.getElementById("lista");
 const botonVerificar = document.getElementById("verificarBtn");
 const resultado = document.getElementById("resultado");
 const aceptar = document.querySelector('.botonTsolo');
 const contenedorUsers = document.getElementById('contedor_users');
-
-
-
-// libros total
 const todosLosLibros = [
   { src: "img/librito1.png", dataId: "1" },
   { src: "img/librito2.png", dataId: "2" },
@@ -47,8 +161,6 @@ const todosLosLibros = [
   { src: "img/librito8.png", dataId: "8" },
   { src: "img/librito9.png", dataId: "9" },
 ];
-
-// Variables globales para el control de rondas
 let rondaActual = 1;
 let puntajeTotal = 0;
 let totalRubis = 0;
@@ -63,7 +175,6 @@ let tiempoRestante;
 let configuracionNivel;
 let tiemposPorRonda = [];
 
-// Función para detectar el nivel actual
 function detectarNivel() {
   const rutaCompleta = window.location.pathname;
   const nombreArchivo = rutaCompleta.split("/").pop();
@@ -76,7 +187,6 @@ function detectarNivel() {
   return configuracionNivel;
 }
 
-// Función para obtener la cantidad de libros para la ronda actual
 function obtenerCantidadLibros() {
   return (
     configuracionNivel.librosIniciales +
@@ -84,13 +194,11 @@ function obtenerCantidadLibros() {
   );
 }
 
-// Función para obtener los libros para la ronda actual
 function obtenerLibrosParaRonda() {
   const cantidadLibros = obtenerCantidadLibros();
   return todosLosLibros.slice(0, cantidadLibros);
 }
 
-// Función para mezclar arreglo
 function mezclarArreglo(arr) {
   for (let i = arr.length - 1; i > 0; i--) {
     let j = Math.floor(Math.random() * (i + 1));
@@ -99,7 +207,6 @@ function mezclarArreglo(arr) {
   return arr;
 }
 
-// Función para mostrar libros en orden
 function mostrarLibrosEnOrden(orden) {
   if (orden) {
     libros.innerHTML = "";
@@ -114,7 +221,6 @@ function mostrarLibrosEnOrden(orden) {
   }
 }
 
-// Funciones de Drag and Drop
 function deshabilitarDrag() {
   if (sortable) {
     sortable.destroy();
@@ -152,18 +258,13 @@ function habilitarDrag() {
   });
 }
 
-
-// Función para iniciar una nueva ronda
 function iniciarRonda() {
-  iniciar();
+  console.log("iniciando")
   limpiarIntervalos();
   botonPresionado = false;
-
   const librosRonda = obtenerLibrosParaRonda();
-
   contenedorLibros.innerHTML = "";
   idsLibros = [];
-
   librosRonda.forEach((libro) => {
     const imgLibro = document.createElement("img");
     imgLibro.src = libro.src;
@@ -173,49 +274,42 @@ function iniciarRonda() {
     contenedorLibros.appendChild(imgLibro);
     idsLibros.push(`'${libro.dataId}'`);
   });
-
-
-  const usuarioEsAdmin = JSON.parse(localStorage.getItem('usuarioEsAdmin'));
+  // const usuarioEsAdmin = JSON.parse(localStorage.getItem('usuarioEsAdmin'));
   if (usuarioEsAdmin) {
     ordenCorrecto = mezclarArreglo([...idsLibros]);
-
-    sessionStorage.setItem('ordenCorrectoAdmin', JSON.stringify(ordenCorrecto));
+    ordenVerificar = ordenCorrecto;
     console.log(ordenCorrecto)
     console.log("u")
-    // enviarOrdenCorrecto();
+    enviarOrdenCorrecto();
 
   } else {
-    ordenCorrecto = JSON.parse(sessionStorage.getItem('ordenCorrectoAdmin'));
-    console.log(ordenVerificar)
-
+    console.log(ordenCorrecto)
+    obtenerOrdenCorrecto()
   }
-  // ordenCorrecto =  JSON.parse(sessionStorage.getItem('ordenCorrecto'));
   console.log(ordenCorrecto)
-  // sessionStorage.removeItem('ordenCorrecto');
-  // iniciar()
-
-
-
-  // mostrarLibrosEnOrden(ordenCorrecto);
-
   reiniciarTemporizadores();
-
   document.getElementById(
     "ronda-actual"
   ).textContent = `Ronda ${rondaActual} de 3`;
-}
 
-// Sistema de temporizador y barra de progreso
+}
+function obtenerOrdenCorrecto() {
+  ws.addEventListener('open', () => {
+    console.log("WebSocket conectado, recibi ordenCorrecto");
+    ws.send(JSON.stringify({
+      type: 'obtenerOrdenCorrecto'
+    }));
+    console.log('ya');
+  }, { once: true });
+
+}
 function iniciarTemp() {
   contador = -5;
   limpiarIntervalos();
-
   intervaloTemp = setInterval(function () {
     contador++;
     if (contador >= 0) {
       document.getElementById("verificarBtn").disabled = false;
-
-      // Formatear contador a mm:ss
       const minutos = Math.floor(contador / 60);
       const segundos = contador % 60;
       const formatoTiempo = `${minutos < 10 ? "0" : ""}${minutos}:${segundos < 10 ? "0" : ""
@@ -230,7 +324,6 @@ function iniciarTemp() {
     }
   }, 1000);
 }
-
 function iniciarBarra() {
   const barraRegresiva = document.getElementById("countdown-bar");
   const textoRegresivo = document.getElementById("countdown-text");
@@ -261,13 +354,8 @@ function iniciarBarra() {
   }, 1000);
 }
 
-// funcion para finaliar la ronda
 function finalizarRonda(ordenVerificar) {
-  ws.send(JSON.stringify({
-    type: 'ordenEnviado',
-    codigoSala: gameData.gameData.codigoSala,
-    usuario: JSON.parse(localStorage.getItem('id_usuario'))
-  }));
+  console.log("e" + ordenVerificar)
   botonPresionado = true;
   limpiarIntervalos();
 
@@ -278,23 +366,15 @@ function finalizarRonda(ordenVerificar) {
   let rubis = 0;
 
   ordenActualConComillas.forEach((id, index) => {
-
     if (id === ordenVerificar[index]) {
       aciertosRonda = aciertosRonda + 100;
-      // ordenActualConComillas.classList.add="bien"
-      // ordenActualConComillas.classList.remove="mal"
     } else {
       desaciertos = desaciertos + 1;
-      // ordenActualConComillas.classList.remove="bien"
-      // ordenActualConComillas.classList.add="mal"
     }
   });
 
   puntajeTotal += aciertosRonda;
-
-  // Guardar el tiempo de la ronda actual
   tiemposPorRonda.push(contador);
-
   document.getElementById("tiempo1").innerHTML = `00:${contador < 10 ? "0" : ""
     }${contador}`;
   document.getElementById("puntosSecu1").innerHTML = `${aciertosRonda}pts`;
@@ -302,7 +382,6 @@ function finalizarRonda(ordenVerificar) {
   document.getElementById("aciertos").innerHTML = `Aciertos:${aciertosRonda / 100
     }`;
   document.getElementById("desaciertos").innerHTML = `Fallos:${desaciertos}`;
-
   if (aciertosRonda === ordenVerificar.length * 100) {
     rubis = window.location.pathname.includes("Dificil")
       ? 15
@@ -312,14 +391,11 @@ function finalizarRonda(ordenVerificar) {
   }
   totalRubis += rubis;
   document.getElementById("rubis").innerHTML = `+${rubis}`;
-
   document.getElementById("nRonda").innerHTML = `PUNTUACION RONDA ${rondaActual}`;
-
   const modal = new bootstrap.Modal(
     document.getElementById("tablapuntuacionsolo")
   );
   modal.show();
-
   document.getElementById("tablapuntuacionsolo").addEventListener(
     "hidden.bs.modal",
     () => {
@@ -327,20 +403,21 @@ function finalizarRonda(ordenVerificar) {
         rondaActual++;
         iniciarRonda();
         enviarOrdenCorrecto();
-
       } else {
         mostrarResultadosFinales();
       }
     },
     { once: true }
   );
-
+  ws.send(JSON.stringify({
+    type: 'ordenEnviado',
+    codigoSala: gameData.gameData.codigoSala,
+    usuario: usuarioId
+  }));
   sendPlayerStatsToServer(aciertosRonda, contador)
   console.log('ENVIADO DESDE LIBROS JS')
-
 }
 
-// Función para limpiar intervalos
 function limpiarIntervalos() {
   if (intervaloBarra) {
     clearInterval(intervaloBarra);
@@ -352,10 +429,8 @@ function limpiarIntervalos() {
   }
 }
 
-// Función para reiniciar temporizadores
 function reiniciarTemporizadores() {
   limpiarIntervalos();
-
   tiempoRestante = configuracionNivel.tiempoRonda;
   contador = -5;
   botonPresionado = false;
@@ -382,17 +457,10 @@ function reiniciarTemporizadores() {
   }, configuracionNivel.tiempoVisualizacion);
 }
 
-// Función para calcular el tiempo promedio
 function calcularTiempoPromedio() {
   const suma = tiemposPorRonda.reduce((a, b) => a + b, 0);
   return (suma / tiemposPorRonda.length).toFixed(1);
 }
-
-// Event Listener para el botón verificar
-
-
-// Función para mostrar resultados finales
-
 function mostrarResultadosFinales() {
   const tiempoPromedio = calcularTiempoPromedio();
   const modalFinal = document.createElement("div");
@@ -458,7 +526,6 @@ function mostrarResultadosFinales() {
 function redirigir() {
   window.location.href = ("../../index.html");
 }
-
 function enviarPuntuacion(puntajeTotal, tiempoPromedio, totalRubis) {
   const arrPuntos = {
     puntajeTotal: puntajeTotal,
@@ -485,7 +552,6 @@ function enviarPuntuacion(puntajeTotal, tiempoPromedio, totalRubis) {
       console.log('Respuesta recibida:', data);
       if (data.success) {
         console.log('Datos procesados correctamente:', data.datos);
-        // Aquí puedes hacer algo con la respuesta exitosa
       } else {
         alert(data.mensaje || 'Error al procesar los datos');
       }
@@ -497,184 +563,88 @@ function enviarPuntuacion(puntajeTotal, tiempoPromedio, totalRubis) {
     });
 }
 
-
-
-// Inicialización del juego
-window.addEventListener("DOMContentLoaded", () => {
+document.addEventListener("DOMContentLoaded", async () => {
+  console.log("Inicio del DOMContentLoaded");
+  await reconocerAdmin(); // Espera a que esta función termine
+  console.log("Después de llamar a reconocerAdmin");
   detectarNivel();
-
+  console.log("Después de llamar a detectarNivel");
   const rondaDisplay = document.createElement("div");
   rondaDisplay.id = "ronda-actual";
   rondaDisplay.className = "text-center mb-3";
   document
     .querySelector("#lista")
     .parentNode.insertBefore(rondaDisplay, document.querySelector("#lista"));
-
+  console.log("u");
   iniciarRonda();
 });
 
+async function reconocerAdmin() {
+  await obtenerDatosUsuario(
+    (data) => {
+      usuarioId = data.id_usuario;
+      const usuario = data.usuario;
+      console.log(`Usuario ID: ${usuarioId}, Nombre: ${usuario}`);
 
+      const adminId = gameData.players.find(player => player.isAdmin)?.idUsuario;
+      usuarioEsAdmin = adminId === usuarioId;
 
-if (modoJuego === 'multijugador') {
-  // Obtener los datos de la sala desde el sessionStorage
-  gameData = JSON.parse(sessionStorage.getItem('gameData'));
-
-  if (gameData) {
-    console.log('Datos de la sala:', gameData);
-
-    const scoreList = document.getElementById('scoreList');
-    const codigoSala = gameData.gameData.codigoSala;
-
-    obtenerDatosUsuario(
-      (data) => {
-        const id_usuario = data.id_usuario;
-        const usuario = data.usuario;
-        console.log(`Usuario ID: ${id_usuario}, Nombre: ${usuario}`);
-
-        // Verificar si el usuario es admin
-        const adminId = gameData.players.find(player => player.isAdmin)?.idUsuario;
-        usuarioEsAdmin = adminId === id_usuario;
-
-        console.log("Estado de admin:", usuarioEsAdmin);
-        localStorage.setItem('usuarioEsAdmin', usuarioEsAdmin);
-        localStorage.setItem('id_usuario', id_usuario);
-
-        // Lógica para el botón 'aceptar' basada en usuarioEsAdmin
-        if (!usuarioEsAdmin) {
-          aceptar.style.display = 'none';
-
-        }
-
-      },
-      () => {
-        console.log("Error al cargar los datos del usuario.");
+      console.log("Estado de admin:", usuarioEsAdmin);
+      if (!usuarioEsAdmin) {
+        aceptar.style.display = 'none';
       }
-    );
-  }
-
-  console.log("Modo de juego: Multijugador");
-} else {
-  console.log("Modo de juego: Un jugador");
+    },
+    () => {
+      console.log("Error al cargar los datos del usuario.");
+    }
+  );
 }
 
-// Función para obtener datos del usuario
-async function obtenerDatosUsuario(callback, manejarError) {
-  try {
-    const response = await fetch('../../procesos/login/obtenerUsuario.php');
-    if (response.ok) {
-      const data = await response.json();
-      if (data.success && data.usuario) {
-        callback(data);
-      } else {
-        manejarError();
-      }
-    } else {
-      console.log(`Error al obtener datos del servidor: Código ${response.status}`);
-    }
-  } catch (error) {
-    console.log(`Error al obtener datos del usuario: ${error.message}`);
-  }
-}
-
-// Función para iniciar el juego multijugador
-function iniciar() {
-  // Configuración del WebSocket
-  ws = new WebSocket('ws://localhost:8080');
-
-  ws.onopen = () => {
-    console.log('Conectado al WebSocket en el juego multijugador');
-    if (gameData) {
-      console.log("info" + gameData.gameData)
-
-      // console.log("info" + gameData.gameData.codigoSala)
-      ws.send(JSON.stringify({
-        type: 'reconectarSala',
-        codigoSala: gameData.gameData.codigoSala,
-        players: gameData.players
-      }));
-      enviarOrdenCorrecto();
-    } else {
-      console.error('gameData no está disponible en la conexión WebSocket');
-    }
-  };
-
-  ws.onmessage = (event) => {
-    const data = JSON.parse(event.data);
-    switch (data.type) {
-      // case 'nuevoOrden':
-      //   console.log('Orden correcto recibido:', data.orden);
-      //   mostrarLibrosEnOrden(data.orden); // Actualizar el juego
-      //   sessionStorage.removeItem('ordenCorrecto');
-
-      //   break;
-
-      case 'actualizarEstadisticas':
-        console.log("Estadisticasdsgfrd")
-        console.log("Estadísticas: ", JSON.stringify(data.players));
-        actualizarEstadisticas(data)
+// reconocerAdmin();
 
 
-        break;
+// if (gameData) {
+//   console.log('Datos de la sala:', gameData);
 
-      case 'ordenCorrecto':
-        console.log('Orden correcta recibida:', data.orden);
-        ordenVerificar = data.orden;
-        mostrarLibrosEnOrden(data.orden); // Actualizar el juego}
-        break;
+//   obtenerDatosUsuario(
+//     (data) => {
+//       usuarioId = data.id_usuario;
+//       const usuario = data.usuario;
+//       console.log(`Usuario ID: ${usuarioId}, Nombre: ${usuario}`);
 
-      case 'error':
-        console.error('Error:', data.message);
-        break;
-      case 'actualizarJugadores':
-        contenedorUsers.innerHTML = '';
+//       // Verificar si el usuario es admin
+//       const adminId = gameData.players.find(player => player.isAdmin)?.idUsuario;
+//       usuarioEsAdmin = adminId === usuarioId;
 
-        // Crear el contenido del contenedor para los jugadores
-        data.players.forEach((player, index) => {
-          const contenedor = document.createElement('div');
-          contenedor.className = 'col-12 row contenedor-info';
-          contenedor.innerHTML = `
-                  <div class="col-6 usuarioPerfill">
-                      ${index + 1}. <img src="../../modales/modales/img/tablas/fotouser.png" alt="" style="width: 16px;"> ${player.usuario}
-                  </div>
-                  <div class="col-3" id="tiempo1">${player.time}s</div>
-                  <div class="col-3" id="puntosSecu2">${player.score} puntos</div>
-              `;
-          contenedorUsers.appendChild(contenedor);
-        });
-        break;
-      case 'cerrarModal':
-        // Cierra el modal visible
+//       console.log("Estado de admin:", usuarioEsAdmin);
+//       // localStorage.setItem('usuarioEsAdmin', usuarioEsAdmin);
+//       // localStorage.setItem('id_usuario', id_usuario);
 
-        const modalElement = document.querySelector('.modal.show');
-        if (modalElement) {
-          const modalInstance = bootstrap.Modal.getInstance(modalElement);
-          modalInstance.hide();
-          console.log("Modal cerrado por el administrador");
-        }
-        const contenUser = document.getElementById('contedor_users');
-        contenUser.innerHTML = `
-            <div class="col-12 row contenedor-info">
-                                      <div class="col-6 usuarioPerfill"><img src="../../modales/modales/img/tablas/fotouser.png"
-                                              alt="" style="width: 16px;"></div>
-                                      <div class="col-3" id="tiempo1">0</div>
-                                      <div class="col-3" id="puntosSecu2">0s</div>
-                                  </div>
-          `;
-        // iniciar()
-        // enviarOrdenCorrecto();
-        break;
-    }
-  };
+//       // Lógica para el botón 'aceptar' basada en usuarioEsAdmin
+//       if (!usuarioEsAdmin) {
+//         aceptar.style.display = 'none';
 
-  ws.onclose = () => console.log('Desconectado del WebSocket');
-}
+//       }
 
-// Función para enviar estadísticas de los jugadores
+//     },
+//     () => {
+//       console.log("Error al cargar los datos del usuario.");
+//     }
+//   );
+
+
+//   console.log("Modo de juego: Multijugador");
+// } else {
+//   console.log("Modo de juego: Un jugador");
+// }
+
+
+
+
 function sendPlayerStatsToServer(score, time) {
   console.log(score);
   console.log(time);
-  const id_usuario = JSON.parse(localStorage.getItem('id_usuario'));
-
+  console.log(usuarioId)
 
   if (ws.readyState === WebSocket.OPEN) {
     if (gameData) {
@@ -682,19 +652,11 @@ function sendPlayerStatsToServer(score, time) {
         type: 'puntajeRonda',
         codigoSala: gameData.gameData.codigoSala,
         player: {
-          idUsuario: id_usuario, // Asume el primer jugador en el array, cambiar si es necesario
+          idUsuario: usuarioId,
           score: score,
           time: time
         }
       }));
-      console.log({
-        player: {
-          idUsuario: id_usuario, // Asume el primer jugador en el array, cambiar si es necesario
-          score: score,
-          time: time
-        }
-      })
-
       console.log("enviado")
     } else {
       console.error('gameData no está definido');
@@ -704,68 +666,76 @@ function sendPlayerStatsToServer(score, time) {
   }
 }
 
-// Función para enviar el orden correcto al servidor (solo si es admin)
 function enviarOrdenCorrecto() {
-  const ordenCorrectoAdmin = JSON.parse(sessionStorage.getItem('ordenCorrectoAdmin'));
+  console.log("Orden correcto a enviar:", ordenCorrecto);
 
-  if (!ordenCorrectoAdmin) {
-    console.error('No se encontró el orden correcto en la sesión.');
+  // const usuarioEsAdmin = JSON.parse(localStorage.getItem('usuarioEsAdmin'));
+  console.log(usuarioEsAdmin)
+  if (!usuarioEsAdmin) {
+    console.log("No es admin, no se envía ordenCorrecto");
     return;
   }
 
-  const usuarioEsAdmin = JSON.parse(localStorage.getItem('usuarioEsAdmin'));
-
-  console.log("enviando paso 1");
-  console.log(usuarioEsAdmin);
-
-  // Asegúrate de que el WebSocket está conectado
-  if (usuarioEsAdmin) {
-    console.log("enviando paso 2");
-
-    if (gameData) {
-      console.log("enviando paso 3");
-
-      // Enviar el orden correcto a todos los jugadores
+  if (ws.readyState === WebSocket.OPEN) {
+    console.log("WebSocket listo, enviando ordenCorrecto");
+    ws.send(JSON.stringify({
+      type: 'ordenCorrecto',
+      codigoSala: gameData.gameData.codigoSala,
+      orden: ordenCorrecto
+    }));
+    mostrarLibrosEnOrden(ordenCorrecto);
+    console.log('Orden correcto enviado:', ordenCorrecto);
+  } else if (ws.readyState === WebSocket.CONNECTING) {
+    console.warn("WebSocket aún conectando, reintentando envío...");
+    ws.addEventListener('open', () => {
+      console.log("WebSocket conectado, enviando ordenCorrecto");
       ws.send(JSON.stringify({
         type: 'ordenCorrecto',
         codigoSala: gameData.gameData.codigoSala,
-        orden: ordenCorrectoAdmin
+        orden: ordenCorrecto
       }));
-      mostrarLibrosEnOrden(ordenCorrectoAdmin);
-      ordenVerificar = ordenCorrectoAdmin;
-      // sessionStorage.removeItem('ordenCorrecto');
-      sessionStorage.removeItem('ordenCorrectoAdmin');
-
-
-      console.log('Orden correcto enviado:', ordenCorrectoAdmin);
-    } else {
-      console.error('gameData no está definido');
-    }
+      mostrarLibrosEnOrden(ordenCorrecto);
+      console.log('Orden correcto enviado tras conectar:', ordenCorrecto);
+    }, { once: true });
   } else {
-    console.log("No es admin");
+    console.error("No se puede enviar, WebSocket no está conectado (estado:", ws.readyState, ")");
   }
 }
 
 
-// Función para actualizar las estadísticas de los jugadores
 function actualizarEstadisticas(data) {
-  let estado = 0; // Estado inicial para controlar las acciones
-
+  let estado = 0;
+  console.log(todosListos)
+  if (todosListos) {
+    let mensaje;
+    mensaje = document.querySelector('.mensaje');
+    mensaje.textContent = 'Todos los jugadores han finalizado la ronda.';
+  }
   aceptar.addEventListener('click', () => {
-    if (estado === 0) {
-      // Primera acción: Actualizar las estadísticas
+    if (estado === 0 && todosListos) {
       const contenedorUsers = document.getElementById('contedor_users');
       contenedorUsers.innerHTML = '';
+      data.players.sort((a, b) => {
+        if (b.score !== a.score) {
+          return b.score - a.score;
+        }
+        return a.time - b.time;
+      });
+
       data.players.forEach((player, index) => {
         const contenedor = document.createElement('div');
         contenedor.className = 'col-12 row contenedor-info';
+        if (index < 3) {
+          contenedor.classList.add('destacado');
+        }
+
         contenedor.innerHTML = `
-            <div class="col-6 usuarioPerfill">
-              ${index + 1}. <img src="../../modales/modales/img/tablas/fotouser.png" alt="" style="width: 16px;"> ${player.usuario}
-            </div>
-            <div class="col-3" id="tiempo1">${player.time}s</div>
-            <div class="col-3" id="puntosSecu2">${player.score} puntos</div>
-          `;
+          <div class="col-6 usuarioPerfill">
+            ${index + 1}. <img src="../../modales/modales/img/tablas/fotouser.png" alt="" style="width: 16px;"> ${player.usuario}
+          </div>
+          <div class="col-3" id="tiempo1">${player.time}s</div>
+          <div class="col-3" id="puntosSecu2">${player.score} puntos</div>
+  `;
         contenedorUsers.appendChild(contenedor);
       });
 
@@ -775,30 +745,27 @@ function actualizarEstadisticas(data) {
         players: data.players,
       };
 
-      ws.send(JSON.stringify(dataToSend)); // Envía los datos
+      ws.send(JSON.stringify(dataToSend));
       console.log('Datos enviados para actualizar jugadores');
 
-      // Cambiar el estado para la siguiente acción
       estado = 1;
+      console.log(todosListos)
+
     } else if (estado === 1) {
-      // Segunda acción: Cerrar el modal
       const dataToSend = {
         type: 'cerrarModal',
         codigoSala: gameData.gameData.codigoSala,
       };
-
-      ws.send(JSON.stringify(dataToSend)); // Envía el mensaje para cerrar el modal
+      ws.send(JSON.stringify(dataToSend));
       console.log('Mensaje enviado para cerrar el modal');
+      estado = 0;
+      todosListos = false;
 
-      // Resetear estado si es necesario o mantenerlo en 1
-      estado = 0; // Opcional: Para reiniciar la secuencia si fuera necesario
     }
   });
 }
-
-
-// Verificar si estamos en modo multijugador
-
 botonVerificar.addEventListener("click", () => {
+  console.log(ordenVerificar)
   finalizarRonda(ordenVerificar);
 });
+iniciar();

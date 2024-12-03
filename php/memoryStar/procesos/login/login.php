@@ -3,18 +3,15 @@ include('../conexion/conexion.php');
 include('../usuario/usuario.php');
 class Sesion extends Usuario {
     private $sqlSesion;
-    private $clavePlana; // Nueva propiedad para almacenar la clave sin hash
+    private $clavePlana; 
 
-    // Sobrescribe el método setClave del padre
     public function setClave($clave) {
-        $this->clavePlana = $clave; // Guarda la clave sin hash
+        $this->clavePlana = $clave; 
     }
 
-    // Sobrescribe el método getClave del padre
     public function getClave() {
-        return $this->clavePlana; // Retorna la clave sin hash
+        return $this->clavePlana; 
     }
-
     public function session() {
         $conexion = new Conexion();
         

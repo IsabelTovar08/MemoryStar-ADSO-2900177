@@ -96,9 +96,10 @@ document.addEventListener("DOMContentLoaded", function () {
 
     if (tiempoTranscurrido <= 7) {
       puntuacion = 200;
-      rubis = 1;
+      rubis = 2;
     } else if (tiempoTranscurrido <= 14) {
       puntuacion = 150;
+      rubis = 1;
     } else {
       puntuacion = 100;
     }
@@ -146,7 +147,7 @@ document.addEventListener("DOMContentLoaded", function () {
     modalFinal.innerHTML = `
       <div class="modal-dialog modal-sm modal-dialog-centered">
         <div class="modal-content contenedorTsolo">
-          <div class="tituloTsolo">¡Juego Completado!</div>
+          <div class="tituloTsolo">¡Ronda Completada!</div>
           <div class="contenedorTsoloInterior">
             <div class="contenedor-estrellas">
               <img src="modales/modales/img/tablas/Star.png" class="star" alt="">
@@ -167,13 +168,7 @@ document.addEventListener("DOMContentLoaded", function () {
                   style="width: 4vh; height: auto;">
             </div>
 
-            <div class="col-12 row contenedor-info">
-              <div class="col-6 usuarioPerfill">
-                <img src="modales/modales/img/tablas/fotouser.png" alt="" style="width: 16px;">
-              </div>
-              <div class="col-3">${contador}s</div>
-              <div class="col-3">${puntuacion}pts</div>
-            </div>
+            
           </div>
 
           <div class="contenedor-botonTsolo">

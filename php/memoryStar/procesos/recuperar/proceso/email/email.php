@@ -127,72 +127,152 @@ class CorreoRecuperacion
     private function generarCuerpoCorreo($codigo)
     {
         return '
-            <html>
-            <meta charset="UTF-8">
-            <head>
-                <title>Recuperación de Contraseña</title>
-                <style>
-                    body {
-                        font-family: Arial, sans-serif;
-                        background-color: #f9f9f9;
-                        margin: 0;
-                        padding: 0;
-                        color: #000 !important;
-                    }
-                    .email-container {
-                        max-width: 600px;
-                        margin: 0 auto;
-                        background-color: #ffffff;
-                        padding: 20px;
-                        border-radius: 8px;
-                        border: 2px solid #000;
-                        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-                    }
-                    .header {
-                        text-align: center;
-                        color: #4CAF50;
-                    }
-                    .content {
-                        text-align: left;
-                        line-height: 1.6;
-                    }
-                    .code {
-                        font-size: 24px;
-                        font-weight: bold;
-                        color: #4CAF50;
-                        text-align: center;
-                        padding: 10px;
-                        border-radius: 5px;
-                        background-color: #f2f2f2;
-                        display: inline-block;
-                        margin: 20px auto;
-                    }
-                    .footer {
-                        text-align: center;
-                        color: #777;
-                        font-size: 12px;
-                        margin-top: 20px;
-                    }
-                </style>
-            </head>
-            <body>
-                <div class="contenedor">
-                    <h1 class="header">Recuperación de Contraseña</h1>
-                    <p>¡Hola, querido usuario!</p>
-                    <p>¿Listo para volver a desafiar tu memoria?</p>
-                    <div class="content">
-                        <p>Hemos recibido una solicitud para restablecer la contraseña de tu cuenta en <strong>Memory Star</strong>. Usa el siguiente código para completar el proceso de recuperación:</p>
-                        <div class="code">' . $codigo . '</div>
-                        <p>Este código es válido solo por 10 minutos. Si no solicitaste este cambio, puedes ignorar este correo.</p>
-                    </div>
-                    <div class="footer">
-                        <p>¡Nos encanta que formes parte de Memory Star!</p>
-                        <p><strong>El equipo de Memory Star</strong></p>
-                        <p><small>Si necesitas ayuda, no dudes en contactarnos en <a href="mailto:soporte@memory-star.com">soporte@memory-star.com</a></small></p>
-                    </div>
-                </div>
-            </body>
-            </html>';
+            <html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recuperación de Contraseña - Memory Star</title>
+    <style>
+        @import url("https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&display=swap");
+        
+        body, html {
+            margin: 0;
+            padding: 0;
+            font-family: "Space Grotesk", Arial, sans-serif;
+            line-height: 1.6;
+            background-color: #0C1445;
+            color: #ffffff;
+        }
+        
+        .email-container {
+            max-width: 600px;
+            margin: 20px auto;
+            background: linear-gradient(135deg, #1A237E, #0D47A1);
+            border-radius: 16px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+            overflow: hidden;
+            border: 2px solid #1E88E5;
+        }
+        
+        .email-header {
+            background: rgba(30, 136, 229, 0.2);
+            color: #B3E5FC;
+            text-align: center;
+            padding: 20px;
+            border-bottom: 1px solid rgba(179, 229, 252, 0.2);
+        }
+        
+        .email-header h1 {
+            margin: 0;
+            font-size: 24px;
+            font-weight: 700;
+            text-shadow: 0 0 10px rgba(179, 229, 252, 0.5);
+        }
+        
+        .email-content {
+            padding: 30px;
+        }
+        
+        .verification-code {
+            background-color: rgba(179, 229, 252, 0.1);
+            border: 2px dashed #B3E5FC;
+            text-align: center;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 12px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .verification-code::before {
+            content: "✦";
+            position: absolute;
+            color: rgba(179, 229, 252, 0.3);
+            font-size: 100px;
+            top: -30px;
+            left: -30px;
+            z-index: 1;
+        }
+        
+        .verification-code::after {
+            content: "✦";
+            position: absolute;
+            color: rgba(179, 229, 252, 0.3);
+            font-size: 100px;
+            bottom: -30px;
+            right: -30px;
+            z-index: 1;
+        }
+        
+        .verification-code .code {
+            font-size: 32px;
+            font-weight: 700;
+            color: #B3E5FC;
+            letter-spacing: 4px;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .email-footer {
+            background-color: rgba(30, 136, 229, 0.1);
+            text-align: center;
+            padding: 20px;
+            font-size: 12px;
+            color: #B3E5FC;
+            border-top: 1px solid rgba(179, 229, 252, 0.2);
+        }
+        
+        .email-footer a {
+            color: #4FC3F7;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        
+        .email-footer a:hover {
+            color: #81D4FA;
+        }
+        
+        @media screen and (max-width: 600px) {
+            .email-container {
+                width: 100%;
+                margin: 0;
+                border-radius: 0;
+            }
+            
+            .email-content {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="email-container">
+        <div class="email-header">
+            <h1>Recuperación de Contraseña</h1>
+        </div>
+        
+        <div class="email-content">
+            <p>¡Hola, querido usuario!</p>
+            
+            <p>Hemos recibido una solicitud para restablecer la contraseña de tu cuenta en <strong>Memory Star</strong>. Usa el siguiente código para completar el proceso de recuperación:</p>
+            
+            <div class="verification-code">
+                <div class="code">' . $codigo . '</div>
+                <p>Este código es válido solo por 10 minutos.</p>
+            </div>
+            
+            <p>Si no solicitaste este cambio, puedes ignorar este correo.</p>
+        </div>
+        
+        <div class="email-footer">
+            <p>¡Nos encanta que formes parte de Memory Star!</p>
+            <p><strong>El equipo de Memory Star</strong></p>
+            <p>Si necesitas ayuda, contáctanos en <a href="mailto:soporte@memory-star.com">soporte@memory-star.com</a></p>
+        </div>
+    </div>
+</body>
+</html>
+';
     }
 }
 $recuperacion = new CorreoRecuperacion();

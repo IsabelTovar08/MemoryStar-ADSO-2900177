@@ -14,10 +14,11 @@ class Chat implements MessageComponentInterface
 {
     protected $clients;
     protected $salas = [];  // Almacena las salas: ['codigoSala' => ['anfitrion' => conn, 'clients' => [], 'historial' => []]]
-
+    private $ultimoOrdenCorrecto;
     public function __construct()
     {
         $this->clients = new \SplObjectStorage();
+        $this->ultimoOrdenCorrecto = null;
     }
 
     public function onOpen(ConnectionInterface $conn)
@@ -51,12 +52,26 @@ class Chat implements MessageComponentInterface
                 break;
             case 'ordenCorrecto':
                 $dataToSend = [
-                    'type' => 'ordenCorrecto',
+                    'type' => 'ordenCorrectoR',
                     'codigoSala' => $data['codigoSala'],
                     'orden' => $data['orden']
                 ];
+                $this->ultimoOrdenCorrecto = $data['orden'];
+                echo "Orden correcto almacenado: " . json_encode($this->ultimoOrdenCorrecto) . "\n";
                 $this->broadcastToRoom($data['codigoSala'], $dataToSend, $from);
                 break;
+            case 'obtenerOrdenCorrecto':
+                if ($this->ultimoOrdenCorrecto !== null) {
+                    $from->send(json_encode([
+                        'type' => 'ordenCorrectoR',
+                        'orden' => $this->ultimoOrdenCorrecto
+                    ]));
+                } else {
+                    $from->send(json_encode([
+                        'type' => 'error',
+                        'message' => 'No hay un orden correcto disponible aún.'
+                    ]));
+                }
             case 'actualizarJugadores':
                 $codigoSala = $data['codigoSala']; // Asegúrate de enviar este dato desde el cliente si es necesario.
 
@@ -165,17 +180,17 @@ class Chat implements MessageComponentInterface
     {
         $userName = isset($data['usuario']) ? $data['usuario'] : 'Invitado';
         $userId = isset($data['id_usuario']) ? $data['id_usuario'] : 'ID Desconocido';
-    
+
         if (!isset($conn->codigoSala)) {
             return;
         }
         $codigoSala = $conn->codigoSala;
-    
+
         if (!isset($this->salas[$codigoSala]['contadorUsuarios'])) {
             $this->salas[$codigoSala]['contadorUsuarios'] = 0;
         }
-    
-    
+
+
         $usuario = [
             'usuario' => $userName,
             'id_usuario' => $userId,
@@ -183,14 +198,14 @@ class Chat implements MessageComponentInterface
             'time' => 0,
             'isAdmin' => ($this->salas[$codigoSala]['anfitrion'] === $conn)
         ];
-    
+
         $this->salas[$codigoSala]['contadorUsuarios']++;
         $this->salas[$codigoSala]['usuarios'][] = $usuario; // Agregar al usuario a la lista de usuarios
-    
+
         $messageText = $usuario['isAdmin']
             ? "{$userName} (Administrador) se ha unido al chat"
             : "{$userName} se ha unido al chat";
-    
+
         $newConnection = [
             'type' => 'newConnection',
             'usuario' => $userName,
@@ -200,13 +215,13 @@ class Chat implements MessageComponentInterface
             'contadorUsuarios' => $this->salas[$codigoSala]['contadorUsuarios'],
             'idUsuario' => $userId
         ];
-    
+
         $this->broadcastToRoom($codigoSala, $newConnection);
         $this->salas[$codigoSala]['historial'][] = $newConnection;
         // Guardar el historial en un archivo JSON
         file_put_contents('historial_sala' . $codigoSala . '.json', json_encode($this->salas[$codigoSala]['historial']));
     }
-    
+
 
     private function crearSala($conn, $data)
     {
@@ -229,7 +244,6 @@ class Chat implements MessageComponentInterface
             'nombre' => $nombreSala,
             'tematica' => $tematica,
             'dificultad' => $dificultad
-
         ];
 
         $this->salas[$codigoSala]['clients']->attach($conn);
@@ -248,6 +262,12 @@ class Chat implements MessageComponentInterface
 
         ]));
         echo $nombreSala;
+        $ruta = $data['rutaJuego'];
+        $enviarRuta = [
+            'type' => 'recibirRuta',
+            'rutaJuego' => $ruta
+        ];
+        $this->broadcastToRoom($codigoSala, $enviarRuta, $conn);
     }
 
 
@@ -340,14 +360,14 @@ class Chat implements MessageComponentInterface
 
         $mensajeIniciarJuego = [
             'type' => 'startGame',
+            'ruta' => $data['rutaJuego'],
             'players' => $players,
             // 'idUsuario' => $data['idUsuario'],
 
             'gameData' => [
                 'codigoSala' => $codigoSala,
                 'settings' => [
-                    'nombre' => $this->salas[$codigoSala]['nombre'],
-                    'capacidad' => $this->salas[$codigoSala]['capacidad']
+                    'nombre' => $this->salas[$codigoSala]['nombre']
                 ]
             ]
         ];

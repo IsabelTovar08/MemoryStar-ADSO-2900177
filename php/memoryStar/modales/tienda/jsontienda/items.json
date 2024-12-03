@@ -28,18 +28,6 @@
       "id": "perfil6",
       "image": "img/iconos/iconoperf2.png",
       "price": 185
-    },
-    {
-      "id": "poder1",
-      "image": "img/iconos/poder1.png",
-      "price": 220,
-      "description": "Congelar tiempo"
-    },
-    {
-      "id": "poder2",
-      "image": "img/iconos/poderes2.png",
-      "price": 265,
-      "description": "Revelar cartas"
     }
   ]
   

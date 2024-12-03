@@ -219,11 +219,14 @@
         </div>
 
     </div>
-
-    <script src="js/libros.js"></script>
-    <script src="../../js/session.js"></script>
+    
+    <!-- <script src="js/libros.js"></script>
+    <script src="../../js/session.js"></script> -->
     <script src="../../js/pantalla.js"></script>
     <script src="js/Sortable.min.js"></script>
+    <!-- <script src="js/librosSocket.js"></script> -->
+    <script src="js/libros.js"></script>
+
     <script src="../../bootstrap/js/bootstrap.js"></script>
 
     <!-- <script src="../js/movimiento.js"></script> -->
@@ -248,7 +251,28 @@
 
     </script>
 
+<!-- <script>
+    const urlParams = new URLSearchParams(window.location.search);
+    const modoJuego = urlParams.get('modo') || 'un_jugador';
+    const contenedorBoton = document.querySelector('.contenedor-botonTsolo');
 
+    if (modoJuego === 'multijugador') {
+        // Dinámicamente incluir el script de sesión
+        const script = document.createElement('script');
+        script.src = 'js/librosSocket.js';
+        script.type = 'module';
+        document.head.appendChild(script);
+    } else {
+        const script = document.createElement('script');
+        script.src = 'js/libros.js';
+        document.head.appendChild(script);
+        contenedorBoton.innerHTML = "";
+        contenedorBoton.innerHTML = `
+            <button class="botonTsolo" data-bs-dismiss="modal"
+                        aria-label="Close">Aceptar</button>
+        `;
+    }
+</script> -->
 </body>
 
 </html>
