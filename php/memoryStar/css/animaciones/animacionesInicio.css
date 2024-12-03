@@ -7,13 +7,14 @@
 }
 
 .linea-izquierda {
-    bottom: 0;
-    bottom: 5px;
+    bottom: 2%;
+    left: 3%;
+    
 }
 
 .linea-derecha {
-    right: 0;
-    top: 5px;
+    right: 3%;
+    top: 1%;
 }
 
 .circulo {

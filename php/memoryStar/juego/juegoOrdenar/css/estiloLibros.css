@@ -211,7 +211,7 @@ body {
 }
 
 .libro {
-
+  user-select: none;
   width: 7%;
   height: auto;
   cursor: grab;

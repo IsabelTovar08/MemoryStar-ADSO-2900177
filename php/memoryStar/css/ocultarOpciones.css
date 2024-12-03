@@ -8,7 +8,7 @@ body {
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  font-family: cursive;
+  /* font-family: cursive; */
   overflow: hidden;
   cursor: url("../img/iconos/cursor.cur"), auto;
 }
