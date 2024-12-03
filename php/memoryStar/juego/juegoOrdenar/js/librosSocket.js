@@ -155,7 +155,6 @@ function habilitarDrag() {
 
 // Función para iniciar una nueva ronda
 function iniciarRonda() {
-  iniciar();
   limpiarIntervalos();
   botonPresionado = false;
 
@@ -802,3 +801,4 @@ function actualizarEstadisticas(data) {
 botonVerificar.addEventListener("click", () => {
   finalizarRonda(ordenVerificar);
 });
+iniciar();

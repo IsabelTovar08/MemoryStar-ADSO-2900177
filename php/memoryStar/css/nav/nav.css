@@ -40,7 +40,7 @@
 }
 
 .nombre {
-    font-family: cursive;
+    /* font-family: cursive; */
     font-size: 160%;
     margin-bottom: 0;
     color: white;
