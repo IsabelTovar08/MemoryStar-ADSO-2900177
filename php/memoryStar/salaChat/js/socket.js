@@ -4,7 +4,7 @@ let codigoSala;
 let nombreSala;
 let capacidadSala;
 let id_de_usuario;
-let rutaSeleccionada = '';
+let rutaSeleccionada;
 
 let notificationsContainer = document.getElementById('usuarios');
 let abandono = document.getElementById('notifications-container');
@@ -42,31 +42,6 @@ async function obtenerDatosUsuario(callback, manejarError) {
     }
 }
 
-// createRoomButton.addEventListener('click', () => {
-//     obtenerDatosUsuario(
-//         (data) => {
-//             const nombreSala = prompt("Ingresa el nombre de la sala:");
-//             const capacidadSala = prompt("Ingresa la capacidad de la sala:");
-//             if (nombreSala && capacidadSala) {
-//                 socket.send(JSON.stringify({
-//                     type: 'crearSala',
-//                     usuario: data.usuario,
-//                     id_usuario: data.id_usuario,
-//                     nombreSala: nombreSala,
-//                     capacidadSala: capacidadSala
-//                 }));
-
-//             } else {
-//                 alert("Por favor, ingresa el nombre y la capacidad de la sala.");
-//             }
-//         },
-//         () => {
-//             alert("Debes iniciar sesión para continuar."); // Acción personalizada
-//         }
-//     );
-// });
-
-
 const contenedorUnirseSala = document.querySelector('.unimer-sala');
 const contenedorCrearSala = document.querySelector('.crear-sala');
 const cajaUnirme = document.querySelector('.caja-unirme');
@@ -76,7 +51,6 @@ contenedorCrearSala.addEventListener('click', () => {
     cajaUnirme.style.display = 'none';
     cajaCrear.style.display = 'inline-block';
 
-    // Solo cuando la caja para crear sala se muestra, buscamos el formulario
     const formCrearSala = document.getElementById('form-crear-sala');
     if (formCrearSala) {
         formCrearSala.addEventListener('submit', (e) => {
@@ -90,8 +64,6 @@ contenedorCrearSala.addEventListener('click', () => {
 
                     if (nombreSala) {
                         rutaSeleccionada = `../juego/juegoOrdenar/Memorix${tema}${dificultad}.html`;
-                        localStorage.setItem('rutaSeleccionada', rutaSeleccionada);
-                        console.log('Ruta seleccionada:', rutaSeleccionada);
                         const tematica = document.getElementById('tematica');
                         tematica.textContent = `${tema}`;
 
@@ -103,7 +75,8 @@ contenedorCrearSala.addEventListener('click', () => {
                             id_usuario: data.id_usuario,
                             nombreSala: nombreSala,
                             tematica: tema,
-                            dificultad: dificultad
+                            dificultad: dificultad,
+                            rutaJuego: rutaSeleccionada
                         }));
                     } else {
                         //alert("Por favor, ingresa el nombre de la sala.");
@@ -139,7 +112,6 @@ contenedorUnirseSala.addEventListener('click', () => {
     cajaCrear.style.display = 'none';
 
 })
-// Cuando se hace clic en el contenedor de unirse a una sala
 const formUnirseSala = document.getElementById('form-unirse-sala');
 if (formUnirseSala) {
     formUnirseSala.addEventListener('submit', (e) => {
@@ -269,12 +241,16 @@ function initializeSocket() {
                     historial(notification.usuario, notification.message, notification.isAdmin, notification.estado, notification.idUsuario);
                 });
                 break;
+            case 'recibirRuta':
+                // rutaSeleccionada = data.rutaJuego;
+                console.log("data ruta " + data.rutaJuego)
+                break;
             case 'startGame':
                 sessionStorage.setItem('gameData', JSON.stringify(data));
                 sessionStorage.setItem('codigoSala', codigoSala);
-                const rutaGuardada = localStorage.getItem('rutaSeleccionada');
                 console.log(data)
-                window.location.href = `${rutaGuardada}?modo=multijugador&codigo=${codigoSala}`;
+                console.log(data.ruta)
+                window.location.href = `${data.ruta}?modo=multijugador&codigo=${codigoSala}`;
                 break;
         }
     };
@@ -319,26 +295,58 @@ function handlecrearSala(data) {
 
     }
     obtenerUsuario(data);
+    const name = document.getElementById('name');
+    name.innerHTML = `
+        <h1>${data.usuario}</h1>
+    `;
     console.log(data)
+    agregarInfoSala(data)
+    generarQR();
+}
+function agregarInfoSala(data){
+    const cog = document.getElementById('codigoSalaModal');
+    cog.textContent = data.codigoSala;
+
     const nombre_sala = document.getElementById('nombre_sala');
     nombre_sala.textContent = data.nombreSala;
+
     const codigo_sala = document.getElementById('codigo_sala');
     codigo_sala.textContent = data.codigoSala;
-    const capacidad_sala = document.querySelector('.maximo');
-    capacidad_sala.textContent = `/${data.capacidadSala}`;
+
+    const tematica = document.getElementById('tematica');
+    tematica.textContent = data.tematica;
+
+    const dificultadHTML = document.getElementById('dificultad');
+    dificultadHTML.textContent = data.dificultad;
 }
+function generarQR() {
+    const contenedor = document.getElementById('QR');
+    const codigoElement = document.getElementById('codigoSalaModal').textContent; 
+    console.log(codigoElement)
+    
+    new QRCode(contenedor, codigoElement);
+
+    const copiar = document.querySelector('.botto-copiar');
+    copiar.addEventListener('click', () => {
+        navigator.clipboard.writeText(codigoElement)
+            .then(() => {
+                console.log('Texto copiado');
+            })
+            .catch(err => {
+                console.error('No se pudo copiar', err);
+            });
+    });
+};
 
 function obtenerUsuario(data) {
     socket.send(JSON.stringify({
         type: 'manejoUnion',
         usuario: data.usuario,
         id_usuario: data.id_usuario
-
     }));
 }
 function handleRoomJoined(data) {
     codigoSala = data.codigoSala;
-
     obtenerDatosUsuario((data) => {
         //alert(`Te has unido a la sala ${codigoSala}`);
         Swal.fire({
@@ -361,14 +369,10 @@ function handleRoomJoined(data) {
         document.getElementById('estiloChat').disabled = false;
         document.getElementById('estiloEspera').disabled = false;
         document.getElementById('estiloCrear').disabled = true;
-        const nombre_salai = document.getElementById('nombre_sala');
-        nombre_salai.textContent = data.nombreSala;
-
-        const codigo_salai = document.getElementById('codigo_sala');
-        codigo_salai.textContent = data.codigoSala;
-
-        const capacidad_salai = document.querySelector('.maximo');
-        capacidad_salai.textContent = `/${data.capacidadSala}`;
+        const name = document.getElementById('name');
+        name.innerHTML = `
+            <h1>${data.usuario}</h1>
+        `;
         obtenerUsuario(data);
     },
         () => {
@@ -391,16 +395,11 @@ function handleRoomJoined(data) {
 
         }
     );
+    agregarInfoSala(data);
+    generarQR();
 }
 
 function createUserNotification(data) {
-    const name = document.getElementById('name');
-    name.textContent = data.usuario;
-    // Si ya existe un 'idUsuario' en el localStorage, no lo sobreescribimos.
-    if (!localStorage.getItem("idUsuario")) {
-        localStorage.setItem("idUsuario", data.idUsuario); // Guardar el idUsuario solo si no está guardado
-    }
-
     const numero = document.querySelector('.numero-usuario');
     numero.textContent = data.contadorUsuarios;
     const connectionDiv = document.createElement('div');
@@ -422,7 +421,6 @@ function createUserNotification(data) {
                     </div>
                     <div class="descripcion">
                         <h6>${roleText} ${data.estado}</h6>
-                        <h6 id="id_user">${data.idUsuario}</h6>
                     </div>
                 </div>
                 <div class="conte-diamante-img">
@@ -438,18 +436,13 @@ function createUserNotification(data) {
 }
 
 endChatButton.addEventListener('click', () => {
-    // Recuperar el idUsuario desde localStorage antes de enviarlo
-    const idUsuario = localStorage.getItem('idUsuario'); // Obtenerlo de localStorage
-
-    // Enviar la solicitud con el idUsuario correcto
     socket.send(JSON.stringify({
         type: 'iniciarjuego',
         codigoSala: codigoSala,
-        id_user: idUsuario // Usar el idUsuario desde localStorage
+        rutaJuego: rutaSeleccionada
     }));
 
     console.log(codigoSala);
-    // startGame();
 });
 
 function notificacionNuevo(message) {
@@ -469,7 +462,7 @@ function notificacionNuevo(message) {
 function usuarioAbandono(data) {
     const connectionDiv = document.querySelector(`.contenedor-usuario[data-username="${data.user}"]`);
     if (connectionDiv) {
-        connectionDiv.remove(); // Eliminar la notificación del usuario que se desconectó
+        connectionDiv.remove();
     }
 
     const disconnectionDiv = document.createElement('div');
@@ -489,8 +482,6 @@ function historial(usuario, message, isAdmin, estado, idUsuario) {
     const connectionDiv = document.createElement('div');
     connectionDiv.classList.add('contenedor-usuario');
     const roleText = isAdmin ? "<span style='font-weight: bold;'>(Administrador)</span>" : "";
-    // console.log(data)
-
 
     connectionDiv.innerHTML = `
         <div class="usuario">
@@ -506,7 +497,6 @@ function historial(usuario, message, isAdmin, estado, idUsuario) {
                     </div>
                     <div class="descripcion">
                         <h6>${roleText} ${estado}</h6>
-                        <h6>${idUsuario}</h6>
                     </div>
                 </div>
                 <div class="conte-diamante-img">
@@ -549,7 +539,6 @@ function enviarMensaje() {
     }
 
 }
-
 
 // Comprobar si el elemento existe antes de agregar el event listener
 const sendButton = document.getElementById('send');

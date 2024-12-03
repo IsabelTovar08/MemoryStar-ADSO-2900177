@@ -1,0 +1,14 @@
+[
+    {
+        "idUsuario": 34,
+        "usuario": "Ensayo",
+        "score": 0,
+        "time": 1
+    },
+    {
+        "idUsuario": 33,
+        "usuario": "Nosvue",
+        "score": 300,
+        "time": 6
+    }
+]

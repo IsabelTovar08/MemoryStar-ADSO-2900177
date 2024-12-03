@@ -10,8 +10,6 @@ async function obtenerUsuarioYDiamantes() {
       userId = data.id_usuario;
       userDiamonds = data.diamantes;
       actualizarDiamantes();
-      console.log("ID Usuario:", userId);
-      console.log("Diamantes:", userDiamonds);
       obtenerFotoPerfil(userId);
       loadItems();
       obtenerDatos(userId);
@@ -35,7 +33,6 @@ function obtenerFotoPerfil(idUsuario) {
       try {
         if (data.success) {
           let urlFoto = data.urlfotoperfil.replace(/\\/, '/');  
-          console.log( urlFoto);
           const container = document.getElementById('ponerFoto');
           if (container) {
             container.innerHTML = `
@@ -72,7 +69,7 @@ function renderItems() {
     if (item.disponible) {
       const itemElement = `
         <div class="col-4 contenedor-perfiles-usuario">
-          <img src="img/iconos/${item.url_producto}" alt="${item.id_tienda}" class="imgTienda btn">
+          <img src="${item.url_producto}" alt="${item.id_tienda}" class="imgTienda btn">
           <div>
             <div class="number-item">
               <span class="number">
@@ -162,7 +159,6 @@ async function actualizarDiamantesServidor(userDiamonds, userId) {
   }
 }
 async function obtenerDatos(idUsuario) {
-  console.log('ID Usuario:', idUsuario);
   try {
     const response = await fetch('procesos/productoComprados/consulta.php', {
       method: 'POST',
@@ -178,7 +174,7 @@ async function obtenerDatos(idUsuario) {
       data.data.forEach(producto => {
         container.innerHTML += `
           <div class="perfil_usuario" data-id="${producto.id_producto}">
-            <img src="img/iconos/${producto.url_producto}" alt="Producto">
+            <img src="${producto.url_producto}" alt="Producto">
           </div>
         `;
       });
