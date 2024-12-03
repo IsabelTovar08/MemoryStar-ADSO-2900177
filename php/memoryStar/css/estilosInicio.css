@@ -834,17 +834,17 @@ h1 {
     padding: 2%;
   }
 
-  .logo {
+  /* .logo {
     margin-right: 0;
-  }
+  } */
 }
 
 @media screen and (max-width: 480px) {
   .contenInicio {
     display: block;
   }
-
-  .logo {
+  /* no */
+  .logo { 
     justify-content: center;
     display: block;
     margin: 0 auto;
@@ -873,17 +873,13 @@ h1 {
 
   .mensaje {
     width: 90%;
-    /* Aumenta el ancho de la burbuja de diálogo para ocupar más espacio en la pantalla */
     font-size: 55%;
-    /* Incrementa el tamaño de la fuente para una mejor legibilidad en pantallas pequeñas */
     margin-left: -20%;
-    /* Centra la burbuja de diálogo */
     padding: 5%;
   }
 
   .mensaje::after {
     left: 20%;
-    /* Ajusta la posición de la cola de la burbuja de diálogo */
     bottom: -15px;
     transform: translateX(50px);
     border-width: 20px 10px 0;
