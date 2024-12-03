@@ -72,7 +72,7 @@ function renderItems() {
     if (item.disponible) {
       const itemElement = `
         <div class="col-4 contenedor-perfiles-usuario">
-          <img src="img/iconos/${item.url_producto}" alt="${item.id_tienda}" class="imgTienda btn">
+          <img src="${item.url_producto}" alt="${item.id_tienda}" class="imgTienda btn">
           <div>
             <div class="number-item">
               <span class="number">
@@ -178,7 +178,7 @@ async function obtenerDatos(idUsuario) {
       data.data.forEach(producto => {
         container.innerHTML += `
           <div class="perfil_usuario" data-id="${producto.id_producto}">
-            <img src="img/iconos/${producto.url_producto}" alt="Producto">
+            <img src="${producto.url_producto}" alt="Producto">
           </div>
         `;
       });
