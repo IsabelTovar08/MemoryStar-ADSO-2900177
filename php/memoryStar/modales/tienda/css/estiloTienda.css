@@ -242,3 +242,25 @@
     height: 100%;
     background-position: center;
 }
+.alerta {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 15px;
+    border-radius: 5px;
+    color: white;
+    font-size: 16px;
+    z-index: 9999; 
+    max-width: 90%;
+    text-align: center;
+  }
+  
+  .alerta-success {
+    background-color: green;
+  }
+  
+  .alerta-error {
+    background-color: red;
+  }
+  

@@ -16,6 +16,23 @@ async function obtenerUsuarioYDiamantes() {
     }
 }
 
+function mostrarAlerta(mensaje, tipo) {
+    const alerta = document.createElement('div');
+    alerta.className = `alerta alerta-${tipo}`;
+    alerta.textContent = mensaje;
+
+    document.body.appendChild(alerta);
+
+    setTimeout(() => {
+        alerta.style.display = 'block';
+    }, 10);
+
+    setTimeout(() => {
+        alerta.style.display = 'none';
+        alerta.remove();  
+    }, 2000);
+}
+
 function obtenerFotoPerfil(idUsuario) {
     fetch('procesos/productoComprados/ponerFoto.php', {
         method: 'POST',
@@ -88,7 +105,10 @@ async function handlePurchase(itemId, itemPrice, button) {
         }
         await actualizarDiamantesServidor(userDiamonds, userId);
         await loadItems();
-        obtenerDatos(userId); // Actualizar los datos del usuario sin recargar la página
+        obtenerDatos(userId); 
+        mostrarAlerta("Compra realizada con éxito", "success");
+    } else {
+        mostrarAlerta("No tienes suficientes diamantes", "error");  
     }
 }
 
