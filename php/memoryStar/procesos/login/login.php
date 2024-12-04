@@ -14,15 +14,11 @@ class Sesion extends Usuario {
     }
     public function session() {
         $conexion = new Conexion();
-        
         $this->sqlSesion = "SELECT * FROM usuario WHERE nombre_usuario = :nombre_usuario";
-        
         $valores = [
             'nombre_usuario' => $this->getNombreUsuario()
         ];
-        
         $resultado = $conexion->consulta($this->sqlSesion, $valores);
-        
         if ($resultado && count($resultado) > 0) {
             $usuarioDB = $resultado[0];
             // Ahora compara la clave plana con el hash de la base de datos
@@ -30,7 +26,7 @@ class Sesion extends Usuario {
                 return $usuarioDB;
             }
         }
-        
         return false;
     }
 }
+?>
