@@ -1,31 +1,27 @@
-/* style.css */
+
 * {
     box-sizing: border-box;
-    margin: 0;
     padding: 0;
     font-family: Arial, sans-serif;
 }
-
 body {
     display: flex;
     align-items: center;
     justify-content: center;
-    height: 100vh;
+    height: 100vh !important;
     background-color: #ffffff;
     overflow: hidden;
     background-image: url(../../img/fondos/o.jpg);
     background-repeat: no-repeat;
     background-position: center ;
+    background-position: 100%;
     background-size: cover;
+    background-clip: border-box;
 }
-
-
-  
   .tarjetas-container {
     display: flex;
     gap: 5vh;
   }
-  
   .textoEleccion {
     width: 100%;
   }
@@ -164,7 +160,6 @@ body {
     background-color: #06a4ee75;
     /* padding: 2rem; */
     max-width: 400px;
-    width: 100%;
     text-align: center;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0);
     position: relative;
@@ -245,15 +240,15 @@ label {
     color: #ffffff;
     font-weight: bold;
 }
-input[type="number"],input[type="text"],h2{
+input[type="text"],h2{
     color: white;
     text-shadow: 0px 0px 4px white;
-    margin: 2.5%;
 }
-input[type="number"],input[type="text"], input[type="submit"], input[type="button"] {
+input[type="text"], input[type="submit"], input[type="button"] {
     padding: 0.8rem;
     font-size: 1rem;
     border-radius: 4px;
+    margin: 2% 0%;
     border: 1px solid #ccc;
     outline: none;
     width: 100%;
@@ -271,18 +266,18 @@ input[type="button"] {
 input[type="button"]:focus, input[type="button"]:hover {
     border-color: #4cafa7;
 }
-input[type="number"]::-webkit-outer-spin-button,input[type="text"]::-webkit-outer-spin-button,
-input[type="number"]::-webkit-inner-spin-button ,input[type="text"]::-webkit-inner-spin-button {
+input[type="text"]::-webkit-outer-spin-button,
+input[type="text"]::-webkit-inner-spin-button {
   -webkit-appearance: none;
   margin: 0;
 }
 
-input[type="number"],input[type="text"] {
+input[type="text"] {
   -moz-appearance: textfield;
   background: none;
 
 }
-input[type="number"]::placeholder,input[type="text"]::placeholder{
+input[type="text"]::placeholder{
     color: white;
     text-shadow: 0px 0px 10px white;
 
@@ -292,7 +287,6 @@ input[type="submit"] {
     background-color: #03192eaf;
     box-shadow: 0px 0px 10px 2px #0a89ddbb;
     text-shadow: 0px 0px 10px white;
-
     color: white;
     cursor: pointer;
     border: none;
@@ -338,7 +332,7 @@ input[type="submit"]:hover {
 
 @keyframes agrandar {
     0%{
-        transform: scale(1.1); 
+        transform: scale(1.05); 
 
     }
     50%{
@@ -346,7 +340,7 @@ input[type="submit"]:hover {
 
     }
     100%{
-        transform: scale(1.1); 
+        transform: scale(1.05); 
 
     }
 }
@@ -433,13 +427,11 @@ input[type="submit"]:hover {
     display: flex;
     justify-content: flex-end;
     align-items: center;
-    height: 4vh;
     font-size: .8rem;
 
 }
 .contenedor-sala{
     border-radius: 10vh;
-  
     display: flex;
     height: 100%;
     justify-content: flex-end;
@@ -476,3 +468,85 @@ input[type="submit"]:hover {
 .caja-crear{
     display: none;
 }
+
+
+@media (max-width:800px){
+    .container-modo-sala{
+        width: 100%;
+        /* height: 30%; */
+        .contenedor-sala{
+            height: 100%;
+            .unimer-sala{
+                width: 50%;
+                height: 100%;
+            }
+            .crear-sala{
+                width: 50%;
+                height: 100%;
+            }
+        }
+    }
+    .container {
+        max-width: 400px;
+    }
+    
+    .container> * {
+        font-size: .3em;
+    }
+    .formulario{
+        margin: .5rem;
+        gap: .5rem;
+    }
+    .label {
+        font-size: none;
+        
+    }
+    input[type="text"], input[type="submit"], input[type="button"] {
+        padding: 0.4rem;
+
+    }
+ 
+    .tarjetas-container {
+        display: flex;
+        justify-content: space-around;
+        gap: 0vh;
+        text-align: center;
+    }
+    h2 {
+        font-size: 1.5rem;
+    }
+    .dificultades{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 50%;
+        width: 30vw;
+        height: 5.5vh;
+    }
+    .tarjetaOpcion {
+        width: 13vh;
+        height: 13vh;
+    }
+    .biblioteca{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: 50%;
+
+    }
+    .atras{
+        width: 30px;
+        height: 30px;
+    }
+    h1 {
+        display: block;
+        font-size: 2.5em;
+    
+    }
+    input[type="text"], input[type="submit"], input[type="button"] {
+        width: 90%;
+    }
+    
+}
+

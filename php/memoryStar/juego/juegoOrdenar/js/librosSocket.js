@@ -5,8 +5,7 @@ let usuarioEsAdmin = false;
 let todosListos;
 let usuarioId;
 let usuarioAdmin;
-let mensaje = document.querySelector(".mensaje");
-iniciar();
+let mensaje = document.querySelector('.mensaje');
 
 async function obtenerDatosUsuario(callback, manejarError) {
   try {
@@ -30,23 +29,22 @@ async function obtenerDatosUsuario(callback, manejarError) {
 
 gameData = JSON.parse(sessionStorage.getItem("gameData"));
 function iniciar() {
-  ws = new WebSocket("ws://192.168.131.53:8080");
+  ws = new WebSocket('ws://localhost:8080');
   ws.onopen = () => {
     console.log("Conectado al WebSocket en el juego multijugador");
     if (gameData) {
-      console.log("info" + gameData.gameData);
-      ws.send(
-        JSON.stringify({
-          type: "reconectarSala",
-          codigoSala: gameData.gameData.codigoSala,
-          players: gameData.players,
-        })
-      );
+      console.log("info" + gameData.gameData.codigoSala)
+      ws.send(JSON.stringify({
+        type: 'reconectarSala',
+        codigoSala: gameData.gameData.codigoSala,
+        players: gameData.players
+      }));
     } else {
       console.error("gameData no está disponible en la conexión WebSocket");
     }
     console.log(ordenVerificar);
   };
+  console.log(gameData)
   ws.onmessage = (event) => {
     const data = JSON.parse(event.data);
     switch (data.type) {
@@ -60,11 +58,16 @@ function iniciar() {
         mostrarLibrosEnOrden(data.orden);
         ordenVerificar = data.orden;
         break;
-      case "error":
-        console.error("Error:", data.message);
+      case 'error':
+        console.error('Error:', data.message);
         break;
-      case "actualizarJugadoresRecibir":
-        contenedorUsers.innerHTML = "";
+        case 'desconectadoJuego':
+          usuarioAbandono(data);
+          console.log(data)
+          console.log("abandonado")
+          break;
+      case 'actualizarJugadoresRecibir':
+        contenedorUsers.innerHTML = '';
         data.players.forEach((player, index) => {
           const contenedor = document.createElement("div");
           contenedor.className = "col-12 row contenedor-info";
@@ -753,7 +756,9 @@ function actualizarEstadisticas(data) {
         codigoSala: gameData.gameData.codigoSala,
         players: data.players,
       };
+      console.log("cod" + gameData.gameData.codigoSala)
 
+      console.log(gameData.gameData.codigoSala)
       ws.send(JSON.stringify(dataToSend));
       console.log("Datos enviados para actualizar jugadores");
 
@@ -771,22 +776,26 @@ function actualizarEstadisticas(data) {
     }
   });
 }
+function usuarioAbandono(data) {
+  const connectionDiv = document.querySelector(`.contenedor-usuario[data-username="${data.user}"]`);
+  if (connectionDiv) {
+      connectionDiv.remove();
+  }
+
+  const disconnectionDiv = document.createElement('div');
+  disconnectionDiv.classList.add('user-notification');
+  disconnectionDiv.innerHTML = `
+      <span class="notification-text">${data.message}</span>
+      <button class="close-notification">×</button>
+  `;
+  disconnectionDiv.querySelector('.close-notification').addEventListener('click', () => {
+      disconnectionDiv.classList.add('fade-out');
+      setTimeout(() => disconnectionDiv.remove(), 300);
+  });
+  abandono.appendChild(disconnectionDiv);
+}
 botonVerificar.addEventListener("click", () => {
   console.log(ordenVerificar);
   finalizarRonda(ordenVerificar);
 });
 iniciar();
-
-const userPuntos = document.querySelectorAll(".userPunto");
-
-// Aplicar clases dinámicamente para podio
-if (userPuntos[0]) userPuntos[0].classList.add("ganador"); // Primer lugar
-if (userPuntos[1]) userPuntos[1].classList.add("segundo"); // Segundo lugar
-if (userPuntos[2]) userPuntos[2].classList.add("tercero"); // Tercer lugar
-
-const fotor = document.querySelectorAll(".foto-user");
-
-// Aplicar clases dinámicamente para podio
-if (fotor[0]) fotor[0].classList.add("ganador1"); // Primer lugar
-if (fotor[1]) fotor[1].classList.add("segundo1"); // Segundo lugar
-if (fotor[2]) fotor[2].classList.add("tercero1"); // Tercer lugar
