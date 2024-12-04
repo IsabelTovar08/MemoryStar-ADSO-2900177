@@ -100,13 +100,13 @@
 
 .ronda {
   font-size: 6vh;
-  color: #6340ff;
+  color: #ff0077;
   /* Color llamativo */
   opacity: 0;
   /* Invisible inicialmente */
   animation: aparecer 1s forwards, atencion 2s 1s forwards infinite;
   text-align: right;
-  margin-right: 10px;
+  margin-right: 20vh;
   /* justify-content: right; */
   text-shadow: 0 0 1px #000, 0 0 5px #5fb3e1;
 }
