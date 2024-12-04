@@ -1,0 +1,19 @@
+[
+    {
+        "idUsuario": 32,
+        "usuario": "isabelsegunda",
+        "score": 600,
+        "time": 18
+    },
+    {
+        "idUsuario": 30,
+        "usuario": "isaaa",
+        "score": 0,
+        "time": 0
+    },
+    {
+        "idUsuario": null,
+        "score": 100,
+        "time": 15
+    }
+]

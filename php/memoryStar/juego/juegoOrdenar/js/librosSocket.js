@@ -5,7 +5,9 @@ let usuarioEsAdmin = false;
 let todosListos;
 let usuarioId;
 let usuarioAdmin;
-// iniciar();
+let mensaje = document.querySelector('.mensaje');
+iniciar();
+
 async function obtenerDatosUsuario(callback, manejarError) {
   try {
     const response = await fetch('../../procesos/login/obtenerUsuario.php');
@@ -23,36 +25,10 @@ async function obtenerDatosUsuario(callback, manejarError) {
     console.log(`Error al obtener datos del usuario: ${error.message}`);
   }
 }
-// function reconocerAdmin() {
-//   obtenerDatosUsuario(
-//     (data) => {
-//       usuarioId = data.id_usuario;
-//       const usuario = data.usuario;
-//       console.log(`Usuario ID: ${usuarioId}, Nombre: ${usuario}`);
 
-//       // Verificar si el usuario es admin
-//       const adminId = gameData.players.find(player => player.isAdmin)?.idUsuario;
-//       usuarioEsAdmin = adminId === usuarioId;
-
-//       console.log("Estado de admin:", usuarioEsAdmin);
-//       // localStorage.setItem('usuarioEsAdmin', usuarioEsAdmin);
-//       // localStorage.setItem('id_usuario', id_usuario);
-
-//       // Lógica para el botón 'aceptar' basada en usuarioEsAdmin
-//       if (!usuarioEsAdmin) {
-//         aceptar.style.display = 'none';
-
-//       }
-
-//     },
-//     () => {
-//       console.log("Error al cargar los datos del usuario.");
-//     }
-//   );
-// }
 gameData = JSON.parse(sessionStorage.getItem('gameData'));
 function iniciar() {
-  ws = new WebSocket('ws://localhost:8080');
+  ws = new WebSocket('ws://192.168.131.53:8080');
   ws.onopen = () => {
     console.log('Conectado al WebSocket en el juego multijugador');
     if (gameData) {
@@ -83,7 +59,7 @@ function iniciar() {
       case 'error':
         console.error('Error:', data.message);
         break;
-      case 'actualizarJugadores':
+      case 'actualizarJugadoresRecibir':
         contenedorUsers.innerHTML = '';
         data.players.forEach((player, index) => {
           const contenedor = document.createElement('div');
@@ -294,14 +270,34 @@ function iniciarRonda() {
 
 }
 function obtenerOrdenCorrecto() {
-  ws.addEventListener('open', () => {
-    console.log("WebSocket conectado, recibi ordenCorrecto");
+  console.log("estoy en obtener")
+  // ws.addEventListener('open', () => {
+  //   console.log("WebSocket conectado, recibi ordenCorrecto");
+  //   ws.send(JSON.stringify({
+  //     type: 'obtenerOrdenCorrecto'
+  //   }));
+  //   console.log('ya');
+  // }, { once: true });
+  if (ws.readyState === WebSocket.OPEN) {
+    console.log("WebSocket listo, recibiendo ordenCorrecto");
     ws.send(JSON.stringify({
-      type: 'obtenerOrdenCorrecto'
-    }));
-    console.log('ya');
-  }, { once: true });
-
+          type: 'obtenerOrdenCorrecto'
+        }));
+    // mostrarLibrosEnOrden(ordenCorrecto);
+    console.log('Orden correcto recibiendo:',);
+  } else if (ws.readyState === WebSocket.CONNECTING) {
+    console.warn("WebSocket aún conectando, reintentando recibir...");
+    ws.addEventListener('open', () => {
+      console.log("WebSocket conectado, recibiendo ordenCorrecto");
+      ws.send(JSON.stringify({
+            type: 'obtenerOrdenCorrecto'
+          }));
+      // mostrarLibrosEnOrden(ordenCorrecto);
+      console.log('Orden recibido tras conectar:');
+    }, { once: true });
+  } else {
+    console.error("No se puede recibir, WebSocket no está conectado (estado:", ws.readyState, ")");
+  }
 }
 function iniciarTemp() {
   contador = -5;
@@ -584,6 +580,8 @@ async function reconocerAdmin() {
     (data) => {
       usuarioId = data.id_usuario;
       const usuario = data.usuario;
+      contenedorNombre = document.getElementById('nombre');
+      contenedorNombre.textContent = usuario;
       console.log(`Usuario ID: ${usuarioId}, Nombre: ${usuario}`);
 
       const adminId = gameData.players.find(player => player.isAdmin)?.idUsuario;
@@ -599,47 +597,6 @@ async function reconocerAdmin() {
     }
   );
 }
-
-// reconocerAdmin();
-
-
-// if (gameData) {
-//   console.log('Datos de la sala:', gameData);
-
-//   obtenerDatosUsuario(
-//     (data) => {
-//       usuarioId = data.id_usuario;
-//       const usuario = data.usuario;
-//       console.log(`Usuario ID: ${usuarioId}, Nombre: ${usuario}`);
-
-//       // Verificar si el usuario es admin
-//       const adminId = gameData.players.find(player => player.isAdmin)?.idUsuario;
-//       usuarioEsAdmin = adminId === usuarioId;
-
-//       console.log("Estado de admin:", usuarioEsAdmin);
-//       // localStorage.setItem('usuarioEsAdmin', usuarioEsAdmin);
-//       // localStorage.setItem('id_usuario', id_usuario);
-
-//       // Lógica para el botón 'aceptar' basada en usuarioEsAdmin
-//       if (!usuarioEsAdmin) {
-//         aceptar.style.display = 'none';
-
-//       }
-
-//     },
-//     () => {
-//       console.log("Error al cargar los datos del usuario.");
-//     }
-//   );
-
-
-//   console.log("Modo de juego: Multijugador");
-// } else {
-//   console.log("Modo de juego: Un jugador");
-// }
-
-
-
 
 function sendPlayerStatsToServer(score, time) {
   console.log(score);
@@ -668,8 +625,6 @@ function sendPlayerStatsToServer(score, time) {
 
 function enviarOrdenCorrecto() {
   console.log("Orden correcto a enviar:", ordenCorrecto);
-
-  // const usuarioEsAdmin = JSON.parse(localStorage.getItem('usuarioEsAdmin'));
   console.log(usuarioEsAdmin)
   if (!usuarioEsAdmin) {
     console.log("No es admin, no se envía ordenCorrecto");
@@ -706,10 +661,13 @@ function enviarOrdenCorrecto() {
 function actualizarEstadisticas(data) {
   let estado = 0;
   console.log(todosListos)
+  mensaje.textContent="";
+
   if (todosListos) {
-    let mensaje;
-    mensaje = document.querySelector('.mensaje');
-    mensaje.textContent = 'Todos los jugadores han finalizado la ronda.';
+    mensaje.style.color = 'green';
+    mensaje.innerHTML = `<i class="fa-solid fa-circle-check"></i> Todos listos.`;
+  }else{
+    mensaje.innerHTML = `<i class="fa-solid fa-spinner fa-spin"></i> Esperando jugadores...`;
   }
   aceptar.addEventListener('click', () => {
     if (estado === 0 && todosListos) {
@@ -740,7 +698,7 @@ function actualizarEstadisticas(data) {
       });
 
       const dataToSend = {
-        type: 'actualizarJugadores',
+        type: 'actualizarJugadoresEnviar',
         codigoSala: gameData.gameData.codigoSala,
         players: data.players,
       };

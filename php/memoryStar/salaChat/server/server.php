@@ -49,6 +49,7 @@ class Chat implements MessageComponentInterface
                 break;
             case 'iniciarjuego':
                 $this->iniciarJuego($from, $data);
+                $this->ultimoOrdenCorrecto = "";
                 break;
             case 'ordenCorrecto':
                 $dataToSend = [
@@ -58,7 +59,7 @@ class Chat implements MessageComponentInterface
                 ];
                 $this->ultimoOrdenCorrecto = $data['orden'];
                 echo "Orden correcto almacenado: " . json_encode($this->ultimoOrdenCorrecto) . "\n";
-                $this->broadcastToRoom($data['codigoSala'], $dataToSend, $from);
+                // $this->broadcastToRoom($data['codigoSala'], $dataToSend, $from);
                 break;
             case 'obtenerOrdenCorrecto':
                 if ($this->ultimoOrdenCorrecto !== null) {
@@ -72,13 +73,15 @@ class Chat implements MessageComponentInterface
                         'message' => 'No hay un orden correcto disponible aún.'
                     ]));
                 }
-            case 'actualizarJugadores':
+                echo "Orden correcto recibido: " . json_encode($this->ultimoOrdenCorrecto) . "\n";
+            case 'actualizarJugadoresEnviar':
                 $codigoSala = $data['codigoSala']; // Asegúrate de enviar este dato desde el cliente si es necesario.
 
                 if (isset($this->salas[$codigoSala])) {
                     // Preparar el mensaje para los jugadores
                     $dataToSend = [
-                        'type' => 'actualizarJugadores',
+                        'type' => 'actualizarJugadoresRecibir',
+                        'codigoSala'=> $codigoSala,
                         'players' => $data['players']
                     ];
 
@@ -153,10 +156,10 @@ class Chat implements MessageComponentInterface
             }
 
             // Si es el anfitrión, cerrar la sala
-            if ($conn === $room['anfitrion']) {
-                $this->broadcastToRoom($conn->codigoSala, ['type' => 'chatEnded']);
-                unset($this->salas[$conn->codigoSala]);
-            } else {
+            // if ($conn === $room['anfitrion']) {
+            //     $this->broadcastToRoom($conn->codigoSala, ['type' => 'chatEnded']);
+            //     unset($this->salas[$conn->codigoSala]);
+            // } else {
                 // Notificar a los demás usuarios de la sala
                 $userName = isset($conn->userName) ? $conn->userName : 'Un usuario';
                 echo $userName;
@@ -165,7 +168,7 @@ class Chat implements MessageComponentInterface
                     'user' => $userName,
                     'message' => "$userName ha abandonado el chat"
                 ]);
-            }
+            // }
         }
     }
 
@@ -496,7 +499,12 @@ class Chat implements MessageComponentInterface
             }
 
             // Reconectar el jugador actual (agregar la conexión en 'clients')
-            $this->salas[$codigoSala]['clients'][$from->resourceId] = $from;
+            if (!isset($this->salas[$codigoSala]['clients'])) {
+                $this->salas[$codigoSala]['clients'] = new \SplObjectStorage();
+            }
+            
+            $this->salas[$codigoSala]['clients']->attach($from);
+            
             echo "Jugador {$usuario} reconectado a la sala {$codigoSala}\n";
         }
 

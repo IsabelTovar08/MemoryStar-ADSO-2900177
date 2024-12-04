@@ -1,0 +1,32 @@
+[
+    {
+        "idUsuario": 46,
+        "usuario": "isabelsegunda",
+        "score": 500,
+        "time": 9
+    },
+    {
+        "idUsuario": 44,
+        "usuario": "Valentina",
+        "score": 0,
+        "time": 0
+    },
+    {
+        "idUsuario": 43,
+        "usuario": "Nicolastovar",
+        "score": 0,
+        "time": 0
+    },
+    {
+        "idUsuario": 45,
+        "usuario": "Deivis",
+        "score": 0,
+        "time": 0
+    },
+    {
+        "idUsuario": 42,
+        "usuario": "mariaisabel",
+        "score": 200,
+        "time": 13
+    }
+]

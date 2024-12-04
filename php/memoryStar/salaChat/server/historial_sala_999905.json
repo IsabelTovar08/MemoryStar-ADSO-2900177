@@ -1,0 +1,38 @@
+[
+    {
+        "idUsuario": 46,
+        "usuario": "isabelsegunda",
+        "score": 500,
+        "time": 15
+    },
+    {
+        "idUsuario": 42,
+        "usuario": "mariaisabel",
+        "score": 500,
+        "time": 7
+    },
+    {
+        "idUsuario": 47,
+        "usuario": "Luisa",
+        "score": 0,
+        "time": 0
+    },
+    {
+        "idUsuario": 45,
+        "usuario": "Deivis",
+        "score": 200,
+        "time": 15
+    },
+    {
+        "idUsuario": 43,
+        "usuario": "Nicolastovar",
+        "score": 0,
+        "time": 0
+    },
+    {
+        "idUsuario": 44,
+        "usuario": "Valentina",
+        "score": 0,
+        "time": 0
+    }
+]

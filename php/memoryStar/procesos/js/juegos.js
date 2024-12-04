@@ -21,51 +21,32 @@ document.addEventListener("DOMContentLoaded", () => {
 
   function mostrarConfiguracion(juegoConfig) {
     let resultadoMostrar = `
-      <a href="configurarJuego.html"><img src="img/iconos/atrasN.png" alt="" class="atras"></a>
-      <h1 class="game-title">${juegoConfig.titulo}</h1>
+      
+          <div class="col row tituloAtras">
+            <div class="col-4"><a href="configurarJuego.html"><img src="img/iconos/atrasN.png" alt="" class="atras"></a></div>
+            <div class="col-6">
+              <h1 class="game-title">${juegoConfig.titulo}</h1>
+            </div>
+          </div>
+
       <div class="col row">
-          <div class="col-4 sala">
-              <h1 class="textoEleccion">${juegoConfig.avatarTitulo}</h1>
-              <div id="carouselExampleIndicators" class="carousel slide carousel-container" data-bs-interval="false">
-                  <div class="carousel-indicators">
+          <div class="col-3 ">
+              
     `;
 
-    // Add carousel indicators
-    juegoConfig.imagenes.forEach((imagen, index) => {
-      resultadoMostrar += `
-        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="${index}" 
-            class="${index === 0 ? "active" : ""}" aria-label="Slide ${index + 1}"></button>
-      `;
-    });
-
-    resultadoMostrar += `</div><div class="carousel-inner carousel-images">`;
-
-    // Add carousel items
-    juegoConfig.imagenes.forEach((imagen, index) => {
-      resultadoMostrar += `
-        <div class="carousel-item ${index === 0 ? "active" : ""}">
-            <img src="${imagen.src}" class="d-block w-100" alt="${imagen.alt}">
-            <input type="radio" id="img${index + 1}" name="carousel" value="${imagen.value}" ${
-        imagen.checked ? "checked" : ""
-      }>
-        </div>
-      `;
-    });
-
     resultadoMostrar += `
+          <div class="carouselG">
+            <div class="carousel-innerG">
+                <div class="carousel-itemG">1</div>
+                <div class="carousel-itemG">2</div>
+                <div class="carousel-itemG">3</div>
+                <div class="carousel-itemG">4</div>
+                <div class="carousel-itemG">5</div>
+                <div class="carousel-itemG">6</div>
+            </div>
           </div>
-          <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
-              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-              <span class="visually-hidden">Previous</span>
-          </button>
-          <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
-              <span class="carousel-control-next-icon" aria-hidden="true"></span>
-              <span class="visually-hidden">Next</span>
-          </button>
       </div>
-     
-      </div>
-      <div class="col-7 sala" id="juego">
+      <div class="col-8 sala" id="juego">
     `;
 
     // Fetch game types from PHP backend
@@ -73,14 +54,14 @@ document.addEventListener("DOMContentLoaded", () => {
       .then((response) => response.json())
       .then((datos) => {
         let gameContent = `
-          <h1 class="textoEleccion">¿Qué quieres jugar?</h1>
+          <h1 class="tamaño_letra textoEleccion">¿Qué quieres jugar?</h1>
           <div class="tarjetas-container">
         `;
 
         datos.forEach((juego) => {
           if (juego.imagen) {
             gameContent += `
-              <div class="option juegoUno" data-bs-toggle="modal" data-bs-target="#${juego.nombre_tipo_juego}">
+              <div class="option juegoUno">
                   <input type="radio" name="tipoJuego" id="${juego.nombre_tipo_juego}" value="${juego.id_tipo_juego}">
                   <label class="tarjetaOpcion" for="${juego.nombre_tipo_juego}">
                       <img src="${juego.imagen}" alt="${juego.nombre_tipo_juego}">
@@ -131,7 +112,7 @@ document.addEventListener("DOMContentLoaded", () => {
   function mostrarOpcionesCartas(opciones) {
     document.getElementById("res").innerHTML = "";
     let resultadoTematicas = `
-      <h1 class="textoEleccion">Selecciona la temática</h1>
+      <h1 class="tamaño_letra textoEleccion">Selecciona la temática</h1>
       <div class="tarjetas-container">
     `;
 
@@ -212,7 +193,7 @@ document.addEventListener("DOMContentLoaded", () => {
             let contenidoHTML = `
                 <div class="col row">
                     <div class="col">
-                        <h1 class="textoEleccion">Elige la temática</h1>
+                        <h1 class="tamaño_letra textoEleccion">Elige la temática</h1>
             `;
             
             // Procesar temáticas en grupos de 2
@@ -259,7 +240,7 @@ document.addEventListener("DOMContentLoaded", () => {
             contenidoHTML += `
                     </div>
                     <div class="col">
-                        <h1 class="textoEleccion">Elige la dificultad</h1>
+                        <h1 class="tamaño_letra textoEleccion">Elige la dificultad</h1>
             `;
 
             // Procesar dificultades en grupos de 2

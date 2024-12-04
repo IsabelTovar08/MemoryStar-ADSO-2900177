@@ -36,6 +36,7 @@
                     </div>
                 </div>
             </div>
+            
             <div class="caja ">
                 <div class="caja-unirme">
                     <form id="form-unirse-sala">
@@ -46,7 +47,19 @@
                         <input type="submit" value="Unirse">
                     </form>
                 </div>
+                <script>
+                    // Función para obtener parámetros de la URL
+                    function getQueryParam(param) {
+                      const urlParams = new URLSearchParams(window.location.search);
+                      return urlParams.get(param);
+                    }
                 
+                    // Rellenar el input con el número específico
+                    const numero = getQueryParam("codigo");
+                    if (numero) {
+                      document.getElementById("codigo").value = numero;
+                    }
+                </script>
                 <div class="caja-crear">
                     <h2>Crear sala</h2>
                     <form id="form-crear-sala">

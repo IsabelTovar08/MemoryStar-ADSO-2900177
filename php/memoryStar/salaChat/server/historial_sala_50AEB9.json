@@ -1,0 +1,22 @@
+[
+    {
+        "type": "newConnection",
+        "usuario": "isabelsegunda",
+        "isAdmin": true,
+        "message": "isabelsegunda (Administrador) se ha unido al chat",
+        "estado": "Conectado",
+        "contadorUsuarios": 1,
+        "idUsuario": 32,
+        "score": 200,
+        "time": 3
+    },
+    {
+        "type": "newConnection",
+        "usuario": "mariaisabel",
+        "isAdmin": false,
+        "message": "mariaisabel se ha unido al chat",
+        "estado": "Conectado",
+        "contadorUsuarios": 2,
+        "idUsuario": 42
+    }
+]

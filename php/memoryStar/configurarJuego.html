@@ -1,5 +1,3 @@
-
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -17,14 +15,16 @@
     <link rel="stylesheet" href="css/ocultarOpciones.css">
     <link rel="stylesheet" href="css/nav/nav.css">
 
-
+    <link rel="stylesheet" href="css/carruselJuegos.css">
+    
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Just+Me+Again+Down+Here&display=swap');
 
         body {
             background-image: url('img/fondos/fondoOpciones.jpeg');
         }
-        .yyt{
+
+        .yyt {
             width: 10px;
             height: 30px;
             background-color: aqua;
@@ -33,18 +33,10 @@
 </head>
 
 <body>
-
     <div class="container-fuid">
         <div class="container-fuid" id="fluid">
-
             <div id="contenedor">
-
-
-
-                <div id="contenido" style="width: 80vw;">
-
-
-                  
+                <div id="contenido" style="width: 80%;">
                     <a href="index.html"><img src="img/iconos/atrasN.png" alt="" width="50" class="atras"></a>
                     <div class="bienvenido"><img src="img/iconos/logoBienvenido.png" alt="logoMemory"
                             class="logoBienvenido"></div>
@@ -57,59 +49,30 @@
                         <img src="img/iconos/multijugador.png" class="oJuegos zoom" alt="Imagen 3"
                             id="jugarMultijugador" onclick="window.location.href='salaChat'">
                     </div>
-                    
+
                 </div>
             </div>
 
 
-            <div class="modal fade" id="nave" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                <div class="modal-dialog modal-dialog-centered">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h1 class="modal-title fs-5" id="exampleModalLabel">¡Planetscape!</h1>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                        </div>
-                        Busca parejas de cartas para recuperar las piezas de tu nave perdida; y en el modo Memorize &
-                        Escape, memoriza el orden correcto para ensamblar un arma y derrotar al enemigo. ¡Explora
-                        planetas, resuelve acertijos y encuentra tu camino de regreso a la Tierra!
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Aceptar</button>
-                    </div>
-                </div>
-            </div>
+            
         </div>
-        <div class="modal fade" id="arma" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h1 class="modal-title fs-5" id="exampleModalLabel">¡Planetscape!</h1>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-                    <div class="modal-body">
-                        Memoriza el orden correcto para ensamblar un arma y derrotar al enemigo.
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Aceptar</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <script src="js/movimiento.js"></script>
-     <script src="js/session.js"></script>
-        <script src="modales/modales/js/overlayModal.js"></script>
-        <script src="bootstrap/js/bootstrap.js"></script>
-        <script src="js/perfil.js"></script>
-        <!-- <script src="js/playJson.js"></script> -->
-        <script src="js/mapa.js"></script>
-        <script src="js/nabar/nabar.js"></script>
-        <script src="js/nabar/visivilidadIconos.js"></script>
-        <script src="js/modales.js"></script>
-        <script type="module" src="sonidos/sonidos.js"></script>
-        <script type="module" src="sonidos/eventosSonidos.js"></script>
-        <script src="procesos/js/juegos.js"></script>
-        <!-- <script src="procesos/js/multijugador.js"></script> -->
-         <script src="js/pantalla.js"></script>
+        
+    </div>
+    <script src="js/movimiento.js"></script>
+    <script src="js/session.js"></script>
+    <script src="modales/modales/js/overlayModal.js"></script>
+    <script src="bootstrap/js/bootstrap.js"></script>
+    <script src="js/perfil.js"></script>
+    <!-- <script src="js/playJson.js"></script> -->
+    <script src="js/mapa.js"></script>
+    <script src="js/nabar/nabar.js"></script>
+    <script src="js/nabar/visivilidadIconos.js"></script>
+    <script src="js/modales.js"></script>
+    <script type="module" src="sonidos/sonidos.js"></script>
+    <script type="module" src="sonidos/eventosSonidos.js"></script>
+    <script src="procesos/js/juegos.js"></script>
+    <!-- <script src="procesos/js/multijugador.js"></script> -->
+    <script src="js/pantalla.js"></script>
 
 
 </body>

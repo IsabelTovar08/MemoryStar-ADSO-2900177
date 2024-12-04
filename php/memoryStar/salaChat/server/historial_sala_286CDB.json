@@ -1,0 +1,35 @@
+[
+    {
+        "type": "newConnection",
+        "usuario": "mariaisabel",
+        "isAdmin": false,
+        "message": "mariaisabel se ha unido al chat",
+        "estado": "Conectado",
+        "contadorUsuarios": 1,
+        "idUsuario": 42,
+        "score": 100,
+        "time": 15
+    },
+    {
+        "type": "newConnection",
+        "usuario": "Valentina",
+        "isAdmin": true,
+        "message": "Valentina (Administrador) se ha unido al chat",
+        "estado": "Conectado",
+        "contadorUsuarios": 2,
+        "idUsuario": 44,
+        "score": 100,
+        "time": 6
+    },
+    {
+        "type": "newConnection",
+        "usuario": "Luisa",
+        "isAdmin": false,
+        "message": "Luisa se ha unido al chat",
+        "estado": "Conectado",
+        "contadorUsuarios": 3,
+        "idUsuario": 47,
+        "score": 0,
+        "time": 10
+    }
+]
