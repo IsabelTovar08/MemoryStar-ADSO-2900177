@@ -145,7 +145,7 @@ class MyScene extends Phaser.Scene {
       this.manejoRecolectables.configurarColisionOxigeno(this.oxigeno);
       this.manejoRecolectables.configurarColisionMineral(this.corazones);
       // manejarPuntos.configurarColisionSiete(this.siete, "../juegoLava/index.html");
-configurarColisionMineral
+// configurarColisionMineral
       // Coliciones entre el personaje y el suelo y los recolectables y el suelo
       this.physics.add.collider(this.instanciaPersonaje.jugador, this.floor);
       this.physics.add.collider(this.corazones, this.floor);

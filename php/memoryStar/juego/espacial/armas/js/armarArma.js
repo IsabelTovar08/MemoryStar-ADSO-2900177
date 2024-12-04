@@ -186,9 +186,8 @@ document.addEventListener("DOMContentLoaded", function () {
     
     document.body.appendChild(modalFinal);
     new bootstrap.Modal(modalFinal, { backdrop: "static" }).show();
+  }
 
-  
-<<<<<<< HEAD
   function puntos(puntuacion, rubis, contador) {
     const datosJuego = {
       puntos:puntuacion ,
@@ -215,10 +214,4 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
   }
-
-  
-
-=======
-  }
->>>>>>> main
 });

@@ -10,7 +10,7 @@ class conexion {
         $this->usuario = "postgres";
         $this->password = "123456";
         $this->puerto = "5432";
-        $this->baseDatos = "pruebafi";
+        $this->baseDatos = "corredor";
     }
    public function conectar () {
     try {
