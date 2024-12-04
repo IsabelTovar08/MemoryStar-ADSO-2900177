@@ -117,3 +117,4 @@ if (count($_SESSION['datos_archivos']) === 3) {
         'archivos_pendientes' => 3 - count($_SESSION['datos_archivos'])     
     ]); 
 }
+

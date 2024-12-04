@@ -153,6 +153,7 @@
   justify-content: center;
   align-items: center;
   top: 92%;
+  gap: 2vh;
 }
 
 .botonTsolo {
@@ -162,11 +163,11 @@
   background: #4ecdc4;
   box-shadow: 0 0 20px rgba(78, 205, 196, 0.5);
   border-radius: 25px;
-  padding: 10px 25px;
+  padding: 0.5rem 0.5rem;
   text-align: center;
   width: 100%;
   height: auto;
-  line-height: 18px;
+  line-height: 2vh;
   border: none;
   transition: all 0.3s ease;
   text-transform: uppercase;
@@ -204,9 +205,9 @@
   border-radius: 20px;
   background: #2c2c54;
   box-shadow: 0px 0px 25px rgba(255, 107, 107, 0.4);
-  max-width: 70%;
+ 
   margin: 0 auto;
-  max-height: 90vh;
+  
 }
 
 #tablaMulti .modal-body {
@@ -296,23 +297,36 @@
 }
 
 .contenedor-user {
-  margin-top: -8vh;
+  display: flex;
+  justify-content: center;
+  gap: 8vh;
+  margin-top: -5vh;
+  
 }
 
 .foto-user {
-  margin: 3vh;
+  
   width: 9vh;
   height: auto;
 }
 
-.foto-user:nth-child(2) {
-  transform: translateY(-5vh);
+.ganador1 {
+  transform: translateY(-5vh); /* Elevar al ganador */
+  order: 2; /* Asegura que esté al centro */
+  
+}
+.segundo1 {
+  order: 1; /* Asegura que esté a la izquierda */
+}
+.tercero1 {
+  order: 3; /* Asegura que esté a la derecha */
 }
 
 .contenedor-userPunto {
   display: flex;
   justify-content: center;
-  margin-top: -8vh;
+  
+  margin-top: -5vh;
 }
 
 .userPunto {
@@ -321,25 +335,55 @@
   line-height: 2vh;
 }
 
-.userPunto:nth-child(2) {
+/* .userPunto:nth-child(2) {
   transform: translateY(-5vh);
+} */
+
+
+/* .userPunto {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 10vw;
+  height: 15vh;
+  background-color: gray;
+  color: white;
+  font-size: 2vh;
+  line-height: 2vh;
+  border-radius: 5px;
+} */
+
+/* Estilo específico para cada posición */
+.ganador {
+  transform: translateY(-5vh); /* Elevar al ganador */
+  order: 2; /* Asegura que esté al centro */
+  
 }
+
+.segundo {
+  order: 1; /* Asegura que esté a la izquierda */
+}
+.tercero {
+  order: 3; /* Asegura que esté a la derecha */
+}
+ 
 
 .scroll {
   margin-top: -4vh;
   overflow: auto;
-  height: 40vh;
+  /* height: 34vh; */
 }
 .contenedor-infoMulti {
   display: flex;
   align-items: center;
   position: relative;
   /* margin-bottom: 15px; */
-  font-size: 0.7rem;
+  font-size: 0.9rem;
   color: #ffffff;
   font-family: "Roboto", sans-serif;
   border-radius: 8px;
-  padding: 0.1rem 0.2rem;
+  padding: 0.2rem 0.2rem;
   width: 100%;
   margin: 0 auto 5px;
   background: #474787;
@@ -351,11 +395,11 @@
 }
 
 .contenedor-botonSeguir1 {
-  
+  gap: 5vh;
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-top: -2vh;
+  
 }
 
 .botonSeguir {
@@ -367,13 +411,14 @@
   border-radius: 25px;
   padding: 0.5rem 0.5rem;
   text-align: center;
-  line-height: 18px;
+  line-height: 3vh;
   border: none;
   transition: all 0.3s ease;
   text-transform: uppercase;
   letter-spacing: 1px;
   font-weight: bold;
-  margin: 2vh;
+  
+  
 }
 
 .botonSeguir:hover {
@@ -408,6 +453,7 @@
 @media (max-width: 946px) {
   #tablaMulti .modal-content {
     max-width: 50%;
+    max-height: 90%;
   }
   .scroll{
     height: 34vh;
@@ -415,9 +461,10 @@
   .contenedor-infoMulti {
     font-size: 0.6rem;
     padding: 0;
+    
   }
   .contenedor-botonSeguir1 {
-    margin-top: -1vh;
+    margin-top: -3vh;
   }
   .botonSeguir {
     padding: 0.2rem;
@@ -427,6 +474,6 @@
 
 @media (min-height: 600px){
   #tablaMulti .modal-content {
-    max-width: 80%;
+    max-width: 100%;
   }
 }

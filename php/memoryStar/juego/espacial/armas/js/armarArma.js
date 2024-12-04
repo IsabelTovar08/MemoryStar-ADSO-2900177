@@ -180,9 +180,38 @@ document.addEventListener("DOMContentLoaded", function () {
       </div>
     `;
 
+   
+
+    puntos(puntuacion, rubis, contador );
+    
     document.body.appendChild(modalFinal);
     new bootstrap.Modal(modalFinal, { backdrop: "static" }).show();
+  }
 
-  
+  function puntos(puntuacion, rubis, contador) {
+    const datosJuego = {
+      puntos:puntuacion ,
+      diamantes: rubis,
+      tiempo: contador,
+      archivo: 1 
+  };
+    
+      fetch('procesos/puntuacionmario/datos.php', {
+        method: 'POST',
+        headers: { 
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(datosJuego)
+    })
+    .then(response => response.json())
+    .then(data => {
+        console.log(data.mensaje);
+        console.log('enviado uno armas ')
+    })
+    .catch(error => {
+        console.error('Error al enviar datos:', error);
+        
+    });
+
   }
 });

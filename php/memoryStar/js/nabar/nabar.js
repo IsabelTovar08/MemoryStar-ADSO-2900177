@@ -139,7 +139,20 @@ var modalHTML = `
       </div>
       <div class="modal-body bod">
         <div class="textoEx">
-            Aqui puedes obtener informacion de como jugar
+            <strong>ARMA TU NAVE:</strong> <br>
+            Objetivo: Tu tarea es encontrar parejas de cartas. Al hacerlo, deberás recordar un orden 
+            específico que se actualizará en cada ronda. <br>
+            Desarrollo: Te transportas a un mundo espacial donde debes recolectar piezas perdidas 
+            de una nave espacial. Sin embargo, estarás en un entorno con limitaciones como la falta de oxígeno, 
+            lo que añade presión para regresar a la Tierra.<br>
+            Desafío adicional: Después de recolectar las piezas, deberás organizarlas en la nave según el orden de 
+            las cartas que has memorizado. El desafío radica en que el orden cambia con cada ronda, así que tendrás 
+            que mantener tu concentración para completar la misión con éxito.<br><br>
+            <strong>DERROTA EL ENEMIGO:</strong> <br>
+            Objetivo: Aquí necesitarás ser ágil para recolectar materiales y ensamblar herramientas que te permitan defenderte.<br>
+            Desarrollo: Un enemigo te está infligiendo daño constantemente, y tendrás que derrotarlo antes de que logre escapar. 
+            Esto implica no solo enfrentarte al enemigo, sino también gestionar eficientemente el tiempo y los recursos que tienes 
+            a tu disposición para crear las herramientas necesarias para tu defensa.
         </div>
         <div class="contenedor-imgAyuda">
             
@@ -165,10 +178,10 @@ var modalHTML = `
       </div>
       <div class="modal-body bod">
         <div class="textoEx">
-            1. Memoriza la secuencia: Observa una secuencia de objetos que aparecerá por unos segundos.<br>
-            2. Reordena la secuencia: Después de desaparecer, la secuencia volverá desordenada. Reordénala correctamente.<br>
-            3. Tiempo límite: Tienes un tiempo limitado para completar el reordenamiento.<br>
-            4. Puntos: Ganas puntos por ordenar correctamente y más si lo haces rápido.<br>
+            1. Observa una secuencia de objetos que aparecerá por unos segundos.<br>
+            2. Después de desaparecer, la secuencia volverá desordenada. Reordénala correctamente.<br>
+            3. Tienes un tiempo limitado para completar el reordenamiento.<br>
+            4. Ganas puntos por ordenar correctamente y más si lo haces rápido.<br>
         </div>
         <div class="contenedor-imgAyuda">
             
@@ -200,11 +213,11 @@ var modalHTML = `
             </div>
             <div class="modal-body">
                 <div class="texto">
-                    Visualiza las imágenes: Se mostrarán 2 columnas, la izquierda con imágenes principales y la derecha con imágenes asociadas. <br>
-                    Asocia las imágenes: Haz coincidir cada imagen de la izquierda con la relacionada en la derecha. <br>
-                    Tiempo límite: Tienes tiempo limitado para hacer todas las asociaciones. <br>
-                    Puntos: Ganas puntos por cada asociación correcta, más si lo haces rápido. <br>
-                    Niveles: Las asociaciones serán más difíciles conforme avances. <br>
+                    1. Se mostrarán 2 columnas, la izquierda con imágenes principales y la derecha con imágenes asociadas. <br>
+                    2. Haz coincidir cada imagen de la izquierda con la relacionada en la derecha. <br>
+                    3. Tienes tiempo limitado para hacer todas las asociaciones. <br>
+                    4. Ganas puntos por cada asociación correcta, más si lo haces rápido. <br>
+                    5. Las asociaciones serán más difíciles conforme avances. <br>
                 </div>
                 <div class="d-flex justify-content-center align-items-center">
                     <img src="img/ayuda/ayudaAsociar.png" class="imgAyuda2">

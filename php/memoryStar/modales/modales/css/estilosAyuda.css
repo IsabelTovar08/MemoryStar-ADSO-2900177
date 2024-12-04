@@ -1,7 +1,9 @@
 /* dialog */
 .princ {
-    width: 90vh;
-  }
+  width: 90vh;
+}
+
+
   
   /* modal-content */
   .sec {
@@ -10,6 +12,7 @@
     border: 4px solid #080808; /* Borde verde azulado */
     box-shadow: 0 4px 40px rgb(2, 2, 2); /* Sombra de color verde azulado */
   }
+  
   
   .titulo-ayuda {
     font-size: 3vh; /* Tamaño de la fuente responsivo */
@@ -110,13 +113,36 @@
   }
   
   .textoEx {
-    /* text-align: center; */
+    text-align: left;
     flex-wrap: wrap;
     font-size: 3vh;
-    line-height: 3vh;
-    font-family: 'Trebuchet MS', Arial, Helvetica, sans-serif;
-    color: #ffffff;
-    text-shadow: 1px 1px 2px #2c3e50; /* Sombra de texto para mayor contraste */
+    line-height: 1.5;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #f1f1f1;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+    padding: 20px;
+    background-color: rgb(44, 62, 80,0.8);
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    overflow: auto;
+    height: 40vh;
+  }
+  .textoEx::-webkit-scrollbar {
+    width: 12px;
+  }
+  
+  .textoEx::-webkit-scrollbar-track {
+    background-color: #2c3e50;
+    border-radius: 6px;
+  }
+  
+  .textoEx::-webkit-scrollbar-thumb {
+    background-color: #7b8ca0;
+    border-radius: 6px;
+  }
+  
+  .textoEx::-webkit-scrollbar-thumb:hover {
+    background-color: #9ba9b8;
   }
   /* modal-body */
   .bod {
