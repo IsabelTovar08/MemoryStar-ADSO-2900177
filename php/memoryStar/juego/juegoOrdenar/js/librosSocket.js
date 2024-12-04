@@ -6,7 +6,6 @@ let todosListos;
 let usuarioId;
 let usuarioAdmin;
 let mensaje = document.querySelector('.mensaje');
-iniciar();
 
 async function obtenerDatosUsuario(callback, manejarError) {
   try {
@@ -28,11 +27,11 @@ async function obtenerDatosUsuario(callback, manejarError) {
 
 gameData = JSON.parse(sessionStorage.getItem('gameData'));
 function iniciar() {
-  ws = new WebSocket('ws://192.168.131.53:8080');
+  ws = new WebSocket('ws://localhost:8080');
   ws.onopen = () => {
     console.log('Conectado al WebSocket en el juego multijugador');
     if (gameData) {
-      console.log("info" + gameData.gameData)
+      console.log("info" + gameData.gameData.codigoSala)
       ws.send(JSON.stringify({
         type: 'reconectarSala',
         codigoSala: gameData.gameData.codigoSala,
@@ -43,6 +42,7 @@ function iniciar() {
     }
     console.log(ordenVerificar)
   };
+  console.log(gameData)
   ws.onmessage = (event) => {
     const data = JSON.parse(event.data);
     switch (data.type) {
@@ -59,6 +59,11 @@ function iniciar() {
       case 'error':
         console.error('Error:', data.message);
         break;
+        case 'desconectadoJuego':
+          usuarioAbandono(data);
+          console.log(data)
+          console.log("abandonado")
+          break;
       case 'actualizarJugadoresRecibir':
         contenedorUsers.innerHTML = '';
         data.players.forEach((player, index) => {
@@ -702,7 +707,9 @@ function actualizarEstadisticas(data) {
         codigoSala: gameData.gameData.codigoSala,
         players: data.players,
       };
+      console.log("cod" + gameData.gameData.codigoSala)
 
+      console.log(gameData.gameData.codigoSala)
       ws.send(JSON.stringify(dataToSend));
       console.log('Datos enviados para actualizar jugadores');
 
@@ -721,6 +728,24 @@ function actualizarEstadisticas(data) {
 
     }
   });
+}
+function usuarioAbandono(data) {
+  const connectionDiv = document.querySelector(`.contenedor-usuario[data-username="${data.user}"]`);
+  if (connectionDiv) {
+      connectionDiv.remove();
+  }
+
+  const disconnectionDiv = document.createElement('div');
+  disconnectionDiv.classList.add('user-notification');
+  disconnectionDiv.innerHTML = `
+      <span class="notification-text">${data.message}</span>
+      <button class="close-notification">×</button>
+  `;
+  disconnectionDiv.querySelector('.close-notification').addEventListener('click', () => {
+      disconnectionDiv.classList.add('fade-out');
+      setTimeout(() => disconnectionDiv.remove(), 300);
+  });
+  abandono.appendChild(disconnectionDiv);
 }
 botonVerificar.addEventListener("click", () => {
   console.log(ordenVerificar)

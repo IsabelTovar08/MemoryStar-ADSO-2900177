@@ -171,7 +171,7 @@ if (formUnirseSala) {
 
 
 function initializeSocket() {
-    socket = new WebSocket("ws://192.168.131.53:8080");
+    socket = new WebSocket("ws://localhost:8080");
 
     socket.onopen = () => {
         console.log("Conectado al WebSocket");
@@ -562,17 +562,21 @@ if (messageInput) {
     });
 }
 
-// Agregar el evento de "click" al contenedor de mensajes si existe
+function reproducirSonidoMensaje(texto, opciones = {}) {
+    const mensaje = new SpeechSynthesisUtterance(texto);
+    mensaje.lang = opciones.lang || 'es-ES';
+    mensaje.rate = opciones.rate || 1;
+    mensaje.pitch = opciones.pitch || 1;
+    mensaje.volume = opciones.volume || 1;
+
+    speechSynthesis.speak(mensaje);
+}
+
+// Evento para capturar clics en los mensajes
 if (messagesContainer) {
-    messagesContainer.addEventListener('click', function () {
-        const mensaje = new SpeechSynthesisUtterance(texto);
-
-        mensaje.lang = 'es-ES';
-        mensaje.rate = 1;
-        mensaje.pitch = 1;
-        mensaje.volume = 1;
-
-        speechSynthesis.speak(mensaje);
+    messagesContainer.addEventListener('click', function (evento) {
+        const mensajeTexto = evento.target.innerText || "Mensaje vacío"; 
+        reproducirSonidoMensaje(mensajeTexto);
     });
 }
 
