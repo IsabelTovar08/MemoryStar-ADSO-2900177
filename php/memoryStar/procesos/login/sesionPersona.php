@@ -23,7 +23,7 @@ if ($resultado) {
         'mensaje' => 'Sesión iniciada correctamente', 
         'id_usuario' => $resultado['id_usuario'] 
     ]);
-} 
-?>
-
+}  else {
+    echo json_encode(['error' => 'Usuario o contraseña incorrectos']);
+}
     

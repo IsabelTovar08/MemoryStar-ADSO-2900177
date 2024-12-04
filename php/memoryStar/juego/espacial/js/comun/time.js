@@ -97,8 +97,10 @@ export class ManejoTiempo {
             fontSize: "60px",
             fill: "#fff",
         });
+        console.log("pausar");
+        // this.scene.pause();                                 
         setTimeout(() => {
-            this.scene.instanciaPersonaje.jugador.setVelocityY(-350);
+            this.scene.instanciaPersonaje.jugador.setVelocityY(-350);            
         }, 100);
     }
     drawProgressBar() {
@@ -116,7 +118,7 @@ export class ManejoTiempo {
         } else if (this.progress <= 50) {
             this.progressBar.fillStyle(0xFFA500, 1); // naranja
 
-        } else {
+        } else {               
             this.progressBar.fillStyle(0x00ff00, 1); // Verde
 
         }
