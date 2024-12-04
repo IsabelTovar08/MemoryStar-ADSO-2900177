@@ -10,6 +10,10 @@
     <link id="estiloBootstrap" rel="stylesheet" href="../bootstrap/css/bootstrap.css" disabled>
     <link id="estiloChat" rel="stylesheet" href="css/style.css" disabled>
     <link id="estiloEspera" rel="stylesheet" href="css/styleSala.css" disabled>
+    
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <link rel="stylesheet" href="css/alertas.css">
 
 
 </head>
@@ -170,7 +174,7 @@
             <input type="text" class="message" id="message">
             <button class="send" type="button" id="send" disabled><img src="enviar.png" alt="" width="25"></button>
         </div>
-        <span id="salir" onclick="mostrarChat()" class="salir">X</span>
+        <img src="img/x.png" alt="" id="salir" onclick="mostrarChat()" class="salir">
     </div>
     <button onclick="mostrarChat()" class="botonChat">
         <img src="chat.png" alt="" width="60">

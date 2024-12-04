@@ -726,3 +726,4 @@ botonVerificar.addEventListener("click", () => {
   console.log(ordenVerificar)
   finalizarRonda(ordenVerificar);
 });
+iniciar();

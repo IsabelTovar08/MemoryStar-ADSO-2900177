@@ -79,7 +79,22 @@ contenedorCrearSala.addEventListener('click', () => {
                             rutaJuego: rutaSeleccionada
                         }));
                     } else {
-                        alert("Por favor, ingresa el nombre de la sala.");
+                        //alert("Por favor, ingresa el nombre de la sala.");
+                        Swal.fire({
+                            
+                            text: `Por favor, ingresa el nombre de la sala.`,
+                            icon: 'error', // Tipo de icono (success, error, warning, info, question)
+                            background: '#1a1a2e', // Fondo oscuro acorde al diseño dinámico
+                            color: '#00d0ff', // Texto llamativo de color rojo vibrante
+                            confirmButtonColor: '#0f3460', // Botón con tono azul oscuro
+                            cancelButtonColor: '#16213e', // Botón cancelar (si se usa) en azul más tenue
+                            width: 350,
+                            customClass: {
+                              popup: 'memorystar-popup',
+                              title: 'memorystar-title',
+                              content: 'memorystar-content',
+                            }
+                        });
                     }
                 },
                 () => {
@@ -113,11 +128,40 @@ if (formUnirseSala) {
                         id_usuario: data.id_usuario
                     }));
                 } else {
-                    alert("Por favor, ingresa el código de la sala.");
-                }
+                    //alert("Por favor, ingresa el código de la sala.");
+                    Swal.fire({
+                        
+                        text: `Por favor, ingresa el código de la sala.`,
+                        icon: 'error', // Tipo de icono (success, error, warning, info, question)
+                        background: '#1a1a2e', // Fondo oscuro acorde al diseño dinámico
+                        color: '#00d0ff', // Texto llamativo de color rojo vibrante
+                        confirmButtonColor: '#0f3460', // Botón con tono azul oscuro
+                        cancelButtonColor: '#16213e', // Botón cancelar (si se usa) en azul más tenue
+                        width: 350,
+                        customClass: {
+                          popup: 'memorystar-popup',
+                          title: 'memorystar-title',
+                          content: 'memorystar-content',
+                        }
+                    });                }
             },
             () => {
-                alert("Debes iniciar sesión para continuar.");  // Acción personalizada si el usuario no ha iniciado sesión
+                //alert("Debes iniciar sesión para continuar.");  // Acción personalizada si el usuario no ha iniciado sesión
+                Swal.fire({
+                            
+                    text: `Debes iniciar sesión para continuar.`,
+                    icon: 'error', // Tipo de icono (success, error, warning, info, question)
+                    background: '#1a1a2e', // Fondo oscuro acorde al diseño dinámico
+                    color: '#00d0ff', // Texto llamativo de color rojo vibrante
+                    confirmButtonColor: '#0f3460', // Botón con tono azul oscuro
+                    cancelButtonColor: '#16213e', // Botón cancelar (si se usa) en azul más tenue
+                    width: 350,
+                    customClass: {
+                      popup: 'memorystar-popup',
+                      title: 'memorystar-title',
+                      content: 'memorystar-content',
+                    }
+                });
             }
         );
     });
@@ -146,8 +190,22 @@ function initializeSocket() {
                 console.log(data)
                 break;
             case 'error':
-                alert(data.message);
-                break;
+                //alert(data.message);
+                Swal.fire({
+                    
+                    text: `${data.message}`,
+                    icon: 'error', // Tipo de icono (success, error, warning, info, question)
+                    background: '#1a1a2e', // Fondo oscuro acorde al diseño dinámico
+                    color: '#00d0ff', // Texto llamativo de color rojo vibrante
+                    confirmButtonColor: '#0f3460', // Botón con tono azul oscuro
+                    cancelButtonColor: '#16213e', // Botón cancelar (si se usa) en azul más tenue
+                    width: 350,
+                    customClass: {
+                      popup: 'memorystar-popup',
+                      title: 'memorystar-title',
+                      content: 'memorystar-content',
+                    }
+                });                break;
             case 'chat':
                 let text = document.createElement('div');
                 text.classList.add('other');
@@ -213,7 +271,25 @@ function handlecrearSala(data) {
     document.getElementById('estiloEspera').disabled = false;
     document.getElementById('estiloCrear').disabled = true;
 
-    alert(`Sala creada! Código: ${codigoSala}`);
+    //alert(`Sala creada! Código: ${codigoSala}`);
+    //Swal(`Sala creada! Código: ${codigoSala}`);
+    Swal.fire({
+        title: 'Sala creada!',
+        text: `Código: ${codigoSala}`,
+        //icon: 'success', // Tipo de icono (success, error, warning, info, question)
+        background: '#1a1a2e', // Fondo oscuro acorde al diseño dinámico
+        color: '#00d0ff', // Texto llamativo de color rojo vibrante
+        confirmButtonColor: '#0f3460', // Botón con tono azul oscuro
+        cancelButtonColor: '#16213e', // Botón cancelar (si se usa) en azul más tenue
+        width: 350,
+        customClass: {
+          popup: 'memorystar-popup',
+          title: 'memorystar-title',
+          content: 'memorystar-content',
+        }
+    });
+      
+    
     if (data.esAnfitrion) {
         endChatButton.style.display = "block";
 
@@ -273,7 +349,23 @@ function obtenerUsuario(data) {
 function handleRoomJoined(data) {
     codigoSala = data.codigoSala;
     obtenerDatosUsuario((data) => {
-        alert(`Te has unido a la sala ${codigoSala}`);
+        //alert(`Te has unido a la sala ${codigoSala}`);
+        Swal.fire({
+            title: 'Te has unido a la sala',
+            text: `Código: ${codigoSala}`,
+            icon: 'success', // Tipo de icono (success, error, warning, info, question)
+            background: '#1a1a2e', // Fondo oscuro acorde al diseño dinámico
+            color: '#00d0ff', // Texto llamativo de color rojo vibrante
+            confirmButtonColor: '#0f3460', // Botón con tono azul oscuro
+            cancelButtonColor: '#16213e', // Botón cancelar (si se usa) en azul más tenue
+            width: 350,
+            customClass: {
+              popup: 'memorystar-popup',
+              title: 'memorystar-title',
+              content: 'memorystar-content',
+            }
+        });
+
         document.getElementById('estiloBootstrap').disabled = false;
         document.getElementById('estiloChat').disabled = false;
         document.getElementById('estiloEspera').disabled = false;
@@ -285,7 +377,22 @@ function handleRoomJoined(data) {
         obtenerUsuario(data);
     },
         () => {
-            alert("Por favor inicia sesión para continuar.")
+            //alert("Por favor inicia sesión para continuar.")
+            Swal.fire({
+            
+                text: `Por favor inicia sesión para continuar.`,
+                icon: 'error', // Tipo de icono (success, error, warning, info, question)
+                background: '#1a1a2e', // Fondo oscuro acorde al diseño dinámico
+                color: '#00d0ff', // Texto llamativo de color rojo vibrante
+                confirmButtonColor: '#0f3460', // Botón con tono azul oscuro
+                cancelButtonColor: '#16213e', // Botón cancelar (si se usa) en azul más tenue
+                width: 350,
+                customClass: {
+                  popup: 'memorystar-popup',
+                  title: 'memorystar-title',
+                  content: 'memorystar-content',
+                }
+            });
 
         }
     );

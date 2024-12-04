@@ -168,7 +168,7 @@ body {
 
 .objetos {
   position: absolute;
-
+  user-select: none;
   cursor: pointer;
   margin: 5px;
   object-fit: cover;

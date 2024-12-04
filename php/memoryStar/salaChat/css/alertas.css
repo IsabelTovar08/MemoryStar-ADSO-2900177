@@ -1,0 +1,26 @@
+.memorystar-popup {
+    border-radius: 20px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.6);
+    background-color: #1a1a2e; 
+  }
+  
+  .memorystar-title {
+    font-family: 'Poppins', sans-serif;
+    font-size: 6vh;
+    font-weight: bold;
+    color: #00d0ff; 
+  }
+  
+  .memorystar-content {
+    font-family: 'Roboto', sans-serif;
+    font-size: 4.5vh;
+    color: #ffffff; 
+  }
+  
+  .swal2-confirm {
+    background-color: #0f3460 !important; 
+  }
+  
+  .swal2-cancel {
+    background-color: #16213e !important; 
+  }

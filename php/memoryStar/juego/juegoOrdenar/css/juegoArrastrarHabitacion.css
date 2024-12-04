@@ -167,6 +167,7 @@ body {
 }
 
 .objetos {
+  user-select: none;
   position: absolute;
 
   cursor: pointer;
