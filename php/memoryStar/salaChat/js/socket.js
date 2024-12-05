@@ -171,7 +171,7 @@ if (formUnirseSala) {
 
 
 function initializeSocket() {
-    socket = new WebSocket("ws://192.168.1.10:8080");
+    socket = new WebSocket("ws://localhost:8080");
 
     socket.onopen = () => {
         console.log("Conectado al WebSocket");

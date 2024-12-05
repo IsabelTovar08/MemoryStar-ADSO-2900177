@@ -264,13 +264,7 @@ document.addEventListener("DOMContentLoaded", function () {
                               <img src="../../../modales/modales/img/tablas/rubipuntaje.png"
                                   style="width: 4vh; height: auto;">
                     </div>
-                    <div class="col-12 row contenedor-info">
-                      <div class="col-6 usuarioPerfill">
-                          <img src="../../../modales/modales/img/tablas/fotouser.png" alt="" style="width: 16px;">
-                      </div>
-                      <div class="col-3">${contador}s</div>
-                      <div class="col-3">${puntuacion}pts</div>
-                  </div>
+                    
                 </div>
     
                 <div class="contenedor-botonTsolo">
@@ -289,6 +283,7 @@ document.addEventListener("DOMContentLoaded", function () {
     new bootstrap.Modal(modalFinal, { backdrop: "static" }).show();
   }
 });
+
 
 function puntosfinal(puntuacion, rubis, contador) {
   const datosJuego = {
