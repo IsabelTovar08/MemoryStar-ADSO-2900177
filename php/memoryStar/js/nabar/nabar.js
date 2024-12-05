@@ -511,25 +511,23 @@ var modalHTML = `
 <div class="modal fade" id="exampleModal-tienda" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog card moveer">
         <div class="modal-content fondo-tienda">
-            <div class="modal-header">
-                <div class="col-12 row">
-                    <div class="col-10">
-                        <h1 class="fs-5 titulo-tienda">Tienda memoryStar</h1>
-                    </div>
+                <div class="modal-header">
+                    <div class="col-12 row">
+                        <div class="col-10">
+                            <h1 class="fs-5 titulo-tienda">Tienda memoryStar</h1>
+                        </div>
                         <div class="col-2">
                             <img src="img/iconos/botonSalir.png" alt="salir" class="btn salir-tienda" data-bs-dismiss="modal" aria-label="Close">
                         </div>
                     </div>
                 </div>
                 <div class="modal-body texto">
-                 <p class="descripcion-tienda">Compra artículos especiales para mejorar tu experiencia en el juego. </p>
-                    
+                    <p class="descripcion-tienda">Compra artículos especiales para mejorar tu experiencia en el juego. </p>
                     <div class="wooden-sign">
                         <div class="wooden-sign2">
                             <div class="number-item3">
                                 <span class="sign-text2">Iconos de perfil</span>
                                 <span class="number"><div id="diamond-count"></div> <div class="diamond"></div></span>
-                                
                             </div>
                         </div>
                     </div>
@@ -538,11 +536,11 @@ var modalHTML = `
             </div>
         </div>
     </div>
-  <!-- Contenedor de alerta -->
+    <!-- Contenedor de alerta -->
     <div id="custom-alert" class="custom-alert" style="display: none;">
-    <span id="alert-message"></span>
-    <button id="close-alert" class="btn-close">X</button>
-</div>
+        <span id="alert-message"></span>
+        <button id="close-alert" class="btn-close">X</button>
+    </div>
 </div>
 </div>
 
