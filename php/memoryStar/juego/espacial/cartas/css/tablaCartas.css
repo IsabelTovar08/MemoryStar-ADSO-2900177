@@ -181,6 +181,7 @@
   justify-content: center;
   align-items: center;
   top: 92%;
+  gap: 2vh;
 }
 
 .botonTsolo {
@@ -190,11 +191,11 @@
   background: #4ecdc4;
   box-shadow: 0 0 20px rgba(78, 205, 196, 0.5);
   border-radius: 25px;
-  padding: 0.5rem 1rem;
+  padding: 0.5rem 0.5rem;
   text-align: center;
   width: 100%;
   height: auto;
-  line-height: 18px;
+  line-height: 2vh;
   border: none;
   transition: all 0.3s ease;
   text-transform: uppercase;

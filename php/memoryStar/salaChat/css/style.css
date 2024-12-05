@@ -1,3 +1,6 @@
+html {
+    overflow: hidden;
+}
 body{
     overflow: hidden;
 }
@@ -121,7 +124,7 @@ h1 {
 }
 
 .send:hover {
-    background-color: #5f3aff;
+    background-color: #5e3aff;
 }
 
 .send img {

@@ -15,6 +15,8 @@
     <title>MemoryStart ¡Pon a prueba tu memoria!</title>
     <link rel="shortcut icon" href="../img/iconos/segundoMemory.png">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Just+Me+Again+Down+Here&display=swap');
         @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
@@ -77,10 +79,14 @@
                     <span class="mensaje" style="color: #fff; margin: 0 auto; margin-top: 0; padding: 0;"></span>
                     <div class="contenedor-botonTsolo">
                         <!-- <button class="botonTsolo">Jugar de nuevo</button> -->
-                        <button class="botonTsolo" style="margin-left: 20px;">Aceptar</button>
+                        <button class="botonTsolo" data-bs-dismiss="modal"
+                        aria-label="Close">Aceptar</button>
                     </div>
                 </div>
             </div>
+        </div>
+        <div id="salir">
+            <img src="../../img/iconos/salir.png" alt="">
         </div>
         <!-- juego -->
 
@@ -102,16 +108,7 @@
                     <div class="contenedor-estante">
                         <img src="img/estanteria.png" class="estanteImg">
                         <div class="contenedor-libros" id="lista">
-                            <!-- <img src="img/librito1.png" alt="" class="libro" data-id="1">
-                            <img src="img/librito2.png" alt="" class="libro" data-id="2">
-                            <img src="img/librito3.png" alt="" class="libro" data-id="3">
-                            <img src="img/librito4.png" alt="" class="libro" data-id="4">
-                            <img src="img/librito5.png" alt="" class="libro" data-id="5">
-                            <img src="img/librito6.png" alt="" class="libro" data-id="6"> 
-                            <img src="img/librito7.png" alt="" class="libro" data-id="7"> 
-                            <img src="img/librito8.png" alt="" class="libro" data-id="8"> 
-                            <img src="img/librito9.png" alt="" class="libro" data-id="9">   -->
-
+                        
                         </div>
                     </div>
                 </div>
@@ -124,7 +121,7 @@
     <script src="../../js/pantalla.js"></script>
     <script src="js/Sortable.min.js"></script>
 
-    <script id="script1" src="js/librosSocket.js" ></script>
+    <script id="script1" src="js/libros.js" ></script>
 
     <script src="../../bootstrap/js/bootstrap.js"></script>
     <script>

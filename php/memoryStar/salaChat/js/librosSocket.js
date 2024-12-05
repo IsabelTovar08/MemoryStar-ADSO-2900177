@@ -9,7 +9,7 @@ let mensaje = document.querySelector('.mensaje');
 
 async function obtenerDatosUsuario(callback, manejarError) {
   try {
-    const response = await fetch("../../procesos/login/obtenerUsuario.php");
+    const response = await fetch("../procesos/login/obtenerUsuario.php");
     if (response.ok) {
       const data = await response.json();
       if (data.success && data.usuario) {
@@ -53,6 +53,9 @@ function iniciar() {
         console.log("Estadísticas: ", JSON.stringify(data.players));
         actualizarEstadisticas(data);
         break;
+      case "actualizarEstadisticaFinal":
+        tablaFinal(data);
+        break;
       case "ordenCorrectoR":
         console.log("Orden correcta recibida:", data.orden);
         mostrarLibrosEnOrden(data.orden);
@@ -61,11 +64,11 @@ function iniciar() {
       case 'error':
         console.error('Error:', data.message);
         break;
-        case 'desconectadoJuego':
-          usuarioAbandono(data);
-          console.log(data)
-          console.log("abandonado")
-          break;
+      case 'desconectadoJuego':
+        usuarioAbandono(data);
+        console.log(data)
+        console.log("abandonado")
+        break;
       case 'actualizarJugadoresRecibir':
         contenedorUsers.innerHTML = '';
         data.players.forEach((player, index) => {
@@ -73,16 +76,13 @@ function iniciar() {
           contenedor.className = "col-12 row contenedor-info";
           contenedor.innerHTML = `
                   <div class="col-6 usuarioPerfill">
-                      ${
-                        index + 1
-                      }. <img src="../../modales/modales/img/tablas/fotouser.png" alt="" style="width: 16px;"> ${
-            player.usuario
-          }
+                      ${index + 1
+            }. <img src="../modales/modales/img/tablas/fotouser.png" alt="" style="width: 16px;"> ${player.usuario
+            }
                   </div>
                   <div class="col-3" id="tiempo1">${player.time}s</div>
-                  <div class="col-3" id="puntosSecu2">${
-                    player.score
-                  } puntos</div>
+                  <div class="col-3" id="puntosSecu2">${player.score
+            } puntos</div>
               `;
           5;
           contenedorUsers.appendChild(contenedor);
@@ -98,7 +98,7 @@ function iniciar() {
         const contenUser = document.getElementById("contedor_users");
         contenUser.innerHTML = `
             <div class="col-12 row contenedor-info">
-                                      <div class="col-6 usuarioPerfill"><img src="../../modales/modales/img/tablas/fotouser.png"
+                                      <div class="col-6 usuarioPerfill"><img src="../modales/modales/img/tablas/fotouser.png"
                                               alt="" style="width: 16px;"></div>
                                       <div class="col-3" id="tiempo1">0</div>
                                       <div class="col-3" id="puntosSecu2">0s</div>
@@ -140,16 +140,18 @@ const botonVerificar = document.getElementById("verificarBtn");
 const resultado = document.getElementById("resultado");
 const aceptar = document.querySelector(".botonTsolo");
 const contenedorUsers = document.getElementById("contedor_users");
+const audioVictory = new Audio("../sonidos/juego/victoria1.mp3");
+
 const todosLosLibros = [
-  { src: "img/librito1.png", dataId: "1" },
-  { src: "img/librito2.png", dataId: "2" },
-  { src: "img/librito3.png", dataId: "3" },
-  { src: "img/librito4.png", dataId: "4" },
-  { src: "img/librito5.png", dataId: "5" },
-  { src: "img/librito6.png", dataId: "6" },
-  { src: "img/librito7.png", dataId: "7" },
-  { src: "img/librito8.png", dataId: "8" },
-  { src: "img/librito9.png", dataId: "9" },
+  { src: "../juego/juegoOrdenar/img/librito1.png", dataId: "1" },
+  { src: "../juego/juegoOrdenar/img/librito2.png", dataId: "2" },
+  { src: "../juego/juegoOrdenar/img/librito3.png", dataId: "3" },
+  { src: "../juego/juegoOrdenar/img/librito4.png", dataId: "4" },
+  { src: "../juego/juegoOrdenar/img/librito5.png", dataId: "5" },
+  { src: "../juego/juegoOrdenar/img/librito6.png", dataId: "6" },
+  { src: "../juego/juegoOrdenar/img/librito7.png", dataId: "7" },
+  { src: "../juego/juegoOrdenar/img/librito8.png", dataId: "8" },
+  { src: "../juego/juegoOrdenar/img/librito9.png", dataId: "9" },
 ];
 let rondaActual = 1;
 let puntajeTotal = 0;
@@ -203,7 +205,7 @@ function mostrarLibrosEnOrden(orden) {
     orden.forEach((id) => {
       let img = document.createElement("img");
       let idSinComillas = id.replace(/'/g, "");
-      img.setAttribute("src", `img/librito${idSinComillas}.png`);
+      img.setAttribute("src", `../juego/juegoOrdenar/img/librito${idSinComillas}.png`);
       img.setAttribute("data-id", idSinComillas);
       img.classList.add("libro", "inicio");
       libros.appendChild(img);
@@ -332,9 +334,8 @@ function iniciarTemp() {
       document.getElementById("verificarBtn").disabled = false;
       const minutos = Math.floor(contador / 60);
       const segundos = contador % 60;
-      const formatoTiempo = `${minutos < 10 ? "0" : ""}${minutos}:${
-        segundos < 10 ? "0" : ""
-      }${segundos}`;
+      const formatoTiempo = `${minutos < 10 ? "0" : ""}${minutos}:${segundos < 10 ? "0" : ""
+        }${segundos}`;
 
       document.getElementById("temp").innerHTML = `${formatoTiempo}`;
       if (!intervaloBarra) {
@@ -396,21 +397,19 @@ function finalizarRonda(ordenVerificar) {
 
   puntajeTotal += aciertosRonda;
   tiemposPorRonda.push(contador);
-  document.getElementById("tiempo1").innerHTML = `00:${
-    contador < 10 ? "0" : ""
-  }${contador}`;
+  document.getElementById("tiempo1").innerHTML = `00:${contador < 10 ? "0" : ""
+    }${contador}`;
   document.getElementById("puntosSecu1").innerHTML = `${aciertosRonda}pts`;
   document.getElementById("puntosSecu2").innerHTML = `${puntajeTotal}pts`;
-  document.getElementById("aciertos").innerHTML = `Aciertos:${
-    aciertosRonda / 100
-  }`;
+  document.getElementById("aciertos").innerHTML = `Aciertos:${aciertosRonda / 100
+    }`;
   document.getElementById("desaciertos").innerHTML = `Fallos:${desaciertos}`;
   if (aciertosRonda === ordenVerificar.length * 100) {
     rubis = window.location.pathname.includes("Dificil")
       ? 15
       : window.location.pathname.includes("Medio")
-      ? 10
-      : 5;
+        ? 10
+        : 5;
   }
   totalRubis += rubis;
   document.getElementById("rubis").innerHTML = `+${rubis}`;
@@ -441,7 +440,7 @@ function finalizarRonda(ordenVerificar) {
       usuario: usuarioId,
     })
   );
-  sendPlayerStatsToServer(aciertosRonda, contador);
+  enviarResultadosRonda(aciertosRonda, contador);
   console.log("ENVIADO DESDE LIBROS JS");
 }
 
@@ -505,9 +504,9 @@ function mostrarResultadosFinales() {
                 <div class="tituloTsolo">¡Juego Completado!</div>
                 <div class="contenedorTsoloInterior">
                 <div class="contenedor-estrellas">
-                              <img src="../../modales/modales/img/tablas/Star.png" class="star" alt="">
-                              <img src="../../modales/modales/img/tablas/Star.png" class="star" alt="">
-                              <img src="../../modales/modales/img/tablas/Star.png" class="star" alt="">
+                              <img src="../modales/modales/img/tablas/Star.png" class="star" alt="">
+                              <img src="../modales/modales/img/tablas/Star.png" class="star" alt="">
+                              <img src="../modales/modales/img/tablas/Star.png" class="star" alt="">
                           </div>
                     <div class="puntaje-total">
                         ${puntajeTotal}
@@ -519,27 +518,26 @@ function mostrarResultadosFinales() {
                     </div>
                     <div class="contenedor-rubi">
                               <div>${totalRubis}</div>
-                              <img src="../../modales/modales/img/tablas/rubipuntaje.png"
+                              <img src="../modales/modales/img/tablas/rubipuntaje.png"
                                   style="width: 4vh; height: auto;">
                     </div>
     
                     <div class="contedor_users">
                       <div class="col-12 row contenedor-info">
                           <div class="col-6 usuarioPerfill">
-                              <img src="../../modales/modales/img/tablas/fotouser.png" alt="" style="width: 16px;">
+                              <img src="../modales/modales/img/tablas/fotouser.png" alt="" style="width: 16px;">
                       
                           </div>
-                          <div class="col-3">00:${
-                            tiempoPromedio < 10 ? "0" : ""
-                          }${tiempoPromedio}</div>
+                          <div class="col-3">00:${tiempoPromedio < 10 ? "0" : ""
+    }${tiempoPromedio}</div>
                           <div class="col-3">${puntajeTotal}pts</div>
                       </div>
                     </div>
                 </div>
     
                 <div class="contenedor-botonTsolo">
-                    <button class="botonTsolo" onclick="redirigir()">
-                        Salir
+                    <button class="botonTsolo" onclick="mostrarTablaFinal()">
+                        Continuar
                     </button>
                 </div>
             </div>
@@ -549,11 +547,29 @@ function mostrarResultadosFinales() {
   document.body.appendChild(modalFinal);
   new bootstrap.Modal(modalFinal).show();
 
+  audioVictory.play().catch((error) => {
+    console.error("Error al reproducir audio:", error);
+  });
+
+  enviarResultadosFinales(puntajeTotal, tiempoPromedio);
   enviarPuntuacion(puntajeTotal, tiempoPromedio, totalRubis);
   // obtenerDatosUsuario();
 }
+function mostrarTablaFinal() {
+  const modalAbierto = document.querySelector('.modal.show');
+  if (modalAbierto) {
+    const bootstrapModal = bootstrap.Modal.getInstance(modalAbierto);
+    if (bootstrapModal) {
+      bootstrapModal.hide();
+    }
+  }
+  const targetModal = document.getElementById('tablaMulti');
+  const newBootstrapModal = new bootstrap.Modal(targetModal);
+  newBootstrapModal.show();
+}
+
 function redirigir() {
-  window.location.href = "../../index.html";
+  window.location.href = "../index.html";
 }
 function enviarPuntuacion(puntajeTotal, tiempoPromedio, totalRubis) {
   const arrPuntos = {
@@ -564,7 +580,7 @@ function enviarPuntuacion(puntajeTotal, tiempoPromedio, totalRubis) {
 
   console.log("Enviando datos:", arrPuntos);
 
-  fetch("../../procesos/puntuacion/recibirPuntuacion.php", {
+  fetch("../procesos/puntuacion/recibirPuntuacion.php", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -589,7 +605,7 @@ function enviarPuntuacion(puntajeTotal, tiempoPromedio, totalRubis) {
       console.error("Error:", error);
       alert(
         "Ocurrió un error al enviar la puntuación: " +
-          (error.mensaje || error.message || "Error desconocido")
+        (error.mensaje || error.message || "Error desconocido")
       );
     });
 }
@@ -617,6 +633,8 @@ async function reconocerAdmin() {
       const usuario = data.usuario;
       contenedorNombre = document.getElementById("nombre");
       contenedorNombre.textContent = usuario;
+      const nombreUser = document.querySelector('.usuarioPerfill');
+      nombreUser.textContent = usuario;
       console.log(`Usuario ID: ${usuarioId}, Nombre: ${usuario}`);
 
       const adminId = gameData.players.find(
@@ -635,7 +653,7 @@ async function reconocerAdmin() {
   );
 }
 
-function sendPlayerStatsToServer(score, time) {
+function enviarResultadosRonda(score, time) {
   console.log(score);
   console.log(time);
   console.log(usuarioId);
@@ -661,7 +679,32 @@ function sendPlayerStatsToServer(score, time) {
     console.error("WebSocket no está conectado");
   }
 }
+function enviarResultadosFinales(score, time) {
+  console.log(score);
+  console.log(time);
+  console.log(usuarioId);
 
+  if (ws.readyState === WebSocket.OPEN) {
+    if (gameData) {
+      ws.send(
+        JSON.stringify({
+          type: "puntajeFinal",
+          codigoSala: gameData.gameData.codigoSala,
+          player: {
+            idUsuario: usuarioId,
+            score: score,
+            time: time,
+          },
+        })
+      );
+      console.log("enviado");
+    } else {
+      console.error("gameData no está definido");
+    }
+  } else {
+    console.error("WebSocket no está conectado");
+  }
+}
 function enviarOrdenCorrecto() {
   console.log("Orden correcto a enviar:", ordenCorrecto);
   console.log(usuarioEsAdmin);
@@ -711,12 +754,13 @@ function enviarOrdenCorrecto() {
 function actualizarEstadisticas(data) {
   let estado = 0;
   console.log(todosListos);
-  mensaje.textContent = "";
-
+  mensaje.innerHTML = "";
+  mensaje.style.color = "white";
   if (todosListos) {
     mensaje.style.color = "green";
-    mensaje.innerHTML = `<i class="fa-solid fa-circle-check"></i> Todos listos.`;
+    mensaje.innerHTML = `<i class="fa-solid fa-circle-check"></i>`;
   } else {
+    mensaje.style.color = "white";
     mensaje.innerHTML = `<i class="fa-solid fa-spinner fa-spin"></i> Esperando jugadores...`;
   }
   aceptar.addEventListener("click", () => {
@@ -738,16 +782,10 @@ function actualizarEstadisticas(data) {
         }
 
         contenedor.innerHTML = `
-          <div class="col-6 usuarioPerfill">
-            ${
-              index + 1
-            }. <img src="../../modales/modales/img/tablas/fotouser.png" alt="" style="width: 16px;"> ${
-          player.usuario
-        }
-          </div>
+          <div class="col-6 usuarioPerfill">${index + 1}. ${player.usuario}</div>
           <div class="col-3" id="tiempo1">${player.time}s</div>
           <div class="col-3" id="puntosSecu2">${player.score} puntos</div>
-  `;
+      `;
         contenedorUsers.appendChild(contenedor);
       });
 
@@ -773,13 +811,87 @@ function actualizarEstadisticas(data) {
       console.log("Mensaje enviado para cerrar el modal");
       estado = 0;
       todosListos = false;
+      mensaje.innerHTML = "";
+      mensaje.style.color = "white";
     }
   });
 }
+function tablaFinal(data) {
+  console.log("Paso final");
+  const contenedorDestacados = document.querySelector(".contenedor-userPunto");
+  const contenedorResto = document.querySelector(".scroll");
+  const contenedorTablaMulti = document.querySelector(".contenedor-tablaMulti");
+  const medallas = contenedorTablaMulti.querySelector(".medallas");
+  const contenedorUser = contenedorTablaMulti.querySelector(".contenedor-user");
+  const contenedorEstrellas = `
+    <div class="contenedor-estrellas" style="position: relative !important;">
+      <img src="../modales/modales/img/tablas/Star.png" class="star" alt="">
+      <img src="../modales/modales/img/tablas/Star.png" class="star" alt="">
+      <img src="../modales/modales/img/tablas/Star.png" class="star" alt="">
+    </div>
+  `;
+
+  if (!contenedorDestacados || !contenedorResto || !contenedorTablaMulti) {
+    console.error("No se encontraron los contenedores requeridos.");
+    return;
+  }
+
+  contenedorDestacados.innerHTML = "";
+  contenedorResto.innerHTML = "";
+
+  const jugadoresOrdenados = data.players.sort((a, b) => {
+    if (b.score !== a.score) {
+      return b.score - a.score; 
+    }
+    return a.time - b.time;
+  });
+  if (jugadoresOrdenados.length < 3) {
+    if (medallas) medallas.remove();
+    if (contenedorUser) contenedorUser.remove();
+    
+      contenedorTablaMulti.insertAdjacentHTML("afterbegin", contenedorEstrellas);
+    
+    jugadoresOrdenados.forEach((player, index) => {
+      const restoHTML = `
+        <div class="col-10 row contenedor-infoMulti">
+          <div class="col-6">${index + 1}. ${player.usuario}</div>
+          <div class="col-3">${player.time}s</div>
+          <div class="col-3">${player.score}</div>
+        </div>
+      `;
+      contenedorResto.innerHTML += restoHTML;
+    });
+  } else {
+    // Si hay más de 3, separar entre destacados y no destacados
+    jugadoresOrdenados.forEach((player, index) => {
+      if (index < 3) {
+        const destacadoHTML = `
+          <div class="userPunto">
+            <div>${player.usuario}</div>
+            <div>${player.time}s</div>
+            <div>${player.score}</div>
+          </div>
+        `;
+        contenedorDestacados.innerHTML += destacadoHTML;
+      } else {
+        const restoHTML = `
+          <div class="col-10 row contenedor-infoMulti">
+            <div class="col-6">${index + 1}.<img src="../modales/modales/img/tablas/fotouser.png" alt=""
+                style="width: 20px;"> ${player.usuario}</div>
+            <div class="col-3">${player.time}s</div>
+            <div class="col-3">${player.score}</div>
+          </div>
+        `;
+        contenedorResto.innerHTML += restoHTML;
+      }
+    });
+  }
+}
+
 function usuarioAbandono(data) {
   const connectionDiv = document.querySelector(`.contenedor-usuario[data-username="${data.user}"]`);
   if (connectionDiv) {
-      connectionDiv.remove();
+    connectionDiv.remove();
   }
 
   const disconnectionDiv = document.createElement('div');
@@ -789,10 +901,38 @@ function usuarioAbandono(data) {
       <button class="close-notification">×</button>
   `;
   disconnectionDiv.querySelector('.close-notification').addEventListener('click', () => {
-      disconnectionDiv.classList.add('fade-out');
-      setTimeout(() => disconnectionDiv.remove(), 300);
+    disconnectionDiv.classList.add('fade-out');
+    setTimeout(() => disconnectionDiv.remove(), 300);
   });
   abandono.appendChild(disconnectionDiv);
+}
+const btnSalir = document.getElementById("salir");
+btnSalir.addEventListener('click',function(){
+  Swal.fire({
+    text: '¿Estás seguro de que deseas salir del juego?',
+    icon: 'warning', // Tipo de icono: advertencia
+    background: '#1a1a2e', // Fondo oscuro acorde al diseño dinámico
+    color: '#00d0ff', // Texto llamativo
+    confirmButtonColor: '#0f3460', // Botón "Aceptar" azul oscuro
+    cancelButtonColor: '#16213e', // Botón "Cancelar" azul tenue
+    showCancelButton: true, // Muestra el botón de cancelar
+    confirmButtonText: 'Sí, salir', // Texto para el botón de confirmar
+    cancelButtonText: 'Cancelar', // Texto para el botón de cancelar
+    width: 350,
+    customClass: {
+        popup: 'memorystar-popup',
+        title: 'memorystar-title',
+        content: 'memorystar-content',
+    }
+  }).then((result) => {
+    if (result.isConfirmed) {
+        salirr(); // Llama a la función si el usuario confirma
+    }
+  });
+})
+
+function salirr(){
+  window.location.href="../index.html";
 }
 botonVerificar.addEventListener("click", () => {
   console.log(ordenVerificar);

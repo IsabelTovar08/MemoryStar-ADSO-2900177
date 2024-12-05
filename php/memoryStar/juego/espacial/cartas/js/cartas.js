@@ -40,7 +40,7 @@ export class JuegoCartas {
     this.diamantess = 0;
     this.seconds = 0;
     this.timerInterval;
-    this.duracion = 20;
+    this.duracion = 30;
     this.elemento = document.getElementById("tiempo");
     this.cosoTiempo;
 
@@ -325,4 +325,14 @@ export class JuegoCartas {
       });
     });
   }
+}
+
+const btNuevo = document.getElementById("nuevo");
+btNuevo.addEventListener('click',function(){
+  jugarNuevo();
+})
+function jugarNuevo(){
+  setTimeout(() => {
+    location.reload();
+  }, 2000);
 }

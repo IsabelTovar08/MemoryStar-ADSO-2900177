@@ -63,7 +63,7 @@ contenedorCrearSala.addEventListener('click', () => {
                     const tema = document.querySelector('input[name="juegoOrdenar"]:checked').value;
 
                     if (nombreSala) {
-                        rutaSeleccionada = `../juego/juegoOrdenar/Memorix${tema}${dificultad}.html`;
+                        rutaSeleccionada = `Memorix${tema}${dificultad}.html`;
                         const tematica = document.getElementById('tematica');
                         tematica.textContent = `${tema}`;
 
@@ -324,7 +324,7 @@ function generarQR() {
     const codigoElement = document.getElementById('codigoSalaModal').textContent; 
     console.log(codigoElement)
     
-    new QRCode(contenedor, `http://192.168.131.53/memoryStar-ADSO-2900177/php/memoryStar/salaChat?codigo=${codigoElement}`);
+    new QRCode(contenedor, `http://192.168.1.10/memoryStar-ADSO-2900177/php/memoryStar/salaChat?codigo=${codigoElement}`);
     // new QRCode(contenedor, `www.google.com`);
 
     const copiar = document.querySelector('.botto-copiar');

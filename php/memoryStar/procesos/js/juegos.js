@@ -37,12 +37,14 @@ document.addEventListener("DOMContentLoaded", () => {
     resultadoMostrar += `
           <div class="carouselG">
             <div class="carousel-innerG">
-                <div class="carousel-itemG">1</div>
-                <div class="carousel-itemG">2</div>
-                <div class="carousel-itemG">3</div>
-                <div class="carousel-itemG">4</div>
-                <div class="carousel-itemG">5</div>
-                <div class="carousel-itemG">6</div>
+                <img src="img/carrusel/1.png" class="carousel-itemG">
+                <img src="img/carrusel/2.png" class="carousel-itemG">
+                <img src="img/carrusel/3.png" class="carousel-itemG">
+                <img src="img/carrusel/4.png" class="carousel-itemG">
+                <img src="img/carrusel/5.png" class="carousel-itemG">
+                <img src="img/carrusel/6.png" class="carousel-itemG">
+                
+                
             </div>
           </div>
       </div>
