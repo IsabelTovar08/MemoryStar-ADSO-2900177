@@ -3,6 +3,99 @@ function redirigir() {
     window.location.href = "../../../index.html";
   }, 2000);
 }
+
+
+function cerrarYAbrirModal() {
+  // Cerrar el modal actual
+  const modalFinal = document.getElementById('modalFinal');
+  const modalInstance = bootstrap.Modal.getInstance(modalFinal);
+  modalInstance.hide();
+
+  // Esperar a que el modal actual termine de cerrarse
+  modalFinal.addEventListener('hidden.bs.modal', function () {
+      modalFinal.remove(); // Eliminar el modal del DOM
+
+      // Realizar el fetch para obtener los datos desde PHP
+      fetch('../../../procesos/puntuacionmario/final.php')
+        .then(response => {
+            if (!response.ok) {
+                throw new Error(`Error HTTP: ${response.status}`);
+            }
+            return response.json();
+        })
+        .then(data => {
+            if (data.success) {
+                // Crear un nuevo modal con los datos obtenidos
+                const nuevoModal = document.createElement("div");
+                nuevoModal.className = "modal fade";
+                nuevoModal.id = "nuevoModal";
+                nuevoModal.setAttribute("tabindex", "-1");
+                nuevoModal.setAttribute("aria-labelledby", "nuevoModalLabel");
+                nuevoModal.setAttribute("aria-hidden", "true");
+                nuevoModal.setAttribute("data-bs-backdrop", "static");
+                nuevoModal.setAttribute("data-bs-keyboard", "false");
+
+                nuevoModal.innerHTML = `
+                        <div class="modal-dialog modal-sm modal-dialog-centered">
+                <div class="modal-content contenedorTsolo">
+                    <div class="tituloTsolo">¡Juego Completado! Puntuación final</div>
+                    <div class="contenedorTsoloInterior">
+                        <div class="contenedor-estrellas">
+                            <img src="../../../modales/modales/img/tablas/Star.png" class="star" alt="">
+                            <img src="../../../modales/modales/img/tablas/Star.png" class="star" alt="">
+                            <img src="../../../modales/modales/img/tablas/Star.png" class="star" alt="">
+                        </div>
+                        <div class="puntaje-total">
+                        ${data.data.puntos}
+                        </div>
+                        <div class="contenedor-puntaje">
+                            Tiempo:
+                            ${data.data.tiempo}s
+                        </div>
+                        <div class="contenedor-rubi">
+                            <div>${data.data.diamantes}</div>
+                            <img src="../../../modales/modales/img/tablas/rubipuntaje.png"
+                                style="width: 4vh; height: auto;">
+                        </div>
+                        <div class="col-12 row contenedor-info">
+                            <div class="col-6 usuarioPerfill">
+                                <img src="../../../modales/modales/img/tablas/fotouser.png" alt="" style="width: 16px;">
+                            </div>
+                            <div class="col-3"> ${data.data.tiempo}s</div>
+                            <div class="col-3">$${data.data.puntos}pts</div>
+                        </div>
+                    </div>
+                    <div class="contenedor-botonTsolo">
+                        <button class="botonTsolo" onclick="redirigir()">
+                            Salir
+                        </button>
+                    </div>
+                </div>
+            </div>
+                `;
+
+
+           
+        
+
+
+
+
+
+                document.body.appendChild(nuevoModal);
+                new bootstrap.Modal(nuevoModal).show();
+            } else {
+                alert(data.message || 'No se pudieron obtener los datos.');
+            }
+        })
+        .catch(error => {
+            console.error('Error:', error);
+            alert('Hubo un problema al obtener los datos.');
+        });
+  });
+}
+
+
 document.addEventListener("DOMContentLoaded", function () {
   const btnVeri = document.getElementById("verificar");
   let ordenCorrect = [];
@@ -181,7 +274,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 </div>
     
                 <div class="contenedor-botonTsolo">
-                    <button class="botonTsolo" onclick="redirigir()"
+                    <button class="botonTsolo" onclick="cerrarYAbrirModal()"
                     >
                         Salir
                     </button>
