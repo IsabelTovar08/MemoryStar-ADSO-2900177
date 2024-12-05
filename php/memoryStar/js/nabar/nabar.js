@@ -32,7 +32,7 @@ var modalHTML = `
             <span class="nombre"></span>
         </li>
         <li class="nav-item usuario">
-            <img src="img/iconos/usuario.png" id="profileImage2" alt="user" class="derecho iconos efectosIconos" data-bs-toggle="offcanvas" data-bs-target="#perfil" aria-controls="offcanvasRight">
+            <img src="img/iconos/usuario.png" id="profileImage2" alt="user" class="derecho iconos efectosIconos ponerimagenPerfilusuario1" data-bs-toggle="offcanvas" data-bs-target="#perfil" aria-controls="offcanvasRight">
         </li>
     </ul>
     <ul class="nav justify-content-end">
@@ -355,7 +355,7 @@ var modalHTML = `
             <img src="img/fondos/perfil3.jpg" id="profileImage2" alt="">
         </div>
         <div class="card__avatar fotoPerfil1" id="ponerFoto">
-            <img src="" alt="foto de perfil">
+            <img src="" alt="foto de perfil" class="ponerimagenPerfilusuario2">
         </div>
         <div class="card__title usuarioPerfill"></div>
         <div class="card__subtitle">Web Development</div>
