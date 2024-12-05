@@ -17,22 +17,18 @@
     position: absolute;
     width: 7vw;
     height: 7vw;
-    background: crimson;
-    color: white;
-    text-align: center;
-    line-height: 7vw;
-    font-size: 1.3vw;
+    align-items: center;
     border-radius: 10px;
     left: calc(50% - 40px); /* Centrar horizontalmente */
     top: calc(50% - 40px); /* Centrar verticalmente */
   }
   /* Posiciones en círculo */
-  .carousel-itemG:nth-child(1) { transform: rotateY(0deg) translateZ(8vw); background: #f00; }
-  .carousel-itemG:nth-child(2) { transform: rotateY(60deg) translateZ(8vw); background: #ff0; }
-  .carousel-itemG:nth-child(3) { transform: rotateY(120deg) translateZ(8vw); background: #0f0; }
-  .carousel-itemG:nth-child(4) { transform: rotateY(180deg) translateZ(8vw); background: #0ff; }
-  .carousel-itemG:nth-child(5) { transform: rotateY(240deg) translateZ(8vw); background: #00f; }
-  .carousel-itemG:nth-child(6) { transform: rotateY(300deg) translateZ(8vw); background: #f0f; }
+  .carousel-itemG:nth-child(1) { transform: rotateY(0deg) translateZ(8vw); }
+  .carousel-itemG:nth-child(2) { transform: rotateY(60deg) translateZ(8vw);  }
+  .carousel-itemG:nth-child(3) { transform: rotateY(120deg) translateZ(8vw);  }
+  .carousel-itemG:nth-child(4) { transform: rotateY(180deg) translateZ(8vw);  width: 12vh;height: auto;}
+  .carousel-itemG:nth-child(5) { transform: rotateY(240deg) translateZ(8vw);  width: 10vh;height: auto;}
+  .carousel-itemG:nth-child(6) { transform: rotateY(300deg) translateZ(8vw); width: 12vh;height: auto; }
   
   /* Animación: Rotación fija */
   @keyframes spin {

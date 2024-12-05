@@ -533,3 +533,32 @@ const fotor = document.querySelectorAll(".foto-user");
 if (fotor[0]) fotor[0].classList.add("ganador1"); // Primer lugar
 if (fotor[1]) fotor[1].classList.add("segundo1"); // Segundo lugar
 if (fotor[2]) fotor[2].classList.add("tercero1"); // Tercer lugar
+
+const btnSalir = document.getElementById("salir");
+btnSalir.addEventListener('click',function(){
+  Swal.fire({
+    text: `¿Estás seguro de que deseas salir del juego?`,
+    icon: 'warning', // Tipo de icono: advertencia
+    background: '#1a1a2e', // Fondo oscuro acorde al diseño dinámico
+    color: '#00d0ff', // Texto llamativo
+    confirmButtonColor: '#0f3460', // Botón "Aceptar" azul oscuro
+    cancelButtonColor: '#16213e', // Botón "Cancelar" azul tenue
+    showCancelButton: true, // Muestra el botón de cancelar
+    confirmButtonText: 'Sí, salir', // Texto para el botón de confirmar
+    cancelButtonText: 'Cancelar', // Texto para el botón de cancelar
+    width: 350,
+    customClass: {
+        popup: 'memorystar-popup',
+        title: 'memorystar-title',
+        content: 'memorystar-content',
+    }
+  }).then((result) => {
+    if (result.isConfirmed) {
+        salirr(); // Llama a la función si el usuario confirma
+    }
+  });
+})
+
+function salirr(){
+  window.location.href="../../index.html";
+}
