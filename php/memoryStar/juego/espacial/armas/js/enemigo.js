@@ -4,72 +4,96 @@ function redirigir(){
   }, 2000);
 }
 
-function mostrarTabla2() {
-  const modalFinal2 = document.createElement("div");
-  modalFinal2.className = "modal fade";
-  modalFinal2.id = "modalFinal2";
-  modalFinal2.setAttribute("tabindex", "-1");
-  modalFinal2.setAttribute("aria-labelledby", "modalFinal2Label");
-  modalFinal2.setAttribute("aria-hidden", "true");
-  modalFinal2.setAttribute("data-bs-backdrop", "static");
-  modalFinal2.setAttribute("data-bs-keyboard", "false");
 
-  modalFinal2.innerHTML = `
-    <div class="modal-dialog modal-sm modal-dialog-centered">
-      <div class="modal-content contenedorTsolo">
-        <div class="tituloTsolo">¡Juego Completado!</div>
-        <div class="contenedorTsoloInterior">
-          <div class="contenedor-estrellas">
-            <img src="modales/modales/img/tablas/Star.png" class="star" alt="">
-            <img src="modales/modales/img/tablas/Star.png" class="star" alt="">
-            <img src="modales/modales/img/tablas/Star.png" class="star" alt="">
-          </div>
-          <div class="puntaje-total">
-            ${puntuacion}
-          </div>
+function cerrarYAbrirModal() {
+  // Cerrar el modal actual
+  const modalFinal = document.getElementById('modalFinal');
+  const modalInstance = bootstrap.Modal.getInstance(modalFinal);
+  modalInstance.hide();
 
-          <div class="contenedor-puntaje">
-            Tiempo:
-            ${contador}s
-          </div>
-          <div class="contenedor-rubi">
-            <div>${rubis}</div>
-            <img src="modales/modales/img/tablas/rubipuntaje.png"
-                style="width: 4vh; height: auto;">
-          </div>
+  // Esperar a que el modal actual termine de cerrarse
+  modalFinal.addEventListener('hidden.bs.modal', function () {
+      modalFinal.remove(); // Eliminar el modal del DOM
 
-          <div class="col-12 row contenedor-info">
-            <div class="col-6 usuarioPerfill">
-              <img src="modales/modales/img/tablas/fotouser.png" alt="" style="width: 16px;">
+      // Realizar el fetch para obtener los datos desde PHP
+      fetch('../../../procesos/puntuacionmario/final.php')
+        .then(response => {
+            if (!response.ok) {
+                throw new Error(`Error HTTP: ${response.status}`);
+            }
+            return response.json();
+        })
+        .then(data => {
+            if (data.success) {
+                // Crear un nuevo modal con los datos obtenidos
+                const nuevoModal = document.createElement("div");
+                nuevoModal.className = "modal fade";
+                nuevoModal.id = "nuevoModal";
+                nuevoModal.setAttribute("tabindex", "-1");
+                nuevoModal.setAttribute("aria-labelledby", "nuevoModalLabel");
+                nuevoModal.setAttribute("aria-hidden", "true");
+                nuevoModal.setAttribute("data-bs-backdrop", "static");
+                nuevoModal.setAttribute("data-bs-keyboard", "false");
+
+                nuevoModal.innerHTML = `
+                        <div class="modal-dialog modal-sm modal-dialog-centered">
+                <div class="modal-content contenedorTsolo">
+                    <div class="tituloTsolo">¡Juego Completado! Puntuación final</div>
+                    <div class="contenedorTsoloInterior">
+                        <div class="contenedor-estrellas">
+                            <img src="../../../modales/modales/img/tablas/Star.png" class="star" alt="">
+                            <img src="../../../modales/modales/img/tablas/Star.png" class="star" alt="">
+                            <img src="../../../modales/modales/img/tablas/Star.png" class="star" alt="">
+                        </div>
+                        <div class="puntaje-total">
+                        ${data.data.puntos}
+                        </div>
+                        <div class="contenedor-puntaje">
+                            Tiempo:
+                            ${data.data.tiempo}s
+                        </div>
+                        <div class="contenedor-rubi">
+                            <div>${data.data.diamantes}</div>
+                            <img src="../../../modales/modales/img/tablas/rubipuntaje.png"
+                                style="width: 4vh; height: auto;">
+                        </div>
+                        <div class="col-12 row contenedor-info">
+                            <div class="col-6 usuarioPerfill">
+                                <img src="../../../modales/modales/img/tablas/fotouser.png" alt="" style="width: 16px;">
+                            </div>
+                            <div class="col-3"> ${data.data.tiempo}s</div>
+                            <div class="col-3">$${data.data.puntos}pts</div>
+                        </div>
+                    </div>
+                    <div class="contenedor-botonTsolo">
+                        <button class="botonTsolo" onclick="redirigir()">
+                            Salir
+                        </button>
+                    </div>
+                </div>
             </div>
-            <div class="col-3">${contador}s</div>
-            <div class="col-3">${puntuacion}pts</div>
-          </div>
-        </div>
+                `;
 
-        <div class="contenedor-botonTsolo">
-          <button class="botonTsolo" onclick="redirigir()">
-            Siguiente
-          </button>
-        </div>
-      </div>
-    </div>
-  `;
 
-  document.body.appendChild(modalFinal2);
+           
+        
 
-  // Agregamos el evento después de insertar el modal
-  modalFinal2.addEventListener(
-    "hidden.bs.modal",
-    () => {
-      mostrarTabla2();
-    },
-    { once: true }
-  );
 
-  new bootstrap.Modal(modalFinal2, { backdrop: "static" }).show();
+
+
+
+                document.body.appendChild(nuevoModal);
+                new bootstrap.Modal(nuevoModal).show();
+            } else {
+                alert(data.message || 'No se pudieron obtener los datos.');
+            }
+        })
+        .catch(error => {
+            console.error('Error:', error);
+            alert('Hubo un problema al obtener los datos.');
+        });
+  });
 }
-
 
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -267,51 +291,50 @@ document.addEventListener("DOMContentLoaded", () => {
       modalFinal.setAttribute("data-bs-keyboard", "false");
   
       modalFinal.innerHTML = `
-        <div class="modal-dialog modal-sm modal-dialog-centered">
-          <div class="modal-content contenedorTsolo">
-              <div class="tituloTsolo">¡Juego Completado!</div>
-              <div class="contenedorTsoloInterior">
-              <div class="contenedor-estrellas">
-                            <img src="../../../modales/modales/img/tablas/Star.png" class="star" alt="">
-                            <img src="../../../modales/modales/img/tablas/Star.png" class="star" alt="">
-                            <img src="../../../modales/modales/img/tablas/Star.png" class="star" alt="">
-                        </div>
-                  <div class="puntaje-total">
-                      ${puntuacion}
-                  </div>
-  
-                  <div class="contenedor-puntaje">
-                      Tiempo:
-                      ${contador}s
-                  </div>
-                  <div class="contenedor-rubi">
-                            <div>${rubis}</div>
-                            <img src="../../../modales/modales/img/tablas/rubipuntaje.png"
-                                style="width: 4vh; height: auto;">
-                  </div>
-  
-                  <div class="col-12 row contenedor-info">
-                      <div class="col-6 usuarioPerfill">
-                          <img src="../../../modales/modales/img/tablas/fotouser.png" alt="" style="width: 16px;">
+          <div class="modal-dialog modal-sm modal-dialog-centered">
+              <div class="modal-content contenedorTsolo">
+                  <div class="tituloTsolo">¡Juego Completado!</div>
+                  <div class="contenedorTsoloInterior">
+                      <div class="contenedor-estrellas">
+                          <img src="../../../modales/modales/img/tablas/Star.png" class="star" alt="">
+                          <img src="../../../modales/modales/img/tablas/Star.png" class="star" alt="">
+                          <img src="../../../modales/modales/img/tablas/Star.png" class="star" alt="">
                       </div>
-                      <div class="col-3">${contador}s</div>
-                      <div class="col-3">${puntuacion}pts</div>
+                      <div class="puntaje-total">
+                          ${puntuacion}
+                      </div>
+                      <div class="contenedor-puntaje">
+                          Tiempo:
+                          ${contador}s
+                      </div>
+                      <div class="contenedor-rubi">
+                          <div>${rubis}</div>
+                          <img src="../../../modales/modales/img/tablas/rubipuntaje.png"
+                              style="width: 4vh; height: auto;">
+                      </div>
+                      <div class="col-12 row contenedor-info">
+                          <div class="col-6 usuarioPerfill">
+                              <img src="../../../modales/modales/img/tablas/fotouser.png" alt="" style="width: 16px;">
+                          </div>
+                          <div class="col-3">${contador}s</div>
+                          <div class="col-3">${puntuacion}pts</div>
+                      </div>
                   </div>
-              </div>
-  
-              <div class="contenedor-botonTsolo">
-                  <button class="botonTsolo">
-                      Salir
-                  </button>
+                  <div class="contenedor-botonTsolo">
+                      <button class="botonTsolo" onclick="cerrarYAbrirModal()">
+                          Continuar
+                      </button>
+                  </div>
               </div>
           </div>
-      </div>
       `;
   
-      puntos(puntuacion, rubis, contador );
+      puntos(puntuacion, rubis, contador);
       document.body.appendChild(modalFinal);
       new bootstrap.Modal(modalFinal, { backdrop: "static" }).show();
-    }
+  }
+  
+ 
 
       function puntos(puntuacion, rubis, contador) {
 
@@ -340,4 +363,8 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     
       }
+
+
+
+
 });

@@ -43,8 +43,10 @@ function obtenerFotoPerfil(idUsuario) {
             if (data.success) {
                 let urlFoto = data.urlfotoperfil.replace(/\\/, '/');
                 const container = document.getElementById('ponerFoto');
+                const container2 = document.querySelector('.usuario')
                 if (container) {
                     container.innerHTML = `<img src="${urlFoto}" alt="foto de perfil">`;
+                    container2.innerHTML = `<img src="${urlFoto}" id="profileImage2" alt="user" class="derecho iconos efectosIconos ponerimagenPerfilusuario1" data-bs-toggle="offcanvas" data-bs-target="#perfil" aria-controls="offcanvasRight">`
                 }
             }
         });
@@ -64,7 +66,7 @@ function renderItems() {
         if (item.disponible) {
             const itemElement = `
                 <div class="col-4 contenedor-perfiles-usuario">
-                    <img src="${item.url_producto}" alt="${item.id_tienda}" class="imgTienda btn">
+                    <img src="img/iconos/${item.url_producto}" alt="${item.id_tienda}" class="imgTienda btn">
                     <div>
                         <div class="number-item">
                             <span class="number">
@@ -149,7 +151,7 @@ async function obtenerDatos(idUsuario) {
         data.data.forEach(producto => {
             container.innerHTML += `
                 <div class="perfil_usuario" data-id="${producto.id_producto}">
-                    <img src="${producto.url_producto}" alt="Producto">
+                    <img src="img/iconos/${producto.url_producto}" alt="Producto">
                 </div>
             `;
         });

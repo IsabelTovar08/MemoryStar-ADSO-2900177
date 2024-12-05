@@ -14,37 +14,36 @@ export class Boss {
     this.projectileGroup = this.scene.physics.add.group();
     this.configurarColisionConJugador();
   }
+  
+  crearBoss(x, y) { 
+    const xPosicion = x ? x : config.width * 0.5;
+    const yPosicion = y ? y : config.height * 0.5;
 
-  crearBoss(x, y) {
-    // Lista de posibles sprites para el jefe
-    const spritesBoss = ["boss1", "boss2", "boss3","boss4","boss5","boss6"]; // Cambia los nombres según tus sprites disponibles
+    const spritesBoss = ["boss1", "boss2", "boss3","boss4","boss5","boss6"]; 
+    const spriteAleatorio = spritesBoss[Math.floor(Math.random() * spritesBoss.length)]; 
 
-    // Selecciona un sprite aleatorio de la lista
-    const spriteAleatorio = spritesBoss[Math.floor(Math.random() * spritesBoss.length)];
+    this.boss = this.scene.physics.add.sprite(xPosicion, yPosicion, spriteAleatorio)
+        .setScale(0.1)
+        .setCollideWorldBounds(true);
 
-    this.boss = this.scene.physics.add
-      .sprite(x, y, spriteAleatorio)
-      .setScale(0.1)
-      .setCollideWorldBounds(true);
+    this.boss.body.setAllowGravity(false); 
+    console.log(spriteAleatorio);
 
-    this.boss.body.setAllowGravity(false);
-
-    console.log(spriteAleatorio)
-    fetch("..//php/almacenar_enemigo.php", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ boss: spriteAleatorio }),
+    fetch("..//php/almacenar_enemigo.php", { 
+        method: "POST", 
+        headers: { 
+            "Content-Type": "application/json", 
+        },
+        body: JSON.stringify({ boss: spriteAleatorio }),
     })
-      .then((response) => response.json())
-      .then((data) => console.log(data.status));
+    .then((response) => response.json())
+    .then((data) => console.log(data.status)); 
 
-    this.boss.health = this.maxHealth; // Vida inicial del boss
-    this.crearBarraDeVida(); // Crear la barra de vida
-    this.moverBoss();
-    this.dispararProyectiles();
-  }
+    this.boss.health = this.maxHealth; 
+    this.crearBarraDeVida(); 
+    this.moverBoss(); 
+    this.dispararProyectiles(); 
+}
 
   crearBarraDeVida() {
     // Crear la barra de vida en la parte superior del boss
