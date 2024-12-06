@@ -1,50 +1,76 @@
 export class VidaJugador {
-    constructor(scene, vidaMaxima = 100) {
+    constructor(scene, vidaMaxima = 100, iconoPath) {
         this.scene = scene;
         this.vidaJugador = vidaMaxima;
         this.vidaMaxima = vidaMaxima;
-        this.crearBarraVida();
+        this.iconoPath = iconoPath;
+        this.crearContenedorVida();
     }
-
-    crearBarraVida() {
+    
+    crearContenedorVida() {
+        // Crear un contenedor para agrupar barra de vida e ícono
+        this.contenedor = this.scene.add.container(20, 70);
+        
+        // Crear gráficos para la barra de vida
         this.barraVidaJugador = this.scene.add.graphics();
+        
+        // Añadir ícono si se proporciona
+        if (this.iconoPath) {
+            this.icono = this.scene.add.image(0, 0, this.iconoPath)
+                .setOrigin(0)
+                .setDisplaySize(30, 30);
+            this.contenedor.add(this.icono);
+        }
+        
+        // Añadir barra de vida al contenedor
+        this.contenedor.add(this.barraVidaJugador);
+        
+        // Establecer el contenedor como fijo en la cámara
+        this.contenedor.setScrollFactor(0);
+        
         this.actualizarBarra();
+        
     }
-
+  
+    
     actualizarBarra() {
         this.barraVidaJugador.clear();
         
         const porcentajeVida = this.vidaJugador / this.vidaMaxima;
         
-        // Establecer el color verde para la vida restante
-        this.barraVidaJugador.fillStyle(0x00ff00, 1); // Color verde para la vida restante
-
-        // Dibujar la barra de salud con el porcentaje de vida restante
-        this.barraVidaJugador.fillRect(50, 50, 200 * porcentajeVida, 20);
+        // Establecer color verde para la vida restante
+        this.barraVidaJugador.fillStyle(0x00ff00, 1);
         
-        // Dibujar un borde para la barra de salud
+        const x = 40; // Ajustar posición para dejar espacio al ícono
+        const y = 0;
+        const width = 200;
+        const height = 20;
+        const radius = 10;
+        
+        // Dibujar barra de vida con bordes redondeados
+        this.barraVidaJugador.fillRoundedRect(x, y, width * porcentajeVida, height, radius);
+        
+        // Dibujar borde
         this.barraVidaJugador.lineStyle(2, 0xffffff);
-        this.barraVidaJugador.strokeRect(50, 50, 200, 20);
-        this.barraVidaJugador.setScrollFactor(0);
+        this.barraVidaJugador.strokeRoundedRect(x, y, width, height, radius);
     }
-
+    
+    // Los métodos restantes permanecen igual
     dañoJugador(amount) {
         this.vidaJugador = Math.max(this.vidaJugador - amount, 0);
         this.actualizarBarra();
-
+        
         if (this.vidaJugador <= 0) {
             this.scene.manejoPuntos.deteriorarJugador();
         }
     }
-
+    
     heal(amount) {
-        // Curar vida y asegurarse de no exceder la vida máxima
         this.vidaJugador = Math.min(this.vidaJugador + amount, this.vidaMaxima);
-        this.actualizarBarra(); // Actualizar la barra de salud
+        this.actualizarBarra();
     }
-
+    
     playerDied() {
         console.log('El jugador ha muerto');
-        // Aquí puedes implementar la lógica de lo que sucede cuando el jugador muere
     }
 }

@@ -62,6 +62,8 @@ class MyScene extends Phaser.Scene {
     this.load.image("galleta", "imgDulces/galleta.png");
     this.load.image("arbusto", "imgDulces/arbusto.png");
     this.load.image("arbGalletas", "imgDulces/galletas.png");
+    this.load.image("corazonjugador", "imgDulces/corazon.png");
+
 
     this.load.image("chispas", "imgDulces/arbol-chispas.png");
     this.load.image("casa", "imgDulces/casa.png");
@@ -182,7 +184,8 @@ class MyScene extends Phaser.Scene {
     this.manejoRecolectables = new creacionRecolectables(this, this.manejoPuntos)
     this.iniciarOxigeno = this.manejoPuntos.drawProgressBar();
     this.manejoPuntos.start(1, 0, 650, 10);
-    this.vidaJugador = new VidaJugador(this);
+    // this.vidaJugador = new VidaJugador(this,100,"imgDulces/pCaramel.png");
+    this.vidaJugador = new VidaJugador(this,100,'corazonjugador');
 
     this.boss = new Boss(this, this.jugador, this.manejoPuntos, this.vidaJugador); // Pasar el jugador como referencia
     this.boss.crearBoss(400, 100);

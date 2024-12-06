@@ -25,7 +25,7 @@
   </style>
 </head>
 <body>
-  <div class="modal" id="modal" tabindex="-1" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <!-- <div class="modal" id="modal" tabindex="-1" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
@@ -45,7 +45,51 @@
         </div>
       </div>
     </div>
-  </div>
+  </div> -->
+  
+ <div class="modal fade custom-modal" id="roomModal" tabindex="-1" data-bs-backdrop="static" data-bs-keyboard="false">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="geometric-bg">
+                <div class="grid-pattern"></div>
+                <div class="geometric-shape triangle"></div>
+                <div class="geometric-shape circle"></div>
+                <div class="geometric-shape square"></div>
+                <div class="glow-effect glow-1"></div>
+                <div class="glow-effect glow-2"></div>
+                <div class="floating-dots dot-1"></div>
+                <div class="floating-dots dot-2"></div>
+                <div class="floating-dots dot-3"></div>
+                <div class="floating-dots dot-4"></div>
+                <div class="floating-dots dot-5"></div>
+                <div class="neon-line"></div>
+            </div> 
+
+            <div class="modal-header tit">
+                <h5 class="modal-title tituloo">¿Te quedaste sin oxígeno?</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body d-flex">
+                <div class="modal-text-container" style="width: 60%;">
+                    <p class="mb-3">Compra 1 por solo 1$</p>
+                    <div class="row mb-3">
+                        <div class="col">Diamantes disponibles:</div>
+                        <div class="col" id="diamantes">5</div>
+                    </div>
+                    <div id="temporizador" class="fs-2">5</div>
+                </div>
+                <div class="modal-image-container" style="width: 40%; margin-right: 10px;">
+                    <img src="../../img/vacamuerta.png" alt="Oxygen" class="img-fluid">
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="create-btn">
+                    Crear
+                </button>
+            </div>
+        </div>
+    </div>
+</div> 
 
                                                    
   <script src="../../js/comun/modales.js"></script>
