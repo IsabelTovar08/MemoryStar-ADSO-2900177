@@ -824,7 +824,7 @@ function tablaFinal(data) {
   const medallas = contenedorTablaMulti.querySelector(".medallas");
   const contenedorUser = contenedorTablaMulti.querySelector(".contenedor-user");
   const contenedorEstrellas = `
-    <div class="contenedor-estrellas" style="position: relative !important;">
+    <div class="contenedor-estrellas">
       <img src="../modales/modales/img/tablas/Star.png" class="star" alt="">
       <img src="../modales/modales/img/tablas/Star.png" class="star" alt="">
       <img src="../modales/modales/img/tablas/Star.png" class="star" alt="">
