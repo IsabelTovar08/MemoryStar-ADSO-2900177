@@ -1,0 +1,90 @@
+@keyframes borderGlow {
+    0% {
+      border-color: #7a55df;
+      box-shadow: 0px 0px 10px #7a55df;
+    }
+    50% {
+      border-color: #d64545;
+      box-shadow: 0px 0px 15px #d64545;
+    }
+    100% {
+      border-color: #7a55df;
+      box-shadow: 0px 0px 10px #7a55df;
+    }
+  }
+  
+  .forma-contenedor {
+    background-color: #3e2a47;
+    border: 2px solid #7a55df;
+    border-radius: 15px;
+    box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.5);
+    color: #f0e6e6;
+    animation: borderGlow 3s infinite;
+  }
+  
+  .forma-header {
+    background-color: #2b1d37;
+    border-bottom: 2px solid #7a55df;
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+    animation: borderGlow 3s infinite;
+
+  }
+  
+  .forma-cerrar {
+    color: #f0e6e6;
+    font-size: 1.5rem;
+    font-weight: bold;
+  }
+  
+  .forma-cerrar {
+    background-color: transparent;
+    color: #f0e6e6;
+    opacity: 0.8;
+  }
+  
+  .forma-cerrar:hover {
+    opacity: 1;
+  }
+  
+  .forma-body {
+    padding: 20px;
+    font-size: 1rem;
+    color: #f0e6e6;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .forma-footer {
+    background-color: #2b1d37;
+    border-top: 2px solid #7a55df;
+    border-bottom-left-radius: 15px;
+    border-bottom-right-radius: 15px;
+    animation: borderGlow 3s infinite;
+
+  }
+  
+  .forma-footer .btn-secondary {
+    background-color: #7a55df;
+    border: none;
+    color: #f0e6e6;
+    transition: all 0.3s ease;
+    animation: backgroundGlow 2s ease infinite ;
+  }
+  
+  .forma-footer .btn-secondary:hover {
+    background-color: #4d2583;
+  }
+
+  @keyframes backgroundGlow {
+    0% {
+      background-color: #7a55df;
+    }
+    50% {
+      background-color: #d64545;
+    }
+    100% {
+      background-color: #7a55df;
+    }
+  }

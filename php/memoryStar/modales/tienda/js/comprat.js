@@ -44,9 +44,12 @@ function obtenerFotoPerfil(idUsuario) {
                 let urlFoto = data.urlfotoperfil.replace(/\\/, '/');
                 const container = document.getElementById('ponerFoto');
                 const container2 = document.querySelector('.usuario')
+                const container3 = document.querySelector('.fotoPerfil')
                 if (container) {
                     container.innerHTML = `<img src="${urlFoto}" alt="foto de perfil">`;
                     container2.innerHTML = `<img src="${urlFoto}" id="profileImage2" alt="user" class="derecho iconos efectosIconos ponerimagenPerfilusuario1" data-bs-toggle="offcanvas" data-bs-target="#perfil" aria-controls="offcanvasRight">`
+            
+                    container3.innerHTML = `<img id="profileImage" src="${urlFoto}" alt="Foto de perfil"> `
                 }
             }
         });

@@ -1248,47 +1248,85 @@ h1 {
 
 form {
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 10px; /* Espaciado entre los elementos */
-  background-color: #071f42; /* Fondo oscuro */
-  padding: 10px;
-  border: 2px solid #5e35b1; /* Borde morado */
+  background-color: #102a42ee; /* Fondo azul petróleo */
+  padding: 5px;
+  box-shadow: 0px 0px 10px #102a42ee;
+  border: 2px solid #38b2ac; /* Borde verde azulado */
   border-radius: 10px;
-  width: fit-content;
-  margin: 20px auto;
+  width: 80%;
+  margin: 2.5% auto;
+  transition: all 1s ease;
+}
+
+form:hover {
+  transition: all 1s ease;
+  transform: scale(0.95555);
+  background-color: #0f253dee; /* Azul más oscuro */
+  box-shadow: 0px 0px 15px #0f253dff;
+  border: 2px solid #2c7a7b; /* Verde azulado más intenso */
+}
+
+
+form h1 {
+  color: #e3f2fd; /* Texto blanco-azulado */
+}
+
+form div .labelPerfil {
+  transition: all 2s ease;
+  padding: 8px;
+  border: 2px solid #4a90d9;
+  border-radius: 5px;
+  background-color: transparent;
+  color: #e3f2fd; /* Texto blanco-azulado */
+  font-size: 14px;
+  width: 100%;
+  box-sizing: 0px 0px 5px #4a90d9;
+  animation: color-r 2.5s ease infinite;
+}
+
+form div .labelPerfil:hover {
+  transition: all 2s ease;
+  animation: none;
+  background-color: transparent;
 }
 
 form label {
   font-size: 14px;
-  color: white; /* Texto blanco */
+  color: #e3f2fd; /* Texto blanco-azulado */
 }
 
-form input[type="number"] {
-  padding: 8px;
-  border: 2px solid #5e35b1; /* Borde morado */
-  border-radius: 5px;
-  background-color: transparent; /* Fondo oscuro */
-  color: white; /* Texto blanco */
-  font-size: 14px;
-  width: 100px;
-  box-sizing: 0px 0px 5px #5e35b1;
+form button:hover {
+  background-color: #5cb1f5; /* Azul más claro */
 }
+
+@keyframes color-r {
+  0% {
+    background: linear-gradient(to bottom, #e3f2fd, #4a90d9);
+  }
+  50% {
+    background: linear-gradient(to bottom, #b3e5fc, #0d47a1);
+  }
+  100% {
+    background: linear-gradient(to bottom, #e3f2fd, #4a90d9);
+  }
+}
+
+
 
 form button {
   padding: 8px 12px;
-  background-color: #5e35b1; /* Morado vibrante */
+  background-color: #5cb1f5; /* Azul más claro */
+
   border: none;
   border-radius: 5px;
   color: white; /* Texto blanco */
   font-size: 14px;
   cursor: pointer;
-  transition: background-color 0.3s ease;
-  box-sizing: 0px 0px 5px #5e35b1;
-}
+  animation: color-r 2.5s ease infinite;
 
-form button:hover {
-  background-color: #7c4dff; /* Morado más claro */
 }
 
   /* @media (min-height: 450px) {
