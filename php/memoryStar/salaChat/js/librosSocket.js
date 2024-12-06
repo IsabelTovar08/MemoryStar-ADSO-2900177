@@ -29,7 +29,7 @@ async function obtenerDatosUsuario(callback, manejarError) {
 
 gameData = JSON.parse(sessionStorage.getItem("gameData"));
 function iniciar() {
-  ws = new WebSocket('ws://localhost:8080');
+  ws = new WebSocket('ws://192.168.131.53:8080');
   ws.onopen = () => {
     console.log("Conectado al WebSocket en el juego multijugador");
     if (gameData) {

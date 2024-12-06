@@ -171,7 +171,7 @@ if (formUnirseSala) {
 
 
 function initializeSocket() {
-    socket = new WebSocket("ws://localhost:8080");
+    socket = new WebSocket("ws://192.168.131.53:8080");
 
     socket.onopen = () => {
         console.log("Conectado al WebSocket");
@@ -324,7 +324,7 @@ function generarQR() {
     const codigoElement = document.getElementById('codigoSalaModal').textContent; 
     console.log(codigoElement)
     
-    new QRCode(contenedor, `http://192.168.1.10/memoryStar-ADSO-2900177/php/memoryStar/salaChat?codigo=${codigoElement}`);
+    new QRCode(contenedor, `http://192.168.131.53/memoryStar-ADSO-2900177/php/memoryStar/salaChat?codigo=${codigoElement}`);
     // new QRCode(contenedor, `www.google.com`);
 
     const copiar = document.querySelector('.botto-copiar');
